@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StepByStepGuideViewController: UIViewController {
+class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel> {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LandingPageViewController: UIViewController {
+class LandingPageViewController: MVVMViewController<LandingPageViewModel> {
 
     override func viewDidLoad() {
         super.viewDidLoad()

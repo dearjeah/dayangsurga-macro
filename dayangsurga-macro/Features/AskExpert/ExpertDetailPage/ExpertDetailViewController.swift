@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExpertDetailViewController: UIViewController {
+class ExpertDetailViewController: MVVMViewController<ExpertListViewModel> {
 
     override func viewDidLoad() {
         super.viewDidLoad()

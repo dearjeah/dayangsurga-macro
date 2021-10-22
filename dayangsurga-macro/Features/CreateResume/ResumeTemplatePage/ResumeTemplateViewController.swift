@@ -1,5 +1,5 @@
 //
-//  ExpertListViewController.swift
+//  ResumeTemplateViewController.swift
 //  dayangsurga-macro
 //
 //  Created by Delvina Janice on 22/10/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExpertListViewController: MVVMViewController<ExpertListViewModel> {
+class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
