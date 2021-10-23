@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		679DBEA22723FAAD00CE9E8F /* ResumeTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DBEA02723FAAD00CE9E8F /* ResumeTemplateCell.swift */; };
+		679DBEA32723FAAD00CE9E8F /* ResumeTemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679DBEA12723FAAD00CE9E8F /* ResumeTemplateCell.xib */; };
+		679DBEA62723FC8200CE9E8F /* ExperienceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DBEA42723FC8200CE9E8F /* ExperienceTableCell.swift */; };
+		679DBEA72723FC8200CE9E8F /* ExperienceTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679DBEA52723FC8200CE9E8F /* ExperienceTableCell.xib */; };
+		679DBEAA272410F900CE9E8F /* EducationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DBEA8272410F900CE9E8F /* EducationTableCell.swift */; };
+		679DBEAB272410F900CE9E8F /* EducationTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679DBEA9272410F900CE9E8F /* EducationTableCell.xib */; };
 		BF5F1BEA2722D5CA004D0756 /* PersonalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BE92722D5CA004D0756 /* PersonalInfoViewModel.swift */; };
 		BF5F1BEC2722D7F0004D0756 /* ResumeTemplateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5F1BEB2722D7F0004D0756 /* ResumeTemplateViewController.storyboard */; };
 		BF5F1BEE2722D805004D0756 /* ResumeTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BED2722D805004D0756 /* ResumeTemplateViewController.swift */; };
@@ -96,6 +102,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		679DBEA02723FAAD00CE9E8F /* ResumeTemplateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeTemplateCell.swift; sourceTree = "<group>"; };
+		679DBEA12723FAAD00CE9E8F /* ResumeTemplateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeTemplateCell.xib; sourceTree = "<group>"; };
+		679DBEA42723FC8200CE9E8F /* ExperienceTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceTableCell.swift; sourceTree = "<group>"; };
+		679DBEA52723FC8200CE9E8F /* ExperienceTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExperienceTableCell.xib; sourceTree = "<group>"; };
+		679DBEA8272410F900CE9E8F /* EducationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationTableCell.swift; sourceTree = "<group>"; };
+		679DBEA9272410F900CE9E8F /* EducationTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EducationTableCell.xib; sourceTree = "<group>"; };
 		BF5F1BE92722D5CA004D0756 /* PersonalInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewModel.swift; sourceTree = "<group>"; };
 		BF5F1BEB2722D7F0004D0756 /* ResumeTemplateViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResumeTemplateViewController.storyboard; sourceTree = "<group>"; };
 		BF5F1BED2722D805004D0756 /* ResumeTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeTemplateViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +208,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		679DBE9F2723FA9200CE9E8F /* CustomComponent */ = {
+			isa = PBXGroup;
+			children = (
+				679DBEA02723FAAD00CE9E8F /* ResumeTemplateCell.swift */,
+				679DBEA12723FAAD00CE9E8F /* ResumeTemplateCell.xib */,
+			);
+			path = CustomComponent;
+			sourceTree = "<group>";
+		};
 		BF8502FD2722551B00CC43FB = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +315,7 @@
 		BF850340272255BB00CC43FB /* ResumeTemplatePage */ = {
 			isa = PBXGroup;
 			children = (
+				679DBE9F2723FA9200CE9E8F /* CustomComponent */,
 				BF5F1BEB2722D7F0004D0756 /* ResumeTemplateViewController.storyboard */,
 				BF5F1BED2722D805004D0756 /* ResumeTemplateViewController.swift */,
 				BF5F1BEF2722D824004D0756 /* ResumeTemplateViewModel.swift */,
@@ -523,6 +545,10 @@
 			isa = PBXGroup;
 			children = (
 				BF85038F2722B5E100CC43FB /* RoundedButton.swift */,
+				679DBEA42723FC8200CE9E8F /* ExperienceTableCell.swift */,
+				679DBEA52723FC8200CE9E8F /* ExperienceTableCell.xib */,
+				679DBEA8272410F900CE9E8F /* EducationTableCell.swift */,
+				679DBEA9272410F900CE9E8F /* EducationTableCell.xib */,
 			);
 			path = GlobalCustomComponent;
 			sourceTree = "<group>";
@@ -666,6 +692,7 @@
 				BF8503162722551C00CC43FB /* Assets.xcassets in Resources */,
 				BF85035727225A1D00CC43FB /* MyResumeCell.xib in Resources */,
 				BF8503532722596400CC43FB /* LandingPageViewController.storyboard in Resources */,
+				679DBEAB272410F900CE9E8F /* EducationTableCell.xib in Resources */,
 				BF8503AA2722B83700CC43FB /* SkillsPageView.xib in Resources */,
 				BF85035D27225C4300CC43FB /* PersonalInfoPage.xib in Resources */,
 				BF8503BC2722BDE900CC43FB /* Homepage.storyboard in Resources */,
@@ -675,7 +702,9 @@
 				BF85036327225DBB00CC43FB /* Colors.xcassets in Resources */,
 				BF8503A22722B7F800CC43FB /* QuizPageView.xib in Resources */,
 				BF5F1BEC2722D7F0004D0756 /* ResumeTemplateViewController.storyboard in Resources */,
+				679DBEA72723FC8200CE9E8F /* ExperienceTableCell.xib in Resources */,
 				BF8503A62722B81600CC43FB /* ExperiencePageView.xib in Resources */,
+				679DBEA32723FAAD00CE9E8F /* ResumeTemplateCell.xib in Resources */,
 				BF8503942722B65600CC43FB /* ExpertListViewController.storyboard in Resources */,
 				BF8503B12722B9E700CC43FB /* StepByStepGuideViewController.storyboard in Resources */,
 				BF5F1BF22722D869004D0756 /* GenerateResumeViewController.storyboard in Resources */,
@@ -704,6 +733,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF850372272266F400CC43FB /* TableViewCell+Extension.swift in Sources */,
+				679DBEA22723FAAD00CE9E8F /* ResumeTemplateCell.swift in Sources */,
 				BF85030E2722551B00CC43FB /* UserProfileViewController.swift in Sources */,
 				BF5F1BFA2722D983004D0756 /* PreviewResumeViewController.swift in Sources */,
 				BF8503962722B68A00CC43FB /* ExpertListViewModel.swift in Sources */,
@@ -725,6 +755,7 @@
 				BF8503B52722BABF00CC43FB /* StepByStepGuideViewModel.swift in Sources */,
 				BF8503A02722B7EE00CC43FB /* QuizPageView.swift in Sources */,
 				BF8503502722594C00CC43FB /* LandingPageViewModel.swift in Sources */,
+				679DBEAA272410F900CE9E8F /* EducationTableCell.swift in Sources */,
 				BF85038C2722B58A00CC43FB /* ProgressBarView.swift in Sources */,
 				BF85037A272282C500CC43FB /* UILabel+Extension.swift in Sources */,
 				BF8503902722B5E100CC43FB /* RoundedButton.swift in Sources */,
@@ -738,6 +769,7 @@
 				BF5F1BEE2722D805004D0756 /* ResumeTemplateViewController.swift in Sources */,
 				BF85036C272265A800CC43FB /* UIButton+Extemsion.swift in Sources */,
 				BF5F1BF62722D888004D0756 /* GenerateResumeViewModel.swift in Sources */,
+				679DBEA62723FC8200CE9E8F /* ExperienceTableCell.swift in Sources */,
 				BF85030C2722551B00CC43FB /* SceneDelegate.swift in Sources */,
 				BF5F1BF42722D87A004D0756 /* GenerateResumeViewController.swift in Sources */,
 				BF8503692722643100CC43FB /* CommonFunction.swift in Sources */,
