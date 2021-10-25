@@ -13,5 +13,9 @@ class LabelWithSwitch: UIView {
     @IBOutlet weak var switchTitle: UILabel!
     @IBAction func switchPressed(_ sender: UISwitch) {
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
 
 }

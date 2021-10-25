@@ -19,4 +19,8 @@ class LabelWithStartEndDate: UIView {
     @IBAction func endDatePressed(_ sender: UIButton) {
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
 }

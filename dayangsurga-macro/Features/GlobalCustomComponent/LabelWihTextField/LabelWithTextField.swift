@@ -11,5 +11,9 @@ class LabelWithTextField: UIView {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
 
 }

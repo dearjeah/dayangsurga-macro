@@ -86,6 +86,10 @@
 		BF8503B52722BABF00CC43FB /* StepByStepGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8503B42722BABF00CC43FB /* StepByStepGuideViewModel.swift */; };
 		BF8503B92722BDCF00CC43FB /* HomepageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8503B72722BDCF00CC43FB /* HomepageController.swift */; };
 		BF8503BC2722BDE900CC43FB /* Homepage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8503BB2722BDE900CC43FB /* Homepage.storyboard */; };
+		BFE0035027272F450070BD40 /* LabelWithDate.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE0034F27272F450070BD40 /* LabelWithDate.xib */; };
+		BFE0035227272F500070BD40 /* LabelWithDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE0035127272F500070BD40 /* LabelWithDate.swift */; };
+		BFE003552727331F0070BD40 /* BigButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE003542727331F0070BD40 /* BigButtonWithImage.swift */; };
+		BFE00357272733310070BD40 /* BigButtonWithImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE00356272733310070BD40 /* BigButtonWithImage.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -189,6 +193,10 @@
 		BF8503B42722BABF00CC43FB /* StepByStepGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepGuideViewModel.swift; sourceTree = "<group>"; };
 		BF8503B72722BDCF00CC43FB /* HomepageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageController.swift; sourceTree = "<group>"; };
 		BF8503BB2722BDE900CC43FB /* Homepage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Homepage.storyboard; sourceTree = "<group>"; };
+		BFE0034F27272F450070BD40 /* LabelWithDate.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelWithDate.xib; sourceTree = "<group>"; };
+		BFE0035127272F500070BD40 /* LabelWithDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithDate.swift; sourceTree = "<group>"; };
+		BFE003542727331F0070BD40 /* BigButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButtonWithImage.swift; sourceTree = "<group>"; };
+		BFE00356272733310070BD40 /* BigButtonWithImage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BigButtonWithImage.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,8 +245,8 @@
 		BF2ABB372726FF8300AAC6C2 /* LabelWithTextView */ = {
 			isa = PBXGroup;
 			children = (
-				BF2ABB382726FF9600AAC6C2 /* LabelWithTextView.swift */,
 				BF2ABB3A2726FFAF00AAC6C2 /* LabelWithTextView.xib */,
+				BF2ABB382726FF9600AAC6C2 /* LabelWithTextView.swift */,
 			);
 			path = LabelWithTextView;
 			sourceTree = "<group>";
@@ -255,8 +263,8 @@
 		BF2ABB4127270D2E00AAC6C2 /* LabelWithStartEndDate */ = {
 			isa = PBXGroup;
 			children = (
-				BF2ABB4227270D4200AAC6C2 /* LabelWithStartEndDate.swift */,
 				BF2ABB4427270D4D00AAC6C2 /* LabelWithStartEndDate.xib */,
+				BF2ABB4227270D4200AAC6C2 /* LabelWithStartEndDate.swift */,
 			);
 			path = LabelWithStartEndDate;
 			sourceTree = "<group>";
@@ -506,6 +514,7 @@
 		BF8503512722595400CC43FB /* CustomComponent */ = {
 			isa = PBXGroup;
 			children = (
+				BFE00353272732FD0070BD40 /* BigButtonWithImage */,
 				BF85035627225A1D00CC43FB /* MyResumeCell.xib */,
 				BF85035827225A4300CC43FB /* MyResumeCell.swift */,
 			);
@@ -588,6 +597,7 @@
 		BF8503892722B50F00CC43FB /* GlobalCustomComponent */ = {
 			isa = PBXGroup;
 			children = (
+				BFE0034E27272F290070BD40 /* LabelWithDate */,
 				BF2ABB4127270D2E00AAC6C2 /* LabelWithStartEndDate */,
 				BF2ABB3C27270A4C00AAC6C2 /* LabelWithSwitch */,
 				BF2ABB372726FF8300AAC6C2 /* LabelWithTextView */,
@@ -619,10 +629,28 @@
 		BF8503B62722BCFA00CC43FB /* Homepage */ = {
 			isa = PBXGroup;
 			children = (
-				BF8503B72722BDCF00CC43FB /* HomepageController.swift */,
 				BF8503BB2722BDE900CC43FB /* Homepage.storyboard */,
+				BF8503B72722BDCF00CC43FB /* HomepageController.swift */,
 			);
 			path = Homepage;
+			sourceTree = "<group>";
+		};
+		BFE0034E27272F290070BD40 /* LabelWithDate */ = {
+			isa = PBXGroup;
+			children = (
+				BFE0034F27272F450070BD40 /* LabelWithDate.xib */,
+				BFE0035127272F500070BD40 /* LabelWithDate.swift */,
+			);
+			path = LabelWithDate;
+			sourceTree = "<group>";
+		};
+		BFE00353272732FD0070BD40 /* BigButtonWithImage */ = {
+			isa = PBXGroup;
+			children = (
+				BFE003542727331F0070BD40 /* BigButtonWithImage.swift */,
+				BFE00356272733310070BD40 /* BigButtonWithImage.xib */,
+			);
+			path = BigButtonWithImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -733,6 +761,7 @@
 				BF2ABB312726F02C00AAC6C2 /* SmallSetButton.xib in Resources */,
 				BF8503192722551C00CC43FB /* LaunchScreen.storyboard in Resources */,
 				BF85038E2722B59500CC43FB /* ProgressBarView.xib in Resources */,
+				BFE0035027272F450070BD40 /* LabelWithDate.xib in Resources */,
 				BF8503982722B6A300CC43FB /* ExpertDetailsViewController.storyboard in Resources */,
 				BF2ABB3B2726FFAF00AAC6C2 /* LabelWithTextView.xib in Resources */,
 				BF8503162722551C00CC43FB /* Assets.xcassets in Resources */,
@@ -743,6 +772,7 @@
 				BF85035D27225C4300CC43FB /* PersonalInfoPage.xib in Resources */,
 				BF8503BC2722BDE900CC43FB /* Homepage.storyboard in Resources */,
 				BF2ABB4527270D4D00AAC6C2 /* LabelWithStartEndDate.xib in Resources */,
+				BFE00357272733310070BD40 /* BigButtonWithImage.xib in Resources */,
 				BF8503112722551B00CC43FB /* UserProfileViewController.storyboard in Resources */,
 				BF2ABB342726FCC900AAC6C2 /* LabelWithTextField.xib in Resources */,
 				BF5F1BF82722D977004D0756 /* PreviewResumeViewController.storyboard in Resources */,
@@ -778,6 +808,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFE0035227272F500070BD40 /* LabelWithDate.swift in Sources */,
 				BF850372272266F400CC43FB /* TableViewCell+Extension.swift in Sources */,
 				BF85030E2722551B00CC43FB /* UserProfileViewController.swift in Sources */,
 				BF5F1BFA2722D983004D0756 /* PreviewResumeViewController.swift in Sources */,
@@ -812,6 +843,7 @@
 				BF8503742722675000CC43FB /* Cell+Extension.swift in Sources */,
 				BF85036727225FB400CC43FB /* Constants.swift in Sources */,
 				BF85035927225A4300CC43FB /* MyResumeCell.swift in Sources */,
+				BFE003552727331F0070BD40 /* BigButtonWithImage.swift in Sources */,
 				BF850370272266BC00CC43FB /* String+Extension.swift in Sources */,
 				BF85035B27225C3400CC43FB /* PersonalInfoPage.swift in Sources */,
 				BF8503A42722B80F00CC43FB /* ExperiencePageView.swift in Sources */,
