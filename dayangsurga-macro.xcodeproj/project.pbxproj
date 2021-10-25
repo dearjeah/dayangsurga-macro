@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		BF2ABB2D2726EDDF00AAC6C2 /* SmallSetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2ABB2C2726EDDF00AAC6C2 /* SmallSetButton.swift */; };
 		BF2ABB312726F02C00AAC6C2 /* SmallSetButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2ABB302726F02C00AAC6C2 /* SmallSetButton.xib */; };
+		BF2ABB342726FCC900AAC6C2 /* LabelWithTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2ABB332726FCC900AAC6C2 /* LabelWithTextField.xib */; };
+		BF2ABB362726FCD600AAC6C2 /* LabelWithTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2ABB352726FCD600AAC6C2 /* LabelWithTextField.swift */; };
+		BF2ABB392726FF9600AAC6C2 /* LabelWithTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2ABB382726FF9600AAC6C2 /* LabelWithTextView.swift */; };
+		BF2ABB3B2726FFAF00AAC6C2 /* LabelWithTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2ABB3A2726FFAF00AAC6C2 /* LabelWithTextView.xib */; };
+		BF2ABB3E27270A5D00AAC6C2 /* LabelWithSwitch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2ABB3D27270A5D00AAC6C2 /* LabelWithSwitch.xib */; };
+		BF2ABB4027270A6D00AAC6C2 /* LabelWithSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2ABB3F27270A6D00AAC6C2 /* LabelWithSwitch.swift */; };
+		BF2ABB4327270D4200AAC6C2 /* LabelWithStartEndDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2ABB4227270D4200AAC6C2 /* LabelWithStartEndDate.swift */; };
+		BF2ABB4527270D4D00AAC6C2 /* LabelWithStartEndDate.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2ABB4427270D4D00AAC6C2 /* LabelWithStartEndDate.xib */; };
 		BF5F1BEA2722D5CA004D0756 /* PersonalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BE92722D5CA004D0756 /* PersonalInfoViewModel.swift */; };
 		BF5F1BEC2722D7F0004D0756 /* ResumeTemplateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5F1BEB2722D7F0004D0756 /* ResumeTemplateViewController.storyboard */; };
 		BF5F1BEE2722D805004D0756 /* ResumeTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BED2722D805004D0756 /* ResumeTemplateViewController.swift */; };
@@ -100,6 +108,14 @@
 /* Begin PBXFileReference section */
 		BF2ABB2C2726EDDF00AAC6C2 /* SmallSetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallSetButton.swift; sourceTree = "<group>"; };
 		BF2ABB302726F02C00AAC6C2 /* SmallSetButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallSetButton.xib; sourceTree = "<group>"; };
+		BF2ABB332726FCC900AAC6C2 /* LabelWithTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelWithTextField.xib; sourceTree = "<group>"; };
+		BF2ABB352726FCD600AAC6C2 /* LabelWithTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithTextField.swift; sourceTree = "<group>"; };
+		BF2ABB382726FF9600AAC6C2 /* LabelWithTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithTextView.swift; sourceTree = "<group>"; };
+		BF2ABB3A2726FFAF00AAC6C2 /* LabelWithTextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelWithTextView.xib; sourceTree = "<group>"; };
+		BF2ABB3D27270A5D00AAC6C2 /* LabelWithSwitch.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelWithSwitch.xib; sourceTree = "<group>"; };
+		BF2ABB3F27270A6D00AAC6C2 /* LabelWithSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithSwitch.swift; sourceTree = "<group>"; };
+		BF2ABB4227270D4200AAC6C2 /* LabelWithStartEndDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithStartEndDate.swift; sourceTree = "<group>"; };
+		BF2ABB4427270D4D00AAC6C2 /* LabelWithStartEndDate.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelWithStartEndDate.xib; sourceTree = "<group>"; };
 		BF5F1BE92722D5CA004D0756 /* PersonalInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewModel.swift; sourceTree = "<group>"; };
 		BF5F1BEB2722D7F0004D0756 /* ResumeTemplateViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResumeTemplateViewController.storyboard; sourceTree = "<group>"; };
 		BF5F1BED2722D805004D0756 /* ResumeTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeTemplateViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +223,42 @@
 				BF2ABB302726F02C00AAC6C2 /* SmallSetButton.xib */,
 			);
 			path = SmallSetButton;
+			sourceTree = "<group>";
+		};
+		BF2ABB322726FCB300AAC6C2 /* LabelWihTextField */ = {
+			isa = PBXGroup;
+			children = (
+				BF2ABB332726FCC900AAC6C2 /* LabelWithTextField.xib */,
+				BF2ABB352726FCD600AAC6C2 /* LabelWithTextField.swift */,
+			);
+			path = LabelWihTextField;
+			sourceTree = "<group>";
+		};
+		BF2ABB372726FF8300AAC6C2 /* LabelWithTextView */ = {
+			isa = PBXGroup;
+			children = (
+				BF2ABB382726FF9600AAC6C2 /* LabelWithTextView.swift */,
+				BF2ABB3A2726FFAF00AAC6C2 /* LabelWithTextView.xib */,
+			);
+			path = LabelWithTextView;
+			sourceTree = "<group>";
+		};
+		BF2ABB3C27270A4C00AAC6C2 /* LabelWithSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				BF2ABB3D27270A5D00AAC6C2 /* LabelWithSwitch.xib */,
+				BF2ABB3F27270A6D00AAC6C2 /* LabelWithSwitch.swift */,
+			);
+			path = LabelWithSwitch;
+			sourceTree = "<group>";
+		};
+		BF2ABB4127270D2E00AAC6C2 /* LabelWithStartEndDate */ = {
+			isa = PBXGroup;
+			children = (
+				BF2ABB4227270D4200AAC6C2 /* LabelWithStartEndDate.swift */,
+				BF2ABB4427270D4D00AAC6C2 /* LabelWithStartEndDate.xib */,
+			);
+			path = LabelWithStartEndDate;
 			sourceTree = "<group>";
 		};
 		BF8502FD2722551B00CC43FB = {
@@ -536,6 +588,10 @@
 		BF8503892722B50F00CC43FB /* GlobalCustomComponent */ = {
 			isa = PBXGroup;
 			children = (
+				BF2ABB4127270D2E00AAC6C2 /* LabelWithStartEndDate */,
+				BF2ABB3C27270A4C00AAC6C2 /* LabelWithSwitch */,
+				BF2ABB372726FF8300AAC6C2 /* LabelWithTextView */,
+				BF2ABB322726FCB300AAC6C2 /* LabelWihTextField */,
 				BF85038F2722B5E100CC43FB /* RoundedButton.swift */,
 			);
 			path = GlobalCustomComponent;
@@ -678,13 +734,17 @@
 				BF8503192722551C00CC43FB /* LaunchScreen.storyboard in Resources */,
 				BF85038E2722B59500CC43FB /* ProgressBarView.xib in Resources */,
 				BF8503982722B6A300CC43FB /* ExpertDetailsViewController.storyboard in Resources */,
+				BF2ABB3B2726FFAF00AAC6C2 /* LabelWithTextView.xib in Resources */,
 				BF8503162722551C00CC43FB /* Assets.xcassets in Resources */,
 				BF85035727225A1D00CC43FB /* MyResumeCell.xib in Resources */,
 				BF8503532722596400CC43FB /* LandingPageViewController.storyboard in Resources */,
 				BF8503AA2722B83700CC43FB /* SkillsPageView.xib in Resources */,
+				BF2ABB3E27270A5D00AAC6C2 /* LabelWithSwitch.xib in Resources */,
 				BF85035D27225C4300CC43FB /* PersonalInfoPage.xib in Resources */,
 				BF8503BC2722BDE900CC43FB /* Homepage.storyboard in Resources */,
+				BF2ABB4527270D4D00AAC6C2 /* LabelWithStartEndDate.xib in Resources */,
 				BF8503112722551B00CC43FB /* UserProfileViewController.storyboard in Resources */,
+				BF2ABB342726FCC900AAC6C2 /* LabelWithTextField.xib in Resources */,
 				BF5F1BF82722D977004D0756 /* PreviewResumeViewController.storyboard in Resources */,
 				BF8503AE2722B88500CC43FB /* AccomplishmentPageView.xib in Resources */,
 				BF85036327225DBB00CC43FB /* Colors.xcassets in Resources */,
@@ -728,20 +788,24 @@
 				BF8503922722B64600CC43FB /* ExpertListViewController.swift in Sources */,
 				BF85039C2722B7B700CC43FB /* EducationPageView.swift in Sources */,
 				BF85036E272265C000CC43FB /* Date+Extension.swift in Sources */,
+				BF2ABB4027270A6D00AAC6C2 /* LabelWithSwitch.swift in Sources */,
 				BF8503802722877400CC43FB /* Int+Extension.swift in Sources */,
 				BF8503A82722B82F00CC43FB /* SkillsPageView.swift in Sources */,
+				BF2ABB4327270D4200AAC6C2 /* LabelWithStartEndDate.swift in Sources */,
 				BF8503762722826100CC43FB /* UIColor+Extension.swift in Sources */,
 				BF5F1BFE2722DA21004D0756 /* ExpertDetailViewModel.swift in Sources */,
 				BF5F1BFC2722D9A0004D0756 /* PreviewResumeViewModel.swift in Sources */,
 				BF8503142722551B00CC43FB /* dayangsurga-macro.xcdatamodeld in Sources */,
 				BF8503822722B2C300CC43FB /* CoreDataManager.swift in Sources */,
 				BF8503862722B35800CC43FB /* DataRepository.swift in Sources */,
+				BF2ABB392726FF9600AAC6C2 /* LabelWithTextView.swift in Sources */,
 				BF85039A2722B6D600CC43FB /* ExpertDetailViewController.swift in Sources */,
 				BF8503B52722BABF00CC43FB /* StepByStepGuideViewModel.swift in Sources */,
 				BF8503A02722B7EE00CC43FB /* QuizPageView.swift in Sources */,
 				BF8503502722594C00CC43FB /* LandingPageViewModel.swift in Sources */,
 				BF85038C2722B58A00CC43FB /* ProgressBarView.swift in Sources */,
 				BF2ABB2D2726EDDF00AAC6C2 /* SmallSetButton.swift in Sources */,
+				BF2ABB362726FCD600AAC6C2 /* LabelWithTextField.swift in Sources */,
 				BF85037A272282C500CC43FB /* UILabel+Extension.swift in Sources */,
 				BF8503902722B5E100CC43FB /* RoundedButton.swift in Sources */,
 				BF85030A2722551B00CC43FB /* AppDelegate.swift in Sources */,
