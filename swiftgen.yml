@@ -1,0 +1,19 @@
+xcassets:
+  - inputs:
+      - dayangsurga-macro/Resources/Colors.xcassets
+    outputs:
+      - templatePath: asset-to-color-extension.stencil
+        output: dayangsurga-macro/Helpers/Extensions/UIColor+Extension.swift
+        params:
+          enumName: UIColor
+          publicAccess: true
+          allValues: true
+  - inputs:
+      - dayangsurga-macro/Resources/Assets.xcassets
+    outputs:
+      - templatePath: asset-to-image-extension.stencil
+        output: dayangsurga-macro/Helpers/Extensions/UIImage+Extension.swift
+        params:
+          enumName: UIImage
+          publicAccess: true
+          allValues: true
