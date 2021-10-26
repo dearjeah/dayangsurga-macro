@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExperienceTableCell" id="KGk-i7-Jjw" customClass="ExperienceTableCell" customModule="dayangsurga_macro" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="361" height="133"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM" customClass="ExperienceTableCell" customModule="dayangsurga_macro" customModuleProvider="target">
+                <rect key="frame" x="0.0" y="0.0" width="361" height="133"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLx-Sp-skC">
+                        <rect key="frame" x="322" y="10" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="24" id="nma-Y3-KA2"/>
+                            <constraint firstAttribute="height" constant="24" id="sEd-AF-8yL"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="icRoundSelectionNoFill"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1u-5e-Soc">
+                        <rect key="frame" x="22" y="8" width="278" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="oNg-Iw-wIX"/>
+                            <constraint firstAttribute="width" constant="278" id="w9H-UL-2Tg"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <color key="textColor" red="0.098039215690000001" green="0.1647058824" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79P-8U-HtQ">
+                        <rect key="frame" x="22" y="32" width="278" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="xuS-yY-hih"/>
+                            <constraint firstAttribute="width" constant="278" id="yYj-12-nhq"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zV3-gN-eoU">
+                        <rect key="frame" x="22" y="52" width="285" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="285" id="KqI-Tq-Lse"/>
+                            <constraint firstAttribute="height" constant="16" id="Oh1-wl-mOF"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sU8-ki-lcF">
+                        <rect key="frame" x="22" y="72" width="269" height="45"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="269" id="cqr-Ca-bnu"/>
+                            <constraint firstAttribute="height" constant="45" id="jow-CJ-XeO"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbI-eM-Qvm">
+                        <rect key="frame" x="306" y="106" width="39" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="39" id="2GE-7S-8HT"/>
+                            <constraint firstAttribute="height" constant="15" id="bic-Gf-tvz"/>
+                        </constraints>
+                        <color key="tintColor" red="0.098039215690000001" green="0.1647058824" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system" imagePlacement="trailing" title="Edit"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="sU8-ki-lcF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="1rD-xg-AAd"/>
+                    <constraint firstItem="79P-8U-HtQ" firstAttribute="top" secondItem="V1u-5e-Soc" secondAttribute="bottom" constant="4" id="9u9-yX-gaK"/>
+                    <constraint firstItem="V1u-5e-Soc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="Ixu-Vl-ZyA"/>
+                    <constraint firstItem="dLx-Sp-skC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="LEQ-sW-Lmz"/>
+                    <constraint firstItem="zV3-gN-eoU" firstAttribute="top" secondItem="79P-8U-HtQ" secondAttribute="bottom" constant="4" id="Tsd-DK-rk9"/>
+                    <constraint firstItem="zV3-gN-eoU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="UEQ-aM-h8p"/>
+                    <constraint firstItem="V1u-5e-Soc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="bI0-Da-Ble"/>
+                    <constraint firstAttribute="trailing" secondItem="hbI-eM-Qvm" secondAttribute="trailing" constant="16" id="hxi-B3-8y2"/>
+                    <constraint firstItem="79P-8U-HtQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="ns8-xy-Pby"/>
+                    <constraint firstItem="sU8-ki-lcF" firstAttribute="top" secondItem="zV3-gN-eoU" secondAttribute="bottom" constant="4" id="oMQ-TI-Ebc"/>
+                    <constraint firstAttribute="bottom" secondItem="hbI-eM-Qvm" secondAttribute="bottom" constant="12" id="pUD-iL-hDa"/>
+                    <constraint firstAttribute="trailing" secondItem="dLx-Sp-skC" secondAttribute="trailing" constant="15" id="xEU-5k-aqx"/>
+                </constraints>
+                <connections>
+                    <outlet property="jobCompanyName" destination="V1u-5e-Soc" id="ipH-9c-twE"/>
+                    <outlet property="jobExperience" destination="zV3-gN-eoU" id="qDR-aP-tG2"/>
+                    <outlet property="jobTitle" destination="79P-8U-HtQ" id="qcg-aI-xg6"/>
+                </connections>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="editExperienceButton" destination="hbI-eM-Qvm" id="YAw-vZ-ZB9"/>
+                <outlet property="jobCompanyName" destination="V1u-5e-Soc" id="1ic-wo-9t6"/>
+                <outlet property="jobDesc" destination="sU8-ki-lcF" id="5Fk-ur-8mT"/>
+                <outlet property="selectExperienceButton" destination="dLx-Sp-skC" id="Sie-Ej-vjf"/>
+            </connections>
+            <point key="canvasLocation" x="132" y="100"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icRoundSelectionNoFill" width="24" height="24"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
+    </resources>
+</document>

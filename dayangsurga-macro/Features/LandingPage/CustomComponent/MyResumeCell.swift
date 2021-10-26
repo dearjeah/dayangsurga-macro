@@ -9,4 +9,7 @@ import UIKit
 
 class MyResumeCell: UICollectionViewCell {
     
+    @IBOutlet weak var pastResumeImage: UIImageView!
+    @IBOutlet weak var resumeName: UILabel!
+    @IBOutlet weak var resumeLatestDate: UILabel!
 }
