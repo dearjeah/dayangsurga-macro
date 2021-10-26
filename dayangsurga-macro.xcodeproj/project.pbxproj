@@ -7,10 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6722E23F2726C7C3007315AB /* ExperienceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722E23D2726C7C3007315AB /* ExperienceTableCell.swift */; };
+		6722E2402726C7C3007315AB /* ExperienceTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6722E23E2726C7C3007315AB /* ExperienceTableCell.xib */; };
+		67280DB22726D0DF006569DD /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67280DB12726D0DF006569DD /* EmptyState.swift */; };
+		67280DB42726D0F0006569DD /* EmptyState.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67280DB32726D0F0006569DD /* EmptyState.xib */; };
+		67280DB727270D72006569DD /* YesNoSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67280DB627270D72006569DD /* YesNoSwipeView.swift */; };
+		67280DB927270D7E006569DD /* YesNoSwipeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67280DB827270D7E006569DD /* YesNoSwipeView.xib */; };
+		67280DBD27270E93006569DD /* AccomplishmentTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67280DBB27270E93006569DD /* AccomplishmentTableCell.swift */; };
+		67280DBE27270E93006569DD /* AccomplishmentTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67280DBC27270E93006569DD /* AccomplishmentTableCell.xib */; };
+		675812BD27278FE700E106AF /* TechnicalSkillsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675812BB27278FE700E106AF /* TechnicalSkillsListCell.swift */; };
+		675812BE27278FE700E106AF /* TechnicalSkillsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 675812BC27278FE700E106AF /* TechnicalSkillsListCell.xib */; };
+		675812C12727900600E106AF /* TechnicalSkillsEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675812BF2727900600E106AF /* TechnicalSkillsEditCell.swift */; };
+		675812C22727900600E106AF /* TechnicalSkillsEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 675812C02727900600E106AF /* TechnicalSkillsEditCell.xib */; };
 		679DBEA22723FAAD00CE9E8F /* ResumeTemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DBEA02723FAAD00CE9E8F /* ResumeTemplateCell.swift */; };
 		679DBEA32723FAAD00CE9E8F /* ResumeTemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679DBEA12723FAAD00CE9E8F /* ResumeTemplateCell.xib */; };
-		679DBEA62723FC8200CE9E8F /* ExperienceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DBEA42723FC8200CE9E8F /* ExperienceTableCell.swift */; };
-		679DBEA72723FC8200CE9E8F /* ExperienceTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679DBEA52723FC8200CE9E8F /* ExperienceTableCell.xib */; };
 		679DBEAA272410F900CE9E8F /* EducationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DBEA8272410F900CE9E8F /* EducationTableCell.swift */; };
 		679DBEAB272410F900CE9E8F /* EducationTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679DBEA9272410F900CE9E8F /* EducationTableCell.xib */; };
 		BF5F1BEA2722D5CA004D0756 /* PersonalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BE92722D5CA004D0756 /* PersonalInfoViewModel.swift */; };
@@ -102,10 +112,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6722E23D2726C7C3007315AB /* ExperienceTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceTableCell.swift; sourceTree = "<group>"; };
+		6722E23E2726C7C3007315AB /* ExperienceTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExperienceTableCell.xib; sourceTree = "<group>"; };
+		67280DB12726D0DF006569DD /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
+		67280DB32726D0F0006569DD /* EmptyState.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyState.xib; sourceTree = "<group>"; };
+		67280DB627270D72006569DD /* YesNoSwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesNoSwipeView.swift; sourceTree = "<group>"; };
+		67280DB827270D7E006569DD /* YesNoSwipeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YesNoSwipeView.xib; sourceTree = "<group>"; };
+		67280DBB27270E93006569DD /* AccomplishmentTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomplishmentTableCell.swift; sourceTree = "<group>"; };
+		67280DBC27270E93006569DD /* AccomplishmentTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccomplishmentTableCell.xib; sourceTree = "<group>"; };
+		675812BB27278FE700E106AF /* TechnicalSkillsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnicalSkillsListCell.swift; sourceTree = "<group>"; };
+		675812BC27278FE700E106AF /* TechnicalSkillsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TechnicalSkillsListCell.xib; sourceTree = "<group>"; };
+		675812BF2727900600E106AF /* TechnicalSkillsEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnicalSkillsEditCell.swift; sourceTree = "<group>"; };
+		675812C02727900600E106AF /* TechnicalSkillsEditCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TechnicalSkillsEditCell.xib; sourceTree = "<group>"; };
 		679DBEA02723FAAD00CE9E8F /* ResumeTemplateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeTemplateCell.swift; sourceTree = "<group>"; };
 		679DBEA12723FAAD00CE9E8F /* ResumeTemplateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeTemplateCell.xib; sourceTree = "<group>"; };
-		679DBEA42723FC8200CE9E8F /* ExperienceTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceTableCell.swift; sourceTree = "<group>"; };
-		679DBEA52723FC8200CE9E8F /* ExperienceTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExperienceTableCell.xib; sourceTree = "<group>"; };
 		679DBEA8272410F900CE9E8F /* EducationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationTableCell.swift; sourceTree = "<group>"; };
 		679DBEA9272410F900CE9E8F /* EducationTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EducationTableCell.xib; sourceTree = "<group>"; };
 		BF5F1BE92722D5CA004D0756 /* PersonalInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewModel.swift; sourceTree = "<group>"; };
@@ -208,6 +228,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67280DB02726D0B3006569DD /* EmptyState */ = {
+			isa = PBXGroup;
+			children = (
+				67280DB12726D0DF006569DD /* EmptyState.swift */,
+				67280DB32726D0F0006569DD /* EmptyState.xib */,
+			);
+			path = EmptyState;
+			sourceTree = "<group>";
+		};
+		67280DB527270D56006569DD /* YesNoSwipeView */ = {
+			isa = PBXGroup;
+			children = (
+				67280DB627270D72006569DD /* YesNoSwipeView.swift */,
+				67280DB827270D7E006569DD /* YesNoSwipeView.xib */,
+			);
+			path = YesNoSwipeView;
+			sourceTree = "<group>";
+		};
+		67280DBA27270E72006569DD /* AccomplishmentTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				67280DBB27270E93006569DD /* AccomplishmentTableCell.swift */,
+				67280DBC27270E93006569DD /* AccomplishmentTableCell.xib */,
+			);
+			path = AccomplishmentTableCell;
+			sourceTree = "<group>";
+		};
+		67280DBF27270EF8006569DD /* TechnicalSkillsEditCell */ = {
+			isa = PBXGroup;
+			children = (
+				675812BF2727900600E106AF /* TechnicalSkillsEditCell.swift */,
+				675812C02727900600E106AF /* TechnicalSkillsEditCell.xib */,
+			);
+			path = TechnicalSkillsEditCell;
+			sourceTree = "<group>";
+		};
+		67280DC027270F0B006569DD /* TechnicalSkillsListCell */ = {
+			isa = PBXGroup;
+			children = (
+				675812BB27278FE700E106AF /* TechnicalSkillsListCell.swift */,
+				675812BC27278FE700E106AF /* TechnicalSkillsListCell.xib */,
+			);
+			path = TechnicalSkillsListCell;
+			sourceTree = "<group>";
+		};
 		679DBE9F2723FA9200CE9E8F /* CustomComponent */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +280,24 @@
 				679DBEA12723FAAD00CE9E8F /* ResumeTemplateCell.xib */,
 			);
 			path = CustomComponent;
+			sourceTree = "<group>";
+		};
+		67A42ABE27268F45004145F9 /* EducationTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				679DBEA8272410F900CE9E8F /* EducationTableCell.swift */,
+				679DBEA9272410F900CE9E8F /* EducationTableCell.xib */,
+			);
+			path = EducationTableCell;
+			sourceTree = "<group>";
+		};
+		67A42ABF27268F52004145F9 /* ExperienceTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				6722E23D2726C7C3007315AB /* ExperienceTableCell.swift */,
+				6722E23E2726C7C3007315AB /* ExperienceTableCell.xib */,
+			);
+			path = ExperienceTableCell;
 			sourceTree = "<group>";
 		};
 		BF8502FD2722551B00CC43FB = {
@@ -387,6 +470,7 @@
 		BF850347272256BD00CC43FB /* QuizPage */ = {
 			isa = PBXGroup;
 			children = (
+				67280DB527270D56006569DD /* YesNoSwipeView */,
 				BF85039F2722B7EE00CC43FB /* QuizPageView.swift */,
 				BF8503A12722B7F800CC43FB /* QuizPageView.xib */,
 			);
@@ -416,6 +500,11 @@
 		BF85034A2722582900CC43FB /* CustomComponents */ = {
 			isa = PBXGroup;
 			children = (
+				67280DC027270F0B006569DD /* TechnicalSkillsListCell */,
+				67280DBF27270EF8006569DD /* TechnicalSkillsEditCell */,
+				67280DBA27270E72006569DD /* AccomplishmentTableCell */,
+				67A42ABF27268F52004145F9 /* ExperienceTableCell */,
+				67A42ABE27268F45004145F9 /* EducationTableCell */,
 				BF85038A2722B56700CC43FB /* ProgressBar */,
 			);
 			path = CustomComponents;
@@ -544,11 +633,8 @@
 		BF8503892722B50F00CC43FB /* GlobalCustomComponent */ = {
 			isa = PBXGroup;
 			children = (
+				67280DB02726D0B3006569DD /* EmptyState */,
 				BF85038F2722B5E100CC43FB /* RoundedButton.swift */,
-				679DBEA42723FC8200CE9E8F /* ExperienceTableCell.swift */,
-				679DBEA52723FC8200CE9E8F /* ExperienceTableCell.xib */,
-				679DBEA8272410F900CE9E8F /* EducationTableCell.swift */,
-				679DBEA9272410F900CE9E8F /* EducationTableCell.xib */,
 			);
 			path = GlobalCustomComponent;
 			sourceTree = "<group>";
@@ -687,11 +773,15 @@
 			files = (
 				BF85039E2722B7C300CC43FB /* EducationPageView.xib in Resources */,
 				BF8503192722551C00CC43FB /* LaunchScreen.storyboard in Resources */,
+				675812BE27278FE700E106AF /* TechnicalSkillsListCell.xib in Resources */,
+				675812C22727900600E106AF /* TechnicalSkillsEditCell.xib in Resources */,
 				BF85038E2722B59500CC43FB /* ProgressBarView.xib in Resources */,
 				BF8503982722B6A300CC43FB /* ExpertDetailsViewController.storyboard in Resources */,
 				BF8503162722551C00CC43FB /* Assets.xcassets in Resources */,
 				BF85035727225A1D00CC43FB /* MyResumeCell.xib in Resources */,
 				BF8503532722596400CC43FB /* LandingPageViewController.storyboard in Resources */,
+				67280DB42726D0F0006569DD /* EmptyState.xib in Resources */,
+				67280DB927270D7E006569DD /* YesNoSwipeView.xib in Resources */,
 				679DBEAB272410F900CE9E8F /* EducationTableCell.xib in Resources */,
 				BF8503AA2722B83700CC43FB /* SkillsPageView.xib in Resources */,
 				BF85035D27225C4300CC43FB /* PersonalInfoPage.xib in Resources */,
@@ -701,13 +791,14 @@
 				BF8503AE2722B88500CC43FB /* AccomplishmentPageView.xib in Resources */,
 				BF85036327225DBB00CC43FB /* Colors.xcassets in Resources */,
 				BF8503A22722B7F800CC43FB /* QuizPageView.xib in Resources */,
+				6722E2402726C7C3007315AB /* ExperienceTableCell.xib in Resources */,
 				BF5F1BEC2722D7F0004D0756 /* ResumeTemplateViewController.storyboard in Resources */,
-				679DBEA72723FC8200CE9E8F /* ExperienceTableCell.xib in Resources */,
 				BF8503A62722B81600CC43FB /* ExperiencePageView.xib in Resources */,
 				679DBEA32723FAAD00CE9E8F /* ResumeTemplateCell.xib in Resources */,
 				BF8503942722B65600CC43FB /* ExpertListViewController.storyboard in Resources */,
 				BF8503B12722B9E700CC43FB /* StepByStepGuideViewController.storyboard in Resources */,
 				BF5F1BF22722D869004D0756 /* GenerateResumeViewController.storyboard in Resources */,
+				67280DBE27270E93006569DD /* AccomplishmentTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -737,6 +828,7 @@
 				BF85030E2722551B00CC43FB /* UserProfileViewController.swift in Sources */,
 				BF5F1BFA2722D983004D0756 /* PreviewResumeViewController.swift in Sources */,
 				BF8503962722B68A00CC43FB /* ExpertListViewModel.swift in Sources */,
+				675812C12727900600E106AF /* TechnicalSkillsEditCell.swift in Sources */,
 				BF8503552722599E00CC43FB /* LandingPageViewController.swift in Sources */,
 				BF8503782722828A00CC43FB /* UIImage+Extension.swift in Sources */,
 				BF5F1BEA2722D5CA004D0756 /* PersonalInfoViewModel.swift in Sources */,
@@ -744,12 +836,15 @@
 				BF85039C2722B7B700CC43FB /* EducationPageView.swift in Sources */,
 				BF85036E272265C000CC43FB /* Date+Extension.swift in Sources */,
 				BF8503802722877400CC43FB /* Int+Extension.swift in Sources */,
+				675812BD27278FE700E106AF /* TechnicalSkillsListCell.swift in Sources */,
 				BF8503A82722B82F00CC43FB /* SkillsPageView.swift in Sources */,
 				BF8503762722826100CC43FB /* UIColor+Extension.swift in Sources */,
+				6722E23F2726C7C3007315AB /* ExperienceTableCell.swift in Sources */,
 				BF5F1BFE2722DA21004D0756 /* ExpertDetailViewModel.swift in Sources */,
 				BF5F1BFC2722D9A0004D0756 /* PreviewResumeViewModel.swift in Sources */,
 				BF8503142722551B00CC43FB /* dayangsurga-macro.xcdatamodeld in Sources */,
 				BF8503822722B2C300CC43FB /* CoreDataManager.swift in Sources */,
+				67280DBD27270E93006569DD /* AccomplishmentTableCell.swift in Sources */,
 				BF8503862722B35800CC43FB /* DataRepository.swift in Sources */,
 				BF85039A2722B6D600CC43FB /* ExpertDetailViewController.swift in Sources */,
 				BF8503B52722BABF00CC43FB /* StepByStepGuideViewModel.swift in Sources */,
@@ -769,7 +864,6 @@
 				BF5F1BEE2722D805004D0756 /* ResumeTemplateViewController.swift in Sources */,
 				BF85036C272265A800CC43FB /* UIButton+Extemsion.swift in Sources */,
 				BF5F1BF62722D888004D0756 /* GenerateResumeViewModel.swift in Sources */,
-				679DBEA62723FC8200CE9E8F /* ExperienceTableCell.swift in Sources */,
 				BF85030C2722551B00CC43FB /* SceneDelegate.swift in Sources */,
 				BF5F1BF42722D87A004D0756 /* GenerateResumeViewController.swift in Sources */,
 				BF8503692722643100CC43FB /* CommonFunction.swift in Sources */,
@@ -777,8 +871,10 @@
 				BF85037E2722836800CC43FB /* UIViewController+Extension.swift in Sources */,
 				BF5F1BF02722D824004D0756 /* ResumeTemplateViewModel.swift in Sources */,
 				BF8503882722B36700CC43FB /* PreloadData.swift in Sources */,
+				67280DB727270D72006569DD /* YesNoSwipeView.swift in Sources */,
 				BF8503AC2722B86400CC43FB /* AccomplishmentPageView.swift in Sources */,
 				BF85037C2722832600CC43FB /* UIView+Extension.swift in Sources */,
+				67280DB22726D0DF006569DD /* EmptyState.swift in Sources */,
 				BF85036527225FA300CC43FB /* MVVMController.swift in Sources */,
 				BF8503B92722BDCF00CC43FB /* HomepageController.swift in Sources */,
 			);
