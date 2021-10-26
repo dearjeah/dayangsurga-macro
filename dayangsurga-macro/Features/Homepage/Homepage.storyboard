@@ -3,7 +3,8 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,7 +15,9 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6Ff-Pi-TRY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" systemColor="systemGray4Color"/>
+                        <color key="backgroundColor" name="primaryBlue"/>
+                        <color key="barTintColor" name="primaryBlue"/>
+                        <color key="selectedImageTintColor" name="primaryYellow"/>
                     </tabBar>
                     <connections>
                         <segue destination="ek9-tS-dju" kind="relationship" relationship="viewControllers" id="d8A-kO-z7H"/>
@@ -44,7 +47,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ar9-CJ-RMd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1083" y="-3"/>
+            <point key="canvasLocation" x="1264" y="-3"/>
         </scene>
         <!--UserProfileViewController-->
         <scene sceneID="25I-We-MOz">
@@ -54,33 +57,49 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MoM-70-2fJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1062" y="738"/>
+            <point key="canvasLocation" x="1254" y="738"/>
         </scene>
         <!--User-->
         <scene sceneID="h70-Z2-sZj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Km9-Pt-NJ3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="y03-MT-H2B" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="User" id="st2-mi-dVC"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gUd-g7-Zif">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <tabBarItem key="tabBarItem" title="User" image="person.circle.fill" landscapeImage="person.circle.fill" catalog="system" selectedImage="person.circle.fill" id="st2-mi-dVC"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="gUd-g7-Zif">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="primaryBlue"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="primaryYellow"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" name="primaryYellow"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="4UG-US-Vzf" kind="relationship" relationship="rootViewController" id="hGz-fB-p5D"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Km9-Pt-NJ3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="180" y="738"/>
+            <point key="canvasLocation" x="180" y="899"/>
         </scene>
-        <!--Expert-->
+        <!--Ask Expert-->
         <scene sceneID="MUR-eV-SXX">
             <objects>
                 <navigationController id="R4K-ac-ojM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Expert" id="eT9-a7-dOa"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WOr-Zc-Pft">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <tabBarItem key="tabBarItem" title="Ask Expert" image="bubble.left.and.bubble.right.fill" catalog="system" landscapeImage="bubble.left.and.bubble.right.fill" id="eT9-a7-dOa">
+                        <imageReference key="selectedImage" image="bubble.left.and.bubble.right.fill" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="WOr-Zc-Pft">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="primaryBlue"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="primaryYellow"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" name="primaryYellow"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="5Qr-wi-EmZ" kind="relationship" relationship="rootViewController" id="CiK-px-ljM"/>
@@ -94,10 +113,17 @@
         <scene sceneID="JVT-Cw-th7">
             <objects>
                 <navigationController id="ek9-tS-dju" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Resume" id="Xrt-o4-jSA"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gmV-Wb-dfv">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <tabBarItem key="tabBarItem" title="Resume" image="doc.text.fill" landscapeImage="doc.text.fill" catalog="system" selectedImage="doc.text.fill" id="Xrt-o4-jSA"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="gmV-Wb-dfv">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="primaryBlue"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" name="primaryYellow"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" name="primaryYellow"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="OPc-LM-efW" kind="relationship" relationship="rootViewController" id="dpc-Du-z0o"/>
@@ -109,8 +135,16 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="bubble.left.and.bubble.right.fill" catalog="system" width="128" height="97"/>
+        <image name="doc.text.fill" width="128" height="128"/>
+        <image name="doc.text.fill" catalog="system" width="115" height="128"/>
+        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="person.circle.fill" width="128" height="128"/>
+        <namedColor name="primaryBlue">
+            <color red="0.097999997437000275" green="0.16500000655651093" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryYellow">
+            <color red="1" green="0.71799999475479126" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
