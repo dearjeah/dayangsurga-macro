@@ -14,9 +14,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.75" id="j3b-e3-FPa">
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" id="j3b-e3-FPa">
                     <rect key="frame" x="46.400177857095514" y="50" width="321" height="4"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.75686274509803919" green="0.75686274509803919" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="tintColor" red="0.098039215690000001" green="0.1647058824" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 </progressView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" id="u5l-G9-PM3">
@@ -26,7 +27,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Biv-ty-uHj">
                             <rect key="frame" x="0.0" y="0.0" width="30.5" height="110"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wth-Lh-J3n">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icPersonalInformationActive" translatesAutoresizingMaskIntoConstraints="NO" id="wth-Lh-J3n">
                                     <rect key="frame" x="0.0" y="40.151647799442344" width="30.999999999999986" height="30.000000000000114"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
@@ -42,7 +43,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T3k-zM-YeF">
                             <rect key="frame" x="80.5" y="0.0" width="30.5" height="110"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ity-wh-jUw">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icEducationInactive" translatesAutoresizingMaskIntoConstraints="NO" id="ity-wh-jUw">
                                     <rect key="frame" x="-0.80329559888468793" y="40.078353664571637" width="30.999999999999989" height="31"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
@@ -58,7 +59,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SeQ-Qw-Xib">
                             <rect key="frame" x="161" y="0.0" width="31" height="110"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SPf-dX-20n">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icExperienceInactive" translatesAutoresizingMaskIntoConstraints="NO" id="SPf-dX-20n">
                                     <rect key="frame" x="-0.21653240007742625" y="40.151647799443367" width="30.999999999999986" height="30.000000000000114"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
@@ -74,7 +75,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qyY-0h-LXA">
                             <rect key="frame" x="242" y="0.0" width="30.5" height="110"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dn5-4k-0P7">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icTechnicalSkillInactive" translatesAutoresizingMaskIntoConstraints="NO" id="dn5-4k-0P7">
                                     <rect key="frame" x="-0.59312213383259405" y="40.151647799443595" width="30.999999999999972" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
@@ -90,7 +91,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FGQ-cK-VYz">
                             <rect key="frame" x="322.5" y="0.0" width="30.5" height="110"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="itL-6k-mQH">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icAccomplishmentInactive" id="itL-6k-mQH">
                                     <rect key="frame" x="-0.46971186758821659" y="40.151647799443595" width="31" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
@@ -127,6 +128,11 @@
         </view>
     </objects>
     <resources>
+        <image name="icAccomplishmentInactive" width="31" height="30"/>
+        <image name="icEducationInactive" width="31" height="30"/>
+        <image name="icExperienceInactive" width="31" height="30"/>
+        <image name="icPersonalInformationActive" width="32" height="30"/>
+        <image name="icTechnicalSkillInactive" width="31" height="30"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
