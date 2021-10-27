@@ -12,14 +12,14 @@ class PreloadUserData {
     
     // preload user suggestion
     func preloadUserSuggetsion(){
-        UserSuggestionRepository.shared.createUserSuggestion(user_suggestion_id: 1,
+        PersonalInformationSuggestionRepository.shared.createPISuggestion(pi_suggestion_id: 1,
                                                              user_id: 0,
                                                              summarySuggest: "Tell us about who you are and what you do that fits the job you're applying for, make sure you use action verbs.")
     }
     
     // preload user placeholder
     func preloadUserPh() {
-        UserPlaceholderRepository.shared.createUserPh(user_ph_id: 1,
+        PersonalInformationPlaceholderRepository.shared.createUserPh(user_ph_id: 1,
                                                       user_id: 0,
                                                       name_ph: "e.g. Olipia Dayangz",
                                                       phoneNumber_ph: "e.g. 08123456789",
