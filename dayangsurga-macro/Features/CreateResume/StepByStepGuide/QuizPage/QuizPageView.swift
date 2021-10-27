@@ -23,7 +23,12 @@ class QuizPageView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.layer.borderColor = CGColor(red: 25.0, green: 42.0, blue: 85.0, alpha: 100.0)
+        setupQuizCard()
+        
+    }
+    
+    func setupQuizCard(){
+        self.layer.borderColor = UIColor.primaryBlue.cgColor
         self.layer.borderWidth = 2.0
         self.layer.cornerRadius = 8
     }

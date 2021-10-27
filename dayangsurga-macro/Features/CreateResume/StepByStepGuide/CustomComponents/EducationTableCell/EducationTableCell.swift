@@ -21,11 +21,14 @@ class EducationTableCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 17
+//        contentView.layer.borderColor = UIColor.primaryBlue.cgColor
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     

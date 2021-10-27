@@ -20,11 +20,13 @@ class ExperienceTableCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         jobTitle.font = UIFont.italicSystemFont(ofSize: 14.0)
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 17
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        self.layer.borderColor = UIColor.primaryBlue.cgColor
         // Configure the view for the selected state
     }
     

@@ -15,8 +15,9 @@ class TechnicalSkillsEditCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.layer.cornerRadius = 8
-        self.layer.borderColor = CGColor(red: 25, green: 42, blue: 85, alpha: 100)
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 17
+        self.layer.borderColor = UIColor.primaryBlue.cgColor
         deleteSkillButton.isHidden = true
     }
 
