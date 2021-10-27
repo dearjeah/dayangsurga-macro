@@ -25,6 +25,9 @@ class PreloadEmptyStateData {
                                                      title: "You haven’t filled your skills. Click the ‘Add’ button to add your technical skills.")
         EmptyStateRepository.shared.createEmptyState(emptyState_id: 5,
                                                      image: Data(),
-                                                     title: "You have no accomplishment yet. Click the ‘Add’ button to add your certificates or awards. ")
+                                                     title: "You have no accomplishment yet. Click the ‘Add’ button to add your certificates or awards.")
+        EmptyStateRepository.shared.createEmptyState(emptyState_id: 6,
+                                                     image: Data(),
+                                                     title: "You have no personal information yet. Click the ‘Add’ button to add your personal information")
     }
 }

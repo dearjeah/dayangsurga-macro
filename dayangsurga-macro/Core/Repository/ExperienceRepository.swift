@@ -101,7 +101,7 @@ class ExperienceRepository{
     }
     
     // func delete
-    func deleteUser(data: User_Suggestion) {
+    func deleteUser(data: PersonalInformation_Suggestion) {
         do {
             context.delete(data)
             try context.save()

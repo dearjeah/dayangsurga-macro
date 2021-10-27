@@ -26,7 +26,7 @@
 		B859B535272852EF00627CDC /* EmptyStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52B272852EE00627CDC /* EmptyStateRepository.swift */; };
 		B859B537272852EF00627CDC /* ResumeTemplateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */; };
 		B859B538272852EF00627CDC /* ExperiencePlaceholderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52E272852EF00627CDC /* ExperiencePlaceholderRepository.swift */; };
-		B859B539272852EF00627CDC /* UserPlaceholderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52F272852EF00627CDC /* UserPlaceholderRepository.swift */; };
+		B859B539272852EF00627CDC /* PersonalInformationPlaceholderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52F272852EF00627CDC /* PersonalInformationPlaceholderRepository.swift */; };
 		B859B53A272852EF00627CDC /* UserResumeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B530272852EF00627CDC /* UserResumeRepository.swift */; };
 		B859B53B272852EF00627CDC /* ExperienceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B531272852EF00627CDC /* ExperienceRepository.swift */; };
 		B859B53C272852EF00627CDC /* ExperienceSuggestionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B532272852EF00627CDC /* ExperienceSuggestionRepository.swift */; };
@@ -36,7 +36,7 @@
 		B859B5442728533600627CDC /* PreloadUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B5412728533500627CDC /* PreloadUserData.swift */; };
 		B859B5452728533600627CDC /* PreloadEmptyStateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B5422728533600627CDC /* PreloadEmptyStateData.swift */; };
 		B859B5462728533600627CDC /* PreloadExperienceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B5432728533600627CDC /* PreloadExperienceData.swift */; };
-		B859B548272858B900627CDC /* UserSuggestionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B547272858B900627CDC /* UserSuggestionRepository.swift */; };
+		B859B548272858B900627CDC /* PersonalInformationSuggestionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B547272858B900627CDC /* PersonalInformationSuggestionRepository.swift */; };
 		BF2ABB2D2726EDDF00AAC6C2 /* SmallSetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2ABB2C2726EDDF00AAC6C2 /* SmallSetButton.swift */; };
 		BF2ABB312726F02C00AAC6C2 /* SmallSetButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2ABB302726F02C00AAC6C2 /* SmallSetButton.xib */; };
 		BF2ABB342726FCC900AAC6C2 /* LabelWithTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2ABB332726FCC900AAC6C2 /* LabelWithTextField.xib */; };
@@ -159,7 +159,7 @@
 		B859B52B272852EE00627CDC /* EmptyStateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateRepository.swift; sourceTree = "<group>"; };
 		B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumeTemplateRepository.swift; sourceTree = "<group>"; };
 		B859B52E272852EF00627CDC /* ExperiencePlaceholderRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperiencePlaceholderRepository.swift; sourceTree = "<group>"; };
-		B859B52F272852EF00627CDC /* UserPlaceholderRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPlaceholderRepository.swift; sourceTree = "<group>"; };
+		B859B52F272852EF00627CDC /* PersonalInformationPlaceholderRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInformationPlaceholderRepository.swift; sourceTree = "<group>"; };
 		B859B530272852EF00627CDC /* UserResumeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserResumeRepository.swift; sourceTree = "<group>"; };
 		B859B531272852EF00627CDC /* ExperienceRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceRepository.swift; sourceTree = "<group>"; };
 		B859B532272852EF00627CDC /* ExperienceSuggestionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceSuggestionRepository.swift; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 		B859B5412728533500627CDC /* PreloadUserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadUserData.swift; sourceTree = "<group>"; };
 		B859B5422728533600627CDC /* PreloadEmptyStateData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadEmptyStateData.swift; sourceTree = "<group>"; };
 		B859B5432728533600627CDC /* PreloadExperienceData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadExperienceData.swift; sourceTree = "<group>"; };
-		B859B547272858B900627CDC /* UserSuggestionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSuggestionRepository.swift; sourceTree = "<group>"; };
+		B859B547272858B900627CDC /* PersonalInformationSuggestionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInformationSuggestionRepository.swift; sourceTree = "<group>"; };
 		BF2ABB2C2726EDDF00AAC6C2 /* SmallSetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallSetButton.swift; sourceTree = "<group>"; };
 		BF2ABB302726F02C00AAC6C2 /* SmallSetButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallSetButton.xib; sourceTree = "<group>"; };
 		BF2ABB332726FCC900AAC6C2 /* LabelWithTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelWithTextField.xib; sourceTree = "<group>"; };
@@ -738,9 +738,9 @@
 				B859B532272852EF00627CDC /* ExperienceSuggestionRepository.swift */,
 				B859B534272852EF00627CDC /* ResumeContentRepository.swift */,
 				B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */,
-				B859B52F272852EF00627CDC /* UserPlaceholderRepository.swift */,
+				B859B52F272852EF00627CDC /* PersonalInformationPlaceholderRepository.swift */,
 				B859B533272852EF00627CDC /* UserRepository.swift */,
-				B859B547272858B900627CDC /* UserSuggestionRepository.swift */,
+				B859B547272858B900627CDC /* PersonalInformationSuggestionRepository.swift */,
 				B859B530272852EF00627CDC /* UserResumeRepository.swift */,
 				B859B53F2728532900627CDC /* ConsultHistoryRepository.swift */,
 			);
@@ -1037,9 +1037,9 @@
 				B859B5452728533600627CDC /* PreloadEmptyStateData.swift in Sources */,
 				67280DB727270D72006569DD /* YesNoSwipeView.swift in Sources */,
 				B859B5462728533600627CDC /* PreloadExperienceData.swift in Sources */,
-				B859B539272852EF00627CDC /* UserPlaceholderRepository.swift in Sources */,
+				B859B539272852EF00627CDC /* PersonalInformationPlaceholderRepository.swift in Sources */,
 				BF8503AC2722B86400CC43FB /* AccomplishmentPageView.swift in Sources */,
-				B859B548272858B900627CDC /* UserSuggestionRepository.swift in Sources */,
+				B859B548272858B900627CDC /* PersonalInformationSuggestionRepository.swift in Sources */,
 				BF85037C2722832600CC43FB /* UIView+Extension.swift in Sources */,
 				67280DB22726D0DF006569DD /* EmptyState.swift in Sources */,
 				BF85036527225FA300CC43FB /* MVVMController.swift in Sources */,

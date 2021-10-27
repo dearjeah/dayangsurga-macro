@@ -40,6 +40,22 @@
         <attribute name="jobDescSuggest" optional="YES" attributeType="String"/>
         <relationship name="experience" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Experience" inverseName="experienceSuggestion" inverseEntity="Experience"/>
     </entity>
+    <entity name="PersonalInformation_Placeholder" representedClassName="PersonalInformation_Placeholder" syncable="YES" codeGenerationType="class">
+        <attribute name="address_ph" optional="YES" attributeType="String"/>
+        <attribute name="email_ph" optional="YES" attributeType="String"/>
+        <attribute name="name_ph" optional="YES" attributeType="String"/>
+        <attribute name="phoneNumber_ph" optional="YES" attributeType="String"/>
+        <attribute name="pi_ph_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="summary_ph" optional="YES" attributeType="String"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userPlaceholder" inverseEntity="User"/>
+    </entity>
+    <entity name="PersonalInformation_Suggestion" representedClassName="PersonalInformation_Suggestion" syncable="YES" codeGenerationType="class">
+        <attribute name="pi_suggestion_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="summarySuggest" optional="YES" attributeType="String"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userSuggestion" inverseEntity="User"/>
+    </entity>
     <entity name="Resume_Content" representedClassName="Resume_Content" syncable="YES" codeGenerationType="class">
         <attribute name="accom_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="edu_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -64,19 +80,9 @@
         <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="consultHistory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Consult_History" inverseName="user" inverseEntity="Consult_History"/>
         <relationship name="experience" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Experience" inverseName="user" inverseEntity="Experience"/>
-        <relationship name="userPlaceholder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User_Placeholder" inverseName="user" inverseEntity="User_Placeholder"/>
+        <relationship name="userPlaceholder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonalInformation_Placeholder" inverseName="user" inverseEntity="PersonalInformation_Placeholder"/>
         <relationship name="userResume" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User_Resume" inverseName="user" inverseEntity="User_Resume"/>
-        <relationship name="userSuggestion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User_Suggestion" inverseName="user" inverseEntity="User_Suggestion"/>
-    </entity>
-    <entity name="User_Placeholder" representedClassName="User_Placeholder" syncable="YES" codeGenerationType="class">
-        <attribute name="address_ph" optional="YES" attributeType="String"/>
-        <attribute name="email_ph" optional="YES" attributeType="String"/>
-        <attribute name="name_ph" optional="YES" attributeType="String"/>
-        <attribute name="phoneNumber_ph" optional="YES" attributeType="String"/>
-        <attribute name="summary_ph" optional="YES" attributeType="String"/>
-        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="user_ph_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userPlaceholder" inverseEntity="User"/>
+        <relationship name="userSuggestion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonalInformation_Suggestion" inverseName="user" inverseEntity="PersonalInformation_Suggestion"/>
     </entity>
     <entity name="User_Resume" representedClassName="User_Resume" syncable="YES" codeGenerationType="class">
         <attribute name="editingProgress" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -90,23 +96,17 @@
         <relationship name="template" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Resume_Template" inverseName="userResume" inverseEntity="Resume_Template"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userResume" inverseEntity="User"/>
     </entity>
-    <entity name="User_Suggestion" representedClassName="User_Suggestion" syncable="YES" codeGenerationType="class">
-        <attribute name="summarySuggest" optional="YES" attributeType="String"/>
-        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="user_suggestion_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userSuggestion" inverseEntity="User"/>
-    </entity>
     <elements>
         <element name="Consult_History" positionX="-27" positionY="18" width="128" height="89"/>
         <element name="Empty_State" positionX="18" positionY="63" width="128" height="74"/>
         <element name="Experience" positionX="54" positionY="99" width="128" height="224"/>
         <element name="Experience_Placeholder" positionX="18" positionY="63" width="128" height="119"/>
         <element name="Experience_Suggestion" positionX="27" positionY="72" width="128" height="89"/>
+        <element name="PersonalInformation_Suggestion" positionX="27" positionY="72" width="128" height="89"/>
         <element name="Resume_Content" positionX="36" positionY="81" width="128" height="134"/>
         <element name="Resume_Template" positionX="45" positionY="90" width="128" height="89"/>
         <element name="User" positionX="54" positionY="99" width="128" height="194"/>
-        <element name="User_Placeholder" positionX="63" positionY="108" width="128" height="149"/>
+        <element name="PersonalInformation_Placeholder" positionX="63" positionY="108" width="128" height="149"/>
         <element name="User_Resume" positionX="72" positionY="117" width="128" height="179"/>
-        <element name="User_Suggestion" positionX="27" positionY="72" width="128" height="89"/>
     </elements>
 </model>
