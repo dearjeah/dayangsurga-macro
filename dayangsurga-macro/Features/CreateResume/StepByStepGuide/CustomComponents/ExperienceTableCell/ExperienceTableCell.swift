@@ -8,7 +8,8 @@
 import UIKit
 
 class ExperienceTableCell: UITableViewCell {
-
+    var selectionStatus = false
+    
     @IBOutlet weak var jobCompanyName: UILabel!
     @IBOutlet weak var jobTitle: UILabel!
     @IBOutlet weak var jobExperience: UILabel!
@@ -20,11 +21,23 @@ class ExperienceTableCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         jobTitle.font = UIFont.italicSystemFont(ofSize: 14.0)
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 17
     }
 
+    @IBAction func selectExperience(_ sender: Any) {
+        if selectionStatus == false{
+            selectionStatus = true
+            selectExperienceButton.setImage(UIImage(named: "icRoundSelectionFilled"), for: .normal)
+            self.layer.borderColor = UIColor.primaryBlue.cgColor
+        }else{
+            selectionStatus = false
+            selectExperienceButton.setImage(UIImage(named: "icRoundSelectionNoFill"), for: .normal)
+            self.layer.borderColor = UIColor.clear.cgColor
+        }
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     

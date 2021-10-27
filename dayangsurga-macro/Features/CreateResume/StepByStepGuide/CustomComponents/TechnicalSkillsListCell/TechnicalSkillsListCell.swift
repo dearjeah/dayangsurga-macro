@@ -15,7 +15,9 @@ class TechnicalSkillsListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.layer.borderWidth = 1
         self.layer.cornerRadius = 17
+        self.layer.borderColor = UIColor.primaryBlue.cgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

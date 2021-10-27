@@ -11,5 +11,7 @@ class ResumeTemplateCell: UICollectionViewCell {
     
     @IBOutlet weak var resumeTemplateImage: UIImageView!
     
-
+    override func awakeFromNib() {
+        resumeTemplateImage.layer.cornerRadius = 8
+    }
 }

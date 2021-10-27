@@ -9,8 +9,6 @@ import UIKit
 
 class EmptyState: UIView {
 
-    @IBOutlet weak var stepLabel: UILabel!
-    @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var emptyStateImage: UIImageView!
     @IBOutlet weak var emptyStateDescription: UILabel!
     /*
