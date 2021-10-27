@@ -23,6 +23,20 @@
 		679DBEA32723FAAD00CE9E8F /* ResumeTemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679DBEA12723FAAD00CE9E8F /* ResumeTemplateCell.xib */; };
 		679DBEAA272410F900CE9E8F /* EducationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DBEA8272410F900CE9E8F /* EducationTableCell.swift */; };
 		679DBEAB272410F900CE9E8F /* EducationTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679DBEA9272410F900CE9E8F /* EducationTableCell.xib */; };
+		B859B535272852EF00627CDC /* EmptyStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52B272852EE00627CDC /* EmptyStateRepository.swift */; };
+		B859B537272852EF00627CDC /* ResumeTemplateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */; };
+		B859B538272852EF00627CDC /* ExperiencePlaceholderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52E272852EF00627CDC /* ExperiencePlaceholderRepository.swift */; };
+		B859B539272852EF00627CDC /* UserPlaceholderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52F272852EF00627CDC /* UserPlaceholderRepository.swift */; };
+		B859B53A272852EF00627CDC /* UserResumeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B530272852EF00627CDC /* UserResumeRepository.swift */; };
+		B859B53B272852EF00627CDC /* ExperienceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B531272852EF00627CDC /* ExperienceRepository.swift */; };
+		B859B53C272852EF00627CDC /* ExperienceSuggestionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B532272852EF00627CDC /* ExperienceSuggestionRepository.swift */; };
+		B859B53D272852EF00627CDC /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B533272852EF00627CDC /* UserRepository.swift */; };
+		B859B53E272852EF00627CDC /* ResumeContentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B534272852EF00627CDC /* ResumeContentRepository.swift */; };
+		B859B5402728532900627CDC /* ConsultHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B53F2728532900627CDC /* ConsultHistoryRepository.swift */; };
+		B859B5442728533600627CDC /* PreloadUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B5412728533500627CDC /* PreloadUserData.swift */; };
+		B859B5452728533600627CDC /* PreloadEmptyStateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B5422728533600627CDC /* PreloadEmptyStateData.swift */; };
+		B859B5462728533600627CDC /* PreloadExperienceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B5432728533600627CDC /* PreloadExperienceData.swift */; };
+		B859B548272858B900627CDC /* UserSuggestionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B547272858B900627CDC /* UserSuggestionRepository.swift */; };
 		BF2ABB2D2726EDDF00AAC6C2 /* SmallSetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2ABB2C2726EDDF00AAC6C2 /* SmallSetButton.swift */; };
 		BF2ABB312726F02C00AAC6C2 /* SmallSetButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2ABB302726F02C00AAC6C2 /* SmallSetButton.xib */; };
 		BF2ABB342726FCC900AAC6C2 /* LabelWithTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2ABB332726FCC900AAC6C2 /* LabelWithTextField.xib */; };
@@ -142,6 +156,20 @@
 		679DBEA12723FAAD00CE9E8F /* ResumeTemplateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeTemplateCell.xib; sourceTree = "<group>"; };
 		679DBEA8272410F900CE9E8F /* EducationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationTableCell.swift; sourceTree = "<group>"; };
 		679DBEA9272410F900CE9E8F /* EducationTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EducationTableCell.xib; sourceTree = "<group>"; };
+		B859B52B272852EE00627CDC /* EmptyStateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateRepository.swift; sourceTree = "<group>"; };
+		B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumeTemplateRepository.swift; sourceTree = "<group>"; };
+		B859B52E272852EF00627CDC /* ExperiencePlaceholderRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperiencePlaceholderRepository.swift; sourceTree = "<group>"; };
+		B859B52F272852EF00627CDC /* UserPlaceholderRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPlaceholderRepository.swift; sourceTree = "<group>"; };
+		B859B530272852EF00627CDC /* UserResumeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserResumeRepository.swift; sourceTree = "<group>"; };
+		B859B531272852EF00627CDC /* ExperienceRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceRepository.swift; sourceTree = "<group>"; };
+		B859B532272852EF00627CDC /* ExperienceSuggestionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperienceSuggestionRepository.swift; sourceTree = "<group>"; };
+		B859B533272852EF00627CDC /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		B859B534272852EF00627CDC /* ResumeContentRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumeContentRepository.swift; sourceTree = "<group>"; };
+		B859B53F2728532900627CDC /* ConsultHistoryRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultHistoryRepository.swift; sourceTree = "<group>"; };
+		B859B5412728533500627CDC /* PreloadUserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadUserData.swift; sourceTree = "<group>"; };
+		B859B5422728533600627CDC /* PreloadEmptyStateData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadEmptyStateData.swift; sourceTree = "<group>"; };
+		B859B5432728533600627CDC /* PreloadExperienceData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadExperienceData.swift; sourceTree = "<group>"; };
+		B859B547272858B900627CDC /* UserSuggestionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSuggestionRepository.swift; sourceTree = "<group>"; };
 		BF2ABB2C2726EDDF00AAC6C2 /* SmallSetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallSetButton.swift; sourceTree = "<group>"; };
 		BF2ABB302726F02C00AAC6C2 /* SmallSetButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallSetButton.xib; sourceTree = "<group>"; };
 		BF2ABB332726FCC900AAC6C2 /* LabelWithTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelWithTextField.xib; sourceTree = "<group>"; };
@@ -693,6 +721,9 @@
 			isa = PBXGroup;
 			children = (
 				BF8503872722B36700CC43FB /* PreloadData.swift */,
+				B859B5422728533600627CDC /* PreloadEmptyStateData.swift */,
+				B859B5432728533600627CDC /* PreloadExperienceData.swift */,
+				B859B5412728533500627CDC /* PreloadUserData.swift */,
 			);
 			path = "Mock Data";
 			sourceTree = "<group>";
@@ -701,6 +732,17 @@
 			isa = PBXGroup;
 			children = (
 				BF8503852722B35800CC43FB /* DataRepository.swift */,
+				B859B52B272852EE00627CDC /* EmptyStateRepository.swift */,
+				B859B52E272852EF00627CDC /* ExperiencePlaceholderRepository.swift */,
+				B859B531272852EF00627CDC /* ExperienceRepository.swift */,
+				B859B532272852EF00627CDC /* ExperienceSuggestionRepository.swift */,
+				B859B534272852EF00627CDC /* ResumeContentRepository.swift */,
+				B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */,
+				B859B52F272852EF00627CDC /* UserPlaceholderRepository.swift */,
+				B859B533272852EF00627CDC /* UserRepository.swift */,
+				B859B547272858B900627CDC /* UserSuggestionRepository.swift */,
+				B859B530272852EF00627CDC /* UserResumeRepository.swift */,
+				B859B53F2728532900627CDC /* ConsultHistoryRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -939,6 +981,8 @@
 				BF8503782722828A00CC43FB /* UIImage+Extension.swift in Sources */,
 				BF5F1BEA2722D5CA004D0756 /* PersonalInfoViewModel.swift in Sources */,
 				BF8503922722B64600CC43FB /* ExpertListViewController.swift in Sources */,
+				B859B5402728532900627CDC /* ConsultHistoryRepository.swift in Sources */,
+				B859B535272852EF00627CDC /* EmptyStateRepository.swift in Sources */,
 				BF85039C2722B7B700CC43FB /* EducationPageView.swift in Sources */,
 				BF85036E272265C000CC43FB /* Date+Extension.swift in Sources */,
 				BF2ABB4027270A6D00AAC6C2 /* LabelWithSwitch.swift in Sources */,
@@ -955,26 +999,33 @@
 				67280DBD27270E93006569DD /* AccomplishmentTableCell.swift in Sources */,
 				BF8503862722B35800CC43FB /* DataRepository.swift in Sources */,
 				BF2ABB392726FF9600AAC6C2 /* LabelWithTextView.swift in Sources */,
+				B859B53C272852EF00627CDC /* ExperienceSuggestionRepository.swift in Sources */,
 				BF85039A2722B6D600CC43FB /* ExpertDetailViewController.swift in Sources */,
 				BF8503B52722BABF00CC43FB /* StepByStepGuideViewModel.swift in Sources */,
 				BF8503A02722B7EE00CC43FB /* QuizPageView.swift in Sources */,
 				BF8503502722594C00CC43FB /* LandingPageViewModel.swift in Sources */,
 				679DBEAA272410F900CE9E8F /* EducationTableCell.swift in Sources */,
+				B859B538272852EF00627CDC /* ExperiencePlaceholderRepository.swift in Sources */,
 				BF85038C2722B58A00CC43FB /* ProgressBarView.swift in Sources */,
 				BF2ABB2D2726EDDF00AAC6C2 /* SmallSetButton.swift in Sources */,
+				B859B53D272852EF00627CDC /* UserRepository.swift in Sources */,
 				BF2ABB362726FCD600AAC6C2 /* LabelWithTextField.swift in Sources */,
 				BF85037A272282C500CC43FB /* UILabel+Extension.swift in Sources */,
+				B859B537272852EF00627CDC /* ResumeTemplateRepository.swift in Sources */,
 				BF8503902722B5E100CC43FB /* RoundedButton.swift in Sources */,
 				BF85030A2722551B00CC43FB /* AppDelegate.swift in Sources */,
 				BF8503742722675000CC43FB /* Cell+Extension.swift in Sources */,
+				B859B53A272852EF00627CDC /* UserResumeRepository.swift in Sources */,
 				BF85036727225FB400CC43FB /* Constants.swift in Sources */,
 				BF85035927225A4300CC43FB /* MyResumeCell.swift in Sources */,
 				BFE003552727331F0070BD40 /* BigButtonWithImage.swift in Sources */,
 				BF850370272266BC00CC43FB /* String+Extension.swift in Sources */,
 				BF85035B27225C3400CC43FB /* PersonalInfoPage.swift in Sources */,
+				B859B53B272852EF00627CDC /* ExperienceRepository.swift in Sources */,
 				BF8503A42722B80F00CC43FB /* ExperiencePageView.swift in Sources */,
 				BF5F1BEE2722D805004D0756 /* ResumeTemplateViewController.swift in Sources */,
 				BF85036C272265A800CC43FB /* UIButton+Extemsion.swift in Sources */,
+				B859B5442728533600627CDC /* PreloadUserData.swift in Sources */,
 				BF5F1BF62722D888004D0756 /* GenerateResumeViewModel.swift in Sources */,
 				BF85030C2722551B00CC43FB /* SceneDelegate.swift in Sources */,
 				BF5F1BF42722D87A004D0756 /* GenerateResumeViewController.swift in Sources */,
@@ -983,11 +1034,16 @@
 				BF85037E2722836800CC43FB /* UIViewController+Extension.swift in Sources */,
 				BF5F1BF02722D824004D0756 /* ResumeTemplateViewModel.swift in Sources */,
 				BF8503882722B36700CC43FB /* PreloadData.swift in Sources */,
+				B859B5452728533600627CDC /* PreloadEmptyStateData.swift in Sources */,
 				67280DB727270D72006569DD /* YesNoSwipeView.swift in Sources */,
+				B859B5462728533600627CDC /* PreloadExperienceData.swift in Sources */,
+				B859B539272852EF00627CDC /* UserPlaceholderRepository.swift in Sources */,
 				BF8503AC2722B86400CC43FB /* AccomplishmentPageView.swift in Sources */,
+				B859B548272858B900627CDC /* UserSuggestionRepository.swift in Sources */,
 				BF85037C2722832600CC43FB /* UIView+Extension.swift in Sources */,
 				67280DB22726D0DF006569DD /* EmptyState.swift in Sources */,
 				BF85036527225FA300CC43FB /* MVVMController.swift in Sources */,
+				B859B53E272852EF00627CDC /* ResumeContentRepository.swift in Sources */,
 				BF8503B92722BDCF00CC43FB /* HomepageController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
