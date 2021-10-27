@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LabelWithSwitch" customModule="dayangsurga_macro" customModuleProvider="target">
             <connections>
+                <outlet property="switchButton" destination="Jfj-q5-UNq" id="bUu-d3-5PR"/>
                 <outlet property="switchTitle" destination="lmT-RQ-aQK" id="Hjj-mX-li1"/>
                 <outlet property="titleLabel" destination="7aS-Rv-Vh7" id="feM-tB-9cm"/>
             </connections>

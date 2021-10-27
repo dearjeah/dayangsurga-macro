@@ -19,8 +19,34 @@ class LabelWithStartEndDate: UIView {
     @IBAction func endDatePressed(_ sender: UIButton) {
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initWithNib()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initWithNib()
+    }
+    
+    convenience init(title: String, startDateData: String?, endDateData: String?) {
+        self.init()
+        titleLabel.text = title
+        startDateButton.titleLabel?.text = startDateData ?? "July 2020"
+        endDateButton.titleLabel?.text = endDateData ?? "June 2024"
+    }
+    
+    fileprivate func initWithNib() {
+        guard let view = loadViewFromNib(nibName: "LabelWithStartEndDate") else { return }
+        view.frame = self.bounds
+        self.addSubview(view)
+    }
+    
+    func loadViewFromNib(nibName: String) -> UIView? {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: nibName, bundle: bundle)
+        
+        return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
     
 }
