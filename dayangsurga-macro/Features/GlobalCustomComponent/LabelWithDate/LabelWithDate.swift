@@ -16,7 +16,33 @@ class LabelWithDate: UIView {
     @IBAction func datePressed(_ sender: UIButton) {
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initWithNib()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initWithNib()
+    }
+    
+    convenience init(title: String, dateText: String, dateData: String?) {
+        self.init()
+        titleLabel.text = title
+        dateTitle.text = dateText
+        dateButton.titleLabel?.text = dateData ?? "July 2020"
+    }
+    
+    fileprivate func initWithNib() {
+        guard let view = loadViewFromNib(nibName: "LabelWithDate") else { return }
+        view.frame = self.bounds
+        self.addSubview(view)
+    }
+    
+    func loadViewFromNib(nibName: String) -> UIView? {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: nibName, bundle: bundle)
+        
+        return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
 }
