@@ -9,7 +9,6 @@ import UIKit
 
 class ProgressBarView: UIView {
 
-    @IBOutlet weak var createResumeProgressBar: UIProgressView!
     @IBOutlet weak var personalInformationButton: UIButton!
     @IBOutlet weak var personalInformationButtonImage: UIImageView!
     @IBOutlet weak var educationButton: UIButton!
