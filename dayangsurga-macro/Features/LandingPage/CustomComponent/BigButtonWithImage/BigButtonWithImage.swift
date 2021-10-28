@@ -15,6 +15,7 @@ class BigButtonWithImage: UIView {
 
     @IBOutlet weak var bigButton: UIButton!
     @IBAction func bigButtonPressed(_ sender: UIButton) {
+        tapButton()
     }
     
     var delegate: ResumeCellDelegate?

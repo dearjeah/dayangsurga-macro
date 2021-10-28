@@ -21,6 +21,12 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         registerCollectionView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
+        navigationController?.navigationBar.sizeToFit()
+    }
+    
     func setView(){
         self.title = "Resume"
         titleLabel.text = "My Resume"
@@ -38,6 +44,8 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
     func didTapButton() {
         let storyboard = UIStoryboard(name: "ResumeTemplateViewController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToTemplateResume") as! ResumeTemplateViewController
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -67,7 +75,7 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         
         // sementara dulu buat check shadow
         cell.pastResumeImage.tintColor = UIColor.primaryBlue
-        cell.pastResumeImage.backgroundColor = UIColor.white
+        cell.pastResumeImage.backgroundColor = UIColor.primaryBG
         cell.pastResumeImage.dropShadow(color: UIColor.tertiaryLabel, opacity: 1, offSet: CGSize(width: 5, height: 3), radius: 1, scale: true)
         // ---
         
@@ -89,6 +97,7 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // go to preview/generate page
     }
 
 }

@@ -20,7 +20,7 @@ class LandingPageViewModel {
     }
     
     // dummy data
-    static let resumes = [LandingPageViewModel(image: UIImage(systemName: "doc.append") ?? UIImage(), name: "Resume 1", date: "Mon, 11 Oct 2021"),
+    static let resumes = [LandingPageViewModel(image: UIImage(systemName: "doc.text") ?? UIImage(), name: "Resume 1", date: "Mon, 11 Oct 2021"),
                           LandingPageViewModel(image: UIImage(systemName: "doc.text") ?? UIImage(), name: "Resume 2", date: "Mon, 11 Oct 2021"),
                           LandingPageViewModel(image: UIImage(systemName: "doc.text.below.ecg") ?? UIImage(), name: "Resume 3", date: "Mon, 11 Oct 2021"),
                           LandingPageViewModel(image: UIImage(systemName: "list.bullet.rectangle.portrait") ?? UIImage(), name: "Resume 4", date: "Mon, 11 Oct 2021"),

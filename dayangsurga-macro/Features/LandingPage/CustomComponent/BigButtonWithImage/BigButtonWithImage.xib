@@ -24,7 +24,8 @@
                     </constraints>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="gray">
-                        <backgroundConfiguration key="background" cornerRadius="18" image="imgCreateResume" imageContentMode="scaleToFill"/>
+                        <backgroundConfiguration key="background" cornerRadius="18" image="imgBtnCreateResume" imageContentMode="scaleToFill"/>
+                        <color key="baseBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </buttonConfiguration>
                     <connections>
                         <action selector="bigButtonPressed:" destination="-1" eventType="touchUpInside" id="Na5-jK-WRd"/>
@@ -41,6 +42,6 @@
         </view>
     </objects>
     <resources>
-        <image name="imgCreateResume" width="366" height="100"/>
+        <image name="imgBtnCreateResume" width="368" height="102"/>
     </resources>
 </document>
