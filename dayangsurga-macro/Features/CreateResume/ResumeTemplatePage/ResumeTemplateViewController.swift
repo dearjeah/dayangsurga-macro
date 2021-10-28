@@ -9,9 +9,10 @@ import UIKit
 
 class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> {
 
-    var templateData = ["imgResumeTemplateArial","imgResumeTemplateHeletvica","imgResumeTemplateHeletvica"]
+    var templateData = ["imgResumeTemplateArial","imgResumeTemplateGeorgia","imgResumeTemplateHeletvica"]
     
     @IBOutlet weak var resumeTemplateCollection: UICollectionView!
+    @IBOutlet weak var resumeTemplatePageController: UIPageControl!
     @IBOutlet weak var selectResumeButton: UIButton!
     
     override func viewDidLoad() {
@@ -43,6 +44,11 @@ extension ResumeTemplateViewController: UICollectionViewDelegate, UICollectionVi
         let cell = resumeTemplateCollection.dequeueReusableCell(withReuseIdentifier: "ResumeTemplateCell", for: indexPath)as! ResumeTemplateCell
         
         cell.resumeTemplateImage.image = UIImage(named: templateData[indexPath.row])
+        cell.layer.shadowRadius = 8
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOpacity = 1
+        cell.layer.shadowOffset = .zero
+        
         
         return cell
     }
