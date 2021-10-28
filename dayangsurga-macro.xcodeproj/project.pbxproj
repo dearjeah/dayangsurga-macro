@@ -39,6 +39,7 @@
 		B859B548272858B900627CDC /* PersonalInformationSuggestionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B547272858B900627CDC /* PersonalInformationSuggestionRepository.swift */; };
 		B88AFA36272A903A007408A5 /* ResumeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88AFA34272A903A007408A5 /* ResumeCell.swift */; };
 		B88AFA37272A903A007408A5 /* ResumeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88AFA35272A903A007408A5 /* ResumeCell.xib */; };
+		B88AFA39272AB10D007408A5 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88AFA38272AB10D007408A5 /* UIImageView+Extension.swift */; };
 		BF2ABB2D2726EDDF00AAC6C2 /* SmallSetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2ABB2C2726EDDF00AAC6C2 /* SmallSetButton.swift */; };
 		BF2ABB312726F02C00AAC6C2 /* SmallSetButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2ABB302726F02C00AAC6C2 /* SmallSetButton.xib */; };
 		BF2ABB342726FCC900AAC6C2 /* LabelWithTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2ABB332726FCC900AAC6C2 /* LabelWithTextField.xib */; };
@@ -172,6 +173,7 @@
 		B859B547272858B900627CDC /* PersonalInformationSuggestionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInformationSuggestionRepository.swift; sourceTree = "<group>"; };
 		B88AFA34272A903A007408A5 /* ResumeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumeCell.swift; sourceTree = "<group>"; };
 		B88AFA35272A903A007408A5 /* ResumeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResumeCell.xib; sourceTree = "<group>"; };
+		B88AFA38272AB10D007408A5 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		BF2ABB2C2726EDDF00AAC6C2 /* SmallSetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallSetButton.swift; sourceTree = "<group>"; };
 		BF2ABB302726F02C00AAC6C2 /* SmallSetButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallSetButton.xib; sourceTree = "<group>"; };
 		BF2ABB332726FCC900AAC6C2 /* LabelWithTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelWithTextField.xib; sourceTree = "<group>"; };
@@ -713,6 +715,7 @@
 				BF850379272282C500CC43FB /* UILabel+Extension.swift */,
 				BF85037B2722832600CC43FB /* UIView+Extension.swift */,
 				BF85037D2722836800CC43FB /* UIViewController+Extension.swift */,
+				B88AFA38272AB10D007408A5 /* UIImageView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1024,6 +1027,7 @@
 				B859B53B272852EF00627CDC /* ExperienceRepository.swift in Sources */,
 				BF8503A42722B80F00CC43FB /* ExperiencePageView.swift in Sources */,
 				BF5F1BEE2722D805004D0756 /* ResumeTemplateViewController.swift in Sources */,
+				B88AFA39272AB10D007408A5 /* UIImageView+Extension.swift in Sources */,
 				BF85036C272265A800CC43FB /* UIButton+Extemsion.swift in Sources */,
 				B859B5442728533600627CDC /* PreloadUserData.swift in Sources */,
 				BF5F1BF62722D888004D0756 /* GenerateResumeViewModel.swift in Sources */,

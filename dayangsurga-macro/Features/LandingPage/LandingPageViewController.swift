@@ -72,11 +72,11 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         }
         cell.pastResumeImage.image = LandingPageViewModel.resumes[indexPath.row].image
         cell.pastResumeImage.layer.cornerRadius = 8
+        cell.pastResumeImage.addShadow()
         
         // sementara dulu buat check shadow
         cell.pastResumeImage.tintColor = UIColor.primaryBlue
-        cell.pastResumeImage.backgroundColor = UIColor.primaryBG
-        cell.pastResumeImage.dropShadow(color: UIColor.tertiaryLabel, opacity: 1, offSet: CGSize(width: 5, height: 3), radius: 1, scale: true)
+        cell.pastResumeImage.backgroundColor = UIColor.white
         // ---
         
         cell.resumeName.text = LandingPageViewModel.resumes[indexPath.row].name
@@ -125,20 +125,5 @@ extension UICollectionView {
     
     func restore() {
         self.backgroundView = nil
-    }
-}
-
-extension UIImageView {
-    func dropShadow(color: UIColor, opacity: Float = 0.5, offSet: CGSize, radius: CGFloat = 1, scale: Bool = true) {
-        layer.masksToBounds = false
-        layer.shadowColor = color.cgColor
-        layer.shadowOpacity = opacity
-        layer.shadowOffset = offSet
-        layer.shadowRadius = radius
-        layer.cornerRadius = 8
-
-        layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        layer.shouldRasterize = true
-        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
 }
