@@ -29,3 +29,16 @@ class LandingPageViewModel {
     ]
     
 }
+
+class EmptyPageViewModel {
+    var emptyImage: UIImage
+    var emptyName: String
+    
+    init(emptyImage: UIImage, emptyName: String){
+        self.emptyImage = emptyImage
+        self.emptyName = emptyName
+    }
+    
+    // dummy data
+    static let emptyState = EmptyPageViewModel(emptyImage: UIImage(systemName: "square.and.pencil") ?? UIImage(), emptyName: "You haven’t made any resume, yet. Click the ‘Create Resume’ button to start creating resume.")
+}

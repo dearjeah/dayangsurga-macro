@@ -11,7 +11,7 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    var totalData: Int?
+    var totalData: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,78 +52,67 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
     // setting for collection view
     func registerCollectionView(){
         collectionView.register(ResumeCell.nib(), forCellWithReuseIdentifier: ResumeCell.identifier)
+        collectionView.register(EmptyCell.nib(), forCellWithReuseIdentifier: EmptyCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        totalData = 2
-        if totalData == 0 {
-            self.collectionView.setEmptyState(image: UIImage(systemName: "person.fill.xmark") ?? UIImage(), message: "You haven’t made any resume, yet. Click the ‘Create Resume’ button to start creating resume.")
-        } else {
+        if totalData != 0 {
             return LandingPageViewModel.resumes.count
+        } else {
+            return 1
         }
-        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResumeCell.identifier, for: indexPath) as? ResumeCell else {
-            return UICollectionViewCell()
+        if totalData != 0{
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResumeCell.identifier, for: indexPath) as? ResumeCell else {
+                return UICollectionViewCell()
+            }
+            cell.pastResumeImage.image = LandingPageViewModel.resumes[indexPath.row].image
+            cell.pastResumeImage.layer.cornerRadius = 8
+            cell.pastResumeImage.addShadow()
+            
+            // sementara dulu buat check shadow
+            cell.pastResumeImage.tintColor = UIColor.primaryBlue
+            cell.pastResumeImage.backgroundColor = UIColor.white
+            // ---
+            
+            cell.resumeName.text = LandingPageViewModel.resumes[indexPath.row].name
+            cell.resumeLatestDate.text = LandingPageViewModel.resumes[indexPath.row].date
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyCell.identifier, for: indexPath) as? EmptyCell else {
+                return UICollectionViewCell()
+            }
+            cell.emptyImage.image = EmptyPageViewModel.emptyState.emptyImage
+            cell.emptyLabel.text = EmptyPageViewModel.emptyState.emptyName
+            
+            return cell
         }
-        cell.pastResumeImage.image = LandingPageViewModel.resumes[indexPath.row].image
-        cell.pastResumeImage.layer.cornerRadius = 8
-        cell.pastResumeImage.addShadow()
-        
-        // sementara dulu buat check shadow
-        cell.pastResumeImage.tintColor = UIColor.primaryBlue
-        cell.pastResumeImage.backgroundColor = UIColor.white
-        // ---
-        
-        cell.resumeName.text = LandingPageViewModel.resumes[indexPath.row].name
-        cell.resumeLatestDate.text = LandingPageViewModel.resumes[indexPath.row].date
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 151, height: 230)
+        if totalData != 0 {
+            return CGSize(width: 151, height: 230)
+        } else {
+            return CGSize(width: 304, height: 324)
+        }
     }
     
     func spacingForCollectionView(){
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.minimumLineSpacing = 11
-        layout.minimumInteritemSpacing = 45
-        self.collectionView?.collectionViewLayout = layout
+        if totalData != 0 {
+            let layout = UICollectionViewFlowLayout()
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            layout.minimumLineSpacing = 11
+            layout.minimumInteritemSpacing = 45
+            self.collectionView?.collectionViewLayout = layout
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // go to preview/generate page
     }
 
-}
-
-extension UICollectionView {
-    func setEmptyState(image: UIImage, message: String) {
-        let emptyImag = UIImageView(frame: CGRect(x: 63, y: 0, width: 252, height: 220))
-//        let emptyImag = UIImageView(frame: UIScreen.main.bounds)
-        emptyImag.translatesAutoresizingMaskIntoConstraints = false
-        emptyImag.image = image
-        emptyImag.contentMode = .scaleAspectFill
-        
-        let emptyMessage = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
-        emptyMessage.translatesAutoresizingMaskIntoConstraints = false
-        emptyMessage.text = message
-        emptyMessage.textColor = UIColor.tertiaryLabel
-        emptyMessage.numberOfLines = 0
-        emptyMessage.textAlignment = .center
-        emptyMessage.font = UIFont.systemFont(ofSize: 17, weight: .regular)
-        emptyMessage.sizeToFit()
-        
-        self.insertSubview(emptyImag, at: 0)
-        self.backgroundView = emptyMessage // maunya emptyimage msk ke background view juga
-    }
-    
-    func restore() {
-        self.backgroundView = nil
-    }
 }

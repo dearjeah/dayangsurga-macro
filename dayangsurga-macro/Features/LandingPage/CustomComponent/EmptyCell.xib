@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="emptyCell" id="gTV-IL-0wX" customClass="EmptyCell" customModule="dayangsurga_macro" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="304" height="324"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="304" height="324"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0l-K1-cif">
+                        <rect key="frame" x="0.0" y="262" width="304" height="62"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Label">
+                                <attributes>
+                                    <color key="NSColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="15" name="SFProDisplay-Regular"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8VF-fy-AFo">
+                        <rect key="frame" x="26" y="0.0" width="252" height="220"/>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.098039215690000001" green="0.1647058824" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="T0l-K1-cif" secondAttribute="bottom" id="0Kp-Hr-lZU"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="8VF-fy-AFo" secondAttribute="bottom" constant="104" id="CtH-VZ-zLp"/>
+                <constraint firstItem="8VF-fy-AFo" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Nqt-xU-Wci"/>
+                <constraint firstAttribute="trailing" secondItem="T0l-K1-cif" secondAttribute="trailing" id="R1q-1i-JuW"/>
+                <constraint firstItem="T0l-K1-cif" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="W0x-T1-Lsh"/>
+                <constraint firstItem="8VF-fy-AFo" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="26" id="bZd-Yt-9pa"/>
+                <constraint firstAttribute="trailing" secondItem="8VF-fy-AFo" secondAttribute="trailing" constant="26" id="jq2-vA-18H"/>
+                <constraint firstItem="T0l-K1-cif" firstAttribute="top" secondItem="8VF-fy-AFo" secondAttribute="bottom" constant="42" id="y1Y-vY-yZC"/>
+            </constraints>
+            <size key="customSize" width="270" height="204"/>
+            <connections>
+                <outlet property="emptyImage" destination="8VF-fy-AFo" id="wLb-ex-XEA"/>
+                <outlet property="emptyLabel" destination="T0l-K1-cif" id="FZT-7B-yxI"/>
+            </connections>
+            <point key="canvasLocation" x="297.10144927536237" y="158.03571428571428"/>
+        </collectionViewCell>
+    </objects>
+</document>
