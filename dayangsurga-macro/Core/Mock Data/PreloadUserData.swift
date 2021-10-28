@@ -19,7 +19,7 @@ class PreloadUserData {
     
     // preload user placeholder
     func preloadUserPh() {
-        PersonalInformationPlaceholderRepository.shared.createUserPh(user_ph_id: 1,
+        PersonalInformationPlaceholderRepository.shared.createUserPh(pi_ph_id: 1,
                                                       user_id: 0,
                                                       name_ph: "e.g. Olipia Dayangz",
                                                       phoneNumber_ph: "e.g. 08123456789",
