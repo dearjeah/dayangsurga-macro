@@ -10,6 +10,7 @@ import UIKit
 class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> {
 
     var templateData = ["imgResumeTemplateArial","imgResumeTemplateGeorgia","imgResumeTemplateHeletvica"]
+    var currentPage = 0
     
     @IBOutlet weak var resumeTemplateCollection: UICollectionView!
     @IBOutlet weak var resumeTemplatePageController: UIPageControl!
@@ -53,5 +54,19 @@ extension ResumeTemplateViewController: UICollectionViewDelegate, UICollectionVi
         return cell
     }
     
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let layout = self.resumeTemplateCollection?.collectionViewLayout as! UICollectionViewFlowLayout
+        let widthWithSpacing = layout.itemSize.width + layout.minimumLineSpacing
+        print(widthWithSpacing)
+        print(scrollView.contentSize.width)
+        var offset = targetContentOffset.pointee
+        let index = (offset.x + scrollView.contentInset.left)/widthWithSpacing
+        currentPage = Int(index)
+        let roundedIndex = round(index)
+        offset = CGPoint(x: roundedIndex * widthWithSpacing - scrollView.contentInset.left - scrollView.contentInset.right, y: scrollView.contentInset.top)
+        resumeTemplatePageController.currentPage = currentPage
+        targetContentOffset.pointee = offset
+        print(currentPage)
+    }
     
 }
