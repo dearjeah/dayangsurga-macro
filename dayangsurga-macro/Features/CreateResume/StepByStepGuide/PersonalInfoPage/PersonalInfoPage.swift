@@ -15,6 +15,7 @@ class PersonalInfoPage: UIView {
     @IBOutlet weak var locationField: LabelWithTextField!
     @IBOutlet weak var summaryField: LabelWithTextView!
     
+    //pakai protocol delegate
     func fieldPreload() {
         fullNameField
     }
