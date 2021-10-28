@@ -8,13 +8,50 @@
 import UIKit
 
 class ExperiencePageView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    @IBOutlet weak var addEditButton: UIButton!
+    @IBOutlet weak var expTableView: UITableView!
+    
+    @IBAction func addEditPressed(_ sender: UIButton) {
     }
-    */
-
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initWithNib()
+    }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initWithNib()
+    }
+    
+    convenience init() {
+        self.init()
+    }
+    
+    fileprivate func initWithNib() {
+        guard let view = loadViewFromNib(nibName: "ExperiencePageView") else {return}
+        view.frame = self.bounds
+        self.addSubview(view)
+    }
+    
+    func loadViewFromNib(nibName: String) -> UIView? {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: nibName, bundle: bundle)
+        
+        return nib.instantiate(withOwner: self, options: nil).first as? UIView
+    }
+    
+    
+    //MARK: TABLE VIEW
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExperienceTableCell") as! ExperienceTableCell
+        
+        return cell
+    }
+    
+    
 }
