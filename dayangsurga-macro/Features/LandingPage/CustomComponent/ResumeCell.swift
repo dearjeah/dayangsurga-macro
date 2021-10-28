@@ -1,21 +1,25 @@
 //
-//  MyResumeCell.swift
+//  ResumeCell.swift
 //  dayangsurga-macro
 //
-//  Created by Delvina Janice on 22/10/21.
+//  Created by Olivia Dwi  Susanti on 27/10/21.
 //
 
 import UIKit
 
-class MyResumeCell: UICollectionViewCell {
+class ResumeCell: UICollectionViewCell {
     
+    static let identifier = "resumeCell"
     @IBOutlet weak var pastResumeImage: UIImageView!
     @IBOutlet weak var resumeName: UILabel!
     @IBOutlet weak var resumeLatestDate: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        pastResumeImage.layer.cornerRadius = 8
+        
+    }
+    
+    static func nib() -> UINib {
+        return UINib(nibName: "ResumeCell", bundle: nil)
     }
 }

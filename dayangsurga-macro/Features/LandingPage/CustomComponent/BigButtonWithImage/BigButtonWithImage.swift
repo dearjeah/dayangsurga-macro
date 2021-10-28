@@ -7,10 +7,19 @@
 
 import UIKit
 
+protocol ResumeCellDelegate {
+    func didTapButton()
+}
+
 class BigButtonWithImage: UIView {
 
     @IBOutlet weak var bigButton: UIButton!
     @IBAction func bigButtonPressed(_ sender: UIButton) {
+    }
+    
+    var delegate: ResumeCellDelegate?
+    func tapButton() {
+        delegate?.didTapButton()
     }
     
     override init(frame: CGRect) {

@@ -37,6 +37,8 @@
 		B859B5452728533600627CDC /* PreloadEmptyStateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B5422728533600627CDC /* PreloadEmptyStateData.swift */; };
 		B859B5462728533600627CDC /* PreloadExperienceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B5432728533600627CDC /* PreloadExperienceData.swift */; };
 		B859B548272858B900627CDC /* PersonalInformationSuggestionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B547272858B900627CDC /* PersonalInformationSuggestionRepository.swift */; };
+		B88AFA36272A903A007408A5 /* ResumeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88AFA34272A903A007408A5 /* ResumeCell.swift */; };
+		B88AFA37272A903A007408A5 /* ResumeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88AFA35272A903A007408A5 /* ResumeCell.xib */; };
 		BF2ABB2D2726EDDF00AAC6C2 /* SmallSetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2ABB2C2726EDDF00AAC6C2 /* SmallSetButton.swift */; };
 		BF2ABB312726F02C00AAC6C2 /* SmallSetButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2ABB302726F02C00AAC6C2 /* SmallSetButton.xib */; };
 		BF2ABB342726FCC900AAC6C2 /* LabelWithTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2ABB332726FCC900AAC6C2 /* LabelWithTextField.xib */; };
@@ -71,8 +73,6 @@
 		BF8503502722594C00CC43FB /* LandingPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85034F2722594C00CC43FB /* LandingPageViewModel.swift */; };
 		BF8503532722596400CC43FB /* LandingPageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8503522722596400CC43FB /* LandingPageViewController.storyboard */; };
 		BF8503552722599E00CC43FB /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8503542722599E00CC43FB /* LandingPageViewController.swift */; };
-		BF85035727225A1D00CC43FB /* MyResumeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF85035627225A1D00CC43FB /* MyResumeCell.xib */; };
-		BF85035927225A4300CC43FB /* MyResumeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85035827225A4300CC43FB /* MyResumeCell.swift */; };
 		BF85035B27225C3400CC43FB /* PersonalInfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85035A27225C3400CC43FB /* PersonalInfoPage.swift */; };
 		BF85035D27225C4300CC43FB /* PersonalInfoPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF85035C27225C4300CC43FB /* PersonalInfoPage.xib */; };
 		BF85036327225DBB00CC43FB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF85036227225DBB00CC43FB /* Colors.xcassets */; };
@@ -170,6 +170,8 @@
 		B859B5422728533600627CDC /* PreloadEmptyStateData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadEmptyStateData.swift; sourceTree = "<group>"; };
 		B859B5432728533600627CDC /* PreloadExperienceData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadExperienceData.swift; sourceTree = "<group>"; };
 		B859B547272858B900627CDC /* PersonalInformationSuggestionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInformationSuggestionRepository.swift; sourceTree = "<group>"; };
+		B88AFA34272A903A007408A5 /* ResumeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumeCell.swift; sourceTree = "<group>"; };
+		B88AFA35272A903A007408A5 /* ResumeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResumeCell.xib; sourceTree = "<group>"; };
 		BF2ABB2C2726EDDF00AAC6C2 /* SmallSetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallSetButton.swift; sourceTree = "<group>"; };
 		BF2ABB302726F02C00AAC6C2 /* SmallSetButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallSetButton.xib; sourceTree = "<group>"; };
 		BF2ABB332726FCC900AAC6C2 /* LabelWithTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelWithTextField.xib; sourceTree = "<group>"; };
@@ -208,8 +210,6 @@
 		BF85034F2722594C00CC43FB /* LandingPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewModel.swift; sourceTree = "<group>"; };
 		BF8503522722596400CC43FB /* LandingPageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingPageViewController.storyboard; sourceTree = "<group>"; };
 		BF8503542722599E00CC43FB /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LandingPageViewController.swift; path = "dayangsurga-macro/Features/LandingPage/LandingPageViewController.swift"; sourceTree = SOURCE_ROOT; };
-		BF85035627225A1D00CC43FB /* MyResumeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyResumeCell.xib; sourceTree = "<group>"; };
-		BF85035827225A4300CC43FB /* MyResumeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyResumeCell.swift; sourceTree = "<group>"; };
 		BF85035A27225C3400CC43FB /* PersonalInfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoPage.swift; sourceTree = "<group>"; };
 		BF85035C27225C4300CC43FB /* PersonalInfoPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalInfoPage.xib; sourceTree = "<group>"; };
 		BF85036227225DBB00CC43FB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -654,8 +654,8 @@
 			isa = PBXGroup;
 			children = (
 				BFE00353272732FD0070BD40 /* BigButtonWithImage */,
-				BF85035627225A1D00CC43FB /* MyResumeCell.xib */,
-				BF85035827225A4300CC43FB /* MyResumeCell.swift */,
+				B88AFA34272A903A007408A5 /* ResumeCell.swift */,
+				B88AFA35272A903A007408A5 /* ResumeCell.xib */,
 			);
 			path = CustomComponent;
 			sourceTree = "<group>";
@@ -921,7 +921,7 @@
 				BF8503982722B6A300CC43FB /* ExpertDetailsViewController.storyboard in Resources */,
 				BF2ABB3B2726FFAF00AAC6C2 /* LabelWithTextView.xib in Resources */,
 				BF8503162722551C00CC43FB /* Assets.xcassets in Resources */,
-				BF85035727225A1D00CC43FB /* MyResumeCell.xib in Resources */,
+				B88AFA37272A903A007408A5 /* ResumeCell.xib in Resources */,
 				BF8503532722596400CC43FB /* LandingPageViewController.storyboard in Resources */,
 				67280DB42726D0F0006569DD /* EmptyState.xib in Resources */,
 				67280DB927270D7E006569DD /* YesNoSwipeView.xib in Resources */,
@@ -1017,10 +1017,10 @@
 				BF8503742722675000CC43FB /* Cell+Extension.swift in Sources */,
 				B859B53A272852EF00627CDC /* UserResumeRepository.swift in Sources */,
 				BF85036727225FB400CC43FB /* Constants.swift in Sources */,
-				BF85035927225A4300CC43FB /* MyResumeCell.swift in Sources */,
 				BFE003552727331F0070BD40 /* BigButtonWithImage.swift in Sources */,
 				BF850370272266BC00CC43FB /* String+Extension.swift in Sources */,
 				BF85035B27225C3400CC43FB /* PersonalInfoPage.swift in Sources */,
+				B88AFA36272A903A007408A5 /* ResumeCell.swift in Sources */,
 				B859B53B272852EF00627CDC /* ExperienceRepository.swift in Sources */,
 				BF8503A42722B80F00CC43FB /* ExperiencePageView.swift in Sources */,
 				BF5F1BEE2722D805004D0756 /* ResumeTemplateViewController.swift in Sources */,
