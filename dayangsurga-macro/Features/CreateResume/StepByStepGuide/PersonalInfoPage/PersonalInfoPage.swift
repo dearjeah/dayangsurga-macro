@@ -14,6 +14,7 @@ class PersonalInfoPage: UIView {
     @IBOutlet weak var phoneField: LabelWithTextField!
     @IBOutlet weak var locationField: LabelWithTextField!
     @IBOutlet weak var summaryField: LabelWithTextView!
+    @IBOutlet weak var summarySuggestion: UILabel!
     
     //pakai protocol delegate
     func fieldPreload() {
