@@ -52,7 +52,6 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
     // setting for collection view
     func registerCollectionView(){
         collectionView.register(ResumeCell.nib(), forCellWithReuseIdentifier: ResumeCell.identifier)
-        collectionView.register(EmptyCell.nib(), forCellWithReuseIdentifier: EmptyCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -61,51 +60,39 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         if totalData != 0 {
             return LandingPageViewModel.resumes.count
         } else {
-            return 1
+            let emptyStateView = EmptyState(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+            emptyStateView.emptyStateImage.image = UIImage(named: "imgEmptyStateLandingPage")
+            emptyStateView.emptyStateDescription.text = "You haven’t made any resume, yet. Click the ‘Create Resume’ button to start creating resume."
+            self.collectionView.backgroundView = emptyStateView
         }
+        return Int()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if totalData != 0{
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResumeCell.identifier, for: indexPath) as? ResumeCell else {
-                return UICollectionViewCell()
-            }
-            cell.pastResumeImage.image = LandingPageViewModel.resumes[indexPath.row].image
-            cell.pastResumeImage.layer.cornerRadius = 8
-            cell.pastResumeImage.addShadow()
-            
-            // sementara dulu buat check shadow
-            cell.pastResumeImage.tintColor = UIColor.primaryBlue
-            cell.pastResumeImage.backgroundColor = UIColor.white
-            // ---
-            
-            cell.resumeName.text = LandingPageViewModel.resumes[indexPath.row].name
-            cell.resumeLatestDate.text = LandingPageViewModel.resumes[indexPath.row].date
-            return cell
-        } else {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyCell.identifier, for: indexPath) as? EmptyCell else {
-                return UICollectionViewCell()
-            }
-            cell.emptyImage.image = EmptyPageViewModel.emptyState.emptyImage
-            cell.emptyLabel.text = EmptyPageViewModel.emptyState.emptyName
-            
-            return cell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResumeCell.identifier, for: indexPath) as? ResumeCell else {
+            return UICollectionViewCell()
         }
+        cell.pastResumeImage.image = LandingPageViewModel.resumes[indexPath.row].image
+        
+        // sementara dulu buat check shadow
+        cell.pastResumeImage.tintColor = UIColor.primaryBlue
+        cell.pastResumeImage.backgroundColor = UIColor.white
+        // ---
+        
+        cell.resumeName.text = LandingPageViewModel.resumes[indexPath.row].name
+        cell.resumeLatestDate.text = LandingPageViewModel.resumes[indexPath.row].date
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if totalData != 0 {
-            return CGSize(width: 151, height: 230)
-        } else {
-            return CGSize(width: 304, height: 324)
-        }
+        return CGSize(width: 151, height: 230)
     }
     
     func spacingForCollectionView(){
         if totalData != 0 {
             let layout = UICollectionViewFlowLayout()
             layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            layout.minimumLineSpacing = 11
+            layout.minimumLineSpacing = 20
             layout.minimumInteritemSpacing = 45
             self.collectionView?.collectionViewLayout = layout
         }

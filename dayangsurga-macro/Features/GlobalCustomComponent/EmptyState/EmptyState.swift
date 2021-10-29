@@ -11,12 +11,33 @@ class EmptyState: UIView {
 
     @IBOutlet weak var emptyStateImage: UIImageView!
     @IBOutlet weak var emptyStateDescription: UILabel!
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initWithNib()
     }
-    */
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initWithNib()
+    }
+    
+    convenience init() {
+        self.init()
+    }
+    
+    fileprivate func initWithNib() {
+        guard let view = loadViewFromNib(nibName: "EmptyState") else { return }
+        view.frame = self.bounds
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.addSubview(view)
+    }
+    
+    func loadViewFromNib(nibName: String) -> UIView? {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: nibName, bundle: bundle)
+        
+        return nib.instantiate(withOwner: self, options: nil).first as? UIView
+    }
 
 }
