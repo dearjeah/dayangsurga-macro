@@ -32,6 +32,8 @@ class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> 
         let layout = resumeTemplateCollection?.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: collectionViewWidth, height: collectionViewHeight)
         resumeTemplateCollection.contentInset = UIEdgeInsets(top: 0, left: insetX, bottom: 0, right: insetX)
+        self.navigationController?.navigationBar.barStyle = .default
+        self.title = "New Resume"
        
     }
     
