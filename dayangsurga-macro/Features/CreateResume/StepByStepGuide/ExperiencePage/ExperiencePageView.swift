@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExperiencePageView: UIView {
+class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var addEditButton: UIButton!
     @IBOutlet weak var expTableView: UITableView!
@@ -15,13 +15,21 @@ class ExperiencePageView: UIView {
     @IBAction func addEditPressed(_ sender: UIButton) {
     }
     
+    var cellSpacingHeight = 15.0
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initWithNib()
+        
+        expTableView.delegate = self
+        expTableView.dataSource = self
+        self.expTableView.register(UINib(nibName: "ExperienceTableCell", bundle: nil), forCellReuseIdentifier: "ExperienceTableCell")
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initWithNib()
+        
+        self.expTableView.register(UINib(nibName: "ExperienceTableCell", bundle: nil), forCellReuseIdentifier: "ExperienceTableCell")
     }
     
     convenience init() {
@@ -42,9 +50,11 @@ class ExperiencePageView: UIView {
     }
     
     
+    
+    
     //MARK: TABLE VIEW
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -52,6 +62,5 @@ class ExperiencePageView: UIView {
         
         return cell
     }
-    
     
 }

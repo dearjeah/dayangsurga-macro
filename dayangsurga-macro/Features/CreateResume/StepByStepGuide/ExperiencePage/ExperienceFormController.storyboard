@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,8 +16,103 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qfk-IA-eUg" customClass="DesignableView" customModule="dayangsurga_macro" customModuleProvider="target">
+                                <rect key="frame" x="20.5" y="72" width="373" height="762"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jl2-aN-aQb" customClass="LabelWithTextField" customModule="dayangsurga_macro" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="100"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="G6f-lB-BB0"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BV6-Re-pdX" customClass="LabelWithTextField" customModule="dayangsurga_macro" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="100" width="373" height="100"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="x9K-qE-tMv"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Thg-nh-sy3" customClass="LabelWithSwitch" customModule="dayangsurga_macro" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="200" width="373" height="100"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="3Oq-ih-GGD"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8y-uB-HeL" customClass="LabelWithStartEndDate" customModule="dayangsurga_macro" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="300" width="373" height="120"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="tJR-TV-IfR"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tz3-Vw-ApA" customClass="LabelWithTextView" customModule="dayangsurga_macro" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="420" width="373" height="120"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="WO8-xX-dUp"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgs-BP-rzY">
+                                        <rect key="frame" x="0.0" y="540" width="373" height="80"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="adasfhksfksajfksjfksafkasfksajfkajkfjsakfjaskdasjdkasjdkjsakdsakldadsadsadsadsadsadsadsadsadsaddsadsadsa" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJ8-Mb-m7t">
+                                                <rect key="frame" x="9.5" y="4" width="354" height="72"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBrownColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="ClD-OP-oqb"/>
+                                            <constraint firstItem="LJ8-Mb-m7t" firstAttribute="centerY" secondItem="bgs-BP-rzY" secondAttribute="centerY" id="FYW-Ev-ayp"/>
+                                            <constraint firstItem="LJ8-Mb-m7t" firstAttribute="width" secondItem="bgs-BP-rzY" secondAttribute="width" multiplier="0.95" id="jCq-MB-SGv"/>
+                                            <constraint firstItem="LJ8-Mb-m7t" firstAttribute="centerX" secondItem="bgs-BP-rzY" secondAttribute="centerX" id="jq1-pr-e5Z"/>
+                                            <constraint firstItem="LJ8-Mb-m7t" firstAttribute="height" secondItem="bgs-BP-rzY" secondAttribute="height" multiplier="0.9" id="qnX-kB-3yL"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Jl2-aN-aQb" firstAttribute="leading" secondItem="Qfk-IA-eUg" secondAttribute="leading" id="4Kc-Sd-lmt"/>
+                                    <constraint firstItem="Tz3-Vw-ApA" firstAttribute="leading" secondItem="Qfk-IA-eUg" secondAttribute="leading" id="4tj-5y-DRo"/>
+                                    <constraint firstAttribute="trailing" secondItem="bgs-BP-rzY" secondAttribute="trailing" id="7ka-oy-rrs"/>
+                                    <constraint firstItem="z8y-uB-HeL" firstAttribute="leading" secondItem="Qfk-IA-eUg" secondAttribute="leading" id="CKi-89-Opn"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tz3-Vw-ApA" secondAttribute="trailing" id="CQO-oy-dum"/>
+                                    <constraint firstItem="BV6-Re-pdX" firstAttribute="top" secondItem="Jl2-aN-aQb" secondAttribute="bottom" id="Hkc-Ry-rCC"/>
+                                    <constraint firstAttribute="trailing" secondItem="BV6-Re-pdX" secondAttribute="trailing" id="INU-t9-CiE"/>
+                                    <constraint firstAttribute="trailing" secondItem="z8y-uB-HeL" secondAttribute="trailing" id="MRq-8j-y2C"/>
+                                    <constraint firstAttribute="trailing" secondItem="Thg-nh-sy3" secondAttribute="trailing" id="PC7-06-f6W"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jl2-aN-aQb" secondAttribute="trailing" id="VHm-Se-4b2"/>
+                                    <constraint firstItem="BV6-Re-pdX" firstAttribute="leading" secondItem="Qfk-IA-eUg" secondAttribute="leading" id="Yxn-Lk-Xa3"/>
+                                    <constraint firstItem="bgs-BP-rzY" firstAttribute="leading" secondItem="Qfk-IA-eUg" secondAttribute="leading" id="a6p-7O-J4o"/>
+                                    <constraint firstItem="Jl2-aN-aQb" firstAttribute="top" secondItem="Qfk-IA-eUg" secondAttribute="top" id="aOz-wV-orY"/>
+                                    <constraint firstItem="Tz3-Vw-ApA" firstAttribute="top" secondItem="z8y-uB-HeL" secondAttribute="bottom" id="aT6-sC-9ox"/>
+                                    <constraint firstItem="z8y-uB-HeL" firstAttribute="top" secondItem="Thg-nh-sy3" secondAttribute="bottom" id="dfc-kq-Shn"/>
+                                    <constraint firstItem="BV6-Re-pdX" firstAttribute="height" secondItem="Jl2-aN-aQb" secondAttribute="height" id="f5M-wm-AzT"/>
+                                    <constraint firstItem="bgs-BP-rzY" firstAttribute="top" secondItem="Tz3-Vw-ApA" secondAttribute="bottom" id="fNp-aJ-8vt"/>
+                                    <constraint firstItem="Thg-nh-sy3" firstAttribute="height" secondItem="BV6-Re-pdX" secondAttribute="height" id="ffU-Lh-m0n"/>
+                                    <constraint firstItem="Thg-nh-sy3" firstAttribute="top" secondItem="BV6-Re-pdX" secondAttribute="bottom" id="sAP-qi-QKP"/>
+                                    <constraint firstItem="Thg-nh-sy3" firstAttribute="leading" secondItem="Qfk-IA-eUg" secondAttribute="leading" id="xHR-pD-Rg0"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="primaryBG"/>
+                        <constraints>
+                            <constraint firstItem="Qfk-IA-eUg" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.9" id="3TZ-i2-Fyl"/>
+                            <constraint firstItem="Qfk-IA-eUg" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="8Q8-Xv-uaF"/>
+                            <constraint firstItem="Qfk-IA-eUg" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="mqD-f3-5P7"/>
+                            <constraint firstItem="Qfk-IA-eUg" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.85" id="rVV-nj-OWQ"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -25,8 +121,14 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="primaryBG">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
