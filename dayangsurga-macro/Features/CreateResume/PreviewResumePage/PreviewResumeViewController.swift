@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PDFKit
 
 class PreviewResumeViewController: MVVMViewController<PreviewResumeViewModel> {
 
