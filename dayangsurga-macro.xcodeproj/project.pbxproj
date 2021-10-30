@@ -52,6 +52,7 @@
 		BF2ABB4527270D4D00AAC6C2 /* LabelWithStartEndDate.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2ABB4427270D4D00AAC6C2 /* LabelWithStartEndDate.xib */; };
 		BF423DE7272BA396006DC552 /* XIBTes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF423DE6272BA396006DC552 /* XIBTes.storyboard */; };
 		BF423DE9272BA3B7006DC552 /* XIBTesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF423DE8272BA3B7006DC552 /* XIBTesViewController.swift */; };
+		BF423DEB272C52A2006DC552 /* ExperienceFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF423DEA272C52A2006DC552 /* ExperienceFormController.storyboard */; };
 		BF5F1BEA2722D5CA004D0756 /* PersonalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BE92722D5CA004D0756 /* PersonalInfoViewModel.swift */; };
 		BF5F1BEC2722D7F0004D0756 /* ResumeTemplateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5F1BEB2722D7F0004D0756 /* ResumeTemplateViewController.storyboard */; };
 		BF5F1BEE2722D805004D0756 /* ResumeTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BED2722D805004D0756 /* ResumeTemplateViewController.swift */; };
@@ -119,7 +120,6 @@
 		BF8503B52722BABF00CC43FB /* StepByStepGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8503B42722BABF00CC43FB /* StepByStepGuideViewModel.swift */; };
 		BF8503B92722BDCF00CC43FB /* HomepageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8503B72722BDCF00CC43FB /* HomepageController.swift */; };
 		BF8503BC2722BDE900CC43FB /* Homepage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8503BB2722BDE900CC43FB /* Homepage.storyboard */; };
-		BFBA47B2272ADE5600D4771E /* ExperienceFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFBA47B1272ADE5600D4771E /* ExperienceFormController.storyboard */; };
 		BFBA47B4272AE5C400D4771E /* ExperienceFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA47B3272AE5C400D4771E /* ExperienceFormController.swift */; };
 		BFE0035027272F450070BD40 /* LabelWithDate.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE0034F27272F450070BD40 /* LabelWithDate.xib */; };
 		BFE0035227272F500070BD40 /* LabelWithDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE0035127272F500070BD40 /* LabelWithDate.swift */; };
@@ -190,6 +190,7 @@
 		BF2ABB4427270D4D00AAC6C2 /* LabelWithStartEndDate.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelWithStartEndDate.xib; sourceTree = "<group>"; };
 		BF423DE6272BA396006DC552 /* XIBTes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = XIBTes.storyboard; sourceTree = "<group>"; };
 		BF423DE8272BA3B7006DC552 /* XIBTesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBTesViewController.swift; sourceTree = "<group>"; };
+		BF423DEA272C52A2006DC552 /* ExperienceFormController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExperienceFormController.storyboard; sourceTree = "<group>"; };
 		BF5F1BE92722D5CA004D0756 /* PersonalInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewModel.swift; sourceTree = "<group>"; };
 		BF5F1BEB2722D7F0004D0756 /* ResumeTemplateViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResumeTemplateViewController.storyboard; sourceTree = "<group>"; };
 		BF5F1BED2722D805004D0756 /* ResumeTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeTemplateViewController.swift; sourceTree = "<group>"; };
@@ -261,7 +262,6 @@
 		BF8503B42722BABF00CC43FB /* StepByStepGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepGuideViewModel.swift; sourceTree = "<group>"; };
 		BF8503B72722BDCF00CC43FB /* HomepageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageController.swift; sourceTree = "<group>"; };
 		BF8503BB2722BDE900CC43FB /* Homepage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Homepage.storyboard; sourceTree = "<group>"; };
-		BFBA47B1272ADE5600D4771E /* ExperienceFormController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExperienceFormController.storyboard; sourceTree = "<group>"; };
 		BFBA47B3272AE5C400D4771E /* ExperienceFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceFormController.swift; sourceTree = "<group>"; };
 		BFE0034F27272F450070BD40 /* LabelWithDate.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelWithDate.xib; sourceTree = "<group>"; };
 		BFE0035127272F500070BD40 /* LabelWithDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithDate.swift; sourceTree = "<group>"; };
@@ -556,8 +556,8 @@
 			children = (
 				BF8503A32722B80F00CC43FB /* ExperiencePageView.swift */,
 				BF8503A52722B81600CC43FB /* ExperiencePageView.xib */,
-				BFBA47B1272ADE5600D4771E /* ExperienceFormController.storyboard */,
 				BFBA47B3272AE5C400D4771E /* ExperienceFormController.swift */,
+				BF423DEA272C52A2006DC552 /* ExperienceFormController.storyboard */,
 				BF423DE6272BA396006DC552 /* XIBTes.storyboard */,
 				BF423DE8272BA3B7006DC552 /* XIBTesViewController.swift */,
 			);
@@ -953,7 +953,6 @@
 				BF5F1BF82722D977004D0756 /* PreviewResumeViewController.storyboard in Resources */,
 				BF8503AE2722B88500CC43FB /* AccomplishmentPageView.xib in Resources */,
 				BF85036327225DBB00CC43FB /* Colors.xcassets in Resources */,
-				BFBA47B2272ADE5600D4771E /* ExperienceFormController.storyboard in Resources */,
 				BF8503A22722B7F800CC43FB /* QuizPageView.xib in Resources */,
 				6722E2402726C7C3007315AB /* ExperienceTableCell.xib in Resources */,
 				BF5F1BEC2722D7F0004D0756 /* ResumeTemplateViewController.storyboard in Resources */,
@@ -963,6 +962,7 @@
 				BF8503B12722B9E700CC43FB /* StepByStepGuideViewController.storyboard in Resources */,
 				BF5F1BF22722D869004D0756 /* GenerateResumeViewController.storyboard in Resources */,
 				67280DBE27270E93006569DD /* AccomplishmentTableCell.xib in Resources */,
+				BF423DEB272C52A2006DC552 /* ExperienceFormController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1248,7 +1248,7 @@
 				INFOPLIST_FILE = "dayangsurga-macro/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = XIBTes;
+				INFOPLIST_KEY_UIMainStoryboardFile = ExperienceFormController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1277,7 +1277,7 @@
 				INFOPLIST_FILE = "dayangsurga-macro/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = XIBTes;
+				INFOPLIST_KEY_UIMainStoryboardFile = ExperienceFormController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

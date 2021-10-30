@@ -7,15 +7,24 @@
 
 import UIKit
 
+protocol SteByStepGuideDelegate {
+    func goToAddEdit(pageName: String)
+}
+
 class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var addEditButton: UIButton!
     @IBOutlet weak var expTableView: UITableView!
     
     @IBAction func addEditPressed(_ sender: UIButton) {
+        
     }
     
-    var cellSpacingHeight = 15.0
+    var expDlgt: ExperiencePageDelegate?
+    
+    func setup(expDlgt: ExperiencePageDelegate?) {
+        self.expDlgt = expDlgt
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,10 +57,7 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
-    
-    
-    
-    
+
     //MARK: TABLE VIEW
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
@@ -62,5 +68,10 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
+}
+
+extension ExperiencePageView: ExperiencePageDelegate {
+    func addExperience() {
+        //update table view
+    }
 }
