@@ -15,11 +15,14 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var addEditButton: UIButton!
     @IBOutlet weak var expTableView: UITableView!
+    @IBOutlet weak var emptyStateView: EmptyState!
+    
     
     @IBAction func addEditPressed(_ sender: UIButton) {
         
     }
     
+    var expDataCount = 1
     var expDlgt: ExperiencePageDelegate?
     
     func setup(expDlgt: ExperiencePageDelegate?) {
@@ -60,7 +63,14 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
 
     //MARK: TABLE VIEW
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        if expDataCount == 0 {
+            emptyStateView.emptyStateImage.image = UIImage.imgExpEmptyState
+            emptyStateView.emptyStateDescription.text = "You haven’t filled your professional experience. Click the ‘Add’ button to add your professional experience."
+            self.expTableView.backgroundView = emptyStateView
+        } else {
+            emptyStateView.isHidden = true
+        }
+        return expDataCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
