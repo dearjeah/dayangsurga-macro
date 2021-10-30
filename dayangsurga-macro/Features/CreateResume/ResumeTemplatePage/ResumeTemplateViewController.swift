@@ -23,21 +23,30 @@ class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> 
         // Do any additional setup after loading the view.
         resumeTemplateCollection.register(UINib.init(nibName: "ResumeTemplateCell", bundle: nil), forCellWithReuseIdentifier: "ResumeTemplateCell")
         selectResumeButton.dsLongFilledPrimaryButton(withImage: false, text: "Use Template")
+        
         let screenSize = UIScreen.main.bounds.size
         let collectionViewWidth = floor(screenSize.width*cellWidthScale)
-        print(collectionViewWidth)
         let collectionViewHeight = floor(screenSize.height*cellHeightScale)
-        print(collectionViewHeight)
         let insetX = (view.bounds.width - collectionViewWidth)/2.0
         let layout = resumeTemplateCollection?.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: collectionViewWidth, height: collectionViewHeight)
         resumeTemplateCollection.contentInset = UIEdgeInsets(top: 0, left: insetX, bottom: 0, right: insetX)
         self.navigationController?.navigationBar.barStyle = .default
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationItem.backBarButtonItem?.title = ""
         self.title = "New Resume"
        
     }
     
 
+    @IBAction func didTapButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "StepByStepGuideViewController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToStepByStep") as! StepByStepGuideViewController
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.titleView?.tintColor = .white
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     /*
     // MARK: - Navigation
 
