@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +13,7 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExperienceTableCell" id="KGk-i7-Jjw" customClass="ExperienceTableCell" customModule="dayangsurga_macro" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="361" height="133"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM" customClass="ExperienceTableCell" customModule="dayangsurga_macro" customModuleProvider="target">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="361" height="133"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -79,6 +80,7 @@
                         <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system" imagePlacement="trailing" title="Edit"/>
                     </button>
                 </subviews>
+                <color key="backgroundColor" name="primaryWhite"/>
                 <constraints>
                     <constraint firstItem="sU8-ki-lcF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="1rD-xg-AAd"/>
                     <constraint firstItem="79P-8U-HtQ" firstAttribute="top" secondItem="V1u-5e-Soc" secondAttribute="bottom" constant="4" id="9u9-yX-gaK"/>
@@ -93,17 +95,15 @@
                     <constraint firstAttribute="bottom" secondItem="hbI-eM-Qvm" secondAttribute="bottom" constant="12" id="pUD-iL-hDa"/>
                     <constraint firstAttribute="trailing" secondItem="dLx-Sp-skC" secondAttribute="trailing" constant="15" id="xEU-5k-aqx"/>
                 </constraints>
-                <connections>
-                    <outlet property="jobCompanyName" destination="V1u-5e-Soc" id="ipH-9c-twE"/>
-                    <outlet property="jobExperience" destination="zV3-gN-eoU" id="qDR-aP-tG2"/>
-                    <outlet property="jobTitle" destination="79P-8U-HtQ" id="qcg-aI-xg6"/>
-                </connections>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="editExperienceButton" destination="hbI-eM-Qvm" id="YAw-vZ-ZB9"/>
                 <outlet property="jobCompanyName" destination="V1u-5e-Soc" id="1ic-wo-9t6"/>
                 <outlet property="jobDesc" destination="sU8-ki-lcF" id="5Fk-ur-8mT"/>
+                <outlet property="jobExperience" destination="zV3-gN-eoU" id="Kx4-cx-D0n"/>
+                <outlet property="jobTitle" destination="79P-8U-HtQ" id="d6q-BJ-YSR"/>
                 <outlet property="selectExperienceButton" destination="dLx-Sp-skC" id="e9V-4V-sZq"/>
             </connections>
             <point key="canvasLocation" x="132" y="100"/>
@@ -112,5 +112,8 @@
     <resources>
         <image name="icRoundSelectionNoFill" width="24" height="24"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
+        <namedColor name="primaryWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

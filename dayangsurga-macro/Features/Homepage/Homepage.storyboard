@@ -63,16 +63,16 @@
         <scene sceneID="h70-Z2-sZj">
             <objects>
                 <navigationController id="y03-MT-H2B" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="User" image="person.circle.fill" landscapeImage="person.circle.fill" catalog="system" selectedImage="person.circle.fill" id="st2-mi-dVC"/>
+                    <tabBarItem key="tabBarItem" title="User" image="person.circle.fill" catalog="system" landscapeImage="person.circle.fill" selectedImage="person.circle.fill" id="st2-mi-dVC"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="gUd-g7-Zif">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="primaryBlue"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="primaryYellow"/>
+                            <color key="textColor" name="primaryWhite"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" name="primaryYellow"/>
+                            <color key="textColor" name="primaryWhite"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -95,10 +95,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="primaryBlue"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="primaryYellow"/>
+                            <color key="textColor" name="primaryWhite"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" name="primaryYellow"/>
+                            <color key="textColor" name="primaryWhite"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -113,16 +113,16 @@
         <scene sceneID="JVT-Cw-th7">
             <objects>
                 <navigationController id="ek9-tS-dju" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Resume" image="doc.text.fill" landscapeImage="doc.text.fill" catalog="system" selectedImage="doc.text.fill" id="Xrt-o4-jSA"/>
+                    <tabBarItem key="tabBarItem" title="Resume" image="doc.text.fill" catalog="system" landscapeImage="doc.text.fill" selectedImage="doc.text.fill" id="Xrt-o4-jSA"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="gmV-Wb-dfv">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="primaryBlue"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" name="primaryYellow"/>
+                            <color key="textColor" name="primaryWhite"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" name="primaryYellow"/>
+                            <color key="textColor" name="primaryWhite"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -136,12 +136,13 @@
     </scenes>
     <resources>
         <image name="bubble.left.and.bubble.right.fill" catalog="system" width="128" height="97"/>
-        <image name="doc.text.fill" width="128" height="128"/>
         <image name="doc.text.fill" catalog="system" width="115" height="128"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="person.circle.fill" width="128" height="128"/>
         <namedColor name="primaryBlue">
             <color red="0.097999997437000275" green="0.16500000655651093" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primaryYellow">
             <color red="1" green="0.71799999475479126" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
