@@ -11,6 +11,7 @@ class LabelWithTextView: UIView {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var cueLabel: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,8 +46,8 @@ class LabelWithTextView: UIView {
     }
 
     func setupTextView(){
-        textView.layer.cornerRadius = 18
+        textView.layer.cornerRadius = 10
         textView.layer.borderWidth = 1.0
-        textView.layer.borderColor = UIColor.primaryBlue.cgColor
+        textView.layer.borderColor = UIColor.primaryDisable.cgColor
     }
 }
