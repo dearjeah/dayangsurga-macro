@@ -18,7 +18,7 @@ class TechnicalSkillsEditCell: UITableViewCell {
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 17
         self.layer.borderColor = UIColor.primaryBlue.cgColor
-        deleteSkillButton.isHidden = true
+        //deleteSkillButton.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
