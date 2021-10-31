@@ -20,13 +20,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9d2-F8-lQ1">
-                    <rect key="frame" x="16" y="5" width="382" height="26"/>
+                    <rect key="frame" x="8" y="5" width="398" height="27"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" name="primaryBlue"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vVR-Ma-4pt">
-                    <rect key="frame" x="16" y="36" width="382" height="41"/>
+                    <rect key="frame" x="8" y="36" width="398" height="41"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="41" id="4eP-qt-Kxu"/>
                     </constraints>
@@ -38,12 +38,12 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="vVR-Ma-4pt" secondAttribute="bottom" constant="16" id="4vq-a3-yOG"/>
-                <constraint firstAttribute="trailing" secondItem="9d2-F8-lQ1" secondAttribute="trailing" constant="16" id="4wn-x4-qOm"/>
-                <constraint firstItem="9d2-F8-lQ1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="6op-vq-gWU"/>
-                <constraint firstItem="vVR-Ma-4pt" firstAttribute="top" secondItem="9d2-F8-lQ1" secondAttribute="bottom" constant="5" id="AxY-HM-uhZ"/>
+                <constraint firstAttribute="trailing" secondItem="9d2-F8-lQ1" secondAttribute="trailing" constant="8" id="4wn-x4-qOm"/>
+                <constraint firstItem="9d2-F8-lQ1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="6op-vq-gWU"/>
+                <constraint firstItem="vVR-Ma-4pt" firstAttribute="top" secondItem="9d2-F8-lQ1" secondAttribute="bottom" constant="4" id="AxY-HM-uhZ"/>
                 <constraint firstItem="9d2-F8-lQ1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="HN4-Af-cYn"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vVR-Ma-4pt" secondAttribute="trailing" constant="16" id="OnC-AS-U5S"/>
-                <constraint firstItem="vVR-Ma-4pt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="Z73-QU-AKM"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vVR-Ma-4pt" secondAttribute="trailing" constant="8" id="OnC-AS-U5S"/>
+                <constraint firstItem="vVR-Ma-4pt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="Z73-QU-AKM"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="131.8840579710145" y="369.30803571428572"/>
