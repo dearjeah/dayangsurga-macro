@@ -46,8 +46,8 @@ class LabelWithTextView: UIView {
     }
 
     func setupTextView(){
-        textView.layer.cornerRadius = 10
+        textView.layer.cornerRadius = 5
         textView.layer.borderWidth = 1.0
-        textView.layer.borderColor = UIColor.primaryDisable.cgColor
+        textView.layer.borderColor = UIColor.textviewBorder.cgColor
     }
 }
