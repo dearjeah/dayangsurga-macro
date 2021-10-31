@@ -91,7 +91,6 @@ extension ResumeTemplateViewController: UICollectionViewDelegate, UICollectionVi
         currentPage = Int(roundedIndex)
         
         resumeTemplatePageController.currentPage = currentPage
-        print(resumeTemplatePageController.currentPage)
         targetContentOffset.pointee = offset
         
         
