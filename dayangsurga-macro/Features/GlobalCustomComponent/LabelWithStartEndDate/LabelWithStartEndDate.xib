@@ -100,24 +100,30 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cv-Zk-JvR">
-                    <rect key="frame" x="16" y="5" width="382" height="30"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cv-Zk-JvR">
+                    <rect key="frame" x="8" y="5" width="398" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="RAs-uU-Fx4"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" name="primaryBlue"/>
+                    <attributedString key="attributedText">
+                        <fragment content="Label">
+                            <attributes>
+                                <color key="NSColor" name="primaryBlue"/>
+                                <font key="NSFont" size="15" name="SFProDisplay-Regular"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="1Cv-Zk-JvR" secondAttribute="trailing" constant="16" id="PYV-av-fE4"/>
+                <constraint firstAttribute="trailing" secondItem="1Cv-Zk-JvR" secondAttribute="trailing" constant="8" id="PYV-av-fE4"/>
                 <constraint firstItem="1Cv-Zk-JvR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="UOi-MQ-sVb"/>
                 <constraint firstAttribute="trailing" secondItem="BE5-dP-xhI" secondAttribute="trailing" constant="8" id="V2O-N4-yZk"/>
                 <constraint firstItem="BE5-dP-xhI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="oRg-dH-WFR"/>
                 <constraint firstItem="BE5-dP-xhI" firstAttribute="top" secondItem="1Cv-Zk-JvR" secondAttribute="bottom" constant="5" id="rbM-FI-ATL"/>
-                <constraint firstItem="1Cv-Zk-JvR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="yvv-fk-hbH"/>
+                <constraint firstItem="1Cv-Zk-JvR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="yvv-fk-hbH"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="131.8840579710145" y="320.42410714285711"/>

@@ -19,25 +19,39 @@
             <rect key="frame" x="0.0" y="0.0" width="311" height="72"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aS-Rv-Vh7">
-                    <rect key="frame" x="16" y="15" width="279" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" name="primaryBlue"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aS-Rv-Vh7">
+                    <rect key="frame" x="8" y="15" width="295" height="17.5"/>
+                    <attributedString key="attributedText">
+                        <fragment content="Label">
+                            <attributes>
+                                <color key="NSColor" name="primaryBlue"/>
+                                <font key="NSFont" size="15" name="SFProDisplay-Regular"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lkI-a4-VNK">
-                    <rect key="frame" x="16" y="35.5" width="279" height="20.5"/>
+                    <rect key="frame" x="12" y="32.5" width="287" height="20"/>
                     <subviews>
                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jfj-q5-UNq">
-                            <rect key="frame" x="230" y="-5" width="51" height="31"/>
+                            <rect key="frame" x="238" y="-5.5" width="51" height="31"/>
                             <color key="onTintColor" name="primaryYellow"/>
                             <connections>
                                 <action selector="switchPressed:" destination="-1" eventType="valueChanged" id="9LR-A1-Ew2"/>
                             </connections>
                         </switch>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmT-RQ-aQK">
-                            <rect key="frame" x="0.0" y="0.0" width="41.5" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmT-RQ-aQK">
+                            <rect key="frame" x="0.0" y="0.0" width="42" height="20"/>
+                            <attributedString key="attributedText">
+                                <fragment content="Label">
+                                    <attributes>
+                                        <color key="NSColor" red="0.12156862745098039" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="17" name="SFProDisplay-Regular"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -56,11 +70,11 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="lkI-a4-VNK" firstAttribute="top" secondItem="7aS-Rv-Vh7" secondAttribute="bottom" id="LkY-2u-xSI"/>
-                <constraint firstAttribute="trailing" secondItem="7aS-Rv-Vh7" secondAttribute="trailing" constant="16" id="hMy-0A-s5a"/>
-                <constraint firstItem="7aS-Rv-Vh7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="kwA-IX-zMQ"/>
-                <constraint firstAttribute="trailing" secondItem="lkI-a4-VNK" secondAttribute="trailing" constant="16" id="pcl-iX-Dh9"/>
+                <constraint firstAttribute="trailing" secondItem="7aS-Rv-Vh7" secondAttribute="trailing" constant="8" id="hMy-0A-s5a"/>
+                <constraint firstItem="7aS-Rv-Vh7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="kwA-IX-zMQ"/>
+                <constraint firstAttribute="trailing" secondItem="lkI-a4-VNK" secondAttribute="trailing" constant="12" id="pcl-iX-Dh9"/>
                 <constraint firstItem="7aS-Rv-Vh7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="tFc-28-qmV"/>
-                <constraint firstItem="lkI-a4-VNK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="vHS-gw-rxh"/>
+                <constraint firstItem="lkI-a4-VNK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="vHS-gw-rxh"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="57.24637681159421" y="622.09821428571422"/>
