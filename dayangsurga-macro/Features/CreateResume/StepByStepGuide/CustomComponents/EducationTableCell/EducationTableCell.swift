@@ -9,13 +9,13 @@ import UIKit
 
 class EducationTableCell: UITableViewCell {
     var selectionStatus = false
-    
+    static let identifier = "EducationTableCell"
     @IBOutlet weak var institutionName: UILabel!
     @IBOutlet weak var educationTitle: UILabel!
     @IBOutlet weak var educationPeriod: UILabel!
     @IBOutlet weak var educationGPA: UILabel!
     @IBOutlet weak var educationActivities: UILabel!
-    
+    @IBOutlet weak var shadowView: DesignableButton!
     @IBOutlet weak var selectionButton: UIButton!
     @IBOutlet weak var editEducationButton: UIButton!
     
@@ -42,6 +42,14 @@ class EducationTableCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
+    }
+    
+    override func layoutSubviews() {
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0))
+    }
+    
+    static func nib() -> UINib {
+        return UINib(nibName: "EducationTableCell", bundle: nil)
     }
     
 }
