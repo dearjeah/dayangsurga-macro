@@ -25,15 +25,25 @@ class ExperienceFormController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scroller.contentSize = CGSize(width: 400, height: 2300)
-
-        addExpBtn.dsLongFilledPrimaryButton(withImage: false, text: "Add Experience")
+        setup()
     }
     
     
     @IBAction func addExperiencePressed(_ sender: UIButton) {
         expDelegate?.addExperience()
         //add/update to core data
+    }
+    
+    func setup(){
+        companyName.titleLabel.text = "Company Name*"
+        jobTitle.titleLabel.text = "Job Title*"
+        jobStatus.titleLabel.text = "Job Status*"
+        jobStatus.switchTitle.text = "Currently Working Here"
+        jobPeriod.titleLabel.text = "Job Period*"
+        jobSummary.titleLabel.text = "Job Summary*"
+        //jobSummary.titleLabel.text = "Describe what you have done before that matches with the job qualifications, make sure you use action verbs."
+        addExpBtn.dsLongFilledPrimaryButton(withImage: false, text: "Add Experience")
+        
     }
     
     
