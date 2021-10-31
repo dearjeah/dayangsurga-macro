@@ -32,21 +32,12 @@ class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> 
         layout.itemSize = CGSize(width: collectionViewWidth, height: collectionViewHeight)
         resumeTemplateCollection.contentInset = UIEdgeInsets(top: 0, left: insetX, bottom: 0, right: insetX)
         self.navigationController?.navigationBar.barStyle = .default
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationItem.backBarButtonItem?.title = ""
-        self.title = "New Resume"
-       
+        self.navigationController?.view.tintColor = UIColor.white
+        self.navigationItem.title = "Resume Template"
+        self.navigationItem.backButtonTitle = "Template"
+
     }
     
-
-    @IBAction func didTapButton(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "StepByStepGuideViewController", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "goToStepByStep") as! StepByStepGuideViewController
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.navigationItem.titleView?.tintColor = .white
-        self.tabBarController?.tabBar.isHidden = true
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
     /*
     // MARK: - Navigation
 
@@ -56,6 +47,16 @@ class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> 
         // Pass the selected object to the new view controller.
     }
     */
+
+    @IBAction func didTapButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "StepByStepGuideViewController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToStepByStep") as! StepByStepGuideViewController
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.titleView?.tintColor = .white
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.pushViewController(vc, animated: true)
+       
+    }
 
 }
 
@@ -81,7 +82,6 @@ extension ResumeTemplateViewController: UICollectionViewDelegate, UICollectionVi
       
         let layout = self.resumeTemplateCollection?.collectionViewLayout as! UICollectionViewFlowLayout
         let widthWithSpacing = layout.itemSize.width + layout.minimumLineSpacing
-        print(widthWithSpacing)
         var offset = targetContentOffset.pointee
         let index = (offset.x + scrollView.contentInset.left)/widthWithSpacing
         
@@ -91,7 +91,6 @@ extension ResumeTemplateViewController: UICollectionViewDelegate, UICollectionVi
         currentPage = Int(roundedIndex)
         
         resumeTemplatePageController.currentPage = currentPage
-        print(resumeTemplatePageController.currentPage)
         targetContentOffset.pointee = offset
         
         
