@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6712CF9D272EABF600449991 /* PDFCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6712CF9C272EABF600449991 /* PDFCreator.swift */; };
 		6722E23F2726C7C3007315AB /* ExperienceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722E23D2726C7C3007315AB /* ExperienceTableCell.swift */; };
 		6722E2402726C7C3007315AB /* ExperienceTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6722E23E2726C7C3007315AB /* ExperienceTableCell.xib */; };
 		67280DB22726D0DF006569DD /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67280DB12726D0DF006569DD /* EmptyState.swift */; };
@@ -149,6 +150,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6712CF9C272EABF600449991 /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
 		6722E23D2726C7C3007315AB /* ExperienceTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceTableCell.swift; sourceTree = "<group>"; };
 		6722E23E2726C7C3007315AB /* ExperienceTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExperienceTableCell.xib; sourceTree = "<group>"; };
 		67280DB12726D0DF006569DD /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
@@ -623,6 +625,7 @@
 				BF5F1BF72722D977004D0756 /* PreviewResumeViewController.storyboard */,
 				BF5F1BF92722D983004D0756 /* PreviewResumeViewController.swift */,
 				BF5F1BFB2722D9A0004D0756 /* PreviewResumeViewModel.swift */,
+				6712CF9C272EABF600449991 /* PDFCreator.swift */,
 			);
 			path = PreviewResumePage;
 			sourceTree = "<group>";
@@ -1076,6 +1079,7 @@
 				BF8503882722B36700CC43FB /* PreloadData.swift in Sources */,
 				B859B5452728533600627CDC /* PreloadEmptyStateData.swift in Sources */,
 				67280DB727270D72006569DD /* YesNoSwipeView.swift in Sources */,
+				6712CF9D272EABF600449991 /* PDFCreator.swift in Sources */,
 				B859B5462728533600627CDC /* PreloadExperienceData.swift in Sources */,
 				B859B539272852EF00627CDC /* PersonalInformationPlaceholderRepository.swift in Sources */,
 				BF8503AC2722B86400CC43FB /* AccomplishmentPageView.swift in Sources */,

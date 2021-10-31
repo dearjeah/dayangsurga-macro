@@ -25,6 +25,16 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
         // Do any additional setup after loading the view.
     }
   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as? PreviewResumeViewController
+        let dataInput = "Test"
+        
+        let pdfCreator = PDFCreator(
+            dataInput: dataInput
+        )
+        
+        vc?.documentData = pdfCreator.createFlyer()
+    }
     
     @IBAction func previewDidTap(_ sender: Any) {
         let storyboard = UIStoryboard(name: "PreviewResumeViewController", bundle: nil)
