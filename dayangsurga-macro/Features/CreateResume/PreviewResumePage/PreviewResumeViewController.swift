@@ -9,13 +9,17 @@ import UIKit
 import PDFKit
 
 class PreviewResumeViewController: MVVMViewController<PreviewResumeViewModel> {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+    @IBOutlet weak var pdfView: PDFView!
+    var dataInput = "Test"
+    public var documentData: Data?
     
+    override func viewDidLoad() {
+      super.viewDidLoad()
+      if let data = documentData {
+        pdfView.document = PDFDocument(data: data)
+        pdfView.autoScales = true
+      }
+    }
 
     /*
     // MARK: - Navigation
