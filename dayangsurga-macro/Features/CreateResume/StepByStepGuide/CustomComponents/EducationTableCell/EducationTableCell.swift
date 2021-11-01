@@ -22,8 +22,9 @@ class EducationTableCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.layer.borderWidth = 1
-        self.layer.cornerRadius = 17
+        shadowView.layer.borderWidth = 1
+        shadowView.layer.cornerRadius = 17
+        selectionButton.setImage(UIImage(named: "icRoundSelectionFilled"), for: .normal)
 //        contentView.layer.borderColor = UIColor.primaryBlue.cgColor
         
     }
@@ -31,11 +32,11 @@ class EducationTableCell: UITableViewCell {
         if selectionStatus == false{
             selectionStatus = true
             selectionButton.setImage(UIImage(named: "icRoundSelectionFilled"), for: .normal)
-            self.layer.borderColor = UIColor.primaryBlue.cgColor
+            shadowView.layer.borderColor = UIColor.primaryBlue.cgColor
         }else{
             selectionStatus = false
             selectionButton.setImage(UIImage(named: "icRoundSelectionNoFill"), for: .normal)
-            self.layer.borderColor = UIColor.clear.cgColor
+            shadowView.layer.borderColor = UIColor.clear.cgColor
         }
     }
     

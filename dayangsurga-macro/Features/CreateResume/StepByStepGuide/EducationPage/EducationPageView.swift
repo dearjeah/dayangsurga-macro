@@ -13,6 +13,7 @@ protocol ListEduDelegate: AnyObject{
 
 class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var emptyStateView: EmptyState!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
@@ -69,20 +70,14 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if totalData != 0 {
+            emptyStateView.isHidden = true
             return 2
         } else {
-            let height = self.frame.height
-            let width = self.frame.width
-//            let positionX = superview?.bounds.midX ?? 0
-//            let positionY = superview?.bounds.midY ?? 0
-            
-            let emptyStateView = EmptyState(frame: CGRect(x: width, y: height, width: width, height: height))
-            print("x axes= \(self.bounds.midX)")
-            print("y axes= \(self.bounds.midY)")
-//            emptyStateView.frame.origin = emptyStateView.frame.origin
-            emptyStateView.frame.size = CGSize(width: self.frame.width, height: self.frame.height)
-            emptyStateView.center = emptyStateView.convert(emptyStateView.center, from: emptyStateView)
-            emptyStateView.emptyStateImage.image = UIImage.imgEmptyStateEdu
+            emptyStateView.isHidden = false
+            emptyStateView.emptyStateImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
+            emptyStateView.emptyStateImage.contentMode = .scaleAspectFit
+            emptyStateView.emptyStateImage.clipsToBounds = true
+            emptyStateView.emptyStateImage.image = UIImage(named: "imgEmptyStateEdu")
             emptyStateView.emptyStateDescription.text = "You haven’t filled your educational history. Click the ‘Add’ button to add your educational information."
             self.tableView.backgroundView = emptyStateView
         }
@@ -93,8 +88,6 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EducationTableCell.identifier, for: indexPath) as? EducationTableCell else {
             return UITableViewCell()
         }
-//        cell.content.layer.backgroundColor = UIColor.clear.cgColor
-//        cell.layer.backgroundColor = UIColor.clear.cgColor
         cell.institutionName.text = "Universitas Kami"
         cell.educationTitle.text = "B.A in Finance"
         cell.educationPeriod.text = "August 2020 - Present"
@@ -104,7 +97,7 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 180 // 160 + UIEdgeInsets (+20 bottom)
+        return 180 // 160 + UIEdgeInsets (+12 bottom)
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

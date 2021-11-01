@@ -33,9 +33,9 @@ class EducationFormController: UIViewController {
     }
     
     func setView(){
-        self.title = "Professional Experience"
+        self.title = "Education"
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        scrollView.contentSize = CGSize(width: 400, height: 2300)
+//        scrollView.contentSize = CGSize(width: 400, height: 2300)
         addOrDeleteButton.dsLongFilledPrimaryButton(withImage: false, text: "Add Education")
     }
     
