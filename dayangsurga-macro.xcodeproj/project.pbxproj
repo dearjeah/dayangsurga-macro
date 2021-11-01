@@ -23,12 +23,6 @@
 		679DBEA32723FAAD00CE9E8F /* ResumeTemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679DBEA12723FAAD00CE9E8F /* ResumeTemplateCell.xib */; };
 		679DBEAA272410F900CE9E8F /* EducationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DBEA8272410F900CE9E8F /* EducationTableCell.swift */; };
 		679DBEAB272410F900CE9E8F /* EducationTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679DBEA9272410F900CE9E8F /* EducationTableCell.xib */; };
-		B809D01A272F0D5800207456 /* EducationFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B809D018272F0D5800207456 /* EducationFormController.storyboard */; };
-		B809D01B272F0D5800207456 /* EducationFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B809D019272F0D5800207456 /* EducationFormController.swift */; };
-		B809D037272FDEA300207456 /* EducationListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B809D036272FDEA300207456 /* EducationListController.swift */; };
-		B809D039272FDEB500207456 /* EducationListController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B809D038272FDEB500207456 /* EducationListController.storyboard */; };
-		B809D01E272F6B1700207456 /* AccomplishFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B809D01D272F6B1700207456 /* AccomplishFormController.swift */; };
-		B809D020272F6B2900207456 /* AccomplishFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B809D01F272F6B2900207456 /* AccomplishFormController.storyboard */; };
 		B859B535272852EF00627CDC /* EmptyStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52B272852EE00627CDC /* EmptyStateRepository.swift */; };
 		B859B537272852EF00627CDC /* ResumeTemplateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */; };
 		B859B538272852EF00627CDC /* ExperiencePlaceholderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52E272852EF00627CDC /* ExperiencePlaceholderRepository.swift */; };
@@ -171,12 +165,6 @@
 		679DBEA12723FAAD00CE9E8F /* ResumeTemplateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeTemplateCell.xib; sourceTree = "<group>"; };
 		679DBEA8272410F900CE9E8F /* EducationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationTableCell.swift; sourceTree = "<group>"; };
 		679DBEA9272410F900CE9E8F /* EducationTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EducationTableCell.xib; sourceTree = "<group>"; };
-		B809D018272F0D5800207456 /* EducationFormController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EducationFormController.storyboard; sourceTree = "<group>"; };
-		B809D019272F0D5800207456 /* EducationFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationFormController.swift; sourceTree = "<group>"; };
-		B809D036272FDEA300207456 /* EducationListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationListController.swift; sourceTree = "<group>"; };
-		B809D038272FDEB500207456 /* EducationListController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EducationListController.storyboard; sourceTree = "<group>"; };
-		B809D01D272F6B1700207456 /* AccomplishFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomplishFormController.swift; sourceTree = "<group>"; };
-		B809D01F272F6B2900207456 /* AccomplishFormController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccomplishFormController.storyboard; sourceTree = "<group>"; };
 		B859B52B272852EE00627CDC /* EmptyStateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateRepository.swift; sourceTree = "<group>"; };
 		B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumeTemplateRepository.swift; sourceTree = "<group>"; };
 		B859B52E272852EF00627CDC /* ExperiencePlaceholderRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperiencePlaceholderRepository.swift; sourceTree = "<group>"; };
@@ -384,20 +372,6 @@
 				6722E23E2726C7C3007315AB /* ExperienceTableCell.xib */,
 			);
 			path = ExperienceTableCell;
-			sourceTree = "<group>";
-		};
-		B809D017272F0D5800207456 /* Form */ = {
-			isa = PBXGroup;
-			children = (
-				B809D018272F0D5800207456 /* EducationFormController.storyboard */,
-				B809D019272F0D5800207456 /* EducationFormController.swift */,
-		B809D01C272F6AFC00207456 /* Form */ = {
-			isa = PBXGroup;
-			children = (
-				B809D01D272F6B1700207456 /* AccomplishFormController.swift */,
-				B809D01F272F6B2900207456 /* AccomplishFormController.storyboard */,
-			);
-			path = Form;
 			sourceTree = "<group>";
 		};
 		BF2ABB2B2726EDB900AAC6C2 /* SmallSetButton */ = {
@@ -617,7 +591,6 @@
 		BF8503462722569F00CC43FB /* AccomplishmentPage */ = {
 			isa = PBXGroup;
 			children = (
-				B809D01C272F6AFC00207456 /* Form */,
 				BF8503AB2722B86400CC43FB /* AccomplishmentPageView.swift */,
 				BF8503AD2722B88500CC43FB /* AccomplishmentPageView.xib */,
 			);
@@ -968,9 +941,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B809D01A272F0D5800207456 /* EducationFormController.storyboard in Resources */,
-				B809D039272FDEB500207456 /* EducationListController.storyboard in Resources */,
-				B809D020272F6B2900207456 /* AccomplishFormController.storyboard in Resources */,
 				BF85039E2722B7C300CC43FB /* EducationPageView.xib in Resources */,
 				BF423DE7272BA396006DC552 /* XIBTes.storyboard in Resources */,
 				BF2ABB312726F02C00AAC6C2 /* SmallSetButton.xib in Resources */,
@@ -1072,7 +1042,6 @@
 				BF8503A02722B7EE00CC43FB /* QuizPageView.swift in Sources */,
 				BF8503502722594C00CC43FB /* LandingPageViewModel.swift in Sources */,
 				BF423DE9272BA3B7006DC552 /* XIBTesViewController.swift in Sources */,
-				B809D01E272F6B1700207456 /* AccomplishFormController.swift in Sources */,
 				679DBEAA272410F900CE9E8F /* EducationTableCell.swift in Sources */,
 				B859B538272852EF00627CDC /* ExperiencePlaceholderRepository.swift in Sources */,
 				BF85038C2722B58A00CC43FB /* ProgressBarView.swift in Sources */,
