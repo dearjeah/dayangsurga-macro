@@ -1,50 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccomplishmentTableCell" id="KGk-i7-Jjw" customClass="AccomplishmentTableCell" customModule="dayangsurga_macro" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="AccomplishmentTableCell" customModule="dayangsurga_macro" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="353" height="83"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="353" height="83"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qEw-Qx-gxg" customClass="DesignableButton" customModule="dayangsurga_macro" customModuleProvider="target">
-                        <rect key="frame" x="3.5" y="1.5" width="346" height="80"/>
-                        <color key="backgroundColor" name="primaryWhite"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="17"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                <color key="value" systemColor="tertiaryLabelColor"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                <size key="value" width="1.5" height="2.5"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                <real key="value" value="0.29999999999999999"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                <real key="value" value="10"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
-                                <real key="value" value="6"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="shadowSpread">
-                                <real key="value" value="20"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzY-Pa-nEF">
                         <rect key="frame" x="22" y="12" width="283" height="20"/>
                         <constraints>
@@ -73,9 +44,6 @@
                         </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="icRoundSelectionNoFill"/>
-                        <connections>
-                            <action selector="selectAccomplishment:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3F7-gf-mwt"/>
-                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dqp-UO-TXY">
                         <rect key="frame" x="303" y="56" width="39" height="15"/>
@@ -86,9 +54,6 @@
                         <color key="tintColor" red="0.098039215690000001" green="0.1647058824" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system" imagePlacement="trailing" title="Edit"/>
-                        <connections>
-                            <action selector="editAccomplishment:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="FNY-Xd-U9x"/>
-                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHR-5E-ycJ">
                         <rect key="frame" x="22" y="36" width="283" height="16"/>
@@ -101,50 +66,32 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="wzY-Pa-nEF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="1d5-tH-cBc"/>
                     <constraint firstItem="Qbt-jv-PRw" firstAttribute="top" secondItem="VHR-5E-ycJ" secondAttribute="bottom" constant="4" id="2la-lJ-5Fe"/>
                     <constraint firstItem="VHR-5E-ycJ" firstAttribute="top" secondItem="wzY-Pa-nEF" secondAttribute="bottom" constant="4" id="ABR-fB-AQo"/>
                     <constraint firstItem="wzY-Pa-nEF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="Eeg-1t-fdL"/>
                     <constraint firstAttribute="bottom" secondItem="Dqp-UO-TXY" secondAttribute="bottom" constant="12" id="FF1-W5-7c6"/>
-                    <constraint firstItem="qEw-Qx-gxg" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.96" id="FwO-CX-ObM"/>
-                    <constraint firstItem="qEw-Qx-gxg" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="JTJ-xU-85F"/>
                     <constraint firstAttribute="trailing" secondItem="Dqp-UO-TXY" secondAttribute="trailing" constant="11" id="KJd-bg-Gcr"/>
                     <constraint firstItem="Qbt-jv-PRw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="Q4H-sn-38X"/>
-                    <constraint firstItem="qEw-Qx-gxg" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.98" id="WSc-pe-aCR"/>
-                    <constraint firstItem="qEw-Qx-gxg" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="XBF-jD-oeM"/>
                     <constraint firstItem="VHR-5E-ycJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="ekx-a2-z06"/>
                     <constraint firstItem="X9X-H4-j4e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="gcy-md-3Bk"/>
                     <constraint firstAttribute="trailing" secondItem="X9X-H4-j4e" secondAttribute="trailing" constant="10" id="xlQ-n3-d91"/>
                 </constraints>
-                <userDefinedRuntimeAttributes>
-                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                        <integer key="value" value="17"/>
-                    </userDefinedRuntimeAttribute>
-                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="awardDate" destination="VHR-5E-ycJ" id="Qcp-P7-CH3"/>
                 <outlet property="awardIssuer" destination="Qbt-jv-PRw" id="qbu-5W-qLd"/>
                 <outlet property="awardName" destination="wzY-Pa-nEF" id="zj5-XB-bQs"/>
                 <outlet property="editAwardButton" destination="Dqp-UO-TXY" id="eOt-pk-thi"/>
                 <outlet property="selectionButton" destination="X9X-H4-j4e" id="xXJ-w9-iVa"/>
-                <outlet property="shadowView" destination="qEw-Qx-gxg" id="qOS-6i-cnk"/>
             </connections>
-            <point key="canvasLocation" x="131.15942028985509" y="99.441964285714278"/>
+            <point key="canvasLocation" x="132" y="100"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="icRoundSelectionNoFill" width="24" height="24"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
-        <namedColor name="primaryWhite">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>
