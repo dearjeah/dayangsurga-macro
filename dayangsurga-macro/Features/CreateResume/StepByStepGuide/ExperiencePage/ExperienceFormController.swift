@@ -41,7 +41,7 @@ class ExperienceFormController: UIViewController {
         jobStatus.switchTitle.text = "Currently Working Here"
         jobPeriod.titleLabel.text = "Job Period*"
         jobSummary.titleLabel.text = "Job Summary*"
-        //jobSummary.titleLabel.text = "Describe what you have done before that matches with the job qualifications, make sure you use action verbs."
+        jobSummary.cueLabel.text = "Describe what you have done before that matches with the job qualifications, make sure you use action verbs."
         addExpBtn.dsLongFilledPrimaryButton(withImage: false, text: "Add Experience")
         
     }
