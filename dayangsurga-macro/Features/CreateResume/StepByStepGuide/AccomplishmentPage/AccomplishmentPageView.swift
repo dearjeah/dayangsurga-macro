@@ -9,9 +9,10 @@ import UIKit
 
 class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var emptyStateView: EmptyState!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIButton!
-    var totalData = 1
+    var totalData = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,9 +65,10 @@ class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if totalData != 0 {
+            emptyStateView.isHidden = true
             return 2
         } else {
-            let emptyStateView = EmptyState(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+            emptyStateView.isHidden = false
             emptyStateView.emptyStateImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
             emptyStateView.emptyStateImage.contentMode = .scaleAspectFill
             emptyStateView.emptyStateImage.clipsToBounds = true
