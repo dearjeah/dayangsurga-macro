@@ -9,8 +9,23 @@ import UIKit
 
 class TechnicalSkillsListCell: UITableViewCell {
 
+    var selectionStatus = false
+    
     @IBOutlet weak var skillName: UILabel!
     @IBOutlet weak var selectionButton: UIButton!
+    
+    
+    @IBAction func selectButtonPressed(_ sender: UIButton) {
+        if selectionStatus == false{
+            selectionStatus = true
+            selectionButton.setImage(UIImage(named: "icRoundSelectionFilled"), for: .normal)
+            self.layer.borderColor = UIColor.primaryBlue.cgColor
+        }else{
+            selectionStatus = false
+            selectionButton.setImage(UIImage(named: "icRoundSelectionNoFill"), for: .normal)
+            self.layer.borderColor = UIColor.clear.cgColor
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

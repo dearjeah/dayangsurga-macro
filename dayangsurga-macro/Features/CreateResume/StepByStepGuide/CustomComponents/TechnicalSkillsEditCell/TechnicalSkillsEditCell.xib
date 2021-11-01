@@ -3,52 +3,89 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="skillEditCell" id="KGk-i7-Jjw" customClass="TechnicalSkillsEditCell" customModule="dayangsurga_macro" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="342" height="41"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="skillEditCell" rowHeight="65" id="KGk-i7-Jjw" customClass="TechnicalSkillsEditCell" customModule="dayangsurga_macro" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="342" height="65"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="342" height="41"/>
+                <rect key="frame" x="0.0" y="0.0" width="342" height="65"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="e.g. Sketch" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q8w-am-fvK">
-                        <rect key="frame" x="13.5" y="10" width="282" height="20"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YVv-PT-FNw" customClass="DesignableView" customModule="dayangsurga_macro" customModuleProvider="target">
+                        <rect key="frame" x="8.5" y="3.5" width="325" height="58.5"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="e.g. Sketch" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q8w-am-fvK">
+                                <rect key="frame" x="10" y="2.5" width="267" height="53"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKe-9m-m1e">
+                                <rect key="frame" x="282" y="7.5" width="43" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="l6f-mS-g6r"/>
+                                    <constraint firstAttribute="width" constant="43" id="mJl-x5-tJu"/>
+                                </constraints>
+                                <color key="tintColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system"/>
+                                <connections>
+                                    <action selector="deletePressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="t0i-OG-nIw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="282" id="4CX-Uq-gAL"/>
+                            <constraint firstItem="q8w-am-fvK" firstAttribute="leading" secondItem="YVv-PT-FNw" secondAttribute="leading" constant="10" id="0rE-pM-Pt1"/>
+                            <constraint firstAttribute="trailing" secondItem="fKe-9m-m1e" secondAttribute="trailing" id="R8z-zd-bah"/>
+                            <constraint firstItem="fKe-9m-m1e" firstAttribute="leading" secondItem="q8w-am-fvK" secondAttribute="trailing" constant="5" id="S75-O5-Jtz"/>
+                            <constraint firstItem="fKe-9m-m1e" firstAttribute="centerY" secondItem="YVv-PT-FNw" secondAttribute="centerY" id="Sz3-OF-arl"/>
+                            <constraint firstItem="q8w-am-fvK" firstAttribute="height" secondItem="YVv-PT-FNw" secondAttribute="height" multiplier="0.9" id="nPh-cE-SQR"/>
+                            <constraint firstItem="q8w-am-fvK" firstAttribute="centerY" secondItem="YVv-PT-FNw" secondAttribute="centerY" id="zcG-Ge-Z28"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKe-9m-m1e">
-                        <rect key="frame" x="287" y="11" width="43" height="20"/>
-                        <color key="tintColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system"/>
-                    </button>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="primaryDisable"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="fKe-9m-m1e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="BCC-6S-Nqw"/>
-                    <constraint firstAttribute="trailing" secondItem="fKe-9m-m1e" secondAttribute="trailing" constant="12" id="HX4-pN-Scm"/>
-                    <constraint firstItem="q8w-am-fvK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="J7O-Km-KiV"/>
-                    <constraint firstAttribute="bottom" secondItem="fKe-9m-m1e" secondAttribute="bottom" constant="10" id="N0P-t2-TfE"/>
-                    <constraint firstAttribute="bottom" secondItem="q8w-am-fvK" secondAttribute="bottom" constant="11" id="w6X-dI-gvl"/>
-                    <constraint firstItem="q8w-am-fvK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="13.5" id="zE9-w6-nJ1"/>
+                    <constraint firstItem="YVv-PT-FNw" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.95" id="bTx-Ox-3iH"/>
+                    <constraint firstItem="YVv-PT-FNw" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.9" id="f6z-2T-bV9"/>
+                    <constraint firstItem="YVv-PT-FNw" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="yHi-6a-vJQ"/>
+                    <constraint firstItem="YVv-PT-FNw" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="zHn-3w-zLn"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="deleteSkillButton" destination="fKe-9m-m1e" id="9Tc-NC-fx5"/>
-                <outlet property="skillTextField" destination="q8w-am-fvK" id="WJ1-pm-Rmx"/>
+                <outlet property="deleteSkillButton" destination="fKe-9m-m1e" id="VnM-v3-7RG"/>
+                <outlet property="skillTextField" destination="q8w-am-fvK" id="3GO-TJ-Jgd"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="99.441964285714278"/>
+            <point key="canvasLocation" x="131.8840579710145" y="107.47767857142857"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="trash" catalog="system" width="121" height="128"/>
+        <namedColor name="primaryDisable">
+            <color red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

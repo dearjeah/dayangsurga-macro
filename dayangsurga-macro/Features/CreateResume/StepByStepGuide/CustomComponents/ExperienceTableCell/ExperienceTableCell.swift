@@ -20,7 +20,7 @@ class ExperienceTableCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        jobTitle.font = UIFont.italicSystemFont(ofSize: 14.0)
+        //jobTitle.font = UIFont.italicSystemFont(ofSize: 14.0)
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 17
     }

@@ -29,6 +29,9 @@
                         <rect key="frame" x="301" y="9" width="48" height="26"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="icRoundSelectionNoFill"/>
+                        <connections>
+                            <action selector="selectButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iod-og-cCc"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

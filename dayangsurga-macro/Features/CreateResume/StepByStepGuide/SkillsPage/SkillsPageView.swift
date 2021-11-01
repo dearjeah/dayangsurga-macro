@@ -15,6 +15,10 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     let skillDataCount = 1
     
+    @IBAction func addEditPressed(_ sender: UIButton) {
+       //go to add form
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initWithNib()
