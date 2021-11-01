@@ -35,6 +35,7 @@ extension UIImage {
     static let imgEmptyStateEdu = UIImage.image(named: "imgEmptyStateEdu")
     static let imgEmptyStateLandingPage = UIImage.image(named: "imgEmptyStateLandingPage")
     static let imgExpEmptyState = UIImage.image(named: "imgExpEmptyState")
+    static let imgSkillEmptyState = UIImage.image(named: "imgSkillEmptyState")
 
     private static func image(named: String) -> UIImage {
         return UIImage(named: named)!

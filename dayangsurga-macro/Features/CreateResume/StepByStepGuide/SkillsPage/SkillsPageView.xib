@@ -3,24 +3,96 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SkillsPageView" customModule="dayangsurga_macro" customModuleProvider="target">
+            <connections>
+                <outlet property="addEditButton" destination="neb-lh-FZQ" id="ssU-DW-DcP"/>
+                <outlet property="emptyStateView" destination="UMl-rQ-f9q" id="lof-XI-Irb"/>
+                <outlet property="skillsTableView" destination="k0O-dx-bFp" id="DnZ-XB-f9M"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SkillsPageView" customModule="dayangsurga_macro" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0hB-FC-Pnk">
+                    <rect key="frame" x="20.5" y="8" width="373" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Technical Skills" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXQ-d7-nQM">
+                            <rect key="frame" x="0.0" y="0.0" width="136" height="50"/>
+                            <color key="tintColor" name="primarySubtitle"/>
+                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="20"/>
+                            <color key="textColor" name="primarySubtitle"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="neb-lh-FZQ">
+                            <rect key="frame" x="317.5" y="9.5" width="55.5" height="31"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain">
+                                <attributedString key="attributedTitle">
+                                    <fragment content="Add">
+                                        <attributes>
+                                            <font key="NSFont" size="17" name="SFProDisplay-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="addEditPressed:" destination="-1" eventType="touchUpInside" id="bWk-fI-dbd"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="neb-lh-FZQ" firstAttribute="centerY" secondItem="0hB-FC-Pnk" secondAttribute="centerY" id="6Um-y0-ruT"/>
+                        <constraint firstAttribute="trailing" secondItem="neb-lh-FZQ" secondAttribute="trailing" id="Fmm-FX-ECc"/>
+                        <constraint firstItem="yXQ-d7-nQM" firstAttribute="centerY" secondItem="0hB-FC-Pnk" secondAttribute="centerY" id="JHG-Ch-mpS"/>
+                        <constraint firstAttribute="height" constant="50" id="k2l-uz-sEd"/>
+                        <constraint firstItem="yXQ-d7-nQM" firstAttribute="leading" secondItem="0hB-FC-Pnk" secondAttribute="leading" id="p9G-gb-Q72"/>
+                        <constraint firstItem="neb-lh-FZQ" firstAttribute="height" secondItem="0hB-FC-Pnk" secondAttribute="height" multiplier="0.62" id="uvE-pb-lsq"/>
+                        <constraint firstItem="yXQ-d7-nQM" firstAttribute="height" secondItem="0hB-FC-Pnk" secondAttribute="height" id="zED-uk-llq"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="k0O-dx-bFp">
+                    <rect key="frame" x="20.5" y="58" width="373" height="838"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="PgC-tu-sO9"/>
+                        <outlet property="delegate" destination="-1" id="cdX-6Q-vdZ"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMl-rQ-f9q" customClass="EmptyState" customModule="dayangsurga_macro" customModuleProvider="target">
+                    <rect key="frame" x="20.5" y="58" width="373" height="448"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="k0O-dx-bFp" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="3ZE-DW-bX9"/>
+                <constraint firstItem="k0O-dx-bFp" firstAttribute="top" secondItem="0hB-FC-Pnk" secondAttribute="bottom" id="4iu-gA-Gk8"/>
+                <constraint firstItem="UMl-rQ-f9q" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="Bi0-K2-i1q"/>
+                <constraint firstItem="k0O-dx-bFp" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="EHD-95-GQt"/>
+                <constraint firstItem="UMl-rQ-f9q" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="IhJ-Gb-AxK"/>
+                <constraint firstItem="0hB-FC-Pnk" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="K5L-Ni-ohV"/>
+                <constraint firstItem="UMl-rQ-f9q" firstAttribute="top" secondItem="0hB-FC-Pnk" secondAttribute="bottom" id="PWh-nT-bkp"/>
+                <constraint firstItem="UMl-rQ-f9q" firstAttribute="width" secondItem="k0O-dx-bFp" secondAttribute="width" id="VsA-y1-tUE"/>
+                <constraint firstItem="0hB-FC-Pnk" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="adA-5C-RXj"/>
+                <constraint firstItem="0hB-FC-Pnk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="jR2-1Y-Zvo"/>
+                <constraint firstAttribute="bottom" secondItem="k0O-dx-bFp" secondAttribute="bottom" id="quU-AK-fdx"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="132" y="100"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="primarySubtitle">
+            <color red="0.27099999785423279" green="0.25099998712539673" blue="0.25099998712539673" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
