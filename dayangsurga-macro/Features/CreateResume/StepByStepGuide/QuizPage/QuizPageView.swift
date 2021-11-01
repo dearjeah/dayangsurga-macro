@@ -20,16 +20,45 @@ class QuizPageView: UIView {
         // Drawing code
     }
     */
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        setupQuizCard()
-        
-    }
     
     func setupQuizCard(){
         self.layer.borderColor = UIColor.primaryBlue.cgColor
         self.layer.borderWidth = 2.0
         self.layer.cornerRadius = 8
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+       
+        
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initWithNib()
+        setupQuizCard()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initWithNib()
+        setupQuizCard()
+    }
+    fileprivate func initWithNib() {
+        guard let view = loadViewFromNib(nibName: "QuizPageView") else {return}
+        view.frame = self.bounds
+        self.addSubview(view)
+    }
+    
+    convenience init() {
+        self.init()
+        
+    }
+    
+    func loadViewFromNib(nibName: String) -> UIView? {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: nibName, bundle: bundle)
+        
+        return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
 }

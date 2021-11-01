@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6712CF9D272EABF600449991 /* PDFCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6712CF9C272EABF600449991 /* PDFCreator.swift */; };
+		6712CF9F272EB29400449991 /* QuizPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6712CF9E272EB29400449991 /* QuizPage.swift */; };
+		6712CFA5272EE8BF00449991 /* QuizPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6712CFA4272EE8BF00449991 /* QuizPage.xib */; };
+		6712CFA8272EEAF700449991 /* QuizPageTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6712CFA6272EEAF700449991 /* QuizPageTestViewController.swift */; };
+		6712CFAB272EEB6900449991 /* QuizPageTestViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6712CFAA272EEB6900449991 /* QuizPageTestViewController.storyboard */; };
 		6722E23F2726C7C3007315AB /* ExperienceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722E23D2726C7C3007315AB /* ExperienceTableCell.swift */; };
 		6722E2402726C7C3007315AB /* ExperienceTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6722E23E2726C7C3007315AB /* ExperienceTableCell.xib */; };
 		67280DB22726D0DF006569DD /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67280DB12726D0DF006569DD /* EmptyState.swift */; };
@@ -151,6 +155,10 @@
 
 /* Begin PBXFileReference section */
 		6712CF9C272EABF600449991 /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
+		6712CF9E272EB29400449991 /* QuizPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizPage.swift; sourceTree = "<group>"; };
+		6712CFA4272EE8BF00449991 /* QuizPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizPage.xib; sourceTree = "<group>"; };
+		6712CFA6272EEAF700449991 /* QuizPageTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizPageTestViewController.swift; sourceTree = "<group>"; };
+		6712CFAA272EEB6900449991 /* QuizPageTestViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QuizPageTestViewController.storyboard; sourceTree = "<group>"; };
 		6722E23D2726C7C3007315AB /* ExperienceTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceTableCell.swift; sourceTree = "<group>"; };
 		6722E23E2726C7C3007315AB /* ExperienceTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExperienceTableCell.xib; sourceTree = "<group>"; };
 		67280DB12726D0DF006569DD /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
@@ -605,6 +613,10 @@
 				67280DB527270D56006569DD /* YesNoSwipeView */,
 				BF85039F2722B7EE00CC43FB /* QuizPageView.swift */,
 				BF8503A12722B7F800CC43FB /* QuizPageView.xib */,
+				6712CF9E272EB29400449991 /* QuizPage.swift */,
+				6712CFA4272EE8BF00449991 /* QuizPage.xib */,
+				6712CFA6272EEAF700449991 /* QuizPageTestViewController.swift */,
+				6712CFAA272EEB6900449991 /* QuizPageTestViewController.storyboard */,
 			);
 			path = QuizPage;
 			sourceTree = "<group>";
@@ -945,6 +957,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF85039E2722B7C300CC43FB /* EducationPageView.xib in Resources */,
+				6712CFA5272EE8BF00449991 /* QuizPage.xib in Resources */,
 				BF423DE7272BA396006DC552 /* XIBTes.storyboard in Resources */,
 				BF2ABB312726F02C00AAC6C2 /* SmallSetButton.xib in Resources */,
 				BF8503192722551C00CC43FB /* LaunchScreen.storyboard in Resources */,
@@ -969,6 +982,7 @@
 				BF0F8885272ED532000B87EE /* SkillAddEditController.storyboard in Resources */,
 				BFE00357272733310070BD40 /* BigButtonWithImage.xib in Resources */,
 				BF8503112722551B00CC43FB /* UserProfileViewController.storyboard in Resources */,
+				6712CFAB272EEB6900449991 /* QuizPageTestViewController.storyboard in Resources */,
 				BF2ABB342726FCC900AAC6C2 /* LabelWithTextField.xib in Resources */,
 				BF5F1BF82722D977004D0756 /* PreviewResumeViewController.storyboard in Resources */,
 				BF8503AE2722B88500CC43FB /* AccomplishmentPageView.xib in Resources */,
@@ -1007,6 +1021,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6712CFA8272EEAF700449991 /* QuizPageTestViewController.swift in Sources */,
 				BFE0035227272F500070BD40 /* LabelWithDate.swift in Sources */,
 				BF850372272266F400CC43FB /* TableViewCell+Extension.swift in Sources */,
 				679DBEA22723FAAD00CE9E8F /* ResumeTemplateCell.swift in Sources */,
@@ -1019,6 +1034,7 @@
 				BF5F1BEA2722D5CA004D0756 /* PersonalInfoViewModel.swift in Sources */,
 				BF8503922722B64600CC43FB /* ExpertListViewController.swift in Sources */,
 				B859B5402728532900627CDC /* ConsultHistoryRepository.swift in Sources */,
+				6712CF9F272EB29400449991 /* QuizPage.swift in Sources */,
 				B859B535272852EF00627CDC /* EmptyStateRepository.swift in Sources */,
 				BF85039C2722B7B700CC43FB /* EducationPageView.swift in Sources */,
 				BF85036E272265C000CC43FB /* Date+Extension.swift in Sources */,
@@ -1273,7 +1289,7 @@
 				INFOPLIST_FILE = "dayangsurga-macro/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Homepage;
+				INFOPLIST_KEY_UIMainStoryboardFile = QuizPageTestViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1302,7 +1318,7 @@
 				INFOPLIST_FILE = "dayangsurga-macro/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Homepage;
+				INFOPLIST_KEY_UIMainStoryboardFile = QuizPageTestViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
