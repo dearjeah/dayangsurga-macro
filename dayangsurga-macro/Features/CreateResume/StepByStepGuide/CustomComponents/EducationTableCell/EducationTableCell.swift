@@ -9,21 +9,22 @@ import UIKit
 
 class EducationTableCell: UITableViewCell {
     var selectionStatus = false
-    
+    static let identifier = "EducationTableCell"
     @IBOutlet weak var institutionName: UILabel!
     @IBOutlet weak var educationTitle: UILabel!
     @IBOutlet weak var educationPeriod: UILabel!
     @IBOutlet weak var educationGPA: UILabel!
     @IBOutlet weak var educationActivities: UILabel!
-    
+    @IBOutlet weak var shadowView: DesignableButton!
     @IBOutlet weak var selectionButton: UIButton!
     @IBOutlet weak var editEducationButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.layer.borderWidth = 1
-        self.layer.cornerRadius = 17
+        shadowView.layer.borderWidth = 1
+        shadowView.layer.cornerRadius = 17
+        selectionButton.setImage(UIImage(named: "icRoundSelectionFilled"), for: .normal)
 //        contentView.layer.borderColor = UIColor.primaryBlue.cgColor
         
     }
@@ -31,17 +32,25 @@ class EducationTableCell: UITableViewCell {
         if selectionStatus == false{
             selectionStatus = true
             selectionButton.setImage(UIImage(named: "icRoundSelectionFilled"), for: .normal)
-            self.layer.borderColor = UIColor.primaryBlue.cgColor
+            shadowView.layer.borderColor = UIColor.primaryBlue.cgColor
         }else{
             selectionStatus = false
             selectionButton.setImage(UIImage(named: "icRoundSelectionNoFill"), for: .normal)
-            self.layer.borderColor = UIColor.clear.cgColor
+            shadowView.layer.borderColor = UIColor.clear.cgColor
         }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
+    }
+    
+    override func layoutSubviews() {
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0))
+    }
+    
+    static func nib() -> UINib {
+        return UINib(nibName: "EducationTableCell", bundle: nil)
     }
     
 }
