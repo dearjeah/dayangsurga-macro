@@ -25,8 +25,6 @@
 		679DBEAB272410F900CE9E8F /* EducationTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679DBEA9272410F900CE9E8F /* EducationTableCell.xib */; };
 		B809D01E272F6B1700207456 /* AccomplishFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B809D01D272F6B1700207456 /* AccomplishFormController.swift */; };
 		B809D020272F6B2900207456 /* AccomplishFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B809D01F272F6B2900207456 /* AccomplishFormController.storyboard */; };
-		B809D033272FCD0A00207456 /* ListAccomplishmentController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B809D032272FCD0A00207456 /* ListAccomplishmentController.storyboard */; };
-		B809D035272FCD2800207456 /* ListAccomplishmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B809D034272FCD2800207456 /* ListAccomplishmentController.swift */; };
 		B859B535272852EF00627CDC /* EmptyStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52B272852EE00627CDC /* EmptyStateRepository.swift */; };
 		B859B537272852EF00627CDC /* ResumeTemplateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */; };
 		B859B538272852EF00627CDC /* ExperiencePlaceholderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52E272852EF00627CDC /* ExperiencePlaceholderRepository.swift */; };
@@ -169,8 +167,6 @@
 		679DBEA9272410F900CE9E8F /* EducationTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EducationTableCell.xib; sourceTree = "<group>"; };
 		B809D01D272F6B1700207456 /* AccomplishFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomplishFormController.swift; sourceTree = "<group>"; };
 		B809D01F272F6B2900207456 /* AccomplishFormController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccomplishFormController.storyboard; sourceTree = "<group>"; };
-		B809D032272FCD0A00207456 /* ListAccomplishmentController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListAccomplishmentController.storyboard; sourceTree = "<group>"; };
-		B809D034272FCD2800207456 /* ListAccomplishmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListAccomplishmentController.swift; sourceTree = "<group>"; };
 		B859B52B272852EE00627CDC /* EmptyStateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateRepository.swift; sourceTree = "<group>"; };
 		B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumeTemplateRepository.swift; sourceTree = "<group>"; };
 		B859B52E272852EF00627CDC /* ExperiencePlaceholderRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperiencePlaceholderRepository.swift; sourceTree = "<group>"; };
@@ -602,8 +598,6 @@
 				B809D01C272F6AFC00207456 /* Form */,
 				BF8503AB2722B86400CC43FB /* AccomplishmentPageView.swift */,
 				BF8503AD2722B88500CC43FB /* AccomplishmentPageView.xib */,
-				B809D034272FCD2800207456 /* ListAccomplishmentController.swift */,
-				B809D032272FCD0A00207456 /* ListAccomplishmentController.storyboard */,
 			);
 			path = AccomplishmentPage;
 			sourceTree = "<group>";
@@ -973,7 +967,6 @@
 				BF8503AA2722B83700CC43FB /* SkillsPageView.xib in Resources */,
 				BF2ABB3E27270A5D00AAC6C2 /* LabelWithSwitch.xib in Resources */,
 				BF85035D27225C4300CC43FB /* PersonalInfoPage.xib in Resources */,
-				B809D033272FCD0A00207456 /* ListAccomplishmentController.storyboard in Resources */,
 				BF8503BC2722BDE900CC43FB /* Homepage.storyboard in Resources */,
 				BF2ABB4527270D4D00AAC6C2 /* LabelWithStartEndDate.xib in Resources */,
 				BFE00357272733310070BD40 /* BigButtonWithImage.xib in Resources */,
@@ -1081,7 +1074,6 @@
 				BF5F1BF42722D87A004D0756 /* GenerateResumeViewController.swift in Sources */,
 				BF8503692722643100CC43FB /* CommonFunction.swift in Sources */,
 				BF8503B32722BA0300CC43FB /* StepByStepGuideViewController.swift in Sources */,
-				B809D035272FCD2800207456 /* ListAccomplishmentController.swift in Sources */,
 				BF85037E2722836800CC43FB /* UIViewController+Extension.swift in Sources */,
 				BF5F1BF02722D824004D0756 /* ResumeTemplateViewModel.swift in Sources */,
 				BF8503882722B36700CC43FB /* PreloadData.swift in Sources */,

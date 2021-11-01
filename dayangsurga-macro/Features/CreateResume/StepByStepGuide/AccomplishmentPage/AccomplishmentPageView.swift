@@ -12,7 +12,7 @@ class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var emptyStateView: EmptyState!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIButton!
-    var totalData = 0
+    var totalData = 1
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,6 +47,7 @@ class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource
         tableView.register(AccomplishmentTableCell.nib(), forCellReuseIdentifier: AccomplishmentTableCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableFooterView = UIView()
     }
     
     @IBAction func addAction(_ sender: Any) {
@@ -70,7 +71,7 @@ class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource
         } else {
             emptyStateView.isHidden = false
             emptyStateView.emptyStateImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
-            emptyStateView.emptyStateImage.contentMode = .scaleAspectFill
+            emptyStateView.emptyStateImage.contentMode = .scaleAspectFit
             emptyStateView.emptyStateImage.clipsToBounds = true
             emptyStateView.emptyStateImage.image = UIImage(named: "imgEmptyStateAccom")
             emptyStateView.emptyStateDescription.text = "You have no accomplishment yet. Click the ‘Add’ button to add your certificates or awards."
@@ -80,7 +81,7 @@ class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120 // +12 bottom
+        return 110 // +12 bottom
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -14,6 +14,7 @@ class AccomplishFormController: UIViewController {
     @IBOutlet weak var dateView: LabelWithDate!
     @IBOutlet weak var issuerView: LabelWithTextField!
     @IBOutlet weak var addOrDeleteButton: UIButton!
+    @IBOutlet weak var addtionalCertificateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +22,13 @@ class AccomplishFormController: UIViewController {
         setView()
         setupForm()
         hideKeyboardWhenTappedAround()
-//        createLabel()
     }
     
     func setView(){
         self.title = "Accomplishment"
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        addOrDeleteButton.dsLongFilledPrimaryButton(withImage: false, text: "Add Accomplishment")
+        addOrDeleteButton.dsLongFilledPrimaryButton(withImage: false, text: "Add")
+        addtionalCertificateLabel.text = "Only include certificates or awards that are relevant to the job you're applying for."
     }
     
     func setupForm(){
@@ -41,18 +42,6 @@ class AccomplishFormController: UIViewController {
         // for issuer accomplishment
         issuerView.titleLabel.text = "Issuer*"
         issuerView.textField.placeholder = "e.g. Dayang.co"
-    }
-    
-    func createLabel(){
-        let messagelabel = UILabel(frame: CGRect(x: 10,
-                                                 y: certificateNameView.frame.size.height - 70,
-                                                 width: backgroundView.frame.size.width - 40,
-                                                 height: 35))
-        messagelabel.textAlignment = .left
-        messagelabel.numberOfLines = 0
-        messagelabel.text = "Only include certificates or awards that are relevant to the job you're applying for."
-        messagelabel.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.regular)
-        self.backgroundView.addSubview(messagelabel)
     }
     
 }
