@@ -1,33 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuizPageView" customModule="dayangsurga_macro" customModuleProvider="target">
+            <connections>
+                <outlet property="answerExample" destination="AgL-Kb-OHd" id="bgp-el-M1t"/>
+                <outlet property="questionDescription" destination="dAi-hG-yaW" id="eba-1b-fv4"/>
+                <outlet property="questionHeader" destination="W8m-kQ-huK" id="LlW-qo-bMC"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="QuizPageView" customModule="dayangsurga_macro" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DesignableView" customModule="dayangsurga_macro" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="243" height="512"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8m-kQ-huK">
                     <rect key="frame" x="21.666666666666671" y="64" width="200" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="oEN-k9-FWI"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                     <color key="textColor" red="0.098039215690000001" green="0.1647058824" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAi-hG-yaW">
                     <rect key="frame" x="6" y="172" width="231" height="20.333333333333343"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20.329999999999998" id="npH-bH-kuV"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                     <color key="textColor" red="0.098039215690000001" green="0.1647058824" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AgL-Kb-OHd">
                     <rect key="frame" x="6" y="252.33333333333337" width="231" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="yDd-2a-M5r"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -36,24 +51,19 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="dAi-hG-yaW" firstAttribute="top" secondItem="W8m-kQ-huK" secondAttribute="bottom" constant="82" id="1oF-yA-kIG"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="W8m-kQ-huK" secondAttribute="trailing" constant="21.5" id="Aer-Nq-dz9"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="AgL-Kb-OHd" secondAttribute="trailing" constant="6" id="CRp-AJ-mjw"/>
-                <constraint firstItem="dAi-hG-yaW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="6" id="Erj-AC-ua8"/>
-                <constraint firstItem="AgL-Kb-OHd" firstAttribute="top" secondItem="dAi-hG-yaW" secondAttribute="bottom" constant="60" id="IEO-Uj-IKh"/>
-                <constraint firstItem="AgL-Kb-OHd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="6" id="NzE-ia-nDS"/>
-                <constraint firstItem="W8m-kQ-huK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="21.5" id="QfL-hP-nSr"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dAi-hG-yaW" secondAttribute="trailing" constant="6" id="RBV-6a-rxB"/>
-                <constraint firstItem="W8m-kQ-huK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="evn-V6-RjZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="W8m-kQ-huK" secondAttribute="trailing" constant="21.329999999999998" id="CnK-aF-Fr2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="AgL-Kb-OHd" secondAttribute="trailing" constant="6" id="DJh-Hv-c0d"/>
+                <constraint firstItem="AgL-Kb-OHd" firstAttribute="top" secondItem="dAi-hG-yaW" secondAttribute="bottom" constant="60" id="Dow-Lu-FgU"/>
+                <constraint firstItem="dAi-hG-yaW" firstAttribute="top" secondItem="W8m-kQ-huK" secondAttribute="bottom" constant="82" id="GcS-Ox-1Mq"/>
+                <constraint firstItem="AgL-Kb-OHd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="6" id="Kxz-3L-eCA"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dAi-hG-yaW" secondAttribute="trailing" constant="6" id="Zq3-5P-wPc"/>
+                <constraint firstItem="W8m-kQ-huK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="21.670000000000002" id="l0Z-pY-xgY"/>
+                <constraint firstItem="W8m-kQ-huK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="o4T-Oq-kYe"/>
+                <constraint firstItem="dAi-hG-yaW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="6" id="xya-nU-FI9"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="answerExample" destination="AgL-Kb-OHd" id="7ik-lm-v7a"/>
-                <outlet property="questionDescription" destination="dAi-hG-yaW" id="H8v-NX-3sW"/>
-                <outlet property="questionHeader" destination="W8m-kQ-huK" id="O01-nw-bpK"/>
-            </connections>
             <point key="canvasLocation" x="132" y="100"/>
         </view>
     </objects>

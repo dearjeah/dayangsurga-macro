@@ -22,6 +22,10 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
         exportResumeButton.dsLongFilledPrimaryButton(withImage: false, text: " Export Resume")
         exportResumeButton.tintColor = .white
         finishCreateResume.dsLongUnfilledButton(isDelete: false, text: "Finish")
+        resumePreviewImage.layer.borderColor = UIColor.primaryBlue.cgColor
+        resumePreviewImage.layer.shadowOpacity = 0.5
+        resumePreviewImage.layer.shadowRadius = 1
+        resumePreviewImage.layer.shadowColor = UIColor.lightGray.cgColor
         // Do any additional setup after loading the view.
     }
   
@@ -43,16 +47,19 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
         self.navigationItem.titleView?.tintColor = .white
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
-       
     }
     
     
+    @IBAction func editDidTap(_ sender: Any) {
+        print("Edit button tapped")
+    }
+    
     @IBAction func finishDidTap(_ sender: Any) {
-      
-        
+        print("Finish button tapped")
     }
     
     @IBAction func exportDidTap(_ sender: Any) {
+        print("Export button tapped")
     }
     
     /*
