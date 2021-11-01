@@ -24,7 +24,7 @@ class SkillAddEditController: UIViewController, UITableViewDataSource {
     
     
     @objc func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     @objc func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -32,4 +32,5 @@ class SkillAddEditController: UIViewController, UITableViewDataSource {
 
         return cell
     }
+    
 }

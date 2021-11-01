@@ -20,9 +20,6 @@ class TechnicalSkillsEditCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-//        self.layer.borderWidth = 1
-//        self.layer.cornerRadius = 17
-//        self.layer.borderColor = UIColor.primaryBlue.cgColor
         //deleteSkillButton.isHidden = true
     }
 
@@ -30,6 +27,14 @@ class TechnicalSkillsEditCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func layoutSubviews() {
+          super.layoutSubviews()
+          //set the values for top,left,bottom,right margins
+          let margins = UIEdgeInsets(top: 5, left: 8, bottom: 5, right: 8)
+          contentView.frame = contentView.frame.inset(by: margins)
+          contentView.layer.cornerRadius = 8
     }
     
 }
