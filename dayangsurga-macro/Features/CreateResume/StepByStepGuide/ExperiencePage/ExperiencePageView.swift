@@ -44,7 +44,7 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         self.expTableView.register(UINib(nibName: "ExperienceTableCell", bundle: nil), forCellReuseIdentifier: "ExperienceTableCell")
     }
     
-    convenience init() {
+    convenience init(text: String) {
         self.init()
     }
     

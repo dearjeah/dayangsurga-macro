@@ -10,21 +10,70 @@ import UIKit
 class StepByStepGuidePageController: UIPageViewController {
     
     var stepControllerArr: [UIViewController]? = []
+    var isCreate: Bool = true //false = edit resume
     var currentPageIndex: Int = 0
     var nextPageIndex: Int = 1
     var previousPageIndex: Int = -1
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.dataSource = self
+        self.delegate = self
+        populateItems()
+        //style()
+        setup()
 
         // Do any additional setup after loading the view.
     }
-
+    
 }
 
 //MARK: Protocol Delegate
-extension StepByStepGuidePageController {
+extension StepByStepGuidePageController: PersonalInfoPageDelegate {
     
+}
+
+//MARK: Page Controller
+extension StepByStepGuidePageController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard let viewControllerIndex = stepControllerArr?.firstIndex(of: viewController) else {
+            return nil
+        }
+        let previousIndex = viewControllerIndex - 1
+        guard previousIndex >= 0 else {
+            return stepControllerArr?.last
+        }
+        guard stepControllerArr?.count ?? 0 > previousIndex else {
+            return nil
+        }
+        return stepControllerArr?[previousIndex]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard let viewControllerIndex = stepControllerArr?.firstIndex(of: viewController) else {
+            return nil
+        }
+        let nextIndex = viewControllerIndex + 1
+        guard stepControllerArr?.count != nextIndex else {
+            return stepControllerArr?.first
+        }
+        guard stepControllerArr?.count ?? 0 > nextIndex else {
+            return nil
+        }
+        return stepControllerArr?[nextIndex]
+    }
+    
+    func presentationCount(for _: UIPageViewController) -> Int {
+        return stepControllerArr?.count ?? 0
+    }
+    
+    func presentationIndex(for _: UIPageViewController) -> Int {
+        guard let firstViewController = viewControllers?.first,
+              let firstViewControllerIndex = stepControllerArr?.firstIndex(of: firstViewController) else {
+                  return 0
+              }
+        return firstViewControllerIndex
+    }
 }
 
 //MARK: Page Controller Navigation
@@ -79,38 +128,85 @@ extension StepByStepGuidePageController {
             previousPageIndex = previousPageIndex + value
         }
     }
+}
+
+
+//MARK: Populate Data
+extension StepByStepGuidePageController {
     
-    /*fileprivate func populateItems() {
-     page type : 1-6, 6 = quiz
-        for i in 0..<stepData.count{
-            switch stepData[i].type {
-            case 1:
-                guard let progressImg = stepData[i].progressImg else {return}
-                guard let stepImg = stepData[i].img else {return}
-                guard let title = stepData[i].title else {return}
-                guard let desc = stepData[i].longDesc else {return}
-                let c = initBakingStepWithImageController(progressImg: progressImg, stepImg: stepImg, title: title, desc: desc)
-                stepControllerArr?.append(c)
-            case 2:
-                guard let progressImg = stepData[i].progressImg else {return}
-                guard let stepImg = stepData[i].img else {return}
-                guard let stepVid = stepData[i].vid else {return}
-                guard let title = stepData[i].title else {return}
-                guard let desc = stepData[i].longDesc else {return}
-                guard let mixingStat = stepData[i].mixingStatus else {return}
-                guard let tech = stepData[i].tech else {return}
-                let watch = recipe.isWatch
-                let c = initBakingStepWithVideoController(progressImg: progressImg, stepImg: stepImg, stepVid: stepVid, title: title, desc: desc, tech: tech, mixingStat: mixingStat, isWatch: watch)
-                stepControllerArr?.append(c)
-            case 3:
-                guard let progressImg = stepData[i].progressImg else {return}
-                guard let title = stepData[i].title else {return}
-                guard let desc = stepData[i].longDesc else {return}
-                guard let time = stepData[i].bakingTime else {return}
-                let c = initBakingStepWithTimerController(progressingImg: progressImg, title: title, desc: desc, time: time)
-                stepControllerArr?.append(c)
-            default:
-                print("This is Finishing page")
-            }
-        }*/
+    fileprivate func initPersonalData(fullName: String, email: String, phone: String, location: String, summary: String) -> UIViewController {
+        let controller = UIViewController()
+        let tmp = PersonalInfoPage.init(fullName: fullName, email: email, phone: phone, location: location, summary: summary)
+        tmp.setup(dlgt: self)
+        controller.view = tmp
+        return controller
+    }
+    
+    fileprivate func initEducation() -> UIViewController {
+        let controller = UIViewController()
+        let tmp =  EducationPageView.init(text: "")
+        //tmp.setup(delegate: self)
+        controller.view = tmp
+        return controller
+    }
+    
+    fileprivate func initQuiz() -> UIViewController {
+        let controller = UIViewController()
+        let tmp = QuizPage.init(header: "")
+        //tmp.setup(delegate: self)
+        controller.view = tmp
+        return controller
+    }
+    
+    fileprivate func initExperience() -> UIViewController {
+        let controller = UIViewController()
+        let tmp = ExperiencePageView.init(text: "")
+        //tmp.setup(delegate: self)
+        controller.view = tmp
+        return controller
+    }
+    
+    fileprivate func initSkills() -> UIViewController {
+        let controller = UIViewController()
+        let tmp = SkillsPageView.init(text: "")
+        //tmp.setup(delegate: self)
+        controller.view = tmp
+        return controller
+    }
+    
+    fileprivate func initAccomplishment() -> UIViewController {
+        let controller = UIViewController()
+        let tmp = AccomplishmentPageView.init(text: "")
+        //tmp.setup(delegate: self)
+        controller.view = tmp
+        return controller
+    }
+    
+    fileprivate func populateItems() {
+        //page type : 1-6, 6 = quiz
+        let source = "create"
+        let personalInfo = initPersonalData(fullName: "", email: "", phone: "", location: "", summary: "")
+        let education = initEducation()
+        let quiz = initQuiz()
+        let exp = initExperience()
+        let skills = initSkills()
+        let accomp = initAccomplishment()
+        if source == "create" {
+            stepControllerArr?.append(personalInfo)
+            stepControllerArr?.append(education)
+            stepControllerArr?.append(quiz)
+            stepControllerArr?.append(exp)
+            stepControllerArr?.append(quiz)
+            stepControllerArr?.append(skills)
+            stepControllerArr?.append(quiz)
+            stepControllerArr?.append(accomp)
+        } else {
+            stepControllerArr?.append(personalInfo)
+            stepControllerArr?.append(education)
+            stepControllerArr?.append(exp)
+            stepControllerArr?.append(skills)
+            stepControllerArr?.append(accomp)
+        }
+    }
+    
 }
