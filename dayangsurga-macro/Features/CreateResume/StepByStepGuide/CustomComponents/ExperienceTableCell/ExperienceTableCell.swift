@@ -15,25 +15,26 @@ class ExperienceTableCell: UITableViewCell {
     @IBOutlet weak var jobExperience: UILabel!
     @IBOutlet weak var jobDesc: UILabel!
     @IBOutlet weak var selectExperienceButton: UIButton!
+    @IBOutlet weak var shadowView: DesignableView!
     @IBOutlet weak var editExperienceButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         //jobTitle.font = UIFont.italicSystemFont(ofSize: 14.0)
-        self.layer.borderWidth = 1
-        self.layer.cornerRadius = 17
+        shadowView.layer.borderWidth = 1
+
     }
 
     @IBAction func selectExperience(_ sender: Any) {
         if selectionStatus == false{
             selectionStatus = true
             selectExperienceButton.setImage(UIImage(named: "icRoundSelectionFilled"), for: .normal)
-            self.layer.borderColor = UIColor.primaryBlue.cgColor
+            shadowView.layer.borderColor = UIColor.primaryBlue.cgColor
         }else{
             selectionStatus = false
             selectExperienceButton.setImage(UIImage(named: "icRoundSelectionNoFill"), for: .normal)
-            self.layer.borderColor = UIColor.clear.cgColor
+            shadowView.layer.borderColor = UIColor.clear.cgColor
         }
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -44,9 +45,8 @@ class ExperienceTableCell: UITableViewCell {
     override func layoutSubviews() {
           super.layoutSubviews()
           //set the values for top,left,bottom,right margins
-          let margins = UIEdgeInsets(top: 5, left: 8, bottom: 5, right: 8)
+          let margins = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
           contentView.frame = contentView.frame.inset(by: margins)
-          contentView.layer.cornerRadius = 8
     }
     
 }
