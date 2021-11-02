@@ -23,6 +23,7 @@ extension UIImage {
     static let icExperienceNoFill = UIImage.image(named: "icExperienceNoFill")
     static let icPersonalInformationActive = UIImage.image(named: "icPersonalInformationActive")
     static let icPersonalInformationFill = UIImage.image(named: "icPersonalInformationFill")
+    static let icPreviewResume = UIImage.image(named: "icPreviewResume")
     static let icRoundSelectionFilled = UIImage.image(named: "icRoundSelectionFilled")
     static let icRoundSelectionNoFill = UIImage.image(named: "icRoundSelectionNoFill")
     static let icSwipeNo = UIImage.image(named: "icSwipeNo")
@@ -36,6 +37,10 @@ extension UIImage {
     static let imgEmptyStateLandingPage = UIImage.image(named: "imgEmptyStateLandingPage")
     static let imgExpEmptyState = UIImage.image(named: "imgExpEmptyState")
     static let imgSkillEmptyState = UIImage.image(named: "imgSkillEmptyState")
+    static let imgResumePreview = UIImage.image(named: "imgResumePreview")
+    static let imgResumeTemplateArial = UIImage.image(named: "imgResumeTemplateArial")
+    static let imgResumeTemplateGeorgia = UIImage.image(named: "imgResumeTemplateGeorgia")
+    static let imgResumeTemplateHeletvica = UIImage.image(named: "imgResumeTemplateHeletvica")
 
     private static func image(named: String) -> UIImage {
         return UIImage(named: named)!

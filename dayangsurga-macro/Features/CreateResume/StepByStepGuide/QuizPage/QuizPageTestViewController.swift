@@ -1,25 +1,22 @@
 //
-//  PreviewResumeViewController.swift
+//  QuizPageTestViewController.swift
 //  dayangsurga-macro
 //
-//  Created by Delvina Janice on 22/10/21.
+//  Created by Audrey Aurelia Chang on 31/10/21.
 //
 
 import UIKit
-import PDFKit
 
-class PreviewResumeViewController: MVVMViewController<PreviewResumeViewModel> {
-    @IBOutlet weak var pdfView: PDFView!
-    var dataInput = "Test"
-    public var documentData: Data?
+class QuizPageTestViewController: UIViewController {
+
+    @IBOutlet weak var quizCard: QuizPage!
     
     override func viewDidLoad() {
-      super.viewDidLoad()
-      if let data = documentData {
-        pdfView.document = PDFDocument(data: data)
-        pdfView.autoScales = true
-      }
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
     }
+
 
     /*
     // MARK: - Navigation

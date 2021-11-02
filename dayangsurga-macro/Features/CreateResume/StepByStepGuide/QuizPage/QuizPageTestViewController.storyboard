@@ -3,42 +3,43 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Preview Resume View Controller-->
+        <!--Quiz Page Test View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="goToPreviewResume" id="Y6W-OH-hqX" customClass="PreviewResumeViewController" customModule="dayangsurga_macro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="QuizPageTestViewController" customModule="dayangsurga_macro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="go0-Xn-eDh" customClass="PDFView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" name="primaryBG"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i7F-2Z-TSi" customClass="QuizPage" customModule="dayangsurga_macro" customModuleProvider="target">
+                                <rect key="frame" x="20" y="64" width="414" height="778"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="i7F-2Z-TSi" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" constant="20" id="8Ju-Id-C7f"/>
+                            <constraint firstItem="i7F-2Z-TSi" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="8nj-DK-phi"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="i7F-2Z-TSi" secondAttribute="bottom" constant="20" id="heF-Nl-s8O"/>
+                            <constraint firstItem="i7F-2Z-TSi" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="kS2-x4-yvg"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="pdfView" destination="go0-Xn-eDh" id="FEM-OB-lpl"/>
+                        <outlet property="quizCard" destination="i7F-2Z-TSi" id="GbX-0v-tdr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-17.39130434782609" y="83.705357142857139"/>
+            <point key="canvasLocation" x="62" y="102"/>
         </scene>
     </scenes>
     <resources>
-        <namedColor name="primaryBG">
-            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
