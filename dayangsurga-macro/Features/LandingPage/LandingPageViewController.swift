@@ -99,7 +99,35 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // go to preview/generate page
+        createAlert()
+    }
+    
+    func createAlert(){
+        let alert = UIAlertController(title: "resume name", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Edit Resume 􀈊", style: .default, handler: {action in self.goToEdit()}))
+        alert.addAction(UIAlertAction(title: "Check Typo 􀋺", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Translate Resume 􀊞", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Delete Resume 􀈑", style: .destructive, handler: {action in self.showAlertForDelete()}))
+        alert.addAction(UIAlertAction(title: "Cancel 􀆄", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
+    }
+    
+    func goToEdit(){
+        let storyboard = UIStoryboard(name: "StepByStepGuideViewController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToStepByStep") as! StepByStepGuideViewController
+        // blm passing data
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.titleView?.tintColor = .white
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func showAlertForDelete(){
+        let alert = UIAlertController(title: "Do you want to delete?", message: "...", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 
 }
