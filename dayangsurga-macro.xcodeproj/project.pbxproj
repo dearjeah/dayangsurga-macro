@@ -66,6 +66,10 @@
 		BF5F1BFA2722D983004D0756 /* PreviewResumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BF92722D983004D0756 /* PreviewResumeViewController.swift */; };
 		BF5F1BFC2722D9A0004D0756 /* PreviewResumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BFB2722D9A0004D0756 /* PreviewResumeViewModel.swift */; };
 		BF5F1BFE2722DA21004D0756 /* ExpertDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BFD2722DA21004D0756 /* ExpertDetailViewModel.swift */; };
+		BF7267E32730E73000B5A95F /* AccomplishFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7267DF2730E73000B5A95F /* AccomplishFormController.swift */; };
+		BF7267E42730E73000B5A95F /* AccomplishFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7267E02730E73000B5A95F /* AccomplishFormController.storyboard */; };
+		BF7267E52730E73000B5A95F /* AccomplishmentPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7267E12730E73000B5A95F /* AccomplishmentPageView.swift */; };
+		BF7267E62730E73000B5A95F /* AccomplishmentPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF7267E22730E73000B5A95F /* AccomplishmentPageView.xib */; };
 		BF85030A2722551B00CC43FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8503092722551B00CC43FB /* AppDelegate.swift */; };
 		BF85030C2722551B00CC43FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85030B2722551B00CC43FB /* SceneDelegate.swift */; };
 		BF85030E2722551B00CC43FB /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85030D2722551B00CC43FB /* UserProfileViewController.swift */; };
@@ -115,8 +119,6 @@
 		BF8503A62722B81600CC43FB /* ExperiencePageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF8503A52722B81600CC43FB /* ExperiencePageView.xib */; };
 		BF8503A82722B82F00CC43FB /* SkillsPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8503A72722B82F00CC43FB /* SkillsPageView.swift */; };
 		BF8503AA2722B83700CC43FB /* SkillsPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF8503A92722B83700CC43FB /* SkillsPageView.xib */; };
-		BF8503AC2722B86400CC43FB /* AccomplishmentPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8503AB2722B86400CC43FB /* AccomplishmentPageView.swift */; };
-		BF8503AE2722B88500CC43FB /* AccomplishmentPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF8503AD2722B88500CC43FB /* AccomplishmentPageView.xib */; };
 		BF8503B12722B9E700CC43FB /* StepByStepGuideViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8503B02722B9E700CC43FB /* StepByStepGuideViewController.storyboard */; };
 		BF8503B32722BA0300CC43FB /* StepByStepGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8503B22722BA0300CC43FB /* StepByStepGuideViewController.swift */; };
 		BF8503B52722BABF00CC43FB /* StepByStepGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8503B42722BABF00CC43FB /* StepByStepGuideViewModel.swift */; };
@@ -208,6 +210,10 @@
 		BF5F1BF92722D983004D0756 /* PreviewResumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewResumeViewController.swift; sourceTree = "<group>"; };
 		BF5F1BFB2722D9A0004D0756 /* PreviewResumeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewResumeViewModel.swift; sourceTree = "<group>"; };
 		BF5F1BFD2722DA21004D0756 /* ExpertDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertDetailViewModel.swift; sourceTree = "<group>"; };
+		BF7267DF2730E73000B5A95F /* AccomplishFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccomplishFormController.swift; sourceTree = "<group>"; };
+		BF7267E02730E73000B5A95F /* AccomplishFormController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AccomplishFormController.storyboard; sourceTree = "<group>"; };
+		BF7267E12730E73000B5A95F /* AccomplishmentPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccomplishmentPageView.swift; sourceTree = "<group>"; };
+		BF7267E22730E73000B5A95F /* AccomplishmentPageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccomplishmentPageView.xib; sourceTree = "<group>"; };
 		BF8503062722551B00CC43FB /* dayangsurga-macro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dayangsurga-macro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8503092722551B00CC43FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF85030B2722551B00CC43FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -261,8 +267,6 @@
 		BF8503A52722B81600CC43FB /* ExperiencePageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExperiencePageView.xib; sourceTree = "<group>"; };
 		BF8503A72722B82F00CC43FB /* SkillsPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsPageView.swift; sourceTree = "<group>"; };
 		BF8503A92722B83700CC43FB /* SkillsPageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillsPageView.xib; sourceTree = "<group>"; };
-		BF8503AB2722B86400CC43FB /* AccomplishmentPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomplishmentPageView.swift; sourceTree = "<group>"; };
-		BF8503AD2722B88500CC43FB /* AccomplishmentPageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccomplishmentPageView.xib; sourceTree = "<group>"; };
 		BF8503B02722B9E700CC43FB /* StepByStepGuideViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StepByStepGuideViewController.storyboard; sourceTree = "<group>"; };
 		BF8503B22722BA0300CC43FB /* StepByStepGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepGuideViewController.swift; sourceTree = "<group>"; };
 		BF8503B42722BABF00CC43FB /* StepByStepGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepGuideViewModel.swift; sourceTree = "<group>"; };
@@ -419,6 +423,26 @@
 			path = LabelWithStartEndDate;
 			sourceTree = "<group>";
 		};
+		BF7267DD2730E73000B5A95F /* AccomplishmentPage */ = {
+			isa = PBXGroup;
+			children = (
+				BF7267DE2730E73000B5A95F /* Form */,
+				BF7267E12730E73000B5A95F /* AccomplishmentPageView.swift */,
+				BF7267E22730E73000B5A95F /* AccomplishmentPageView.xib */,
+			);
+			name = AccomplishmentPage;
+			path = AccomplishmentPage/AccomplishmentPage;
+			sourceTree = "<group>";
+		};
+		BF7267DE2730E73000B5A95F /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				BF7267DF2730E73000B5A95F /* AccomplishFormController.swift */,
+				BF7267E02730E73000B5A95F /* AccomplishFormController.storyboard */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
 		BF8502FD2722551B00CC43FB = {
 			isa = PBXGroup;
 			children = (
@@ -535,7 +559,7 @@
 				BF850347272256BD00CC43FB /* QuizPage */,
 				BF8503442722568A00CC43FB /* ExperiencePage */,
 				BF8503452722569200CC43FB /* SkillsPage */,
-				BF8503462722569F00CC43FB /* AccomplishmentPage */,
+				BF7267DD2730E73000B5A95F /* AccomplishmentPage */,
 			);
 			path = StepByStepGuide;
 			sourceTree = "<group>";
@@ -555,11 +579,8 @@
 		BF8503432722566C00CC43FB /* EducationPage */ = {
 			isa = PBXGroup;
 			children = (
-				B809D017272F0D5800207456 /* Form */,
 				BF85039B2722B7B700CC43FB /* EducationPageView.swift */,
 				BF85039D2722B7C300CC43FB /* EducationPageView.xib */,
-				B809D036272FDEA300207456 /* EducationListController.swift */,
-				B809D038272FDEB500207456 /* EducationListController.storyboard */,
 			);
 			path = EducationPage;
 			sourceTree = "<group>";
@@ -586,15 +607,6 @@
 				BF0F8886272ED54C000B87EE /* SkillAddEditController.swift */,
 			);
 			path = SkillsPage;
-			sourceTree = "<group>";
-		};
-		BF8503462722569F00CC43FB /* AccomplishmentPage */ = {
-			isa = PBXGroup;
-			children = (
-				BF8503AB2722B86400CC43FB /* AccomplishmentPageView.swift */,
-				BF8503AD2722B88500CC43FB /* AccomplishmentPageView.xib */,
-			);
-			path = AccomplishmentPage;
 			sourceTree = "<group>";
 		};
 		BF850347272256BD00CC43FB /* QuizPage */ = {
@@ -952,6 +964,7 @@
 				BF8503982722B6A300CC43FB /* ExpertDetailsViewController.storyboard in Resources */,
 				BF2ABB3B2726FFAF00AAC6C2 /* LabelWithTextView.xib in Resources */,
 				BF8503162722551C00CC43FB /* Assets.xcassets in Resources */,
+				BF7267E62730E73000B5A95F /* AccomplishmentPageView.xib in Resources */,
 				B88AFA37272A903A007408A5 /* ResumeCell.xib in Resources */,
 				BFBA47AE272A8D7800D4771E /* XIBVCTest.storyboard in Resources */,
 				BF8503532722596400CC43FB /* LandingPageViewController.storyboard in Resources */,
@@ -968,8 +981,8 @@
 				BF8503112722551B00CC43FB /* UserProfileViewController.storyboard in Resources */,
 				BF2ABB342726FCC900AAC6C2 /* LabelWithTextField.xib in Resources */,
 				BF5F1BF82722D977004D0756 /* PreviewResumeViewController.storyboard in Resources */,
-				BF8503AE2722B88500CC43FB /* AccomplishmentPageView.xib in Resources */,
 				BF85036327225DBB00CC43FB /* Colors.xcassets in Resources */,
+				BF7267E42730E73000B5A95F /* AccomplishFormController.storyboard in Resources */,
 				BF8503A22722B7F800CC43FB /* QuizPageView.xib in Resources */,
 				6722E2402726C7C3007315AB /* ExperienceTableCell.xib in Resources */,
 				BF5F1BEC2722D7F0004D0756 /* ResumeTemplateViewController.storyboard in Resources */,
@@ -1033,9 +1046,9 @@
 				BF8503142722551B00CC43FB /* dayangsurga-macro.xcdatamodeld in Sources */,
 				BF8503822722B2C300CC43FB /* CoreDataManager.swift in Sources */,
 				67280DBD27270E93006569DD /* AccomplishmentTableCell.swift in Sources */,
-				B809D01B272F0D5800207456 /* EducationFormController.swift in Sources */,
 				BF8503862722B35800CC43FB /* DataRepository.swift in Sources */,
 				BF2ABB392726FF9600AAC6C2 /* LabelWithTextView.swift in Sources */,
+				BF7267E32730E73000B5A95F /* AccomplishFormController.swift in Sources */,
 				B859B53C272852EF00627CDC /* ExperienceSuggestionRepository.swift in Sources */,
 				BF85039A2722B6D600CC43FB /* ExpertDetailViewController.swift in Sources */,
 				BF8503B52722BABF00CC43FB /* StepByStepGuideViewModel.swift in Sources */,
@@ -1050,7 +1063,6 @@
 				BF2ABB362726FCD600AAC6C2 /* LabelWithTextField.swift in Sources */,
 				BF85037A272282C500CC43FB /* UILabel+Extension.swift in Sources */,
 				B859B537272852EF00627CDC /* ResumeTemplateRepository.swift in Sources */,
-				B809D037272FDEA300207456 /* EducationListController.swift in Sources */,
 				BF8503902722B5E100CC43FB /* RoundedButton.swift in Sources */,
 				BF85030A2722551B00CC43FB /* AppDelegate.swift in Sources */,
 				BF8503742722675000CC43FB /* Cell+Extension.swift in Sources */,
@@ -1078,11 +1090,11 @@
 				67280DB727270D72006569DD /* YesNoSwipeView.swift in Sources */,
 				B859B5462728533600627CDC /* PreloadExperienceData.swift in Sources */,
 				B859B539272852EF00627CDC /* PersonalInformationPlaceholderRepository.swift in Sources */,
-				BF8503AC2722B86400CC43FB /* AccomplishmentPageView.swift in Sources */,
 				B859B548272858B900627CDC /* PersonalInformationSuggestionRepository.swift in Sources */,
 				BF85037C2722832600CC43FB /* UIView+Extension.swift in Sources */,
 				BFBA47B0272A8D9800D4771E /* XIBVCTestViewController.swift in Sources */,
 				67280DB22726D0DF006569DD /* EmptyState.swift in Sources */,
+				BF7267E52730E73000B5A95F /* AccomplishmentPageView.swift in Sources */,
 				BF85036527225FA300CC43FB /* MVVMController.swift in Sources */,
 				B859B53E272852EF00627CDC /* ResumeContentRepository.swift in Sources */,
 				BF8503B92722BDCF00CC43FB /* HomepageController.swift in Sources */,
