@@ -13,8 +13,6 @@
 		67280DB42726D0F0006569DD /* EmptyState.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67280DB32726D0F0006569DD /* EmptyState.xib */; };
 		67280DB727270D72006569DD /* YesNoSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67280DB627270D72006569DD /* YesNoSwipeView.swift */; };
 		67280DB927270D7E006569DD /* YesNoSwipeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67280DB827270D7E006569DD /* YesNoSwipeView.xib */; };
-		67280DBD27270E93006569DD /* AccomplishmentTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67280DBB27270E93006569DD /* AccomplishmentTableCell.swift */; };
-		67280DBE27270E93006569DD /* AccomplishmentTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67280DBC27270E93006569DD /* AccomplishmentTableCell.xib */; };
 		675812BD27278FE700E106AF /* TechnicalSkillsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675812BB27278FE700E106AF /* TechnicalSkillsListCell.swift */; };
 		675812BE27278FE700E106AF /* TechnicalSkillsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 675812BC27278FE700E106AF /* TechnicalSkillsListCell.xib */; };
 		675812C12727900600E106AF /* TechnicalSkillsEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675812BF2727900600E106AF /* TechnicalSkillsEditCell.swift */; };
@@ -70,6 +68,8 @@
 		BF7267E42730E73000B5A95F /* AccomplishFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7267E02730E73000B5A95F /* AccomplishFormController.storyboard */; };
 		BF7267E52730E73000B5A95F /* AccomplishmentPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7267E12730E73000B5A95F /* AccomplishmentPageView.swift */; };
 		BF7267E62730E73000B5A95F /* AccomplishmentPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF7267E22730E73000B5A95F /* AccomplishmentPageView.xib */; };
+		BF7267EA2730E9C200B5A95F /* AccomplishmentTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7267E82730E9C200B5A95F /* AccomplishmentTableCell.swift */; };
+		BF7267EB2730E9C200B5A95F /* AccomplishmentTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF7267E92730E9C200B5A95F /* AccomplishmentTableCell.xib */; };
 		BF85030A2722551B00CC43FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8503092722551B00CC43FB /* AppDelegate.swift */; };
 		BF85030C2722551B00CC43FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85030B2722551B00CC43FB /* SceneDelegate.swift */; };
 		BF85030E2722551B00CC43FB /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85030D2722551B00CC43FB /* UserProfileViewController.swift */; };
@@ -157,8 +157,6 @@
 		67280DB32726D0F0006569DD /* EmptyState.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyState.xib; sourceTree = "<group>"; };
 		67280DB627270D72006569DD /* YesNoSwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YesNoSwipeView.swift; sourceTree = "<group>"; };
 		67280DB827270D7E006569DD /* YesNoSwipeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YesNoSwipeView.xib; sourceTree = "<group>"; };
-		67280DBB27270E93006569DD /* AccomplishmentTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomplishmentTableCell.swift; sourceTree = "<group>"; };
-		67280DBC27270E93006569DD /* AccomplishmentTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccomplishmentTableCell.xib; sourceTree = "<group>"; };
 		675812BB27278FE700E106AF /* TechnicalSkillsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnicalSkillsListCell.swift; sourceTree = "<group>"; };
 		675812BC27278FE700E106AF /* TechnicalSkillsListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TechnicalSkillsListCell.xib; sourceTree = "<group>"; };
 		675812BF2727900600E106AF /* TechnicalSkillsEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnicalSkillsEditCell.swift; sourceTree = "<group>"; };
@@ -214,6 +212,8 @@
 		BF7267E02730E73000B5A95F /* AccomplishFormController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AccomplishFormController.storyboard; sourceTree = "<group>"; };
 		BF7267E12730E73000B5A95F /* AccomplishmentPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccomplishmentPageView.swift; sourceTree = "<group>"; };
 		BF7267E22730E73000B5A95F /* AccomplishmentPageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccomplishmentPageView.xib; sourceTree = "<group>"; };
+		BF7267E82730E9C200B5A95F /* AccomplishmentTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccomplishmentTableCell.swift; sourceTree = "<group>"; };
+		BF7267E92730E9C200B5A95F /* AccomplishmentTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccomplishmentTableCell.xib; sourceTree = "<group>"; };
 		BF8503062722551B00CC43FB /* dayangsurga-macro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dayangsurga-macro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8503092722551B00CC43FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF85030B2722551B00CC43FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -324,15 +324,6 @@
 			path = YesNoSwipeView;
 			sourceTree = "<group>";
 		};
-		67280DBA27270E72006569DD /* AccomplishmentTableCell */ = {
-			isa = PBXGroup;
-			children = (
-				67280DBB27270E93006569DD /* AccomplishmentTableCell.swift */,
-				67280DBC27270E93006569DD /* AccomplishmentTableCell.xib */,
-			);
-			path = AccomplishmentTableCell;
-			sourceTree = "<group>";
-		};
 		67280DBF27270EF8006569DD /* TechnicalSkillsEditCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,6 +432,16 @@
 				BF7267E02730E73000B5A95F /* AccomplishFormController.storyboard */,
 			);
 			path = Form;
+			sourceTree = "<group>";
+		};
+		BF7267E72730E9C200B5A95F /* AccomplishmentTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				BF7267E82730E9C200B5A95F /* AccomplishmentTableCell.swift */,
+				BF7267E92730E9C200B5A95F /* AccomplishmentTableCell.xib */,
+			);
+			name = AccomplishmentTableCell;
+			path = ../AccomplishmentTableCell;
 			sourceTree = "<group>";
 		};
 		BF8502FD2722551B00CC43FB = {
@@ -642,9 +643,9 @@
 		BF85034A2722582900CC43FB /* CustomComponents */ = {
 			isa = PBXGroup;
 			children = (
+				BF7267E72730E9C200B5A95F /* AccomplishmentTableCell */,
 				67280DC027270F0B006569DD /* TechnicalSkillsListCell */,
 				67280DBF27270EF8006569DD /* TechnicalSkillsEditCell */,
-				67280DBA27270E72006569DD /* AccomplishmentTableCell */,
 				67A42ABF27268F52004145F9 /* ExperienceTableCell */,
 				67A42ABE27268F45004145F9 /* EducationTableCell */,
 				BF2ABB2B2726EDB900AAC6C2 /* SmallSetButton */,
@@ -964,6 +965,7 @@
 				BF8503982722B6A300CC43FB /* ExpertDetailsViewController.storyboard in Resources */,
 				BF2ABB3B2726FFAF00AAC6C2 /* LabelWithTextView.xib in Resources */,
 				BF8503162722551C00CC43FB /* Assets.xcassets in Resources */,
+				BF7267EB2730E9C200B5A95F /* AccomplishmentTableCell.xib in Resources */,
 				BF7267E62730E73000B5A95F /* AccomplishmentPageView.xib in Resources */,
 				B88AFA37272A903A007408A5 /* ResumeCell.xib in Resources */,
 				BFBA47AE272A8D7800D4771E /* XIBVCTest.storyboard in Resources */,
@@ -991,7 +993,6 @@
 				BF8503942722B65600CC43FB /* ExpertListViewController.storyboard in Resources */,
 				BF8503B12722B9E700CC43FB /* StepByStepGuideViewController.storyboard in Resources */,
 				BF5F1BF22722D869004D0756 /* GenerateResumeViewController.storyboard in Resources */,
-				67280DBE27270E93006569DD /* AccomplishmentTableCell.xib in Resources */,
 				BF423DEB272C52A2006DC552 /* ExperienceFormController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1045,7 +1046,6 @@
 				BF0F8887272ED54C000B87EE /* SkillAddEditController.swift in Sources */,
 				BF8503142722551B00CC43FB /* dayangsurga-macro.xcdatamodeld in Sources */,
 				BF8503822722B2C300CC43FB /* CoreDataManager.swift in Sources */,
-				67280DBD27270E93006569DD /* AccomplishmentTableCell.swift in Sources */,
 				BF8503862722B35800CC43FB /* DataRepository.swift in Sources */,
 				BF2ABB392726FF9600AAC6C2 /* LabelWithTextView.swift in Sources */,
 				BF7267E32730E73000B5A95F /* AccomplishFormController.swift in Sources */,
@@ -1090,6 +1090,7 @@
 				67280DB727270D72006569DD /* YesNoSwipeView.swift in Sources */,
 				B859B5462728533600627CDC /* PreloadExperienceData.swift in Sources */,
 				B859B539272852EF00627CDC /* PersonalInformationPlaceholderRepository.swift in Sources */,
+				BF7267EA2730E9C200B5A95F /* AccomplishmentTableCell.swift in Sources */,
 				B859B548272858B900627CDC /* PersonalInformationSuggestionRepository.swift in Sources */,
 				BF85037C2722832600CC43FB /* UIView+Extension.swift in Sources */,
 				BFBA47B0272A8D9800D4771E /* XIBVCTestViewController.swift in Sources */,
