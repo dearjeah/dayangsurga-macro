@@ -23,6 +23,8 @@
 		679DBEA32723FAAD00CE9E8F /* ResumeTemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679DBEA12723FAAD00CE9E8F /* ResumeTemplateCell.xib */; };
 		679DBEAA272410F900CE9E8F /* EducationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DBEA8272410F900CE9E8F /* EducationTableCell.swift */; };
 		679DBEAB272410F900CE9E8F /* EducationTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679DBEA9272410F900CE9E8F /* EducationTableCell.xib */; };
+		8435DB472731126700862FF0 /* EducationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB462731126700862FF0 /* EducationRepository.swift */; };
+		8435DB492731830F00862FF0 /* AccomplishmentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB482731830F00862FF0 /* AccomplishmentRepository.swift */; };
 		B859B535272852EF00627CDC /* EmptyStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52B272852EE00627CDC /* EmptyStateRepository.swift */; };
 		B859B537272852EF00627CDC /* ResumeTemplateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */; };
 		B859B538272852EF00627CDC /* ExperiencePlaceholderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52E272852EF00627CDC /* ExperiencePlaceholderRepository.swift */; };
@@ -165,6 +167,8 @@
 		679DBEA12723FAAD00CE9E8F /* ResumeTemplateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeTemplateCell.xib; sourceTree = "<group>"; };
 		679DBEA8272410F900CE9E8F /* EducationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationTableCell.swift; sourceTree = "<group>"; };
 		679DBEA9272410F900CE9E8F /* EducationTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EducationTableCell.xib; sourceTree = "<group>"; };
+		8435DB462731126700862FF0 /* EducationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationRepository.swift; sourceTree = "<group>"; };
+		8435DB482731830F00862FF0 /* AccomplishmentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomplishmentRepository.swift; sourceTree = "<group>"; };
 		B859B52B272852EE00627CDC /* EmptyStateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateRepository.swift; sourceTree = "<group>"; };
 		B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumeTemplateRepository.swift; sourceTree = "<group>"; };
 		B859B52E272852EF00627CDC /* ExperiencePlaceholderRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperiencePlaceholderRepository.swift; sourceTree = "<group>"; };
@@ -555,11 +559,8 @@
 		BF8503432722566C00CC43FB /* EducationPage */ = {
 			isa = PBXGroup;
 			children = (
-				B809D017272F0D5800207456 /* Form */,
 				BF85039B2722B7B700CC43FB /* EducationPageView.swift */,
 				BF85039D2722B7C300CC43FB /* EducationPageView.xib */,
-				B809D036272FDEA300207456 /* EducationListController.swift */,
-				B809D038272FDEB500207456 /* EducationListController.storyboard */,
 			);
 			path = EducationPage;
 			sourceTree = "<group>";
@@ -767,6 +768,8 @@
 				B859B531272852EF00627CDC /* ExperienceRepository.swift */,
 				B859B532272852EF00627CDC /* ExperienceSuggestionRepository.swift */,
 				B859B534272852EF00627CDC /* ResumeContentRepository.swift */,
+				8435DB462731126700862FF0 /* EducationRepository.swift */,
+				8435DB482731830F00862FF0 /* AccomplishmentRepository.swift */,
 				B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */,
 				B859B533272852EF00627CDC /* UserRepository.swift */,
 				B859B52F272852EF00627CDC /* PersonalInformationPlaceholderRepository.swift */,
@@ -1004,6 +1007,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8435DB472731126700862FF0 /* EducationRepository.swift in Sources */,
 				BFE0035227272F500070BD40 /* LabelWithDate.swift in Sources */,
 				BF850372272266F400CC43FB /* TableViewCell+Extension.swift in Sources */,
 				679DBEA22723FAAD00CE9E8F /* ResumeTemplateCell.swift in Sources */,
@@ -1033,7 +1037,6 @@
 				BF8503142722551B00CC43FB /* dayangsurga-macro.xcdatamodeld in Sources */,
 				BF8503822722B2C300CC43FB /* CoreDataManager.swift in Sources */,
 				67280DBD27270E93006569DD /* AccomplishmentTableCell.swift in Sources */,
-				B809D01B272F0D5800207456 /* EducationFormController.swift in Sources */,
 				BF8503862722B35800CC43FB /* DataRepository.swift in Sources */,
 				BF2ABB392726FF9600AAC6C2 /* LabelWithTextView.swift in Sources */,
 				B859B53C272852EF00627CDC /* ExperienceSuggestionRepository.swift in Sources */,
@@ -1050,13 +1053,13 @@
 				BF2ABB362726FCD600AAC6C2 /* LabelWithTextField.swift in Sources */,
 				BF85037A272282C500CC43FB /* UILabel+Extension.swift in Sources */,
 				B859B537272852EF00627CDC /* ResumeTemplateRepository.swift in Sources */,
-				B809D037272FDEA300207456 /* EducationListController.swift in Sources */,
 				BF8503902722B5E100CC43FB /* RoundedButton.swift in Sources */,
 				BF85030A2722551B00CC43FB /* AppDelegate.swift in Sources */,
 				BF8503742722675000CC43FB /* Cell+Extension.swift in Sources */,
 				B859B53A272852EF00627CDC /* UserResumeRepository.swift in Sources */,
 				BF85036727225FB400CC43FB /* Constants.swift in Sources */,
 				BFE003552727331F0070BD40 /* BigButtonWithImage.swift in Sources */,
+				8435DB492731830F00862FF0 /* AccomplishmentRepository.swift in Sources */,
 				BF850370272266BC00CC43FB /* String+Extension.swift in Sources */,
 				BF85035B27225C3400CC43FB /* PersonalInfoPage.swift in Sources */,
 				B88AFA36272A903A007408A5 /* ResumeCell.swift in Sources */,
