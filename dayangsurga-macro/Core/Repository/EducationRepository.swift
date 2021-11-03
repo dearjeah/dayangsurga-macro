@@ -106,7 +106,7 @@ class EducationRepository{
     }
     
     // func delete
-    func deleteUser(data: Education) {
+    func deleteEducation(data: Education) {
         do {
             context.delete(data)
             try context.save()

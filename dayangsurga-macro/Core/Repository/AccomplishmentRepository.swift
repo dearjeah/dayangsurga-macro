@@ -45,10 +45,10 @@ class AccomplishmentRepository{
     }
     
     // retrieve education
-    func getAllAccomplishment() -> [Education]? {
+    func getAllAccomplishment() -> [Accomplishment]? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         do {
-            let item = try context.fetch(fetchRequest) as? [Education]
+            let item = try context.fetch(fetchRequest) as? [Accomplishment]
             return item
         } catch let error as NSError {
             print(error)
@@ -56,11 +56,11 @@ class AccomplishmentRepository{
         return []
     }
     
-    func getEducationById(educationId: Int) -> Education? {
+    func getAccomplishmentById(AccomplishmentId: Int) -> Accomplishment? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "education_id == %@", educationId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "accomplishment_id == %@", AccomplishmentId as CVarArg)
         do {
-            let item = try context.fetch(fetchRequest) as? [Education]
+            let item = try context.fetch(fetchRequest) as? [Accomplishment]
             return item?.first
         } catch let error as NSError {
             print(error)
@@ -69,32 +69,26 @@ class AccomplishmentRepository{
     }
     
     // func updates
-    func updateEducation( eduId: Int,
-                          userId: Int,
-                          institution: String,
-                          title: String,
-                          startDate: Date,
-                          endDate : Date,
-                          gpa: Decimal,
-                          activity : String,
-                          currentlyStudy : Bool,
-                          isSelected : Bool) {
+    func updateAccomplishment( accomId: Int,
+                               userId: Int,
+                               title: String,
+                               givenDate: Date,
+                               issuer : String,
+                               desc : String,
+                               isSelected : Bool) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "education_id == %@", eduId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "accomplishment_id == %@", accomId as CVarArg)
         do {
-            let item = try context.fetch(fetchRequest) as? [Education]
-            let education = item?.first
-            education?.edu_id = Int32(eduId)
-            education?.user_id = Int32(userId)
-            education?.title = title
-            education?.start_date = startDate
-            education?.end_date = endDate
-            education?.gpa =  NSDecimalNumber(decimal: gpa)
-            education?.activity = activity
-            education?.currently_study = currentlyStudy
-            education?.is_selected = isSelected
-           
-            
+            let item = try context.fetch(fetchRequest) as? [Accomplishment]
+            let accomplishment = item?.first
+            accomplishment?.accom_id = Int32(accomId)
+            accomplishment?.user_id = Int32(userId)
+            accomplishment?.given_date = givenDate
+            accomplishment?.title = title
+            accomplishment?.issuer = issuer
+            accomplishment?.desc = desc
+            accomplishment?.is_selected = isSelected
+         
             try context.save()
         } catch let error as NSError {
             print(error)
@@ -102,7 +96,7 @@ class AccomplishmentRepository{
     }
     
     // func delete
-    func deleteUser(data: Education) {
+    func deleteAccomplishment(data: Accomplishment) {
         do {
             context.delete(data)
             try context.save()
