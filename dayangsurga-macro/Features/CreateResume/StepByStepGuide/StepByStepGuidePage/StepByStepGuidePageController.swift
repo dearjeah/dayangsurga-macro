@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol StepByStepGuideDelegate: AnyObject {
+    func isHidePrevNextButton(was: Bool)
+    func progressBarUpdate(index: Int)
+}
+
 class StepByStepGuidePageController: UIPageViewController {
     
     var stepControllerArr: [UIViewController]? = []
@@ -14,6 +19,13 @@ class StepByStepGuidePageController: UIPageViewController {
     var currentPageIndex: Int = 0
     var nextPageIndex: Int = 1
     var previousPageIndex: Int = -1
+    var quizAnswer: [Bool] = []
+    
+    weak var stepDelegate: StepByStepGuideDelegate?
+    
+    func setup(stepDlgt: StepByStepGuideDelegate) {
+        self.stepDelegate = stepDlgt
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,11 +106,31 @@ extension StepByStepGuidePageController {
     
     func goGenerate(wasPage: Int){
         self.navigationController?.pushViewController(GenerateResumeController.instantiateStoryboard(viewModel: GenerateResumeViewModel()), animated: true)
-        //self.navigationController?.pushViewController(MedaliDetailController.instantiateStoryboard(viewModel: MedaliDetailViewModel(datasVM: mdDatas)), animated: true)
     }
     
     func addAndEditData(isAdd: Bool){
         
+    }
+}
+
+//MARK: Checker
+extension StepByStepGuidePageController {
+    func isQuizPage(currentIndex: Int) -> Bool {
+        if currentIndex == 3 || currentIndex == 5 || currentIndex == 7 {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    func isAddEdit(data: Int, pageType: Int) {
+        //page type : 1-6, 6 = quiz
+        if data == 0 {
+            //button text = add
+        } else {
+            //button text = edit
+        }
     }
 }
 
@@ -150,9 +182,9 @@ extension StepByStepGuidePageController {
         return controller
     }
     
-    fileprivate func initQuiz() -> UIViewController {
+    fileprivate func initQuiz(type: Int) -> UIViewController {
         let controller = UIViewController()
-        let tmp = QuizPage.init(header: "")
+        let tmp = QuizPage.init(type: type)
         //tmp.setup(delegate: self)
         controller.view = tmp
         return controller
@@ -187,9 +219,9 @@ extension StepByStepGuidePageController {
         let source = "create"
         let personalInfo = initPersonalData(fullName: "", email: "", phone: "", location: "", summary: "")
         let education = initEducation()
-        let quiz = initQuiz()
-        let quiz2 = initQuiz()
-        let quiz3 = initQuiz()
+        let quiz = initQuiz(type: 1)
+        let quiz2 = initQuiz(type: 2)
+        let quiz3 = initQuiz(type: 3)
         let exp = initExperience()
         let skills = initSkills()
         let accomp = initAccomplishment()

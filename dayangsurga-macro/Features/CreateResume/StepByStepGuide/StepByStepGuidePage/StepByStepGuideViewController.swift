@@ -9,6 +9,12 @@ import UIKit
 
 class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel> {
 
+    
+    
+    
+    @IBOutlet weak var progressBarView: ProgressBarView!
+    @IBOutlet weak var smallSetButtonView: SmallSetButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
