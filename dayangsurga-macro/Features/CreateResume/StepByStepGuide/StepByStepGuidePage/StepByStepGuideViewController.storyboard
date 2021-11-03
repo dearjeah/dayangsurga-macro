@@ -17,20 +17,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVg-NV-Sgc" customClass="ProgressBarView" customModule="dayangsurga_macro" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="414" height="78"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVg-NV-Sgc">
+                                <rect key="frame" x="0.0" y="44" width="414" height="80"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rj7-Wn-qCr" customClass="ProgressBarView" customModule="dayangsurga_macro" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="primaryWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="78" id="Y0b-rb-1Dx"/>
+                                    <constraint firstItem="rj7-Wn-qCr" firstAttribute="top" secondItem="jVg-NV-Sgc" secondAttribute="top" id="2EV-hA-LsG"/>
+                                    <constraint firstAttribute="height" constant="80" id="Y0b-rb-1Dx"/>
+                                    <constraint firstItem="rj7-Wn-qCr" firstAttribute="height" secondItem="jVg-NV-Sgc" secondAttribute="height" multiplier="0.6" id="b9c-2h-r9p"/>
+                                    <constraint firstItem="rj7-Wn-qCr" firstAttribute="width" secondItem="jVg-NV-Sgc" secondAttribute="width" id="rQF-9h-nuG"/>
+                                    <constraint firstItem="rj7-Wn-qCr" firstAttribute="centerX" secondItem="jVg-NV-Sgc" secondAttribute="centerX" id="uQ2-fG-cDC"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbX-nM-n7N">
-                                <rect key="frame" x="0.0" y="122" width="414" height="662"/>
+                                <rect key="frame" x="0.0" y="154" width="414" height="630"/>
                                 <connections>
                                     <segue destination="LTx-EI-oe0" kind="embed" id="432-iV-djz"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i6R-d7-j4U" customClass="SmallSetButton" customModule="dayangsurga_macro" customModuleProvider="target">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i6R-d7-j4U" customClass="SmallSetButton" customModule="dayangsurga_macro" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="784" width="414" height="78"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -49,7 +59,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="i6R-d7-j4U" secondAttribute="trailing" id="RMv-KO-C0c"/>
                             <constraint firstItem="jVg-NV-Sgc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="SoX-Vm-ZR1"/>
                             <constraint firstItem="i6R-d7-j4U" firstAttribute="top" secondItem="vbX-nM-n7N" secondAttribute="bottom" id="aZa-Pq-b2u"/>
-                            <constraint firstItem="vbX-nM-n7N" firstAttribute="top" secondItem="jVg-NV-Sgc" secondAttribute="bottom" id="n5x-GJ-Llp"/>
+                            <constraint firstItem="vbX-nM-n7N" firstAttribute="top" secondItem="jVg-NV-Sgc" secondAttribute="bottom" constant="30" id="n5x-GJ-Llp"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="jVg-NV-Sgc" secondAttribute="trailing" id="oCs-vJ-51b"/>
                         </constraints>
                     </view>
@@ -64,7 +74,7 @@
             <objects>
                 <viewController id="LTx-EI-oe0" customClass="StepByStepGuidePageController" customModule="dayangsurga_macro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KFD-SF-ys0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="662"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="630"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="gKc-DT-Ayo"/>
                         <color key="backgroundColor" systemColor="systemBrownColor"/>
@@ -78,6 +88,9 @@
     <resources>
         <namedColor name="primaryBG">
             <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
