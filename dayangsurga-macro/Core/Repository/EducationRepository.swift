@@ -79,7 +79,7 @@ class EducationRepository{
                           title: String,
                           startDate: Date,
                           endDate : Date,
-                          gpa: Decimal,
+                          gpa: Float,
                           activity : String,
                           currentlyStudy : Bool,
                           isSelected : Bool) {
