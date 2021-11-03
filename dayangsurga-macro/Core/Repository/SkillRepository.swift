@@ -17,16 +17,16 @@ class SkillRepository{
     let context = CoreDataManager.sharedManager.persistentContainer.viewContext
     
     // create data
-    func createSkill(       skillId: Int,
-                             userId: Int,
+    func createSkill(       skillId: Int32,
+                             userId: Int32,
                              skillName: String,
                              isSelected : Bool){
         do {
             // relation accomplishment-user
-            if let SkillToUser = UserRepository.shared.getUserById(id: userId) {
+            if let SkillToUser = UserRepository.shared.getUserById(id: Int(userId)) {
                 let skill = Skills(context: context)
-                skill.skill_id = Int32(skillId)
-                skill.user_id = Int32(userId)
+                skill.skill_id = skillId
+                skill.user_id = userId
                 skill.skill_name = skillName
                 skill.is_selected = isSelected
                 
@@ -51,7 +51,7 @@ class SkillRepository{
         return []
     }
     
-    func getSkillsById(skillId: Int) -> Skills? {
+    func getSkillsById(skillId: Int32) -> Skills? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "skill_id == %@", skillId as CVarArg)
         do {
