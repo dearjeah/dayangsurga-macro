@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ProgressBarDelegate: AnyObject {
+    
+}
+
 class ProgressBarView: UIView {
     
     @IBOutlet weak var personalInformationButton: UIButton!
@@ -36,12 +40,14 @@ class ProgressBarView: UIView {
         default:
             print("nothing")
         }
-        
-        
     }
     
+    weak var dlgt: ProgressBarDelegate?
     
-    
+    func setup(dlgt: ProgressBarDelegate) {
+        self.dlgt = dlgt
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         initWithNib()
