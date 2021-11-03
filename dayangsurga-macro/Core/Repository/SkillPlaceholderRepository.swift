@@ -16,7 +16,7 @@ class SkillPlaceholderRepository{
     let context = CoreDataManager.sharedManager.persistentContainer.viewContext
     
     // create
-    func createSkillPlaceholder(skillId: Int,
+    func createSkillPlaceholder(skillId: Int32,
                                 skillPlaceholderId: Int,
                                 skillPlaceholderName: String){
         do {

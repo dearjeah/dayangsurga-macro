@@ -36,29 +36,34 @@
     <entity name="Edu_Placeholder" representedClassName="Edu_Placeholder" syncable="YES" codeGenerationType="class">
         <attribute name="activity_ph" optional="YES" attributeType="String"/>
         <attribute name="edu_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="edu_ph_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="end_date_ph" optional="YES" attributeType="String"/>
-        <attribute name="gpa_ph" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="gpa_ph" optional="YES" attributeType="String"/>
         <attribute name="institution_ph" optional="YES" attributeType="String"/>
         <attribute name="start_date_ph" optional="YES" attributeType="String"/>
         <attribute name="title_ph" optional="YES" attributeType="String"/>
+        <relationship name="education" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Education" inverseName="placeholder" inverseEntity="Education"/>
     </entity>
     <entity name="Edu_Suggestion" representedClassName="Edu_Suggestion" syncable="YES" codeGenerationType="class">
         <attribute name="activity_suggest" optional="YES" attributeType="String"/>
         <attribute name="edu_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="edu_suggest_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="education" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Education" inverseName="suggestion" inverseEntity="Education"/>
     </entity>
     <entity name="Education" representedClassName="Education" syncable="YES" codeGenerationType="class">
         <attribute name="activity" optional="YES" attributeType="String"/>
         <attribute name="currently_study" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="edu_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="end_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="gpa" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="gpa" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="institution" optional="YES" attributeType="String"/>
         <attribute name="is_selected" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="start_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="placeholder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Edu_Placeholder" inverseName="education" inverseEntity="Edu_Placeholder"/>
         <relationship name="resumeContent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Resume_Content" inverseName="education" inverseEntity="Resume_Content"/>
+        <relationship name="suggestion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Edu_Suggestion" inverseName="education" inverseEntity="Edu_Suggestion"/>
         <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="education" inverseEntity="User"/>
     </entity>
     <entity name="Experience" representedClassName="Experience" syncable="YES" codeGenerationType="class">
@@ -186,7 +191,7 @@
     </entity>
     <elements>
         <element name="Consult_History" positionX="-27" positionY="18" width="128" height="89"/>
-        <element name="Education" positionX="27" positionY="162" width="128" height="209"/>
+        <element name="Education" positionX="27" positionY="162" width="128" height="239"/>
         <element name="Experience" positionX="54" positionY="99" width="128" height="224"/>
         <element name="Experience_Placeholder" positionX="18" positionY="63" width="128" height="119"/>
         <element name="Experience_Suggestion" positionX="27" positionY="72" width="128" height="89"/>
@@ -196,8 +201,8 @@
         <element name="Resume_Template" positionX="45" positionY="90" width="128" height="89"/>
         <element name="User" positionX="54" positionY="99" width="128" height="239"/>
         <element name="User_Resume" positionX="72" positionY="117" width="128" height="179"/>
-        <element name="Edu_Suggestion" positionX="36" positionY="171" width="128" height="74"/>
-        <element name="Edu_Placeholder" positionX="45" positionY="180" width="128" height="134"/>
+        <element name="Edu_Suggestion" positionX="36" positionY="171" width="128" height="89"/>
+        <element name="Edu_Placeholder" positionX="45" positionY="180" width="128" height="164"/>
         <element name="Accomplishment" positionX="54" positionY="189" width="128" height="194"/>
         <element name="Accomplishment_Suggest" positionX="63" positionY="198" width="128" height="104"/>
         <element name="Accomplish_Placeholder" positionX="72" positionY="207" width="128" height="104"/>

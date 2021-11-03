@@ -28,6 +28,8 @@
 		8435DB4B27320AA400862FF0 /* SkillRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB4A27320AA400862FF0 /* SkillRepository.swift */; };
 		8435DB4D27321FAB00862FF0 /* SkillPlaceholderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB4C27321FAB00862FF0 /* SkillPlaceholderRepository.swift */; };
 		8435DB4F2732234A00862FF0 /* SkillSuggestionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB4E2732234A00862FF0 /* SkillSuggestionRepository.swift */; };
+		8435DB512732A80100862FF0 /* EducationPlaceholderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB502732A80100862FF0 /* EducationPlaceholderRepository.swift */; };
+		8435DB532732A81700862FF0 /* EducationSuggestionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB522732A81700862FF0 /* EducationSuggestionRepository.swift */; };
 		B859B535272852EF00627CDC /* EmptyStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52B272852EE00627CDC /* EmptyStateRepository.swift */; };
 		B859B537272852EF00627CDC /* ResumeTemplateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */; };
 		B859B538272852EF00627CDC /* ExperiencePlaceholderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52E272852EF00627CDC /* ExperiencePlaceholderRepository.swift */; };
@@ -175,6 +177,8 @@
 		8435DB4A27320AA400862FF0 /* SkillRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillRepository.swift; sourceTree = "<group>"; };
 		8435DB4C27321FAB00862FF0 /* SkillPlaceholderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillPlaceholderRepository.swift; sourceTree = "<group>"; };
 		8435DB4E2732234A00862FF0 /* SkillSuggestionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillSuggestionRepository.swift; sourceTree = "<group>"; };
+		8435DB502732A80100862FF0 /* EducationPlaceholderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationPlaceholderRepository.swift; sourceTree = "<group>"; };
+		8435DB522732A81700862FF0 /* EducationSuggestionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationSuggestionRepository.swift; sourceTree = "<group>"; };
 		B859B52B272852EE00627CDC /* EmptyStateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateRepository.swift; sourceTree = "<group>"; };
 		B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumeTemplateRepository.swift; sourceTree = "<group>"; };
 		B859B52E272852EF00627CDC /* ExperiencePlaceholderRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperiencePlaceholderRepository.swift; sourceTree = "<group>"; };
@@ -775,6 +779,8 @@
 				B859B532272852EF00627CDC /* ExperienceSuggestionRepository.swift */,
 				B859B534272852EF00627CDC /* ResumeContentRepository.swift */,
 				8435DB462731126700862FF0 /* EducationRepository.swift */,
+				8435DB502732A80100862FF0 /* EducationPlaceholderRepository.swift */,
+				8435DB522732A81700862FF0 /* EducationSuggestionRepository.swift */,
 				8435DB4A27320AA400862FF0 /* SkillRepository.swift */,
 				8435DB4C27321FAB00862FF0 /* SkillPlaceholderRepository.swift */,
 				8435DB4E2732234A00862FF0 /* SkillSuggestionRepository.swift */,
@@ -1026,6 +1032,7 @@
 				675812C12727900600E106AF /* TechnicalSkillsEditCell.swift in Sources */,
 				BF8503552722599E00CC43FB /* LandingPageViewController.swift in Sources */,
 				BF8503782722828A00CC43FB /* UIImage+Extension.swift in Sources */,
+				8435DB512732A80100862FF0 /* EducationPlaceholderRepository.swift in Sources */,
 				BF5F1BEA2722D5CA004D0756 /* PersonalInfoViewModel.swift in Sources */,
 				BF8503922722B64600CC43FB /* ExpertListViewController.swift in Sources */,
 				B859B5402728532900627CDC /* ConsultHistoryRepository.swift in Sources */,
@@ -1092,6 +1099,7 @@
 				B859B5452728533600627CDC /* PreloadEmptyStateData.swift in Sources */,
 				67280DB727270D72006569DD /* YesNoSwipeView.swift in Sources */,
 				B859B5462728533600627CDC /* PreloadExperienceData.swift in Sources */,
+				8435DB532732A81700862FF0 /* EducationSuggestionRepository.swift in Sources */,
 				B859B539272852EF00627CDC /* PersonalInformationPlaceholderRepository.swift in Sources */,
 				BF8503AC2722B86400CC43FB /* AccomplishmentPageView.swift in Sources */,
 				B859B548272858B900627CDC /* PersonalInformationSuggestionRepository.swift in Sources */,

@@ -21,7 +21,7 @@ class EducationRepository{
                              title: String,
                              startDate: Date,
                              endDate : Date,
-                             gpa: Decimal,
+                             gpa: Float,
                              activity : String,
                              currentlyStudy : Bool,
                              isSelected : Bool){
@@ -34,7 +34,7 @@ class EducationRepository{
                 education.title = title
                 education.start_date = startDate
                 education.end_date = endDate
-                education.gpa =  NSDecimalNumber(decimal: gpa)
+                education.gpa =   gpa
                 education.activity = activity
                 education.currently_study = currentlyStudy
                 education.is_selected = isSelected
@@ -93,7 +93,7 @@ class EducationRepository{
             education?.title = title
             education?.start_date = startDate
             education?.end_date = endDate
-            education?.gpa =  NSDecimalNumber(decimal: gpa)
+            education?.gpa =  gpa
             education?.activity = activity
             education?.currently_study = currentlyStudy
             education?.is_selected = isSelected
