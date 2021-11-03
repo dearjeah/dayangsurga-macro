@@ -35,9 +35,9 @@ class PDFCreator: NSObject{
         // 5
         context.beginPage()
         let drawContext = context.cgContext
-//        // 6
-        let titleBottom = addTitle(pageRect: pageRect)
-          drawSeparator(drawContext, pageRect: pageRect, height: 10.0)
+        // 6
+//        let titleBottom = addTitle(pageRect: pageRect)
+//        drawSeparator(drawContext, pageRect: pageRect, height: 10.0)
 //        addBodyText(pageRect: pageRect, textTop:titleBottom + 36.0)
         
       }
@@ -46,20 +46,25 @@ class PDFCreator: NSObject{
     }
     
     func addTitle(pageRect: CGRect)->CGFloat{
+        // Initialize Font & attributes of font
         let titleFont = UIFont.systemFont(ofSize: 18.0, weight: .bold)
         let titleAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: titleFont]
         let attributedTitle = NSAttributedString(
             string: dataInput,
             attributes: titleAttribute)
         let titlesStringSize = attributedTitle.size()
+        
+        // Set Rect for text
         let titleStringRect = CGRect(
             x: (pageRect.width-titlesStringSize.width)/2.0,
             y: 36,
             width: titlesStringSize.width,
             height: titlesStringSize.height
       )
+        // Draw title in PDF
       attributedTitle.draw(in: titleStringRect)
         
+        //Return new coordinates
       return titleStringRect.origin.y + titleStringRect.size.height + 4.0
     }
     
@@ -72,6 +77,21 @@ class PDFCreator: NSObject{
         
         attributedHeader.draw(in: headerRect)
         return headerRect.origin.y + headerRect.height + 4.0
+    }
+    
+    func addPeriodText(pageRect: CGRect, textTop: CGFloat){
+        let periodFont = UIFont.systemFont(ofSize: 12.0, weight: .regular)
+        let periodAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: periodFont]
+        
+        let attributedPeriod = NSAttributedString(string: dataInput, attributes: periodAttribute)
+        let periodRect = CGRect(
+            x: pageRect.width - attributedPeriod.size().width - 20,
+            y: textTop,
+            width: attributedPeriod.size().width,
+            height: attributedPeriod.size().height
+        )
+        
+        attributedPeriod.draw(in: periodRect)
     }
     
     func addBodyText(pageRect: CGRect, textTop: CGFloat)->CGFloat{
@@ -104,13 +124,19 @@ class PDFCreator: NSObject{
     }
     
     func drawSeparator(_ drawSeparator: CGContext, pageRect: CGRect, height: CGFloat)->CGFloat{
-        
+        // Save CG State
         drawSeparator.saveGState()
+        
+        // Set Line width & color
         drawSeparator.setLineWidth(0.8)
-        drawSeparator.setStrokeColor(UIColor.lightGray.cgColor)
+        drawSeparator.setStrokeColor(UIColor.darkGray.cgColor)
+        
+        // Set separator coordinates & draw line
         drawSeparator.move(to: CGPoint(x: 20, y: height))
         drawSeparator.addLine(to: CGPoint(x: pageRect.width-20, y: height))
         drawSeparator.strokePath()
+        
+        // Restore CG State
         drawSeparator.restoreGState()
         
         return height + 4.0
