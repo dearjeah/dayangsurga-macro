@@ -35,7 +35,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbX-nM-n7N">
-                                <rect key="frame" x="0.0" y="154" width="414" height="630"/>
+                                <rect key="frame" x="0.0" y="124" width="414" height="660"/>
                                 <connections>
                                     <segue destination="LTx-EI-oe0" kind="embed" id="432-iV-djz"/>
                                 </connections>
@@ -59,11 +59,15 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="i6R-d7-j4U" secondAttribute="trailing" id="RMv-KO-C0c"/>
                             <constraint firstItem="jVg-NV-Sgc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="SoX-Vm-ZR1"/>
                             <constraint firstItem="i6R-d7-j4U" firstAttribute="top" secondItem="vbX-nM-n7N" secondAttribute="bottom" id="aZa-Pq-b2u"/>
-                            <constraint firstItem="vbX-nM-n7N" firstAttribute="top" secondItem="jVg-NV-Sgc" secondAttribute="bottom" constant="30" id="n5x-GJ-Llp"/>
+                            <constraint firstItem="vbX-nM-n7N" firstAttribute="top" secondItem="jVg-NV-Sgc" secondAttribute="bottom" id="n5x-GJ-Llp"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="jVg-NV-Sgc" secondAttribute="trailing" id="oCs-vJ-51b"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Resume" id="aJY-Jh-7w8"/>
+                    <connections>
+                        <outlet property="progressBarView" destination="rj7-Wn-qCr" id="B1E-iA-gRP"/>
+                        <outlet property="smallSetButtonView" destination="i6R-d7-j4U" id="Zyc-pJ-hkO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -74,7 +78,7 @@
             <objects>
                 <viewController id="LTx-EI-oe0" customClass="StepByStepGuidePageController" customModule="dayangsurga_macro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KFD-SF-ys0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="630"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="660"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="gKc-DT-Ayo"/>
                         <color key="backgroundColor" systemColor="systemBrownColor"/>

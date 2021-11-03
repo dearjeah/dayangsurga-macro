@@ -13,6 +13,12 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
     var selectedData = User_Resume()
     var selectedIndex: Int?
 
+    
+    
+    
+    @IBOutlet weak var progressBarView: ProgressBarView!
+    @IBOutlet weak var smallSetButtonView: SmallSetButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
