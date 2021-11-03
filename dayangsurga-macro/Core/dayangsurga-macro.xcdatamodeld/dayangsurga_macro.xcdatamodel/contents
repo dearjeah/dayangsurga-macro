@@ -5,6 +5,7 @@
         <attribute name="accomplishment_ph_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="given_date_ph" optional="YES" attributeType="String"/>
         <attribute name="title_ph" optional="YES" attributeType="String"/>
+        <relationship name="accomplishment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Accomplishment" inverseName="placeholder" inverseEntity="Accomplishment"/>
     </entity>
     <entity name="Accomplishment" representedClassName="Accomplishment" syncable="YES" codeGenerationType="class">
         <attribute name="accomplishment_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -14,6 +15,9 @@
         <attribute name="issuer" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="placeholder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Accomplish_Placeholder" inverseName="accomplishment" inverseEntity="Accomplish_Placeholder"/>
+        <relationship name="resumeContent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Resume_Content" inverseName="accomplishment" inverseEntity="Resume_Content"/>
+        <relationship name="suggestion" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accomplishment_Suggest" inverseName="accomplishment" inverseEntity="Accomplishment_Suggest"/>
         <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="accomplishment" inverseEntity="User"/>
     </entity>
     <entity name="Accomplishment_Suggest" representedClassName="Accomplishment_Suggest" syncable="YES" codeGenerationType="class">
@@ -21,6 +25,7 @@
         <attribute name="accom_suggest_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="accomplishment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Accomplishment" inverseName="suggestion" inverseEntity="Accomplishment"/>
     </entity>
     <entity name="Consult_History" representedClassName="Consult_History" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -53,6 +58,7 @@
         <attribute name="start_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="resumeContent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Resume_Content" inverseName="education" inverseEntity="Resume_Content"/>
         <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="education" inverseEntity="User"/>
     </entity>
     <entity name="Experience" representedClassName="Experience" syncable="YES" codeGenerationType="class">
@@ -116,7 +122,10 @@
         <attribute name="exp_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="resume_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="skill_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="accomplishment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accomplishment" inverseName="resumeContent" inverseEntity="Accomplishment"/>
+        <relationship name="education" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Education" inverseName="resumeContent" inverseEntity="Education"/>
         <relationship name="experience" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Experience" inverseName="resumeContent" inverseEntity="Experience"/>
+        <relationship name="skills" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Skills" inverseName="resumeContent" inverseEntity="Skills"/>
         <relationship name="userResume" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User_Resume" inverseName="resumeContent" inverseEntity="User_Resume"/>
     </entity>
     <entity name="Resume_Template" representedClassName="Resume_Template" syncable="YES" codeGenerationType="class">
@@ -130,17 +139,22 @@
         <attribute name="skill_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="skill_name" optional="YES" attributeType="String"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="placeholder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Skills_Placeholder" inverseName="skills" inverseEntity="Skills_Placeholder"/>
+        <relationship name="resumeContent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Resume_Content" inverseName="skills" inverseEntity="Resume_Content"/>
+        <relationship name="suggestion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Skills_Suggest" inverseName="skills" inverseEntity="Skills_Suggest"/>
         <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="skill" inverseEntity="User"/>
     </entity>
     <entity name="Skills_Placeholder" representedClassName="Skills_Placeholder" syncable="YES" codeGenerationType="class">
         <attribute name="skills_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="skills_name_ph" optional="YES" attributeType="String"/>
         <attribute name="skills_ph_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="skills" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Skills" inverseName="placeholder" inverseEntity="Skills"/>
     </entity>
     <entity name="Skills_Suggest" representedClassName="Skills_Suggest" syncable="YES" codeGenerationType="class">
         <attribute name="skills_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="skills_suggest" optional="YES" attributeType="String"/>
         <attribute name="skills_suggest_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="skills" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Skills" inverseName="suggestion" inverseEntity="Skills"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="email" optional="YES" attributeType="String"/>
@@ -172,24 +186,24 @@
     </entity>
     <elements>
         <element name="Consult_History" positionX="-27" positionY="18" width="128" height="89"/>
-        <element name="Education" positionX="27" positionY="162" width="128" height="194"/>
+        <element name="Education" positionX="27" positionY="162" width="128" height="209"/>
         <element name="Experience" positionX="54" positionY="99" width="128" height="224"/>
         <element name="Experience_Placeholder" positionX="18" positionY="63" width="128" height="119"/>
         <element name="Experience_Suggestion" positionX="27" positionY="72" width="128" height="89"/>
         <element name="PersonalInformation_Placeholder" positionX="63" positionY="108" width="128" height="149"/>
         <element name="PersonalInformation_Suggestion" positionX="27" positionY="72" width="128" height="89"/>
-        <element name="Resume_Content" positionX="36" positionY="81" width="128" height="134"/>
+        <element name="Resume_Content" positionX="36" positionY="81" width="128" height="179"/>
         <element name="Resume_Template" positionX="45" positionY="90" width="128" height="89"/>
         <element name="User" positionX="54" positionY="99" width="128" height="239"/>
         <element name="User_Resume" positionX="72" positionY="117" width="128" height="179"/>
         <element name="Edu_Suggestion" positionX="36" positionY="171" width="128" height="74"/>
         <element name="Edu_Placeholder" positionX="45" positionY="180" width="128" height="134"/>
-        <element name="Accomplishment" positionX="54" positionY="189" width="128" height="149"/>
-        <element name="Accomplishment_Suggest" positionX="63" positionY="198" width="128" height="89"/>
-        <element name="Accomplish_Placeholder" positionX="72" positionY="207" width="128" height="89"/>
-        <element name="Skills" positionX="81" positionY="216" width="128" height="104"/>
-        <element name="Skills_Placeholder" positionX="27" positionY="162" width="128" height="74"/>
-        <element name="Skills_Suggest" positionX="36" positionY="171" width="128" height="74"/>
+        <element name="Accomplishment" positionX="54" positionY="189" width="128" height="194"/>
+        <element name="Accomplishment_Suggest" positionX="63" positionY="198" width="128" height="104"/>
+        <element name="Accomplish_Placeholder" positionX="72" positionY="207" width="128" height="104"/>
+        <element name="Skills" positionX="81" positionY="216" width="128" height="149"/>
+        <element name="Skills_Placeholder" positionX="27" positionY="162" width="128" height="89"/>
+        <element name="Skills_Suggest" positionX="36" positionY="171" width="128" height="89"/>
         <element name="Expert_Profile" positionX="45" positionY="180" width="128" height="149"/>
     </elements>
 </model>

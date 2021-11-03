@@ -26,6 +26,7 @@
 		8435DB472731126700862FF0 /* EducationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB462731126700862FF0 /* EducationRepository.swift */; };
 		8435DB492731830F00862FF0 /* AccomplishmentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB482731830F00862FF0 /* AccomplishmentRepository.swift */; };
 		8435DB4B27320AA400862FF0 /* SkillRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB4A27320AA400862FF0 /* SkillRepository.swift */; };
+		8435DB4D27321FAB00862FF0 /* SkillPlaceholderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB4C27321FAB00862FF0 /* SkillPlaceholderRepository.swift */; };
 		B859B535272852EF00627CDC /* EmptyStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52B272852EE00627CDC /* EmptyStateRepository.swift */; };
 		B859B537272852EF00627CDC /* ResumeTemplateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */; };
 		B859B538272852EF00627CDC /* ExperiencePlaceholderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52E272852EF00627CDC /* ExperiencePlaceholderRepository.swift */; };
@@ -171,6 +172,7 @@
 		8435DB462731126700862FF0 /* EducationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationRepository.swift; sourceTree = "<group>"; };
 		8435DB482731830F00862FF0 /* AccomplishmentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomplishmentRepository.swift; sourceTree = "<group>"; };
 		8435DB4A27320AA400862FF0 /* SkillRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillRepository.swift; sourceTree = "<group>"; };
+		8435DB4C27321FAB00862FF0 /* SkillPlaceholderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillPlaceholderRepository.swift; sourceTree = "<group>"; };
 		B859B52B272852EE00627CDC /* EmptyStateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateRepository.swift; sourceTree = "<group>"; };
 		B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumeTemplateRepository.swift; sourceTree = "<group>"; };
 		B859B52E272852EF00627CDC /* ExperiencePlaceholderRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperiencePlaceholderRepository.swift; sourceTree = "<group>"; };
@@ -772,6 +774,7 @@
 				B859B534272852EF00627CDC /* ResumeContentRepository.swift */,
 				8435DB462731126700862FF0 /* EducationRepository.swift */,
 				8435DB4A27320AA400862FF0 /* SkillRepository.swift */,
+				8435DB4C27321FAB00862FF0 /* SkillPlaceholderRepository.swift */,
 				8435DB482731830F00862FF0 /* AccomplishmentRepository.swift */,
 				B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */,
 				B859B533272852EF00627CDC /* UserRepository.swift */,
@@ -1068,6 +1071,7 @@
 				BF85035B27225C3400CC43FB /* PersonalInfoPage.swift in Sources */,
 				B88AFA36272A903A007408A5 /* ResumeCell.swift in Sources */,
 				B859B53B272852EF00627CDC /* ExperienceRepository.swift in Sources */,
+				8435DB4D27321FAB00862FF0 /* SkillPlaceholderRepository.swift in Sources */,
 				BF8503A42722B80F00CC43FB /* ExperiencePageView.swift in Sources */,
 				BF5F1BEE2722D805004D0756 /* ResumeTemplateViewController.swift in Sources */,
 				B88AFA39272AB10D007408A5 /* UIImageView+Extension.swift in Sources */,
