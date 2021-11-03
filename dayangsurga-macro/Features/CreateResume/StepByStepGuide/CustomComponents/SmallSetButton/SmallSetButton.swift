@@ -20,16 +20,18 @@ class SmallSetButton: UIView {
     
     func buttonStyle() {
         rightButton.dsShortFilledPrimaryButton(isDisable: false, text: "Next")
-        leftButton.dsShortFilledPrimaryButton(isDisable: false, text: "Next")
+        leftButton.dsShortFilledPrimaryButton(isDisable: false, text: "Previous")
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         initWithNib()
+        buttonStyle()
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initWithNib()
+        buttonStyle()
     }
     fileprivate func initWithNib() {
         guard let view = loadViewFromNib(nibName: "SmallSetButton") else {return}
@@ -39,7 +41,6 @@ class SmallSetButton: UIView {
     
     convenience init() {
         self.init()
-        buttonStyle()
     }
     
     func loadViewFromNib(nibName: String) -> UIView? {

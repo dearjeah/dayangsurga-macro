@@ -132,6 +132,7 @@
 		BFBA47AE272A8D7800D4771E /* XIBVCTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFBA47AD272A8D7800D4771E /* XIBVCTest.storyboard */; };
 		BFBA47B0272A8D9800D4771E /* XIBVCTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA47AF272A8D9800D4771E /* XIBVCTestViewController.swift */; };
 		BFBA47B4272AE5C400D4771E /* ExperienceFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA47B3272AE5C400D4771E /* ExperienceFormController.swift */; };
+		BFBA47AC27294AE600D4771E /* StepByStepGuidePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA47AB27294AE600D4771E /* StepByStepGuidePageController.swift */; };
 		BFE0035027272F450070BD40 /* LabelWithDate.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE0034F27272F450070BD40 /* LabelWithDate.xib */; };
 		BFE0035227272F500070BD40 /* LabelWithDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE0035127272F500070BD40 /* LabelWithDate.swift */; };
 		BFE003552727331F0070BD40 /* BigButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE003542727331F0070BD40 /* BigButtonWithImage.swift */; };
@@ -285,6 +286,7 @@
 		BFBA47AD272A8D7800D4771E /* XIBVCTest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = XIBVCTest.storyboard; sourceTree = "<group>"; };
 		BFBA47AF272A8D9800D4771E /* XIBVCTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBVCTestViewController.swift; sourceTree = "<group>"; };
 		BFBA47B3272AE5C400D4771E /* ExperienceFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceFormController.swift; sourceTree = "<group>"; };
+		BFBA47AB27294AE600D4771E /* StepByStepGuidePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepGuidePageController.swift; sourceTree = "<group>"; };
 		BFE0034F27272F450070BD40 /* LabelWithDate.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelWithDate.xib; sourceTree = "<group>"; };
 		BFE0035127272F500070BD40 /* LabelWithDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithDate.swift; sourceTree = "<group>"; };
 		BFE003542727331F0070BD40 /* BigButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButtonWithImage.swift; sourceTree = "<group>"; };
@@ -834,6 +836,7 @@
 				BF8503B42722BABF00CC43FB /* StepByStepGuideViewModel.swift */,
 				BF8503B22722BA0300CC43FB /* StepByStepGuideViewController.swift */,
 				BF8503B02722B9E700CC43FB /* StepByStepGuideViewController.storyboard */,
+				BFBA47AB27294AE600D4771E /* StepByStepGuidePageController.swift */,
 			);
 			path = StepByStepGuidePage;
 			sourceTree = "<group>";
@@ -1040,6 +1043,7 @@
 				BF850372272266F400CC43FB /* TableViewCell+Extension.swift in Sources */,
 				679DBEA22723FAAD00CE9E8F /* ResumeTemplateCell.swift in Sources */,
 				BF85030E2722551B00CC43FB /* UserProfileViewController.swift in Sources */,
+				BFBA47AC27294AE600D4771E /* StepByStepGuidePageController.swift in Sources */,
 				BF5F1BFA2722D983004D0756 /* PreviewResumeViewController.swift in Sources */,
 				BF8503962722B68A00CC43FB /* ExpertListViewModel.swift in Sources */,
 				675812C12727900600E106AF /* TechnicalSkillsEditCell.swift in Sources */,
@@ -1303,6 +1307,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = QuizPageTestViewController;
+				INFOPLIST_KEY_UIMainStoryboardFile = StepByStepGuideViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1332,6 +1337,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = QuizPageTestViewController;
+				INFOPLIST_KEY_UIMainStoryboardFile = StepByStepGuideViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

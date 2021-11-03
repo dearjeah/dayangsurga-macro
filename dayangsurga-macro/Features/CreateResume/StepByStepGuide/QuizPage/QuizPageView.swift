@@ -50,9 +50,11 @@ class QuizPageView: UIView {
         self.addSubview(view)
     }
     
-    convenience init() {
+    convenience init(header: String, desc: String, sample: String) {
         self.init()
-        
+        questionHeader.text = header
+        questionDescription.text = desc
+        answerExample.text = sample
     }
     
     func loadViewFromNib(nibName: String) -> UIView? {
