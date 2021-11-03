@@ -27,7 +27,7 @@ class AccomplishmentRepository{
             // relation accomplishment-user
             if let AccomplishmentToUser = UserRepository.shared.getUserById(id: userId) {
                 let accomplishment = Accomplishment(context: context)
-                accomplishment.accom_id = Int32(accomId)
+                accomplishment.accomplishment_id = Int32(accomId)
                 accomplishment.user_id = Int32(userId)
                 accomplishment.given_date = givenDate
                 accomplishment.title = title
@@ -81,7 +81,7 @@ class AccomplishmentRepository{
         do {
             let item = try context.fetch(fetchRequest) as? [Accomplishment]
             let accomplishment = item?.first
-            accomplishment?.accom_id = Int32(accomId)
+            accomplishment?.accomplishment_id = Int32(accomId)
             accomplishment?.user_id = Int32(userId)
             accomplishment?.given_date = givenDate
             accomplishment?.title = title
