@@ -26,9 +26,7 @@ class PDFCreator: NSObject{
       format.documentInfo = pdfMetaData as [String: Any]
 
       // 2
-      let pageWidth = 8.3 * 72.0
-      let pageHeight = 11.7 * 72.0
-      let pageRect = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
+      let pageRect = CGRect(x: 0, y: 0, width: 595, height: 842)
 
       // 3
       let renderer = UIGraphicsPDFRenderer(bounds: pageRect, format: format)
@@ -36,9 +34,11 @@ class PDFCreator: NSObject{
       let data = renderer.pdfData { (context) in
         // 5
         context.beginPage()
+        let drawContext = context.cgContext
 //        // 6
         let titleBottom = addTitle(pageRect: pageRect)
-        addBodyText(pageRect: pageRect, textTop:titleBottom + 36.0)
+          drawSeparator(drawContext, pageRect: pageRect, height: 10.0)
+//        addBodyText(pageRect: pageRect, textTop:titleBottom + 36.0)
         
       }
 
@@ -47,8 +47,7 @@ class PDFCreator: NSObject{
     
     func addTitle(pageRect: CGRect)->CGFloat{
         let titleFont = UIFont.systemFont(ofSize: 18.0, weight: .bold)
-        let fontColor = UIColor.white
-        let titleAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: titleFont, NSAttributedString.Key.strokeColor: fontColor]
+        let titleAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: titleFont]
         let attributedTitle = NSAttributedString(
             string: dataInput,
             attributes: titleAttribute)
@@ -60,26 +59,61 @@ class PDFCreator: NSObject{
             height: titlesStringSize.height
       )
       attributedTitle.draw(in: titleStringRect)
-      return titleStringRect.origin.y + titleStringRect.size.height
+        
+      return titleStringRect.origin.y + titleStringRect.size.height + 4.0
     }
     
-    func addBodyText(pageRect: CGRect, textTop:CGFloat){
-      let textFont = UIFont.systemFont(ofSize: 12.0, weight: .regular)
-      
-      let paragraphStyle = NSMutableParagraphStyle()
-      paragraphStyle.alignment = .natural
-      paragraphStyle.lineBreakMode = .byWordWrapping
-      
-      let textAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: textFont, NSAttributedString.Key.paragraphStyle: paragraphStyle]
-      
-      let attributedText = NSAttributedString(
-      string: dataInput, attributes: textAttributes)
-      let textRect = CGRect(
-        x:10,
-        y: textTop,
-        width: pageRect.width - 20,
-        height: pageRect.height - textTop - pageRect.height / 5.0)
-      
-      attributedText.draw(in: textRect)
+    func addHeader(pageRect: CGRect, headerTop:CGFloat)->CGFloat{
+        let headerFont = UIFont.systemFont(ofSize: 12.0, weight: .regular)
+        let headerAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: headerFont]
+        let attributedHeader = NSAttributedString(string: dataInput, attributes: headerAttribute)
+        
+        let headerRect = CGRect(x: 20, y: headerTop, width: attributedHeader.size().width, height: attributedHeader.size().height)
+        
+        attributedHeader.draw(in: headerRect)
+        return headerRect.origin.y + headerRect.height + 4.0
     }
+    
+    func addBodyText(pageRect: CGRect, textTop: CGFloat)->CGFloat{
+        let bodyFont = UIFont.systemFont(ofSize: 12.0, weight: .regular)
+        let bodyAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: bodyFont]
+        
+        let attributedBody = NSAttributedString(string: dataInput, attributes: bodyAttribute)
+        
+        let bodyRect = CGRect(x: 20, y: textTop, width: attributedBody.size().width, height: attributedBody.size().height)
+        
+        attributedBody.draw(in: bodyRect)
+        return bodyRect.origin.y + bodyRect.height + 4.0
+    }
+    
+    func addParagraphText(pageRect: CGRect, textTop:CGFloat)->CGFloat{
+        let paragraphFont = UIFont.systemFont(ofSize: 12.0, weight: .regular)
+          
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .natural
+        paragraphStyle.lineBreakMode = .byWordWrapping
+          
+        let paragraphAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: [paragraphFont], NSAttributedString.Key.paragraphStyle: paragraphStyle]
+          
+        let attributedParagraph = NSAttributedString(
+        string: dataInput, attributes: paragraphAttribute)
+        let paragraphRect = CGRect(x:10, y: textTop, width: pageRect.width - 20, height: attributedParagraph.size().height)
+          
+        attributedParagraph.draw(in: paragraphRect)
+        return paragraphRect.origin.y + paragraphRect.height + 4.0
+    }
+    
+    func drawSeparator(_ drawSeparator: CGContext, pageRect: CGRect, height: CGFloat)->CGFloat{
+        
+        drawSeparator.saveGState()
+        drawSeparator.setLineWidth(0.8)
+        drawSeparator.setStrokeColor(UIColor.lightGray.cgColor)
+        drawSeparator.move(to: CGPoint(x: 20, y: height))
+        drawSeparator.addLine(to: CGPoint(x: pageRect.width-20, y: height))
+        drawSeparator.strokePath()
+        drawSeparator.restoreGState()
+        
+        return height + 4.0
+    }
+    
 }
