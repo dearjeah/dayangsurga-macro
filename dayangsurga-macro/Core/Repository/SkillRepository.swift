@@ -30,8 +30,8 @@ class SkillRepository{
                 skill.skill_name = skillName
                 skill.is_selected = isSelected
                 
-                //add skill
                 
+                SkillToUser.addToSkill(skill)
                 
                 try context.save()
             }
