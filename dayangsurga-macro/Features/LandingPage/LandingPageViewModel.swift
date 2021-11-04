@@ -7,38 +7,37 @@
 
 import UIKit
 
-class LandingPageViewModel {
+class LandingPageViewModel: NSObject {
     
-    var image: UIImage
-    var name: String
-    var date: String
-
-    init(image: UIImage, name: String, date: String){
-        self.image = image
-        self.name = name
-        self.date = date
+    var user: User?
+    var emptyStateId: EmptyState?
+    let userResumeRepo = UserResumeRepository.shared
+    let emptyStateRepo = EmptyStateRepository.shared
+    
+    init(user: User?, emptyStateId: EmptyState?){
+        self.user = user
+        self.emptyStateId = emptyStateId
     }
     
-    // dummy data
-    static let resumes = [LandingPageViewModel(image: UIImage(systemName: "doc.text") ?? UIImage(), name: "Resume 1", date: "Mon, 11 Oct 2021"),
-                          LandingPageViewModel(image: UIImage(systemName: "doc.text") ?? UIImage(), name: "Resume 2", date: "Mon, 11 Oct 2021"),
-                          LandingPageViewModel(image: UIImage(systemName: "doc.text.below.ecg") ?? UIImage(), name: "Resume 3", date: "Mon, 11 Oct 2021"),
-                          LandingPageViewModel(image: UIImage(systemName: "list.bullet.rectangle.portrait") ?? UIImage(), name: "Resume 4", date: "Mon, 11 Oct 2021"),
-                          LandingPageViewModel(image: UIImage(systemName: "doc.richtext") ?? UIImage(), name: "Resume 5", date: "Mon, 11 Oct 2021"),
-                          LandingPageViewModel(image: UIImage(systemName: "doc.append") ?? UIImage(), name: "Resume 6", date: "Mon, 11 Oct 2021")
-    ]
-    
-}
-
-class EmptyPageViewModel {
-    var emptyImage: UIImage
-    var emptyName: String
-    
-    init(emptyImage: UIImage, emptyName: String){
-        self.emptyImage = emptyImage
-        self.emptyName = emptyName
+    func userResumeData() -> User_Resume?{
+        return UserResumeRepository.shared.getUserResumeById(resume_id: Int(self.user?.user_id ?? 0))
     }
     
-    // dummy data
-    static let emptyState = EmptyPageViewModel(emptyImage: UIImage(systemName: "square.and.pencil") ?? UIImage(), emptyName: "You haven’t made any resume, yet. Click the ‘Create Resume’ button to start creating resume.")
+    func allUserResumeDataByDate() -> [User_Resume]?{
+        return userResumeRepo.getAllUserResumeByDate()
+    }
+    
+    func getUserResume() -> [User_Resume]?{
+        return userResumeRepo.getAllUserResume()
+    }
+    
+    func deleteResumeData(resume: User_Resume?) {
+        let emptyResumeData = User_Resume()
+        userResumeRepo.deleteUserResume(data: resume ?? emptyResumeData)
+    }
+    
+//    func emptyStateData() -> EmptyState?{
+//        return emptyStateRepo.getEmptyStateById(id: emptyStateId)
+//    }
+
 }
