@@ -21,12 +21,11 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         setView()
         showButton()
         registerCollectionView()
-        collectionView.reloadData()
-//        totalData = self.viewModel?.allUserResumeDataByDate()?.count ?? 0
-        totalData = self.viewModel?.getUserResume()?.count ?? 0
-        print(totalData)
-        userResume = self.viewModel?.getUserResume() ?? []
-//        userResume = self.viewModel?.allUserResumeDataByDate() ?? []
+        
+        self.viewModel = LandingPageViewModel()
+        totalData = self.viewModel?.allUserResumeDataByDate()?.count ?? 0
+        userResume = self.viewModel?.allUserResumeDataByDate() ?? []
+//        collectionView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
