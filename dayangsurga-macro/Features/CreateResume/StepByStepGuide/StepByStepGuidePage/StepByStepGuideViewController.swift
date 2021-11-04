@@ -11,6 +11,7 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
     
     var index: Int?
     var selectedData = User_Resume()
+    var selectedIndex: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
