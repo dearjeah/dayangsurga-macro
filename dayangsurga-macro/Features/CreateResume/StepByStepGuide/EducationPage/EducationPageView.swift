@@ -20,6 +20,10 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     var totalData = 0
     weak var delegate: ListEduDelegate?
     
+    func setup(dlgt: ListEduDelegate) {
+        self.delegate = dlgt
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initWithNib()
@@ -34,9 +38,8 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
         tableView.tableFooterView = UIView()
     }
     
-    convenience init() {
+    convenience init(text: String) {
         self.init()
-        registerTableView()
     }
     
     fileprivate func initWithNib() {

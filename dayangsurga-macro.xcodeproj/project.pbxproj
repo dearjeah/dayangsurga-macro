@@ -10,7 +10,6 @@
 		6712CF9D272EABF600449991 /* PDFCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6712CF9C272EABF600449991 /* PDFCreator.swift */; };
 		6712CF9F272EB29400449991 /* QuizPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6712CF9E272EB29400449991 /* QuizPage.swift */; };
 		6712CFA5272EE8BF00449991 /* QuizPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6712CFA4272EE8BF00449991 /* QuizPage.xib */; };
-		6712CFA8272EEAF700449991 /* QuizPageTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6712CFA6272EEAF700449991 /* QuizPageTestViewController.swift */; };
 		6712CFAB272EEB6900449991 /* QuizPageTestViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6712CFAA272EEB6900449991 /* QuizPageTestViewController.storyboard */; };
 		6722E23F2726C7C3007315AB /* ExperienceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722E23D2726C7C3007315AB /* ExperienceTableCell.swift */; };
 		6722E2402726C7C3007315AB /* ExperienceTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6722E23E2726C7C3007315AB /* ExperienceTableCell.xib */; };
@@ -26,6 +25,16 @@
 		679DBEA32723FAAD00CE9E8F /* ResumeTemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679DBEA12723FAAD00CE9E8F /* ResumeTemplateCell.xib */; };
 		679DBEAA272410F900CE9E8F /* EducationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DBEA8272410F900CE9E8F /* EducationTableCell.swift */; };
 		679DBEAB272410F900CE9E8F /* EducationTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679DBEA9272410F900CE9E8F /* EducationTableCell.xib */; };
+		8435DB472731126700862FF0 /* EducationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB462731126700862FF0 /* EducationRepository.swift */; };
+		8435DB492731830F00862FF0 /* AccomplishmentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB482731830F00862FF0 /* AccomplishmentRepository.swift */; };
+		8435DB4B27320AA400862FF0 /* SkillRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB4A27320AA400862FF0 /* SkillRepository.swift */; };
+		8435DB4D27321FAB00862FF0 /* SkillPlaceholderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB4C27321FAB00862FF0 /* SkillPlaceholderRepository.swift */; };
+		8435DB4F2732234A00862FF0 /* SkillSuggestionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB4E2732234A00862FF0 /* SkillSuggestionRepository.swift */; };
+		8435DB512732A80100862FF0 /* EducationPlaceholderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB502732A80100862FF0 /* EducationPlaceholderRepository.swift */; };
+		8435DB532732A81700862FF0 /* EducationSuggestionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB522732A81700862FF0 /* EducationSuggestionRepository.swift */; };
+		8435DB55273358E300862FF0 /* AccomplishmentSuggestionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB54273358E300862FF0 /* AccomplishmentSuggestionRepository.swift */; };
+		8435DB57273358F900862FF0 /* AccomplishmentPlaceholderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB56273358F900862FF0 /* AccomplishmentPlaceholderRepository.swift */; };
+		8435DB5927335FD300862FF0 /* ExpertProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB5827335FD300862FF0 /* ExpertProfileRepository.swift */; };
 		B82BD30E2733879200BCF6DF /* PreloadResumeTemplateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82BD30D2733879200BCF6DF /* PreloadResumeTemplateData.swift */; };
 		B859B535272852EF00627CDC /* EmptyStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52B272852EE00627CDC /* EmptyStateRepository.swift */; };
 		B859B537272852EF00627CDC /* ResumeTemplateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */; };
@@ -177,6 +186,16 @@
 		679DBEA12723FAAD00CE9E8F /* ResumeTemplateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeTemplateCell.xib; sourceTree = "<group>"; };
 		679DBEA8272410F900CE9E8F /* EducationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationTableCell.swift; sourceTree = "<group>"; };
 		679DBEA9272410F900CE9E8F /* EducationTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EducationTableCell.xib; sourceTree = "<group>"; };
+		8435DB462731126700862FF0 /* EducationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationRepository.swift; sourceTree = "<group>"; };
+		8435DB482731830F00862FF0 /* AccomplishmentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomplishmentRepository.swift; sourceTree = "<group>"; };
+		8435DB4A27320AA400862FF0 /* SkillRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillRepository.swift; sourceTree = "<group>"; };
+		8435DB4C27321FAB00862FF0 /* SkillPlaceholderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillPlaceholderRepository.swift; sourceTree = "<group>"; };
+		8435DB4E2732234A00862FF0 /* SkillSuggestionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillSuggestionRepository.swift; sourceTree = "<group>"; };
+		8435DB502732A80100862FF0 /* EducationPlaceholderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationPlaceholderRepository.swift; sourceTree = "<group>"; };
+		8435DB522732A81700862FF0 /* EducationSuggestionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationSuggestionRepository.swift; sourceTree = "<group>"; };
+		8435DB54273358E300862FF0 /* AccomplishmentSuggestionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomplishmentSuggestionRepository.swift; sourceTree = "<group>"; };
+		8435DB56273358F900862FF0 /* AccomplishmentPlaceholderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomplishmentPlaceholderRepository.swift; sourceTree = "<group>"; };
+		8435DB5827335FD300862FF0 /* ExpertProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertProfileRepository.swift; sourceTree = "<group>"; };
 		B82BD30D2733879200BCF6DF /* PreloadResumeTemplateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadResumeTemplateData.swift; sourceTree = "<group>"; };
 		B859B52B272852EE00627CDC /* EmptyStateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateRepository.swift; sourceTree = "<group>"; };
 		B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumeTemplateRepository.swift; sourceTree = "<group>"; };
@@ -795,11 +814,21 @@
 			isa = PBXGroup;
 			children = (
 				BF8503852722B35800CC43FB /* DataRepository.swift */,
+				8435DB5827335FD300862FF0 /* ExpertProfileRepository.swift */,
 				B859B52B272852EE00627CDC /* EmptyStateRepository.swift */,
 				B859B52E272852EF00627CDC /* ExperiencePlaceholderRepository.swift */,
 				B859B531272852EF00627CDC /* ExperienceRepository.swift */,
 				B859B532272852EF00627CDC /* ExperienceSuggestionRepository.swift */,
 				B859B534272852EF00627CDC /* ResumeContentRepository.swift */,
+				8435DB462731126700862FF0 /* EducationRepository.swift */,
+				8435DB502732A80100862FF0 /* EducationPlaceholderRepository.swift */,
+				8435DB522732A81700862FF0 /* EducationSuggestionRepository.swift */,
+				8435DB4A27320AA400862FF0 /* SkillRepository.swift */,
+				8435DB4C27321FAB00862FF0 /* SkillPlaceholderRepository.swift */,
+				8435DB4E2732234A00862FF0 /* SkillSuggestionRepository.swift */,
+				8435DB482731830F00862FF0 /* AccomplishmentRepository.swift */,
+				8435DB54273358E300862FF0 /* AccomplishmentSuggestionRepository.swift */,
+				8435DB56273358F900862FF0 /* AccomplishmentPlaceholderRepository.swift */,
 				B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */,
 				B859B533272852EF00627CDC /* UserRepository.swift */,
 				B859B52F272852EF00627CDC /* PersonalInformationPlaceholderRepository.swift */,
@@ -839,6 +868,7 @@
 				BF8503B42722BABF00CC43FB /* StepByStepGuideViewModel.swift */,
 				BF8503B22722BA0300CC43FB /* StepByStepGuideViewController.swift */,
 				BF8503B02722B9E700CC43FB /* StepByStepGuideViewController.storyboard */,
+				BFBA47AB27294AE600D4771E /* StepByStepGuidePageController.swift */,
 			);
 			path = StepByStepGuidePage;
 			sourceTree = "<group>";
@@ -1040,16 +1070,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6712CFA8272EEAF700449991 /* QuizPageTestViewController.swift in Sources */,
+				8435DB472731126700862FF0 /* EducationRepository.swift in Sources */,
+				8435DB5927335FD300862FF0 /* ExpertProfileRepository.swift in Sources */,
 				BFE0035227272F500070BD40 /* LabelWithDate.swift in Sources */,
 				BF850372272266F400CC43FB /* TableViewCell+Extension.swift in Sources */,
 				679DBEA22723FAAD00CE9E8F /* ResumeTemplateCell.swift in Sources */,
 				BF85030E2722551B00CC43FB /* UserProfileViewController.swift in Sources */,
+				BFBA47AC27294AE600D4771E /* StepByStepGuidePageController.swift in Sources */,
 				BF5F1BFA2722D983004D0756 /* PreviewResumeViewController.swift in Sources */,
 				BF8503962722B68A00CC43FB /* ExpertListViewModel.swift in Sources */,
 				675812C12727900600E106AF /* TechnicalSkillsEditCell.swift in Sources */,
 				BF8503552722599E00CC43FB /* LandingPageViewController.swift in Sources */,
 				BF8503782722828A00CC43FB /* UIImage+Extension.swift in Sources */,
+				8435DB512732A80100862FF0 /* EducationPlaceholderRepository.swift in Sources */,
 				BF5F1BEA2722D5CA004D0756 /* PersonalInfoViewModel.swift in Sources */,
 				BF8503922722B64600CC43FB /* ExpertListViewController.swift in Sources */,
 				B859B5402728532900627CDC /* ConsultHistoryRepository.swift in Sources */,
@@ -1067,7 +1100,9 @@
 				6722E23F2726C7C3007315AB /* ExperienceTableCell.swift in Sources */,
 				BF5F1BFE2722DA21004D0756 /* ExpertDetailViewModel.swift in Sources */,
 				BF5F1BFC2722D9A0004D0756 /* PreviewResumeViewModel.swift in Sources */,
+				8435DB57273358F900862FF0 /* AccomplishmentPlaceholderRepository.swift in Sources */,
 				BF0F8887272ED54C000B87EE /* SkillAddEditController.swift in Sources */,
+				8435DB4F2732234A00862FF0 /* SkillSuggestionRepository.swift in Sources */,
 				BF8503142722551B00CC43FB /* dayangsurga-macro.xcdatamodeld in Sources */,
 				BF8503822722B2C300CC43FB /* CoreDataManager.swift in Sources */,
 				BF8503862722B35800CC43FB /* DataRepository.swift in Sources */,
@@ -1081,10 +1116,12 @@
 				BF423DE9272BA3B7006DC552 /* XIBTesViewController.swift in Sources */,
 				679DBEAA272410F900CE9E8F /* EducationTableCell.swift in Sources */,
 				B859B538272852EF00627CDC /* ExperiencePlaceholderRepository.swift in Sources */,
+				8435DB55273358E300862FF0 /* AccomplishmentSuggestionRepository.swift in Sources */,
 				BF85038C2722B58A00CC43FB /* ProgressBarView.swift in Sources */,
 				BF2ABB2D2726EDDF00AAC6C2 /* SmallSetButton.swift in Sources */,
 				B859B53D272852EF00627CDC /* UserRepository.swift in Sources */,
 				BF2ABB362726FCD600AAC6C2 /* LabelWithTextField.swift in Sources */,
+				8435DB4B27320AA400862FF0 /* SkillRepository.swift in Sources */,
 				BF85037A272282C500CC43FB /* UILabel+Extension.swift in Sources */,
 				B859B537272852EF00627CDC /* ResumeTemplateRepository.swift in Sources */,
 				BF8503902722B5E100CC43FB /* RoundedButton.swift in Sources */,
@@ -1093,10 +1130,12 @@
 				B859B53A272852EF00627CDC /* UserResumeRepository.swift in Sources */,
 				BF85036727225FB400CC43FB /* Constants.swift in Sources */,
 				BFE003552727331F0070BD40 /* BigButtonWithImage.swift in Sources */,
+				8435DB492731830F00862FF0 /* AccomplishmentRepository.swift in Sources */,
 				BF850370272266BC00CC43FB /* String+Extension.swift in Sources */,
 				BF85035B27225C3400CC43FB /* PersonalInfoPage.swift in Sources */,
 				B88AFA36272A903A007408A5 /* ResumeCell.swift in Sources */,
 				B859B53B272852EF00627CDC /* ExperienceRepository.swift in Sources */,
+				8435DB4D27321FAB00862FF0 /* SkillPlaceholderRepository.swift in Sources */,
 				BF8503A42722B80F00CC43FB /* ExperiencePageView.swift in Sources */,
 				BF5F1BEE2722D805004D0756 /* ResumeTemplateViewController.swift in Sources */,
 				B88AFA39272AB10D007408A5 /* UIImageView+Extension.swift in Sources */,
@@ -1115,6 +1154,7 @@
 				6712CF9D272EABF600449991 /* PDFCreator.swift in Sources */,
 				B82BD30E2733879200BCF6DF /* PreloadResumeTemplateData.swift in Sources */,
 				B859B5462728533600627CDC /* PreloadExperienceData.swift in Sources */,
+				8435DB532732A81700862FF0 /* EducationSuggestionRepository.swift in Sources */,
 				B859B539272852EF00627CDC /* PersonalInformationPlaceholderRepository.swift in Sources */,
 				BF7267EA2730E9C200B5A95F /* AccomplishmentTableCell.swift in Sources */,
 				B859B548272858B900627CDC /* PersonalInformationSuggestionRepository.swift in Sources */,

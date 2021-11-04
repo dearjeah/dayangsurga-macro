@@ -26,7 +26,7 @@ class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource
         registerTableView()
     }
     
-    convenience init() {
+    convenience init(text: String) {
         self.init()
     }
     

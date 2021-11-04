@@ -3,30 +3,100 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Step By Step Guide View Controller-->
+        <!--Create Resume-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="goToStepByStep" id="Y6W-OH-hqX" customClass="StepByStepGuideViewController" customModule="dayangsurga_macro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVg-NV-Sgc">
+                                <rect key="frame" x="0.0" y="44" width="414" height="80"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rj7-Wn-qCr" customClass="ProgressBarView" customModule="dayangsurga_macro" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="primaryWhite"/>
+                                <constraints>
+                                    <constraint firstItem="rj7-Wn-qCr" firstAttribute="top" secondItem="jVg-NV-Sgc" secondAttribute="top" id="2EV-hA-LsG"/>
+                                    <constraint firstAttribute="height" constant="80" id="Y0b-rb-1Dx"/>
+                                    <constraint firstItem="rj7-Wn-qCr" firstAttribute="height" secondItem="jVg-NV-Sgc" secondAttribute="height" multiplier="0.6" id="b9c-2h-r9p"/>
+                                    <constraint firstItem="rj7-Wn-qCr" firstAttribute="width" secondItem="jVg-NV-Sgc" secondAttribute="width" id="rQF-9h-nuG"/>
+                                    <constraint firstItem="rj7-Wn-qCr" firstAttribute="centerX" secondItem="jVg-NV-Sgc" secondAttribute="centerX" id="uQ2-fG-cDC"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbX-nM-n7N">
+                                <rect key="frame" x="0.0" y="154" width="414" height="630"/>
+                                <connections>
+                                    <segue destination="LTx-EI-oe0" kind="embed" id="432-iV-djz"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i6R-d7-j4U" customClass="SmallSetButton" customModule="dayangsurga_macro" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="784" width="414" height="78"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="78" id="hbm-gd-h0p"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="primaryBG"/>
+                        <constraints>
+                            <constraint firstItem="i6R-d7-j4U" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="4bU-I1-l0l"/>
+                            <constraint firstItem="vbX-nM-n7N" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="EoN-H4-hoV"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vbX-nM-n7N" secondAttribute="trailing" id="LFK-r2-Y0k"/>
+                            <constraint firstItem="jVg-NV-Sgc" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Mwh-Do-Sv2"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="i6R-d7-j4U" secondAttribute="bottom" id="Mzh-xJ-6kE"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="i6R-d7-j4U" secondAttribute="trailing" id="RMv-KO-C0c"/>
+                            <constraint firstItem="jVg-NV-Sgc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="SoX-Vm-ZR1"/>
+                            <constraint firstItem="i6R-d7-j4U" firstAttribute="top" secondItem="vbX-nM-n7N" secondAttribute="bottom" id="aZa-Pq-b2u"/>
+                            <constraint firstItem="vbX-nM-n7N" firstAttribute="top" secondItem="jVg-NV-Sgc" secondAttribute="bottom" constant="30" id="n5x-GJ-Llp"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="jVg-NV-Sgc" secondAttribute="trailing" id="oCs-vJ-51b"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Create Resume" id="aJY-Jh-7w8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="30" y="84"/>
         </scene>
+        <!--Step By Step Guide Page Controller-->
+        <scene sceneID="aD1-9H-XX3">
+            <objects>
+                <viewController id="LTx-EI-oe0" customClass="StepByStepGuidePageController" customModule="dayangsurga_macro" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KFD-SF-ys0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="630"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="gKc-DT-Ayo"/>
+                        <color key="backgroundColor" systemColor="systemBrownColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bgL-as-9O3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="859" y="84"/>
+        </scene>
     </scenes>
     <resources>
+        <namedColor name="primaryBG">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

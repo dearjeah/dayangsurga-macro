@@ -26,16 +26,18 @@ class QuizPage: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initWithNib()
+        setupCardView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initWithNib()
+        setupCardView()
     }
     
-    convenience init() {
+    convenience init(header: String) {
         self.init()
-        setupCardView()
+        
     }
     
     fileprivate func initWithNib() {
