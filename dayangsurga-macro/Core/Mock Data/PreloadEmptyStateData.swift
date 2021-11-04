@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class PreloadEmptyStateData {
+
     
     func preloadEmptyState(){
         EmptyStateRepository.shared.createEmptyState(emptyState_id: 1,
@@ -30,4 +30,25 @@ class PreloadEmptyStateData {
                                                      image: Data(),
                                                      title: "You have no personal information yet. Click the ‘Add’ button to add your personal information")
     }
-}
+    
+let imgObj = UIImage.imgEmptyStateLandingPage
+let imageData = imgObj.pngData()! as NSData
+let base64 = imageData.base64EncodedData(options: .lineLength64Characters)
+
+    func preloadUserResume(){
+        UserResumeRepository.shared.createUserResume(resume_id: 1,
+                                                     template_id: 1,
+                                                     user_id: 1,
+                                                     image: imageData as Data,
+                                                     name: "dfj",
+                                                     lastUpdate: Date(),
+                                                     editingProgress: 2)
+        UserResumeRepository.shared.createUserResume(resume_id: 2,
+                                                     template_id: 1,
+                                                     user_id: 1,
+                                                     image: imageData as Data,
+                                                     name: "abc",
+                                                     lastUpdate: Date(),
+                                                     editingProgress: 3)
+    }
+

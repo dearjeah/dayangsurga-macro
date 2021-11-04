@@ -8,6 +8,9 @@
 import UIKit
 
 class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel> {
+    
+    var index: Int?
+    var selectedData = User_Resume()
 
     override func viewDidLoad() {
         super.viewDidLoad()

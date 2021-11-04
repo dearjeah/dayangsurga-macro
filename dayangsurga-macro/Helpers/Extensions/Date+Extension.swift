@@ -11,15 +11,16 @@ extension Date {
     
     // swiftlint:disable identifier_name
     enum ISO8601Format: String {
-      case Hour             = "HH"                         // 19
-      case DayMonth         = "EEEE, dd MMMM"                // Sun, 07 9
-      case HourMinutes      = "HH:mm"                      // 19:20
-      case Year             = "yyyy"                       // 1997
-      case YearMonth        = "yyyy-MM"                    // 1997-07
-      case Date             = "yyyy-MM-dd"                 // 1997-07-16
-      case DateTime         = "yyyy-MM-dd'T'HH:mmZ"        // 1997-07-16T19:20+01:00
-      case DateTimeSec      = "yyyy-MM-dd'T'HH:mm:ssZ"     // 1997-07-16T19:20:30+01:00
-      case DateTimeMilliSec = "yyyy-MM-dd'T'HH:mm:ss.SSSZ" // 1997-07-16T19:20:30.45+01:00
+        case Hour             = "HH"                         // 19
+        case DayMonth         = "EEEE, dd MMMM"                // Sun, 07 9
+        case DayMonthYear     = "EEEE, dd MMMM yyyy"          // Mon, 11 Oct 2021
+        case HourMinutes      = "HH:mm"                      // 19:20
+        case Year             = "yyyy"                       // 1997
+        case YearMonth        = "yyyy-MM"                    // 1997-07
+        case Date             = "yyyy-MM-dd"                 // 1997-07-16
+        case DateTime         = "yyyy-MM-dd'T'HH:mmZ"        // 1997-07-16T19:20+01:00
+        case DateTimeSec      = "yyyy-MM-dd'T'HH:mm:ssZ"     // 1997-07-16T19:20:30+01:00
+        case DateTimeMilliSec = "yyyy-MM-dd'T'HH:mm:ss.SSSZ" // 1997-07-16T19:20:30.45+01:00
     }
     // swiftlint:enable identifier_name
     var day: Int {
@@ -50,19 +51,19 @@ extension Date {
     var startOfDay: Date {
         return Calendar.current.startOfDay(for: self)
     }
-
+    
     var endOfDay: Date {
         var components = DateComponents()
         components.day = 1
         components.second = -1
         return Calendar.current.date(byAdding: components, to: startOfDay)!
     }
-
+    
     var startOfMonth: Date {
         let components = Calendar.current.dateComponents([.year, .month], from: startOfDay)
         return Calendar.current.date(from: components)!
     }
-
+    
     var endOfMonth: Date {
         var components = DateComponents()
         components.month = 1
@@ -99,9 +100,9 @@ extension Date {
     }
     
     var dayOfTheWeek: Int {
-         let dayNumber = Calendar.current.component(.weekday, from: self)
-         // day number starts from 1 but array count from 0
-         return dayNumber - 1
+        let dayNumber = Calendar.current.component(.weekday, from: self)
+        // day number starts from 1 but array count from 0
+        return dayNumber - 1
     }
     
     var iso8601: String {

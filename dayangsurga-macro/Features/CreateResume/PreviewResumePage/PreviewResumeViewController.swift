@@ -10,6 +10,7 @@ import PDFKit
 
 class PreviewResumeViewController: MVVMViewController<PreviewResumeViewModel> {
     @IBOutlet weak var pdfView: PDFView!
+    var selectedData = User_Resume()
     var dataInput = "Test"
     public var documentData: Data?
     
