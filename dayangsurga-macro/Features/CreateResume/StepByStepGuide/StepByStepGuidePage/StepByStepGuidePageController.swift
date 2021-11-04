@@ -8,8 +8,11 @@
 import UIKit
 
 protocol StepByStepGuideDelegate: AnyObject {
-    func isHidePrevNextButton(was: Bool)
     func progressBarUpdate(index: Int)
+}
+
+protocol prevNextButtonDelegate: AnyObject {
+    func isHidePrevNextButton(was: Bool)
 }
 
 class StepByStepGuidePageController: UIPageViewController {
@@ -20,12 +23,20 @@ class StepByStepGuidePageController: UIPageViewController {
     var nextPageIndex: Int = 1
     var previousPageIndex: Int = -1
     var quizAnswer: [Bool] = []
+    var pageType: [Int] = []
     
     weak var stepDelegate: StepByStepGuideDelegate?
+    weak var prevNextDelegate: prevNextButtonDelegate?
     
-    func setup(stepDlgt: StepByStepGuideDelegate) {
+    func stepSetup(stepDlgt: StepByStepGuideDelegate) {
         self.stepDelegate = stepDlgt
     }
+    
+    func prevNextSetup (prevNextDlgt: prevNextButtonDelegate) {
+        self.prevNextDelegate = prevNextDlgt
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,15 +45,43 @@ class StepByStepGuidePageController: UIPageViewController {
         populateItems()
         //style()
         setup()
-
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? StepByStepGuideViewController {
+            vc.setup(dlgt: self)
+        }
     }
     
 }
 
 //MARK: Protocol Delegate
-extension StepByStepGuidePageController: PersonalInfoPageDelegate {
+extension StepByStepGuidePageController: PersonalInfoPageDelegate, StepVCdelegate {
     
+    //MARK: Protocol Function
+    //stepVC
+    func didSelectNext() {
+        goToNext(wasPage: currentPageIndex)
+    }
+    
+    func didSelectPrev() {
+        gotToPrev(wasPage: currentPageIndex)
+    }
+    
+    func didSelectGenerate() {
+        goGenerate(wasPage: currentPageIndex)
+    }
+    
+    //MARK: Delegate Function
+    func hideUnHideButton(currentPage: Int) {
+        if pageType[currentPage] == 6 {
+            prevNextDelegate?.isHidePrevNextButton(was: true)
+        } else {
+            prevNextDelegate?.isHidePrevNextButton(was: false)
+        }
+    }
 }
 
 //MARK: Page Controller
@@ -95,6 +134,7 @@ extension StepByStepGuidePageController {
         guard let nextViewController = dataSource?.pageViewController( self, viewControllerAfter: currentViewController ) else { return }
         setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
         setPageIndex(value: 1)
+        hideUnHideButton(currentPage: currentPageIndex)
     }
     
     func gotToPrev(wasPage: Int){
@@ -102,6 +142,7 @@ extension StepByStepGuidePageController {
         guard let prevViewController = dataSource?.pageViewController( self, viewControllerBefore: currentViewController) else { return }
         setViewControllers([prevViewController], direction: .reverse, animated: true, completion: nil)
         setPageIndex(value: -1)
+        hideUnHideButton(currentPage: currentPageIndex)
     }
     
     func goGenerate(wasPage: Int){
@@ -126,10 +167,12 @@ extension StepByStepGuidePageController {
     
     func isAddEdit(data: Int, pageType: Int) {
         //page type : 1-6, 6 = quiz
-        if data == 0 {
-            //button text = add
-        } else {
-            //button text = edit
+        if pageType == 4 {
+            if data == 0 {
+                //button text = add
+            } else {
+                //button text = edit
+            }
         }
     }
 }
@@ -226,20 +269,11 @@ extension StepByStepGuidePageController {
         let skills = initSkills()
         let accomp = initAccomplishment()
         if source == "create" {
-            stepControllerArr?.append(personalInfo)
-            stepControllerArr?.append(education)
-            stepControllerArr?.append(quiz)
-            stepControllerArr?.append(exp)
-            stepControllerArr?.append(quiz2)
-            stepControllerArr?.append(skills)
-            stepControllerArr?.append(quiz3)
-            stepControllerArr?.append(accomp)
+            stepControllerArr?.append(contentsOf: [personalInfo, education, quiz, exp, quiz2, skills, quiz3, accomp])
+            pageType.append(contentsOf:[1, 2, 6, 3, 6, 4, 6, 5])
         } else {
-            stepControllerArr?.append(personalInfo)
-            stepControllerArr?.append(education)
-            stepControllerArr?.append(exp)
-            stepControllerArr?.append(skills)
-            stepControllerArr?.append(accomp)
+            stepControllerArr?.append(contentsOf: [personalInfo, education, exp, skills, accomp])
+            pageType.append(contentsOf:[1, 2, 3, 4, 5])
         }
     }
     
