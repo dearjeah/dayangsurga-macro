@@ -12,12 +12,12 @@ func preloadResumeTemplate(){
     
     
     ResumeTemplateRepository.shared.createResumeTemplate(template_id: 1,
-                                                         image: <#T##Data#>,
+                                                         image: Data(),
                                                          name: "ResumeTemplateArial")
     ResumeTemplateRepository.shared.createResumeTemplate(template_id: 2,
-                                                         image: Data,
+                                                         image: Data(),
                                                          name: "ResumeTemplateGeorgia")
     ResumeTemplateRepository.shared.createResumeTemplate(template_id: 3,
-                                                         image: <#T##Data#>,
+                                                         image: Data(),
                                                          name: "ResumeTemplateHeletvica")
 }
