@@ -88,10 +88,9 @@ extension CoreDataManager {
     }
 
     func preloadData() {
-        if preloadUserResume() == nil {
-            preloadUserResume()
-            preloadEmptyState()
-        }
+        preloadUserResume()
+        preloadEmptyState()
+        preloadResumeTemplate()
         
     }
 }
