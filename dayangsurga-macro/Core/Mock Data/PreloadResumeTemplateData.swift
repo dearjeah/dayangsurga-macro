@@ -9,15 +9,25 @@ import Foundation
 import UIKit
 
 func preloadResumeTemplate(){
+    let img1 = UIImage.imgResumeTemplateArial
+    let imageData1 = img1.pngData()! as NSData
+    let data1 = imageData1.base64EncodedData(options: .lineLength64Characters)
     
+    let img2 = UIImage.imgResumeTemplateGeorgia
+    let imageData2 = img2.pngData()! as NSData
+    let data2 = imageData2.base64EncodedData(options: .lineLength64Characters)
+    
+    let img3 = UIImage.imgResumeTemplateHeletvica
+    let imageData3 = img3.pngData()! as NSData
+    let data3 = imageData3.base64EncodedData(options: .lineLength64Characters)
     
     ResumeTemplateRepository.shared.createResumeTemplate(template_id: 1,
-                                                         image: Data(),
+                                                         image: data1,
                                                          name: "ResumeTemplateArial")
     ResumeTemplateRepository.shared.createResumeTemplate(template_id: 2,
-                                                         image: Data(),
+                                                         image: data2,
                                                          name: "ResumeTemplateGeorgia")
     ResumeTemplateRepository.shared.createResumeTemplate(template_id: 3,
-                                                         image: Data(),
+                                                         image: data3,
                                                          name: "ResumeTemplateHeletvica")
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Accomplish_Placeholder" representedClassName="Accomplish_Placeholder" syncable="YES" codeGenerationType="class">
         <attribute name="accomplishment_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="accomplishment_ph_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -66,6 +66,11 @@
         <relationship name="resumeContent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Resume_Content" inverseName="education" inverseEntity="Resume_Content"/>
         <relationship name="suggestion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Edu_Suggestion" inverseName="education" inverseEntity="Edu_Suggestion"/>
         <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="education" inverseEntity="User"/>
+    </entity>
+    <entity name="Empty_State" representedClassName="Empty_State" syncable="YES" codeGenerationType="class">
+        <attribute name="emptyState_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Experience" representedClassName="Experience" syncable="YES" codeGenerationType="class">
         <attribute name="exp_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -212,5 +217,6 @@
         <element name="Skills_Suggest" positionX="36" positionY="171" width="128" height="89"/>
         <element name="User" positionX="54" positionY="99" width="128" height="239"/>
         <element name="User_Resume" positionX="72" positionY="117" width="128" height="179"/>
+        <element name="Empty_State" positionX="27" positionY="180" width="128" height="74"/>
     </elements>
 </model>
