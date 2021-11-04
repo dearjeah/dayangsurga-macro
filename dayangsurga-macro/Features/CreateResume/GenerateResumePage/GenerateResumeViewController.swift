@@ -37,7 +37,7 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
             dataInput: dataInput
         )
         
-        vc?.documentData = pdfCreator.createFlyer()
+        vc?.documentData = pdfCreator.createPDF()
     }
     
     @IBAction func previewDidTap(_ sender: Any) {

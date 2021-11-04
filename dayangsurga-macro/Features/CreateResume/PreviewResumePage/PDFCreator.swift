@@ -15,7 +15,7 @@ class PDFCreator: NSObject{
         self.dataInput = dataInput
     }
     
-    func createFlyer() -> Data {
+    func createPDF() -> Data {
       // 1
       let pdfMetaData = [
         kCGPDFContextCreator: "Resume Creator",
@@ -44,7 +44,7 @@ class PDFCreator: NSObject{
 
       return data
     }
-    
+
     func addTitle(pageRect: CGRect)->CGFloat{
         // Initialize Font & attributes of font
         let titleFont = UIFont.systemFont(ofSize: 18.0, weight: .bold)
@@ -73,10 +73,21 @@ class PDFCreator: NSObject{
         let headerAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: headerFont]
         let attributedHeader = NSAttributedString(string: dataInput, attributes: headerAttribute)
         
-        let headerRect = CGRect(x: 20, y: headerTop, width: attributedHeader.size().width, height: attributedHeader.size().height)
+        let headerRect = CGRect(x: (pageRect.width-attributedHeader.size().width)/2.0, y: headerTop, width: attributedHeader.size().width, height: attributedHeader.size().height)
         
         attributedHeader.draw(in: headerRect)
         return headerRect.origin.y + headerRect.height + 4.0
+    }
+    
+    func addInstitutionText(pageRect: CGRect, institutionTop: CGFloat)->CGFloat{
+        let institutionFont = UIFont.systemFont(ofSize: 12.0, weight: .bold)
+        let institutionAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: institutionFont]
+        let attributedInstitution = NSAttributedString(string: dataInput, attributes: institutionAttribute)
+        
+        let institutionRect = CGRect(x: 20, y: institutionTop, width: attributedInstitution.size().width, height: attributedInstitution.size().height)
+        attributedInstitution.draw(in: institutionRect)
+        
+        return institutionRect.origin.y + institutionRect.height + 4.0
     }
     
     func addPeriodText(pageRect: CGRect, textTop: CGFloat){
