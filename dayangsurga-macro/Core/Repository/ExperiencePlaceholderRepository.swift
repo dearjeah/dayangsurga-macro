@@ -55,7 +55,7 @@ class ExperiencePlaceholderRepository{
     
     func getExpPhById(id: Int) -> Experience_Placeholder? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "exp_ph_id == %@", id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "exp_ph_id == %d", id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Experience_Placeholder]
             return item?.first
@@ -72,7 +72,7 @@ class ExperiencePlaceholderRepository{
                      newJobDesc_ph: String,
                      newCompanyName_ph: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "exp_ph_id == %@", exp_ph_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "exp_ph_id == %d", exp_ph_id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Experience_Placeholder]
             let experiencePlaceholder = item?.first
