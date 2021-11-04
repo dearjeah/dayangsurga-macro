@@ -17,12 +17,12 @@ class ResumeTemplateRepository{
     
     // create data
     func createResumeTemplate(template_id: Int,
-                              image: Data,
+                              image: UIImage,
                               name: String){
         do {
             let template = Resume_Template(context: context)
             template.template_id = Int32(template_id)
-            template.image = image
+            template.image = image.pngData()
             template.name = name
             
             try context.save()

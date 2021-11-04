@@ -7,6 +7,11 @@
 
 import Foundation
 
-class ResumeTemplateViewModel{
+class ResumeTemplateViewModel: NSObject{
     
+    let templateRepo = ResumeTemplateRepository.shared
+    
+    func getTemplate() -> [Resume_Template]?{
+        return templateRepo.getAllTemplate()
+    }
 }
