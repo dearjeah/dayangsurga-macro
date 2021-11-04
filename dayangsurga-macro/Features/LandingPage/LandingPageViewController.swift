@@ -171,7 +171,7 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
             dataInput: dataInput
         )
         
-        vc.documentData = pdfCreator.createFlyer()
+        vc.documentData = pdfCreator.createPDF()
         
         
         

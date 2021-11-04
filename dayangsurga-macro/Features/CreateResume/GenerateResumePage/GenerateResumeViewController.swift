@@ -52,6 +52,20 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
     
     @IBAction func editDidTap(_ sender: Any) {
         print("Edit button tapped")
+        let editResume = UIAlertController(title: "Resume Name", message: "Input your resume name", preferredStyle: .alert)
+
+        editResume.addTextField { (textField) in
+            textField.placeholder = "Input your resume name"
+        }
+
+        editResume.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { [weak editResume] (_) in
+            let textField = editResume?.textFields![0]
+            self.resumeName.text = textField?.text
+        }))
+        editResume.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        // 4. Present the alert.
+        self.present(editResume, animated: true, completion: nil)
     }
     
     @IBAction func finishDidTap(_ sender: Any) {
