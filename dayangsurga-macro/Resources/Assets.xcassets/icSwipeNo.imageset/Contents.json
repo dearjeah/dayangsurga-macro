@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Yes 2.png",
+      "filename" : "icSwipeNo.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "icSwipeNo@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "icSwipeNo@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

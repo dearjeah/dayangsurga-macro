@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol PersonalInfoPageDelegate: AnyObject {
+    
+}
+
 class PersonalInfoPage: UIView {
     
     @IBOutlet weak var fullNameField: LabelWithTextField!
@@ -14,6 +18,12 @@ class PersonalInfoPage: UIView {
     @IBOutlet weak var phoneField: LabelWithTextField!
     @IBOutlet weak var locationField: LabelWithTextField!
     @IBOutlet weak var summaryField: LabelWithTextView!
+    
+    weak var delegate: PersonalInfoPageDelegate?
+    
+    func setup(dlgt: PersonalInfoPageDelegate) {
+        self.delegate = dlgt
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,8 +37,13 @@ class PersonalInfoPage: UIView {
         setup()
     }
     
-    convenience init() {
+    convenience init(fullName: String, email: String, phone: String, location: String, summary: String) {
         self.init()
+        fullNameField.textField.text = fullName
+        emailField.textField.text = email
+        phoneField.textField.text = phone
+        locationField.textField.text = location
+        summaryField.textView.text = summary
     }
     
     fileprivate func initWithNib() {

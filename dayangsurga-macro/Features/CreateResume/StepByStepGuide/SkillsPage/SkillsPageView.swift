@@ -31,7 +31,7 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
         setup()
     }
     
-    convenience init() {
+    convenience init(text: String) {
         self.init()
     }
     
