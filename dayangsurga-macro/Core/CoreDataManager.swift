@@ -88,9 +88,11 @@ extension CoreDataManager {
     }
 
     func preloadData() {
-        preloadUserResume()
+        
         preloadEmptyState()
         preloadResumeTemplate()
-        
+        if UserResumeRepository.shared.getAllUserResume()?.count == 0{
+            preloadUserResume()
+        }
     }
 }

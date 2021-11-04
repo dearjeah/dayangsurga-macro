@@ -19,7 +19,7 @@ class UserResumeRepository {
     func createUserResume(resume_id: Int,
                           template_id: Int,
                           user_id: Int,
-                          image: Data,
+                          image: UIImage,
                           name: String,
                           lastUpdate: Date,
                           editingProgress: Int){
@@ -28,7 +28,7 @@ class UserResumeRepository {
             if let getTemplate = ResumeTemplateRepository.shared.getTemplateById(id: template_id){
                 let dataUserResume = User_Resume(context: context)
                 dataUserResume.resume_id = Int32(resume_id)
-                dataUserResume.image = image
+                dataUserResume.image = image.pngData()
                 dataUserResume.name = name
                 dataUserResume.lastUpdate = lastUpdate
                 dataUserResume.editingProgress = Int32(editingProgress)
