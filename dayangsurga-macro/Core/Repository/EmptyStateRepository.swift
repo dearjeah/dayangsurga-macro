@@ -17,12 +17,12 @@ class EmptyStateRepository{
     
     // create data
     func createEmptyState(emptyState_id: Int,
-                              image: Data,
+                              image: UIImage,
                               title: String){
         do {
             let emptyState = Empty_State(context: context)
             emptyState.emptyState_id = Int32(emptyState_id)
-            emptyState.image = image
+            emptyState.image = image.pngData()
             emptyState.title = title
             
             try context.save()
@@ -46,7 +46,7 @@ class EmptyStateRepository{
     
     func getEmptyStateById(id: Int) -> Empty_State? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "emptyState_id == %@", id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "emptyState_id == %d", id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Empty_State]
             return item?.first
@@ -61,7 +61,7 @@ class EmptyStateRepository{
                           newImage: Data,
                           newTitle: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "emptyState_id == %@", id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "emptyState_id == %d", id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Empty_State]
             let emptyState = item?.first
