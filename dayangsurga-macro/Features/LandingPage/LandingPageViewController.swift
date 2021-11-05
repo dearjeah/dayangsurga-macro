@@ -169,7 +169,7 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         let dataInput = "Test"
         
         let pdfCreator = PDFCreator(
-            dataInput: dataInput
+            dataInput: dataInput, userResume: userResume[selectedIndex]
         )
         
         vc.documentData = pdfCreator.createFlyer()
