@@ -61,7 +61,7 @@ class ExperienceRepository{
     
     func getExperienceById(experienceId: Int) -> Experience? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "exp_id == %@", experienceId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "exp_id == %d", experienceId as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Experience]
             return item?.first
@@ -82,7 +82,7 @@ class ExperienceRepository{
                               newJobStatus: Bool,
                               newIsSelected: Bool) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "exp_id == %@", exp_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "exp_id == %d", exp_id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Experience]
             let newExp = item?.first

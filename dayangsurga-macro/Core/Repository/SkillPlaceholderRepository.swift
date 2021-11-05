@@ -51,7 +51,7 @@ class SkillPlaceholderRepository{
     
     func getSkillPlaceholderById(id: Int) -> Skills_Placeholder? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "skills_ph_id == %@", id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "skills_ph_id == %d", id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Skills_Placeholder]
             return item?.first
@@ -66,7 +66,7 @@ class SkillPlaceholderRepository{
                                 skillPlaceholderId: Int,
                                 skillPlaceholderName: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "exp_ph_id == %@", skillPlaceholderId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "exp_ph_id == %d", skillPlaceholderId as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Skills_Placeholder]
             let skillPlaceholder = item?.first

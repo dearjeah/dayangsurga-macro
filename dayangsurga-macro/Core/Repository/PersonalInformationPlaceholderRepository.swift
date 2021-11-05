@@ -58,7 +58,7 @@ class PersonalInformationPlaceholderRepository{
     
     func getPIPhById(pi_ph_id: Int) -> PersonalInformation_Placeholder? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "pi_ph_id == %@", pi_ph_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "pi_ph_id == %d", pi_ph_id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [PersonalInformation_Placeholder]
             return item?.first
@@ -77,7 +77,7 @@ class PersonalInformationPlaceholderRepository{
                     newAddress_ph: String,
                     newSummary_ph: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "pi_ph_id == %@", pi_ph_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "pi_ph_id == %d", pi_ph_id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [PersonalInformation_Placeholder]
             let piPlaceholder = item?.first

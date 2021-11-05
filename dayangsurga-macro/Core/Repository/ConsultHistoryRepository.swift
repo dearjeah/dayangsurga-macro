@@ -49,7 +49,7 @@ class ConsultHistoryRepository{
     
     func getConsultHistoryById(id: Int) -> Consult_History? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "expert_id == %@", id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "expert_id == %d", id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Consult_History]
             return item?.first
@@ -64,7 +64,7 @@ class ConsultHistoryRepository{
                               user_id: Int,
                               newDate: Date) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "expert_id == %@", expert_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "expert_id == %d", expert_id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Consult_History]
             let newHistory = item?.first
