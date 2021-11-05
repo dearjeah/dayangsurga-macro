@@ -53,7 +53,7 @@ class SkillRepository{
     
     func getSkillsById(skillId: Int32) -> Skills? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "skill_id == %@", skillId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "skill_id == %d", skillId as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Skills]
             return item?.first
@@ -69,7 +69,7 @@ class SkillRepository{
                       skillName: String,
                       isSelected : Bool) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "skill_id == %@", skillId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "skill_id == %d", skillId as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Skills]
             let skill = item?.first

@@ -53,7 +53,7 @@ class AccomplishmentSuggestionRepository{
     
     func getAccomplishmentSuggestionById(accomSuggestId: Int) -> Accomplishment_Suggest? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "accom_suggest_id == %@", accomSuggestId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "accom_suggest_id == %d", accomSuggestId as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Accomplishment_Suggest]
             return item?.first
@@ -69,7 +69,7 @@ class AccomplishmentSuggestionRepository{
                                title: String,
                                desc : String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "accom_suggest_id == %@", accomSuggestionId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "accom_suggest_id == %d", accomSuggestionId as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Accomplishment_Suggest]
             let AccomSuggestItem = item?.first
