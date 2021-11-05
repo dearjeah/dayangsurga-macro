@@ -61,7 +61,7 @@ class ResumeTemplateRepository{
                         newImage: Data,
                         newName: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "template_id == %@", id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "template_id == %d", id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Resume_Template]
             let template = item?.first

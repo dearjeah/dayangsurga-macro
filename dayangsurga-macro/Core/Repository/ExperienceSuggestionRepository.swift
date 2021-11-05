@@ -51,7 +51,7 @@ class ExperienceSuggestionRepository{
     
     func getExpSuggestionById(exp_suggest_id: Int) -> Experience_Suggestion? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "exp_suggest_id == %@", exp_suggest_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "exp_suggest_id == %d", exp_suggest_id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Experience_Suggestion]
             return item?.first
@@ -66,7 +66,7 @@ class ExperienceSuggestionRepository{
                              exp_id: Int,
                              newwJobDescSuggest: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "exp_suggest_id == %@", exp_suggest_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "exp_suggest_id == %d", exp_suggest_id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Experience_Suggestion]
             let experienceSuggest = item?.first

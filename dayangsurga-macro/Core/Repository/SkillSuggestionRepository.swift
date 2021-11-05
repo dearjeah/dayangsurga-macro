@@ -52,7 +52,7 @@ class SkillSuggestionRepository{
     
     func getSkillSuggestionById(skill_suggestion_id: Int) -> Skills_Suggest? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "skill_suggest_id == %@", skill_suggestion_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "skill_suggest_id == %d", skill_suggestion_id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Skills_Suggest]
             return item?.first
@@ -67,7 +67,7 @@ class SkillSuggestionRepository{
                              skillSuggestionId: Int32,
                              skillSuggest: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "skill_suggest_id == %@", skillSuggestionId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "skill_suggest_id == %d", skillSuggestionId as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Skills_Suggest]
             let skillSuggestItem = item?.first

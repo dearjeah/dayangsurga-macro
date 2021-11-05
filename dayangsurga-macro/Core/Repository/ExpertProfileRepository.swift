@@ -23,7 +23,7 @@ class ExpertProfileRepository{
                              phoneNumber: String,
                              availTime : String,
                              linkedIn : String,
-                             image :Data){
+                             image :UIImage){
         do {
             
           
@@ -35,7 +35,7 @@ class ExpertProfileRepository{
             expertProfile.phone_number = phoneNumber
             expertProfile.avail_time = availTime
             expertProfile.linkedIn = linkedIn
-            expertProfile.expert_image = image
+            expertProfile.expert_image = image.pngData()
                 
                 
             try context.save()
@@ -60,7 +60,7 @@ class ExpertProfileRepository{
     
     func getExpertProfileById(expertId: Int) -> Expert_Profile? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "expert_id == %@", expertId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "expert_id == %d", expertId as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Expert_Profile]
             return item?.first
@@ -78,9 +78,9 @@ class ExpertProfileRepository{
                               phoneNumber: String,
                               availTime : String,
                               linkedIn : String,
-                              image :Data) {
+                              image :UIImage) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "expert_id == %@", expertId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "expert_id == %d", expertId as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Expert_Profile]
             let expertProfile = item?.first
@@ -90,7 +90,7 @@ class ExpertProfileRepository{
             expertProfile?.phone_number = phoneNumber
             expertProfile?.avail_time = availTime
             expertProfile?.linkedIn = linkedIn
-            expertProfile?.expert_image = image
+            expertProfile?.expert_image = image.pngData()
            
             
             try context.save()

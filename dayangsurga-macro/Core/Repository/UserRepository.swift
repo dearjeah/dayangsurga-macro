@@ -70,7 +70,7 @@ class UserRepository{
                 newLocation: String,
                 newSummary: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "user_id == %@", id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "user_id == %d", id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [User]
             let user = item?.first

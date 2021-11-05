@@ -62,7 +62,7 @@ class EducationPlaceholderRepository{
     
     func getEducationPlaceholderById(id: Int) -> Edu_Placeholder? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "edu_ph_id == %@", id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "edu_ph_id == %d", id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Edu_Placeholder]
             return item?.first
@@ -82,7 +82,7 @@ class EducationPlaceholderRepository{
                                     startDatePlaceholder : String,
                                     endDatePlaceholder : String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "edu_ph_id == %@", eduId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "edu_ph_id == %d", eduId as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Edu_Placeholder]
             let educationPlaceholder = item?.first

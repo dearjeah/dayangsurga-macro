@@ -49,7 +49,7 @@ class PersonalInformationSuggestionRepository{
     
     func getPISuggestionById(pi_suggestion_id: Int) -> PersonalInformation_Suggestion? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "pi_suggestion_id == %@", pi_suggestion_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "pi_suggestion_id == %d", pi_suggestion_id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [PersonalInformation_Suggestion]
             return item?.first
@@ -64,7 +64,7 @@ class PersonalInformationSuggestionRepository{
                             userId: Int,
                             newSummarySuggest: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "pi_suggestion_id == %@", pi_suggestion_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "pi_suggestion_id == %d", pi_suggestion_id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [PersonalInformation_Suggestion]
             let piSuggestion = item?.first

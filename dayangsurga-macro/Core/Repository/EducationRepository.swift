@@ -62,7 +62,7 @@ class EducationRepository{
     
     func getEducationById(educationId: Int) -> Education? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "education_id == %@", educationId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "education_id == %d", educationId as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Education]
             return item?.first
@@ -84,7 +84,7 @@ class EducationRepository{
                           currentlyStudy : Bool,
                           isSelected : Bool) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "education_id == %@", eduId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "education_id == %d", eduId as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Education]
             let education = item?.first
