@@ -88,31 +88,6 @@ class UserResumeRepository {
         return nil
     }
     
-//    func getUserResumeByDate(resume_id: Int, latest: Date) -> User_Resume? {
-        // sort by calendar
-//        let calendar = Calendar.current
-//        let now = Date()
-//        let nowPlus9Days = calendar.date(byAdding: .day, value: 9, to: now)!
-//        let startDate = calendar.startOfDay(for: now)
-//        let endDate = calendar.startOfDay(for: nowPlus9Days)
-//
-//        let predicate = NSPredicate(format: "dateKey.dateInfo >= %@ && dateKey.dateInfo <= %@", startDate as CVarArg, endDate as CVarArg)
-//        let sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: true), NSSortDescriptor(key: "isAllDay", ascending: true)]
-//
-//        let eventFetch = NSFetchRequest<NSManagedObject>(entityName: entityName)
-////        let eventFetch : NSFetchRequest<CalendarEventModel> = CalendarEventModel.fetchRequest()
-//        eventFetch.predicate = predicate
-//        eventFetch.sortDescriptors = sortDescriptors
-//        do {
-//            let fetchResultsArray = try context.fetch(eventFetch)
-//            let groupedDictionary = Dictionary(grouping: fetchResultsArray, by: {$0.})
-//
-//        } catch {
-//            print("Core Data initial fetch failed in Calendar Controller: \(error)")
-//        }
-//
-//    }
-    
     // func updates
     func updateUserResume(resume_id: Int,
                           template_id: Int,
@@ -168,7 +143,7 @@ class UserResumeRepository {
     func updateEditingProgress(resume_id: Int,
                                newPage: Int){
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "resume_id == %@", resume_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == %d", resume_id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [User_Resume]
             let newPages = item?.first
