@@ -58,7 +58,7 @@ class AccomplishmentRepository{
     
     func getAccomplishmentById(AccomplishmentId: Int) -> Accomplishment? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "accomplishment_id == %@", AccomplishmentId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "accomplishment_id == %d", AccomplishmentId as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Accomplishment]
             return item?.first
@@ -77,7 +77,7 @@ class AccomplishmentRepository{
                                desc : String,
                                isSelected : Bool) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "accomplishment_id == %@", accomId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "accomplishment_id == %d", accomId as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Accomplishment]
             let accomplishment = item?.first

@@ -54,7 +54,7 @@ class AccomplishmentPlaceholderRepository{
     
     func getAccomplishmentPlaceholderById(id: Int) -> Accomplish_Placeholder? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "accom_ph_id == %@", id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "accom_ph_id == %d", id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Accomplish_Placeholder]
             return item?.first
@@ -70,7 +70,7 @@ class AccomplishmentPlaceholderRepository{
                                          titlePlaceholder: String,
                                          givenDatePlaceholder : String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "accom_ph_id == %@", accomPlaceholderId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "accom_ph_id == %d", accomPlaceholderId as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Accomplish_Placeholder]
             let accomplishmentPlaceholder = item?.first

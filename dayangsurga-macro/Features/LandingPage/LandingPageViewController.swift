@@ -11,29 +11,28 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    var totalData: Int = 0
     var selectedIndex: Int = 0
     var userResume = [User_Resume]()
-    
+    var emptyState: Empty_State?
+    var index = IndexPath()
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setView()
         showButton()
         registerCollectionView()
-        collectionView.reloadData()
-//        totalData = self.viewModel?.allUserResumeDataByDate()?.count ?? 0
-        totalData = self.viewModel?.getUserResume()?.count ?? 0
-        print(totalData)
-        userResume = self.viewModel?.getUserResume() ?? []
-//        userResume = self.viewModel?.allUserResumeDataByDate() ?? []
+        
+        self.viewModel = LandingPageViewModel()
+        userResume = self.viewModel?.allUserResumeDataByDate() ?? []
+        emptyState = self.viewModel?.getEmptyState()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
         navigationController?.navigationBar.sizeToFit()
-        collectionView.reloadData()
+        self.collectionView.reloadData()
     }
     
     func setView(){
@@ -66,12 +65,13 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if totalData != 0 {
-            return totalData
+        if userResume.count != 0 {
+            return userResume.count
         } else {
             let emptyStateView = EmptyState(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-            emptyStateView.emptyStateImage.image = UIImage(named: "imgEmptyStateLandingPage")
-            emptyStateView.emptyStateDescription.text = "You haven’t made any resume, yet. Click the ‘Create Resume’ button to start creating resume."
+            let image = UIImage(data: emptyState?.image ?? Data())
+            emptyStateView.emptyStateImage.image = image
+            emptyStateView.emptyStateDescription.text = emptyState?.title
             self.collectionView.backgroundView = emptyStateView
         }
         return Int()
@@ -83,7 +83,7 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         }
         let image = UIImage(data: userResume[indexPath.row].image ?? Data())
         cell.pastResumeImage.image = image
-        
+        cell.pastResumeImage.contentMode = .scaleToFill
         cell.resumeName.text = userResume[indexPath.row].name
         cell.resumeLatestDate.text = userResume[indexPath.row].lastUpdate?.string(format: Date.ISO8601Format.DayMonthYear)
         return cell
@@ -103,6 +103,7 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
+        index = indexPath
         createAlert()
     }
     
@@ -168,12 +169,10 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         let dataInput = "Test"
         
         let pdfCreator = PDFCreator(
-            dataInput: dataInput
+            dataInput: dataInput, userResume: userResume[selectedIndex]
         )
         
         vc.documentData = pdfCreator.createFlyer()
-        
-        
         
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.titleView?.tintColor = .white
@@ -196,8 +195,20 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
     func showAlertForDelete(){
         let alert = UIAlertController(title: "Delete Data?", message: "You will not be able to recover it.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {action in self.viewModel?.deleteResumeData(resume: self.userResume[self.selectedIndex])}))
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {action in self.deleteResumeData()}))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    // for delete and reload
+    func deleteResumeData(){
+        self.viewModel?.deleteResumeData(resume: self.userResume[self.selectedIndex])
+        self.userResume.remove(at: selectedIndex)
+        userResume = self.viewModel?.getUserResume() ?? []
+        self.collectionView.performBatchUpdates({
+            self.collectionView.deleteItems(at: [index])
+        })
+        self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+        collectionView.reloadData()
     }
 
 }

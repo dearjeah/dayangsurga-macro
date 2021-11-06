@@ -10,9 +10,10 @@ import PDFKit
 
 class PDFCreator: NSObject{
     let dataInput: String
-    
-    init(dataInput: String) {
+    var userResume: User_Resume?
+    init(dataInput: String, userResume: User_Resume?) {
         self.dataInput = dataInput
+        self.userResume = userResume
     }
     
     func createFlyer() -> Data {

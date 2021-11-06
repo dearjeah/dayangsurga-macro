@@ -10,16 +10,8 @@ import UIKit
 
 func preloadResumeTemplate(){
     let img1 = UIImage.imgResumeTemplateArial
-//    let imageData1 = img1.pngData()! as NSData
-//    let data1 = imageData1.base64EncodedData(options: .lineLength64Characters)
-    
     let img2 = UIImage.imgResumeTemplateGeorgia
-//    let imageData2 = img2.pngData()! as NSData
-//    let data2 = imageData2.base64EncodedData(options: .lineLength64Characters)
-    
     let img3 = UIImage.imgResumeTemplateHeletvica
-//    let imageData3 = img3.pngData()! as NSData
-//    let data3 = imageData3.base64EncodedData(options: .lineLength64Characters)
     
     ResumeTemplateRepository.shared.createResumeTemplate(template_id: 0,
                                                          image: img1,

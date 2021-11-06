@@ -57,7 +57,7 @@ class ResumeContentRepository{
     
     func getResumeContentById(resume_id: Int) -> Resume_Content? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "resume_id == %@", resume_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == %d", resume_id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Resume_Content]
             return item?.first
@@ -74,7 +74,7 @@ class ResumeContentRepository{
                              newAccom_id: Int,
                              newSkill_id: Int) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "resume_id == %@", resume_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == %d", resume_id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Resume_Content]
             let newResumeContent = item?.first

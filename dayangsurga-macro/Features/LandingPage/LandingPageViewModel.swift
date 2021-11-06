@@ -9,19 +9,9 @@ import UIKit
 
 class LandingPageViewModel: NSObject {
     
-    var user: User?
-    var emptyStateId: EmptyState?
+    var emptyState: Empty_State?
     let userResumeRepo = UserResumeRepository.shared
     let emptyStateRepo = EmptyStateRepository.shared
-    
-    init(user: User?, emptyStateId: EmptyState?){
-        self.user = user
-        self.emptyStateId = emptyStateId
-    }
-    
-    func userResumeData() -> User_Resume?{
-        return UserResumeRepository.shared.getUserResumeById(resume_id: Int(self.user?.user_id ?? 0))
-    }
     
     func allUserResumeDataByDate() -> [User_Resume]?{
         return userResumeRepo.getAllUserResumeByDate()
@@ -36,8 +26,8 @@ class LandingPageViewModel: NSObject {
         userResumeRepo.deleteUserResume(data: resume ?? emptyResumeData)
     }
     
-//    func emptyStateData() -> EmptyState?{
-//        return emptyStateRepo.getEmptyStateById(id: emptyStateId)
-//    }
+    func getEmptyState() -> Empty_State?{
+        return emptyStateRepo.getEmptyStateById(id: 0)
+    }
 
 }
