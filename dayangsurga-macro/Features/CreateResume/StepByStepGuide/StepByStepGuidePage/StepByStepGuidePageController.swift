@@ -36,42 +36,52 @@ class StepByStepGuidePageController: UIPageViewController {
         self.prevNextDelegate = prevNextDlgt
     }
     
-    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
         self.delegate = self
-        populateItems()
-        //style()
-        setup()
         
-        // Do any additional setup after loading the view.
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? StepByStepGuideViewController {
-            vc.setup(dlgt: self)
-        }
+        populateItems()
+        style()
+        setup()
+        notificationCenterSetup()
     }
     
 }
 
 //MARK: Protocol Delegate
-extension StepByStepGuidePageController: PersonalInfoPageDelegate, StepVCdelegate {
+extension StepByStepGuidePageController: PersonalInfoPageDelegate {
     
-    //MARK: Protocol Function
-    //stepVC
-    func didSelectNext() {
+    //MARK: Notification Center
+    @objc func didSelectNext() {
         goToNext(wasPage: currentPageIndex)
     }
     
-    func didSelectPrev() {
+    @objc func didSelectPrev() {
         gotToPrev(wasPage: currentPageIndex)
     }
     
-    func didSelectGenerate() {
+    @objc func didSelectGenerate() {
         goGenerate(wasPage: currentPageIndex)
+    }
+    
+    @objc func progressBarTapped(_ notification: Notification) {
+        var selectedPage = 0
+        if let data = notification.userInfo as? [String: Int] {
+                for (name, page) in data {
+                    print("\(name) : \(page) selected")
+                    selectedPage = page
+                }
+            }
+        
+        if selectedPage - 1 != currentPageIndex {
+            goToDirectPage(selectedPageIndex: selectedPage)
+            print("sadsakdaskdjsakjdksad", "selected:",selectedPage, "current:",currentPageIndex)
+        }
     }
     
     //MARK: Delegate Function
@@ -130,7 +140,7 @@ extension StepByStepGuidePageController: UIPageViewControllerDataSource, UIPageV
 //MARK: Page Controller Navigation
 extension StepByStepGuidePageController {
     func goToNext(wasPage: Int){
-        guard let currentViewController = stepControllerArr?[currentPageIndex] else { return }
+        guard let currentViewController = stepControllerArr?[wasPage] else { return }
         guard let nextViewController = dataSource?.pageViewController( self, viewControllerAfter: currentViewController ) else { return }
         setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
         setPageIndex(value: 1)
@@ -138,11 +148,23 @@ extension StepByStepGuidePageController {
     }
     
     func gotToPrev(wasPage: Int){
-        guard let currentViewController = stepControllerArr?[currentPageIndex] else { return }
+        guard let currentViewController = stepControllerArr?[wasPage] else { return }
         guard let prevViewController = dataSource?.pageViewController( self, viewControllerBefore: currentViewController) else { return }
         setViewControllers([prevViewController], direction: .reverse, animated: true, completion: nil)
         setPageIndex(value: -1)
         hideUnHideButton(currentPage: currentPageIndex)
+    }
+    
+    func goToDirectPage(selectedPageIndex: Int){
+        guard let selectedVC = stepControllerArr?[selectedPageIndex] else { return }
+        guard let currentVC = dataSource?.pageViewController( self, viewControllerBefore: selectedVC) else { return }
+        if selectedPageIndex > currentPageIndex {
+            setViewControllers([currentVC], direction: .forward, animated: true, completion: nil)
+        } else if selectedPageIndex < currentPageIndex {
+            setViewControllers([currentVC], direction: .reverse, animated: true, completion: nil)
+        }
+        setPageIndex(value: selectedPageIndex-1)
+        hideUnHideButton(currentPage: selectedPageIndex)
     }
     
     func goGenerate(wasPage: Int){
@@ -190,6 +212,12 @@ extension StepByStepGuidePageController {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
     }
+    func notificationCenterSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didSelectNext), name: Notification.Name("goToNext"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didSelectPrev), name: Notification.Name("goToPrev"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didSelectGenerate), name: Notification.Name("goToGenerate"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(progressBarTapped), name: Notification.Name("progressBarTapped"), object: nil)
+    }
     
     private func setPageIndex(value: Int) {
         //1: next page, -1: prev page
@@ -201,6 +229,11 @@ extension StepByStepGuidePageController {
             currentPageIndex = currentPageIndex + value
             nextPageIndex = nextPageIndex + value
             previousPageIndex = previousPageIndex + value
+        } else {
+            //select using progress bar
+            currentPageIndex = value
+            nextPageIndex = value + 1
+            previousPageIndex = value - 1
         }
     }
 }
