@@ -7,76 +7,63 @@
 
 import UIKit
 
-protocol StepVCdelegate: AnyObject {
-    func didSelectNext()
-    func didSelectPrev()
-    func didSelectGenerate()
-}
-
 class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel> {
 
 
     @IBOutlet weak var progressBarView: ProgressBarView!
     @IBOutlet weak var smallSetButtonView: SmallSetButton!
     
-    weak var delegate: StepVCdelegate?
-    
-    func setup(dlgt: StepVCdelegate) {
-        self.delegate = dlgt
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         smallSetButtonView.delegate = self
+        progressBarView.dlgt = self
         // Do any additional setup after loading the view.
     }
     
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let pageController = segue.destination as? StepByStepGuidePageController {
             pageController.stepSetup(stepDlgt: self)
+            //pageController.prevNextSetup(prevNextDlgt: self)
+            
         }
-    }*/
+    }
 
 }
 
-extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonDelegate/*, StepByStepGuideDelegate*/ {
+extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonDelegate, StepByStepGuideDelegate, ProgressBarDelegate {
+    
+    
+    
+    func progressBarUpdate(index: Int) {
+        
+    }
+
     //MARK: Delegate Function
     func didTapNext() {
-        delegate?.didSelectNext()
+        NotificationCenter.default.post(name: Notification.Name("goToNext"), object: nil)
     }
     
     func didTapPrevious() {
-        delegate?.didSelectPrev()
+        NotificationCenter.default.post(name: Notification.Name("goToPrev"), object: nil)
     }
     
     func didTapGenerate() {
-        delegate?.didSelectGenerate()
+        NotificationCenter.default.post(name: Notification.Name("goToGenerate"), object: nil)
     }
     
-    
-    
-    /*func progressBarUpdate(index: Int) {
-        <#code#>
-    }*/
-    
-    /*func didSelectNext() {
-        <#code#>
-    }
-    
-    func didSelectPrev() {
-        <#code#>
-    }
-    
-    func didSelectGenerate() {
-        <#code#>
-    }*/
-    
+    //
     func isHidePrevNextButton(was: Bool) {
         if was {
             smallSetButtonView.isHidden = true
         } else {
             smallSetButtonView.isHidden = false
         }
+    }
+    
+    //MARK: Progress Bar Delegate
+    func progressBarSelected(at: Int) {
+        let page = ["Page": at]
+        NotificationCenter.default.post(name: Notification.Name("progressBarTapped"), object: self, userInfo: page)
     }
 }
 

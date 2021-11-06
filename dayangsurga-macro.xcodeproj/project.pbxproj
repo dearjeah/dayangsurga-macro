@@ -129,10 +129,10 @@
 		BF8503B52722BABF00CC43FB /* StepByStepGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8503B42722BABF00CC43FB /* StepByStepGuideViewModel.swift */; };
 		BF8503B92722BDCF00CC43FB /* HomepageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8503B72722BDCF00CC43FB /* HomepageController.swift */; };
 		BF8503BC2722BDE900CC43FB /* Homepage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8503BB2722BDE900CC43FB /* Homepage.storyboard */; };
+		BFBA47AC27294AE600D4771E /* StepByStepGuidePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA47AB27294AE600D4771E /* StepByStepGuidePageController.swift */; };
 		BFBA47AE272A8D7800D4771E /* XIBVCTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFBA47AD272A8D7800D4771E /* XIBVCTest.storyboard */; };
 		BFBA47B0272A8D9800D4771E /* XIBVCTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA47AF272A8D9800D4771E /* XIBVCTestViewController.swift */; };
 		BFBA47B4272AE5C400D4771E /* ExperienceFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA47B3272AE5C400D4771E /* ExperienceFormController.swift */; };
-		BFBA47AC27294AE600D4771E /* StepByStepGuidePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA47AB27294AE600D4771E /* StepByStepGuidePageController.swift */; };
 		BFE0035027272F450070BD40 /* LabelWithDate.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE0034F27272F450070BD40 /* LabelWithDate.xib */; };
 		BFE0035227272F500070BD40 /* LabelWithDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE0035127272F500070BD40 /* LabelWithDate.swift */; };
 		BFE003552727331F0070BD40 /* BigButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE003542727331F0070BD40 /* BigButtonWithImage.swift */; };
@@ -283,10 +283,10 @@
 		BF8503B42722BABF00CC43FB /* StepByStepGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepGuideViewModel.swift; sourceTree = "<group>"; };
 		BF8503B72722BDCF00CC43FB /* HomepageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageController.swift; sourceTree = "<group>"; };
 		BF8503BB2722BDE900CC43FB /* Homepage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Homepage.storyboard; sourceTree = "<group>"; };
+		BFBA47AB27294AE600D4771E /* StepByStepGuidePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepGuidePageController.swift; sourceTree = "<group>"; };
 		BFBA47AD272A8D7800D4771E /* XIBVCTest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = XIBVCTest.storyboard; sourceTree = "<group>"; };
 		BFBA47AF272A8D9800D4771E /* XIBVCTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBVCTestViewController.swift; sourceTree = "<group>"; };
 		BFBA47B3272AE5C400D4771E /* ExperienceFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceFormController.swift; sourceTree = "<group>"; };
-		BFBA47AB27294AE600D4771E /* StepByStepGuidePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepGuidePageController.swift; sourceTree = "<group>"; };
 		BFE0034F27272F450070BD40 /* LabelWithDate.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelWithDate.xib; sourceTree = "<group>"; };
 		BFE0035127272F500070BD40 /* LabelWithDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithDate.swift; sourceTree = "<group>"; };
 		BFE003542727331F0070BD40 /* BigButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButtonWithImage.swift; sourceTree = "<group>"; };
@@ -1306,7 +1306,6 @@
 				INFOPLIST_FILE = "dayangsurga-macro/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = QuizPageTestViewController;
 				INFOPLIST_KEY_UIMainStoryboardFile = StepByStepGuideViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1336,7 +1335,6 @@
 				INFOPLIST_FILE = "dayangsurga-macro/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = QuizPageTestViewController;
 				INFOPLIST_KEY_UIMainStoryboardFile = StepByStepGuideViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

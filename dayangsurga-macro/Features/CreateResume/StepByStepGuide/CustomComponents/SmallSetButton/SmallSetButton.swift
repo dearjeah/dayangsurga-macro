@@ -61,7 +61,11 @@ class SmallSetButton: UIView {
     }
     
     @IBAction func rightButtonPressed(_ sender: Any) {
-        delegate?.didTapNext()
+        if rightButton.titleLabel?.text == "Next" {
+            delegate?.didTapNext()
+        } else {
+            delegate?.didTapGenerate()
+        }
     }
     
     @IBAction func leftButtonPressed(_ sender: Any) {
