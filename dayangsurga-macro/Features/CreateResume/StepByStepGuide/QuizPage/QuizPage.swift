@@ -9,35 +9,97 @@ import UIKit
 
 class QuizPage: UIView {
     
+    @IBOutlet var baseView: UIView!
+    @IBOutlet var containerView: UIView!
     @IBOutlet weak var quizCard: QuizPageView!
     @IBOutlet weak var swipeImages: YesNoSwipeView!
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
-    func setupCardView(){
-        quizCard.layer.cornerRadius = 8
-        quizCard.layer.borderWidth = 2.0
-        quizCard.layer.borderColor = UIColor.primaryBlue.cgColor
-    }
+    
+    var divisor: CGFloat!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initWithNib()
         setupCardView()
+        divisor = (containerView.frame.width / 2) / 0.80
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initWithNib()
         setupCardView()
+        divisor = (containerView.frame.width / 2) / 0.80
     }
     
     convenience init(type: Int) {
         //type 1-3
         self.init()
+        let data = loadData(type: type)
+        
+        quizCard.questionHeader.text = data[0]
+        quizCard.questionDescription.text = data[1]
+        quizCard.answerExample.text = data[2]
+    }
+    
+    fileprivate func initWithNib() {
+        guard let view = loadViewFromNib(nibName: "QuizPage") else { return }
+        view.frame = self.bounds
+        self.addSubview(view)
+    }
+    
+    func loadViewFromNib(nibName: String) -> UIView? {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: nibName, bundle: bundle)
+        return nib.instantiate(withOwner: self, options: nil).first as? UIView
+    }
+    
+    @IBAction func panMoved(_ sender: UIPanGestureRecognizer) {
+        let card = sender.view ?? UIView()
+        //detect how far you move
+        let point = sender.translation(in: containerView)
+        let xFromCenter = card.center.x - containerView.center.x
+        let scale = min(100/abs(xFromCenter), 1)
+        
+        // width/2 = result/degree in radian = endResult
+        //sample: 100/2 = 50/0.61
+        card.center = CGPoint(x: containerView.center.x + point.x, y: containerView.center.y + point.y)
+        card.transform = CGAffineTransform(rotationAngle: xFromCenter/divisor).scaledBy(x: scale, y: scale)
+        
+        if sender.state == UIPanGestureRecognizer.State.ended {
+            let baseViewWidth = self.baseView.frame.width
+            if card.center.x < 75 {
+                //move off to left side
+                UIView.animate(withDuration: 0.3) {
+                    card.center = CGPoint(x: card.center.x - baseViewWidth, y: card.center.y + 75)
+                    card.alpha = 0
+                }
+                return
+            } else if card.center.x > (baseViewWidth - 75) {
+                //move off to right side
+                UIView.animate(withDuration: 0.3) {
+                    card.center = CGPoint(x: card.center.x + baseViewWidth, y: card.center.y + 75)
+                    card.alpha = 0
+                }
+                return
+            }
+            resetCard()
+        }
+    }
+    
+    func resetCard() {
+        UIView.animate(withDuration: 0.2) {
+            self.quizCard.center = self.containerView.center
+            self.quizCard.transform = .identity
+            self.quizCard.alpha = 1
+        }
+    }
+    
+    func setupCardView(){
+        quizCard.layer.cornerRadius = 8
+        quizCard.layer.borderWidth = 2.0
+        quizCard.layer.borderColor = UIColor.primaryBlue.cgColor
+    }
+    
+    func loadData(type: Int) -> [String] {
         var header = ""
         var desc = ""
         var cue = ""
@@ -59,23 +121,7 @@ class QuizPage: UIView {
             desc = ""
             cue = ""
         }
-        
-        quizCard.questionHeader.text = header
-        quizCard.questionDescription.text = desc
-        quizCard.answerExample.text = cue
-        
-    }
-    
-    fileprivate func initWithNib() {
-        guard let view = loadViewFromNib(nibName: "QuizPage") else { return }
-        view.frame = self.bounds
-        self.addSubview(view)
-    }
-    
-    func loadViewFromNib(nibName: String) -> UIView? {
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: nibName, bundle: bundle)
-        return nib.instantiate(withOwner: self, options: nil).first as? UIView
+        return [header,desc,cue]
     }
     
 }
