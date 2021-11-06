@@ -9,6 +9,7 @@ import UIKit
 
 protocol PersonalInfoPageDelegate: AnyObject {
     
+    
 }
 
 class PersonalInfoPage: UIView {
@@ -67,4 +68,6 @@ class PersonalInfoPage: UIView {
         summaryField.titleLabel.text = "Summary*"
         summaryField.cueLabel.text = "Tell us about who you are and what you do that fits the job you're applying for, make sure you use action verbs."
     }
+    
+  
 }
