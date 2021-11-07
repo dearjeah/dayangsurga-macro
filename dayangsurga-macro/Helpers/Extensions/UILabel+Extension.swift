@@ -83,7 +83,7 @@ extension UITextView: UITextViewDelegate {
                 placeholderLabel.text = newValue
                 placeholderLabel.sizeToFit()
             } else {
-                self.addPlaceholder(newValue!)
+                self.addPlaceholder(newValue ?? "")
             }
         }
     }

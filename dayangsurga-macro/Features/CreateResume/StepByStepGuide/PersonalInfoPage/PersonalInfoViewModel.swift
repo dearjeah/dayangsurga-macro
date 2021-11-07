@@ -11,3 +11,7 @@ class PersonalInfoViewModel{
     
 }
 
+struct PersonalInformationPlaceholder {
+    let fullName, email, phoneNumber, location, summary : String
+}
+

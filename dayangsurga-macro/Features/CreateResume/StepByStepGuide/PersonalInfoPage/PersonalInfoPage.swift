@@ -12,9 +12,7 @@ protocol PersonalInfoPageDelegate: AnyObject {
 
 }
 
-class PersonalInfoPage: UIView, PersonalInfoPageDelegate {
-   
-    let preloadUserInfo = PreloadUserData()
+class PersonalInfoPage: UIView{
     
     @IBOutlet weak var fullNameField: LabelWithTextField!
     @IBOutlet weak var emailField: LabelWithTextField!
@@ -63,11 +61,7 @@ class PersonalInfoPage: UIView, PersonalInfoPageDelegate {
     }
     
     func setup() {
-        //preload data : just once
-        preloadUserInfo.preloadUserPh()
-        
-      
-        
+
         fullNameField.titleLabel.text = "Full Name*"
         emailField.titleLabel.text = "Email*"
         phoneField.titleLabel.text = "Phone Number*"
@@ -76,20 +70,21 @@ class PersonalInfoPage: UIView, PersonalInfoPageDelegate {
         summaryField.cueLabel.text = "Tell us about who you are and what you do that fits the job you're applying for, make sure you use action verbs."
         
         // how to implement with protocol delegate
-        fullNameField.textField.placeholder =  PersonalInformationPlaceholderRepository.shared.getPIPhById(pi_ph_id: 1)?.name_ph
+        if let personalInfoPlaceholder = PersonalInformationPlaceholderRepository.shared.getPIPhById(pi_ph_id: 1) {
+            fullNameField.textField.placeholder =  personalInfoPlaceholder.name_ph
+            emailField.textField.placeholder = personalInfoPlaceholder.email_ph
+            phoneField.textField.placeholder = personalInfoPlaceholder.phoneNumber_ph
+            locationField.textField.placeholder = personalInfoPlaceholder.address_ph
+            summaryField.textView.placeholder = personalInfoPlaceholder.summary_ph
+        }
+      
+        // whyyyyyyyyyyy - gadapat
+        print(PersonalInformationPlaceholderRepository.shared.getPIPhById(pi_ph_id: 1) ?? "gadapat")
     }
     
     func goToNextStep() {
         
     }
-    
-    func setPlaceholderWithCoreData() {
-        setPlaceHolder(fullName: fullNameField.textField.placeholder ?? "anya")
-        
-    }
-    
-    func setPlaceHolder(fullName: String) {
-        fullNameField.textField.placeholder = PersonalInformationPlaceholderRepository.shared.getPIPhById(pi_ph_id: 1)?.name_ph
-    }
+
   
 }
