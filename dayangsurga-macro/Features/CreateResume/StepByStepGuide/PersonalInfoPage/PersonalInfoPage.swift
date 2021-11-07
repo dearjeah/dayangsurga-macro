@@ -97,8 +97,15 @@ class PersonalInfoPage: UIView{
 
 extension PersonalInfoPage :  UITextViewDelegate{
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        summaryField.textView.text = ""
+  
+    
+    func textViewDidChange(_ textView: UITextView){
+        if let personalInfoPlaceholder = PersonalInformationPlaceholderRepository.shared.getPIPhById(pi_ph_id: 1) {
+            if (summaryField.textView.text.count  + 1 == (personalInfoPlaceholder.summary_ph?.count)){
+                summaryField.textView.text = ""
+            }
+            
+        }
         summaryField.textView.textColor = .black
     }
 }
