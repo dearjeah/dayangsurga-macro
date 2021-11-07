@@ -10,13 +10,19 @@ import UIKit
 class LabelWithStartEndDate: UIView {
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var startDateButton: UIButton!
-    @IBOutlet weak var endDateButton: UIButton!
+    @IBOutlet weak var startDatePicker: UIDatePicker!
+    @IBOutlet weak var endDatePicker: UIDatePicker!
+    //    @IBOutlet weak var startDateButton: UIButton!
+    //    @IBOutlet weak var endDateButton: UIButton!
     
-    @IBAction func startDatePressed(_ sender: UIButton) {
+//    @IBAction func startDatePressed(_ sender: UIButton) {
+//    }
+//
+//    @IBAction func endDatePressed(_ sender: UIButton) {
+//    }
+    @IBAction func startDatePickerPress(_ sender: Any) {
     }
-    
-    @IBAction func endDatePressed(_ sender: UIButton) {
+    @IBAction func endDatePicekrPress(_ sender: Any) {
     }
     
     override init(frame: CGRect) {
