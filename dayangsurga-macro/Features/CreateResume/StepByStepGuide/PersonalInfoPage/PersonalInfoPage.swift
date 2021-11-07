@@ -12,7 +12,7 @@ protocol PersonalInfoPageDelegate: AnyObject {
 
 }
 
-class PersonalInfoPage: UIView {
+class PersonalInfoPage: UIView{
     
     @IBOutlet weak var fullNameField: LabelWithTextField!
     @IBOutlet weak var emailField: LabelWithTextField!
@@ -21,10 +21,11 @@ class PersonalInfoPage: UIView {
     @IBOutlet weak var summaryField: LabelWithTextView!
     
     weak var delegate: PersonalInfoPageDelegate?
-    weak var textViewDelegate : UITextViewDelegate?
+
     
     func setup(dlgt: PersonalInfoPageDelegate) {
         self.delegate = dlgt
+        
     }
     
     override init(frame: CGRect) {
@@ -45,7 +46,9 @@ class PersonalInfoPage: UIView {
         emailField.textField.text = email
         phoneField.textField.text = phone
         locationField.textField.text = location
-        summaryField.textView.text = summary
+        self.summaryField.textView.delegate = self
+//        MARK: cannot be assigned twice. Notes: textview don't have placeholder
+//        summaryField.textView.text = summary
     }
     
     fileprivate func initWithNib() {
@@ -77,6 +80,9 @@ class PersonalInfoPage: UIView {
             phoneField.textField.placeholder = personalInfoPlaceholder.phoneNumber_ph
             locationField.textField.placeholder = personalInfoPlaceholder.address_ph
             summaryField.textView.text = personalInfoPlaceholder.summary_ph
+            summaryField.textView.textColor = .lightGray
+            
+            
         }
       
      
@@ -85,6 +91,14 @@ class PersonalInfoPage: UIView {
     func goToNextStep() {
         
     }
-
   
+}
+
+
+extension PersonalInfoPage :  UITextViewDelegate{
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        summaryField.textView.text = ""
+        summaryField.textView.textColor = .black
+    }
 }
