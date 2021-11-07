@@ -54,29 +54,28 @@ class StepByStepGuidePageController: UIPageViewController {
 }
 
 //MARK: Protocol Delegate
-extension StepByStepGuidePageController: PersonalInfoPageDelegate {
-    
+extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDelegate {
     //MARK: Notification Center
     @objc func didSelectNext() {
         goToNext(wasPage: currentPageIndex)
     }
     
     @objc func didSelectPrev() {
-        gotToPrev(wasPage: currentPageIndex)
+        goToPrev(wasPage: currentPageIndex)
     }
     
     @objc func didSelectGenerate() {
-        goGenerate(wasPage: currentPageIndex)
+        goToGenerate()
     }
     
     @objc func progressBarTapped(_ notification: Notification) {
         var selectedPage = 0
         if let data = notification.userInfo as? [String: Int] {
-                for (name, page) in data {
-                    print("\(name) : \(page) selected")
-                    selectedPage = page
-                }
+            for (name, page) in data {
+                print("\(name) : \(page) selected")
+                selectedPage = page
             }
+        }
         
         if selectedPage - 1 != currentPageIndex {
             goToDirectPage(selectedPageIndex: selectedPage)
@@ -86,10 +85,25 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate {
     
     //MARK: Delegate Function
     func hideUnHideButton(currentPage: Int) {
-        if pageType[currentPage] == 6 {
-            prevNextDelegate?.isHidePrevNextButton(was: true)
+            if pageType[currentPage] == 6 {
+                prevNextDelegate?.isHidePrevNextButton(was: true)
+            } else {
+                prevNextDelegate?.isHidePrevNextButton(was: false)
+            }
+    }
+    
+    //quizPagedelegate
+    func quizAnswer(was: Bool) {
+        let currentPage = currentPageIndex
+        let vcData = stepControllerArr?.count ?? 0
+        if was {
+            goToNext(wasPage: currentPage)
         } else {
-            prevNextDelegate?.isHidePrevNextButton(was: false)
+            if currentPage != vcData - 2 {
+                goToNext(wasPage: currentPage + 1)
+            } else {
+                goToGenerate()
+            }
         }
     }
 }
@@ -147,7 +161,7 @@ extension StepByStepGuidePageController {
         hideUnHideButton(currentPage: currentPageIndex)
     }
     
-    func gotToPrev(wasPage: Int){
+    func goToPrev(wasPage: Int){
         guard let currentViewController = stepControllerArr?[wasPage] else { return }
         guard let prevViewController = dataSource?.pageViewController( self, viewControllerBefore: currentViewController) else { return }
         setViewControllers([prevViewController], direction: .reverse, animated: true, completion: nil)
@@ -164,10 +178,10 @@ extension StepByStepGuidePageController {
             setViewControllers([currentVC], direction: .reverse, animated: true, completion: nil)
         }
         setPageIndex(value: selectedPageIndex-1)
-        hideUnHideButton(currentPage: selectedPageIndex)
+        //hideUnHideButton(currentPage: was)
     }
     
-    func goGenerate(wasPage: Int){
+    func goToGenerate(){
         self.navigationController?.pushViewController(GenerateResumeController.instantiateStoryboard(viewModel: GenerateResumeViewModel()), animated: true)
     }
     
@@ -221,14 +235,15 @@ extension StepByStepGuidePageController {
     
     private func setPageIndex(value: Int) {
         //1: next page, -1: prev page
-        if value == 1 {
+        if value == 1 || value == -1{
             currentPageIndex = currentPageIndex + value
             nextPageIndex = nextPageIndex + value
             previousPageIndex = previousPageIndex + value
-        } else if value == -1 {
-            currentPageIndex = currentPageIndex + value
-            nextPageIndex = nextPageIndex + value
-            previousPageIndex = previousPageIndex + value
+        } else if value == 0 {
+            //NEED UPDATE
+            currentPageIndex = value
+            nextPageIndex = value + 1
+            previousPageIndex = stepControllerArr?.count ?? 1 - 1
         } else {
             //select using progress bar
             currentPageIndex = value
@@ -261,7 +276,7 @@ extension StepByStepGuidePageController {
     fileprivate func initQuiz(type: Int) -> UIViewController {
         let controller = UIViewController()
         let tmp = QuizPage.init(type: type)
-        //tmp.setup(delegate: self)
+        tmp.quizPageSetup(dlgt: self)
         controller.view = tmp
         return controller
     }

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol QuizPageDelegate: AnyObject {
+    func quizAnswer(was: Bool)
+}
+
 class QuizPage: UIView {
     
     @IBOutlet var baseView: UIView!
@@ -15,6 +19,11 @@ class QuizPage: UIView {
     @IBOutlet weak var swipeImages: YesNoSwipeView!
     
     var divisor: CGFloat!
+    var delegate: QuizPageDelegate?
+    
+    func quizPageSetup(dlgt: QuizPageDelegate) {
+        self.delegate = dlgt
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -72,21 +81,21 @@ class QuizPage: UIView {
                     card.center = CGPoint(x: card.center.x - baseViewWidth, y: card.center.y + 75)
                     card.alpha = 0
                 }
-                return
+                delegate?.quizAnswer(was: false)
             } else if card.center.x > (baseViewWidth - 75) {
                 //move off to right side
                 UIView.animate(withDuration: 0.3) {
                     card.center = CGPoint(x: card.center.x + baseViewWidth, y: card.center.y + 75)
                     card.alpha = 0
                 }
-                return
+                delegate?.quizAnswer(was: true)
             }
             resetCard()
         }
     }
     
     func resetCard() {
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: 1) {
             self.quizCard.center = self.containerView.center
             self.quizCard.transform = .identity
             self.quizCard.alpha = 1

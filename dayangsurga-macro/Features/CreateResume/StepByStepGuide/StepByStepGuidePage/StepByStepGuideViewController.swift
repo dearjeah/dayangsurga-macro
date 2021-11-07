@@ -27,17 +27,13 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let pageController = segue.destination as? StepByStepGuidePageController {
             pageController.stepSetup(stepDlgt: self)
-            //pageController.prevNextSetup(prevNextDlgt: self)
+            pageController.prevNextSetup(prevNextDlgt: self)
             
         }
     }
-
 }
 
 extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonDelegate, StepByStepGuideDelegate, ProgressBarDelegate {
-    
-    
-    
     func progressBarUpdate(index: Int) {
         
     }
