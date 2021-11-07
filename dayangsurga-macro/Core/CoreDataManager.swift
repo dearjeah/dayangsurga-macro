@@ -99,8 +99,12 @@ extension CoreDataManager {
             preloadUserResume()
         }
         
-        if PersonalInformationPlaceholderRepository.shared.getAllPIPh()?.count == 0 && PersonalInformationSuggestionRepository.shared.getAllPISuggestion()?.count == 0{
+        if PersonalInformationPlaceholderRepository.shared.getAllPIPh()?.count == 0  {
             PreloadUserData().preloadUserPh()
+            
+        }
+        
+        if PersonalInformationSuggestionRepository.shared.getAllPISuggestion()?.count == 0 {
             PreloadUserData().preloadUserSuggession()
         }
     }
