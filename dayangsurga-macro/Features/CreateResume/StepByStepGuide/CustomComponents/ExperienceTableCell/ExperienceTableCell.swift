@@ -23,7 +23,8 @@ class ExperienceTableCell: UITableViewCell {
         // Initialization code
         //jobTitle.font = UIFont.italicSystemFont(ofSize: 14.0)
         shadowView.layer.borderWidth = 1
-
+        shadowView.layer.cornerRadius = 17
+        selectExperienceButton.setImage(UIImage(named: "icRoundSelectionFilled"), for: .normal)
     }
 
     @IBAction func selectExperience(_ sender: Any) {
