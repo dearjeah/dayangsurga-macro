@@ -8,11 +8,13 @@
 import UIKit
 
 protocol PersonalInfoPageDelegate: AnyObject {
-    
-    
+    func setPlaceHolder(fullName : String)
+
 }
 
-class PersonalInfoPage: UIView {
+class PersonalInfoPage: UIView, PersonalInfoPageDelegate {
+   
+    let preloadUserInfo = PreloadUserData()
     
     @IBOutlet weak var fullNameField: LabelWithTextField!
     @IBOutlet weak var emailField: LabelWithTextField!
@@ -61,13 +63,33 @@ class PersonalInfoPage: UIView {
     }
     
     func setup() {
+        //preload data : just once
+        preloadUserInfo.preloadUserPh()
+        
+      
+        
         fullNameField.titleLabel.text = "Full Name*"
         emailField.titleLabel.text = "Email*"
         phoneField.titleLabel.text = "Phone Number*"
         locationField.titleLabel.text = "Location*"
         summaryField.titleLabel.text = "Summary*"
         summaryField.cueLabel.text = "Tell us about who you are and what you do that fits the job you're applying for, make sure you use action verbs."
+        
+        // how to implement with protocol delegate
+        fullNameField.textField.placeholder =  PersonalInformationPlaceholderRepository.shared.getPIPhById(pi_ph_id: 1)?.name_ph
     }
     
+    func goToNextStep() {
+        
+    }
+    
+    func setPlaceholderWithCoreData() {
+        setPlaceHolder(fullName: fullNameField.textField.placeholder ?? "anya")
+        
+    }
+    
+    func setPlaceHolder(fullName: String) {
+        fullNameField.textField.placeholder = PersonalInformationPlaceholderRepository.shared.getPIPhById(pi_ph_id: 1)?.name_ph
+    }
   
 }

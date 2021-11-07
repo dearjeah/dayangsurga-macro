@@ -30,6 +30,11 @@ class StepByStepGuidePageController: UIPageViewController {
 
 //MARK: Protocol Delegate
 extension StepByStepGuidePageController: PersonalInfoPageDelegate {
+    func setPlaceHolder(fullName: String) {
+        
+    }
+    
+
     
 }
 

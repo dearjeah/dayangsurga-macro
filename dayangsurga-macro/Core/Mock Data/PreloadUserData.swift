@@ -11,7 +11,7 @@ import UIKit
 class PreloadUserData {
     
     // preload user suggestion
-    func preloadUserSuggetsion(){
+    func preloadUserSuggession(){
         PersonalInformationSuggestionRepository.shared.createPISuggestion(pi_suggestion_id: 1,
                                                              user_id: 0,
                                                              summarySuggest: "Tell us about who you are and what you do that fits the job you're applying for, make sure you use action verbs.")
