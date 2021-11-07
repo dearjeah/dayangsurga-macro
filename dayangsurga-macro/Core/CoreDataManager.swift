@@ -98,5 +98,17 @@ extension CoreDataManager {
         if UserResumeRepository.shared.getAllUserResume()?.count == 0{
             preloadUserResume()
         }
+        if ExperienceSuggestionRepository.shared.getAllExpSuggestion()?.count == 0 {
+            preloadExpSuggetsion()
+        }
+        if ExperiencePlaceholderRepository.shared.getAllExpPh()?.count == 0 {
+            preloadExpPh()
+        }
+        if ExperienceRepository.shared.getAllExperience()?.count == 0{
+            preloadExp()
+        }
+        if UserRepository.shared.getAllUser()?.count == 0{
+            preloadUser()
+        }
     }
 }
