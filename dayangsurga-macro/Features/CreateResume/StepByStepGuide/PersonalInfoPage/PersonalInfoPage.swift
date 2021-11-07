@@ -12,7 +12,7 @@ protocol PersonalInfoPageDelegate: AnyObject {
 
 }
 
-class PersonalInfoPage: UIView{
+class PersonalInfoPage: UIView {
     
     @IBOutlet weak var fullNameField: LabelWithTextField!
     @IBOutlet weak var emailField: LabelWithTextField!
@@ -21,6 +21,7 @@ class PersonalInfoPage: UIView{
     @IBOutlet weak var summaryField: LabelWithTextView!
     
     weak var delegate: PersonalInfoPageDelegate?
+    weak var textViewDelegate : UITextViewDelegate?
     
     func setup(dlgt: PersonalInfoPageDelegate) {
         self.delegate = dlgt
@@ -69,17 +70,16 @@ class PersonalInfoPage: UIView{
         summaryField.titleLabel.text = "Summary*"
         summaryField.cueLabel.text = "Tell us about who you are and what you do that fits the job you're applying for, make sure you use action verbs."
         
-        // how to implement with protocol delegate
+        //MARK: Implement with protocol delegate for loose coupling
         if let personalInfoPlaceholder = PersonalInformationPlaceholderRepository.shared.getPIPhById(pi_ph_id: 1) {
             fullNameField.textField.placeholder =  personalInfoPlaceholder.name_ph
             emailField.textField.placeholder = personalInfoPlaceholder.email_ph
             phoneField.textField.placeholder = personalInfoPlaceholder.phoneNumber_ph
             locationField.textField.placeholder = personalInfoPlaceholder.address_ph
-            summaryField.textView.placeholder = personalInfoPlaceholder.summary_ph
+            summaryField.textView.text = personalInfoPlaceholder.summary_ph
         }
       
-        // whyyyyyyyyyyy - gadapat
-        print(PersonalInformationPlaceholderRepository.shared.getPIPhById(pi_ph_id: 1) ?? "gadapat")
+     
     }
     
     func goToNextStep() {
