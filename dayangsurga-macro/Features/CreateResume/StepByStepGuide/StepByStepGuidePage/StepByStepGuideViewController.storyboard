@@ -67,6 +67,7 @@
                     <connections>
                         <outlet property="progressBarView" destination="rj7-Wn-qCr" id="B1E-iA-gRP"/>
                         <outlet property="smallSetButtonView" destination="i6R-d7-j4U" id="Zyc-pJ-hkO"/>
+                        <segue destination="Rg4-cB-jBf" kind="show" identifier="goToGenerate" id="eN4-hH-cma"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -87,6 +88,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgL-as-9O3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="859" y="84"/>
+        </scene>
+        <!--GenerateResumeViewController-->
+        <scene sceneID="e24-2r-YCm">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GenerateResumeViewController" id="Rg4-cB-jBf" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="mZn-pD-boP"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IiB-Dv-OOt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="995" y="529"/>
         </scene>
     </scenes>
     <resources>

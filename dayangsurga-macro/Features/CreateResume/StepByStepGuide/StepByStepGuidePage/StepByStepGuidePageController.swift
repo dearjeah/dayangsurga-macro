@@ -9,10 +9,12 @@ import UIKit
 
 protocol StepByStepGuideDelegate: AnyObject {
     func progressBarUpdate(index: Int)
+    func goToGenerate(was: Bool)
 }
 
 protocol prevNextButtonDelegate: AnyObject {
     func isHidePrevNextButton(was: Bool)
+    func changeTitleToGenerate(was: Bool)
 }
 
 class StepByStepGuidePageController: UIPageViewController {
@@ -85,7 +87,8 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
     
     //MARK: Delegate Function
     func hideUnHideButton(currentPage: Int) {
-            if pageType[currentPage] == 6 {
+        let isQuizPage = isQuizPage(currentIndex: currentPage)
+            if isQuizPage {
                 prevNextDelegate?.isHidePrevNextButton(was: true)
             } else {
                 prevNextDelegate?.isHidePrevNextButton(was: false)
@@ -94,13 +97,12 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
     
     //quizPagedelegate
     func quizAnswer(was: Bool) {
-        let currentPage = currentPageIndex
-        let vcData = stepControllerArr?.count ?? 0
+        let wasPage = currentPageIndex
         if was {
-            goToNext(wasPage: currentPage)
+            goToNext(wasPage: wasPage)
         } else {
-            if currentPage != vcData - 2 {
-                goToNext(wasPage: currentPage + 1)
+            if nextPageIndex != 7 {
+                goToNext(wasPage: wasPage, addedValue: 1)
             } else {
                 goToGenerate()
             }
@@ -153,11 +155,12 @@ extension StepByStepGuidePageController: UIPageViewControllerDataSource, UIPageV
 
 //MARK: Page Controller Navigation
 extension StepByStepGuidePageController {
-    func goToNext(wasPage: Int){
-        guard let currentViewController = stepControllerArr?[wasPage] else { return }
+    func goToNext(wasPage: Int, addedValue: Int? = 0){
+        let addedValue = addedValue ?? 0
+        guard let currentViewController = stepControllerArr?[wasPage + addedValue] else { return }
         guard let nextViewController = dataSource?.pageViewController( self, viewControllerAfter: currentViewController ) else { return }
         setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
-        setPageIndex(value: 1)
+        pageValueChecker(currentIndex: wasPage, value:  1 + addedValue)
         hideUnHideButton(currentPage: currentPageIndex)
     }
     
@@ -165,7 +168,7 @@ extension StepByStepGuidePageController {
         guard let currentViewController = stepControllerArr?[wasPage] else { return }
         guard let prevViewController = dataSource?.pageViewController( self, viewControllerBefore: currentViewController) else { return }
         setViewControllers([prevViewController], direction: .reverse, animated: true, completion: nil)
-        setPageIndex(value: -1)
+        pageValueChecker(currentIndex: wasPage, value: -1)
         hideUnHideButton(currentPage: currentPageIndex)
     }
     
@@ -177,12 +180,12 @@ extension StepByStepGuidePageController {
         } else if selectedPageIndex < currentPageIndex {
             setViewControllers([currentVC], direction: .reverse, animated: true, completion: nil)
         }
-        setPageIndex(value: selectedPageIndex-1)
+        setPageIndex(value: selectedPageIndex - 1, progressBar: true)
         //hideUnHideButton(currentPage: was)
     }
     
     func goToGenerate(){
-        self.navigationController?.pushViewController(GenerateResumeController.instantiateStoryboard(viewModel: GenerateResumeViewModel()), animated: true)
+        stepDelegate?.goToGenerate(was: true)
     }
     
     func addAndEditData(isAdd: Bool){
@@ -193,10 +196,22 @@ extension StepByStepGuidePageController {
 //MARK: Checker
 extension StepByStepGuidePageController {
     func isQuizPage(currentIndex: Int) -> Bool {
-        if currentIndex == 3 || currentIndex == 5 || currentIndex == 7 {
-            return true
+        if currentIndex < stepControllerArr?.count ?? 0 {
+            if pageType[currentIndex] == 6 {
+                return true
+            }
+            else {
+                return false
+            }
         }
-        else {
+        return false
+    }
+    
+    func isLastPage(currentIndex: Int) -> Bool {
+        let totalPage = stepControllerArr?.count ?? 0
+        if currentIndex == totalPage - 2 {
+            return true
+        } else {
             return false
         }
     }
@@ -209,6 +224,15 @@ extension StepByStepGuidePageController {
             } else {
                 //button text = edit
             }
+        }
+    }
+    
+    private func pageValueChecker(currentIndex: Int, value: Int, progressBar: Bool = false) {
+        if isLastPage(currentIndex: currentIndex) {
+            prevNextDelegate?.changeTitleToGenerate(was: true)
+            setPageIndex(value: value, progressBar: progressBar)
+        } else {
+            setPageIndex(value: value, progressBar: progressBar)
         }
     }
 }
@@ -233,22 +257,30 @@ extension StepByStepGuidePageController {
         NotificationCenter.default.addObserver(self, selector: #selector(progressBarTapped), name: Notification.Name("progressBarTapped"), object: nil)
     }
     
-    private func setPageIndex(value: Int) {
+    private func setPageIndex(value: Int, progressBar: Bool = false) {
         //1: next page, -1: prev page
-        if value == 1 || value == -1{
-            currentPageIndex = currentPageIndex + value
-            nextPageIndex = nextPageIndex + value
-            previousPageIndex = previousPageIndex + value
-        } else if value == 0 {
-            //NEED UPDATE
-            currentPageIndex = value
-            nextPageIndex = value + 1
-            previousPageIndex = stepControllerArr?.count ?? 1 - 1
-        } else {
+        if progressBar {
             //select using progress bar
             currentPageIndex = value
             nextPageIndex = value + 1
             previousPageIndex = value - 1
+        } else {
+            if value == 1 || value == -1 {
+                //next or previous one time
+                currentPageIndex = currentPageIndex + value
+                nextPageIndex = nextPageIndex + value
+                previousPageIndex = previousPageIndex + value
+            } else if value == 2 {
+                //quiz say no
+                currentPageIndex = currentPageIndex + value
+                nextPageIndex = nextPageIndex + value
+                previousPageIndex = previousPageIndex + value
+            } /*else if value == 0 {
+                //NEED UPDATE
+                currentPageIndex = value
+                nextPageIndex = value + 1
+                previousPageIndex = stepControllerArr?.count ?? 1 - 1
+            }*/
         }
     }
 }

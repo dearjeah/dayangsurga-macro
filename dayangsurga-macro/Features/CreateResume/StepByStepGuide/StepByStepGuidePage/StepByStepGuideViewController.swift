@@ -34,6 +34,12 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
 }
 
 extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonDelegate, StepByStepGuideDelegate, ProgressBarDelegate {
+   
+    
+    func goToGenerate(was: Bool) {
+        performSegue(withIdentifier: "goToGenerate", sender: self)
+    }
+    
     func progressBarUpdate(index: Int) {
         
     }
@@ -48,16 +54,21 @@ extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonD
     }
     
     func didTapGenerate() {
-        NotificationCenter.default.post(name: Notification.Name("goToGenerate"), object: nil)
+        //NotificationCenter.default.post(name: Notification.Name("goToGenerate"), object: nil)
+        performSegue(withIdentifier: "goToGenerate", sender: self)
     }
     
-    //
+    //prevNextButtonDelegate
     func isHidePrevNextButton(was: Bool) {
         if was {
             smallSetButtonView.isHidden = true
         } else {
             smallSetButtonView.isHidden = false
         }
+    }
+    
+    func changeTitleToGenerate(was: Bool) {
+        smallSetButtonView.rightButton.titleLabel?.text = "Generate"
     }
     
     //MARK: Progress Bar Delegate
