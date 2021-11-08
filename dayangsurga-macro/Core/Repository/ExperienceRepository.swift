@@ -72,7 +72,7 @@ class ExperienceRepository{
     }
     
     // func updates
-    func updateUserSuggestion(exp_id: Int,
+    func updateExperience(exp_id: Int,
                               user_id: Int,
                               newJobTitle: String,
                               newJobDesc: String,
@@ -101,7 +101,7 @@ class ExperienceRepository{
     }
     
     // func delete
-    func deleteUser(data: PersonalInformation_Suggestion) {
+    func deleteExperience(data: Experience) {
         do {
             context.delete(data)
             try context.save()

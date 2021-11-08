@@ -107,5 +107,15 @@ extension CoreDataManager {
         if PersonalInformationSuggestionRepository.shared.getAllPISuggestion()?.count == 0 {
             PreloadUserData().preloadUserSuggession()
         }
+        
+        if ExperienceSuggestionRepository.shared.getAllExpSuggestion()?.count == 0 {
+            preloadExpSuggetsion()
+        }
+        if ExperiencePlaceholderRepository.shared.getAllExpPh()?.count == 0 {
+            preloadExpPh()
+        }
+        if UserRepository.shared.getAllUser()?.count == 0{
+            preloadUser()
+        }
     }
 }
