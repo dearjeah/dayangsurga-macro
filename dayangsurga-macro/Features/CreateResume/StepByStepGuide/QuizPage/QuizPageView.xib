@@ -3,6 +3,7 @@
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,46 +21,46 @@
             <rect key="frame" x="0.0" y="0.0" width="243" height="512"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8m-kQ-huK">
-                    <rect key="frame" x="21.666666666666671" y="64" width="200" height="26"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8m-kQ-huK">
+                    <rect key="frame" x="29" y="64" width="183" height="26.333333333333329"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="26" id="oEN-k9-FWI"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="oEN-k9-FWI"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
-                    <color key="textColor" red="0.098039215690000001" green="0.1647058824" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="textColor" name="primaryBlue"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAi-hG-yaW">
-                    <rect key="frame" x="6" y="172" width="231" height="20.333333333333343"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAi-hG-yaW">
+                    <rect key="frame" x="22" y="172.33333333333334" width="200" height="50"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="20.329999999999998" id="npH-bH-kuV"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="npH-bH-kuV"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                    <color key="textColor" red="0.098039215690000001" green="0.1647058824" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="textColor" name="primaryBlue"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AgL-Kb-OHd">
-                    <rect key="frame" x="6" y="252.33333333333337" width="231" height="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AgL-Kb-OHd">
+                    <rect key="frame" x="22" y="282.33333333333331" width="200" height="17"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="17" id="yDd-2a-M5r"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="yDd-2a-M5r"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" name="primaryDisable"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="W8m-kQ-huK" secondAttribute="trailing" constant="21.329999999999998" id="CnK-aF-Fr2"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="AgL-Kb-OHd" secondAttribute="trailing" constant="6" id="DJh-Hv-c0d"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="W8m-kQ-huK" secondAttribute="trailing" constant="31" id="CnK-aF-Fr2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="AgL-Kb-OHd" secondAttribute="trailing" constant="21" id="DJh-Hv-c0d"/>
                 <constraint firstItem="AgL-Kb-OHd" firstAttribute="top" secondItem="dAi-hG-yaW" secondAttribute="bottom" constant="60" id="Dow-Lu-FgU"/>
                 <constraint firstItem="dAi-hG-yaW" firstAttribute="top" secondItem="W8m-kQ-huK" secondAttribute="bottom" constant="82" id="GcS-Ox-1Mq"/>
-                <constraint firstItem="AgL-Kb-OHd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="6" id="Kxz-3L-eCA"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dAi-hG-yaW" secondAttribute="trailing" constant="6" id="Zq3-5P-wPc"/>
-                <constraint firstItem="W8m-kQ-huK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="21.670000000000002" id="l0Z-pY-xgY"/>
+                <constraint firstItem="AgL-Kb-OHd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="22" id="Kxz-3L-eCA"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dAi-hG-yaW" secondAttribute="trailing" constant="21" id="Zq3-5P-wPc"/>
+                <constraint firstItem="W8m-kQ-huK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="29" id="l0Z-pY-xgY"/>
                 <constraint firstItem="W8m-kQ-huK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="o4T-Oq-kYe"/>
-                <constraint firstItem="dAi-hG-yaW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="6" id="xya-nU-FI9"/>
+                <constraint firstItem="dAi-hG-yaW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="22" id="xya-nU-FI9"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
@@ -68,6 +69,12 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="primaryBlue">
+            <color red="0.097999997437000275" green="0.16500000655651093" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryDisable">
+            <color red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

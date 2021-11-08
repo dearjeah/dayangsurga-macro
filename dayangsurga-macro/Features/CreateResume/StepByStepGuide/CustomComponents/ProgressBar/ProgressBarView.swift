@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ProgressBarDelegate: AnyObject {
-    
+    func progressBarSelected(at: Int)
 }
 
 class ProgressBarView: UIView {
@@ -40,6 +40,7 @@ class ProgressBarView: UIView {
         default:
             print("nothing")
         }
+        dlgt?.progressBarSelected(at: sender.tag)
     }
     
     weak var dlgt: ProgressBarDelegate?
