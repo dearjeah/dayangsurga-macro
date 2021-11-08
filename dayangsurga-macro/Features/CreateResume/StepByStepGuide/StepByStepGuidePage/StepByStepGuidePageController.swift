@@ -46,6 +46,7 @@ class StepByStepGuidePageController: UIPageViewController {
         super.viewDidLoad()
         self.dataSource = self
         self.delegate = self
+        self.isPagingEnabled = false
         
         populateItems()
         style()
@@ -181,7 +182,6 @@ extension StepByStepGuidePageController {
             setViewControllers([currentVC], direction: .reverse, animated: true, completion: nil)
         }
         setPageIndex(value: selectedPageIndex - 1, progressBar: true)
-        //hideUnHideButton(currentPage: was)
     }
     
     func goToGenerate(){

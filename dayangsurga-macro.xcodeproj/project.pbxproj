@@ -79,6 +79,7 @@
 		BF5F1BFA2722D983004D0756 /* PreviewResumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BF92722D983004D0756 /* PreviewResumeViewController.swift */; };
 		BF5F1BFC2722D9A0004D0756 /* PreviewResumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BFB2722D9A0004D0756 /* PreviewResumeViewModel.swift */; };
 		BF5F1BFE2722DA21004D0756 /* ExpertDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BFD2722DA21004D0756 /* ExpertDetailViewModel.swift */; };
+		BF61D7FD27398E1C0011ACC0 /* UIPageViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF61D7FC27398E1C0011ACC0 /* UIPageViewController+Extension.swift */; };
 		BF7267E32730E73000B5A95F /* AccomplishFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7267DF2730E73000B5A95F /* AccomplishFormController.swift */; };
 		BF7267E42730E73000B5A95F /* AccomplishFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7267E02730E73000B5A95F /* AccomplishFormController.storyboard */; };
 		BF7267E52730E73000B5A95F /* AccomplishmentPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7267E12730E73000B5A95F /* AccomplishmentPageView.swift */; };
@@ -240,6 +241,7 @@
 		BF5F1BF92722D983004D0756 /* PreviewResumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewResumeViewController.swift; sourceTree = "<group>"; };
 		BF5F1BFB2722D9A0004D0756 /* PreviewResumeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewResumeViewModel.swift; sourceTree = "<group>"; };
 		BF5F1BFD2722DA21004D0756 /* ExpertDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertDetailViewModel.swift; sourceTree = "<group>"; };
+		BF61D7FC27398E1C0011ACC0 /* UIPageViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPageViewController+Extension.swift"; sourceTree = "<group>"; };
 		BF7267DF2730E73000B5A95F /* AccomplishFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccomplishFormController.swift; sourceTree = "<group>"; };
 		BF7267E02730E73000B5A95F /* AccomplishFormController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AccomplishFormController.storyboard; sourceTree = "<group>"; };
 		BF7267E12730E73000B5A95F /* AccomplishmentPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccomplishmentPageView.swift; sourceTree = "<group>"; };
@@ -794,6 +796,7 @@
 				BF85037B2722832600CC43FB /* UIView+Extension.swift */,
 				BF85037D2722836800CC43FB /* UIViewController+Extension.swift */,
 				B88AFA38272AB10D007408A5 /* UIImageView+Extension.swift */,
+				BF61D7FC27398E1C0011ACC0 /* UIPageViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1086,6 +1089,7 @@
 				BF5F1BEA2722D5CA004D0756 /* PersonalInfoViewModel.swift in Sources */,
 				BF8503922722B64600CC43FB /* ExpertListViewController.swift in Sources */,
 				B859B5402728532900627CDC /* ConsultHistoryRepository.swift in Sources */,
+				BF61D7FD27398E1C0011ACC0 /* UIPageViewController+Extension.swift in Sources */,
 				6712CF9F272EB29400449991 /* QuizPage.swift in Sources */,
 				B859B535272852EF00627CDC /* EmptyStateRepository.swift in Sources */,
 				BF85039C2722B7B700CC43FB /* EducationPageView.swift in Sources */,
