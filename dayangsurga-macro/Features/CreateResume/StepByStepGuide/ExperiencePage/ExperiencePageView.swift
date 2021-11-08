@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SteByStepGuideDelegate {
+protocol ExperienceFormDelegate {
     func goToAddEdit(pageName: String)
 }
 
@@ -118,7 +118,7 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         cell.editButtonAction = { [unowned self] in
 //            selectedIndex = indexPath.row
 //            let experiences = stepViewModel.getExpByIndex(id: selectedIndex)
-            experienceDelegate?.goToEdit()
+//            experienceDelegate?.goToEdit()
         }
         cell.checklistButtonAction = { [unowned self] in
             if cell.selectionStatus == false{

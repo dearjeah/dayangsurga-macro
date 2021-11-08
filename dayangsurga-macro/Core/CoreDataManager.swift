@@ -98,6 +98,16 @@ extension CoreDataManager {
         if UserResumeRepository.shared.getAllUserResume()?.count == 0{
             preloadUserResume()
         }
+        
+        if PersonalInformationPlaceholderRepository.shared.getAllPIPh()?.count == 0  {
+            PreloadUserData().preloadUserPh()
+            
+        }
+        
+        if PersonalInformationSuggestionRepository.shared.getAllPISuggestion()?.count == 0 {
+            PreloadUserData().preloadUserSuggession()
+        }
+        
         if ExperienceSuggestionRepository.shared.getAllExpSuggestion()?.count == 0 {
             preloadExpSuggetsion()
         }
@@ -106,6 +116,5 @@ extension CoreDataManager {
         }
         if UserRepository.shared.getAllUser()?.count == 0{
             preloadUser()
-        }
     }
 }

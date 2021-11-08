@@ -20,16 +20,17 @@ class PersonalInformationSuggestionRepository{
                             user_id: Int,
                             summarySuggest: String){
         do {
-            if let getUser = UserRepository.shared.getUserById(id: user_id){
+//MARK: Removing user relation because there's no user yet. So core data can't catch it - anya
+//            if let getUser = UserRepository.shared.getUserById(id: user_id){
                 let piSuggestion = PersonalInformation_Suggestion(context: context)
                 piSuggestion.pi_suggestion_id = Int32(pi_suggestion_id)
                 piSuggestion.user_id = Int32(user_id)
                 piSuggestion.summarySuggest = summarySuggest
                 
-                piSuggestion.user = getUser
+//                piSuggestion.user = getUser
                 try context.save()
             }
-        }
+//        }
         catch let error as NSError {
             print(error)
         }
