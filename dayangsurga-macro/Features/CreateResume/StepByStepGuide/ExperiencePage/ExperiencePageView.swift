@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SteByStepGuideDelegate {
+protocol ExperienceFormDelegate {
     func goToAddEdit(pageName: String)
 }
 
