@@ -24,9 +24,8 @@ class StepByStepGuideViewModel: NSObject {
         return experienceRepo.getAllExperience()
     }
     
-    func deleteExpData(experience: Experience?){
-        let expData = Experience()
-        experienceRepo.deleteExperience(data: experience ?? expData)
+    func getExpByIndex(id: Int) -> Experience?{
+        return experienceRepo.getExperienceById(experienceId: id)
     }
     
 }
