@@ -17,12 +17,12 @@ class ResumeTemplateRepository{
     
     // create data
     func createResumeTemplate(template_id: Int,
-                              image: Data,
+                              image: UIImage,
                               name: String){
         do {
             let template = Resume_Template(context: context)
             template.template_id = Int32(template_id)
-            template.image = image
+            template.image = image.pngData()
             template.name = name
             
             try context.save()
@@ -61,7 +61,7 @@ class ResumeTemplateRepository{
                         newImage: Data,
                         newName: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "template_id == %@", id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "template_id == %d", id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Resume_Template]
             let template = item?.first

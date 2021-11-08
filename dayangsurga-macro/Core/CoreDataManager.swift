@@ -88,10 +88,24 @@ extension CoreDataManager {
     }
 
     func preloadData() {
-        if preloadUserResume() == nil {
-            preloadUserResume()
+        
+        if EmptyStateRepository.shared.getAllEmptyState()?.count == 0 {
             preloadEmptyState()
         }
+        if ResumeTemplateRepository.shared.getAllTemplate()?.count == 0 {
+            preloadResumeTemplate()
+        }
+        if UserResumeRepository.shared.getAllUserResume()?.count == 0{
+            preloadUserResume()
+        }
         
+        if PersonalInformationPlaceholderRepository.shared.getAllPIPh()?.count == 0  {
+            PreloadUserData().preloadUserPh()
+            
+        }
+        
+        if PersonalInformationSuggestionRepository.shared.getAllPISuggestion()?.count == 0 {
+            PreloadUserData().preloadUserSuggession()
+        }
     }
 }

@@ -7,15 +7,25 @@
 
 import UIKit
 
+protocol SmallSetButtonDelegate: AnyObject {
+    func didTapNext()
+    func didTapPrevious()
+    func didTapGenerate()
+}
+
 class SmallSetButton: UIView {
-    
-    
+
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var leftButton: UIButton!
+    weak var delegate: SmallSetButtonDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+    }
+    
+    func setup(dlgt: SmallSetButtonDelegate) {
+        self.delegate = dlgt
     }
     
     func buttonStyle() {
@@ -51,7 +61,14 @@ class SmallSetButton: UIView {
     }
     
     @IBAction func rightButtonPressed(_ sender: Any) {
+        if rightButton.titleLabel?.text == "Next" {
+            delegate?.didTapNext()
+        } else {
+            delegate?.didTapGenerate()
+        }
     }
+    
     @IBAction func leftButtonPressed(_ sender: Any) {
+        delegate?.didTapPrevious()
     }
 }

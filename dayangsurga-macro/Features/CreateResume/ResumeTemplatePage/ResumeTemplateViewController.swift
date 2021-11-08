@@ -9,7 +9,8 @@ import UIKit
 
 class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> {
 
-    var templateData = ["imgResumeTemplateArial","imgResumeTemplateGeorgia","imgResumeTemplateHeletvica"]
+    var selectedTemplate = 0
+    var template = [Resume_Template]()
     var currentPage = 0
     let cellWidthScale = 0.71
     let cellHeightScale = 0.67
@@ -35,7 +36,9 @@ class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> 
         self.navigationController?.view.tintColor = UIColor.white
         self.navigationItem.title = "Resume Template"
         self.navigationItem.backButtonTitle = "Template"
-
+        
+        self.viewModel = ResumeTemplateViewModel()
+        template = self.viewModel?.getTemplate() ?? []
     }
     
     /*
@@ -51,24 +54,26 @@ class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> 
     @IBAction func didTapButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "StepByStepGuideViewController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToStepByStep") as! StepByStepGuideViewController
+        vc.selectedIndex = selectedTemplate
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.titleView?.tintColor = .white
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
-       
+       print(selectedTemplate)
     }
 
 }
 
 extension ResumeTemplateViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return templateData.count
+        return template.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = resumeTemplateCollection.dequeueReusableCell(withReuseIdentifier: "ResumeTemplateCell", for: indexPath)as! ResumeTemplateCell
         
-        cell.resumeTemplateImage.image = UIImage(named: templateData[indexPath.row])
+        let image = UIImage(data: template[indexPath.row].image ?? Data())
+        cell.resumeTemplateImage.image = image
         cell.layer.shadowRadius = 10
         cell.layer.shadowColor = UIColor.black.cgColor
         cell.layer.shadowOpacity = 0.8
@@ -89,11 +94,11 @@ extension ResumeTemplateViewController: UICollectionViewDelegate, UICollectionVi
         offset = CGPoint(x: roundedIndex * widthWithSpacing - scrollView.contentInset.left,  y: scrollView.contentInset.top)
         
         currentPage = Int(roundedIndex)
-        
-        resumeTemplatePageController.currentPage = currentPage
+        resumeTemplatePageController.currentPage = currentPage % 3
+        selectedTemplate = currentPage % 3
         targetContentOffset.pointee = offset
         
         
     }
-    
+        
 }

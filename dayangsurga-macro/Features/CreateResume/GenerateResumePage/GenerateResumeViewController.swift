@@ -16,7 +16,7 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
     @IBOutlet weak var previewResumeButton: UIButton!
     @IBOutlet weak var exportResumeButton: UIButton!
     @IBOutlet weak var finishCreateResume: UIButton!
-    
+    var userResume: User_Resume?
     override func viewDidLoad() {
         super.viewDidLoad()
         exportResumeButton.dsLongFilledPrimaryButton(withImage: false, text: " Export Resume")
@@ -34,7 +34,7 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
         let dataInput = "Test"
         
         let pdfCreator = PDFCreator(
-            dataInput: dataInput
+            dataInput: dataInput, userResume: userResume
         )
         
         vc?.documentData = pdfCreator.createPDF()

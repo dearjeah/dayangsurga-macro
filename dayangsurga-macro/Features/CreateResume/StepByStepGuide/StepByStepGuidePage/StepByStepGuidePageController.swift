@@ -7,6 +7,16 @@
 
 import UIKit
 
+protocol StepByStepGuideDelegate: AnyObject {
+    func progressBarUpdate(index: Int)
+    func goToGenerate(was: Bool)
+}
+
+protocol prevNextButtonDelegate: AnyObject {
+    func isHidePrevNextButton(was: Bool)
+    func changeTitleToGenerate(was: Bool)
+}
+
 class StepByStepGuidePageController: UIPageViewController {
     
     var stepControllerArr: [UIViewController]? = []
@@ -14,22 +24,96 @@ class StepByStepGuidePageController: UIPageViewController {
     var currentPageIndex: Int = 0
     var nextPageIndex: Int = 1
     var previousPageIndex: Int = -1
+    var quizAnswer: [Bool] = []
+    var pageType: [Int] = []
+    
+    weak var stepDelegate: StepByStepGuideDelegate?
+    weak var prevNextDelegate: prevNextButtonDelegate?
+    
+    func stepSetup(stepDlgt: StepByStepGuideDelegate) {
+        self.stepDelegate = stepDlgt
+    }
+    
+    func prevNextSetup (prevNextDlgt: prevNextButtonDelegate) {
+        self.prevNextDelegate = prevNextDlgt
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
         self.delegate = self
+        
         populateItems()
-        //style()
+        style()
         setup()
-
-        // Do any additional setup after loading the view.
+        notificationCenterSetup()
     }
     
 }
 
 //MARK: Protocol Delegate
-extension StepByStepGuidePageController: PersonalInfoPageDelegate {
+extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDelegate {
+    func setPlaceHolder(fullName: String) {
+        
+    }
+    
+    //MARK: Notification Center
+    @objc func didSelectNext() {
+        goToNext(wasPage: currentPageIndex)
+    }
+    
+    @objc func didSelectPrev() {
+        goToPrev(wasPage: currentPageIndex)
+    }
+    
+    @objc func didSelectGenerate() {
+        goToGenerate()
+    }
+    
+    @objc func progressBarTapped(_ notification: Notification) {
+        var selectedPage = 0
+        if let data = notification.userInfo as? [String: Int] {
+            for (name, page) in data {
+                print("\(name) : \(page) selected")
+                selectedPage = page
+            }
+        }
+        
+        if selectedPage - 1 != currentPageIndex {
+            goToDirectPage(selectedPageIndex: selectedPage)
+            print("sadsakdaskdjsakjdksad", "selected:",selectedPage, "current:",currentPageIndex)
+        }
+    }
+    
+    //MARK: Delegate Function
+    func hideUnHideButton(currentPage: Int) {
+        let isQuizPage = isQuizPage(currentIndex: currentPage)
+            if isQuizPage {
+                prevNextDelegate?.isHidePrevNextButton(was: true)
+            } else {
+                prevNextDelegate?.isHidePrevNextButton(was: false)
+            }
+    }
+    
+    //quizPagedelegate
+    func quizAnswer(was: Bool) {
+        let wasPage = currentPageIndex
+        if was {
+            goToNext(wasPage: wasPage)
+        } else {
+            if nextPageIndex != 7 {
+                goToNext(wasPage: wasPage, addedValue: 1)
+            } else {
+                goToGenerate()
+            }
+        }
+    }
+    
+
     
 }
 
@@ -78,27 +162,85 @@ extension StepByStepGuidePageController: UIPageViewControllerDataSource, UIPageV
 
 //MARK: Page Controller Navigation
 extension StepByStepGuidePageController {
-    func goToNext(wasPage: Int){
-        guard let currentViewController = stepControllerArr?[currentPageIndex] else { return }
+    func goToNext(wasPage: Int, addedValue: Int? = 0){
+        let addedValue = addedValue ?? 0
+        guard let currentViewController = stepControllerArr?[wasPage + addedValue] else { return }
         guard let nextViewController = dataSource?.pageViewController( self, viewControllerAfter: currentViewController ) else { return }
         setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
-        setPageIndex(value: 1)
+        pageValueChecker(currentIndex: wasPage, value:  1 + addedValue)
+        hideUnHideButton(currentPage: currentPageIndex)
     }
     
-    func gotToPrev(wasPage: Int){
-        guard let currentViewController = stepControllerArr?[currentPageIndex] else { return }
+    func goToPrev(wasPage: Int){
+        guard let currentViewController = stepControllerArr?[wasPage] else { return }
         guard let prevViewController = dataSource?.pageViewController( self, viewControllerBefore: currentViewController) else { return }
         setViewControllers([prevViewController], direction: .reverse, animated: true, completion: nil)
-        setPageIndex(value: -1)
+        pageValueChecker(currentIndex: wasPage, value: -1)
+        hideUnHideButton(currentPage: currentPageIndex)
     }
     
-    func goGenerate(wasPage: Int){
-        self.navigationController?.pushViewController(GenerateResumeController.instantiateStoryboard(viewModel: GenerateResumeViewModel()), animated: true)
-        //self.navigationController?.pushViewController(MedaliDetailController.instantiateStoryboard(viewModel: MedaliDetailViewModel(datasVM: mdDatas)), animated: true)
+    func goToDirectPage(selectedPageIndex: Int){
+        guard let selectedVC = stepControllerArr?[selectedPageIndex] else { return }
+        guard let currentVC = dataSource?.pageViewController( self, viewControllerBefore: selectedVC) else { return }
+        if selectedPageIndex > currentPageIndex {
+            setViewControllers([currentVC], direction: .forward, animated: true, completion: nil)
+        } else if selectedPageIndex < currentPageIndex {
+            setViewControllers([currentVC], direction: .reverse, animated: true, completion: nil)
+        }
+        setPageIndex(value: selectedPageIndex - 1, progressBar: true)
+        //hideUnHideButton(currentPage: was)
+    }
+    
+    func goToGenerate(){
+        stepDelegate?.goToGenerate(was: true)
     }
     
     func addAndEditData(isAdd: Bool){
         
+    }
+}
+
+//MARK: Checker
+extension StepByStepGuidePageController {
+    func isQuizPage(currentIndex: Int) -> Bool {
+        if currentIndex < stepControllerArr?.count ?? 0 {
+            if pageType[currentIndex] == 6 {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+        return false
+    }
+    
+    func isLastPage(currentIndex: Int) -> Bool {
+        let totalPage = stepControllerArr?.count ?? 0
+        if currentIndex == totalPage - 2 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func isAddEdit(data: Int, pageType: Int) {
+        //page type : 1-6, 6 = quiz
+        if pageType == 4 {
+            if data == 0 {
+                //button text = add
+            } else {
+                //button text = edit
+            }
+        }
+    }
+    
+    private func pageValueChecker(currentIndex: Int, value: Int, progressBar: Bool = false) {
+        if isLastPage(currentIndex: currentIndex) {
+            prevNextDelegate?.changeTitleToGenerate(was: true)
+            setPageIndex(value: value, progressBar: progressBar)
+        } else {
+            setPageIndex(value: value, progressBar: progressBar)
+        }
     }
 }
 
@@ -115,17 +257,37 @@ extension StepByStepGuidePageController {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
     }
+    func notificationCenterSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didSelectNext), name: Notification.Name("goToNext"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didSelectPrev), name: Notification.Name("goToPrev"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didSelectGenerate), name: Notification.Name("goToGenerate"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(progressBarTapped), name: Notification.Name("progressBarTapped"), object: nil)
+    }
     
-    private func setPageIndex(value: Int) {
+    private func setPageIndex(value: Int, progressBar: Bool = false) {
         //1: next page, -1: prev page
-        if value == 1 {
-            currentPageIndex = currentPageIndex + value
-            nextPageIndex = nextPageIndex + value
-            previousPageIndex = previousPageIndex + value
-        } else if value == -1 {
-            currentPageIndex = currentPageIndex + value
-            nextPageIndex = nextPageIndex + value
-            previousPageIndex = previousPageIndex + value
+        if progressBar {
+            //select using progress bar
+            currentPageIndex = value
+            nextPageIndex = value + 1
+            previousPageIndex = value - 1
+        } else {
+            if value == 1 || value == -1 {
+                //next or previous one time
+                currentPageIndex = currentPageIndex + value
+                nextPageIndex = nextPageIndex + value
+                previousPageIndex = previousPageIndex + value
+            } else if value == 2 {
+                //quiz say no
+                currentPageIndex = currentPageIndex + value
+                nextPageIndex = nextPageIndex + value
+                previousPageIndex = previousPageIndex + value
+            } /*else if value == 0 {
+                //NEED UPDATE
+                currentPageIndex = value
+                nextPageIndex = value + 1
+                previousPageIndex = stepControllerArr?.count ?? 1 - 1
+            }*/
         }
     }
 }
@@ -150,10 +312,10 @@ extension StepByStepGuidePageController {
         return controller
     }
     
-    fileprivate func initQuiz() -> UIViewController {
+    fileprivate func initQuiz(type: Int) -> UIViewController {
         let controller = UIViewController()
-        let tmp = QuizPage.init(header: "")
-        //tmp.setup(delegate: self)
+        let tmp = QuizPage.init(type: type)
+        tmp.quizPageSetup(dlgt: self)
         controller.view = tmp
         return controller
     }
@@ -187,27 +349,18 @@ extension StepByStepGuidePageController {
         let source = "create"
         let personalInfo = initPersonalData(fullName: "", email: "", phone: "", location: "", summary: "")
         let education = initEducation()
-        let quiz = initQuiz()
-        let quiz2 = initQuiz()
-        let quiz3 = initQuiz()
+        let quiz = initQuiz(type: 1)
+        let quiz2 = initQuiz(type: 2)
+        let quiz3 = initQuiz(type: 3)
         let exp = initExperience()
         let skills = initSkills()
         let accomp = initAccomplishment()
         if source == "create" {
-            stepControllerArr?.append(personalInfo)
-            stepControllerArr?.append(education)
-            stepControllerArr?.append(quiz)
-            stepControllerArr?.append(exp)
-            stepControllerArr?.append(quiz2)
-            stepControllerArr?.append(skills)
-            stepControllerArr?.append(quiz3)
-            stepControllerArr?.append(accomp)
+            stepControllerArr?.append(contentsOf: [personalInfo, education, quiz, exp, quiz2, skills, quiz3, accomp])
+            pageType.append(contentsOf:[1, 2, 6, 3, 6, 4, 6, 5])
         } else {
-            stepControllerArr?.append(personalInfo)
-            stepControllerArr?.append(education)
-            stepControllerArr?.append(exp)
-            stepControllerArr?.append(skills)
-            stepControllerArr?.append(accomp)
+            stepControllerArr?.append(contentsOf: [personalInfo, education, exp, skills, accomp])
+            pageType.append(contentsOf:[1, 2, 3, 4, 5])
         }
     }
     

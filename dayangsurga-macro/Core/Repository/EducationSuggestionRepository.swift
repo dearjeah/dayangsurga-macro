@@ -52,7 +52,7 @@ class EducationSuggestionRepository{
     
     func getEducationSuggestionById(id: Int) -> Edu_Suggestion? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "edu_suggest_id == %@", id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "edu_suggest_id == %d", id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Edu_Suggestion]
             return item?.first
