@@ -116,5 +116,6 @@ extension CoreDataManager {
         }
         if UserRepository.shared.getAllUser()?.count == 0{
             preloadUser()
+        }
     }
 }

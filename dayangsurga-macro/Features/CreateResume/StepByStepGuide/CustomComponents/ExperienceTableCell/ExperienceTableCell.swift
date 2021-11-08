@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol expCellDelegate: AnyObject {
+    func passData() -> Experience?
+}
+
 class ExperienceTableCell: UITableViewCell {
     var selectionStatus = false
     
@@ -22,6 +26,8 @@ class ExperienceTableCell: UITableViewCell {
     var checklistButtonAction : (() -> ())?
     var editButtonAction : (() -> ())?
     var experience = Experience()
+    weak var delegate: expCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,8 +42,8 @@ class ExperienceTableCell: UITableViewCell {
     }
     
     @IBAction func editCellTapped(_ sender: UIButton) {
+        delegate?.passData()
         editButtonAction?()
-        //delegate.editButtonTapped()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -33,8 +33,19 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
     }
 }
 
-extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonDelegate, StepByStepGuideDelegate, ProgressBarDelegate {
-   
+extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonDelegate, StepByStepGuideDelegate, ProgressBarDelegate, ExperienceListDelegate {
+    
+    //MARK: Delegate For Experience List to Form
+    func goToAddExp() {
+        let storyboard = UIStoryboard(name: "ExperienceFormController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToExperienceForm") as! ExperienceFormController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func passingExpData(exp: Experience?) {
+//        let experience = Experience()
+        performSegue(withIdentifier: "", sender: self)
+    }
     
     func goToGenerate(was: Bool) {
         performSegue(withIdentifier: "goToGenerate", sender: self)

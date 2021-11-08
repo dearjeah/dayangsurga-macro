@@ -12,8 +12,8 @@ protocol ExperienceFormDelegate {
 }
 
 protocol ExperienceListDelegate: AnyObject {
-    func goToExpereinceController()
-//    func goToEdit()
+    func goToAddExp()
+    func passingExpData(exp: Experience?)
 }
 
 class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
@@ -23,18 +23,9 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var emptyStateView: EmptyState!
     
     @IBAction func addEditPressed(_ sender: UIButton) {
-        tapButton()
+        experienceDelegate?.goToAddExp()
     }
-    
-    
-    
-    /*
-     func didEditButtonTapped() {
-     //navigation
-     pass data
-     vc.experienceData = experience[selectedIndex]
-     
-     */
+    weak var experienceDelegate: ExperienceListDelegate?
      
     var selectedExp = 0
     var expDlgt: ExperiencePageDelegate?
@@ -46,11 +37,6 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         self.expDlgt = expDlgt
     }
     
-    weak var experienceDelegate: ExperienceListDelegate?
-    func tapButton() {
-        experienceDelegate?.goToExpereinceController()
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initWithNib()
@@ -59,7 +45,6 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         expTableView.dataSource = self
         self.expTableView.register(UINib(nibName: "ExperienceTableCell", bundle: nil), forCellReuseIdentifier: "ExperienceTableCell")
         expTableView.reloadData()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -116,6 +101,7 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         }
         cell.jobDesc.text = experience[indexPath.row].jobDesc
         cell.editButtonAction = { [unowned self] in
+            experienceDelegate?.passingExpData(exp: passData())
 //            selectedIndex = indexPath.row
 //            let experiences = stepViewModel.getExpByIndex(id: selectedIndex)
 //            experienceDelegate?.goToEdit()
@@ -154,7 +140,12 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ExperiencePageView: ExperiencePageDelegate {
+extension ExperiencePageView: ExperiencePageDelegate, expCellDelegate {
+    func passData() -> Experience? {
+        let expData = experience[selectedExp]
+        return expData
+    }
+    
     func addExperience() {
         //update table view
     }
