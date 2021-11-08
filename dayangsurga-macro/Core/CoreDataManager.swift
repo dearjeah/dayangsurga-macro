@@ -104,9 +104,6 @@ extension CoreDataManager {
         if ExperiencePlaceholderRepository.shared.getAllExpPh()?.count == 0 {
             preloadExpPh()
         }
-        if ExperienceRepository.shared.getAllExperience()?.count == 0{
-            preloadExp()
-        }
         if UserRepository.shared.getAllUser()?.count == 0{
             preloadUser()
         }

@@ -18,26 +18,28 @@ class ExperienceTableCell: UITableViewCell {
     @IBOutlet weak var shadowView: DesignableView!
     @IBOutlet weak var editExperienceButton: UIButton!
     
+    // for button
+    var checklistButtonAction : (() -> ())?
+    var editButtonAction : (() -> ())?
+    var experience = Experience()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         //jobTitle.font = UIFont.italicSystemFont(ofSize: 14.0)
-        shadowView.layer.borderWidth = 1
-        shadowView.layer.cornerRadius = 17
-        selectExperienceButton.setImage(UIImage(named: "icRoundSelectionFilled"), for: .normal)
+        
+        self.selectExperienceButton.addTarget(self, action: #selector(selectExperienceTapped(_:)), for: .touchUpInside)
+        self.editExperienceButton.addTarget(self, action: #selector(editCellTapped(_:)), for: .touchUpInside)
     }
-
-    @IBAction func selectExperience(_ sender: Any) {
-        if selectionStatus == false{
-            selectionStatus = true
-            selectExperienceButton.setImage(UIImage(named: "icRoundSelectionFilled"), for: .normal)
-            shadowView.layer.borderColor = UIColor.primaryBlue.cgColor
-        }else{
-            selectionStatus = false
-            selectExperienceButton.setImage(UIImage(named: "icRoundSelectionNoFill"), for: .normal)
-            shadowView.layer.borderColor = UIColor.clear.cgColor
-        }
+    
+    @IBAction func selectExperienceTapped(_ sender: UIButton) {
+        checklistButtonAction?()
     }
+    
+    @IBAction func editCellTapped(_ sender: UIButton) {
+        editButtonAction?()
+        //delegate.editButtonTapped()
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
@@ -50,4 +52,30 @@ class ExperienceTableCell: UITableViewCell {
           contentView.frame = contentView.frame.inset(by: margins)
     }
     
+    func checklistButtonIfSelected(){
+        shadowView.layer.borderWidth = 1
+        shadowView.layer.cornerRadius = 17
+        shadowView.layer.borderColor = UIColor.primaryBlue.cgColor
+        selectExperienceButton.setImage(UIImage(named: "icRoundSelectionFilled"), for: .normal)
+    }
+    
+    func checklistButtonUnSelected(){
+        selectExperienceButton.setImage(UIImage(named: "icRoundSelectionNoFill"), for: .normal)
+        shadowView.layer.borderColor = UIColor.clear.cgColor
+    }
+    
+    func teststststtst(){
+        if experience.isSelected == true {
+            checklistButtonIfSelected()
+        }else{
+            checklistButtonUnSelected()
+        }
+    }
+//    if selectionStatus == false{
+//        selectionStatus = true
+//        checklistButtonIfSelected()
+//    }else{
+//        selectionStatus = false
+//        checklistButtonUnSelected()
+//    }
 }
