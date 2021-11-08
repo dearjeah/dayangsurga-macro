@@ -15,7 +15,7 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
 
 
     @IBOutlet weak var progressBarView: ProgressBarView!
-    @IBOutlet weak var smallSetButtonView: SmallSetButton!
+    @IBOutlet  var smallSetButtonView: SmallSetButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +51,15 @@ extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonD
         performSegue(withIdentifier: "", sender: self)
     }
     
+extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonDelegate, StepByStepGuideDelegate, ProgressBarDelegate {
+    func didTapRightButton() {
+        if smallSetButtonView.rightButton.titleLabel?.text == "Next" {
+            didTapNext()
+        } else {
+            didTapGenerate()
+        }
+    }
+   
     func goToGenerate(was: Bool) {
         performSegue(withIdentifier: "goToGenerate", sender: self)
     }
@@ -83,7 +92,7 @@ extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonD
     }
     
     func changeTitleToGenerate(was: Bool) {
-        smallSetButtonView.rightButton.titleLabel?.text = "Generate"
+        smallSetButtonView.rightButton.setTitle("Generate", for: .normal)
     }
     
     //MARK: Progress Bar Delegate
