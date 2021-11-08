@@ -61,7 +61,9 @@ extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonD
     }
    
     func goToGenerate(was: Bool) {
-        performSegue(withIdentifier: "goToGenerate", sender: self)
+        if was {
+            didTapGenerate()
+        }
     }
     
     func progressBarUpdate(index: Int) {
@@ -78,7 +80,6 @@ extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonD
     }
     
     func didTapGenerate() {
-        //NotificationCenter.default.post(name: Notification.Name("goToGenerate"), object: nil)
         performSegue(withIdentifier: "goToGenerate", sender: self)
     }
     
