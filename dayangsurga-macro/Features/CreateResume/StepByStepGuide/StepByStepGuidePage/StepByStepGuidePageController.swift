@@ -57,6 +57,10 @@ class StepByStepGuidePageController: UIPageViewController {
 
 //MARK: Protocol Delegate
 extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDelegate {
+    func setPlaceHolder(fullName: String) {
+        
+    }
+    
     //MARK: Notification Center
     @objc func didSelectNext() {
         goToNext(wasPage: currentPageIndex)
@@ -108,6 +112,9 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
             }
         }
     }
+    
+
+    
 }
 
 //MARK: Page Controller

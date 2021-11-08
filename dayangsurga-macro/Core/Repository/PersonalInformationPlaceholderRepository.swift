@@ -24,8 +24,8 @@ class PersonalInformationPlaceholderRepository{
                       address_ph: String,
                       summary_ph: String){
         do {
-            // relation (one-to-one) user to user ph
-            if let getUser = UserRepository.shared.getUserById(id: user_id){
+//MARK: Removing user relation because there's no user yet. So core data can't catch it - anya
+//            if let getUser = UserRepository.shared.getUserById(id: user_id){
                 let piPlaceholder = PersonalInformation_Placeholder(context: context)
                 piPlaceholder.pi_ph_id = Int32(pi_ph_id)
                 piPlaceholder.user_id = Int32(user_id)
@@ -35,9 +35,9 @@ class PersonalInformationPlaceholderRepository{
                 piPlaceholder.address_ph = address_ph
                 piPlaceholder.summary_ph = summary_ph
                 
-                piPlaceholder.user = getUser
+//                piPlaceholder.user = getUser
                 try context.save()
-            }
+//            }
         }
         catch let error as NSError {
             print(error)
