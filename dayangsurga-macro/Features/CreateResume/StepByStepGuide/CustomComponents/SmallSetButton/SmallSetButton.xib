@@ -27,9 +27,7 @@
                         <constraint firstAttribute="height" constant="48" id="jY6-kV-iHb"/>
                     </constraints>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Next">
-                        <color key="baseForegroundColor" name="primaryWhite"/>
-                    </buttonConfiguration>
+                    <buttonConfiguration key="configuration" style="plain" title="Next"/>
                     <connections>
                         <action selector="rightButtonPressed:" destination="-1" eventType="touchUpInside" id="O1s-CC-NGI"/>
                     </connections>
