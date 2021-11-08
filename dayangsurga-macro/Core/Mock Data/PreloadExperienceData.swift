@@ -25,17 +25,7 @@ func preloadExpPh() {
 }
 
 // dummy data
-func preloadExp() {
-    ExperienceRepository.shared.createExperience(exp_id: 0,
-                                                 user_id: 0,
-                                                 jobTitle: "iOS Developer",
-                                                 jobDesc: "Built an iOS app using SpriteKit framework and implement voice recognition and hand motion detection technology.",
-                                                 jobCompanyName: "PT Aga Aga",
-                                                 jobStartDate: Date(),
-                                                 jobEndtDate: Date(),
-                                                 jobStatus: true,
-                                                 isSelected: true)
-}
+
 
 func preloadUser(){
     UserRepository.shared.createUser(user_id: 0,
