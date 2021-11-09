@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class XIBTesViewController: MVVMViewController<StepByStepGuideViewModel>{
 
     @IBOutlet weak var experienceListView: ExperiencePageView!
@@ -17,13 +15,19 @@ class XIBTesViewController: MVVMViewController<StepByStepGuideViewModel>{
         super.viewDidLoad()
 
         experienceListView.experienceDelegate = self
-
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        experienceListView.getAndReload()
+    }
+    //    @IBAction func unwindToXIB(_ unwindSegue: UIStoryboardSegue) {
+    //        let sourceViewController = unwindSegue.source
+            // Use data from the view controller which initiated the unwind segue
+    //    }
 }
 
 extension XIBTesViewController: ExperienceListDelegate {
     func getSelectedIndex(index: Int) {
-
     }
     
     func goToAddExp() {
@@ -33,17 +37,11 @@ extension XIBTesViewController: ExperienceListDelegate {
     }
     
     func passingExpData(exp: Experience?) {
-//        let experience = Experience()
         let storyboard = UIStoryboard(name: "ExperienceFormController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToExperienceForm") as! ExperienceFormController
-
         vc.experience = exp
-        vc.from = "edit"
+        vc.dataFrom = "edit"
         self.navigationController?.pushViewController(vc, animated: true)
-            // present(controller, animated: true, completion: nil) // if presented from ViewController
-        
-        
-//
-//        self.navigationController?.pushViewController(vc, animated: true)
     }
+
 }
