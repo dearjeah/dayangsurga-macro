@@ -11,7 +11,7 @@ protocol ExperiencePageDelegate {
     func addExperience()
 }
 
-class ExperienceFormController: MVVMViewController<ExperienceFormViewModel>, UITextViewDelegate {
+class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
     
     @IBOutlet weak var scroller: UIScrollView!
     @IBOutlet weak var companyName: LabelWithTextField!
@@ -28,7 +28,7 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel>, UIT
     var placeholderLabel : UILabel!
     var switcherStatus: Bool!
     var getIndexExp = Int()
-    var from = String()
+    var dataFrom = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +41,11 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel>, UIT
         hideKeyboardWhenTappedAround()
     }
     
+//    @IBAction func unwindToXIB(_ unwindSegue: UIStoryboardSegue) {
+//        let sourceViewController = unwindSegue.source
+        // Use data from the view controller which initiated the unwind segue
+//    }
+    
     @IBAction func addExperiencePressed(_ sender: UIButton) {
         expDelegate?.addExperience()
         if experience == nil{
@@ -52,8 +57,8 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel>, UIT
                                                          jobDesc: jobSummary.textView.text ?? String(),
                                                          jobCompanyName: companyName.textField.text ?? String(),
                                                          jobStartDate: jobPeriod.startDatePicker.date,
-                                                         jobEndtDate: jobPeriod.startDatePicker.date,
-                                                         jobStatus: switcherStatus,
+                                                         jobEndtDate: jobPeriod.endDatePicker.date,
+                                                         jobStatus: jobStatus.switchButton.isOn,
                                                          isSelected: true)
             addExpBtn.dsLongFilledPrimaryButton(withImage: false, text: "Add Experience")
             let storyboard = UIStoryboard(name: "XIBTes", bundle: nil)
@@ -62,6 +67,7 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel>, UIT
             self.navigationController?.pushViewController(vc, animated: true)
         } else { // update and edit
             showAlertForDelete()
+//            performSegue(withIdentifier: "backToXIB", sender: self)
         }
     }
     
@@ -74,33 +80,27 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel>, UIT
         jobTitle.titleLabel.text = "Job Title*"
         jobStatus.titleLabel.text = "Job Status*"
         jobStatus.switchTitle.text = "Currently Working Here"
+        jobStatus.delegate = self
         jobPeriod.titleLabel.text = "Job Period*"
         jobSummary.titleLabel.text = "Job Summary*"
         jobSummary.cueLabel.text = expSuggestion?.jobDescSuggest
-        
-        // disable end date
-        if (jobStatus.switchButton.isOn){
-            switcherStatus = true
-            jobPeriod.endDatePicker.isEnabled = true
-        } else {
-            switcherStatus = false
-            jobPeriod.endDatePicker.isEnabled = false
-        }
-        if from == "edit" {
+        jobSummary.textView.delegate = self
+
+        if dataFrom == "edit" {
 //            experience =  self.viewModel?.getExpByIndex(id: getIndexExp)
             if experience == nil {
                 companyName.textField.placeholder = expPlaceholder?.companyName_ph
                 jobTitle.textField.placeholder = expPlaceholder?.jobTitle_ph
-                jobSummary.textView.text = nil
-                jobSummary.textView.placeholder = expPlaceholder?.jobDesc_ph
+                jobSummary.textView.text = expPlaceholder?.jobDesc_ph
+                jobSummary.textView.textColor = .lightGray
                 addExpBtn.dsLongFilledPrimaryButton(withImage: false, text: "Add Experience")
             } else {
                 companyName.textField.text = experience?.jobCompanyName
                 jobTitle.textField.text = experience?.jobTitle
                 jobSummary.textView.text = experience?.jobDesc
-                jobStatus.switchButton.isOn = ((experience?.jobStatus) != nil)
+                jobStatus.switchButton.isOn = ((experience?.jobStatus) == true)
                 jobPeriod.startDatePicker.date = experience?.jobStartDate ?? Date()
-                jobPeriod.startDatePicker.date = experience?.jobEndDate ?? Date()
+                jobPeriod.endDatePicker.date = experience?.jobEndDate ?? Date()
                 addExpBtn.dsLongUnfilledButton(isDelete: true, text: "Delete Experience")
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(self.updateExp(sender:)))
             }
@@ -120,8 +120,8 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel>, UIT
                                                      newJobDesc: jobSummary.textView.text ?? String(),
                                                      newJobCompanyName: companyName.textField.text ?? String(),
                                                      newJobStartDate: jobPeriod.startDatePicker.date,
-                                                     newJobEndtDate: jobPeriod.startDatePicker.date,
-                                                     newJobStatus: switcherStatus,
+                                                     newJobEndtDate: jobPeriod.endDatePicker.date,
+                                                     newJobStatus: jobStatus.switchButton.isOn,
                                                      newIsSelected: true)
         let storyboard = UIStoryboard(name: "XIBTes", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToXIBTes") as! XIBTesViewController
@@ -147,5 +147,28 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel>, UIT
     // for delete and reload
     func deleteExpData(){
         self.viewModel?.deleteExpData(dataExperience: experience)
+        self.navigationController?.popViewController(animated: false)
+    }
+}
+
+extension ExperienceFormController: LabelSwitchDelegate {
+    func getValueSwitch() {
+        if (jobStatus.switchButton.isOn){
+            jobStatus.userDefaults.set(true, forKey: jobStatus.on_off_key)
+            jobPeriod.endDatePicker.isEnabled = true
+        } else {
+            jobStatus.userDefaults.set(false, forKey: jobStatus.on_off_key)
+            jobPeriod.endDatePicker.isEnabled = false
+        }
+    }
+}
+
+extension ExperienceFormController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView){
+        expPlaceholder = self.viewModel?.getExpPh()
+            if (jobSummary.textView.text.count  + 1 == expPlaceholder?.jobDesc_ph?.count){
+                jobSummary.textView.text = ""
+            }
+        jobSummary.textView.textColor = .black
     }
 }
