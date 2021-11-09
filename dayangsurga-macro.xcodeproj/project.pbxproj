@@ -27,6 +27,9 @@
 		679DBEAB272410F900CE9E8F /* EducationTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679DBEA9272410F900CE9E8F /* EducationTableCell.xib */; };
 		67AA824A273AB4E6004937B7 /* ExpertInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA8248273AB4E6004937B7 /* ExpertInfoCell.swift */; };
 		67AA824B273AB4E6004937B7 /* ExpertInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67AA8249273AB4E6004937B7 /* ExpertInfoCell.xib */; };
+		67AA824D273ACAF7004937B7 /* ExpertInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA824C273ACAF7004937B7 /* ExpertInfoViewModel.swift */; };
+		67AA824F273ACB2B004937B7 /* ExpertInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67AA824E273ACB2B004937B7 /* ExpertInfoViewController.storyboard */; };
+		67AA8253273ACB74004937B7 /* ExpertInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA8252273ACB74004937B7 /* ExpertInfoViewController.swift */; };
 		8435DB472731126700862FF0 /* EducationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB462731126700862FF0 /* EducationRepository.swift */; };
 		8435DB492731830F00862FF0 /* AccomplishmentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB482731830F00862FF0 /* AccomplishmentRepository.swift */; };
 		8435DB4B27320AA400862FF0 /* SkillRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB4A27320AA400862FF0 /* SkillRepository.swift */; };
@@ -192,6 +195,9 @@
 		679DBEA9272410F900CE9E8F /* EducationTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EducationTableCell.xib; sourceTree = "<group>"; };
 		67AA8248273AB4E6004937B7 /* ExpertInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertInfoCell.swift; sourceTree = "<group>"; };
 		67AA8249273AB4E6004937B7 /* ExpertInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpertInfoCell.xib; sourceTree = "<group>"; };
+		67AA824C273ACAF7004937B7 /* ExpertInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertInfoViewModel.swift; sourceTree = "<group>"; };
+		67AA824E273ACB2B004937B7 /* ExpertInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpertInfoViewController.storyboard; sourceTree = "<group>"; };
+		67AA8252273ACB74004937B7 /* ExpertInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertInfoViewController.swift; sourceTree = "<group>"; };
 		8435DB462731126700862FF0 /* EducationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationRepository.swift; sourceTree = "<group>"; };
 		8435DB482731830F00862FF0 /* AccomplishmentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomplishmentRepository.swift; sourceTree = "<group>"; };
 		8435DB4A27320AA400862FF0 /* SkillRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillRepository.swift; sourceTree = "<group>"; };
@@ -414,6 +420,9 @@
 			isa = PBXGroup;
 			children = (
 				67AA8247273AB4AA004937B7 /* CustomComponents */,
+				67AA824C273ACAF7004937B7 /* ExpertInfoViewModel.swift */,
+				67AA8252273ACB74004937B7 /* ExpertInfoViewController.swift */,
+				67AA824E273ACB2B004937B7 /* ExpertInfoViewController.storyboard */,
 			);
 			path = ExpertInfoPage;
 			sourceTree = "<group>";
@@ -1061,6 +1070,7 @@
 				BFE00357272733310070BD40 /* BigButtonWithImage.xib in Resources */,
 				BF8503112722551B00CC43FB /* UserProfileViewController.storyboard in Resources */,
 				6712CFAB272EEB6900449991 /* QuizPageTestViewController.storyboard in Resources */,
+				67AA824F273ACB2B004937B7 /* ExpertInfoViewController.storyboard in Resources */,
 				BF2ABB342726FCC900AAC6C2 /* LabelWithTextField.xib in Resources */,
 				BF5F1BF82722D977004D0756 /* PreviewResumeViewController.storyboard in Resources */,
 				BF85036327225DBB00CC43FB /* Colors.xcassets in Resources */,
@@ -1103,6 +1113,7 @@
 				8435DB472731126700862FF0 /* EducationRepository.swift in Sources */,
 				8435DB5927335FD300862FF0 /* ExpertProfileRepository.swift in Sources */,
 				BFE0035227272F500070BD40 /* LabelWithDate.swift in Sources */,
+				67AA8253273ACB74004937B7 /* ExpertInfoViewController.swift in Sources */,
 				BF850372272266F400CC43FB /* TableViewCell+Extension.swift in Sources */,
 				679DBEA22723FAAD00CE9E8F /* ResumeTemplateCell.swift in Sources */,
 				BF85030E2722551B00CC43FB /* UserProfileViewController.swift in Sources */,
@@ -1119,6 +1130,7 @@
 				6712CF9F272EB29400449991 /* QuizPage.swift in Sources */,
 				B859B535272852EF00627CDC /* EmptyStateRepository.swift in Sources */,
 				BF85039C2722B7B700CC43FB /* EducationPageView.swift in Sources */,
+				67AA824D273ACAF7004937B7 /* ExpertInfoViewModel.swift in Sources */,
 				BF85036E272265C000CC43FB /* Date+Extension.swift in Sources */,
 				BF2ABB4027270A6D00AAC6C2 /* LabelWithSwitch.swift in Sources */,
 				BF8503802722877400CC43FB /* Int+Extension.swift in Sources */,
