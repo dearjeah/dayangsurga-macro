@@ -85,7 +85,6 @@
                                 <buttonConfiguration key="configuration" style="plain" image="icPreviewResume"/>
                                 <connections>
                                     <action selector="previewDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="k3e-Yb-TB4"/>
-                                    <segue destination="j1g-eZ-BDi" kind="showDetail" identifier="toPreviewResume" id="3wz-74-fwV"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -127,16 +126,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-17.39130434782609" y="83.705357142857139"/>
-        </scene>
-        <!--PreviewResumeViewController-->
-        <scene sceneID="kgV-fb-9hS">
-            <objects>
-                <viewControllerPlaceholder storyboardName="PreviewResumeViewController" id="j1g-eZ-BDi" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="4bT-zf-tJ0"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dbA-3j-kwu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="662" y="84"/>
         </scene>
     </scenes>
     <resources>

@@ -26,27 +26,23 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
         resumePreviewImage.layer.shadowOpacity = 0.5
         resumePreviewImage.layer.shadowRadius = 1
         resumePreviewImage.layer.shadowColor = UIColor.lightGray.cgColor
+        self.navigationItem.title = "Preview Resume"
         // Do any additional setup after loading the view.
     }
-  
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as? PreviewResumeViewController
-        let dataInput = "Test"
-        
-        let pdfCreator = PDFCreator(
-            dataInput: dataInput, userResume: userResume
-        )
-        
-        vc?.documentData = pdfCreator.createPDF()
-    }
-    
+
     @IBAction func previewDidTap(_ sender: Any) {
         let storyboard = UIStoryboard(name: "PreviewResumeViewController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToPreviewResume") as! PreviewResumeViewController
         self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.titleView?.backgroundColor = UIColor.primaryBlue
         self.navigationItem.titleView?.tintColor = .white
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationItem.backButtonTitle = "Preview"
+        let pdfCreator = PDFCreator(dataInput: "Test", userResume: userResume)
+        
+        vc.documentData = pdfCreator.createPDF()
+        
     }
     
     

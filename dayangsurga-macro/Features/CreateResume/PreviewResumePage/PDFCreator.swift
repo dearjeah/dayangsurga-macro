@@ -44,7 +44,6 @@ class PDFCreator: NSObject{
             sectionBottom = addSkillSection(pageRect: pageRect, drawContext: drawContext, startPosition: sectionBottom, context: context)
             sectionBottom = addAccomplishmentSection(pageRect: pageRect, drawContext: drawContext, startPosition: sectionBottom, context: context)
         }
-        
         return data
     }
     
@@ -133,8 +132,9 @@ class PDFCreator: NSObject{
         
     func addTitle(pageRect: CGRect, text: String, context: UIGraphicsPDFRendererContext)->CGFloat{
             // Initialize Font & attributes of font
-            let titleFont = UIFont.systemFont(ofSize: 18.0, weight: .bold)
-            let titleAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: titleFont]
+        let titleFont = UIFont(name: "Georgia", size: 18.0)
+//        UIFont.systemFont(ofSize: 18.0, weight: .bold)
+        let titleAttribute: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: titleFont ?? UIFont.systemFont(ofSize: 18.0, weight: .bold)]
             let attributedTitle = NSAttributedString(
                 string: text,
                 attributes: titleAttribute)
@@ -178,7 +178,7 @@ class PDFCreator: NSObject{
             let attributedHeader = NSAttributedString(string: text, attributes: headerAttribute)
             
             var headerRect: CGRect
-            
+            print(UIFont.familyNames)
             if headerTop + attributedHeader.size().height <= 822{
                 headerRect = CGRect(x: (pageRect.width-attributedHeader.size().width)/2.0, y: headerTop, width: attributedHeader.size().width, height: attributedHeader.size().height)
             }else{
