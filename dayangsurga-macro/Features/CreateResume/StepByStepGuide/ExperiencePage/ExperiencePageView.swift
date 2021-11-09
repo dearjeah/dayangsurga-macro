@@ -87,6 +87,7 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
             emptyStateView.isHidden = true
         }
         return experience.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -132,6 +133,11 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedExp = indexPath.row
+    }
+    
+    func getAndReload(){
+        experience = stepViewModel.getExpData() ?? []
+        expTableView.reloadData()
     }
 }
 
