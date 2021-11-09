@@ -107,8 +107,8 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
         } else {
             companyName.textField.placeholder = expPlaceholder?.companyName_ph
             jobTitle.textField.placeholder = expPlaceholder?.jobTitle_ph
-            jobSummary.textView.text = nil
-            jobSummary.textView.placeholder = expPlaceholder?.jobDesc_ph
+            jobSummary.textView.text = expPlaceholder?.jobDesc_ph
+            jobSummary.textView.textColor = .lightGray
             addExpBtn.dsLongFilledPrimaryButton(withImage: false, text: "Add Experience")
         }
     }
@@ -131,7 +131,7 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
     
     func alertForCheckTF(){
         if ((companyName.textField.text?.isEmpty) != false) || ((jobTitle.textField.text?.isEmpty) != false) || ((jobSummary.textView.text?.isEmpty) != false){
-            let alert = UIAlertController(title: "isi dungg text field nyaa", message: "masih ada yg kosong", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Field Can't Be Empty", message: "You must fill in every mandatory fields in this form.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "oke", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
@@ -154,10 +154,10 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
 extension ExperienceFormController: LabelSwitchDelegate {
     func getValueSwitch() {
         if (jobStatus.switchButton.isOn){
-            jobStatus.userDefaults.set(true, forKey: jobStatus.on_off_key)
+//            jobStatus.userDefaults.set(true, forKey: jobStatus.on_off_key)
             jobPeriod.endDatePicker.isEnabled = true
         } else {
-            jobStatus.userDefaults.set(false, forKey: jobStatus.on_off_key)
+//            jobStatus.userDefaults.set(false, forKey: jobStatus.on_off_key)
             jobPeriod.endDatePicker.isEnabled = false
         }
     }
