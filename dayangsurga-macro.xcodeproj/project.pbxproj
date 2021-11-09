@@ -25,6 +25,8 @@
 		679DBEA32723FAAD00CE9E8F /* ResumeTemplateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679DBEA12723FAAD00CE9E8F /* ResumeTemplateCell.xib */; };
 		679DBEAA272410F900CE9E8F /* EducationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679DBEA8272410F900CE9E8F /* EducationTableCell.swift */; };
 		679DBEAB272410F900CE9E8F /* EducationTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 679DBEA9272410F900CE9E8F /* EducationTableCell.xib */; };
+		67AA824A273AB4E6004937B7 /* ExpertInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA8248273AB4E6004937B7 /* ExpertInfoCell.swift */; };
+		67AA824B273AB4E6004937B7 /* ExpertInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67AA8249273AB4E6004937B7 /* ExpertInfoCell.xib */; };
 		8435DB472731126700862FF0 /* EducationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB462731126700862FF0 /* EducationRepository.swift */; };
 		8435DB492731830F00862FF0 /* AccomplishmentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB482731830F00862FF0 /* AccomplishmentRepository.swift */; };
 		8435DB4B27320AA400862FF0 /* SkillRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB4A27320AA400862FF0 /* SkillRepository.swift */; };
@@ -188,6 +190,8 @@
 		679DBEA12723FAAD00CE9E8F /* ResumeTemplateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeTemplateCell.xib; sourceTree = "<group>"; };
 		679DBEA8272410F900CE9E8F /* EducationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationTableCell.swift; sourceTree = "<group>"; };
 		679DBEA9272410F900CE9E8F /* EducationTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EducationTableCell.xib; sourceTree = "<group>"; };
+		67AA8248273AB4E6004937B7 /* ExpertInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertInfoCell.swift; sourceTree = "<group>"; };
+		67AA8249273AB4E6004937B7 /* ExpertInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpertInfoCell.xib; sourceTree = "<group>"; };
 		8435DB462731126700862FF0 /* EducationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationRepository.swift; sourceTree = "<group>"; };
 		8435DB482731830F00862FF0 /* AccomplishmentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomplishmentRepository.swift; sourceTree = "<group>"; };
 		8435DB4A27320AA400862FF0 /* SkillRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillRepository.swift; sourceTree = "<group>"; };
@@ -404,6 +408,23 @@
 				6722E23E2726C7C3007315AB /* ExperienceTableCell.xib */,
 			);
 			path = ExperienceTableCell;
+			sourceTree = "<group>";
+		};
+		67AA8246273AB49C004937B7 /* ExpertInfoPage */ = {
+			isa = PBXGroup;
+			children = (
+				67AA8247273AB4AA004937B7 /* CustomComponents */,
+			);
+			path = ExpertInfoPage;
+			sourceTree = "<group>";
+		};
+		67AA8247273AB4AA004937B7 /* CustomComponents */ = {
+			isa = PBXGroup;
+			children = (
+				67AA8248273AB4E6004937B7 /* ExpertInfoCell.swift */,
+				67AA8249273AB4E6004937B7 /* ExpertInfoCell.xib */,
+			);
+			path = CustomComponents;
 			sourceTree = "<group>";
 		};
 		BF2ABB2B2726EDB900AAC6C2 /* SmallSetButton */ = {
@@ -700,6 +721,7 @@
 		BF85034B2722588900CC43FB /* AskExpert */ = {
 			isa = PBXGroup;
 			children = (
+				67AA8246273AB49C004937B7 /* ExpertInfoPage */,
 				BF85034D272258E800CC43FB /* ExpertListPage */,
 				BF85034E272258F100CC43FB /* ExpertDetailPage */,
 			);
@@ -1042,6 +1064,7 @@
 				BF2ABB342726FCC900AAC6C2 /* LabelWithTextField.xib in Resources */,
 				BF5F1BF82722D977004D0756 /* PreviewResumeViewController.storyboard in Resources */,
 				BF85036327225DBB00CC43FB /* Colors.xcassets in Resources */,
+				67AA824B273AB4E6004937B7 /* ExpertInfoCell.xib in Resources */,
 				BF7267E42730E73000B5A95F /* AccomplishFormController.storyboard in Resources */,
 				BF8503A22722B7F800CC43FB /* QuizPageView.xib in Resources */,
 				6722E2402726C7C3007315AB /* ExperienceTableCell.xib in Resources */,
@@ -1123,6 +1146,7 @@
 				BF423DE9272BA3B7006DC552 /* XIBTesViewController.swift in Sources */,
 				679DBEAA272410F900CE9E8F /* EducationTableCell.swift in Sources */,
 				B859B538272852EF00627CDC /* ExperiencePlaceholderRepository.swift in Sources */,
+				67AA824A273AB4E6004937B7 /* ExpertInfoCell.swift in Sources */,
 				8435DB55273358E300862FF0 /* AccomplishmentSuggestionRepository.swift in Sources */,
 				BF85038C2722B58A00CC43FB /* ProgressBarView.swift in Sources */,
 				BF2ABB2D2726EDDF00AAC6C2 /* SmallSetButton.swift in Sources */,
