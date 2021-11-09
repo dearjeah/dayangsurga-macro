@@ -9,6 +9,11 @@ import UIKit
 
 class ExpertInfoCell: UITableViewCell {
 
+    @IBOutlet weak var instructionView: UIView!
+    @IBOutlet weak var instructionText: UILabel!
+    @IBOutlet weak var numberBackground: UIView!
+    @IBOutlet weak var numberLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
