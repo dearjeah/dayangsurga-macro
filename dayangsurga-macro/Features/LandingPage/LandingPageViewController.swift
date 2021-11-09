@@ -32,6 +32,7 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         self.navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
         navigationController?.navigationBar.sizeToFit()
+        self.tabBarController?.tabBar.isHidden = false
         self.collectionView.reloadData()
     }
     
