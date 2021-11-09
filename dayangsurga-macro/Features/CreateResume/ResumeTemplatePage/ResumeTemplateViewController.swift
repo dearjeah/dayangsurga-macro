@@ -23,7 +23,7 @@ class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> 
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         resumeTemplateCollection.register(UINib.init(nibName: "ResumeTemplateCell", bundle: nil), forCellWithReuseIdentifier: "ResumeTemplateCell")
-        selectResumeButton.dsLongFilledPrimaryButton(withImage: false, text: "Use Template")
+        selectResumeButton.dsLongFilledPrimaryButton(withImage: false, text: "Use This Template")
         
         let screenSize = UIScreen.main.bounds.size
         let collectionViewWidth = floor(screenSize.width*cellWidthScale)
