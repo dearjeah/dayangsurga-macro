@@ -7,22 +7,31 @@
 
 import Foundation
 import UIKit
+    
+// preload exp suggestion
+func preloadExpSuggetsion(){
+    ExperienceSuggestionRepository.shared.createExpSuggestion(exp_suggest_id: 1,
+                                                              exp_id: 0,
+                                                              jobDescSuggest: "Describe what you have done before that matches with the job qualifications, make sure you use action verbs.")
+}
 
-class PreloadExperienceData {
-    
-    // preload exp suggestion
-    func preloadExpSuggetsion(){
-        ExperienceSuggestionRepository.shared.createExpSuggestion(exp_suggest_id: 1,
-                                                                  exp_id: 0,
-                                                                  jobDescSuggest: "Describe what you have done before that matches with the job qualifications, make sure you use action verbs.")
-    }
-    
-    // preload exp placeholder
-    func preloadExpPh() {
-        ExperiencePlaceholderRepository.shared.createExpPh(exp_ph_id: 1,
-                                                           exp_id: 0,
-                                                           jobTitle_Ph: "e.g. Apple Inc",
-                                                           jobDesc_ph: "e.g. Project Manager",
-                                                           companyName_ph: "Lead a new CLOAD application project with a team of 5 people focusing on ATS-friendly resume.")
-    }
+// preload exp placeholder
+func preloadExpPh() {
+    ExperiencePlaceholderRepository.shared.createExpPh(exp_ph_id: 1,
+                                                       exp_id: 0,
+                                                       jobTitle_Ph: "e.g. Project Manager",
+                                                       jobDesc_ph: "Lead a new Aigoe application project with a team of 5 people focusing on ATS-friendly resume.",
+                                                       companyName_ph: "e.g. Aigoe Ltd")
+}
+
+// dummy data
+
+
+func preloadUser(){
+    UserRepository.shared.createUser(user_id: 0,
+                                     username: "sfgd",
+                                     phoneNumber: "dfh",
+                                     email: "dasd",
+                                     location: "asf",
+                                     summary: "")
 }

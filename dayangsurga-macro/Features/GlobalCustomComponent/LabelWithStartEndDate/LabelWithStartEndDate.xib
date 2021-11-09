@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,8 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LabelWithStartEndDate" customModule="dayangsurga_macro" customModuleProvider="target">
             <connections>
-                <outlet property="endDateButton" destination="UEH-5e-Wrf" id="lT2-qY-0gW"/>
-                <outlet property="startDateButton" destination="3bm-8H-O1k" id="U29-gk-q5B"/>
+                <outlet property="endDatePicker" destination="uQg-kq-tCR" id="U3n-8r-Hod"/>
+                <outlet property="startDatePicker" destination="3vP-16-lIo" id="swD-IL-Q2S"/>
                 <outlet property="titleLabel" destination="1Cv-Zk-JvR" id="jXf-dw-hvj"/>
             </connections>
         </placeholder>
@@ -36,56 +36,50 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bm-8H-O1k">
-                            <rect key="frame" x="300" y="5" width="88" height="35"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="35" id="N8b-r6-xuR"/>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="67" id="gqJ-bQ-29j"/>
-                            </constraints>
-                            <color key="tintColor" name="primaryBlue"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="gray" title="July 2020"/>
-                            <connections>
-                                <action selector="startDatePressed:" destination="-1" eventType="touchUpInside" id="Hb4-3a-8P5"/>
-                            </connections>
-                        </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Saj-vX-9h7">
                             <rect key="frame" x="8" y="51" width="69.5" height="35"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEH-5e-Wrf">
-                            <rect key="frame" x="280.5" y="51" width="107.5" height="35"/>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="3vP-16-lIo">
+                            <rect key="frame" x="258" y="5" width="130" height="35"/>
                             <constraints>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="67" id="73L-T6-BCh"/>
-                                <constraint firstAttribute="height" constant="35" id="XNB-4e-6bH"/>
+                                <constraint firstAttribute="width" constant="130" id="iEe-y5-sAG"/>
+                                <constraint firstAttribute="height" constant="35" id="pjb-eu-lD3"/>
                             </constraints>
-                            <color key="tintColor" name="primaryBlue"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="gray" title="August 2024"/>
                             <connections>
-                                <action selector="endDatePressed:" destination="-1" eventType="touchUpInside" id="aRb-Ar-Bjf"/>
+                                <action selector="startDateWasPress:" destination="-1" eventType="valueChanged" id="NZp-o4-CBf"/>
                             </connections>
-                        </button>
+                        </datePicker>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="uQg-kq-tCR">
+                            <rect key="frame" x="258" y="51" width="130" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="QPs-YX-QbH"/>
+                                <constraint firstAttribute="width" constant="130" id="dvu-8P-Crf"/>
+                            </constraints>
+                            <connections>
+                                <action selector="endDateWasPress:" destination="-1" eventType="valueChanged" id="I9j-L6-3Gr"/>
+                            </connections>
+                        </datePicker>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="UEH-5e-Wrf" secondAttribute="bottom" constant="5" id="8Li-Yd-EXw"/>
                         <constraint firstAttribute="bottom" secondItem="Saj-vX-9h7" secondAttribute="bottom" constant="5" id="AcU-vU-vRo"/>
-                        <constraint firstAttribute="trailing" secondItem="3bm-8H-O1k" secondAttribute="trailing" constant="10" id="DqP-Cp-Pao"/>
-                        <constraint firstItem="UEH-5e-Wrf" firstAttribute="top" secondItem="eQp-Yj-bbl" secondAttribute="bottom" constant="5" id="Er6-a2-0XI"/>
                         <constraint firstItem="eQp-Yj-bbl" firstAttribute="centerY" secondItem="BE5-dP-xhI" secondAttribute="centerY" id="GCc-77-Kr8"/>
+                        <constraint firstItem="uQg-kq-tCR" firstAttribute="top" secondItem="eQp-Yj-bbl" secondAttribute="bottom" constant="5" id="HaK-WM-Viu"/>
                         <constraint firstItem="Saj-vX-9h7" firstAttribute="leading" secondItem="BE5-dP-xhI" secondAttribute="leading" constant="8" id="KTu-kt-bWU"/>
+                        <constraint firstAttribute="trailing" secondItem="uQg-kq-tCR" secondAttribute="trailing" constant="10" id="KmP-VH-ML4"/>
                         <constraint firstItem="eQp-Yj-bbl" firstAttribute="top" secondItem="QT8-kq-gx8" secondAttribute="bottom" constant="5" id="LbG-G5-BgR"/>
-                        <constraint firstItem="eQp-Yj-bbl" firstAttribute="top" secondItem="3bm-8H-O1k" secondAttribute="bottom" constant="5" id="Nxo-3N-kMU"/>
+                        <constraint firstItem="3vP-16-lIo" firstAttribute="top" secondItem="BE5-dP-xhI" secondAttribute="top" constant="5" id="MpK-kD-KJe"/>
+                        <constraint firstAttribute="bottom" secondItem="uQg-kq-tCR" secondAttribute="bottom" constant="5" id="Qbk-eP-YVv"/>
                         <constraint firstAttribute="height" constant="91" id="RkW-tE-iqy"/>
                         <constraint firstItem="QT8-kq-gx8" firstAttribute="leading" secondItem="BE5-dP-xhI" secondAttribute="leading" constant="8" id="U0c-dM-RBP"/>
+                        <constraint firstAttribute="trailing" secondItem="3vP-16-lIo" secondAttribute="trailing" constant="10" id="ZC9-nC-ei8"/>
                         <constraint firstItem="eQp-Yj-bbl" firstAttribute="centerX" secondItem="BE5-dP-xhI" secondAttribute="centerX" id="dgk-g8-bAz"/>
-                        <constraint firstItem="3bm-8H-O1k" firstAttribute="top" secondItem="BE5-dP-xhI" secondAttribute="top" constant="5" id="fSt-gg-NTg"/>
-                        <constraint firstAttribute="trailing" secondItem="UEH-5e-Wrf" secondAttribute="trailing" constant="10" id="fx0-0n-4LS"/>
                         <constraint firstItem="eQp-Yj-bbl" firstAttribute="width" secondItem="BE5-dP-xhI" secondAttribute="width" id="ga6-RE-ZwZ"/>
                         <constraint firstItem="Saj-vX-9h7" firstAttribute="top" secondItem="eQp-Yj-bbl" secondAttribute="bottom" constant="5" id="gcn-rz-FxN"/>
+                        <constraint firstItem="eQp-Yj-bbl" firstAttribute="top" secondItem="3vP-16-lIo" secondAttribute="bottom" constant="5" id="lMD-WO-LAr"/>
                         <constraint firstItem="QT8-kq-gx8" firstAttribute="top" secondItem="BE5-dP-xhI" secondAttribute="top" constant="5" id="y6R-Wx-hgv"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
