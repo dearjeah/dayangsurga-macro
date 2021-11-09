@@ -34,6 +34,10 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
 }
 
 extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonDelegate, StepByStepGuideDelegate, ProgressBarDelegate, ExperienceListDelegate {
+    func getSelectedIndex(index: Int) {
+        //
+    }
+    
     
     //MARK: Delegate For Experience List to Form
     func goToAddExp() {

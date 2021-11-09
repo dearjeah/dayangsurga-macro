@@ -11,7 +11,7 @@ protocol ExperiencePageDelegate {
     func addExperience()
 }
 
-class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
+class ExperienceFormController: MVVMViewController<ExperienceFormViewModel>, UITextViewDelegate {
     
     @IBOutlet weak var scroller: UIScrollView!
     @IBOutlet weak var companyName: LabelWithTextField!
@@ -25,9 +25,10 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
     var experience: Experience? = nil
     var expPlaceholder: Experience_Placeholder?
     var expSuggestion: Experience_Suggestion?
-    
+    var placeholderLabel : UILabel!
     var switcherStatus: Bool!
     var getIndexExp = Int()
+    var from = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,7 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
         if experience == nil{
             //add/update to core data
             alertForCheckTF()
-            ExperienceRepository.shared.createExperience(exp_id: 0,
+            ExperienceRepository.shared.createExperience(exp_id: 4,
                                                          user_id: 0,
                                                          jobTitle: jobTitle.textField.text ?? String(),
                                                          jobDesc: jobSummary.textView.text ?? String(),
@@ -60,15 +61,7 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
             vc.navigationItem.setHidesBackButton(true, animated:true)
             self.navigationController?.pushViewController(vc, animated: true)
         } else { // update and edit
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(self.updateExp(sender:)))
-            experience =  self.viewModel?.getExpByIndex(id: getIndexExp)
-            experience?.jobCompanyName = companyName.textField.text ?? String()
-            experience?.jobTitle = jobTitle.textField.text ?? String()
-            experience?.jobDesc = jobSummary.textView.text ?? String()
-            experience?.jobStatus = jobStatus.switchButton.isOn
-            experience?.jobStartDate = jobPeriod.startDatePicker.date
-            experience?.jobEndDate = jobPeriod.startDatePicker.date
-            addExpBtn.dsLongUnfilledButton(isDelete: true, text: "Delete Experience")
+            showAlertForDelete()
         }
     }
     
@@ -78,17 +71,13 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
         expPlaceholder = self.viewModel?.getExpPh()
         expSuggestion = self.viewModel?.getExpSuggestion()
         companyName.titleLabel.text = "Company Name*"
-        companyName.textField.placeholder = expPlaceholder?.companyName_ph
         jobTitle.titleLabel.text = "Job Title*"
-        jobTitle.textField.placeholder = expPlaceholder?.jobTitle_ph
         jobStatus.titleLabel.text = "Job Status*"
         jobStatus.switchTitle.text = "Currently Working Here"
         jobPeriod.titleLabel.text = "Job Period*"
         jobSummary.titleLabel.text = "Job Summary*"
-        jobSummary.textView.text = nil
-        jobSummary.textView.placeholder = expPlaceholder?.jobDesc_ph
         jobSummary.cueLabel.text = expSuggestion?.jobDescSuggest
-        addExpBtn.dsLongFilledPrimaryButton(withImage: false, text: "Add Experience")
+        
         // disable end date
         if (jobStatus.switchButton.isOn){
             switcherStatus = true
@@ -97,23 +86,35 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
             switcherStatus = false
             jobPeriod.endDatePicker.isEnabled = false
         }
-
-//        if (jobStatus.switchButton.isOn){
-//            jobPeriod.endDatePicker.isEnabled = false
-//        } else {
-//            jobPeriod.endDatePicker.isEnabled = false
-//        }
-//        if jobStatus.switchButton.isOn == false {
-//            jobPeriod.endDatePicker.isEnabled = false
-//            jobPeriod.endDatePicker.isUserInteractionEnabled = false
-//        } else if jobStatus.switchButton.isOn == true {
-//            jobPeriod.endDatePicker.isEnabled = true
-//        }
+        if from == "edit" {
+//            experience =  self.viewModel?.getExpByIndex(id: getIndexExp)
+            if experience == nil {
+                companyName.textField.placeholder = expPlaceholder?.companyName_ph
+                jobTitle.textField.placeholder = expPlaceholder?.jobTitle_ph
+                jobSummary.textView.text = nil
+                jobSummary.textView.placeholder = expPlaceholder?.jobDesc_ph
+                addExpBtn.dsLongFilledPrimaryButton(withImage: false, text: "Add Experience")
+            } else {
+                companyName.textField.text = experience?.jobCompanyName
+                jobTitle.textField.text = experience?.jobTitle
+                jobSummary.textView.text = experience?.jobDesc
+                jobStatus.switchButton.isOn = ((experience?.jobStatus) != nil)
+                jobPeriod.startDatePicker.date = experience?.jobStartDate ?? Date()
+                jobPeriod.startDatePicker.date = experience?.jobEndDate ?? Date()
+                addExpBtn.dsLongUnfilledButton(isDelete: true, text: "Delete Experience")
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(self.updateExp(sender:)))
+            }
+        } else {
+            companyName.textField.placeholder = expPlaceholder?.companyName_ph
+            jobTitle.textField.placeholder = expPlaceholder?.jobTitle_ph
+            jobSummary.textView.text = nil
+            jobSummary.textView.placeholder = expPlaceholder?.jobDesc_ph
+            addExpBtn.dsLongFilledPrimaryButton(withImage: false, text: "Add Experience")
+        }
     }
     
     @objc func updateExp(sender: UIBarButtonItem) {
-        experience = self.viewModel?.getExpByIndex(id: getIndexExp)
-        ExperienceRepository.shared.updateExperience(exp_id: getIndexExp,
+        ExperienceRepository.shared.updateExperience(exp_id: 4,
                                                      user_id: 0,
                                                      newJobTitle: jobTitle.textField.text ?? String(),
                                                      newJobDesc: jobSummary.textView.text ?? String(),
@@ -127,7 +128,6 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
         vc.navigationItem.setHidesBackButton(true, animated:true)
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
     
     func alertForCheckTF(){
         if ((companyName.textField.text?.isEmpty) != false) || ((jobTitle.textField.text?.isEmpty) != false) || ((jobSummary.textView.text?.isEmpty) != false){
@@ -146,8 +146,6 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
     
     // for delete and reload
     func deleteExpData(){
-//        experience = self.viewModel?.getExpByIndex(id: getIndex ?? Int())
-//        self.viewModel?.deleteExpData(experience: experience.getIndex9)
-//        self.viewModel?.deleteResumeData(resume: self.userResume[self.selectedIndex])
+        self.viewModel?.deleteExpData(dataExperience: experience)
     }
 }
