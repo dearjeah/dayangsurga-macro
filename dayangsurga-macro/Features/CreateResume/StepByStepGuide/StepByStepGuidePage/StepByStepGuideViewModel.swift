@@ -24,8 +24,8 @@ class StepByStepGuideViewModel: NSObject {
         return experienceRepo.getAllExperience()
     }
     
-    func getExpByIndex(id: Int) -> Experience?{
-        return experienceRepo.getExperienceById(experienceId: id)
+    func getExpByIndex(expId: Int) -> Experience?{
+        return experienceRepo.getExperienceById(experienceId: expId)
     }
     
 }

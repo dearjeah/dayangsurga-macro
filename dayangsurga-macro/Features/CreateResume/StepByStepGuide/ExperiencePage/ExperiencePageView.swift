@@ -14,6 +14,7 @@ protocol ExperienceFormDelegate {
 protocol ExperienceListDelegate: AnyObject {
     func goToAddExp()
     func passingExpData(exp: Experience?)
+    func getSelectedIndex(index: Int)
 }
 
 class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
@@ -86,6 +87,7 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
             emptyStateView.isHidden = true
         }
         return experience.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -100,27 +102,23 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
             cell.jobExperience.text = "\(experience[indexPath.row].jobStartDate?.string(format: Date.ISO8601Format.MonthYear) ?? String()) - \(experience[indexPath.row].jobEndDate?.string(format: Date.ISO8601Format.MonthYear) ?? String())"
         }
         cell.jobDesc.text = experience[indexPath.row].jobDesc
-        cell.editButtonAction = { [unowned self] in
-            experienceDelegate?.passingExpData(exp: passData())
-//            selectedIndex = indexPath.row
-//            let experiences = stepViewModel.getExpByIndex(id: selectedIndex)
-//            experienceDelegate?.goToEdit()
+        cell.editButtonAction = {print("olip namba wan")
+            self.experienceDelegate?.getSelectedIndex(index: indexPath.row)
+            self.experienceDelegate?.passingExpData(exp: self.experience[indexPath.row])
         }
-        cell.checklistButtonAction = { [unowned self] in
+        cell.checklistButtonAction = {
+            self.experienceDelegate?.getSelectedIndex(index: indexPath.row)
             if cell.selectionStatus == false{
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
+                self.experience[indexPath.row].isSelected = true
+                ExperienceRepository.shared.updateSelectedExpStatus(exp_id: indexPath.row, isSelected: true)
             }else{
                 cell.selectionStatus = false
                 cell.checklistButtonUnSelected()
+                self.experience[indexPath.row].isSelected = false
+                ExperienceRepository.shared.updateSelectedExpStatus(exp_id: indexPath.row, isSelected: false)
             }
-//            if experience[indexPath.row].isSelected == true {
-//                cell.selectionStatus = true
-//                cell.checklistButtonIfSelected()
-//            }else{
-//                cell.selectionStatus = false
-//                cell.checklistButtonUnSelected()
-//            }
         }
         return cell
     }
@@ -135,8 +133,11 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedExp = indexPath.row
-        print(indexPath, "=======")
-
+    }
+    
+    func getAndReload(){
+        experience = stepViewModel.getExpData() ?? []
+        expTableView.reloadData()
     }
 }
 
