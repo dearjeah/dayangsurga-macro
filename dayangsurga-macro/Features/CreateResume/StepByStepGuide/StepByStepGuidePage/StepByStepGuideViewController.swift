@@ -42,6 +42,22 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
 }
 
 extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonDelegate, StepByStepGuideDelegate, ProgressBarDelegate, ExperienceListDelegate {
+    func isButtonEnable (left: Bool, right: Bool) {
+        if !left {
+            smallSetButtonView.leftButton.dsShortUnfilledButton(isDelete: false, isDisable: true, text: "Previous")
+        } else {
+            smallSetButtonView.leftButton.dsShortUnfilledButton(isDelete: false, isDisable: false, text: "Previous")
+        }
+        
+        if !right {
+            smallSetButtonView.rightButton.dsShortFilledPrimaryButton(isDisable: true, text: "Next")
+        } else {
+            smallSetButtonView.rightButton.dsShortFilledPrimaryButton(isDisable: false, text: "Next")
+        }
+        smallSetButtonView.leftButton.isEnabled = left
+        smallSetButtonView.rightButton.isEnabled = right
+    }
+    
     func getSelectedIndex(index: Int) {
         //
     }
@@ -58,6 +74,38 @@ extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonD
         if was {
             didTapGenerate()
         }
+    }
+    
+    //MARK: Delegate Function
+    func didTapNext() {
+        NotificationCenter.default.post(name: Notification.Name("goToNext"), object: nil)
+    }
+    
+    func didTapPrevious() {
+        NotificationCenter.default.post(name: Notification.Name("goToPrev"), object: nil)
+    }
+    
+    func didTapGenerate() {
+        performSegue(withIdentifier: "goToGenerate", sender: self)
+    }
+    
+    //prevNextButtonDelegate
+    func isHidePrevNextButton(was: Bool) {
+        if was {
+            smallSetButtonView.isHidden = true
+        } else {
+            smallSetButtonView.isHidden = false
+        }
+    }
+    
+    func changeTitleToGenerate(was: Bool) {
+        smallSetButtonView.rightButton.setTitle("Generate", for: .normal)
+    }
+    
+    //MARK: Progress Bar Delegate
+    func progressBarSelected(at: Int) {
+        let page = ["Page": at]
+        NotificationCenter.default.post(name: Notification.Name("progressBarTapped"), object: self, userInfo: page)
     }
     
     func progressBarUpdate(index: Int, totalData: Int) {
@@ -100,38 +148,6 @@ extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonD
                 print("not detected")
             }
         }
-    }
-    
-    //MARK: Delegate Function
-    func didTapNext() {
-        NotificationCenter.default.post(name: Notification.Name("goToNext"), object: nil)
-    }
-    
-    func didTapPrevious() {
-        NotificationCenter.default.post(name: Notification.Name("goToPrev"), object: nil)
-    }
-    
-    func didTapGenerate() {
-        performSegue(withIdentifier: "goToGenerate", sender: self)
-    }
-    
-    //prevNextButtonDelegate
-    func isHidePrevNextButton(was: Bool) {
-        if was {
-            smallSetButtonView.isHidden = true
-        } else {
-            smallSetButtonView.isHidden = false
-        }
-    }
-    
-    func changeTitleToGenerate(was: Bool) {
-        smallSetButtonView.rightButton.setTitle("Generate", for: .normal)
-    }
-    
-    //MARK: Progress Bar Delegate
-    func progressBarSelected(at: Int) {
-        let page = ["Page": at]
-        NotificationCenter.default.post(name: Notification.Name("progressBarTapped"), object: self, userInfo: page)
     }
     
     //MARK: Delegate For Experience List to Form

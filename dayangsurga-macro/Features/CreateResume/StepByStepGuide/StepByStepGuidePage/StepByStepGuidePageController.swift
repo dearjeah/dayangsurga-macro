@@ -15,6 +15,7 @@ protocol StepByStepGuideDelegate: AnyObject {
 protocol prevNextButtonDelegate: AnyObject {
     func isHidePrevNextButton(was: Bool)
     func changeTitleToGenerate(was: Bool)
+    func isButtonEnable(left: Bool, right: Bool)
 }
 
 class StepByStepGuidePageController: UIPageViewController {
@@ -166,6 +167,7 @@ extension StepByStepGuidePageController {
         setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
         pageValueChecker(currentIndex: wasPage, value:  1 + addedValue)
         hideUnHideButton(currentPage: currentPageIndex)
+        buttonFunctional(currentPage: currentPageIndex)
         stepDelegate?.progressBarUpdate(index: currentPageIndex, totalData: stepControllerArr?.count ?? 0)
     }
     
@@ -175,6 +177,7 @@ extension StepByStepGuidePageController {
         setViewControllers([prevViewController], direction: .reverse, animated: true, completion: nil)
         pageValueChecker(currentIndex: wasPage, value: -1)
         hideUnHideButton(currentPage: currentPageIndex)
+        buttonFunctional(currentPage: currentPageIndex)
         stepDelegate?.progressBarUpdate(index: currentPageIndex, totalData: stepControllerArr?.count ?? 0)
     }
     
@@ -240,6 +243,14 @@ extension StepByStepGuidePageController {
             setPageIndex(value: value, progressBar: progressBar)
         }
     }
+    
+    func buttonFunctional(currentPage: Int) {
+        if currentPage == 0 {
+            prevNextDelegate?.isButtonEnable(left: false , right: true)
+        } else {
+            prevNextDelegate?.isButtonEnable(left: true, right: true)
+        }
+    }
 }
 
 //MARK: Style and Setup
@@ -254,7 +265,9 @@ extension StepByStepGuidePageController {
         if let firstViewController = stepControllerArr?.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
+        prevNextDelegate?.isButtonEnable(left: false, right: true)
     }
+    
     func notificationCenterSetup() {
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectNext), name: Notification.Name("goToNext"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectPrev), name: Notification.Name("goToPrev"), object: nil)
@@ -293,7 +306,6 @@ extension StepByStepGuidePageController {
 
 //MARK: Populate Data
 extension StepByStepGuidePageController {
-    
     fileprivate func initPersonalData(fullName: String, email: String, phone: String, location: String, summary: String) -> UIViewController {
         let controller = UIViewController()
         let tmp = PersonalInfoPage.init(fullName: fullName, email: email, phone: phone, location: location, summary: summary)
