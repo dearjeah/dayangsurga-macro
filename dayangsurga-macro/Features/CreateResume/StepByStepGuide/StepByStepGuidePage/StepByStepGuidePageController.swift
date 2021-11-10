@@ -82,7 +82,6 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
         
         if selectedPage - 1 != currentPageIndex {
             goToDirectPage(selectedPageIndex: selectedPage)
-            print("sadsakdaskdjsakjdksad", "selected:",selectedPage, "current:",currentPageIndex)
         }
     }
     

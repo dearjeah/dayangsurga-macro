@@ -21,6 +21,8 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
         super.viewDidLoad()
         smallSetButtonView.delegate = self
         progressBarView.dlgt = self
+//        navigationStyle()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -30,6 +32,9 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
             pageController.prevNextSetup(prevNextDlgt: self)
             
         }
+    }
+    func navigationStyle(){
+        configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.primaryBlue, title: "Create Resume", preferredLargeTitle: false, hideBackButton: false)
     }
 }
 
