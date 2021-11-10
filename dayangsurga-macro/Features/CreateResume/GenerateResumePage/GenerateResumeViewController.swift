@@ -27,7 +27,10 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
         resumePreviewImage.layer.shadowRadius = 1
         resumePreviewImage.layer.shadowColor = UIColor.lightGray.cgColor
         self.navigationItem.title = "Preview Resume"
-        // Do any additional setup after loading the view.
+        let date = Date()
+           let dateFormatter = DateFormatter()
+           dateFormatter.dateFormat = "E, dd MMM YYYY"
+           resumeDate.text = dateFormatter.string(from: date)
     }
 
     @IBAction func previewDidTap(_ sender: Any) {
@@ -48,19 +51,18 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
     
     @IBAction func editDidTap(_ sender: Any) {
         print("Edit button tapped")
-        let editResume = UIAlertController(title: "Resume Name", message: "Input your resume name", preferredStyle: .alert)
+        let editResume = UIAlertController(title: "Resume Name", message: "What would you name this resume?", preferredStyle: .alert)
 
         editResume.addTextField { (textField) in
             textField.placeholder = "Input your resume name"
         }
 
-        editResume.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { [weak editResume] (_) in
+        editResume.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak editResume] (_) in
             let textField = editResume?.textFields![0]
             self.resumeName.text = textField?.text
         }))
         editResume.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
-        // 4. Present the alert.
         self.present(editResume, animated: true, completion: nil)
     }
     
