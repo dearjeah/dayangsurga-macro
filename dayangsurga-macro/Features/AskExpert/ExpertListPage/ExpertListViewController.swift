@@ -48,6 +48,9 @@ class ExpertListViewController: MVVMViewController<ExpertListViewModel> {
     }
     
     @objc func infoWasPressed(sender: UIBarButtonItem) {
+//        let storyboard = UIStoryboard(name: "", bundle: nil)
+//        let vc = storyboard.instantiateViewController(identifier: "") as! //viewcontroller//
+//        self.present(vc, animated: true, completion: nil)
     }
 }
 
@@ -67,7 +70,13 @@ extension ExpertListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        selectedIndexExpert = indexPath.row
+        let storyboard = UIStoryboard(name: "ExpertDetailsViewController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToExpertDetail") as! ExpertDetailViewController
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.tabBarController?.tabBar.isHidden = true
+        vc.index = selectedIndexExpert
+        self.navigationController?.pushViewController(vc, animated: false)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
