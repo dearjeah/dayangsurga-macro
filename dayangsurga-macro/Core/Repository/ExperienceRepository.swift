@@ -100,6 +100,21 @@ class ExperienceRepository{
         
     }
     
+    func updateSelectedExpStatus(exp_id: Int,
+                              isSelected: Bool) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "exp_id == %d", exp_id as CVarArg)
+        do {
+            let item = try context.fetch(fetchRequest) as? [Experience]
+            let newExp = item?.first
+            newExp?.isSelected = isSelected
+            try context.save()
+        } catch let error as NSError {
+            print(error)
+        }
+        
+    }
+    
     // func delete
     func deleteExperience(data: Experience) {
         do {

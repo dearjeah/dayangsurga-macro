@@ -21,7 +21,6 @@
                     <rect key="frame" x="26" y="10" width="252" height="220"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="220" id="7r7-uq-SPq"/>
-                        <constraint firstAttribute="width" constant="252" id="G9Y-Dj-iUM"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSX-bl-D6z">
@@ -37,11 +36,11 @@
             <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstItem="Wbt-Yc-qd8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="26" id="DL7-xv-d2b"/>
+                <constraint firstAttribute="bottom" secondItem="fSX-bl-D6z" secondAttribute="bottom" constant="2" id="G1T-cq-pyk"/>
                 <constraint firstAttribute="trailing" secondItem="Wbt-Yc-qd8" secondAttribute="trailing" constant="26" id="cxQ-za-0WG"/>
                 <constraint firstItem="Wbt-Yc-qd8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="dyE-Hb-sEx"/>
                 <constraint firstAttribute="trailing" secondItem="fSX-bl-D6z" secondAttribute="trailing" constant="10" id="fL0-Pa-CAA"/>
                 <constraint firstItem="fSX-bl-D6z" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="q3l-OW-HyG"/>
-                <constraint firstItem="fSX-bl-D6z" firstAttribute="top" secondItem="Wbt-Yc-qd8" secondAttribute="bottom" constant="28" id="tUM-7B-m6g"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
