@@ -12,8 +12,8 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
     var index: Int?
     var selectedData = User_Resume()
     var selectedIndex: Int?
-
-
+    
+    
     @IBOutlet weak var progressBarView: ProgressBarView!
     @IBOutlet  var smallSetButtonView: SmallSetButton!
     
@@ -21,7 +21,7 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
         super.viewDidLoad()
         smallSetButtonView.delegate = self
         progressBarView.dlgt = self
-//        navigationStyle()
+        //        navigationStyle()
         
         // Do any additional setup after loading the view.
     }
@@ -43,20 +43,6 @@ extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonD
         //
     }
     
-    
-    //MARK: Delegate For Experience List to Form
-    func goToAddExp() {
-        let storyboard = UIStoryboard(name: "ExperienceFormController", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "goToExperienceForm") as! ExperienceFormController
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func passingExpData(exp: Experience?) {
-//        let experience = Experience()
-        performSegue(withIdentifier: "", sender: self)
-    }
-    
-extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonDelegate, StepByStepGuideDelegate, ProgressBarDelegate {
     func didTapRightButton() {
         if smallSetButtonView.rightButton.titleLabel?.text == "Next" {
             didTapNext()
@@ -64,7 +50,7 @@ extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonD
             didTapGenerate()
         }
     }
-   
+    
     func goToGenerate(was: Bool) {
         if was {
             didTapGenerate()
@@ -74,7 +60,7 @@ extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonD
     func progressBarUpdate(index: Int) {
         
     }
-
+    
     //MARK: Delegate Function
     func didTapNext() {
         NotificationCenter.default.post(name: Notification.Name("goToNext"), object: nil)
@@ -105,6 +91,18 @@ extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonD
     func progressBarSelected(at: Int) {
         let page = ["Page": at]
         NotificationCenter.default.post(name: Notification.Name("progressBarTapped"), object: self, userInfo: page)
+    }
+    
+    //MARK: Delegate For Experience List to Form
+    func goToAddExp() {
+        let storyboard = UIStoryboard(name: "ExperienceFormController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToExperienceForm") as! ExperienceFormController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func passingExpData(exp: Experience?) {
+        //        let experience = Experience()
+        performSegue(withIdentifier: "", sender: self)
     }
 }
 
