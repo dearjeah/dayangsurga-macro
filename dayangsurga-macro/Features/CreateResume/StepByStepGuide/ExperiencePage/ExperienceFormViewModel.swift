@@ -27,9 +27,8 @@ class ExperienceFormViewModel: NSObject{
         return expRepo.getExperienceById(experienceId: id)
     }
     
-    func deleteExpData(experience: Experience?){
-        let expData = Experience()
-        expRepo.deleteExperience(data: experience ?? expData)
+    func deleteExpData(dataExperience: Experience?) {
+        expRepo.deleteExperience(data: dataExperience ?? Experience())
     }
 
 }
