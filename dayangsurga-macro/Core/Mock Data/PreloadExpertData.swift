@@ -10,62 +10,82 @@ import UIKit
 
 func preloadExpertProfile(){
     // experience in year
-    // note di entity: avail time, expertise
-    // di notion: title on list, background image, summary
+    // background profile = expertise
     ExpertProfileRepository.shared.createExpertProfile(expertId: 0,
                                                        name: "Dara",
-                                                       experience: 1,
-                                                       expertise: "",
+                                                       experience: "1 Year",
+                                                       expertise: "HRD at Biotechnology Company",
                                                        phoneNumber: "087838448246",
-                                                       availTime: "",
+                                                       dayAvailTime: "",
+                                                       timeAvailTime: "",
                                                        linkedIn: "https://www.linkedin.com/in/dara-anggitasari-7371011b8",
-                                                       image: UIImage(named: "imgExpertDara") ?? UIImage())
+                                                       image: UIImage(named: "imgExpertDara") ?? UIImage(),
+                                                       titleOnList: "HRD at Biotech",
+                                                       summary: "Experienced HR in start up company that responsible for recruiting non-tech position (operational) and team management with Bachelor degree in Psychology from UGM.")
     ExpertProfileRepository.shared.createExpertProfile(expertId: 1,
                                                        name: "Fahri Al Irsyad",
-                                                       experience: 3,
-                                                       expertise: "",
-                                                       phoneNumber: "085881056414",
-                                                       availTime: "",
+                                                       experience: "3 Years",
+                                                       expertise: "Recruiter at Financial Technology Company",
+                                                       phoneNumber: "087838448246",
+                                                       dayAvailTime: "",
+                                                       timeAvailTime: "",
                                                        linkedIn: "https://www.linkedin.com/in/fahriasen",
-                                                       image: UIImage(named: "imgExpertFahri") ?? UIImage())
+                                                       image: UIImage(named: "imgExpertFahri") ?? UIImage(),
+                                                       titleOnList: "Recruiter at Fin Tech",
+                                                       summary: "Currently, I am responsible for recruiting top talent and development people. My specialties include : People Development, Recruiting, and Organizational Behavior.")
     ExpertProfileRepository.shared.createExpertProfile(expertId: 2,
                                                        name: "Rasyid Wardianto",
-                                                       experience: 4,
-                                                       expertise: "",
+                                                       experience: "4 Years",
+                                                       expertise: "Experienced HR at Farm Technology Company",
                                                        phoneNumber: "081227880967",
-                                                       availTime: "",
+                                                       dayAvailTime: "",
+                                                       timeAvailTime: "",
                                                        linkedIn: "https://www.linkedin.com/in/muhammad-rosyid-wardianto-945830177",
-                                                       image: UIImage(named: "imgExpertRasyid") ?? UIImage())
+                                                       image: UIImage(named: "imgExpertRasyid") ?? UIImage(),
+                                                       titleOnList: "HR at Startup",
+                                                       summary: "Human Resources Officer with a demonstrated history of working in the farming industry. Skilled in Public Speaking, English, SPSS, Analytical Hierarchy Process, Business Partnership, and Digital Photography.")
     ExpertProfileRepository.shared.createExpertProfile(expertId: 3,
                                                        name: "Romano Giri Permana",
-                                                       experience: 1,
-                                                       expertise: "",
+                                                       experience: "1 Year",
+                                                       expertise: "HRGA at Biotechnology Company",
                                                        phoneNumber: "089503558536",
-                                                       availTime: "",
+                                                       dayAvailTime: "",
+                                                       timeAvailTime: "",
                                                        linkedIn: "https://www.linkedin.com/in/romanogiripermana",
-                                                       image: UIImage(named: "imgExpertRomano") ?? UIImage())
+                                                       image: UIImage(named: "imgExpertRomano") ?? UIImage(),
+                                                       titleOnList: "HRGA at Biotechnology",
+                                                       summary: "I am an HRGA at startup company that experienced in handling office supplies and recruiting marketing and sales position with Bachelor in Management.")
     ExpertProfileRepository.shared.createExpertProfile(expertId: 4,
                                                        name: "Nashtiti",
-                                                       experience: Int32(1.5),
-                                                       expertise: "",
+                                                       experience: "1.5 Years",
+                                                       expertise: "People & Operation at Education Technology Company",
                                                        phoneNumber: "082138565635",
-                                                       availTime: "",
+                                                       dayAvailTime: "",
+                                                       timeAvailTime: "",
                                                        linkedIn: "https://www.linkedin.com/in/nashtitialiafari",
-                                                       image: UIImage(named: "imgExpertNashtiti") ?? UIImage())
+                                                       image: UIImage(named: "imgExpertNashtiti") ?? UIImage(),
+                                                       titleOnList: "PO at Edu Tech",
+                                                       summary: "Experienced HR that skilled in end to end people operation process in education technology company and passionate about people, education, technology, start-up environment, and non-profit organization.")
     ExpertProfileRepository.shared.createExpertProfile(expertId: 5,
                                                        name: "Maria Denta",
-                                                       experience: 3,
-                                                       expertise: "",
+                                                       experience: "3 Years",
+                                                       expertise: "Experienced HR at Corporate and Startup Company",
                                                        phoneNumber: "081380245065",
-                                                       availTime: "",
+                                                       dayAvailTime: "",
+                                                       timeAvailTime: "",
                                                        linkedIn: "https://www.linkedin.com/in/maria-denta-putri-b73368159",
-                                                       image: UIImage(named: "imgExpertMaria") ?? UIImage())
+                                                       image: UIImage(named: "imgExpertMaria") ?? UIImage(),
+                                                       titleOnList: "HR Practitioner",
+                                                       summary: "HR enthusiast, experienced in end to end recruitment, training, performance appraisal, personnel administration, compensation and benefit.")
     ExpertProfileRepository.shared.createExpertProfile(expertId: 6,
                                                        name: "Utari Hastrarini",
-                                                       experience: Int32(2.5),
-                                                       expertise: "",
+                                                       experience: "2.5 Years",
+                                                       expertise: "Experienced HR at AI and Biotechnology Company",
                                                        phoneNumber: "088218032081",
-                                                       availTime: "",
+                                                       dayAvailTime: "",
+                                                       timeAvailTime: "",
                                                        linkedIn: "https://www.linkedin.com/in/utarihastra",
-                                                       image: UIImage(named: "imgExpertDyah") ?? UIImage())
+                                                       image: UIImage(named: "imgExpertDyah") ?? UIImage(),
+                                                       titleOnList: "HR at Startup",
+                                                       summary: "HR Practitioner with a demonstrated history of working in the technology industry with significant exposure to startup culture. Skilled in recruitment, administration, and communication.")
 }
