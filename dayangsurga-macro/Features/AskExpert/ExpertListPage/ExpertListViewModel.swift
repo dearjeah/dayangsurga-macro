@@ -9,4 +9,8 @@ import Foundation
 
 class ExpertListViewModel{
     
+    func getExpertList() -> [Expert_Profile]?{
+        return ExpertProfileRepository.shared.getAllExpertProfile()
+    }
+    
 }
