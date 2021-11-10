@@ -14,6 +14,8 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
     var selectedIndex: Int?
     
     
+    
+    
     @IBOutlet weak var progressBarView: ProgressBarView!
     @IBOutlet  var smallSetButtonView: SmallSetButton!
     
@@ -21,6 +23,7 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
         super.viewDidLoad()
         smallSetButtonView.delegate = self
         progressBarView.dlgt = self
+        self.viewModel = StepByStepGuideViewModel()
         //        navigationStyle()
         
         // Do any additional setup after loading the view.
@@ -57,8 +60,46 @@ extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonD
         }
     }
     
-    func progressBarUpdate(index: Int) {
-        
+    func progressBarUpdate(index: Int, totalData: Int) {
+        if totalData == 5 {
+            //from edit
+            switch index {
+            case 0:
+                self.viewModel?.updateImage(progress: .personal, progressBarView: progressBarView)
+            case 1:
+                self.viewModel?.updateImage(progress: .education, progressBarView: progressBarView)
+            case 2:
+                self.viewModel?.updateImage(progress: .exp, progressBarView: progressBarView)
+            case 3:
+                self.viewModel?.updateImage(progress: .skill, progressBarView: progressBarView)
+            case 4:
+                self.viewModel?.updateImage(progress: .accom, progressBarView: progressBarView)
+            default:
+                print("not detected")
+            }
+        } else {
+            //from create resume
+            switch index {
+            case 0:
+                self.viewModel?.updateImage(progress: .personal, progressBarView: progressBarView)
+            case 1:
+                self.viewModel?.updateImage(progress: .education, progressBarView: progressBarView)
+            case 2:
+                self.viewModel?.updateImage(progress: .expQuiz, progressBarView: progressBarView)
+            case 3:
+                self.viewModel?.updateImage(progress: .exp, progressBarView: progressBarView)
+            case 4:
+                self.viewModel?.updateImage(progress: .skillQuiz, progressBarView: progressBarView)
+            case 5:
+                self.viewModel?.updateImage(progress: .skill, progressBarView: progressBarView)
+            case 6:
+                self.viewModel?.updateImage(progress: .accomQuiz, progressBarView: progressBarView)
+            case 7:
+                self.viewModel?.updateImage(progress: .accom, progressBarView: progressBarView)
+            default:
+                print("not detected")
+            }
+        }
     }
     
     //MARK: Delegate Function
