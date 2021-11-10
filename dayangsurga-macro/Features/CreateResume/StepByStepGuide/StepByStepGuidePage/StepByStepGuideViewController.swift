@@ -11,37 +11,44 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
     
     var index: Int?
     var selectedData = User_Resume()
-    var selectedIndex: Int?
-    
-    
-    
     
     @IBOutlet weak var progressBarView: ProgressBarView!
     @IBOutlet  var smallSetButtonView: SmallSetButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewModel = StepByStepGuideViewModel()
         smallSetButtonView.delegate = self
         progressBarView.dlgt = self
-        self.viewModel = StepByStepGuideViewModel()
         //        navigationStyle()
-        
-        // Do any additional setup after loading the view.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let pageController = segue.destination as? StepByStepGuidePageController {
             pageController.stepSetup(stepDlgt: self)
             pageController.prevNextSetup(prevNextDlgt: self)
-            
         }
     }
+    
     func navigationStyle(){
         configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.primaryBlue, title: "Create Resume", preferredLargeTitle: false, hideBackButton: false)
     }
 }
 
-extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonDelegate, StepByStepGuideDelegate, ProgressBarDelegate, ExperienceListDelegate {
+//MARK: Delegate Function
+extension StepByStepGuideViewController: prevNextButtonDelegate {
+    func isHidePrevNextButton(was: Bool) {
+        if was {
+            smallSetButtonView.isHidden = true
+        } else {
+            smallSetButtonView.isHidden = false
+        }
+    }
+    
+    func changeTitleToGenerate(was: Bool) {
+        smallSetButtonView.rightButton.setTitle("Generate", for: .normal)
+    }
+    
     func isButtonEnable (left: Bool, right: Bool) {
         if !left {
             smallSetButtonView.leftButton.dsShortUnfilledButton(isDelete: false, isDisable: true, text: "Previous")
@@ -57,11 +64,10 @@ extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonD
         smallSetButtonView.leftButton.isEnabled = left
         smallSetButtonView.rightButton.isEnabled = right
     }
-    
-    func getSelectedIndex(index: Int) {
-        //
-    }
-    
+}
+
+//MARK: SmallSetButtonDelegate
+extension StepByStepGuideViewController: SmallSetButtonDelegate {
     func didTapRightButton() {
         if smallSetButtonView.rightButton.titleLabel?.text == "Next" {
             didTapNext()
@@ -69,14 +75,6 @@ extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonD
             didTapGenerate()
         }
     }
-    
-    func goToGenerate(was: Bool) {
-        if was {
-            didTapGenerate()
-        }
-    }
-    
-    //MARK: Delegate Function
     func didTapNext() {
         NotificationCenter.default.post(name: Notification.Name("goToNext"), object: nil)
     }
@@ -88,21 +86,33 @@ extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonD
     func didTapGenerate() {
         performSegue(withIdentifier: "goToGenerate", sender: self)
     }
-    
-    //prevNextButtonDelegate
-    func isHidePrevNextButton(was: Bool) {
+}
+
+extension StepByStepGuideViewController: StepByStepGuideDelegate, ExperienceListDelegate {
+    func goToGenerate(was: Bool) {
         if was {
-            smallSetButtonView.isHidden = true
-        } else {
-            smallSetButtonView.isHidden = false
+            didTapGenerate()
         }
     }
     
-    func changeTitleToGenerate(was: Bool) {
-        smallSetButtonView.rightButton.setTitle("Generate", for: .normal)
+    //MARK: Delegate For Experience List to Form
+    func getSelectedIndex(index: Int) {
+        //
+    }
+    func goToAddExp() {
+        let storyboard = UIStoryboard(name: "ExperienceFormController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToExperienceForm") as! ExperienceFormController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    //MARK: Progress Bar Delegate
+    func passingExpData(exp: Experience?) {
+        //        let experience = Experience()
+        performSegue(withIdentifier: "", sender: self)
+    }
+}
+
+//MARK: Progress Bar Delegate
+extension StepByStepGuideViewController: ProgressBarDelegate {
     func progressBarSelected(at: Int) {
         let page = ["Page": at]
         NotificationCenter.default.post(name: Notification.Name("progressBarTapped"), object: self, userInfo: page)
@@ -148,18 +158,6 @@ extension StepByStepGuideViewController: prevNextButtonDelegate, SmallSetButtonD
                 print("not detected")
             }
         }
-    }
-    
-    //MARK: Delegate For Experience List to Form
-    func goToAddExp() {
-        let storyboard = UIStoryboard(name: "ExperienceFormController", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "goToExperienceForm") as! ExperienceFormController
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func passingExpData(exp: Experience?) {
-        //        let experience = Experience()
-        performSegue(withIdentifier: "", sender: self)
     }
 }
 
