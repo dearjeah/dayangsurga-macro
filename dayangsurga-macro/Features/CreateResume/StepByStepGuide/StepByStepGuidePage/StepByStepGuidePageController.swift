@@ -112,9 +112,6 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
             }
         }
     }
-    
-
-    
 }
 
 //MARK: Page Controller
