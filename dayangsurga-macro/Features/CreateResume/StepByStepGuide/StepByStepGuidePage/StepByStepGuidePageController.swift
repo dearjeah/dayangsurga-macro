@@ -45,16 +45,16 @@ class StepByStepGuidePageController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.dataSource = self
         self.delegate = self
         self.isPagingEnabled = false
         
-        populateItems()
         style()
         setup()
+        populateItems()
         notificationCenterSetup()
     }
-    
 }
 
 //MARK: Protocol Delegate
