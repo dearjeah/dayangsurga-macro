@@ -28,12 +28,16 @@ class ExpertListViewController: MVVMViewController<ExpertListViewModel> {
     func setupView(){
         self.title = "Ask Expert"
         tableView.tableFooterView = UIView()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(self.infoWasPressed(sender:))) // blm ganti ke info
     }
     
     func registerTableView(){
         tableView.register(ExpertListCell.nib(), forCellReuseIdentifier: ExpertListCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    @objc func infoWasPressed(sender: UIBarButtonItem) {
     }
 }
 
@@ -46,8 +50,8 @@ extension ExpertListViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ExpertListCell.identifier, for: indexPath) as? ExpertListCell else {
             return UITableViewCell()
         }
-        cell.nameLabel.text = "Utari Hastrarini"
-        cell.industryAndExperienceLabel.text = "HR at Startup || 2.5 Years"
+        cell.nameLabel.text = "Utari Hastrarini, Utari Hastrarini, Utari Hastrarini, Utari Hastrarini, Utari Hastrarini"
+        cell.industryAndExperienceLabel.text = "HR at Startup | 2.5 Years"
         return cell
     }
     
