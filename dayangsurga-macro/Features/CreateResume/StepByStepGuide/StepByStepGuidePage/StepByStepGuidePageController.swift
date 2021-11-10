@@ -8,7 +8,7 @@
 import UIKit
 
 protocol StepByStepGuideDelegate: AnyObject {
-    func progressBarUpdate(index: Int)
+    func progressBarUpdate(index: Int, totalData: Int)
     func goToGenerate(was: Bool)
 }
 
@@ -166,6 +166,7 @@ extension StepByStepGuidePageController {
         setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
         pageValueChecker(currentIndex: wasPage, value:  1 + addedValue)
         hideUnHideButton(currentPage: currentPageIndex)
+        stepDelegate?.progressBarUpdate(index: currentPageIndex, totalData: stepControllerArr?.count ?? 0)
     }
     
     func goToPrev(wasPage: Int){
@@ -174,6 +175,7 @@ extension StepByStepGuidePageController {
         setViewControllers([prevViewController], direction: .reverse, animated: true, completion: nil)
         pageValueChecker(currentIndex: wasPage, value: -1)
         hideUnHideButton(currentPage: currentPageIndex)
+        stepDelegate?.progressBarUpdate(index: currentPageIndex, totalData: stepControllerArr?.count ?? 0)
     }
     
     func goToDirectPage(selectedPageIndex: Int){
