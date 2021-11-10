@@ -16,6 +16,8 @@ class PreviewResumeViewController: MVVMViewController<PreviewResumeViewModel> {
     
     override func viewDidLoad() {
       super.viewDidLoad()
+        self.navigationItem.titleView?.backgroundColor = UIColor.primaryBlue
+        
       if let data = documentData {
         pdfView.document = PDFDocument(data: data)
         pdfView.autoScales = true
