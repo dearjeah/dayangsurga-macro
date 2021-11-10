@@ -67,7 +67,7 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
     }
     
     @IBAction func finishDidTap(_ sender: Any) {
-        print("Finish button tapped")
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func exportDidTap(_ sender: Any) {
