@@ -117,5 +117,8 @@ extension CoreDataManager {
         if UserRepository.shared.getAllUser()?.count == 0{
             preloadUser()
         }
+        if ExpertProfileRepository.shared.getAllExpertProfile()?.count == 0{
+            preloadExpertProfile()
+        }
     }
 }
