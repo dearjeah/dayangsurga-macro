@@ -22,10 +22,15 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         setView()
         showButton()
         registerCollectionView()
+        //navigationStyle()
         
         self.viewModel = LandingPageViewModel()
         userResume = self.viewModel?.allUserResumeDataByDate() ?? []
         emptyState = self.viewModel?.getEmptyState()
+    }
+    
+    func navigationStyle(){
+        configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.white, title: "Resume", preferredLargeTitle: true, hideBackButton: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
