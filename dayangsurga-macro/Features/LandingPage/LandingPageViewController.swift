@@ -172,7 +172,7 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
             dataInput: dataInput, userResume: userResume[selectedIndex]
         )
         
-        vc.documentData = pdfCreator.createFlyer()
+        vc.documentData = pdfCreator.createPDF()
         
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.titleView?.tintColor = .white
