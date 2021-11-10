@@ -34,9 +34,8 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
         tableView.tableFooterView = UIView()
     }
     
-    convenience init() {
+    convenience init(text: String) {
         self.init()
-        registerTableView()
     }
     
     fileprivate func initWithNib() {

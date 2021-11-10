@@ -26,10 +26,8 @@
                         <constraint firstAttribute="width" constant="160" id="XPw-fR-FrV"/>
                         <constraint firstAttribute="height" constant="48" id="jY6-kV-iHb"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Next">
-                        <color key="baseForegroundColor" name="primaryWhite"/>
-                    </buttonConfiguration>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Next"/>
                     <connections>
                         <action selector="rightButtonPressed:" destination="-1" eventType="touchUpInside" id="O1s-CC-NGI"/>
                     </connections>
@@ -41,10 +39,10 @@
                         <constraint firstAttribute="height" constant="48" id="VbL-05-3cA"/>
                         <constraint firstAttribute="width" constant="160" id="bJX-pr-7KD"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Previous">
-                        <color key="baseForegroundColor" name="primaryBlue"/>
-                    </buttonConfiguration>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Previous">
+                        <color key="titleColor" name="primaryBlue"/>
+                    </state>
                     <connections>
                         <action selector="leftButtonPressed:" destination="-1" eventType="touchUpInside" id="idp-ux-gGS"/>
                     </connections>

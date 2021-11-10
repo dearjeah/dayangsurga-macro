@@ -46,6 +46,7 @@ class StepByStepGuidePageController: UIPageViewController {
         super.viewDidLoad()
         self.dataSource = self
         self.delegate = self
+        self.isPagingEnabled = false
         
         populateItems()
         style()
@@ -85,7 +86,6 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
         
         if selectedPage - 1 != currentPageIndex {
             goToDirectPage(selectedPageIndex: selectedPage)
-            print("sadsakdaskdjsakjdksad", "selected:",selectedPage, "current:",currentPageIndex)
         }
     }
     
@@ -188,7 +188,6 @@ extension StepByStepGuidePageController {
             setViewControllers([currentVC], direction: .reverse, animated: true, completion: nil)
         }
         setPageIndex(value: selectedPageIndex - 1, progressBar: true)
-        //hideUnHideButton(currentPage: was)
     }
     
     func goToGenerate(){

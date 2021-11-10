@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Group 21.png",
+      "filename" : "icEducationNoFill.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "icEducationNoFill@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "icEducationNoFill@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

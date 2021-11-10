@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Group 17.png",
+      "filename" : "icPersonalInformationActive.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "icPersonalInformationActive@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "icPersonalInformationActive@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
