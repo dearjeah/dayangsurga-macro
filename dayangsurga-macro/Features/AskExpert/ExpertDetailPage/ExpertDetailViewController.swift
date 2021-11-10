@@ -8,6 +8,8 @@
 import UIKit
 
 class ExpertDetailViewController: MVVMViewController<ExpertListViewModel> {
+    
+    var index: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()

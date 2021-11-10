@@ -10,6 +10,7 @@ import UIKit
 class EmptyState: UIView {
 
     @IBOutlet weak var emptyStateImage: UIImageView!
+    @IBOutlet weak var emptyStateTitle: UILabel!
     @IBOutlet weak var emptyStateDescription: UILabel!
     
     override init(frame: CGRect) {
