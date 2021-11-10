@@ -18,12 +18,15 @@ class ExpertProfileRepository{
     // create data
     func createExpertProfile(expertId: Int,
                              name: String,
-                             experience: Int32,
+                             experience: String,
                              expertise: String,
                              phoneNumber: String,
-                             availTime : String,
+                             dayAvailTime : String,
+                             timeAvailTime : String,
                              linkedIn : String,
-                             image :UIImage){
+                             image :UIImage,
+                             titleOnList: String,
+                             summary: String){
         do {
             
           
@@ -33,9 +36,12 @@ class ExpertProfileRepository{
             expertProfile.experience = experience
             expertProfile.expertise = expertise
             expertProfile.phone_number = phoneNumber
-            expertProfile.avail_time = availTime
+            expertProfile.day_avail_time = dayAvailTime
+            expertProfile.time_avail_time = timeAvailTime
             expertProfile.linkedIn = linkedIn
             expertProfile.expert_image = image.pngData()
+            expertProfile.title_on_list = titleOnList
+            expertProfile.summary = summary
                 
                 
             try context.save()
@@ -73,12 +79,15 @@ class ExpertProfileRepository{
     // func updates
     func updateExpertProfile( expertId: Int,
                               name: String,
-                              experience: Int32,
+                              experience: String,
                               expertise: String,
                               phoneNumber: String,
-                              availTime : String,
+                              dayAvailTime : String,
+                              timeAvailTime : String,
                               linkedIn : String,
-                              image :UIImage) {
+                              image :UIImage,
+                              titleOnList: String,
+                              summary: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "expert_id == %d", expertId as CVarArg)
         do {
@@ -88,9 +97,12 @@ class ExpertProfileRepository{
             expertProfile?.experience = experience
             expertProfile?.expertise = expertise
             expertProfile?.phone_number = phoneNumber
-            expertProfile?.avail_time = availTime
+            expertProfile?.day_avail_time = dayAvailTime
+            expertProfile?.time_avail_time = timeAvailTime
             expertProfile?.linkedIn = linkedIn
             expertProfile?.expert_image = image.pngData()
+            expertProfile?.title_on_list = titleOnList
+            expertProfile?.summary = summary
            
             
             try context.save()
