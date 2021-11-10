@@ -19,7 +19,7 @@ extension UIButton {
         self.layer.backgroundColor = UIColor.primaryBlue.cgColor
         self.titleLabel?.tintColor = UIColor.primaryWhite
         self.titleLabel?.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
-        self.titleLabel?.text = text
+        self.setTitle(text, for: .normal)
         self.frame.size = CGSize(width: 350, height: 48)
         
         
@@ -39,7 +39,7 @@ extension UIButton {
         self.layer.backgroundColor = UIColor.primaryWhite.cgColor
         self.titleLabel?.tintColor = UIColor.primaryBlue
         self.titleLabel?.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
-        self.titleLabel?.text = text
+        self.setTitle(text, for: .normal)
         frame.size = CGSize(width: 350, height: 48)
         
         if (isDelete) {
@@ -57,7 +57,7 @@ extension UIButton {
         self.layer.borderWidth = 1.0
         self.titleLabel?.tintColor = UIColor.primaryWhite
         self.titleLabel?.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
-        self.titleLabel?.text = text
+        self.setTitle(text, for: .normal)
         self.frame.size = CGSize(width: 160, height: 48)
         
         if (isDisable) {
@@ -75,7 +75,7 @@ extension UIButton {
         self.layer.backgroundColor = UIColor.primaryWhite.cgColor
         self.titleLabel?.tintColor = UIColor.primaryBlue
         self.titleLabel?.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
-        self.titleLabel?.text = text
+        self.setTitle(text, for: .normal)
         self.frame.size = CGSize(width: 160, height: 48)
         
         if (isDelete) {

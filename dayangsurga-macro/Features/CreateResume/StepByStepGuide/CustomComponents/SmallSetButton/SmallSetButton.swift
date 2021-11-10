@@ -11,6 +11,7 @@ protocol SmallSetButtonDelegate: AnyObject {
     func didTapNext()
     func didTapPrevious()
     func didTapGenerate()
+    func didTapRightButton()
 }
 
 class SmallSetButton: UIView {
@@ -31,18 +32,16 @@ class SmallSetButton: UIView {
     func buttonStyle() {
         rightButton.dsShortFilledPrimaryButton(isDisable: false, text: "Next")
         leftButton.dsShortFilledPrimaryButton(isDisable: false, text: "Previous")
+        rightButton.setTitle("Next", for: .normal)
+        leftButton.setTitle("Previous", for: .normal)
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        initWithNib()
-        buttonStyle()
-    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initWithNib()
         buttonStyle()
     }
+    
     fileprivate func initWithNib() {
         guard let view = loadViewFromNib(nibName: "SmallSetButton") else {return}
         view.frame = self.bounds
@@ -61,11 +60,7 @@ class SmallSetButton: UIView {
     }
     
     @IBAction func rightButtonPressed(_ sender: Any) {
-        if rightButton.titleLabel?.text == "Next" {
-            delegate?.didTapNext()
-        } else {
-            delegate?.didTapGenerate()
-        }
+        delegate?.didTapRightButton()
     }
     
     @IBAction func leftButtonPressed(_ sender: Any) {
