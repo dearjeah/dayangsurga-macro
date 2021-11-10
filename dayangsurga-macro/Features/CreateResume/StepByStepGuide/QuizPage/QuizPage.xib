@@ -41,10 +41,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDM-Fd-uSQ" customClass="YesNoSwipeView" customModule="dayangsurga_macro" customModuleProvider="target">
-                    <rect key="frame" x="40" y="546" width="334" height="86"/>
+                    <rect key="frame" x="40" y="546" width="334" height="80"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="86" id="qg4-1f-BHN"/>
+                        <constraint firstAttribute="height" constant="80" id="qg4-1f-BHN"/>
                     </constraints>
                 </view>
             </subviews>
