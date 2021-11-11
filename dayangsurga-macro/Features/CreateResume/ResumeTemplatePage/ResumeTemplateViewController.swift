@@ -54,7 +54,7 @@ class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> 
     @IBAction func didTapButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "StepByStepGuideViewController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToStepByStep") as! StepByStepGuideViewController
-        vc.selectedIndex = selectedTemplate
+        vc.index = selectedTemplate
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.titleView?.tintColor = .white
         self.tabBarController?.tabBar.isHidden = true
