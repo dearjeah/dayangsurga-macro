@@ -71,6 +71,10 @@
 		BF228E4F273B7CCC00966E23 /* EducationPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF228E49273B7CCC00966E23 /* EducationPageView.swift */; };
 		BF228E50273B7CCC00966E23 /* EducationListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF228E4A273B7CCC00966E23 /* EducationListController.swift */; };
 		BF228E51273B7CCC00966E23 /* EducationListController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF228E4B273B7CCC00966E23 /* EducationListController.storyboard */; };
+		BF281E21273D6FF700C44D04 /* ExpertDetailInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF281E1D273D6FF700C44D04 /* ExpertDetailInfoCell.xib */; };
+		BF281E22273D6FF700C44D04 /* ExpertDetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF281E1E273D6FF700C44D04 /* ExpertDetailInfoCell.swift */; };
+		BF281E23273D6FF700C44D04 /* ContactExpertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF281E1F273D6FF700C44D04 /* ContactExpertCell.swift */; };
+		BF281E24273D6FF700C44D04 /* ExpertSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF281E20273D6FF700C44D04 /* ExpertSummaryCell.swift */; };
 		BF2ABB2D2726EDDF00AAC6C2 /* SmallSetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2ABB2C2726EDDF00AAC6C2 /* SmallSetButton.swift */; };
 		BF2ABB312726F02C00AAC6C2 /* SmallSetButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2ABB302726F02C00AAC6C2 /* SmallSetButton.xib */; };
 		BF2ABB342726FCC900AAC6C2 /* LabelWithTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2ABB332726FCC900AAC6C2 /* LabelWithTextField.xib */; };
@@ -247,6 +251,10 @@
 		BF228E49273B7CCC00966E23 /* EducationPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationPageView.swift; sourceTree = "<group>"; };
 		BF228E4A273B7CCC00966E23 /* EducationListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationListController.swift; sourceTree = "<group>"; };
 		BF228E4B273B7CCC00966E23 /* EducationListController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EducationListController.storyboard; sourceTree = "<group>"; };
+		BF281E1D273D6FF700C44D04 /* ExpertDetailInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpertDetailInfoCell.xib; sourceTree = "<group>"; };
+		BF281E1E273D6FF700C44D04 /* ExpertDetailInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpertDetailInfoCell.swift; sourceTree = "<group>"; };
+		BF281E1F273D6FF700C44D04 /* ContactExpertCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactExpertCell.swift; sourceTree = "<group>"; };
+		BF281E20273D6FF700C44D04 /* ExpertSummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpertSummaryCell.swift; sourceTree = "<group>"; };
 		BF2ABB2C2726EDDF00AAC6C2 /* SmallSetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallSetButton.swift; sourceTree = "<group>"; };
 		BF2ABB302726F02C00AAC6C2 /* SmallSetButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallSetButton.xib; sourceTree = "<group>"; };
 		BF2ABB332726FCC900AAC6C2 /* LabelWithTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelWithTextField.xib; sourceTree = "<group>"; };
@@ -432,21 +440,30 @@
 			path = ExperienceTableCell;
 			sourceTree = "<group>";
 		};
-		67C5E3F1273CE7CF001CAD9D /* ExpertDetailCell */ = {
+		67AA8246273AB49C004937B7 /* ExpertInfoPage */ = {
 			isa = PBXGroup;
 			children = (
-				67C5E3F2273CEE13001CAD9D /* ExpertDetailInfoCell.swift */,
-				67C5E3F3273CEE13001CAD9D /* ExpertDetailInfoCell.xib */,
-				67C5E3FA273D00FE001CAD9D /* ExpertSummaryCell.swift */,
-				67C5E3FC273D0128001CAD9D /* ContactExpertCell.swift */,
+				67AA8247273AB4AA004937B7 /* CustomComponents */,
+				67AA824C273ACAF7004937B7 /* ExpertInfoViewModel.swift */,
+				67AA8252273ACB74004937B7 /* ExpertInfoViewController.swift */,
+				67AA824E273ACB2B004937B7 /* ExpertInfoViewController.storyboard */,
 			);
-			path = ExpertDetailCell;
+			path = ExpertInfoPage;
+			sourceTree = "<group>";
+		};
+		67AA8247273AB4AA004937B7 /* CustomComponents */ = {
+			isa = PBXGroup;
+			children = (
+				67AA8248273AB4E6004937B7 /* ExpertInfoCell.swift */,
+				67AA8249273AB4E6004937B7 /* ExpertInfoCell.xib */,
+			);
+			path = CustomComponents;
 			sourceTree = "<group>";
 		};
 		B8825E4D273ADEB500FE0086 /* Custom Component */ = {
 			isa = PBXGroup;
 			children = (
-				67C5E3F1273CE7CF001CAD9D /* ExpertDetailCell */,
+				BF281E1C273D6FF700C44D04 /* ExpertDetailCell */,
 				B8825E56273ADF6100FE0086 /* ExpertListCell */,
 			);
 			path = "Custom Component";
@@ -483,41 +500,15 @@
 			path = Form;
 			sourceTree = "<group>";
 		};
-		B8825E4D273ADEB500FE0086 /* Custom Component */ = {
+		BF281E1C273D6FF700C44D04 /* ExpertDetailCell */ = {
 			isa = PBXGroup;
 			children = (
-				B8825E56273ADF6100FE0086 /* ExpertListCell */,
+				BF281E1D273D6FF700C44D04 /* ExpertDetailInfoCell.xib */,
+				BF281E1E273D6FF700C44D04 /* ExpertDetailInfoCell.swift */,
+				BF281E1F273D6FF700C44D04 /* ContactExpertCell.swift */,
+				BF281E20273D6FF700C44D04 /* ExpertSummaryCell.swift */,
 			);
-			path = "Custom Component";
-			sourceTree = "<group>";
-		};
-		B8825E56273ADF6100FE0086 /* ExpertListCell */ = {
-			isa = PBXGroup;
-			children = (
-				B8825E52273ADF3100FE0086 /* ExpertListCell.swift */,
-				B8825E53273ADF3100FE0086 /* ExpertListCell.xib */,
-			);
-			path = ExpertListCell;
-			sourceTree = "<group>";
-		};
-		67AA8246273AB49C004937B7 /* ExpertInfoPage */ = {
-			isa = PBXGroup;
-			children = (
-				67AA8247273AB4AA004937B7 /* CustomComponents */,
-				67AA824C273ACAF7004937B7 /* ExpertInfoViewModel.swift */,
-				67AA8252273ACB74004937B7 /* ExpertInfoViewController.swift */,
-				67AA824E273ACB2B004937B7 /* ExpertInfoViewController.storyboard */,
-			);
-			path = ExpertInfoPage;
-			sourceTree = "<group>";
-		};
-		67AA8247273AB4AA004937B7 /* CustomComponents */ = {
-			isa = PBXGroup;
-			children = (
-				67AA8248273AB4E6004937B7 /* ExpertInfoCell.swift */,
-				67AA8249273AB4E6004937B7 /* ExpertInfoCell.xib */,
-			);
-			path = CustomComponents;
+			path = ExpertDetailCell;
 			sourceTree = "<group>";
 		};
 		BF2ABB2B2726EDB900AAC6C2 /* SmallSetButton */ = {
@@ -1133,9 +1124,9 @@
 				BF8503162722551C00CC43FB /* Assets.xcassets in Resources */,
 				BF7267EB2730E9C200B5A95F /* AccomplishmentTableCell.xib in Resources */,
 				BF7267E62730E73000B5A95F /* AccomplishmentPageView.xib in Resources */,
-				67C5E3F5273CEE13001CAD9D /* ExpertDetailInfoCell.xib in Resources */,
 				B88AFA37272A903A007408A5 /* ResumeCell.xib in Resources */,
 				BFBA47AE272A8D7800D4771E /* XIBVCTest.storyboard in Resources */,
+				BF281E21273D6FF700C44D04 /* ExpertDetailInfoCell.xib in Resources */,
 				BF228E4C273B7CCC00966E23 /* EducationFormController.storyboard in Resources */,
 				BF8503532722596400CC43FB /* LandingPageViewController.storyboard in Resources */,
 				67280DB42726D0F0006569DD /* EmptyState.xib in Resources */,
@@ -1197,7 +1188,6 @@
 				BFE0035227272F500070BD40 /* LabelWithDate.swift in Sources */,
 				67AA8253273ACB74004937B7 /* ExpertInfoViewController.swift in Sources */,
 				BF850372272266F400CC43FB /* TableViewCell+Extension.swift in Sources */,
-				67C5E3F4273CEE13001CAD9D /* ExpertDetailInfoCell.swift in Sources */,
 				679DBEA22723FAAD00CE9E8F /* ResumeTemplateCell.swift in Sources */,
 				BF85030E2722551B00CC43FB /* UserProfileViewController.swift in Sources */,
 				BFBA47AC27294AE600D4771E /* StepByStepGuidePageController.swift in Sources */,
@@ -1208,16 +1198,15 @@
 				BF8503782722828A00CC43FB /* UIImage+Extension.swift in Sources */,
 				8435DB512732A80100862FF0 /* EducationPlaceholderRepository.swift in Sources */,
 				BF5F1BEA2722D5CA004D0756 /* PersonalInfoViewModel.swift in Sources */,
-				67C5E3FB273D00FE001CAD9D /* ExpertSummaryCell.swift in Sources */,
 				BF8503922722B64600CC43FB /* ExpertListViewController.swift in Sources */,
 				B859B5402728532900627CDC /* ConsultHistoryRepository.swift in Sources */,
 				BF61D7FD27398E1C0011ACC0 /* UIPageViewController+Extension.swift in Sources */,
 				6712CF9F272EB29400449991 /* QuizPage.swift in Sources */,
+				BF281E24273D6FF700C44D04 /* ExpertSummaryCell.swift in Sources */,
 				B859B535272852EF00627CDC /* EmptyStateRepository.swift in Sources */,
-				BF85039C2722B7B700CC43FB /* EducationPageView.swift in Sources */,
 				67AA824D273ACAF7004937B7 /* ExpertInfoViewModel.swift in Sources */,
+				BF281E22273D6FF700C44D04 /* ExpertDetailInfoCell.swift in Sources */,
 				BF85036E272265C000CC43FB /* Date+Extension.swift in Sources */,
-				67C5E3FD273D0128001CAD9D /* ContactExpertCell.swift in Sources */,
 				BF2ABB4027270A6D00AAC6C2 /* LabelWithSwitch.swift in Sources */,
 				BF8503802722877400CC43FB /* Int+Extension.swift in Sources */,
 				BFBA47B4272AE5C400D4771E /* ExperienceFormController.swift in Sources */,
@@ -1263,6 +1252,7 @@
 				BFE003552727331F0070BD40 /* BigButtonWithImage.swift in Sources */,
 				8435DB492731830F00862FF0 /* AccomplishmentRepository.swift in Sources */,
 				BF850370272266BC00CC43FB /* String+Extension.swift in Sources */,
+				BF281E23273D6FF700C44D04 /* ContactExpertCell.swift in Sources */,
 				BF85035B27225C3400CC43FB /* PersonalInfoPage.swift in Sources */,
 				B88AFA36272A903A007408A5 /* ResumeCell.swift in Sources */,
 				B859B53B272852EF00627CDC /* ExperienceRepository.swift in Sources */,
