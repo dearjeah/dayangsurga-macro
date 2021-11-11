@@ -27,6 +27,7 @@ class StepByStepGuidePageController: UIPageViewController {
     var previousPageIndex: Int = -1
     var quizAnswer: [Bool] = []
     var pageType: [Int] = []
+    var selectedResume = User_Resume()
     
     weak var stepDelegate: StepByStepGuideDelegate?
     weak var prevNextDelegate: prevNextButtonDelegate?
@@ -356,7 +357,6 @@ extension StepByStepGuidePageController {
     
     fileprivate func populateItems() {
         //page type : 1-6, 6 = quiz
-        let source = "create"
         let personalInfo = initPersonalData(fullName: "", email: "", phone: "", location: "", summary: "")
         let education = initEducation()
         let quiz = initQuiz(type: 1)
@@ -365,7 +365,7 @@ extension StepByStepGuidePageController {
         let exp = initExperience()
         let skills = initSkills()
         let accomp = initAccomplishment()
-        if source == "create" {
+        if isCreate {
             stepControllerArr?.append(contentsOf: [personalInfo, education, quiz, exp, quiz2, skills, quiz3, accomp])
             pageType.append(contentsOf:[1, 2, 6, 3, 6, 4, 6, 5])
         } else {

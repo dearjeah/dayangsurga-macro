@@ -10,7 +10,9 @@ import UIKit
 class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel> {
     
     var index: Int?
-    var selectedData = User_Resume()
+    var selectedTemplate: Int?
+    var selectedUserResume = User_Resume()
+    var isCreate = Bool()
     
     @IBOutlet weak var progressBarView: ProgressBarView!
     @IBOutlet  var smallSetButtonView: SmallSetButton!
@@ -27,6 +29,8 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
         if let pageController = segue.destination as? StepByStepGuidePageController {
             pageController.stepSetup(stepDlgt: self)
             pageController.prevNextSetup(prevNextDlgt: self)
+            pageController.selectedResume = selectedUserResume
+            pageController.isCreate = isCreate
         }
     }
     
