@@ -422,6 +422,31 @@
 			path = ExperienceTableCell;
 			sourceTree = "<group>";
 		};
+		67C5E3F1273CE7CF001CAD9D /* ExpertDetailCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ExpertDetailCell;
+			sourceTree = "<group>";
+		};
+		B8825E4D273ADEB500FE0086 /* Custom Component */ = {
+			isa = PBXGroup;
+			children = (
+				67C5E3F1273CE7CF001CAD9D /* ExpertDetailCell */,
+				B8825E56273ADF6100FE0086 /* ExpertListCell */,
+			);
+			path = "Custom Component";
+			sourceTree = "<group>";
+		};
+		B8825E56273ADF6100FE0086 /* ExpertListCell */ = {
+			isa = PBXGroup;
+			children = (
+				B8825E52273ADF3100FE0086 /* ExpertListCell.swift */,
+				B8825E53273ADF3100FE0086 /* ExpertListCell.xib */,
+			);
+			path = ExpertListCell;
+			sourceTree = "<group>";
+		};
 		BF228E44273B7CCC00966E23 /* EducationPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,23 +467,6 @@
 				BF228E47273B7CCC00966E23 /* EducationFormController.swift */,
 			);
 			path = Form;
-			sourceTree = "<group>";
-		};
-		B8825E4D273ADEB500FE0086 /* Custom Component */ = {
-			isa = PBXGroup;
-			children = (
-				B8825E56273ADF6100FE0086 /* ExpertListCell */,
-			);
-			path = "Custom Component";
-			sourceTree = "<group>";
-		};
-		B8825E56273ADF6100FE0086 /* ExpertListCell */ = {
-			isa = PBXGroup;
-			children = (
-				B8825E52273ADF3100FE0086 /* ExpertListCell.swift */,
-				B8825E53273ADF3100FE0086 /* ExpertListCell.xib */,
-			);
-			path = ExpertListCell;
 			sourceTree = "<group>";
 		};
 		BF2ABB2B2726EDB900AAC6C2 /* SmallSetButton */ = {
