@@ -16,6 +16,7 @@ class ExpertInfoViewController: MVVMViewController<ExpertInfoViewModel> ,UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Info"
         infoPageImage.image = UIImage.imgExpertInfo
         infoPageInstructionTable.register(UINib(nibName: "ExpertInfoCell", bundle: nil), forCellReuseIdentifier: "ExpertInfoCell")
         infoPageDismissButton.dsLongFilledPrimaryButton(withImage: false, text: "OK, I Understand")
