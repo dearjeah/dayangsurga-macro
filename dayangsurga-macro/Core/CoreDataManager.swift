@@ -89,6 +89,8 @@ extension CoreDataManager {
 
     func preloadData() {
         
+        PreloadUserData().preloadInitialUser()
+        
         if EmptyStateRepository.shared.getAllEmptyState()?.count == 0 {
             preloadEmptyState()
         }
@@ -97,6 +99,7 @@ extension CoreDataManager {
         }
         if UserResumeRepository.shared.getAllUserResume()?.count == 0{
             preloadUserResume()
+            preloadMyRessumeDummy()
         }
         
         if PersonalInformationPlaceholderRepository.shared.getAllPIPh()?.count == 0  {

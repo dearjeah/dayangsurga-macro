@@ -16,8 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="primaryBlue"/>
+                        <gestureRecognizers/>
                         <color key="barTintColor" name="primaryBlue"/>
                         <color key="selectedImageTintColor" name="primaryYellow"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="LwL-iN-7Kh" appends="YES" id="fPW-Gw-nan"/>
+                        </connections>
                     </tabBar>
                     <connections>
                         <segue destination="ek9-tS-dju" kind="relationship" relationship="viewControllers" id="d8A-kO-z7H"/>
@@ -26,6 +30,11 @@
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dif-M2-oFZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer numberOfTapsRequired="3" id="LwL-iN-7Kh">
+                    <connections>
+                        <action selector="onTapBarMultipe:" destination="Ywq-bl-M6u" id="nEt-tN-tdy"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-787" y="-192"/>
         </scene>
