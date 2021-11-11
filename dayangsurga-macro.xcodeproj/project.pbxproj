@@ -58,6 +58,8 @@
 		B88AFA37272A903A007408A5 /* ResumeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88AFA35272A903A007408A5 /* ResumeCell.xib */; };
 		B88AFA39272AB10D007408A5 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88AFA38272AB10D007408A5 /* UIImageView+Extension.swift */; };
 		B88C82562736E7BA00335314 /* ExperienceFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88C82552736E7BA00335314 /* ExperienceFormViewModel.swift */; };
+		B8C64FFC273BEAC10005BAAA /* AccomplishFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C64FFB273BEAC10005BAAA /* AccomplishFormViewModel.swift */; };
+		B8C64FFE273BECB30005BAAA /* PreloadAccomplishmentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C64FFD273BECB30005BAAA /* PreloadAccomplishmentData.swift */; };
 		BF0F8885272ED532000B87EE /* SkillAddEditController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF0F8884272ED532000B87EE /* SkillAddEditController.storyboard */; };
 		BF0F8887272ED54C000B87EE /* SkillAddEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0F8886272ED54C000B87EE /* SkillAddEditController.swift */; };
 		BF228E4C273B7CCC00966E23 /* EducationFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF228E46273B7CCC00966E23 /* EducationFormController.storyboard */; };
@@ -229,6 +231,8 @@
 		B88AFA35272A903A007408A5 /* ResumeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResumeCell.xib; sourceTree = "<group>"; };
 		B88AFA38272AB10D007408A5 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		B88C82552736E7BA00335314 /* ExperienceFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceFormViewModel.swift; sourceTree = "<group>"; };
+		B8C64FFB273BEAC10005BAAA /* AccomplishFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomplishFormViewModel.swift; sourceTree = "<group>"; };
+		B8C64FFD273BECB30005BAAA /* PreloadAccomplishmentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadAccomplishmentData.swift; sourceTree = "<group>"; };
 		BF0F8884272ED532000B87EE /* SkillAddEditController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SkillAddEditController.storyboard; sourceTree = "<group>"; };
 		BF0F8886272ED54C000B87EE /* SkillAddEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillAddEditController.swift; sourceTree = "<group>"; };
 		BF228E46273B7CCC00966E23 /* EducationFormController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EducationFormController.storyboard; sourceTree = "<group>"; };
@@ -422,6 +426,23 @@
 			path = ExperienceTableCell;
 			sourceTree = "<group>";
 		};
+		B8825E4D273ADEB500FE0086 /* Custom Component */ = {
+			isa = PBXGroup;
+			children = (
+				B8825E56273ADF6100FE0086 /* ExpertListCell */,
+			);
+			path = "Custom Component";
+			sourceTree = "<group>";
+		};
+		B8825E56273ADF6100FE0086 /* ExpertListCell */ = {
+			isa = PBXGroup;
+			children = (
+				B8825E52273ADF3100FE0086 /* ExpertListCell.swift */,
+				B8825E53273ADF3100FE0086 /* ExpertListCell.xib */,
+			);
+			path = ExpertListCell;
+			sourceTree = "<group>";
+		};
 		BF228E44273B7CCC00966E23 /* EducationPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,6 +541,7 @@
 		BF7267DE2730E73000B5A95F /* Form */ = {
 			isa = PBXGroup;
 			children = (
+				B8C64FFB273BEAC10005BAAA /* AccomplishFormViewModel.swift */,
 				BF7267DF2730E73000B5A95F /* AccomplishFormController.swift */,
 				BF7267E02730E73000B5A95F /* AccomplishFormController.storyboard */,
 			);
@@ -861,6 +883,7 @@
 				B82BD30D2733879200BCF6DF /* PreloadResumeTemplateData.swift */,
 				84EE0708273737AC00C6C70A /* PreloadPersonalInformation.swift */,
 				B8692A32273AD62200AC0834 /* PreloadExpertData.swift */,
+				B8C64FFD273BECB30005BAAA /* PreloadAccomplishmentData.swift */,
 			);
 			path = "Mock Data";
 			sourceTree = "<group>";
@@ -1178,6 +1201,7 @@
 				8435DB55273358E300862FF0 /* AccomplishmentSuggestionRepository.swift in Sources */,
 				BF85038C2722B58A00CC43FB /* ProgressBarView.swift in Sources */,
 				BF2ABB2D2726EDDF00AAC6C2 /* SmallSetButton.swift in Sources */,
+				B8C64FFE273BECB30005BAAA /* PreloadAccomplishmentData.swift in Sources */,
 				BF228E4D273B7CCC00966E23 /* EducationFormController.swift in Sources */,
 				B859B53D272852EF00627CDC /* UserRepository.swift in Sources */,
 				B8825E54273ADF3100FE0086 /* ExpertListCell.swift in Sources */,
@@ -1191,6 +1215,7 @@
 				B859B53A272852EF00627CDC /* UserResumeRepository.swift in Sources */,
 				BF85036727225FB400CC43FB /* Constants.swift in Sources */,
 				BFE003552727331F0070BD40 /* BigButtonWithImage.swift in Sources */,
+				B8C64FFC273BEAC10005BAAA /* AccomplishFormViewModel.swift in Sources */,
 				8435DB492731830F00862FF0 /* AccomplishmentRepository.swift in Sources */,
 				BF850370272266BC00CC43FB /* String+Extension.swift in Sources */,
 				BF85035B27225C3400CC43FB /* PersonalInfoPage.swift in Sources */,

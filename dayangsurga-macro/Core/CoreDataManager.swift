@@ -120,5 +120,14 @@ extension CoreDataManager {
         if ExpertProfileRepository.shared.getAllExpertProfile()?.count == 0{
             preloadExpertProfile()
         }
+        if AccomplishmentSuggestionRepository.shared.getAllAccomplishmentSuggestion()?.count == 0{
+            preloadAccomplishSuggestion()
+        }
+        if AccomplishmentPlaceholderRepository.shared.getAllAccomplishmentPlaceholder()?.count == 0{
+            preloadAccomplishPh()
+        }
+        if AccomplishmentRepository.shared.getAllAccomplishment()?.count == 0{
+            preloadAccomplish()
+        }
     }
 }
