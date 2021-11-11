@@ -36,11 +36,19 @@ extension UIImage {
     static let imgEmptyStateEdu = UIImage.image(named: "imgEmptyStateEdu")
     static let imgEmptyStateLandingPage = UIImage.image(named: "imgEmptyStateLandingPage")
     static let imgExpEmptyState = UIImage.image(named: "imgExpEmptyState")
-    static let imgSkillEmptyState = UIImage.image(named: "imgSkillEmptyState")
+    static let imgExpertDara = UIImage.image(named: "imgExpertDara")
+    static let imgExpertDyah = UIImage.image(named: "imgExpertDyah")
+    static let imgExpertFahri = UIImage.image(named: "imgExpertFahri")
+    static let imgExpertMaria = UIImage.image(named: "imgExpertMaria")
+    static let imgExpertNashtiti = UIImage.image(named: "imgExpertNashtiti")
+    static let imgExpertRasyid = UIImage.image(named: "imgExpertRasyid")
+    static let imgExpertRomano = UIImage.image(named: "imgExpertRomano")
+    static let imgPersonalInformationEmptyState = UIImage.image(named: "imgPersonalInformationEmptyState")
     static let imgResumePreview = UIImage.image(named: "imgResumePreview")
     static let imgResumeTemplateArial = UIImage.image(named: "imgResumeTemplateArial")
     static let imgResumeTemplateGeorgia = UIImage.image(named: "imgResumeTemplateGeorgia")
     static let imgResumeTemplateHeletvica = UIImage.image(named: "imgResumeTemplateHeletvica")
+    static let imgSkillEmptyState = UIImage.image(named: "imgSkillEmptyState")
 
     private static func image(named: String) -> UIImage {
         return UIImage(named: named)!
