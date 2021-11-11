@@ -140,12 +140,17 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Ag7-9u-MTN"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Ask in WhatsApp"/>
+                                <color key="tintColor" red="0.68628668790000003" green="0.69018959999999996" blue="0.69020247459999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="  Ask in WhatsApp" image="icWhatsApp"/>
+                                <buttonConfiguration key="configuration" style="plain" image="icWhatsApp" title="  Ask in WhatsApp"/>
+                                <connections>
+                                    <action selector="askWhatsAppTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="snC-pC-sm3"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmP-Rr-LxD">
                                 <rect key="frame" x="87" y="196" width="240" height="25.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                 <color key="textColor" red="0.098039215690000001" green="0.1647058824" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -219,6 +224,7 @@
     </scenes>
     <resources>
         <image name="icLinkedIn" width="25" height="21"/>
+        <image name="icWhatsApp" width="21" height="22"/>
         <namedColor name="primaryBG">
             <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

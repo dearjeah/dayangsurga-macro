@@ -27,9 +27,9 @@ class ExpertDetailViewController: MVVMViewController<ExpertDetailViewModel>, UIT
         expertDetailTable.register(UINib.init(nibName: "ExpertDetailInfoCell", bundle: nil), forCellReuseIdentifier: "ExpertDetailInfoCell")
         setUpViewModel()
         expertDetailImage.image = UIImage(data: expertDetail.expert_image!)
-        expertName.text = expertDetail.expert_name
+        expertName.text = expertDetail.expert_name?.uppercased()
         expertAvailability.text = "Availability: \(expertDetail.day_avail_time ?? "N/A")\n\(expertDetail.day_avail_time ?? "N/A")"
-        contactExpertButton.dsLongFilledPrimaryButton(withImage: false, text: "Ask in WhatsApp")
+        contactExpertButton.dsLongFilledPrimaryButton(withImage: false, text: "  Ask in WhatsApp")
         expertDetailTable.reloadData()
     }
     
@@ -40,6 +40,10 @@ class ExpertDetailViewController: MVVMViewController<ExpertDetailViewModel>, UIT
  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
+    }
+    
+    @IBAction func askWhatsAppTapped(_ sender: Any) {
+        print("Ask \(expertDetail.expert_name ?? nil) on whatsapp")
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
