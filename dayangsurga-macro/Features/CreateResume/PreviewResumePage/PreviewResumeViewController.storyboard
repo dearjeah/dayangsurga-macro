@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="go0-Xn-eDh" customClass="PDFView">
-                                <rect key="frame" x="16" y="0.0" width="382" height="896"/>
+                                <rect key="frame" x="16" y="44" width="382" height="852"/>
                                 <color key="backgroundColor" name="primaryBG"/>
                             </view>
                         </subviews>
@@ -27,9 +27,8 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="go0-Xn-eDh" secondAttribute="bottom" id="8NE-Qk-mDN"/>
                             <constraint firstItem="go0-Xn-eDh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Hzs-aX-QhM"/>
-                            <constraint firstItem="go0-Xn-eDh" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="jrq-RT-Qqd"/>
+                            <constraint firstItem="go0-Xn-eDh" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="jrq-RT-Qqd"/>
                             <constraint firstAttribute="trailing" secondItem="go0-Xn-eDh" secondAttribute="trailing" constant="16" id="kko-fT-7e9"/>
-                            <constraint firstItem="go0-Xn-eDh" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="pIs-uB-VwL"/>
                         </constraints>
                     </view>
                     <connections>
