@@ -36,7 +36,6 @@ class ExpertInfoViewController: MVVMViewController<ExpertInfoViewModel> ,UITable
         
         cell.numberLabel.text = String(indexPath.row + 1)
         cell.numberLabel.font = UIFont(name: "SF Pro Display-Medium", size: 24.0)
-        print(UIFont.familyNames)
         return cell
     }
     /*

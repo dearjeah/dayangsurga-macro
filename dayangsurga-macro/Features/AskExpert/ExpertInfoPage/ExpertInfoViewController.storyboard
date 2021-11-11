@@ -20,11 +20,8 @@
                                 <rect key="frame" x="87" y="90" width="240" height="180"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" separatorInsetReference="fromAutomaticInsets" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="99x-3q-7oa">
-                                <rect key="frame" x="18" y="300" width="415" height="250"/>
+                                <rect key="frame" x="20.5" y="290" width="373" height="448"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="vU7-BH-5PJ"/>
-                                </constraints>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="vXQ-d8-xnP"/>
@@ -46,13 +43,14 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="SxZ-dd-oN9" secondAttribute="trailing" constant="17" id="0Lo-uS-eOr"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="SxZ-dd-oN9" secondAttribute="bottom" constant="12" id="11U-9d-kTv"/>
                             <constraint firstItem="SxZ-dd-oN9" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="23" id="E52-5G-R9B"/>
-                            <constraint firstItem="99x-3q-7oa" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" constant="19" id="IUH-Gq-2pe"/>
+                            <constraint firstItem="99x-3q-7oa" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.5" id="GjE-sf-AxT"/>
                             <constraint firstItem="ju5-TF-Mk5" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.57971" id="NpJ-fU-vPR"/>
                             <constraint firstItem="ju5-TF-Mk5" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="46" id="Oex-bM-7Em"/>
                             <constraint firstItem="ju5-TF-Mk5" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.200893" id="Ws7-Jt-wBw"/>
-                            <constraint firstItem="99x-3q-7oa" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="18" id="nfQ-c4-vvB"/>
+                            <constraint firstItem="99x-3q-7oa" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.9" id="XG5-La-A0g"/>
+                            <constraint firstItem="99x-3q-7oa" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="l6f-eG-A88"/>
+                            <constraint firstItem="99x-3q-7oa" firstAttribute="top" secondItem="ju5-TF-Mk5" secondAttribute="bottom" constant="20" id="npO-Ca-N8B"/>
                             <constraint firstItem="ju5-TF-Mk5" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="qOz-na-969"/>
-                            <constraint firstItem="99x-3q-7oa" firstAttribute="top" secondItem="ju5-TF-Mk5" secondAttribute="bottom" constant="30" id="zIX-ba-RbY"/>
                         </constraints>
                     </view>
                     <connections>
