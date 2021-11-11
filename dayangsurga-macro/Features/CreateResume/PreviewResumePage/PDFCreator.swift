@@ -37,7 +37,7 @@ class PDFCreator: NSObject{
             // 5
             context.beginPage()
             let drawContext = context.cgContext
-            var sectionBottom = addTitleSection(pageRect: pageRect, title: "Meme Amelia", drawContext: drawContext, context: context)
+            var sectionBottom = addTitleSection(pageRect: pageRect, title: "Olivia Dwi Susanti", drawContext: drawContext, context: context)
             sectionBottom = addSummarySection(pageRect: pageRect, currentPosition: sectionBottom, drawContext: drawContext, context: context)
             sectionBottom = addExperienceSection(pageRect: pageRect, drawContext: drawContext, startPosition: sectionBottom, context: context)
             sectionBottom = addEducationSection(pageRect: pageRect, startPosition: sectionBottom, drawContext: drawContext, context: context)

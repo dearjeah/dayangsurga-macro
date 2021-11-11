@@ -39,6 +39,7 @@ extension UIImage {
     static let imgExpertDara = UIImage.image(named: "imgExpertDara")
     static let imgExpertDyah = UIImage.image(named: "imgExpertDyah")
     static let imgExpertFahri = UIImage.image(named: "imgExpertFahri")
+    static let imgExpertInfo = UIImage.image(named: "imgExpertInfo")
     static let imgExpertMaria = UIImage.image(named: "imgExpertMaria")
     static let imgExpertNashtiti = UIImage.image(named: "imgExpertNashtiti")
     static let imgExpertRasyid = UIImage.image(named: "imgExpertRasyid")
