@@ -48,9 +48,12 @@ class ExpertListViewController: MVVMViewController<ExpertListViewModel> {
     }
     
     @objc func infoWasPressed(sender: UIBarButtonItem) {
-//        let storyboard = UIStoryboard(name: "", bundle: nil)
-//        let vc = storyboard.instantiateViewController(identifier: "") as! //viewcontroller//
-//        self.present(vc, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "ExpertInfoViewController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "ExpertInfoViewController")
+        vc.navigationController?.isNavigationBarHidden = false
+        vc.navigationController?.isToolbarHidden = false
+        vc.navigationItem.title = "Info"
+        self.present(vc, animated: true, completion: nil)
     }
 }
 
