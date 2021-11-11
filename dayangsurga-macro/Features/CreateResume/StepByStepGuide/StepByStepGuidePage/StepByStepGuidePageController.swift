@@ -28,6 +28,11 @@ class StepByStepGuidePageController: UIPageViewController {
     var quizAnswer: [Bool] = []
     var pageType: [Int] = []
     var selectedResume = User_Resume()
+    var personalData = User()
+    var eduData = Education()
+    var expData = Experience()
+    var skillData = Skills()
+    var accomData = Accomplishment()
     
     weak var stepDelegate: StepByStepGuideDelegate?
     weak var prevNextDelegate: prevNextButtonDelegate?
@@ -51,9 +56,10 @@ class StepByStepGuidePageController: UIPageViewController {
         self.delegate = self
         self.isPagingEnabled = false
         
+        populateResumeData()
+        populateItems()
         style()
         setup()
-        populateItems()
         notificationCenterSetup()
     }
 }
@@ -94,11 +100,11 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
     //MARK: Delegate Function
     func hideUnHideButton(currentPage: Int) {
         let isQuizPage = isQuizPage(currentIndex: currentPage)
-            if isQuizPage {
-                prevNextDelegate?.isHidePrevNextButton(was: true)
-            } else {
-                prevNextDelegate?.isHidePrevNextButton(was: false)
-            }
+        if isQuizPage {
+            prevNextDelegate?.isHidePrevNextButton(was: true)
+        } else {
+            prevNextDelegate?.isHidePrevNextButton(was: false)
+        }
     }
     
     //quizPagedelegate
@@ -295,17 +301,33 @@ extension StepByStepGuidePageController {
                 nextPageIndex = nextPageIndex + value
                 previousPageIndex = previousPageIndex + value
             } /*else if value == 0 {
-                //NEED UPDATE
-                currentPageIndex = value
-                nextPageIndex = value + 1
-                previousPageIndex = stepControllerArr?.count ?? 1 - 1
-            }*/
+               //NEED UPDATE
+               currentPageIndex = value
+               nextPageIndex = value + 1
+               previousPageIndex = stepControllerArr?.count ?? 1 - 1
+               }*/
         }
     }
 }
 
 
 //MARK: Populate Data
+extension StepByStepGuidePageController {
+    func populateResumeData() {
+        if !isCreate {
+            let data = ResumeContentRepository.shared.getResumeContentById(resume_id: Int(selectedResume.resume_id))
+            
+            if data != nil {
+                personalData = UserRepository.shared.getUserById(id: Int(selectedResume.user_id)) ?? User()
+                eduData = EducationRepository.shared.getEducationById(educationId: Int(data?.edu_id ?? Int32())) ?? Education()
+                expData = ExperienceRepository.shared.getExperienceById(experienceId: Int(data?.exp_id ?? Int32())) ?? Experience()
+                skillData = SkillRepository.shared.getSkillsById(skillId: data?.skill_id ?? Int32()) ?? Skills()
+                accomData = AccomplishmentRepository.shared.getAccomplishmentById(AccomplishmentId: Int(data?.accom_id ?? Int32())) ??  Accomplishment()
+            }
+        }
+    }
+}
+
 extension StepByStepGuidePageController {
     fileprivate func initPersonalData(fullName: String, email: String, phone: String, location: String, summary: String) -> UIViewController {
         let controller = UIViewController()

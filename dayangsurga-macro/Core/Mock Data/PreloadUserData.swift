@@ -10,6 +10,18 @@ import UIKit
 
 class PreloadUserData {
     
+    //create user
+    func preloadInitialUser(){
+        UserRepository.shared.createUser(
+            user_id: 0,
+            username: "",
+            phoneNumber: "",
+            email: "",
+            location: "",
+            summary: ""
+        )
+    }
+    
     // preload user suggestion
     func preloadUserSuggession(){
         PersonalInformationSuggestionRepository.shared.createPISuggestion(pi_suggestion_id: 1,
