@@ -172,7 +172,7 @@ extension StepByStepGuidePageController {
         guard let currentViewController = stepControllerArr?[wasPage + addedValue] else { return }
         guard let nextViewController = dataSource?.pageViewController( self, viewControllerAfter: currentViewController ) else { return }
         setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
-        pageValueChecker(currentIndex: wasPage, value:  1 + addedValue)
+        setPageIndex(value: 1 + addedValue)
         hideUnHideButton(currentPage: currentPageIndex)
         buttonFunctional(currentPage: currentPageIndex)
         stepDelegate?.progressBarUpdate(index: currentPageIndex, totalData: stepControllerArr?.count ?? 0)
@@ -182,7 +182,7 @@ extension StepByStepGuidePageController {
         guard let currentViewController = stepControllerArr?[wasPage] else { return }
         guard let prevViewController = dataSource?.pageViewController( self, viewControllerBefore: currentViewController) else { return }
         setViewControllers([prevViewController], direction: .reverse, animated: true, completion: nil)
-        pageValueChecker(currentIndex: wasPage, value: -1)
+        setPageIndex(value: -1)
         hideUnHideButton(currentPage: currentPageIndex)
         buttonFunctional(currentPage: currentPageIndex)
         stepDelegate?.progressBarUpdate(index: currentPageIndex, totalData: stepControllerArr?.count ?? 0)
@@ -224,7 +224,7 @@ extension StepByStepGuidePageController {
     
     func isLastPage(currentIndex: Int) -> Bool {
         let totalPage = stepControllerArr?.count ?? 0
-        if currentIndex == totalPage - 2 {
+        if currentIndex == totalPage - 1 {
             return true
         } else {
             return false
@@ -242,20 +242,15 @@ extension StepByStepGuidePageController {
         }
     }
     
-    private func pageValueChecker(currentIndex: Int, value: Int, progressBar: Bool = false) {
-        if isLastPage(currentIndex: currentIndex) {
-            prevNextDelegate?.changeTitleToGenerate(was: true)
-            setPageIndex(value: value, progressBar: progressBar)
-        } else {
-            setPageIndex(value: value, progressBar: progressBar)
-        }
-    }
-    
     func buttonFunctional(currentPage: Int) {
-        if currentPage == 0 {
-            prevNextDelegate?.isButtonEnable(left: false , right: true)
+        if isLastPage(currentIndex: currentPage) {
+            prevNextDelegate?.changeTitleToGenerate(was: true)
         } else {
-            prevNextDelegate?.isButtonEnable(left: true, right: true)
+            if currentPage == 0 {
+                prevNextDelegate?.isButtonEnable(left: false , right: true)
+            } else {
+                prevNextDelegate?.isButtonEnable(left: true, right: true)
+            }
         }
     }
 }

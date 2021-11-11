@@ -13,6 +13,7 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
     var selectedTemplate: Int?
     var selectedUserResume = User_Resume()
     var isCreate = Bool()
+    var isGenerate = false
     
     @IBOutlet weak var progressBarView: ProgressBarView!
     @IBOutlet  var smallSetButtonView: SmallSetButton!
@@ -51,6 +52,7 @@ extension StepByStepGuideViewController: prevNextButtonDelegate {
     
     func changeTitleToGenerate(was: Bool) {
         smallSetButtonView.rightButton.setTitle("Generate", for: .normal)
+        isGenerate = true
     }
     
     func isButtonEnable (left: Bool, right: Bool) {
