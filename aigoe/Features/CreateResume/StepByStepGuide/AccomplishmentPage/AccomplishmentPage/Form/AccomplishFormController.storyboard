@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QzH-tz-Gmh">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Accomplish Form Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="AccomplishFormController" customModule="dayangsurga_macro" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9HY-9u-2b0">
+                                <rect key="frame" x="20" y="784" width="379" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="XHp-5V-Phm"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0t-SG-dwT" customClass="DesignableButton" customModule="dayangsurga_macro" customModuleProvider="target">
+                                <rect key="frame" x="16" y="104" width="382" height="659"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BD6-HV-224">
+                                        <rect key="frame" x="8" y="90" width="366" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" name="primaryDisable"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abE-6h-hmw" customClass="LabelWithTextField" customModule="dayangsurga_macro" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="F0w-0h-Rkr"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D9Y-wY-jMM" customClass="LabelWithDate" customModule="dayangsurga_macro" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="106" width="382" height="95"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="95" id="48g-qE-u2S"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bLO-Ql-JfM" customClass="LabelWithTextField" customModule="dayangsurga_macro" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="201" width="382" height="95"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="95" id="SoD-cA-ZOF"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="abE-6h-hmw" firstAttribute="top" secondItem="i0t-SG-dwT" secondAttribute="top" id="HFm-yh-beE"/>
+                                    <constraint firstAttribute="trailing" secondItem="BD6-HV-224" secondAttribute="trailing" constant="8" id="OR7-ca-j1J"/>
+                                    <constraint firstItem="D9Y-wY-jMM" firstAttribute="top" secondItem="BD6-HV-224" secondAttribute="bottom" id="Pbt-je-Tmo"/>
+                                    <constraint firstAttribute="trailing" secondItem="bLO-Ql-JfM" secondAttribute="trailing" id="PsR-13-5CM"/>
+                                    <constraint firstItem="BD6-HV-224" firstAttribute="top" secondItem="abE-6h-hmw" secondAttribute="bottom" constant="-10" id="RBm-VL-mIJ"/>
+                                    <constraint firstItem="bLO-Ql-JfM" firstAttribute="leading" secondItem="i0t-SG-dwT" secondAttribute="leading" id="RFd-H7-AEx"/>
+                                    <constraint firstItem="bLO-Ql-JfM" firstAttribute="top" secondItem="D9Y-wY-jMM" secondAttribute="bottom" id="cup-lL-NWv"/>
+                                    <constraint firstItem="D9Y-wY-jMM" firstAttribute="leading" secondItem="i0t-SG-dwT" secondAttribute="leading" id="fe1-Sg-SBa"/>
+                                    <constraint firstItem="BD6-HV-224" firstAttribute="leading" secondItem="i0t-SG-dwT" secondAttribute="leading" constant="8" id="nOn-bj-qbJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="D9Y-wY-jMM" secondAttribute="trailing" id="tfr-j2-oWe"/>
+                                    <constraint firstItem="abE-6h-hmw" firstAttribute="leading" secondItem="i0t-SG-dwT" secondAttribute="leading" id="ynm-xH-dYP"/>
+                                    <constraint firstAttribute="trailing" secondItem="abE-6h-hmw" secondAttribute="trailing" id="zNv-SP-ODi"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" name="primaryWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="primaryBG"/>
+                        <constraints>
+                            <constraint firstItem="i0t-SG-dwT" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="GNz-c6-J9S"/>
+                            <constraint firstItem="9HY-9u-2b0" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="T89-Js-txI"/>
+                            <constraint firstItem="i0t-SG-dwT" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.922705" id="YMf-BZ-WlE"/>
+                            <constraint firstItem="i0t-SG-dwT" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.735491" id="dVo-Ii-h3B"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9HY-9u-2b0" secondAttribute="trailing" constant="15" id="h5y-r6-4zo"/>
+                            <constraint firstItem="9HY-9u-2b0" firstAttribute="top" secondItem="i0t-SG-dwT" secondAttribute="bottom" constant="21" id="pW5-gp-qpt"/>
+                            <constraint firstItem="i0t-SG-dwT" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="wxg-Oj-bok"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="fD1-eI-A4r"/>
+                    <connections>
+                        <outlet property="addOrDeleteButton" destination="9HY-9u-2b0" id="zyd-p7-zEx"/>
+                        <outlet property="addtionalCertificateLabel" destination="BD6-HV-224" id="zLb-nU-7Ij"/>
+                        <outlet property="backgroundView" destination="i0t-SG-dwT" id="VmZ-Ad-r35"/>
+                        <outlet property="certificateNameView" destination="abE-6h-hmw" id="BG2-eT-zZp"/>
+                        <outlet property="dateView" destination="D9Y-wY-jMM" id="CDs-hM-FRx"/>
+                        <outlet property="issuerView" destination="bLO-Ql-JfM" id="sWm-Pc-dZa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1884.057971014493" y="71.651785714285708"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cvD-Rm-8rr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QzH-tz-Gmh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wWQ-QJ-UB2">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="Sig-Kj-Dej"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P1o-oR-XS1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="973.91304347826099" y="71.651785714285708"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="primaryBG">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryDisable">
+            <color red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
