@@ -50,6 +50,7 @@ extension UIImage {
     static let imgResumeTemplateGeorgia = UIImage.image(named: "imgResumeTemplateGeorgia")
     static let imgResumeTemplateHeletvica = UIImage.image(named: "imgResumeTemplateHeletvica")
     static let imgSkillEmptyState = UIImage.image(named: "imgSkillEmptyState")
+    static let imgComingSoon = UIImage.image(named: "comingSoon")
 
     private static func image(named: String) -> UIImage {
         return UIImage(named: named)!
