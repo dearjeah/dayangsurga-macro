@@ -90,7 +90,6 @@
 		BF423DE7272BA396006DC552 /* XIBTes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF423DE6272BA396006DC552 /* XIBTes.storyboard */; };
 		BF423DE9272BA3B7006DC552 /* XIBTesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF423DE8272BA3B7006DC552 /* XIBTesViewController.swift */; };
 		BF423DEB272C52A2006DC552 /* ExperienceFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF423DEA272C52A2006DC552 /* ExperienceFormController.storyboard */; };
-		BF4D7CE4273E16550024D10F /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4D7CE3273E16550024D10F /* LandingPageViewController.swift */; };
 		BF5F1BEA2722D5CA004D0756 /* PersonalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BE92722D5CA004D0756 /* PersonalInfoViewModel.swift */; };
 		BF5F1BEC2722D7F0004D0756 /* ResumeTemplateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5F1BEB2722D7F0004D0756 /* ResumeTemplateViewController.storyboard */; };
 		BF5F1BEE2722D805004D0756 /* ResumeTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BED2722D805004D0756 /* ResumeTemplateViewController.swift */; };
@@ -272,7 +271,6 @@
 		BF423DE6272BA396006DC552 /* XIBTes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = XIBTes.storyboard; sourceTree = "<group>"; };
 		BF423DE8272BA3B7006DC552 /* XIBTesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBTesViewController.swift; sourceTree = "<group>"; };
 		BF423DEA272C52A2006DC552 /* ExperienceFormController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExperienceFormController.storyboard; sourceTree = "<group>"; };
-		BF4D7CE3273E16550024D10F /* LandingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingPageViewController.swift; path = "../../../../dayangsurga-macro 2/dayangsurga-macro/Features/LandingPage/LandingPageViewController.swift"; sourceTree = "<group>"; };
 		BF5F1BE92722D5CA004D0756 /* PersonalInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewModel.swift; sourceTree = "<group>"; };
 		BF5F1BEB2722D7F0004D0756 /* ResumeTemplateViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResumeTemplateViewController.storyboard; sourceTree = "<group>"; };
 		BF5F1BED2722D805004D0756 /* ResumeTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeTemplateViewController.swift; sourceTree = "<group>"; };
@@ -669,7 +667,6 @@
 			children = (
 				BF8503512722595400CC43FB /* CustomComponent */,
 				BF85034F2722594C00CC43FB /* LandingPageViewModel.swift */,
-				BF4D7CE3273E16550024D10F /* LandingPageViewController.swift */,
 				BF8503522722596400CC43FB /* LandingPageViewController.storyboard */,
 			);
 			path = LandingPage;
@@ -1253,7 +1250,6 @@
 				BF8503902722B5E100CC43FB /* RoundedButton.swift in Sources */,
 				BF85030A2722551B00CC43FB /* AppDelegate.swift in Sources */,
 				BF8503742722675000CC43FB /* Cell+Extension.swift in Sources */,
-				BF4D7CE4273E16550024D10F /* LandingPageViewController.swift in Sources */,
 				B859B53A272852EF00627CDC /* UserResumeRepository.swift in Sources */,
 				BF85036727225FB400CC43FB /* Constants.swift in Sources */,
 				BFE003552727331F0070BD40 /* BigButtonWithImage.swift in Sources */,
