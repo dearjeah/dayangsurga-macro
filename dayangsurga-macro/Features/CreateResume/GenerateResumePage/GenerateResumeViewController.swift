@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PDFKit
 
 class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
 
@@ -72,6 +73,10 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
     
     @IBAction func exportDidTap(_ sender: Any) {
         print("Export button tapped")
+        let pdfCreator = PDFCreator(dataInput: "Test", userResume: userResume)
+        let pdfData = pdfCreator.createPDF()
+        let vc = UIActivityViewController(activityItems: [pdfData], applicationActivities: nil)
+        present(vc, animated: true, completion: nil)
     }
     
     /*

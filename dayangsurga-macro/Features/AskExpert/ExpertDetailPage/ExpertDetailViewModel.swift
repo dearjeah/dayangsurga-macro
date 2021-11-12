@@ -8,5 +8,7 @@
 import Foundation
 
 class ExpertDetailViewModel {
-    
+    func getExpertInfo(indexPath: Int)->Expert_Profile{
+        return ExpertProfileRepository.shared.getExpertProfileById(expertId: indexPath)!
+    }
 }

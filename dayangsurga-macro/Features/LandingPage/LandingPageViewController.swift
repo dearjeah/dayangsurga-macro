@@ -189,9 +189,8 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
     func goToEdit(index: Int){
         let storyboard = UIStoryboard(name: "StepByStepGuideViewController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToStepByStep") as! StepByStepGuideViewController
-        // passing data
-//        vc.index = index
-        vc.selectedData = userResume[selectedIndex]
+        vc.selectedUserResume = userResume[selectedIndex]
+        vc.isCreate = false
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.titleView?.tintColor = .white
         self.tabBarController?.tabBar.isHidden = true

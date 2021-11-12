@@ -15,11 +15,13 @@ class HomepageController: UITabBarController {
 
         // Do any additional setup after loading the view.
     }
-//    override var preferredStatusBarStyle: UIStatusBarStyle {
-//        .lightContent
-//    }
-//    
-//    override func viewDidAppear(_ animated: Bool) {
-//        navigationController?.navigationBar.barStyle = .default
-//    }
+    
+    @IBAction func onTapBarMultipe(_ sender: Any) {
+        
+        showSelectionAlertWithCompletion(title: "HAPUS DATA?", msg: "BAKAR ?", confirmMsg: "BAKAR", cancelMsg: "PLS NO") { bakar in
+            if bakar {
+                CoreDataManager.sharedManager.resetData()
+            }
+        }
+    }
 }

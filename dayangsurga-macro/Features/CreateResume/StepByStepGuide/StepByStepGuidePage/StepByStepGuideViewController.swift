@@ -10,7 +10,10 @@ import UIKit
 class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel> {
     
     var index: Int?
-    var selectedData = User_Resume()
+    var selectedTemplate: Int?
+    var selectedUserResume = User_Resume()
+    var isCreate = Bool()
+    var isGenerate = false
     
     @IBOutlet weak var progressBarView: ProgressBarView!
     @IBOutlet  var smallSetButtonView: SmallSetButton!
@@ -27,6 +30,8 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
         if let pageController = segue.destination as? StepByStepGuidePageController {
             pageController.stepSetup(stepDlgt: self)
             pageController.prevNextSetup(prevNextDlgt: self)
+            pageController.selectedResume = selectedUserResume
+            pageController.isCreate = isCreate
         }
     }
     
@@ -47,6 +52,7 @@ extension StepByStepGuideViewController: prevNextButtonDelegate {
     
     func changeTitleToGenerate(was: Bool) {
         smallSetButtonView.rightButton.setTitle("Generate", for: .normal)
+        isGenerate = true
     }
     
     func isButtonEnable (left: Bool, right: Bool) {
