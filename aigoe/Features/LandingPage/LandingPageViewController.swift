@@ -121,8 +121,8 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         let alert = UIAlertController(title: "\(userResume[selectedIndex].name ?? "")", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Preview Resume", style: .default, handler: {action in self.goToPreview()}))
         alert.addAction(UIAlertAction(title: "Edit Resume", style: .default, handler: {action in self.goToEdit(index: self.selectedIndex )}))
-        alert.addAction(UIAlertAction(title: "Check Typo", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Translate Resume", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Check Typo", style: .default, handler: {action in self.goToComingSoon()}))
+        alert.addAction(UIAlertAction(title: "Translate Resume", style: .default, handler: {action in self.goToComingSoon()}))
         alert.addAction(UIAlertAction(title: "Delete Resume", style: .destructive, handler: {action in self.showAlertForDelete()}))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.view.tintColor = UIColor.primaryBlue
@@ -216,4 +216,13 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         collectionView.reloadData()
     }
 
+    func goToComingSoon(){
+        let storyboard = UIStoryboard(name: "UserProfileViewController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "UserProfileView") as! UserProfileViewController
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.titleView?.tintColor = .white
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
