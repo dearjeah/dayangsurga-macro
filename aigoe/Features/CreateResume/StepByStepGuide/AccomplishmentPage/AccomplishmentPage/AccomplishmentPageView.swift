@@ -7,12 +7,21 @@
 
 import UIKit
 
+protocol AccomplishListDelegate: AnyObject {
+    func goToAddAccom()
+}
+
 class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var emptyStateView: EmptyState!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIButton!
     var totalData = 1
+    
+    weak var delegate: AccomplishListDelegate?
+    var stepViewModel = StepByStepGuideViewModel()
+    var emptyState = Empty_State()
+    var accomplishment = [Accomplishment]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,6 +33,10 @@ class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource
         super.init(coder: aDecoder)
         initWithNib()
         registerTableView()
+        
+        emptyState = stepViewModel.getEmptyStateId(Id: 4) ?? emptyState
+//        experience = stepViewModel.getExpData() ?? []
+        tableView.reloadData()
     }
     
     convenience init(text: String) {
@@ -51,6 +64,7 @@ class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource
     }
     
     @IBAction func addAction(_ sender: Any) {
+        delegate?.goToAddAccom()
     }
     
     // setup table view
@@ -65,14 +79,15 @@ class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if totalData != 0 {
+        if accomplishment.count != 0 {
             emptyStateView.isHidden = true
-            return 2
+            return accomplishment.count
         } else {
             emptyStateView.isHidden = false
             emptyStateView.emptyStateImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
             emptyStateView.emptyStateImage.contentMode = .scaleAspectFit
             emptyStateView.emptyStateImage.clipsToBounds = true
+            
             emptyStateView.emptyStateImage.image = UIImage(named: "imgEmptyStateAccom")
             emptyStateView.emptyStateDescription.text = "You have no accomplishment yet. Click the ‘Add’ button to add your certificates or awards."
             self.tableView.backgroundView = emptyStateView
