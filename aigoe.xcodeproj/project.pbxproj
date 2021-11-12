@@ -90,7 +90,6 @@
 		BF423DE7272BA396006DC552 /* XIBTes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF423DE6272BA396006DC552 /* XIBTes.storyboard */; };
 		BF423DE9272BA3B7006DC552 /* XIBTesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF423DE8272BA3B7006DC552 /* XIBTesViewController.swift */; };
 		BF423DEB272C52A2006DC552 /* ExperienceFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF423DEA272C52A2006DC552 /* ExperienceFormController.storyboard */; };
-		BF4D7CE4273E16550024D10F /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4D7CE3273E16550024D10F /* LandingPageViewController.swift */; };
 		BF5F1BEA2722D5CA004D0756 /* PersonalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BE92722D5CA004D0756 /* PersonalInfoViewModel.swift */; };
 		BF5F1BEC2722D7F0004D0756 /* ResumeTemplateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5F1BEB2722D7F0004D0756 /* ResumeTemplateViewController.storyboard */; };
 		BF5F1BEE2722D805004D0756 /* ResumeTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BED2722D805004D0756 /* ResumeTemplateViewController.swift */; };
@@ -160,6 +159,7 @@
 		BF8503B52722BABF00CC43FB /* StepByStepGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8503B42722BABF00CC43FB /* StepByStepGuideViewModel.swift */; };
 		BF8503B92722BDCF00CC43FB /* HomepageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8503B72722BDCF00CC43FB /* HomepageController.swift */; };
 		BF8503BC2722BDE900CC43FB /* Homepage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8503BB2722BDE900CC43FB /* Homepage.storyboard */; };
+		BFA6AABF273E368100A4D677 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6AABE273E368100A4D677 /* LandingPageViewController.swift */; };
 		BFBA47AC27294AE600D4771E /* StepByStepGuidePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA47AB27294AE600D4771E /* StepByStepGuidePageController.swift */; };
 		BFBA47AE272A8D7800D4771E /* XIBVCTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFBA47AD272A8D7800D4771E /* XIBVCTest.storyboard */; };
 		BFBA47B0272A8D9800D4771E /* XIBVCTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA47AF272A8D9800D4771E /* XIBVCTestViewController.swift */; };
@@ -272,7 +272,6 @@
 		BF423DE6272BA396006DC552 /* XIBTes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = XIBTes.storyboard; sourceTree = "<group>"; };
 		BF423DE8272BA3B7006DC552 /* XIBTesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBTesViewController.swift; sourceTree = "<group>"; };
 		BF423DEA272C52A2006DC552 /* ExperienceFormController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExperienceFormController.storyboard; sourceTree = "<group>"; };
-		BF4D7CE3273E16550024D10F /* LandingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingPageViewController.swift; path = "../../../../dayangsurga-macro 2/dayangsurga-macro/Features/LandingPage/LandingPageViewController.swift"; sourceTree = "<group>"; };
 		BF5F1BE92722D5CA004D0756 /* PersonalInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewModel.swift; sourceTree = "<group>"; };
 		BF5F1BEB2722D7F0004D0756 /* ResumeTemplateViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResumeTemplateViewController.storyboard; sourceTree = "<group>"; };
 		BF5F1BED2722D805004D0756 /* ResumeTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeTemplateViewController.swift; sourceTree = "<group>"; };
@@ -346,6 +345,7 @@
 		BF8503B42722BABF00CC43FB /* StepByStepGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepGuideViewModel.swift; sourceTree = "<group>"; };
 		BF8503B72722BDCF00CC43FB /* HomepageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageController.swift; sourceTree = "<group>"; };
 		BF8503BB2722BDE900CC43FB /* Homepage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Homepage.storyboard; sourceTree = "<group>"; };
+		BFA6AABE273E368100A4D677 /* LandingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		BFBA47AB27294AE600D4771E /* StepByStepGuidePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepGuidePageController.swift; sourceTree = "<group>"; };
 		BFBA47AD272A8D7800D4771E /* XIBVCTest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = XIBVCTest.storyboard; sourceTree = "<group>"; };
 		BFBA47AF272A8D9800D4771E /* XIBVCTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBVCTestViewController.swift; sourceTree = "<group>"; };
@@ -669,7 +669,7 @@
 			children = (
 				BF8503512722595400CC43FB /* CustomComponent */,
 				BF85034F2722594C00CC43FB /* LandingPageViewModel.swift */,
-				BF4D7CE3273E16550024D10F /* LandingPageViewController.swift */,
+				BFA6AABE273E368100A4D677 /* LandingPageViewController.swift */,
 				BF8503522722596400CC43FB /* LandingPageViewController.storyboard */,
 			);
 			path = LandingPage;
@@ -1253,7 +1253,7 @@
 				BF8503902722B5E100CC43FB /* RoundedButton.swift in Sources */,
 				BF85030A2722551B00CC43FB /* AppDelegate.swift in Sources */,
 				BF8503742722675000CC43FB /* Cell+Extension.swift in Sources */,
-				BF4D7CE4273E16550024D10F /* LandingPageViewController.swift in Sources */,
+				BFA6AABF273E368100A4D677 /* LandingPageViewController.swift in Sources */,
 				B859B53A272852EF00627CDC /* UserResumeRepository.swift in Sources */,
 				BF85036727225FB400CC43FB /* Constants.swift in Sources */,
 				BFE003552727331F0070BD40 /* BigButtonWithImage.swift in Sources */,
