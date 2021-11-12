@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AccomplishFormController: UIViewController {
+class AccomplishFormController: MVVMViewController<AccomplishFormViewModel> {
 
     @IBOutlet weak var backgroundView: DesignableButton!
     @IBOutlet weak var certificateNameView: LabelWithTextField!
@@ -16,11 +16,17 @@ class AccomplishFormController: UIViewController {
     @IBOutlet weak var addOrDeleteButton: UIButton!
     @IBOutlet weak var addtionalCertificateLabel: UILabel!
     
+    var accomplish: Accomplishment? = nil
+    var accomplishPh: Accomplish_Placeholder?
+    var accomplishSuggest: Accomplishment_Suggest?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.viewModel = AccomplishFormViewModel()
+        accomplishPh = self.viewModel?.getAccomplishPh()
+        accomplishSuggest = self.viewModel?.getAccomplishSuggestion()
         setView()
-        setupForm()
         hideKeyboardWhenTappedAround()
         //tes coding tambahan
     }
@@ -28,21 +34,18 @@ class AccomplishFormController: UIViewController {
     func setView(){
         self.title = "Accomplishment"
         self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.viewModel = AccomplishFormViewModel()
+        accomplishPh = self.viewModel?.getAccomplishPh()
+        accomplishSuggest = self.viewModel?.getAccomplishSuggestion()
+        certificateNameView.titleLabel.text = "Certificate/Award Name*"
+        addtionalCertificateLabel.text = accomplishSuggest?.title
+        dateView.titleLabel.text = "Qualification*"
+        issuerView.titleLabel.text = "Issuer*"
+        
+        certificateNameView.textField.placeholder = accomplishPh?.title_ph
+        issuerView.textField.placeholder = accomplishPh?.given_date_ph
         addOrDeleteButton.dsLongFilledPrimaryButton(withImage: false, text: "Add")
-        addtionalCertificateLabel.text = "Only include certificates or awards that are relevant to the job you're applying for."
     }
     
-    func setupForm(){
-        // for accomplishment name
-        certificateNameView.titleLabel.text = "Certificate/Award Name*"
-        certificateNameView.textField.placeholder = "e.g. UI/UX & Product Design"
-        
-        // for accomplishment date
-        dateView.titleLabel.text = "Qualification*"
-        
-        // for issuer accomplishment
-        issuerView.titleLabel.text = "Issuer*"
-        issuerView.textField.placeholder = "e.g. Dayang.co"
-    }
     
 }

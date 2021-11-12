@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class AccomplishFormViewModel {
+class AccomplishFormViewModel: NSObject {
     
     func getAccomplishSuggestion() -> Accomplishment_Suggest?{
         return AccomplishmentSuggestionRepository.shared.getAccomplishmentSuggestionById(accomSuggestId: 0)
