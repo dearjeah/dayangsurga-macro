@@ -90,6 +90,7 @@
 		BF423DE7272BA396006DC552 /* XIBTes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF423DE6272BA396006DC552 /* XIBTes.storyboard */; };
 		BF423DE9272BA3B7006DC552 /* XIBTesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF423DE8272BA3B7006DC552 /* XIBTesViewController.swift */; };
 		BF423DEB272C52A2006DC552 /* ExperienceFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF423DEA272C52A2006DC552 /* ExperienceFormController.storyboard */; };
+		BF4D7CE4273E16550024D10F /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4D7CE3273E16550024D10F /* LandingPageViewController.swift */; };
 		BF5F1BEA2722D5CA004D0756 /* PersonalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BE92722D5CA004D0756 /* PersonalInfoViewModel.swift */; };
 		BF5F1BEC2722D7F0004D0756 /* ResumeTemplateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5F1BEB2722D7F0004D0756 /* ResumeTemplateViewController.storyboard */; };
 		BF5F1BEE2722D805004D0756 /* ResumeTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BED2722D805004D0756 /* ResumeTemplateViewController.swift */; };
@@ -120,7 +121,6 @@
 		BF8503302722551C00CC43FB /* dayangsurga_macroUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85032F2722551C00CC43FB /* dayangsurga_macroUITestsLaunchTests.swift */; };
 		BF8503502722594C00CC43FB /* LandingPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85034F2722594C00CC43FB /* LandingPageViewModel.swift */; };
 		BF8503532722596400CC43FB /* LandingPageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8503522722596400CC43FB /* LandingPageViewController.storyboard */; };
-		BF8503552722599E00CC43FB /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8503542722599E00CC43FB /* LandingPageViewController.swift */; };
 		BF85035B27225C3400CC43FB /* PersonalInfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF85035A27225C3400CC43FB /* PersonalInfoPage.swift */; };
 		BF85035D27225C4300CC43FB /* PersonalInfoPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF85035C27225C4300CC43FB /* PersonalInfoPage.xib */; };
 		BF85036327225DBB00CC43FB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF85036227225DBB00CC43FB /* Colors.xcassets */; };
@@ -272,6 +272,7 @@
 		BF423DE6272BA396006DC552 /* XIBTes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = XIBTes.storyboard; sourceTree = "<group>"; };
 		BF423DE8272BA3B7006DC552 /* XIBTesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBTesViewController.swift; sourceTree = "<group>"; };
 		BF423DEA272C52A2006DC552 /* ExperienceFormController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExperienceFormController.storyboard; sourceTree = "<group>"; };
+		BF4D7CE3273E16550024D10F /* LandingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingPageViewController.swift; path = "../../../../dayangsurga-macro 2/dayangsurga-macro/Features/LandingPage/LandingPageViewController.swift"; sourceTree = "<group>"; };
 		BF5F1BE92722D5CA004D0756 /* PersonalInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewModel.swift; sourceTree = "<group>"; };
 		BF5F1BEB2722D7F0004D0756 /* ResumeTemplateViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResumeTemplateViewController.storyboard; sourceTree = "<group>"; };
 		BF5F1BED2722D805004D0756 /* ResumeTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeTemplateViewController.swift; sourceTree = "<group>"; };
@@ -290,7 +291,7 @@
 		BF7267E22730E73000B5A95F /* AccomplishmentPageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccomplishmentPageView.xib; sourceTree = "<group>"; };
 		BF7267E82730E9C200B5A95F /* AccomplishmentTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccomplishmentTableCell.swift; sourceTree = "<group>"; };
 		BF7267E92730E9C200B5A95F /* AccomplishmentTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccomplishmentTableCell.xib; sourceTree = "<group>"; };
-		BF8503062722551B00CC43FB /* dayangsurga-macro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dayangsurga-macro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF8503062722551B00CC43FB /* aigoe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aigoe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8503092722551B00CC43FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF85030B2722551B00CC43FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BF85030D2722551B00CC43FB /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
@@ -299,14 +300,13 @@
 		BF8503152722551C00CC43FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF8503182722551C00CC43FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF85031A2722551C00CC43FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF85031F2722551C00CC43FB /* dayangsurga-macroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dayangsurga-macroTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF85031F2722551C00CC43FB /* aigoeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aigoeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8503232722551C00CC43FB /* dayangsurga_macroTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dayangsurga_macroTests.swift; sourceTree = "<group>"; };
-		BF8503292722551C00CC43FB /* dayangsurga-macroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "dayangsurga-macroUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF8503292722551C00CC43FB /* aigoeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aigoeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF85032D2722551C00CC43FB /* dayangsurga_macroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dayangsurga_macroUITests.swift; sourceTree = "<group>"; };
 		BF85032F2722551C00CC43FB /* dayangsurga_macroUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dayangsurga_macroUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BF85034F2722594C00CC43FB /* LandingPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewModel.swift; sourceTree = "<group>"; };
 		BF8503522722596400CC43FB /* LandingPageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LandingPageViewController.storyboard; sourceTree = "<group>"; };
-		BF8503542722599E00CC43FB /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LandingPageViewController.swift; path = "dayangsurga-macro/Features/LandingPage/LandingPageViewController.swift"; sourceTree = SOURCE_ROOT; };
 		BF85035A27225C3400CC43FB /* PersonalInfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoPage.swift; sourceTree = "<group>"; };
 		BF85035C27225C4300CC43FB /* PersonalInfoPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalInfoPage.xib; sourceTree = "<group>"; };
 		BF85036227225DBB00CC43FB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -594,9 +594,9 @@
 		BF8502FD2722551B00CC43FB = {
 			isa = PBXGroup;
 			children = (
-				BF8503082722551B00CC43FB /* dayangsurga-macro */,
-				BF8503222722551C00CC43FB /* dayangsurga-macroTests */,
-				BF85032C2722551C00CC43FB /* dayangsurga-macroUITests */,
+				BF8503082722551B00CC43FB /* aigoe */,
+				BF8503222722551C00CC43FB /* aigoeTests */,
+				BF85032C2722551C00CC43FB /* aigoeUITests */,
 				BF8503072722551B00CC43FB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -604,14 +604,14 @@
 		BF8503072722551B00CC43FB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BF8503062722551B00CC43FB /* dayangsurga-macro.app */,
-				BF85031F2722551C00CC43FB /* dayangsurga-macroTests.xctest */,
-				BF8503292722551C00CC43FB /* dayangsurga-macroUITests.xctest */,
+				BF8503062722551B00CC43FB /* aigoe.app */,
+				BF85031F2722551C00CC43FB /* aigoeTests.xctest */,
+				BF8503292722551C00CC43FB /* aigoeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BF8503082722551B00CC43FB /* dayangsurga-macro */ = {
+		BF8503082722551B00CC43FB /* aigoe */ = {
 			isa = PBXGroup;
 			children = (
 				BF85033D2722559100CC43FB /* Features */,
@@ -621,24 +621,24 @@
 				BF85036027225CDF00CC43FB /* Core */,
 				BF85031A2722551C00CC43FB /* Info.plist */,
 			);
-			path = "dayangsurga-macro";
+			path = aigoe;
 			sourceTree = "<group>";
 		};
-		BF8503222722551C00CC43FB /* dayangsurga-macroTests */ = {
+		BF8503222722551C00CC43FB /* aigoeTests */ = {
 			isa = PBXGroup;
 			children = (
 				BF8503232722551C00CC43FB /* dayangsurga_macroTests.swift */,
 			);
-			path = "dayangsurga-macroTests";
+			path = aigoeTests;
 			sourceTree = "<group>";
 		};
-		BF85032C2722551C00CC43FB /* dayangsurga-macroUITests */ = {
+		BF85032C2722551C00CC43FB /* aigoeUITests */ = {
 			isa = PBXGroup;
 			children = (
 				BF85032D2722551C00CC43FB /* dayangsurga_macroUITests.swift */,
 				BF85032F2722551C00CC43FB /* dayangsurga_macroUITestsLaunchTests.swift */,
 			);
-			path = "dayangsurga-macroUITests";
+			path = aigoeUITests;
 			sourceTree = "<group>";
 		};
 		BF85033C2722558100CC43FB /* Application */ = {
@@ -669,7 +669,7 @@
 			children = (
 				BF8503512722595400CC43FB /* CustomComponent */,
 				BF85034F2722594C00CC43FB /* LandingPageViewModel.swift */,
-				BF8503542722599E00CC43FB /* LandingPageViewController.swift */,
+				BF4D7CE3273E16550024D10F /* LandingPageViewController.swift */,
 				BF8503522722596400CC43FB /* LandingPageViewController.storyboard */,
 			);
 			path = LandingPage;
@@ -1015,9 +1015,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BF8503052722551B00CC43FB /* dayangsurga-macro */ = {
+		BF8503052722551B00CC43FB /* aigoe */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF8503332722551C00CC43FB /* Build configuration list for PBXNativeTarget "dayangsurga-macro" */;
+			buildConfigurationList = BF8503332722551C00CC43FB /* Build configuration list for PBXNativeTarget "aigoe" */;
 			buildPhases = (
 				BF8503022722551B00CC43FB /* Sources */,
 				BF8503032722551B00CC43FB /* Frameworks */,
@@ -1027,14 +1027,14 @@
 			);
 			dependencies = (
 			);
-			name = "dayangsurga-macro";
+			name = aigoe;
 			productName = "dayangsurga-macro";
-			productReference = BF8503062722551B00CC43FB /* dayangsurga-macro.app */;
+			productReference = BF8503062722551B00CC43FB /* aigoe.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BF85031E2722551C00CC43FB /* dayangsurga-macroTests */ = {
+		BF85031E2722551C00CC43FB /* aigoeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF8503362722551C00CC43FB /* Build configuration list for PBXNativeTarget "dayangsurga-macroTests" */;
+			buildConfigurationList = BF8503362722551C00CC43FB /* Build configuration list for PBXNativeTarget "aigoeTests" */;
 			buildPhases = (
 				BF85031B2722551C00CC43FB /* Sources */,
 				BF85031C2722551C00CC43FB /* Frameworks */,
@@ -1045,14 +1045,14 @@
 			dependencies = (
 				BF8503212722551C00CC43FB /* PBXTargetDependency */,
 			);
-			name = "dayangsurga-macroTests";
+			name = aigoeTests;
 			productName = "dayangsurga-macroTests";
-			productReference = BF85031F2722551C00CC43FB /* dayangsurga-macroTests.xctest */;
+			productReference = BF85031F2722551C00CC43FB /* aigoeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BF8503282722551C00CC43FB /* dayangsurga-macroUITests */ = {
+		BF8503282722551C00CC43FB /* aigoeUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF8503392722551C00CC43FB /* Build configuration list for PBXNativeTarget "dayangsurga-macroUITests" */;
+			buildConfigurationList = BF8503392722551C00CC43FB /* Build configuration list for PBXNativeTarget "aigoeUITests" */;
 			buildPhases = (
 				BF8503252722551C00CC43FB /* Sources */,
 				BF8503262722551C00CC43FB /* Frameworks */,
@@ -1063,9 +1063,9 @@
 			dependencies = (
 				BF85032B2722551C00CC43FB /* PBXTargetDependency */,
 			);
-			name = "dayangsurga-macroUITests";
+			name = aigoeUITests;
 			productName = "dayangsurga-macroUITests";
-			productReference = BF8503292722551C00CC43FB /* dayangsurga-macroUITests.xctest */;
+			productReference = BF8503292722551C00CC43FB /* aigoeUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -1091,7 +1091,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BF8503012722551B00CC43FB /* Build configuration list for PBXProject "dayangsurga-macro" */;
+			buildConfigurationList = BF8503012722551B00CC43FB /* Build configuration list for PBXProject "aigoe" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1104,9 +1104,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BF8503052722551B00CC43FB /* dayangsurga-macro */,
-				BF85031E2722551C00CC43FB /* dayangsurga-macroTests */,
-				BF8503282722551C00CC43FB /* dayangsurga-macroUITests */,
+				BF8503052722551B00CC43FB /* aigoe */,
+				BF85031E2722551C00CC43FB /* aigoeTests */,
+				BF8503282722551C00CC43FB /* aigoeUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1200,7 +1200,6 @@
 				BF5F1BFA2722D983004D0756 /* PreviewResumeViewController.swift in Sources */,
 				BF8503962722B68A00CC43FB /* ExpertListViewModel.swift in Sources */,
 				675812C12727900600E106AF /* TechnicalSkillsEditCell.swift in Sources */,
-				BF8503552722599E00CC43FB /* LandingPageViewController.swift in Sources */,
 				BF8503782722828A00CC43FB /* UIImage+Extension.swift in Sources */,
 				8435DB512732A80100862FF0 /* EducationPlaceholderRepository.swift in Sources */,
 				BF5F1BEA2722D5CA004D0756 /* PersonalInfoViewModel.swift in Sources */,
@@ -1254,6 +1253,7 @@
 				BF8503902722B5E100CC43FB /* RoundedButton.swift in Sources */,
 				BF85030A2722551B00CC43FB /* AppDelegate.swift in Sources */,
 				BF8503742722675000CC43FB /* Cell+Extension.swift in Sources */,
+				BF4D7CE4273E16550024D10F /* LandingPageViewController.swift in Sources */,
 				B859B53A272852EF00627CDC /* UserResumeRepository.swift in Sources */,
 				BF85036727225FB400CC43FB /* Constants.swift in Sources */,
 				BFE003552727331F0070BD40 /* BigButtonWithImage.swift in Sources */,
@@ -1323,12 +1323,12 @@
 /* Begin PBXTargetDependency section */
 		BF8503212722551C00CC43FB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BF8503052722551B00CC43FB /* dayangsurga-macro */;
+			target = BF8503052722551B00CC43FB /* aigoe */;
 			targetProxy = BF8503202722551C00CC43FB /* PBXContainerItemProxy */;
 		};
 		BF85032B2722551C00CC43FB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BF8503052722551B00CC43FB /* dayangsurga-macro */;
+			target = BF8503052722551B00CC43FB /* aigoe */;
 			targetProxy = BF85032A2722551C00CC43FB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1478,7 +1478,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4R76W27L99;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "dayangsurga-macro/Info.plist";
+				INFOPLIST_FILE = aigoe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Homepage;
@@ -1491,7 +1491,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.delvinajanice.dayangsurga-macro";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dayangsurga.aigoe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1508,7 +1508,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4R76W27L99;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "dayangsurga-macro/Info.plist";
+				INFOPLIST_FILE = aigoe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Homepage;
@@ -1521,7 +1521,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.delvinajanice.dayangsurga-macro";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dayangsurga.aigoe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1550,7 +1550,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dayangsurga-macro.app/dayangsurga-macro";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/aigoe.app/aigoe";
 			};
 			name = Debug;
 		};
@@ -1575,7 +1575,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dayangsurga-macro.app/dayangsurga-macro";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/aigoe.app/aigoe";
 			};
 			name = Release;
 		};
@@ -1628,7 +1628,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BF8503012722551B00CC43FB /* Build configuration list for PBXProject "dayangsurga-macro" */ = {
+		BF8503012722551B00CC43FB /* Build configuration list for PBXProject "aigoe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF8503312722551C00CC43FB /* Debug */,
@@ -1637,7 +1637,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF8503332722551C00CC43FB /* Build configuration list for PBXNativeTarget "dayangsurga-macro" */ = {
+		BF8503332722551C00CC43FB /* Build configuration list for PBXNativeTarget "aigoe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF8503342722551C00CC43FB /* Debug */,
@@ -1646,7 +1646,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF8503362722551C00CC43FB /* Build configuration list for PBXNativeTarget "dayangsurga-macroTests" */ = {
+		BF8503362722551C00CC43FB /* Build configuration list for PBXNativeTarget "aigoeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF8503372722551C00CC43FB /* Debug */,
@@ -1655,7 +1655,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF8503392722551C00CC43FB /* Build configuration list for PBXNativeTarget "dayangsurga-macroUITests" */ = {
+		BF8503392722551C00CC43FB /* Build configuration list for PBXNativeTarget "aigoeUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF85033A2722551C00CC43FB /* Debug */,
