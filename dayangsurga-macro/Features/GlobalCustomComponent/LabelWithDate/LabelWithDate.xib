@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LabelWithDate" customModule="dayangsurga_macro" customModuleProvider="target">
             <connections>
-                <outlet property="dateButton" destination="FYU-Cy-xGu" id="fGI-rF-igW"/>
+                <outlet property="datePicker" destination="5MS-XW-YaV" id="QsE-Tt-GpM"/>
                 <outlet property="dateTitle" destination="6Zt-8C-ard" id="6wX-4b-4Yi"/>
                 <outlet property="titleLabel" destination="UPb-Nz-Xq9" id="5GH-1t-oJE"/>
             </connections>
@@ -21,16 +21,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Certificate/Award Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPb-Nz-Xq9">
-                    <rect key="frame" x="16" y="5" width="382" height="30"/>
+                    <rect key="frame" x="8" y="5" width="398" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="rDM-rb-4fr"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" name="primaryBlue"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7qU-ay-6qN" customClass="DesignableView" customModule="dayangsurga_macro" customModuleProvider="target">
-                    <rect key="frame" x="16" y="40" width="382" height="46"/>
+                    <rect key="frame" x="8" y="40" width="398" height="46"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Zt-8C-ard">
                             <rect key="frame" x="10" y="12.5" width="36" height="21"/>
@@ -38,25 +38,24 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FYU-Cy-xGu">
-                            <rect key="frame" x="279" y="7.5" width="93" height="31"/>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="5MS-XW-YaV">
+                            <rect key="frame" x="258" y="5" width="130" height="36"/>
                             <constraints>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="5J4-QZ-EuC"/>
+                                <constraint firstAttribute="width" constant="130" id="7iU-vD-zeP"/>
+                                <constraint firstAttribute="height" constant="36" id="Ivy-vv-gRf"/>
                             </constraints>
-                            <color key="tintColor" name="primaryBlue"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="gray" title="June 2020"/>
                             <connections>
-                                <action selector="datePressed:" destination="-1" eventType="touchUpInside" id="y7D-zd-SDp"/>
+                                <action selector="datePickerWasPressed:" destination="-1" eventType="valueChanged" id="y82-An-qtB"/>
                             </connections>
-                        </button>
+                        </datePicker>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="5MS-XW-YaV" firstAttribute="top" secondItem="7qU-ay-6qN" secondAttribute="top" constant="5" id="DIT-iM-EWS"/>
                         <constraint firstItem="6Zt-8C-ard" firstAttribute="leading" secondItem="7qU-ay-6qN" secondAttribute="leading" constant="10" id="L55-sM-nM2"/>
                         <constraint firstItem="6Zt-8C-ard" firstAttribute="height" secondItem="7qU-ay-6qN" secondAttribute="height" multiplier="0.456522" id="Sah-7J-2ua"/>
-                        <constraint firstAttribute="trailing" secondItem="FYU-Cy-xGu" secondAttribute="trailing" constant="10" id="ZuQ-K7-tCR"/>
-                        <constraint firstItem="FYU-Cy-xGu" firstAttribute="centerY" secondItem="7qU-ay-6qN" secondAttribute="centerY" id="nVS-iw-BoX"/>
+                        <constraint firstAttribute="bottom" secondItem="5MS-XW-YaV" secondAttribute="bottom" constant="5" id="YNx-QR-WYU"/>
+                        <constraint firstAttribute="trailing" secondItem="5MS-XW-YaV" secondAttribute="trailing" constant="10" id="k9o-rN-ogU"/>
                         <constraint firstItem="6Zt-8C-ard" firstAttribute="centerY" secondItem="7qU-ay-6qN" secondAttribute="centerY" id="pz3-ME-3yb"/>
                         <constraint firstAttribute="height" constant="46" id="sHa-3d-Am0"/>
                     </constraints>
@@ -77,10 +76,10 @@
             <constraints>
                 <constraint firstItem="7qU-ay-6qN" firstAttribute="top" secondItem="UPb-Nz-Xq9" secondAttribute="bottom" constant="5" id="536-ir-N8A"/>
                 <constraint firstItem="UPb-Nz-Xq9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="7Fc-1f-ONK"/>
-                <constraint firstAttribute="trailing" secondItem="UPb-Nz-Xq9" secondAttribute="trailing" constant="16" id="EKg-kM-GIO"/>
-                <constraint firstAttribute="trailing" secondItem="7qU-ay-6qN" secondAttribute="trailing" constant="16" id="bTk-ed-yzY"/>
-                <constraint firstItem="7qU-ay-6qN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="hm1-yr-nYB"/>
-                <constraint firstItem="UPb-Nz-Xq9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="uIh-iF-ixG"/>
+                <constraint firstAttribute="trailing" secondItem="UPb-Nz-Xq9" secondAttribute="trailing" constant="8" id="EKg-kM-GIO"/>
+                <constraint firstAttribute="trailing" secondItem="7qU-ay-6qN" secondAttribute="trailing" constant="8" id="bTk-ed-yzY"/>
+                <constraint firstItem="7qU-ay-6qN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="hm1-yr-nYB"/>
+                <constraint firstItem="UPb-Nz-Xq9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="uIh-iF-ixG"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="131.8840579710145" y="360.9375"/>
