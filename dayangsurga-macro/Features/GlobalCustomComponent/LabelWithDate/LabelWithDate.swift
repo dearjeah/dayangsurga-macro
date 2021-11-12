@@ -11,9 +11,8 @@ class LabelWithDate: UIView {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateTitle: UILabel!
-    @IBOutlet weak var dateButton: UIButton!
-    
-    @IBAction func datePressed(_ sender: UIButton) {
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBAction func datePickerWasPressed(_ sender: Any) {
     }
     
     override init(frame: CGRect) {
@@ -30,7 +29,7 @@ class LabelWithDate: UIView {
         self.init()
         titleLabel.text = title
         dateTitle.text = dateText
-        dateButton.titleLabel?.text = dateData ?? "July 2020"
+//        dateButton.titleLabel?.text = dateData ?? "July 2020"
     }
     
     fileprivate func initWithNib() {
