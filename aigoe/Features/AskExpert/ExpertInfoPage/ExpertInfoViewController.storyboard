@@ -35,6 +35,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="OK, I Understand"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="OTa-9m-Pm9"/>
+                                </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yCi-yl-aor">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>

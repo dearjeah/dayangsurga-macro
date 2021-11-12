@@ -22,6 +22,9 @@ class ExpertInfoViewController: MVVMViewController<ExpertInfoViewModel> ,UITable
         infoPageDismissButton.dsLongFilledPrimaryButton(withImage: false, text: "OK, I Understand")
         // Do any additional setup after loading the view.
     }
+    @IBAction func buttonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return content.count
