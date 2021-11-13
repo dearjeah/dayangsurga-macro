@@ -13,7 +13,7 @@ class UserProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setComingSoon()
-      
+        self.title = "Profile"
     }
     
     func setComingSoon() {
