@@ -21,6 +21,7 @@ class EmptyState: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initWithNib()
+        style()
     }
     
     convenience init() {
@@ -39,6 +40,11 @@ class EmptyState: UIView {
         let nib = UINib(nibName: nibName, bundle: bundle)
         
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
+    }
+    
+    func style(){
+        emptyStateDescription.sizeToFit()
+        
     }
 
 }
