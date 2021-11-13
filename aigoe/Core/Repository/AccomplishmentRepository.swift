@@ -95,6 +95,21 @@ class AccomplishmentRepository{
         }
     }
     
+    func updateSelectedAccomplishStatus(accomId: Int,
+                                        is_Selected: Bool) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "accomplishment_id == %d", accomId as CVarArg)
+        do {
+            let item = try context.fetch(fetchRequest) as? [Accomplishment]
+            let newAccom = item?.first
+            newAccom?.is_selected = is_Selected
+            try context.save()
+        } catch let error as NSError {
+            print(error)
+        }
+        
+    }
+    
     // func delete
     func deleteAccomplishment(data: Accomplishment) {
         do {
