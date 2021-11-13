@@ -9,6 +9,8 @@ import UIKit
 
 protocol AccomplishListDelegate: AnyObject {
     func goToAddAccom()
+    func passingAccomplishData(accomplish: Accomplishment?)
+    func getSelectedIndex(index: Int)
 }
 
 class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource {
@@ -27,15 +29,16 @@ class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource
         super.init(frame: frame)
         initWithNib()
         registerTableView()
+        tableView.reloadData()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initWithNib()
         registerTableView()
-        
+        tableView.autoresizingMask = UIView.AutoresizingMask()
         emptyState = stepViewModel.getEmptyStateId(Id: 4) ?? emptyState
-//        experience = stepViewModel.getExpData() ?? []
+        accomplishment = stepViewModel.getAccomplishData() ?? accomplishment
         tableView.reloadData()
     }
     
@@ -72,9 +75,27 @@ class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AccomplishmentTableCell.identifier, for: indexPath) as? AccomplishmentTableCell else {
             return UITableViewCell()
         }
-        cell.awardName.text = "App Development Swift Certification"
-        cell.awardDate.text = "May 2020"
-        cell.awardIssuer.text = "Swift.co"
+        cell.awardName.text = accomplishment[indexPath.row].title
+        cell.awardDate.text = accomplishment[indexPath.row].given_date?.string(format: Date.ISO8601Format.MonthYear)
+        cell.awardIssuer.text = accomplishment[indexPath.row].issuer
+        cell.editButtonAction = {
+            self.delegate?.getSelectedIndex(index: indexPath.row)
+            self.delegate?.passingAccomplishData(accomplish: self.accomplishment[indexPath.row])
+        }
+        cell.checklistButtonAction = {
+            self.delegate?.getSelectedIndex(index: indexPath.row)
+            if cell.selectionStatus == false{
+                cell.selectionStatus = true
+                cell.checklistButtonIfSelected()
+                self.accomplishment[indexPath.row].is_selected = true
+                AccomplishmentRepository.shared.updateSelectedAccomplishStatus(accomId: indexPath.row, is_Selected: true)
+            }else{
+                cell.selectionStatus = false
+                cell.checklistButtonUnSelected()
+                self.accomplishment[indexPath.row].is_selected = false
+                AccomplishmentRepository.shared.updateSelectedAccomplishStatus(accomId: indexPath.row, is_Selected: false)
+            }
+        }
         return cell
     }
     
@@ -84,22 +105,26 @@ class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource
             return accomplishment.count
         } else {
             emptyStateView.isHidden = false
-            emptyStateView.emptyStateImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
-            emptyStateView.emptyStateImage.contentMode = .scaleAspectFit
-            emptyStateView.emptyStateImage.clipsToBounds = true
-            
-            emptyStateView.emptyStateImage.image = UIImage(named: "imgEmptyStateAccom")
-            emptyStateView.emptyStateDescription.text = "You have no accomplishment yet. Click the ‘Add’ button to add your certificates or awards."
+            emptyState = stepViewModel.getEmptyStateId(Id: 4) ?? emptyState
+            emptyStateView.emptyStateImage.image = UIImage(data: emptyState.image ?? Data())
+            emptyStateView.emptyStateTitle.text = nil
+            emptyStateView.emptyStateDescription.text = emptyState.description
             self.tableView.backgroundView = emptyStateView
         }
-        return Int()
+        return accomplishment.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110 // +12 bottom
+        return 120
     }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("dyusfgyasyu")
+//    }
+    
+    func getAndReload(){
+        accomplishment = stepViewModel.getAccomplishData() ?? []
+        tableView.reloadData()
     }
 
 }

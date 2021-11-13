@@ -74,7 +74,7 @@
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="icRoundSelectionNoFill"/>
                         <connections>
-                            <action selector="selectAccomplishment:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7X1-WR-Dpe"/>
+                            <action selector="selectAccomplishment:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="feP-qn-FJy"/>
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dqp-UO-TXY">
@@ -87,7 +87,7 @@
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system" imagePlacement="trailing" title="Edit"/>
                         <connections>
-                            <action selector="editAccomplishment:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="LDT-8H-FwS"/>
+                            <action selector="editAccomplishment:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="FzA-so-epR"/>
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHR-5E-ycJ">
@@ -134,12 +134,12 @@
                 <outlet property="selectionButton" destination="X9X-H4-j4e" id="xXJ-w9-iVa"/>
                 <outlet property="shadowView" destination="qEw-Qx-gxg" id="qOS-6i-cnk"/>
             </connections>
-            <point key="canvasLocation" x="-12" y="85"/>
+            <point key="canvasLocation" x="-12.318840579710146" y="84.709821428571431"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="icRoundSelectionNoFill" width="24" height="24"/>
-        <image name="pencil" catalog="system" width="32" height="32"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <namedColor name="primaryWhite">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

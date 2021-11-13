@@ -18,10 +18,14 @@ class AccomplishmentTableCell: UITableViewCell {
     static let identifier = "AccomplishmentTableCell"
     var selectionStatus = false
     
+    var checklistButtonAction : (() -> ())?
+    var editButtonAction : (() -> ())?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
+        self.selectionButton.addTarget(self, action: #selector(selectAccomplishment(_:)), for: .touchUpInside)
+        self.editAwardButton.addTarget(self, action: #selector(editAccomplishment(_:)), for: .touchUpInside)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -35,19 +39,11 @@ class AccomplishmentTableCell: UITableViewCell {
     }
     
     @IBAction func selectAccomplishment(_ sender: UIButton) {
-        if selectionStatus == false{
-            selectionStatus = true
-            selectionButton.setImage(UIImage(named: "icRoundSelectionFilled"), for: .normal)
-            shadowView.layer.borderWidth = 1
-            shadowView.layer.borderColor = UIColor.primaryBlue.cgColor
-        }else{
-            selectionStatus = false
-            selectionButton.setImage(UIImage(named: "icRoundSelectionNoFill"), for: .normal)
-            shadowView.layer.borderColor = UIColor.clear.cgColor
-        }
+        checklistButtonAction?()
     }
     
     @IBAction func editAccomplishment(_ sender: UIButton) {
+        editButtonAction?()
     }
     
     func checklistButtonIfSelected(){

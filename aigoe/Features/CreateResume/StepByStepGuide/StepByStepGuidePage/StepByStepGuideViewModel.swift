@@ -36,6 +36,15 @@ class StepByStepGuideViewModel: NSObject {
     func getExpByIndex(expId: Int) -> Experience?{
         return experienceRepo.getExperienceById(experienceId: expId)
     }
+    
+    // for accomplishment
+    func getAccomplishData() -> [Accomplishment]?{
+        return AccomplishmentRepository.shared.getAllAccomplishment()
+    }
+    
+    func getAccomplishByIndex(accomplishId: Int) -> Accomplishment?{
+        return AccomplishmentRepository.shared.getAccomplishmentById(AccomplishmentId: accomplishId)
+    }
 }
 
 //MARK: Progress Bar
