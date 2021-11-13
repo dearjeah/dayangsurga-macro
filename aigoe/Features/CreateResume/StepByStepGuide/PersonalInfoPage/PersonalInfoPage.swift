@@ -95,6 +95,17 @@ class PersonalInfoPage: UIView{
             UserRepository.shared.createUser(user_id: 1, username: fullNameField.textField.text ?? "", phoneNumber: phoneField.textField.text ?? "", email: emailField.textField.text ?? "", location: locationField.textField.text ?? "", summary: summaryField.textView.text ?? "")
         }
     }
+    
+    func checkAllFieldValue() -> Bool {
+        if fullNameField.textField.text?.count ?? 0 < 1
+            && emailField.textField.text?.count ?? 0 < 1
+            && phoneField.textField.text?.count ?? 0 < 1
+            && locationField.textField.text?.count ?? 0 < 1
+            && summaryField.textView.text.count < 1 {
+            return false
+        }
+        return true
+    }
 }
         
   
