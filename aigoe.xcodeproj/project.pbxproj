@@ -30,6 +30,8 @@
 		67AA824D273ACAF7004937B7 /* ExpertInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA824C273ACAF7004937B7 /* ExpertInfoViewModel.swift */; };
 		67AA824F273ACB2B004937B7 /* ExpertInfoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67AA824E273ACB2B004937B7 /* ExpertInfoViewController.storyboard */; };
 		67AA8253273ACB74004937B7 /* ExpertInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA8252273ACB74004937B7 /* ExpertInfoViewController.swift */; };
+		7E8A5A532740054900DB0DCA /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E8A5A522740054900DB0DCA /* SplashScreen.storyboard */; };
+		7E8A5A552740055F00DB0DCA /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A5A542740055F00DB0DCA /* SplashScreenViewController.swift */; };
 		8435DB472731126700862FF0 /* EducationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB462731126700862FF0 /* EducationRepository.swift */; };
 		8435DB492731830F00862FF0 /* AccomplishmentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB482731830F00862FF0 /* AccomplishmentRepository.swift */; };
 		8435DB4B27320AA400862FF0 /* SkillRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB4A27320AA400862FF0 /* SkillRepository.swift */; };
@@ -212,6 +214,8 @@
 		67AA824C273ACAF7004937B7 /* ExpertInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertInfoViewModel.swift; sourceTree = "<group>"; };
 		67AA824E273ACB2B004937B7 /* ExpertInfoViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpertInfoViewController.storyboard; sourceTree = "<group>"; };
 		67AA8252273ACB74004937B7 /* ExpertInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertInfoViewController.swift; sourceTree = "<group>"; };
+		7E8A5A522740054900DB0DCA /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
+		7E8A5A542740055F00DB0DCA /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		8435DB462731126700862FF0 /* EducationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationRepository.swift; sourceTree = "<group>"; };
 		8435DB482731830F00862FF0 /* AccomplishmentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomplishmentRepository.swift; sourceTree = "<group>"; };
 		8435DB4A27320AA400862FF0 /* SkillRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillRepository.swift; sourceTree = "<group>"; };
@@ -852,6 +856,8 @@
 			isa = PBXGroup;
 			children = (
 				BF8503172722551C00CC43FB /* LaunchScreen.storyboard */,
+				7E8A5A522740054900DB0DCA /* SplashScreen.storyboard */,
+				7E8A5A542740055F00DB0DCA /* SplashScreenViewController.swift */,
 			);
 			path = LaunchScreen;
 			sourceTree = "<group>";
@@ -1157,6 +1163,7 @@
 				BF8503A22722B7F800CC43FB /* QuizPageView.xib in Resources */,
 				6722E2402726C7C3007315AB /* ExperienceTableCell.xib in Resources */,
 				BF5F1BEC2722D7F0004D0756 /* ResumeTemplateViewController.storyboard in Resources */,
+				7E8A5A532740054900DB0DCA /* SplashScreen.storyboard in Resources */,
 				BF8503A62722B81600CC43FB /* ExperiencePageView.xib in Resources */,
 				679DBEA32723FAAD00CE9E8F /* ResumeTemplateCell.xib in Resources */,
 				BF8503942722B65600CC43FB /* ExpertListViewController.storyboard in Resources */,
@@ -1253,6 +1260,7 @@
 				BF8503902722B5E100CC43FB /* RoundedButton.swift in Sources */,
 				BF85030A2722551B00CC43FB /* AppDelegate.swift in Sources */,
 				BF8503742722675000CC43FB /* Cell+Extension.swift in Sources */,
+				7E8A5A552740055F00DB0DCA /* SplashScreenViewController.swift in Sources */,
 				BFA6AABF273E368100A4D677 /* LandingPageViewController.swift in Sources */,
 				B859B53A272852EF00627CDC /* UserResumeRepository.swift in Sources */,
 				BF85036727225FB400CC43FB /* Constants.swift in Sources */,
@@ -1481,7 +1489,7 @@
 				INFOPLIST_FILE = aigoe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Homepage;
+				INFOPLIST_KEY_UIMainStoryboardFile = SplashScreen;
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1511,7 +1519,7 @@
 				INFOPLIST_FILE = aigoe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Homepage;
+				INFOPLIST_KEY_UIMainStoryboardFile = SplashScreen;
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
