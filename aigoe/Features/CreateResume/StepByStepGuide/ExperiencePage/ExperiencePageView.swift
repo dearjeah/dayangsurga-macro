@@ -35,24 +35,15 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initWithNib()
-        
-        expTableView.delegate = self
-        expTableView.dataSource = self
-        self.expTableView.register(UINib(nibName: "ExperienceTableCell", bundle: nil), forCellReuseIdentifier: "ExperienceTableCell")
-        expTableView.reloadData()
+        initialSetup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initWithNib()
         notificationCenterSetup()
-        self.expTableView.register(UINib(nibName: "ExperienceTableCell", bundle: nil), forCellReuseIdentifier: "ExperienceTableCell")
         
-        expTableView.delegate = self
-        expTableView.dataSource = self
-        emptyState = stepViewModel.getEmptyStateId(Id: 2)
-        experience = stepViewModel.getExpData() ?? []
-        expTableView.reloadData()
+        initialSetup()
         
     }
     
@@ -61,6 +52,7 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         notificationCenterSetup()
         experience  = exp
+        initialSetup()
     }
     
     fileprivate func initWithNib() {
@@ -74,6 +66,15 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         let nib = UINib(nibName: nibName, bundle: bundle)
         
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
+    }
+    
+    func initialSetup(){
+        self.expTableView.register(UINib(nibName: "ExperienceTableCell", bundle: nil), forCellReuseIdentifier: "ExperienceTableCell")
+        
+        expTableView.delegate = self
+        expTableView.dataSource = self
+        emptyState = stepViewModel.getEmptyStateId(Id: 2)
+        expTableView.reloadData()
     }
     
     func getAndReload(){
@@ -106,7 +107,7 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        experience = stepViewModel.getExpData() ?? []
+        //experience = stepViewModel.getExpData() ?? []
         selectedExp = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExperienceTableCell") as! ExperienceTableCell
         cell.jobCompanyName.text = experience[indexPath.row].jobCompanyName

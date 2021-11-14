@@ -15,6 +15,10 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
     var isCreate = Bool()
     var isGenerate = false
     var formSource = String()
+    var eduData = [Education]()
+    var expData = [Experience]()
+    var skillData = [Skills]()
+    var accomData = [Accomplishment]()
     
     @IBOutlet weak var progressBarView: ProgressBarView!
     @IBOutlet  var smallSetButtonView: SmallSetButton!
@@ -26,8 +30,6 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
         smallSetButtonView.delegate = self
         progressBarView.dlgt = self
         //        navigationStyle()
-        
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -36,6 +38,10 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
             pageController.prevNextSetup(prevNextDlgt: self)
             pageController.selectedResume = selectedUserResume
             pageController.isCreate = isCreate
+            pageController.eduData = eduData
+            pageController.expData = expData
+            pageController.skillData = skillData
+            pageController.accomData = accomData
         } else if let vc = segue.destination as? ExperienceFormController {
             vc.setup(dlgt: self)
             vc.isCreate = isCreate
@@ -43,15 +49,17 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if formSource == "experience" {
-           tes()
+        if formSource == "education" {
+            NotificationCenter.default.post(name: Notification.Name("eduReload"), object: nil)
+        } else if formSource == "experience" {
+            NotificationCenter.default.post(name: Notification.Name("expReload"), object: nil)
+        } else if formSource == "skill" {
+            NotificationCenter.default.post(name: Notification.Name("skillReload"), object: nil)
+        } else if formSource == "accomplishment" {
+            NotificationCenter.default.post(name: Notification.Name("accompReload"), object: nil)
         } else {
             return
         }
-    }
-    
-    func tes() {
-        NotificationCenter.default.post(name: Notification.Name("expReload"), object: nil)
     }
     
     func navigationStyle(){
