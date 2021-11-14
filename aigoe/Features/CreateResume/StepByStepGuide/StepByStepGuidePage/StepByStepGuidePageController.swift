@@ -373,7 +373,10 @@ extension StepByStepGuidePageController {
     }
     
     fileprivate func initExperience() -> UIViewController {
-        let controller = UIViewController()
+        let controller = MVVMViewController<ExperiencePageViewModel>()
+        controller.viewModel = ExperiencePageViewModel()
+        expData = controller.viewModel?.getAllExpData() ?? []
+        
         let tmp = ExperiencePageView.init(exp: expData)
         tmp.setupExpList(dlgt: self)
         controller.view = tmp

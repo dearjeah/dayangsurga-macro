@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 
 class ExperienceRepository{
-    
     static let shared = ExperienceRepository()
     let entityName = Experience.self.description()
     let context = CoreDataManager.sharedManager.persistentContainer.viewContext
@@ -24,7 +23,7 @@ class ExperienceRepository{
                           jobStartDate: Date,
                           jobEndtDate: Date,
                           jobStatus: Bool,
-                          isSelected: Bool){
+                          isSelected: Bool) -> Bool {
         do {
             if let experienceToUser = UserRepository.shared.getUserById(id: user_id) {
                 let experience = Experience(context: context)
@@ -40,11 +39,14 @@ class ExperienceRepository{
                 
                 experienceToUser.addToExperience(experience)
                 try context.save()
+                return true
             }
         }
         catch let error as NSError {
             print(error)
+            return false
         }
+        return false
     }
 
     // retrieve
@@ -116,14 +118,16 @@ class ExperienceRepository{
     }
     
     // func delete
-    func deleteExperience(data: Experience) {
+    func deleteExperience(data: Experience) -> Bool {
         do {
             context.delete(data)
             try context.save()
+            return true
             
         } catch let error as NSError {
             print(error)
         }
+        return false
     }
 }
 

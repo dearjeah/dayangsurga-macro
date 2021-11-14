@@ -19,9 +19,12 @@ enum progressBarType {
 }
 
 class StepByStepGuideViewModel: NSObject {
-
-    let experienceRepo = ExperienceRepository.shared
+    
     let emptyStateRepo = EmptyStateRepository.shared
+    let experienceRepo = ExperienceRepository.shared
+    let eduRepo = EducationRepository.shared
+    let skillRepo = SkillRepository.shared
+    let accomRepo = AccomplishmentRepository.shared
 
     // for empty state
     func getEmptyStateId(Id: Int) -> Empty_State?{
@@ -35,6 +38,15 @@ class StepByStepGuideViewModel: NSObject {
     
     func getExpByIndex(expId: Int) -> Experience?{
         return experienceRepo.getExperienceById(experienceId: expId)
+    }
+    
+    func getAllInitialData() -> (edu: [Education], exp: [Experience], skill: [Skills], accom: [Accomplishment]){
+        let eduData = eduRepo.getAllEducation() ?? []
+        let expData = experienceRepo.getAllExperience() ?? []
+        let skillData = skillRepo.getAllSkill() ?? []
+        let accomData = accomRepo.getAllAccomplishment() ?? []
+        
+        return (eduData, expData, skillData, accomData)
     }
 }
 

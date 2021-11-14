@@ -42,7 +42,7 @@ extension UIButton {
         
         if (isDelete) {
             self.layer.borderColor = UIColor.primaryRed.cgColor
-            self.titleLabel?.tintColor = UIColor.primaryRed
+            self.setTitleColor(UIColor.primaryRed, for: .normal)
         }
     }
     
