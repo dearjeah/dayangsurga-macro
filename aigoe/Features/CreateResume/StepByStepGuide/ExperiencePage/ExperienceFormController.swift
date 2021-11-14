@@ -97,8 +97,12 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
     
     // for delete and reload
     func deleteExpData(){
-        self.viewModel?.deleteExpData(dataExperience: experience)
-        performSegue(withIdentifier: "backToStepVC", sender: self)
+        guard let data = self.viewModel?.deleteExpData(dataExperience: experience) else { return errorSaveData() }
+        if data {
+            performSegue(withIdentifier: "backToStepVC", sender: self)
+        } else {
+            errorSaveData()
+        }
     }
 }
 
