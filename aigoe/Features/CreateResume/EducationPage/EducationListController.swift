@@ -11,7 +11,6 @@ class EducationListController: MVVMViewController<EducationListViewModel> {
 
     @IBOutlet weak var eduListView: EducationPageView!
     
-    var dataFrom = ""
     var eduData = [Education]()
     var selectedEduData = Education()
     
@@ -22,6 +21,13 @@ class EducationListController: MVVMViewController<EducationListViewModel> {
 }
 
 extension EducationListController: ListEduDelegate {
+    func editEduForm(from: String) {
+        let storyboard = UIStoryboard(name: "EducationFormController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToEduForm") as! EducationFormController
+        vc.dataFrom = from
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func addEduForm(from: String) {
         let storyboard = UIStoryboard(name: "EducationFormController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToEduForm") as! EducationFormController

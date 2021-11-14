@@ -9,6 +9,7 @@ import UIKit
 
 protocol ListEduDelegate: AnyObject{
     func addEduForm(from: String)
+    func editEduForm(from: String)
 }
 
 class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
@@ -20,6 +21,7 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     var totalData = 0
     var eduData = [Education]()
     weak var delegate: ListEduDelegate?
+    var eduViewModel = EducationListViewModel()
     
     func setup(dlgt: ListEduDelegate) {
         self.delegate = dlgt
@@ -41,6 +43,7 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     convenience init(text: String) {
         self.init()
+        registerTableView()
     }
     
     fileprivate func initWithNib() {
@@ -88,6 +91,7 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EducationTableCell.identifier, for: indexPath) as? EducationTableCell else {
             return UITableViewCell()
         }
+        eduData = self.eduViewModel.getEduData()
         let edu = eduData[indexPath.row]
         let eduPeriod = "\(edu.start_date?.string(format: Date.ISO8601Format.MonthYear) ?? "") - \(edu.end_date?.string(format: Date.ISO8601Format.MonthYear) ?? "")"
         
@@ -96,6 +100,21 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
         cell.educationPeriod.text = eduPeriod
         cell.educationGPA.text = String(edu.gpa)
         cell.educationActivities.text = edu.activity
+        
+        cell.checklistButtonAction = {
+            //self.experienceDelegate?.getSelectedIndex(index: indexPath.row)
+            if cell.selectionStatus == false{
+                cell.selectionStatus = true
+                cell.checklistButtonIfSelected()
+                self.eduData[indexPath.row].is_selected = true
+                EducationRepository.shared.updateSelectedEduStatus(edu_id: Int(self.eduData[indexPath.row].edu_id), isSelected: true)
+            } else {
+                cell.selectionStatus = false
+                cell.checklistButtonUnSelected()
+                self.eduData[indexPath.row].is_selected = false
+                EducationRepository.shared.updateSelectedEduStatus(edu_id: Int(self.eduData[indexPath.row].edu_id), isSelected: false)
+            }
+        }
         
         return cell
     }
@@ -115,7 +134,7 @@ extension EducationPageView {
         emptyStateView.emptyStateImage.contentMode = .scaleAspectFit
         emptyStateView.emptyStateImage.clipsToBounds = true
         emptyStateView.emptyStateTitle.isHidden = true
-        emptyStateView.emptyStateImage.image = UIImage(named: "imgEmptyStateEdu")
+        emptyStateView.emptyStateImage.image = UIImage.imgEmptyStateEdu
         emptyStateView.emptyStateDescription.text = "You haven’t filled your educational history. Click the ‘Add’ button to add your educational information."
     }
 }

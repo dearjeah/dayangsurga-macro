@@ -53,8 +53,12 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
     }
     
     func deleteEduData(){
-        self.viewModel?.deleteEduData(eduData: eduData ?? Education())
-        self.navigationController?.popViewController(animated: false)
+        guard let data = self.viewModel?.deleteEduData(eduData: eduData ?? Education()) else { return }
+        if data {
+            self.navigationController?.popViewController(animated: false)
+        } else {
+            //alert error
+        }
     }
 }
 

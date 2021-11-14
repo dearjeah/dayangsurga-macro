@@ -22,7 +22,8 @@ class EducationFormViewModel: NSObject {
         return data
     }
     
-    func deleteEduData(eduData: Education) {
+    func deleteEduData(eduData: Education) -> Bool {
         let data = eduRepo.deleteEducation(data: eduData)
+        return data
     }
 }
