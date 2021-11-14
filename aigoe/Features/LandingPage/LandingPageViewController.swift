@@ -9,8 +9,10 @@ import UIKit
 
 class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ResumeCellDelegate {
     
+    @IBOutlet weak var buttonView: BigButtonWithImage!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var emptyStateView: EmptyState!
     var selectedIndex: Int = 0
     var userResume = [User_Resume]()
     var emptyState: Empty_State?
@@ -20,7 +22,7 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         super.viewDidLoad()
         
         setView()
-        showButton()
+        buttonView.delegate = self
         registerCollectionView()
         //navigationStyle()
         
@@ -46,15 +48,6 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         titleLabel.text = "My Resume"
     }
     
-    func showButton() {
-        let statusBarHeight =  navigationController?.view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? CGFloat()
-        let navigationBarHeight = navigationController?.navigationBar.frame.height ?? CGFloat()
-        let y = statusBarHeight + navigationBarHeight + 12
-        let buttonView = BigButtonWithImage(frame: CGRect(x: 0, y: y, width: self.view.frame.width, height: 92))
-        buttonView.delegate = self
-        self.view.insertSubview(buttonView, at: 0)
-    }
-    
     func didTapButton() {
         let storyboard = UIStoryboard(name: "ResumeTemplateViewController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToTemplateResume") as! ResumeTemplateViewController
@@ -72,11 +65,13 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if userResume.count != 0 {
+            emptyStateView.isHidden = true
             return userResume.count
         } else {
-            let emptyStateView = EmptyState(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+            emptyStateView.isHidden = false
             let image = UIImage(data: emptyState?.image ?? Data())
             emptyStateView.emptyStateImage.image = image
+            emptyStateView.emptyStateTitle.text = nil
             emptyStateView.emptyStateDescription.text = emptyState?.title
             self.collectionView.backgroundView = emptyStateView
         }
@@ -102,7 +97,7 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
     func spacingForCollectionView(){
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.minimumLineSpacing = 20
+        layout.minimumLineSpacing = 29
         layout.minimumInteritemSpacing = 45
         self.collectionView?.collectionViewLayout = layout
     }
