@@ -30,8 +30,6 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
         smallSetButtonView.delegate = self
         progressBarView.dlgt = self
         //        navigationStyle()
-        
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
