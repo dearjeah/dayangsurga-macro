@@ -97,7 +97,7 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
     func spacingForCollectionView(){
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.minimumLineSpacing = 20
+        layout.minimumLineSpacing = 29
         layout.minimumInteritemSpacing = 45
         self.collectionView?.collectionViewLayout = layout
     }
