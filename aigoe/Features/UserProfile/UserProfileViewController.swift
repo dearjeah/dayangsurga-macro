@@ -17,7 +17,7 @@ class UserProfileViewController: UIViewController {
     }
     
     func setComingSoon() {
-        comingSoon.emptyStateImage.image = UIImage.imgComingSoon
+        comingSoon.emptyStateImage.image = UIImage.comingSoon
         comingSoon.emptyStateTitle.font = UIFont.boldSystemFont(ofSize: 20.0)
         comingSoon.emptyStateTitle.textColor = UIColor.primaryBlue
         comingSoon.emptyStateTitle.text = "Coming Soon"
