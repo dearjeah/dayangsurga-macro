@@ -17,13 +17,13 @@ class EducationSuggestionRepository{
     
     // create
     func createEducationSuggestion(eduId: Int,
-                                    eduPSuggestionId:Int,
+                                    eduSuggestionId:Int,
                                     activitySuggestion: String
                                     ){
         do {
             let educationSuggestion = Edu_Suggestion(context: context)
             educationSuggestion.edu_id = Int32(eduId)
-            educationSuggestion.edu_suggest_id =  Int32(eduId)
+            educationSuggestion.edu_suggest_id =  Int32(eduSuggestionId)
             educationSuggestion.activity_suggest = activitySuggestion
             
             // relation (one-to-one)

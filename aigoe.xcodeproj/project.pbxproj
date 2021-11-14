@@ -89,6 +89,8 @@
 		BF2ABB4027270A6D00AAC6C2 /* LabelWithSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2ABB3F27270A6D00AAC6C2 /* LabelWithSwitch.swift */; };
 		BF2ABB4327270D4200AAC6C2 /* LabelWithStartEndDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2ABB4227270D4200AAC6C2 /* LabelWithStartEndDate.swift */; };
 		BF2ABB4527270D4D00AAC6C2 /* LabelWithStartEndDate.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF2ABB4427270D4D00AAC6C2 /* LabelWithStartEndDate.xib */; };
+		BF34E87A274116AC00EE7276 /* EducationFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34E879274116AC00EE7276 /* EducationFormViewModel.swift */; };
+		BF34E87C274119FC00EE7276 /* PreloadEducationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34E87B274119FC00EE7276 /* PreloadEducationData.swift */; };
 		BF423DE7272BA396006DC552 /* XIBTes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF423DE6272BA396006DC552 /* XIBTes.storyboard */; };
 		BF423DE9272BA3B7006DC552 /* XIBTesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF423DE8272BA3B7006DC552 /* XIBTesViewController.swift */; };
 		BF423DEB272C52A2006DC552 /* ExperienceFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF423DEA272C52A2006DC552 /* ExperienceFormController.storyboard */; };
@@ -273,6 +275,8 @@
 		BF2ABB3F27270A6D00AAC6C2 /* LabelWithSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithSwitch.swift; sourceTree = "<group>"; };
 		BF2ABB4227270D4200AAC6C2 /* LabelWithStartEndDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithStartEndDate.swift; sourceTree = "<group>"; };
 		BF2ABB4427270D4D00AAC6C2 /* LabelWithStartEndDate.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelWithStartEndDate.xib; sourceTree = "<group>"; };
+		BF34E879274116AC00EE7276 /* EducationFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationFormViewModel.swift; sourceTree = "<group>"; };
+		BF34E87B274119FC00EE7276 /* PreloadEducationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadEducationData.swift; sourceTree = "<group>"; };
 		BF423DE6272BA396006DC552 /* XIBTes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = XIBTes.storyboard; sourceTree = "<group>"; };
 		BF423DE8272BA3B7006DC552 /* XIBTesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBTesViewController.swift; sourceTree = "<group>"; };
 		BF423DEA272C52A2006DC552 /* ExperienceFormController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExperienceFormController.storyboard; sourceTree = "<group>"; };
@@ -504,6 +508,7 @@
 			children = (
 				BF228E46273B7CCC00966E23 /* EducationFormController.storyboard */,
 				BF228E47273B7CCC00966E23 /* EducationFormController.swift */,
+				BF34E879274116AC00EE7276 /* EducationFormViewModel.swift */,
 			);
 			path = Form;
 			sourceTree = "<group>";
@@ -924,6 +929,7 @@
 				84EE0708273737AC00C6C70A /* PreloadPersonalInformation.swift */,
 				B8692A32273AD62200AC0834 /* PreloadExpertData.swift */,
 				B8C64FFF273E05250005BAAA /* PreloadAccomplishmentData.swift */,
+				BF34E87B274119FC00EE7276 /* PreloadEducationData.swift */,
 			);
 			path = "Mock Data";
 			sourceTree = "<group>";
@@ -1246,6 +1252,7 @@
 				BF8503502722594C00CC43FB /* LandingPageViewModel.swift in Sources */,
 				BF423DE9272BA3B7006DC552 /* XIBTesViewController.swift in Sources */,
 				679DBEAA272410F900CE9E8F /* EducationTableCell.swift in Sources */,
+				BF34E87A274116AC00EE7276 /* EducationFormViewModel.swift in Sources */,
 				B859B538272852EF00627CDC /* ExperiencePlaceholderRepository.swift in Sources */,
 				67AA824A273AB4E6004937B7 /* ExpertInfoCell.swift in Sources */,
 				8435DB55273358E300862FF0 /* AccomplishmentSuggestionRepository.swift in Sources */,
@@ -1253,6 +1260,7 @@
 				BF2ABB2D2726EDDF00AAC6C2 /* SmallSetButton.swift in Sources */,
 				BF228E4D273B7CCC00966E23 /* EducationFormController.swift in Sources */,
 				B859B53D272852EF00627CDC /* UserRepository.swift in Sources */,
+				BF34E87C274119FC00EE7276 /* PreloadEducationData.swift in Sources */,
 				B8825E54273ADF3100FE0086 /* ExpertListCell.swift in Sources */,
 				BF2ABB362726FCD600AAC6C2 /* LabelWithTextField.swift in Sources */,
 				8435DB4B27320AA400862FF0 /* SkillRepository.swift in Sources */,

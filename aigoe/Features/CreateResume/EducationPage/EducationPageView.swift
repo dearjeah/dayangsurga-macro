@@ -20,6 +20,10 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     var totalData = 0
     weak var delegate: ListEduDelegate?
     
+    func setup(dlgt: ListEduDelegate) {
+        self.delegate = dlgt
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initWithNib()
@@ -76,6 +80,7 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
             emptyStateView.emptyStateImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
             emptyStateView.emptyStateImage.contentMode = .scaleAspectFit
             emptyStateView.emptyStateImage.clipsToBounds = true
+            emptyStateView.emptyStateTitle.isHidden = true
             emptyStateView.emptyStateImage.image = UIImage(named: "imgEmptyStateEdu")
             emptyStateView.emptyStateDescription.text = "You haven’t filled your educational history. Click the ‘Add’ button to add your educational information."
             self.tableView.backgroundView = emptyStateView

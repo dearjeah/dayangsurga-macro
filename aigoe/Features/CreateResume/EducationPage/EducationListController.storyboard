@@ -11,12 +11,12 @@
         <!--Education List Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="EducationListController" customModule="dayangsurga_macro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="EducationListController" customModule="aigoe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfU-yv-5JN" customClass="EducationPageView" customModule="dayangsurga_macro" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfU-yv-5JN" customClass="EducationPageView" customModule="aigoe" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
@@ -30,10 +30,24 @@
                             <constraint firstItem="qfU-yv-5JN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="fDM-aD-ZdW"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="eduListView" destination="qfU-yv-5JN" id="Er2-4H-kXu"/>
+                        <segue destination="lqB-3Z-RqN" kind="show" identifier="goToEduForm" id="ymo-Yf-7xw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="106" y="63"/>
+            <point key="canvasLocation" x="122" y="66"/>
+        </scene>
+        <!--EducationFormController-->
+        <scene sceneID="MKh-Dj-RAc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EducationFormController" id="lqB-3Z-RqN" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="bM5-ln-tQF"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dzh-z0-Z15" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="948" y="77"/>
         </scene>
     </scenes>
     <resources>
