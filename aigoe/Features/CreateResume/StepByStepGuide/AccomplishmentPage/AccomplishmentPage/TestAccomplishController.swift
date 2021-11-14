@@ -18,14 +18,18 @@ class TestAccomplishController: MVVMViewController<StepByStepGuideViewModel> {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        accomplishView.getAndReload()
     }
 
 }
 
 extension TestAccomplishController: AccomplishListDelegate {
     func passingAccomplishData(accomplish: Accomplishment?) {
-        
+        let storyboard = UIStoryboard(name: "AccomplishFormController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToAccomForm") as! AccomplishFormController
+        vc.accomplish = accomplish
+        vc.dataFrom = "edit"
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func getSelectedIndex(index: Int) {
