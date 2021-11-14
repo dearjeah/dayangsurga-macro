@@ -38,13 +38,11 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         self.viewModel = ExperienceFormViewModel()
         setup()
         expPlaceholder = self.viewModel?.getExpPh()
         expSuggestion = self.viewModel?.getExpSuggestion()
         hideKeyboardWhenTappedAround()
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,31 +51,109 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
         }
     }
     
-    
     @IBAction func addExperiencePressed(_ sender: UIButton) {
-        if experience == nil{
-            //add/update to core data
-//            alertForCheckTF()
-           /* ExperienceRepository.shared.createExperience(exp_id: 4,
-                                                         user_id: 0,
-                                                         jobTitle: jobTitle.textField.text ?? String(),
-                                                         jobDesc: jobSummary.textView.text ?? String(),
-                                                         jobCompanyName: companyName.textField.text ?? String(),
-                                                         jobStartDate: jobPeriod.startDatePicker.date,
-                                                         jobEndtDate: jobPeriod.endDatePicker.date,
-                                                         jobStatus: jobStatus.switchButton.isOn,
-                                                         isSelected: true)*/
-            addExpBtn.dsLongFilledPrimaryButton(withImage: false, text: "Add Experience")
-           performSegue(withIdentifier: "backToStepVC", sender: self)
-        } else { // update and edit
-            showAlertForDelete()
+        if !alertForCheckTF() {
+            if experience == nil{
+                //add
+                guard let addExp = self.viewModel?.addExpData(title: jobTitle.textField.text ?? "",
+                                                              jobDesc: jobSummary.textView.text ?? "",
+                                                              company: companyName.textField.text ?? "",
+                                                              startDate: jobPeriod.startDatePicker.date,
+                                                              endDate: jobPeriod.endDatePicker.date,
+                                                              status: jobStatus.switchButton.isOn,
+                                                              isSelected: true) else { return errorSaveData() }
+                
+                if addExp {
+                    performSegue(withIdentifier: "backToStepVC", sender: self)
+                } else {
+                    errorSaveData()
+                }
+                
+            } else {
+                //delete
+                showAlertForDelete()
+            }
         }
-        expDelegate?.addExperience()
     }
     
+    @objc func updateExp(sender: UIBarButtonItem) {
+        if !alertForCheckTF() {
+            guard let data = self.viewModel?.updateExpData(title: jobTitle.textField.text ?? "",
+                                                           jobDesc: jobSummary.textView.text,
+                                                           company: companyName.textField.text ?? "",
+                                                           startDate: jobPeriod.startDatePicker.date,
+                                                           endDate: jobPeriod.endDatePicker.date,
+                                                           status: jobStatus.switchButton.isOn,
+                                                           isSelected: true
+            ) else { return errorSaveData() }
+            
+            if data {
+                performSegue(withIdentifier: "backToStepVC", sender: self)
+            } else {
+                errorSaveData()
+            }
+        }
+    }
+    
+    // for delete and reload
+    func deleteExpData(){
+        self.viewModel?.deleteExpData(dataExperience: experience)
+        performSegue(withIdentifier: "backToStepVC", sender: self)
+    }
+}
+
+//MARK: Alert
+extension ExperienceFormController {
+    func alertForCheckTF() -> Bool {
+        if ((companyName.textField.text?.isEmpty) != false) || ((jobTitle.textField.text?.isEmpty) != false) || ((jobSummary.textView.text?.isEmpty) != false){
+            let alert = UIAlertController(title: "Field Can't Be Empty", message: "You must fill in every mandatory fields in this form.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func showAlertForDelete(){
+        let alert = UIAlertController(title: "Delete Data?", message: "You will not be able to recover it.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {action in self.deleteExpData()}))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func errorSaveData(){
+        let alert = UIAlertController(title: "Unable to Save Data", message: "Your data is not saved. Please try again later", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+
+//MARK: Delegate
+extension ExperienceFormController: LabelSwitchDelegate {
+    func getValueSwitch() {
+        if (jobStatus.switchButton.isOn){
+            jobPeriod.endDatePicker.isEnabled = true
+        } else {
+            jobPeriod.endDatePicker.isEnabled = false
+        }
+    }
+}
+
+extension ExperienceFormController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView){
+        expPlaceholder = self.viewModel?.getExpPh()
+        if (jobSummary.textView.text.count  + 1 == expPlaceholder?.jobDesc_ph?.count){
+            jobSummary.textView.text = ""
+        }
+        jobSummary.textView.textColor = .black
+    }
+}
+
+//MARK: Initial Setup
+extension ExperienceFormController {
     func setup(){
         self.title = "Professional Experience"
-        self.viewModel = ExperienceFormViewModel()
         expPlaceholder = self.viewModel?.getExpPh()
         expSuggestion = self.viewModel?.getExpSuggestion()
         companyName.titleLabel.text = "Company Name*"
@@ -89,7 +165,7 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
         jobSummary.titleLabel.text = "Job Summary*"
         jobSummary.cueLabel.text = expSuggestion?.jobDescSuggest
         jobSummary.textView.delegate = self
-
+        
         if dataFrom == "edit"{
             if experience == nil {
                 companyName.textField.placeholder = expPlaceholder?.companyName_ph
@@ -114,62 +190,5 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
             jobSummary.textView.textColor = .lightGray
             addExpBtn.dsLongFilledPrimaryButton(withImage: false, text: "Add Experience")
         }
-    }
-    
-    @objc func updateExp(sender: UIBarButtonItem) {
-        ExperienceRepository.shared.updateExperience(exp_id: 4,
-                                                     user_id: 0,
-                                                     newJobTitle: jobTitle.textField.text ?? String(),
-                                                     newJobDesc: jobSummary.textView.text ?? String(),
-                                                     newJobCompanyName: companyName.textField.text ?? String(),
-                                                     newJobStartDate: jobPeriod.startDatePicker.date,
-                                                     newJobEndtDate: jobPeriod.endDatePicker.date,
-                                                     newJobStatus: jobStatus.switchButton.isOn,
-                                                     newIsSelected: true)
-        let storyboard = UIStoryboard(name: "XIBTes", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "goToXIBTes") as! XIBTesViewController
-        vc.navigationItem.setHidesBackButton(true, animated:true)
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func alertForCheckTF(){
-        if ((companyName.textField.text?.isEmpty) != false) || ((jobTitle.textField.text?.isEmpty) != false) || ((jobSummary.textView.text?.isEmpty) != false){
-            let alert = UIAlertController(title: "Field Can't Be Empty", message: "You must fill in every mandatory fields in this form.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "oke", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    func showAlertForDelete(){
-        let alert = UIAlertController(title: "Delete Data?", message: "You will not be able to recover it.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {action in self.deleteExpData()}))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    // for delete and reload
-    func deleteExpData(){
-        self.viewModel?.deleteExpData(dataExperience: experience)
-        self.navigationController?.popViewController(animated: false)
-    }
-}
-
-extension ExperienceFormController: LabelSwitchDelegate {
-    func getValueSwitch() {
-        if (jobStatus.switchButton.isOn){
-            jobPeriod.endDatePicker.isEnabled = true
-        } else {
-            jobPeriod.endDatePicker.isEnabled = false
-        }
-    }
-}
-
-extension ExperienceFormController: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView){
-        expPlaceholder = self.viewModel?.getExpPh()
-            if (jobSummary.textView.text.count  + 1 == expPlaceholder?.jobDesc_ph?.count){
-                jobSummary.textView.text = ""
-            }
-        jobSummary.textView.textColor = .black
     }
 }

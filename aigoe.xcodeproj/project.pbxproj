@@ -94,6 +94,7 @@
 		BF34E87A274116AC00EE7276 /* EducationFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34E879274116AC00EE7276 /* EducationFormViewModel.swift */; };
 		BF34E87C274119FC00EE7276 /* PreloadEducationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34E87B274119FC00EE7276 /* PreloadEducationData.swift */; };
 		BF34E87E274137D100EE7276 /* EducationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34E87D274137D100EE7276 /* EducationListViewModel.swift */; };
+		BF34E8782740D5BA00EE7276 /* ExperiencePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34E8772740D5BA00EE7276 /* ExperiencePageViewModel.swift */; };
 		BF423DE7272BA396006DC552 /* XIBTes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF423DE6272BA396006DC552 /* XIBTes.storyboard */; };
 		BF423DE9272BA3B7006DC552 /* XIBTesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF423DE8272BA3B7006DC552 /* XIBTesViewController.swift */; };
 		BF423DEB272C52A2006DC552 /* ExperienceFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF423DEA272C52A2006DC552 /* ExperienceFormController.storyboard */; };
@@ -283,6 +284,7 @@
 		BF34E879274116AC00EE7276 /* EducationFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationFormViewModel.swift; sourceTree = "<group>"; };
 		BF34E87B274119FC00EE7276 /* PreloadEducationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadEducationData.swift; sourceTree = "<group>"; };
 		BF34E87D274137D100EE7276 /* EducationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationListViewModel.swift; sourceTree = "<group>"; };
+		BF34E8772740D5BA00EE7276 /* ExperiencePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperiencePageViewModel.swift; sourceTree = "<group>"; };
 		BF423DE6272BA396006DC552 /* XIBTes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = XIBTes.storyboard; sourceTree = "<group>"; };
 		BF423DE8272BA3B7006DC552 /* XIBTesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBTesViewController.swift; sourceTree = "<group>"; };
 		BF423DEA272C52A2006DC552 /* ExperienceFormController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExperienceFormController.storyboard; sourceTree = "<group>"; };
@@ -746,6 +748,7 @@
 			isa = PBXGroup;
 			children = (
 				BF8503A32722B80F00CC43FB /* ExperiencePageView.swift */,
+				BF34E8772740D5BA00EE7276 /* ExperiencePageViewModel.swift */,
 				BF8503A52722B81600CC43FB /* ExperiencePageView.xib */,
 				B88C82552736E7BA00335314 /* ExperienceFormViewModel.swift */,
 				BFBA47B3272AE5C400D4771E /* ExperienceFormController.swift */,
@@ -1277,6 +1280,7 @@
 				BF85037A272282C500CC43FB /* UILabel+Extension.swift in Sources */,
 				B859B537272852EF00627CDC /* ResumeTemplateRepository.swift in Sources */,
 				BF8503902722B5E100CC43FB /* RoundedButton.swift in Sources */,
+				BF34E8782740D5BA00EE7276 /* ExperiencePageViewModel.swift in Sources */,
 				BF85030A2722551B00CC43FB /* AppDelegate.swift in Sources */,
 				BF8503742722675000CC43FB /* Cell+Extension.swift in Sources */,
 				7E8A5A552740055F00DB0DCA /* SplashScreenViewController.swift in Sources */,
