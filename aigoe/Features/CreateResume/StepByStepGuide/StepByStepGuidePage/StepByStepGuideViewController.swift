@@ -14,9 +14,11 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
     var selectedUserResume = User_Resume()
     var isCreate = Bool()
     var isGenerate = false
+    var formSource = String()
     
     @IBOutlet weak var progressBarView: ProgressBarView!
     @IBOutlet  var smallSetButtonView: SmallSetButton!
+    @IBAction func unwind( _ seg: UIStoryboardSegue) {}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,8 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
         smallSetButtonView.delegate = self
         progressBarView.dlgt = self
         //        navigationStyle()
+        
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -32,7 +36,22 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
             pageController.prevNextSetup(prevNextDlgt: self)
             pageController.selectedResume = selectedUserResume
             pageController.isCreate = isCreate
+        } else if let vc = segue.destination as? ExperienceFormController {
+            vc.setup(dlgt: self)
+            vc.isCreate = isCreate
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if formSource == "experience" {
+           tes()
+        } else {
+            return
+        }
+    }
+    
+    func tes() {
+        NotificationCenter.default.post(name: Notification.Name("expReload"), object: nil)
     }
     
     func navigationStyle(){
@@ -94,26 +113,36 @@ extension StepByStepGuideViewController: SmallSetButtonDelegate {
     }
 }
 
-extension StepByStepGuideViewController: StepByStepGuideDelegate, ExperienceListDelegate {
+//MARK: Step Page Controller Delegate
+extension StepByStepGuideViewController: StepByStepGuideDelegate {
+    func goToAddExp(was: Bool, from: String) {
+        let storyboard = UIStoryboard(name: "ExperienceFormController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToExperienceForm") as! ExperienceFormController
+        vc.isCreate = isCreate
+        vc.dataFrom = from
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func goToEditExp(was: Bool, from: String, exp: Experience) {
+        //performSegue(withIdentifier: "goToExperienceForm", sender: self)
+        let storyboard = UIStoryboard(name: "ExperienceFormController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToExperienceForm") as! ExperienceFormController
+        vc.isCreate = isCreate
+        vc.dataFrom = from
+        vc.experience = exp
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func goToGenerate(was: Bool) {
         if was {
             didTapGenerate()
         }
     }
-    
-    //MARK: Delegate For Experience List to Form
-    func getSelectedIndex(index: Int) {
-        //
-    }
-    func goToAddExp() {
-        let storyboard = UIStoryboard(name: "ExperienceFormController", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "goToExperienceForm") as! ExperienceFormController
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func passingExpData(exp: Experience?) {
-        //        let experience = Experience()
-        performSegue(withIdentifier: "", sender: self)
+}
+
+extension StepByStepGuideViewController: ExperiencePageDelegate {
+    func addExperience() {
+      
     }
 }
 
