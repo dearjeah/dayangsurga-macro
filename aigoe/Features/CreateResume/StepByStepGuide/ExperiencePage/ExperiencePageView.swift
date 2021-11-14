@@ -7,14 +7,9 @@
 
 import UIKit
 
-protocol ExperienceFormDelegate {
-    func goToAddEdit(pageName: String)
-}
-
 protocol ExperienceListDelegate: AnyObject {
     func goToAddExp()
     func passingExpData(exp: Experience?)
-    func getSelectedIndex(index: Int)
 }
 
 class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
@@ -27,15 +22,14 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         experienceDelegate?.goToAddExp()
     }
     weak var experienceDelegate: ExperienceListDelegate?
-     
+    
     var selectedExp = 0
-    var expDlgt: ExperiencePageDelegate?
     var stepViewModel = StepByStepGuideViewModel()
     var emptyState: Empty_State?
     var experience = [Experience]()
     
-    func setup(expDlgt: ExperiencePageDelegate?) {
-        self.expDlgt = expDlgt
+    func setupExpList(dlgt: ExperienceListDelegate) {
+        self.experienceDelegate = dlgt
     }
     
     override init(frame: CGRect) {
@@ -51,16 +45,22 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initWithNib()
-        
+        notificationCenterSetup()
         self.expTableView.register(UINib(nibName: "ExperienceTableCell", bundle: nil), forCellReuseIdentifier: "ExperienceTableCell")
-        expTableView.reloadData()
+        
+        expTableView.delegate = self
+        expTableView.dataSource = self
         emptyState = stepViewModel.getEmptyStateId(Id: 2)
         experience = stepViewModel.getExpData() ?? []
         expTableView.reloadData()
+        
     }
     
-    convenience init(text: String) {
+    convenience init(exp: [Experience]) {
         self.init()
+        
+        notificationCenterSetup()
+        experience  = exp
     }
     
     fileprivate func initWithNib() {
@@ -75,12 +75,27 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
-
+    
+    func getAndReload(){
+        experience = stepViewModel.getExpData() ?? []
+        expTableView.reloadData()
+    }
+    
+    @objc func expReload() {
+      getAndReload()
+    }
+    
+    func notificationCenterSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(expReload), name: Notification.Name("expReload"), object: nil)
+    }
+    
     //MARK: TABLE VIEW
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if experience.count == 0 {
+            emptyState = stepViewModel.getEmptyStateId(Id: 2)
             let image = UIImage(data: emptyState?.image ?? Data())
             emptyStateView.emptyStateImage.image = image
+            emptyStateView.emptyStateTitle.isHidden = true
             emptyStateView.emptyStateDescription.text = emptyState?.title
             self.expTableView.backgroundView = emptyStateView
         } else {
@@ -102,12 +117,10 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
             cell.jobExperience.text = "\(experience[indexPath.row].jobStartDate?.string(format: Date.ISO8601Format.MonthYear) ?? String()) - \(experience[indexPath.row].jobEndDate?.string(format: Date.ISO8601Format.MonthYear) ?? String())"
         }
         cell.jobDesc.text = experience[indexPath.row].jobDesc
-        cell.editButtonAction = {print("olip namba wan")
-            self.experienceDelegate?.getSelectedIndex(index: indexPath.row)
+        cell.editButtonAction = {
             self.experienceDelegate?.passingExpData(exp: self.experience[indexPath.row])
         }
         cell.checklistButtonAction = {
-            self.experienceDelegate?.getSelectedIndex(index: indexPath.row)
             if cell.selectionStatus == false{
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
@@ -135,10 +148,7 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         selectedExp = indexPath.row
     }
     
-    func getAndReload(){
-        experience = stepViewModel.getExpData() ?? []
-        expTableView.reloadData()
-    }
+   
 }
 
 extension ExperiencePageView: ExperiencePageDelegate, expCellDelegate {
@@ -148,6 +158,6 @@ extension ExperiencePageView: ExperiencePageDelegate, expCellDelegate {
     }
     
     func addExperience() {
-        //update table view
+       getAndReload()
     }
 }
