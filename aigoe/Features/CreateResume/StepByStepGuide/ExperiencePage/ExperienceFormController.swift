@@ -28,7 +28,12 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
     var placeholderLabel : UILabel!
     var switcherStatus: Bool!
     var getIndexExp = Int()
+    var isCreate = Bool()
     var dataFrom = String()
+    
+    func setup(dlgt: ExperiencePageDelegate) {
+        self.expDelegate = dlgt
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,19 +44,21 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
         expPlaceholder = self.viewModel?.getExpPh()
         expSuggestion = self.viewModel?.getExpSuggestion()
         hideKeyboardWhenTappedAround()
+        
     }
     
-//    @IBAction func unwindToXIB(_ unwindSegue: UIStoryboardSegue) {
-//        let sourceViewController = unwindSegue.source
-        // Use data from the view controller which initiated the unwind segue
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? StepByStepGuideViewController {
+            vc.formSource = "experience"
+        }
+    }
+    
     
     @IBAction func addExperiencePressed(_ sender: UIButton) {
-        expDelegate?.addExperience()
         if experience == nil{
             //add/update to core data
-            alertForCheckTF()
-            ExperienceRepository.shared.createExperience(exp_id: 4,
+//            alertForCheckTF()
+           /* ExperienceRepository.shared.createExperience(exp_id: 4,
                                                          user_id: 0,
                                                          jobTitle: jobTitle.textField.text ?? String(),
                                                          jobDesc: jobSummary.textView.text ?? String(),
@@ -59,16 +66,13 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
                                                          jobStartDate: jobPeriod.startDatePicker.date,
                                                          jobEndtDate: jobPeriod.endDatePicker.date,
                                                          jobStatus: jobStatus.switchButton.isOn,
-                                                         isSelected: true)
+                                                         isSelected: true)*/
             addExpBtn.dsLongFilledPrimaryButton(withImage: false, text: "Add Experience")
-            let storyboard = UIStoryboard(name: "XIBTes", bundle: nil)
-            let vc = storyboard.instantiateViewController(identifier: "goToXIBTes") as! XIBTesViewController
-            vc.navigationItem.setHidesBackButton(true, animated:true)
-            self.navigationController?.pushViewController(vc, animated: true)
+           performSegue(withIdentifier: "backToStepVC", sender: self)
         } else { // update and edit
             showAlertForDelete()
-//            performSegue(withIdentifier: "backToXIB", sender: self)
         }
+        expDelegate?.addExperience()
     }
     
     func setup(){
@@ -86,8 +90,7 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
         jobSummary.cueLabel.text = expSuggestion?.jobDescSuggest
         jobSummary.textView.delegate = self
 
-        if dataFrom == "edit" {
-//            experience =  self.viewModel?.getExpByIndex(id: getIndexExp)
+        if dataFrom == "edit"{
             if experience == nil {
                 companyName.textField.placeholder = expPlaceholder?.companyName_ph
                 jobTitle.textField.placeholder = expPlaceholder?.jobTitle_ph
@@ -154,10 +157,8 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
 extension ExperienceFormController: LabelSwitchDelegate {
     func getValueSwitch() {
         if (jobStatus.switchButton.isOn){
-//            jobStatus.userDefaults.set(true, forKey: jobStatus.on_off_key)
             jobPeriod.endDatePicker.isEnabled = true
         } else {
-//            jobStatus.userDefaults.set(false, forKey: jobStatus.on_off_key)
             jobPeriod.endDatePicker.isEnabled = false
         }
     }

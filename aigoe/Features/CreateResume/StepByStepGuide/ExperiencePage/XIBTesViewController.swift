@@ -20,10 +20,6 @@ class XIBTesViewController: MVVMViewController<StepByStepGuideViewModel>{
     override func viewWillAppear(_ animated: Bool) {
         experienceListView.getAndReload()
     }
-    //    @IBAction func unwindToXIB(_ unwindSegue: UIStoryboardSegue) {
-    //        let sourceViewController = unwindSegue.source
-            // Use data from the view controller which initiated the unwind segue
-    //    }
 }
 
 extension XIBTesViewController: ExperienceListDelegate {
@@ -31,16 +27,16 @@ extension XIBTesViewController: ExperienceListDelegate {
     }
     
     func goToAddExp() {
-        let storyboard = UIStoryboard(name: "ExperienceFormController", bundle: nil)
+        /*let storyboard = UIStoryboard(name: "ExperienceFormController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToExperienceForm") as! ExperienceFormController
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)*/
     }
     
     func passingExpData(exp: Experience?) {
         let storyboard = UIStoryboard(name: "ExperienceFormController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToExperienceForm") as! ExperienceFormController
         vc.experience = exp
-        vc.dataFrom = "edit"
+        vc.isCreate = false
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
