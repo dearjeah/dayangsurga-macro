@@ -7,9 +7,14 @@
 
 import UIKit
 
-class EducationListController: UIViewController {
+class EducationListController: MVVMViewController<EducationListViewModel> {
 
     @IBOutlet weak var eduListView: EducationPageView!
+    
+    var dataFrom = ""
+    var eduData = [Education]()
+    var selectedEduData = Education()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         eduListView.setup(dlgt: self)
@@ -17,7 +22,10 @@ class EducationListController: UIViewController {
 }
 
 extension EducationListController: ListEduDelegate {
-    func goToEduForm() {
-        performSegue(withIdentifier: "goToEduForm", sender: self)
+    func addEduForm(from: String) {
+        let storyboard = UIStoryboard(name: "EducationFormController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToEduForm") as! EducationFormController
+        vc.dataFrom = from
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

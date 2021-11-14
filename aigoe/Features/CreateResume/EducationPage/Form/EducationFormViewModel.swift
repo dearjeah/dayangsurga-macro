@@ -21,4 +21,8 @@ class EducationFormViewModel: NSObject {
         guard let data = eduCueRepo.getEducationSuggestionById(id: 1) else { return Edu_Suggestion() }
         return data
     }
+    
+    func deleteEduData(eduData: Education) {
+        let data = eduRepo.deleteEducation(data: eduData)
+    }
 }

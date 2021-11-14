@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ListEduDelegate: AnyObject{
-    func goToEduForm()
+    func addEduForm(from: String)
 }
 
 class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
@@ -18,6 +18,7 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     var totalData = 0
+    var eduData = [Education]()
     weak var delegate: ListEduDelegate?
     
     func setup(dlgt: ListEduDelegate) {
@@ -56,13 +57,14 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     @IBAction func addAction(_ sender: Any) {
-        actionButton()
+        navigateToEduForm(from: "add")
     }
     
-    // func protocol
-    func actionButton(){
-        delegate?.goToEduForm()
+    func navigateToEduForm(from: String, eduData: Education = Education()){
+        delegate?.addEduForm(from: from)
     }
+    
+    
     
     // seting for table view
     func registerTableView(){
@@ -72,31 +74,29 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if totalData != 0 {
+        if eduData.count != 0 {
             emptyStateView.isHidden = true
-            return 2
+            return eduData.count
         } else {
-            emptyStateView.isHidden = false
-            emptyStateView.emptyStateImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
-            emptyStateView.emptyStateImage.contentMode = .scaleAspectFit
-            emptyStateView.emptyStateImage.clipsToBounds = true
-            emptyStateView.emptyStateTitle.isHidden = true
-            emptyStateView.emptyStateImage.image = UIImage(named: "imgEmptyStateEdu")
-            emptyStateView.emptyStateDescription.text = "You haven’t filled your educational history. Click the ‘Add’ button to add your educational information."
+            showEmptyState()
             self.tableView.backgroundView = emptyStateView
+            return 0
         }
-        return Int()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EducationTableCell.identifier, for: indexPath) as? EducationTableCell else {
             return UITableViewCell()
         }
-        cell.institutionName.text = "Universitas Kami"
-        cell.educationTitle.text = "B.A in Finance"
-        cell.educationPeriod.text = "August 2020 - Present"
-        cell.educationGPA.text = "3.90"
-        cell.educationActivities.text = "Delivered 5+ Projects and Programs within agreed budget, time and quality for telecom operators in Indonesia and Singapore."
+        let edu = eduData[indexPath.row]
+        let eduPeriod = "\(edu.start_date?.string(format: Date.ISO8601Format.MonthYear) ?? "") - \(edu.end_date?.string(format: Date.ISO8601Format.MonthYear) ?? "")"
+        
+        cell.institutionName.text = edu.institution
+        cell.educationTitle.text = edu.title
+        cell.educationPeriod.text = eduPeriod
+        cell.educationGPA.text = String(edu.gpa)
+        cell.educationActivities.text = edu.activity
+        
         return cell
     }
     
@@ -105,5 +105,17 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
+}
+
+extension EducationPageView {
+    func showEmptyState() {
+        emptyStateView.isHidden = false
+        emptyStateView.emptyStateImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
+        emptyStateView.emptyStateImage.contentMode = .scaleAspectFit
+        emptyStateView.emptyStateImage.clipsToBounds = true
+        emptyStateView.emptyStateTitle.isHidden = true
+        emptyStateView.emptyStateImage.image = UIImage(named: "imgEmptyStateEdu")
+        emptyStateView.emptyStateDescription.text = "You haven’t filled your educational history. Click the ‘Add’ button to add your educational information."
     }
 }
