@@ -7,16 +7,23 @@
 
 import UIKit
 
+protocol skillListDelegate: AnyObject{
+    func goToAddEditList()
+}
+
 class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
   
     @IBOutlet weak var addEditButton: UIButton!
     @IBOutlet weak var skillsTableView: UITableView!
     @IBOutlet weak var emptyStateView: EmptyState!
     
+    weak var delegate: skillListDelegate?
+    
     let skillDataCount = 1
     
     @IBAction func addEditPressed(_ sender: UIButton) {
        //go to add form
+        delegate?.goToAddEditList()
     }
     
     override init(frame: CGRect) {

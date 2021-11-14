@@ -7,8 +7,9 @@
 
 import UIKit
 
-class SkillAddEditController: UIViewController, UITableViewDataSource {
 
+class SkillAddEditController: UIViewController, UITableViewDataSource {
+    
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var skillTableView: UITableView!
     
@@ -20,6 +21,7 @@ class SkillAddEditController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
+      
     }
     
     
