@@ -7,9 +7,13 @@
 
 import UIKit
 
-class ExpertDetailViewController: MVVMViewController<ExpertDetailViewModel>, UITableViewDelegate, UITableViewDataSource {
-   
+class ExpertDetailViewController: MVVMViewController<ExpertDetailViewModel>, UITableViewDelegate, UITableViewDataSource, goToLinkedIn {
     
+    func goToLink() {
+        if let url = URL(string: expertDetail.linkedIn!){
+            UIApplication.shared.open(url)
+        }
+    }
     
     var index: Int?
     var expertDetail = Expert_Profile()
@@ -55,7 +59,7 @@ class ExpertDetailViewController: MVVMViewController<ExpertDetailViewModel>, UIT
             return 60
         }
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 2 {
             let cell = expertDetailTable.dequeueReusableCell(withIdentifier: "ExpertSummaryCell", for: indexPath)as! ExpertSummaryCell
@@ -64,6 +68,8 @@ class ExpertDetailViewController: MVVMViewController<ExpertDetailViewModel>, UIT
             return cell
         }else if indexPath.row == 3{
             let cell = expertDetailTable.dequeueReusableCell(withIdentifier: "ContactExpertCell", for: indexPath)as! ContactExpertCell
+            cell.setUpProtocol(dlgt: self)
+            goToLink()
             return cell
         }else{
             let cell = expertDetailTable.dequeueReusableCell(withIdentifier: "ExpertDetailInfoCell", for: indexPath)as! ExpertDetailInfoCell
