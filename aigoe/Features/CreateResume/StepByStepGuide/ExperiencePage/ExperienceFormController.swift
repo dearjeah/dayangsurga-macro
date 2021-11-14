@@ -43,6 +43,7 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
         expPlaceholder = self.viewModel?.getExpPh()
         expSuggestion = self.viewModel?.getExpSuggestion()
         hideKeyboardWhenTappedAround()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -50,6 +51,7 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
             vc.formSource = "experience"
         }
     }
+    
     
     @IBAction func addExperiencePressed(_ sender: UIButton) {
         if !alertForCheckTF() {
@@ -74,6 +76,7 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
                 showAlertForDelete()
             }
         }
+        expDelegate?.addExperience()
     }
     
     @objc func updateExp(sender: UIBarButtonItem) {
