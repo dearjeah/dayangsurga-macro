@@ -9,6 +9,7 @@ import UIKit
 
 protocol skillListDelegate: AnyObject{
     func goToAddEditList()
+    func passSkillsData()
 }
 
 class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
