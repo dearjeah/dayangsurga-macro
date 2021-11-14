@@ -43,10 +43,67 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
         hideKeyboardWhenTappedAround()
     }
     
+    @IBAction func addorDeleteAction(_ sender: Any) {
+        tapToAddDeleteButton()
+    }
+    
+    // protocol -- go to list edu
+    func tapToAddDeleteButton(){
+        delegate?.addDeleteEdu()
+    }
+    
+    func deleteEduData(){
+        self.viewModel?.deleteEduData(eduData: eduData ?? Education())
+        self.navigationController?.popViewController(animated: false)
+    }
+}
+
+//MARK: Alert
+extension EducationFormController {
+    func alertForCheckTF(){
+        if ((institutionView.textField.text?.isEmpty) != false) ||
+            ((qualificationView.textField.text?.isEmpty) != false) ||
+            ((gpaView.textField.text?.isEmpty) != false ||
+             (activityView.textView.text.isEmpty) != false )
+        {
+            let alert = UIAlertController(
+                title: "Field Can't Be Empty",
+                message: "You must fill in every mandatory fields in this form.",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func showAlertForDelete(){
+        let alert = UIAlertController(title: "Delete Data?", message: "You will not be able to recover it.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {action in self.deleteEduData()}))
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension EducationFormController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView){
+       
+        if ( activityView.textView.text.count  + 1 == eduPlaceholder?.activity_ph?.count){
+                activityView.textView.text = ""
+            }
+        activityView.textView.textColor = .black
+    }
+}
+
+//MARK: Initial Setup
+extension EducationFormController {
     func setView(){
         self.title = "Education"
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        addOrDeleteButton.dsLongFilledPrimaryButton(withImage: false, text: "Add Education")
+        if dataFrom == "add" {
+            addOrDeleteButton.dsLongFilledPrimaryButton(withImage: false, text: "Add Education")
+        } else {
+            addOrDeleteButton.dsLongUnfilledButton(isDelete: true, text: "Delete Education")
+        }
     }
     
     func setupForm(){
@@ -74,24 +131,5 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
         activityView.textView.placeholder = ""
         activityView.textView.text = eduPlaceholder?.activity_ph
         activityView.cueLabel.text = eduSuggestion?.activity_suggest
-    }
-    
-    @IBAction func addorDeleteAction(_ sender: Any) {
-        tapToAddDeleteButton()
-    }
-    
-    // protocol -- go to list edu
-    func tapToAddDeleteButton(){
-        delegate?.addDeleteEdu()
-    }
-}
-
-extension EducationFormController: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView){
-       
-        if ( activityView.textView.text.count  + 1 == eduPlaceholder?.activity_ph?.count){
-                activityView.textView.text = ""
-            }
-        activityView.textView.textColor = .black
     }
 }
