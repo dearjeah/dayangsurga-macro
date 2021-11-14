@@ -24,12 +24,12 @@ func preloadAccomplishPh(){
 }
 
 // accomplish dummy data
-func preloadAccomplish(){
-    AccomplishmentRepository.shared.createAccomplishment(accomId: 0,
-                                                         userId: 0,
-                                                         title: "App Development Swift Certification",
-                                                         givenDate: Date(),
-                                                         issuer: "Swift.co",
-                                                         desc: "",
-                                                         isSelected: true)
-}
+//func preloadAccomplish(){
+//    AccomplishmentRepository.shared.createAccomplishment(accomId: 0,
+//                                                         userId: 0,
+//                                                         title: "App Development Swift Certification",
+//                                                         givenDate: Date(),
+//                                                         issuer: "Swift.co",
+//                                                         desc: "",
+//                                                         isSelected: true)
+//}

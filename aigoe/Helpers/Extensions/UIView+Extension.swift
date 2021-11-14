@@ -364,4 +364,29 @@ class DesignableView: UIView {
         }
     }
     
+    @IBInspectable
+    // Shadow blur of view; also inspectable from Storyboard.
+    public var shadowBlur: CGFloat {
+        get {
+            return layer.shadowRadius
+        }
+        set {
+            layer.shadowRadius = newValue / 2.0
+        }
+    }
+
+    @IBInspectable
+    // Shadow spread of view; also inspectable from Storyboard.
+    public var shadowSpread: CGFloat = 0 {
+        didSet {
+            if shadowSpread == 0 {
+                layer.shadowPath = nil
+            } else {
+                let dx = -shadowSpread
+                let rect = bounds.insetBy(dx: dx, dy: dx)
+                layer.shadowPath = UIBezierPath(rect: rect).cgPath
+            }
+        }
+    }
+    
 }
