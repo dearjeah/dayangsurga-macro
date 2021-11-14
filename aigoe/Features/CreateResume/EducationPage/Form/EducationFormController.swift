@@ -11,7 +11,7 @@ protocol EduFormDelegate: AnyObject {
     func addDeleteEdu()
 }
 
-class EducationFormController: UIViewController {
+class EducationFormController: MVVMViewController<EducationFormViewModel> {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var institutionView: LabelWithTextField!
@@ -23,9 +23,20 @@ class EducationFormController: UIViewController {
     @IBOutlet weak var addOrDeleteButton: UIButton!
     
     weak var delegate: EduFormDelegate?
+    var eduData: Education? = nil
+    var eduPlaceholder: Edu_Placeholder?
+    var eduSuggestion: Edu_Suggestion?
+    var placeholderLabel : UILabel!
+    var switcherStatus: Bool!
+    var getIndexExp = Int()
+    var dataFrom = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.viewModel = EducationFormViewModel()
+        eduPlaceholder = self.viewModel?.getEduPh()
+        eduSuggestion = self.viewModel?.getEduSuggest()
         
         setView()
         setupForm()
@@ -35,18 +46,17 @@ class EducationFormController: UIViewController {
     func setView(){
         self.title = "Education"
         self.navigationController?.navigationBar.prefersLargeTitles = false
-//        scrollView.contentSize = CGSize(width: 400, height: 2300)
         addOrDeleteButton.dsLongFilledPrimaryButton(withImage: false, text: "Add Education")
     }
     
     func setupForm(){
         // for institution
         institutionView.titleLabel.text = "Institution*"
-        institutionView.textField.placeholder = "e.g. Universitas Gadjah Mada"
+        institutionView.textField.placeholder = eduPlaceholder?.institution_ph
         
         // for qualification
         qualificationView.titleLabel.text = "Qualification*"
-        qualificationView.textField.placeholder = "e.g. Bachelor of Computer Science"
+        qualificationView.textField.placeholder = eduPlaceholder?.title_ph
         
         // for edu status
         eduStatusView.titleLabel.text = "Education Status*"
@@ -57,13 +67,13 @@ class EducationFormController: UIViewController {
         
         // for gpa
         gpaView.titleLabel.text = "GPA*"
-        gpaView.textField.placeholder = "e.g. 3.90"
+        gpaView.textField.placeholder = eduPlaceholder?.gpa_ph
         
         // for activity / project
         activityView.titleLabel.text = "Activity/Project"
         activityView.textView.placeholder = ""
-        activityView.textView.text = "Lead a new CLOAD application project with a team of 5 people focusing on ATS-friendly resume."
-        activityView.cueLabel.text = "To show experiences or skills you want to highlight, consider to include relevant projects or activities that align with the job qualifications."
+        activityView.textView.text = eduPlaceholder?.activity_ph
+        activityView.cueLabel.text = eduSuggestion?.activity_suggest
     }
     
     @IBAction func addorDeleteAction(_ sender: Any) {
@@ -73,5 +83,15 @@ class EducationFormController: UIViewController {
     // protocol -- go to list edu
     func tapToAddDeleteButton(){
         delegate?.addDeleteEdu()
+    }
+}
+
+extension EducationFormController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView){
+       
+        if ( activityView.textView.text.count  + 1 == eduPlaceholder?.activity_ph?.count){
+                activityView.textView.text = ""
+            }
+        activityView.textView.textColor = .black
     }
 }
