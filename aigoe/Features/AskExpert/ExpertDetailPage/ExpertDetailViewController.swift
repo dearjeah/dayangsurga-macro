@@ -46,8 +46,23 @@ class ExpertDetailViewController: MVVMViewController<ExpertDetailViewModel>, UIT
         return 4
     }
     
+    func sendToWhatsApp(message: String){
+        let urlWhatsApp = "https://wa.me/6285311689228/?text=\(message)"
+        if let urlString = urlWhatsApp.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed){
+            if let whatsAppURL = NSURL(string: urlString){
+                if UIApplication.shared.canOpenURL(whatsAppURL as URL){
+                    UIApplication.shared.open(whatsAppURL as URL, options: [:], completionHandler: nil)
+                }else{
+                    print("Cannot open WhatsApp")
+                }
+            }
+        }
+    }
+    
     @IBAction func askWhatsAppTapped(_ sender: Any) {
-        print("Ask \(expertDetail.expert_name ?? nil) on whatsapp")
+//        print("Ask \(expertDetail.expert_name ?? nil) on whatsapp")
+        sendToWhatsApp(message: "Hello, my name is: \nI am a user of aigoe.")
+      
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
