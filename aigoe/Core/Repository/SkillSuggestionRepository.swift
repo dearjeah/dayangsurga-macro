@@ -17,7 +17,7 @@ class SkillSuggestionRepository{
     let context = CoreDataManager.sharedManager.persistentContainer.viewContext
     
     // create data
-    func createExpSuggestion(skillId: Int32,
+    func createSkillSuggestion(skillId: Int32,
                              skillSuggestionId: Int32,
                              skillSuggest: String){
         do {
@@ -52,7 +52,7 @@ class SkillSuggestionRepository{
     
     func getSkillSuggestionById(skill_suggestion_id: Int) -> Skills_Suggest? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "skill_suggest_id == %d", skill_suggestion_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "skills_suggest_id == %d", skill_suggestion_id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Skills_Suggest]
             return item?.first

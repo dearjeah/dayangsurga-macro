@@ -24,6 +24,7 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     @IBAction func addEditPressed(_ sender: UIButton) {
        //go to add form
+        print("Add edit pressed")
         delegate?.goToAddEditList()
     }
     
@@ -37,6 +38,7 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
         super.init(coder: aDecoder)
         initWithNib()
         setup()
+        print("olip cantik")
     }
     
     convenience init(text: String) {

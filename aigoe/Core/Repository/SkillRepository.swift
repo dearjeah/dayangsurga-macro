@@ -20,7 +20,7 @@ class SkillRepository{
     func createSkill(       skillId: Int32,
                              userId: Int32,
                              skillName: String,
-                             isSelected : Bool){
+                             isSelected : Bool)-> Bool{
         do {
             // relation accomplishment-user
             if let SkillToUser = UserRepository.shared.getUserById(id: Int(userId)) {
@@ -32,11 +32,13 @@ class SkillRepository{
                 
                 SkillToUser.addToSkill(skill)
                 try context.save()
+                return true
             }
         }
         catch let error as NSError {
             print(error)
         }
+        return false
     }
     
     // retrieve skill

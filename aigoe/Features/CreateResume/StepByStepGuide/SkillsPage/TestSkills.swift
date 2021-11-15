@@ -8,6 +8,10 @@
 import UIKit
 
 class TestSkills: MVVMViewController<StepByStepGuideViewModel>, skillListDelegate {
+    func passSkillsData() {
+        
+    }
+    
  
    
     @IBOutlet weak var skillsView: SkillsPageView!
@@ -19,10 +23,18 @@ class TestSkills: MVVMViewController<StepByStepGuideViewModel>, skillListDelegat
     }
     
     func goToAddEditList() {
-        
+        print("olip ganteng")
+        let storyboard = UIStoryboard(name: "SkillAddEditController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToEditSkills") as! SkillAddEditController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
-
+    @IBAction func unwindToSkill( sender: UIStoryboardSegue) {
+    }
+    
+//    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, sender: Any?) -> Bool {
+//        return action == #selector(self.unwind(_:))
+//    }
     /*
     // MARK: - Navigation
 

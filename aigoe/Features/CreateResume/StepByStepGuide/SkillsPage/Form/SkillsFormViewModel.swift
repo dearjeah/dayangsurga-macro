@@ -20,4 +20,13 @@ class SkillsFormViewModel: NSObject{
     func getSkillSuggestion(id: Int)-> Skills_Suggest?{
         return SkillSuggestionRepository.shared.getSkillSuggestionById(skill_suggestion_id: 0)
     }
+    
+    func getSkillData() -> [Skills]?{
+        return SkillRepository.shared.getAllSkill()
+    }
+    
+    func createSkill(skillId: Int, skillName: String, isSelected: Bool)-> Bool{
+        let skill = SkillRepository.shared.createSkill(skillId: Int32(skillId), userId: 0, skillName: skillName, isSelected: isSelected)
+        return skill
+    }
 }
