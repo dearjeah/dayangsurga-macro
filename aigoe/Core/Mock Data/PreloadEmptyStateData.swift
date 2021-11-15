@@ -27,28 +27,12 @@ func preloadEmptyState(){
                                                  title: "You haven’t filled your skills. Click the ‘Add’ button to add your technical skills.")
     // accomplishment
     EmptyStateRepository.shared.createEmptyState(emptyState_id: 4,
-                                                 image: UIImage(named: "imgEmptyStateAccom") ?? UIImage(),
+                                                 image: UIImage.imgEmptyStateAccom,
                                                  title: "You have no accomplishment yet. Click the ‘Add’ button to add your certificates or awards.")
     // personal information
     EmptyStateRepository.shared.createEmptyState(emptyState_id: 5,
-                                                 image: UIImage(named: "imgPersonalInformationEmptyState") ?? UIImage(),
+                                                 image: UIImage.imgPersonalInformationEmptyState,
                                                  title: "You have no personal information yet. Click the ‘Add’ button to add your personal information")
 }
 
-func preloadUserResume(){
-    UserResumeRepository.shared.createUserResume(resume_id: 1,
-                                                 template_id: 1,
-                                                 user_id: 1,
-                                                 image: UIImage.imgResumeTemplateGeorgia,
-                                                 name: "dfj",
-                                                 lastUpdate: Date(),
-                                                 editingProgress: 1)
-    UserResumeRepository.shared.createUserResume(resume_id: 1,
-                                                 template_id: 1,
-                                                 user_id: 1,
-                                                 image: UIImage.imgResumeTemplateHeletvica,
-                                                 name: "abc",
-                                                 lastUpdate: Date(),
-                                                 editingProgress: 1)
-}
 
