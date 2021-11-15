@@ -19,6 +19,9 @@ class EducationTableCell: UITableViewCell {
     @IBOutlet weak var selectionButton: UIButton!
     @IBOutlet weak var editEducationButton: UIButton!
     
+    var checklistButtonAction : (() -> ())?
+    var editButtonAction : (() -> ())?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,13 +32,13 @@ class EducationTableCell: UITableViewCell {
         
     }
     @IBAction func selectEducation(_ sender: Any) {
-        if selectionStatus == false{
+        if selectionStatus == false {
             selectionStatus = true
-            selectionButton.setImage(UIImage(named: "icRoundSelectionFilled"), for: .normal)
+            selectionButton.setImage(UIImage.icRoundSelectionFilled, for: .normal)
             shadowView.layer.borderColor = UIColor.primaryBlue.cgColor
-        }else{
+        } else {
             selectionStatus = false
-            selectionButton.setImage(UIImage(named: "icRoundSelectionNoFill"), for: .normal)
+            selectionButton.setImage(UIImage.icRoundSelectionNoFill, for: .normal)
             shadowView.layer.borderColor = UIColor.clear.cgColor
         }
     }
@@ -51,6 +54,18 @@ class EducationTableCell: UITableViewCell {
     
     static func nib() -> UINib {
         return UINib(nibName: "EducationTableCell", bundle: nil)
+    }
+    
+    func checklistButtonIfSelected(){
+        shadowView.layer.borderWidth = 1
+        shadowView.layer.cornerRadius = 17
+        shadowView.layer.borderColor = UIColor.primaryBlue.cgColor
+        selectionButton.setImage(UIImage.icRoundSelectionFilled, for: .normal)
+    }
+    
+    func checklistButtonUnSelected(){
+        selectionButton.setImage(UIImage.icRoundSelectionNoFill, for: .normal)
+        shadowView.layer.borderColor = UIColor.clear.cgColor
     }
     
 }

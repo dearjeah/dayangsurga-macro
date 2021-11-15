@@ -13,8 +13,8 @@ class ResumeTemplateCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         resumeTemplateImage.layer.cornerRadius = 8
-        self.layer.shadowRadius = 10
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOffset = .init(width: 10, height: 10)
+//        self.layer.shadowRadius = 10
+//        self.layer.shadowColor = UIColor.black.cgColor
+//        self.layer.shadowOffset = .init(width: 10, height: 10)
     }
 }

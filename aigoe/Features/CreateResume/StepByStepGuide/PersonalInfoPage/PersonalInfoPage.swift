@@ -88,21 +88,40 @@ class PersonalInfoPage: UIView{
      
     }
     
-    func goToNextStep() {
-        
+    func saveToCoreData() {
+        if UserRepository.shared.getUserById(id: 1) != nil{
+            UserRepository.shared.updateUser(id: 1, newName: fullNameField.textField.text ?? "", newPhoneNumber: phoneField.textField.text ?? "", newEmail: emailField.textField.text ?? "" , newLocation: locationField.textField.text ?? "", newSummary: summaryField.textView.text ?? "")
+        } else {
+            UserRepository.shared.createUser(user_id: 1, username: fullNameField.textField.text ?? "", phoneNumber: phoneField.textField.text ?? "", email: emailField.textField.text ?? "", location: locationField.textField.text ?? "", summary: summaryField.textView.text ?? "")
+        }
     }
-  
+    
+    func checkAllFieldValue() -> Bool {
+        if fullNameField.textField.text?.count ?? 0 < 1
+            && emailField.textField.text?.count ?? 0 < 1
+            && phoneField.textField.text?.count ?? 0 < 1
+            && locationField.textField.text?.count ?? 0 < 1
+            && summaryField.textView.text.count < 1 {
+            return false
+        }
+        return true
+    }
 }
+        
+  
+
 
 
 extension PersonalInfoPage :  UITextViewDelegate{
-
-    func textViewDidChange(_ textView: UITextView){
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
         if let personalInfoPlaceholder = PersonalInformationPlaceholderRepository.shared.getPIPhById(pi_ph_id: 1) {
-            if (summaryField.textView.text.count  + 1 == (personalInfoPlaceholder.summary_ph?.count)){
+            if (summaryField.textView.text.lowercased()  == (personalInfoPlaceholder.summary_ph?.lowercased())){
                 summaryField.textView.text = ""
             }
         }
         summaryField.textView.textColor = .black
     }
+
+   
 }
