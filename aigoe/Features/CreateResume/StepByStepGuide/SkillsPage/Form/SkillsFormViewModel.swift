@@ -29,4 +29,9 @@ class SkillsFormViewModel: NSObject{
         let skill = SkillRepository.shared.createSkill(skillId: Int32(skillId), userId: 0, skillName: skillName, isSelected: isSelected)
         return skill
     }
+    
+    func updateSkill(skillId: Int, skillName: String, isSelected: Bool)-> Bool{
+        let skill = SkillRepository.shared.updateSkill(skillId: skillId, userId: 0, skillName: skillName, isSelected: isSelected)
+        return skill
+    }
 }

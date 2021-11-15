@@ -7,19 +7,39 @@
 
 import UIKit
 
-
-class SkillAddEditController: MVVMViewController<SkillsFormViewModel>, UITableViewDataSource {
+class SkillAddEditController: MVVMViewController<SkillsFormViewModel>, UITableViewDataSource, TechnicalSkillEditDelegate {
+    
+    func checkIfEdit(index: Int, input: String) {
+//        if let newValue = input.flatMap(String){
+//            localSkill = rece
+//        }
+        for i in 0..<localSkill.count{
+            if i == index {
+                localSkill[i].name = input
+            }
+        }
+    }
+    
     
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var skillTableView: UITableView!
     @IBOutlet weak var skillSuggest: UILabel!
     
+    
+    struct localSkills{
+        var id: Int
+        var name: String
+    }
+    
     var skill: [Skills]? = []
+    var localSkill: [localSkills] = []
     var skillSuggestion: Skills_Suggest?
     var skillPh: Skills_Placeholder?
     var test: [Int] = []
-    var skillName: [String] = []
     var skillData = 0
+    var dataFrom: String = ""
+    var stringChecker = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
         skillTableView.dataSource = self
@@ -29,29 +49,22 @@ class SkillAddEditController: MVVMViewController<SkillsFormViewModel>, UITableVi
         skillPh = self.viewModel?.getPlacehoder(id: 0)
         skillSuggest.text = skillSuggestion?.skills_suggest
         self.skillTableView.register(UINib(nibName: "TechnicalSkillsEditCell", bundle: nil), forCellReuseIdentifier: "skillEditCell")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(self.updateSkills(sender:)))
+        hideKeyboardWhenTappedAround()
         dataChecker()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(self.updateExp(sender:)))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         skillTableView.reloadData()
     }
-    
-    func dataChecker(){
-        if skill?.count == 0 {
-            self.test.append(1)
-        }else{
-            let skillData = skill?.count ?? 0
-            for i in 0...skillData{
-                self.test.append(i)
-            }
-        }
-    }
-    
+ 
     func saveData(){
-        skillData = test.count
+        skillData = localSkill.count
         for i in 0..<skillData{
-            let skill = self.viewModel?.createSkill(skillId: i, skillName: skillName[i] , isSelected: true)
+            let skillId = localSkill[i].id
+            let skillName = localSkill[i].name
+            print(skillName)
+            let skill = self.viewModel?.createSkill(skillId: Int(skillId), skillName: skillName , isSelected: true)
             if skill == false{
                 let alert = UIAlertController(title: "Failed to save Skill Data", message: "Please try to save again later.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "oke", style: .default, handler: nil))
@@ -61,23 +74,78 @@ class SkillAddEditController: MVVMViewController<SkillsFormViewModel>, UITableVi
         }
     }
     
+    func checkChange(){
+        
+    }
+    
+    func dataChecker() {
+        let tmp = skill?.count ?? 0
+        if tmp != 0 {
+            for i in 0..<tmp {
+                let a = localSkills(id: Int(skill?[i].skill_id ?? 0), name: "")
+                localSkill.append(a)
+            }
+        } else {
+            let a = localSkills(id: 1001, name: "")
+            localSkill.append(a)
+        }
+    }
+    
+//    func updateData(){
+//        skillData = skill?.count ?? 0
+//        for i in 0..<skillData{
+//            let skillId = localSkill?[i].skill_id ?? 0
+//            let skillName = localSkill?[i].skill_name ?? ""
+//            let skill = self.viewModel?.updateSkill(skillId: Int(skillId), skillName: skillName , isSelected: true)
+//            if skill == false{
+//                failSave()
+//                return
+//            }
+//        }
+//        if skillData != localSkill?.count{
+//            let skillCount = localSkill?.count ?? 0
+//            for i in 0..<skillCount{
+//                if skill?[i].skill_id != localSkill?[i].skill_id{
+//                    let skillId = localSkill?[i].skill_id ?? 0
+//                    let skillName = localSkill?[i].skill_name ?? ""
+//                    let skill = self.viewModel?.createSkill(skillId: Int(skillId), skillName: skillName , isSelected: true)
+//                    if skill == false{
+//                        failSave()
+//                        return
+//                    }
+//                }
+//            }
+//        }
+//    }
+    
+    func failSave(){
+        let alert = UIAlertController(title: "Failed to save Skill Data", message: "Please try to save again later.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "oke", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+
+    }
+    
     @IBAction func addButtonPressed(_ sender: UIButton) {
-        self.test.append(1)
+        let skillTemp = Skills()
+        let localSkillCounter =  self.localSkill.count
+//        skillTemp.skill_id = Int32(1000+localSkillCounter)
+//        skillTemp.skill_name = ""
+//        localSkill.append(skillTemp)
+        let a = localSkills(id: 1001, name: "")
+        localSkill.append(a)
         self.skillTableView.performBatchUpdates({
-                self.skillTableView.insertRows(at: [IndexPath(row: self.test.count - 1,
-                                                         section: 0)],
-                                          with: .automatic)
-            }, completion: nil)
+            self.skillTableView.insertRows(at: [IndexPath(row: localSkillCounter - 1,section: 0)],with: .automatic)
+        }, completion: nil)
         self.skillTableView.reloadData()
     }
     
-    @objc func updateExp(sender: UIBarButtonItem) {
+    @objc func updateSkills(sender: UIBarButtonItem) {
         saveData()
+        performSegue(withIdentifier: "unwindToSkill", sender: self)
     }
     
     @objc func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return test.count
-        
+        return localSkill.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -86,8 +154,25 @@ class SkillAddEditController: MVVMViewController<SkillsFormViewModel>, UITableVi
     
     @objc func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  skillTableView.dequeueReusableCell(withIdentifier: "skillEditCell") as! TechnicalSkillsEditCell
-        cell.skillTextField.placeholder = skillPh?.skills_name_ph
-        skillName.append(cell.skillTextField.text ?? "")
+        cell.delegate = self
+        cell.skillTextField.tag = indexPath.row
+//        stringChecker = cell.skillTextField.text!
+        skillData = localSkill.count
+        
+        
+        if dataFrom == "Edit"{
+            for i in 0..<skillData{
+                skill = self.viewModel?.getSkillData()
+                cell.skillTextField.text = skill?[i].skill_name
+            }
+        }else{
+            skillData = localSkill.count
+            for i in 0..<skillData{
+                cell.skillTextField.placeholder = skillPh?.skills_name_ph
+            }
+        }
+       
+       
         return cell
     }
     

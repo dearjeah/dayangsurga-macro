@@ -7,14 +7,24 @@
 
 import UIKit
 
-class TestSkills: MVVMViewController<StepByStepGuideViewModel>, skillListDelegate {
+class TestSkills: UIViewController, skillListDelegate {
+    
+    func passDataFromEdit() {
+        let storyboard = UIStoryboard(name: "SkillAddEditController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToEditSkills") as! SkillAddEditController
+        vc.dataFrom = "Edit"
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func passSkillsData() {
         
     }
     
- 
-   
     @IBOutlet weak var skillsView: SkillsPageView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        skillsView.getAndReload()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +33,6 @@ class TestSkills: MVVMViewController<StepByStepGuideViewModel>, skillListDelegat
     }
     
     func goToAddEditList() {
-        print("olip ganteng")
         let storyboard = UIStoryboard(name: "SkillAddEditController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToEditSkills") as! SkillAddEditController
         self.navigationController?.pushViewController(vc, animated: true)
@@ -31,18 +40,6 @@ class TestSkills: MVVMViewController<StepByStepGuideViewModel>, skillListDelegat
     
     @IBAction func unwindToSkill( sender: UIStoryboardSegue) {
     }
-    
-//    override func canPerformUnwindSegueAction(_ action: Selector, from fromViewController: UIViewController, sender: Any?) -> Bool {
-//        return action == #selector(self.unwind(_:))
-//    }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -69,7 +69,7 @@ class SkillRepository{
     func updateSkill( skillId: Int,
                       userId: Int,
                       skillName: String,
-                      isSelected : Bool) {
+                      isSelected : Bool)-> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "skill_id == %d", skillId as CVarArg)
         do {
@@ -81,11 +81,27 @@ class SkillRepository{
             skill?.is_selected = isSelected
          
             try context.save()
+            return true
         } catch let error as NSError {
             print(error)
         }
+        return false
     }
     
+    func updateSelectedSkillStatus(skill_id: Int,
+                              isSelected: Bool) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "skill_id == %d", skill_id as CVarArg)
+        do {
+            let item = try context.fetch(fetchRequest) as? [Skills]
+            let newSkill = item?.first
+            newSkill?.is_selected = isSelected
+            try context.save()
+        } catch let error as NSError {
+            print(error)
+        }
+        
+    }
     // func delete
     func deleteSkills(data: Skills) {
         do {

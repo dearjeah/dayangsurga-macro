@@ -119,9 +119,11 @@
                         <outlet property="addButton" destination="Db0-PI-luf" id="Taq-MU-buz"/>
                         <outlet property="skillSuggest" destination="bTj-7D-YDT" id="1KH-Al-TGZ"/>
                         <outlet property="skillTableView" destination="kpG-ga-3Yn" id="FE7-a3-YsA"/>
+                        <segue destination="exc-Bl-1Mk" kind="unwind" identifier="unwindToSkill" unwindAction="unwindToSkillWithSender:" id="btv-6L-LtO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="exc-Bl-1Mk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="69.565217391304358" y="85.714285714285708"/>
         </scene>

@@ -10,6 +10,7 @@ import UIKit
 protocol skillListDelegate: AnyObject{
     func goToAddEditList()
     func passSkillsData()
+    func passDataFromEdit()
 }
 
 class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
@@ -19,11 +20,13 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var emptyStateView: EmptyState!
     
     weak var delegate: skillListDelegate?
+    var stepViewModel = StepByStepGuideViewModel()
+    var emptyState: Empty_State?
+    var skills = [Skills]()
     
     let skillDataCount = 1
     
     @IBAction func addEditPressed(_ sender: UIButton) {
-       //go to add form
         print("Add edit pressed")
         delegate?.goToAddEditList()
     }
@@ -38,7 +41,9 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
         super.init(coder: aDecoder)
         initWithNib()
         setup()
-        print("olip cantik")
+        emptyState = stepViewModel.getEmptyStateId(Id: 3)
+        skills = stepViewModel.getSkillData() ?? []
+        skillsTableView.reloadData()
     }
     
     convenience init(text: String) {
@@ -64,23 +69,51 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
         skillsTableView.dataSource = self
         self.skillsTableView.register(UINib(nibName: "TechnicalSkillsListCell", bundle: nil), forCellReuseIdentifier: "TechnicalSkillsListCell")
     }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 58
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if skillDataCount == 0 {
-            emptyStateView.emptyStateImage.image = UIImage.imgSkillEmptyState
-            emptyStateView.emptyStateDescription.text = "You haven’t filled your skills. Click the ‘Add’ button to add your technical skills."
+        if skills.count == 0 {
+            addEditButton.setTitle("Add", for: .normal)
+            emptyStateView.emptyStateImage.image = UIImage(data: emptyState?.image ?? Data())
+            emptyStateView.emptyStateTitle.text = nil
+            emptyStateView.emptyStateDescription.text = emptyState?.title
             self.skillsTableView.backgroundView = emptyStateView
         } else {
+            addEditButton.setTitle("Edit", for: .normal)
             emptyStateView.isHidden = true
         }
-        return skillDataCount
+        return skills.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.passDataFromEdit()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TechnicalSkillsListCell") as! TechnicalSkillsListCell
-        
+        skills = stepViewModel.getSkillData() ?? []
+//        print(skills[indexPath.row].skill_name)
+        cell.skillName.text = skills[indexPath.row].skill_name
+        cell.checklistButtonAction = {
+//            self.skillListDelegate?.getSelectedIndex(index: indexPath.row)
+            if cell.selectionStatus == false{
+                cell.selectionStatus = true
+                cell.checklistButtonIfSelected()
+                self.skills[indexPath.row].is_selected = true
+                SkillRepository.shared.updateSelectedSkillStatus(skill_id: indexPath.row, isSelected: true)
+            }else{
+                cell.selectionStatus = false
+                cell.checklistButtonUnSelected()
+                self.skills[indexPath.row].is_selected = false
+                SkillRepository.shared.updateSelectedSkillStatus(skill_id: indexPath.row, isSelected: false)
+            }
+        }
         return cell
     }
     
-
+    func getAndReload(){
+        skills = stepViewModel.getSkillData() ?? []
+        skillsTableView.reloadData()
+    }
 }

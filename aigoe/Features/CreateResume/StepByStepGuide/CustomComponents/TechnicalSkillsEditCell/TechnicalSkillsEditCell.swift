@@ -7,7 +7,12 @@
 
 import UIKit
 
-class TechnicalSkillsEditCell: UITableViewCell {
+protocol TechnicalSkillEditDelegate: AnyObject{
+    func checkIfEdit(index: Int, input: String)
+    
+}
+
+class TechnicalSkillsEditCell: UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var skillTextField: UITextField!
     @IBOutlet weak var deleteSkillButton: UIButton!
@@ -16,11 +21,25 @@ class TechnicalSkillsEditCell: UITableViewCell {
         print("OLIP ROBOT")
     }
     
+    weak var delegate: TechnicalSkillEditDelegate?
+    var textfieldAction : (() -> ())?
+    
+    func setUp(dlgt: TechnicalSkillEditDelegate){
+        self.delegate = dlgt
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.checkIfEdit(index: textField.tag, input: skillTextField.text ?? "")
+        print("Olip capek", textField.tag)
+        print("Olip lelah sama delegate")
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         //deleteSkillButton.isHidden = true
+        skillTextField.delegate = self
+//        self.selectionButton.addTarget(self, action: #selector(selectButtonPressed(_:)), for: .touchUpInside)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
