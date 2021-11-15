@@ -48,7 +48,7 @@ class StepByStepGuideViewModel: NSObject {
     func getAccomplishByIndex(accomplishId: Int) -> Accomplishment?{
         return AccomplishmentRepository.shared.getAccomplishmentById(AccomplishmentId: accomplishId)
     }
-    
+
     func getAllInitialData() -> (edu: [Education], exp: [Experience], skill: [Skills], accom: [Accomplishment]){
         let eduData = eduRepo.getAllEducation() ?? []
         let expData = experienceRepo.getAllExperience() ?? []
