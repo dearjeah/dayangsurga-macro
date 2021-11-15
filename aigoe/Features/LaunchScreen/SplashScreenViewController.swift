@@ -23,14 +23,14 @@ class SplashScreenViewController: UIViewController {
         super.viewDidLayoutSubviews()
         imageView.center = view.center
         
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.5, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.3, execute: {
             self.animate()
         })
     }
 
     private func animate() {
         UIView.animate(withDuration: 1, animations: {
-            let size = self.view.frame.size.width * 3
+            let size = self.view.frame.size.width * 2
             let diffX = size - self.view.frame.size.width
             let diffY = self.view.frame.size.height - size
             
@@ -42,13 +42,15 @@ class SplashScreenViewController: UIViewController {
             )
         })
         
-        UIView.animate(withDuration: 1.5, animations: {
+        UIView.animate(withDuration: 1, animations: {
             self.imageView.alpha = 0
         }, completion: { done in
             if done {
-                let storyboard = UIStoryboard(name: "Homepage", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "HomepageController")
-                UIApplication.shared.keyWindow?.rootViewController = vc
+                DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
+                    let storyboard = UIStoryboard(name: "Homepage", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "HomepageController")
+                    UIApplication.shared.keyWindow?.rootViewController = vc
+                })
             }
         })
 
