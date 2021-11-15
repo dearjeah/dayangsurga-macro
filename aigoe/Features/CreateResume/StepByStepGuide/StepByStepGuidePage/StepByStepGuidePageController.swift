@@ -14,6 +14,8 @@ protocol StepByStepGuideDelegate: AnyObject {
     func goToEditExp(was: Bool, from: String, exp: Experience)
     func goToAddEdu(was: Bool, from: String)
     func goToEditEdu(was: Bool, from: String, edu: Education)
+    func goToAddAccom(from: String)
+    func goToEditAccom(from: String, accomp: Accomplishment)
 }
 
 protocol prevNextButtonDelegate: AnyObject {
@@ -148,6 +150,19 @@ extension StepByStepGuidePageController: ExperienceListDelegate {
     }
 }
 
+//MARK: Education List Delegate
+extension StepByStepGuidePageController: AccomplishListDelegate {
+    func goToAddAccom() {
+        stepDelegate?.goToAddAccom(from: "add")
+    }
+    
+    func passingAccomplishData(accomplish: Accomplishment?) {
+        stepDelegate?.goToEditAccom(from: "edit", accomp: accomplish ?? Accomplishment())
+    }
+    
+    
+}
+
 //MARK: Page Controller
 extension StepByStepGuidePageController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -228,10 +243,6 @@ extension StepByStepGuidePageController {
     func goToGenerate(){
         stepDelegate?.goToGenerate(was: true)
     }
-    
-    func addAndEditData(isAdd: Bool){
-        
-    }
 }
 
 //MARK: Checker
@@ -254,17 +265,6 @@ extension StepByStepGuidePageController {
             return true
         } else {
             return false
-        }
-    }
-    
-    func isAddEdit(data: Int, pageType: Int) {
-        //page type : 1-6, 6 = quiz
-        if pageType == 4 {
-            if data == 0 {
-                //button text = add
-            } else {
-                //button text = edit
-            }
         }
     }
     
@@ -397,9 +397,12 @@ extension StepByStepGuidePageController {
     }
     
     fileprivate func initAccomplishment() -> UIViewController {
-        let controller = UIViewController()
-        let tmp = AccomplishmentPageView.init(text: "")
-        //tmp.setup(delegate: self)
+        let controller = MVVMViewController<AccomplishmentPageViewModel>()
+        controller.viewModel = AccomplishmentPageViewModel()
+        accomData = controller.viewModel?.getAllAccomp() ?? []
+        
+        let tmp = AccomplishmentPageView.init(accom: accomData)
+        tmp.setup(dlgt: self)
         controller.view = tmp
         return controller
     }
