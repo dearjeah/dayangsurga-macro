@@ -31,6 +31,7 @@ class EducationRepository{
                 let education = Education(context: context)
                 education.edu_id = Int32(eduId)
                 education.user_id = Int32(userId)
+                education.institution = institution
                 education.title = title
                 education.start_date = startDate
                 education.end_date = endDate
@@ -85,7 +86,7 @@ class EducationRepository{
                           gpa: Float,
                           activity : String,
                           currentlyStudy : Bool,
-                          isSelected : Bool) {
+                          isSelected : Bool) -> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "edu_id == %d", eduId as CVarArg)
         do {
@@ -103,9 +104,13 @@ class EducationRepository{
            
             
             try context.save()
+            
+            return true
         } catch let error as NSError {
             print(error)
         }
+        
+        return false
     }
     
     func updateSelectedEduStatus(edu_id: Int,
