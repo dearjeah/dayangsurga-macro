@@ -12,7 +12,7 @@
         <!--GenerateResumeViewController-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="GenerateResumeViewController" title="GenerateResumeViewController" id="Y6W-OH-hqX" customClass="GenerateResumeController" customModule="dayangsurga_macro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GenerateResumeViewController" title="GenerateResumeViewController" id="Y6W-OH-hqX" customClass="GenerateResumeController" customModule="aigoe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -55,7 +55,7 @@
                                 <rect key="frame" x="20.666666666666657" y="575" width="372.66666666666674" height="31"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3J-IG-Jbr">
-                                        <rect key="frame" x="205" y="6" width="20" height="19"/>
+                                        <rect key="frame" x="230.66666666666669" y="6" width="20" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="19" id="L2b-xO-acn"/>
                                             <constraint firstAttribute="width" constant="20" id="SDv-eO-JNZ"/>
@@ -69,8 +69,8 @@
                                             <action selector="editDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9PJ-wF-Ikv"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4D-JV-DJW">
-                                        <rect key="frame" x="167.66666666666669" y="0.0" width="37.333333333333343" height="31"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resume Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4D-JV-DJW">
+                                        <rect key="frame" x="142" y="0.0" width="88.666666666666686" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="18" id="Ot2-EN-sqH"/>
                                         </constraints>

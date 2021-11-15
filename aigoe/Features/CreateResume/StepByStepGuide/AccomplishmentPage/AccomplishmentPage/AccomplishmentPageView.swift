@@ -106,8 +106,8 @@ extension AccomplishmentPageView:  UITableViewDelegate, UITableViewDataSource {
             emptyStateView.isHidden = false
             emptyState = stepViewModel.getEmptyStateId(Id: 4) ?? emptyState
             emptyStateView.emptyStateImage.image = UIImage(data: emptyState.image ?? Data())
-            emptyStateView.emptyStateTitle.text = nil
-            emptyStateView.emptyStateDescription.text = emptyState.description
+            emptyStateView.emptyStateTitle.isHidden = true
+            emptyStateView.emptyStateDescription.text = emptyState.title
             self.tableView.backgroundView = emptyStateView
         }
         return accomplishment.count

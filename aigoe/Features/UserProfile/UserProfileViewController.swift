@@ -14,11 +14,9 @@ class UserProfileViewController: UIViewController {
         super.viewDidLoad()
         setComingSoon()
         self.title = "Profile"
+        navigationStyle()
     }
     
-    @IBAction func unwindTohere(_ unwindSegue: UIStoryboardSegue) {
-
-    }
     
     func setComingSoon() {
         comingSoon.emptyStateImage.image = UIImage.comingSoon
@@ -28,6 +26,10 @@ class UserProfileViewController: UIViewController {
         comingSoon.emptyStateDescription.text = "Features are currently in progress"
         comingSoon.emptyStateDescription.font = UIFont.systemFont(ofSize: 17)
         comingSoon.emptyStateDescription.textColor = UIColor.primaryBlue
+    }
+    
+    func navigationStyle(){
+        configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.white, title: "Resume", preferredLargeTitle: true, hideBackButton: false)
     }
 
 

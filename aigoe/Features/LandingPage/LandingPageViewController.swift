@@ -45,7 +45,7 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
     
     func setView(){
         self.title = "Resume"
-        titleLabel.text = "My Resume"
+        titleLabel.text = "My Resumes"
     }
     
     func didTapButton() {
