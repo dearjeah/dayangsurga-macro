@@ -7,9 +7,13 @@
 
 import UIKit
 
-class ExpertDetailViewController: MVVMViewController<ExpertDetailViewModel>, UITableViewDelegate, UITableViewDataSource {
-   
+class ExpertDetailViewController: MVVMViewController<ExpertDetailViewModel>, UITableViewDelegate, UITableViewDataSource, goToLinkedIn {
     
+    func goToLink() {
+        if let url = URL(string: expertDetail.linkedIn!){
+            UIApplication.shared.open(url)
+        }
+    }
     
     var index: Int?
     var expertDetail = Expert_Profile()
@@ -28,7 +32,7 @@ class ExpertDetailViewController: MVVMViewController<ExpertDetailViewModel>, UIT
         setUpViewModel()
         expertDetailImage.image = UIImage(data: expertDetail.expert_image!)
         expertName.text = expertDetail.expert_name?.uppercased()
-        expertAvailability.text = "Availability: \(expertDetail.day_avail_time ?? "N/A")\n\(expertDetail.day_avail_time ?? "N/A")"
+        expertAvailability.text = "Availability: \(expertDetail.day_avail_time ?? "N/A")\n\(expertDetail.time_avail_time ?? "N/A")"
         contactExpertButton.dsLongFilledPrimaryButton(withImage: false, text: "  Ask in WhatsApp")
         expertDetailTable.reloadData()
     }
@@ -42,8 +46,30 @@ class ExpertDetailViewController: MVVMViewController<ExpertDetailViewModel>, UIT
         return 4
     }
     
+    func sendToWhatsApp(message: String){
+        let urlWhatsApp = "https://wa.me/\(expertDetail.phone_number ?? "")/?text=\(message)"
+        if let urlString = urlWhatsApp.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed){
+            if let whatsAppURL = NSURL(string: urlString){
+                if UIApplication.shared.canOpenURL(whatsAppURL as URL){
+                    UIApplication.shared.open(whatsAppURL as URL, options: [:], completionHandler: nil)
+                }else{
+                    print("Cannot open WhatsApp")
+                }
+            }
+        }
+    }
+    
     @IBAction func askWhatsAppTapped(_ sender: Any) {
-        print("Ask \(expertDetail.expert_name ?? nil) on whatsapp")
+
+        sendToWhatsApp(message: "Halo, perkenalkan saya\nNama:\nPekerjaan:\nSaya adalah pengguna aplikasi Aigoe. Saya ingin bertanya tentang proses rekrutmen dan seleksi kepada Ibu Utari.")
+      
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 3{
+            print("Test")
+            goToLink()
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -55,7 +81,7 @@ class ExpertDetailViewController: MVVMViewController<ExpertDetailViewModel>, UIT
             return 60
         }
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 2 {
             let cell = expertDetailTable.dequeueReusableCell(withIdentifier: "ExpertSummaryCell", for: indexPath)as! ExpertSummaryCell

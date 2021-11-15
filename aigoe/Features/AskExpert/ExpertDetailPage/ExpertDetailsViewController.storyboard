@@ -12,7 +12,7 @@
         <!--Expert Detail View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="goToExpertDetail" id="Y6W-OH-hqX" customClass="ExpertDetailViewController" customModule="dayangsurga_macro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="goToExpertDetail" id="Y6W-OH-hqX" customClass="ExpertDetailViewController" customModule="aigoe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,7 +24,7 @@
                                     <constraint firstAttribute="height" constant="258" id="Thr-Nb-Wvd"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExpertSummaryCell" rowHeight="80" id="1o8-Vd-p4C" customClass="ExpertSummaryCell" customModule="dayangsurga_macro" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ExpertSummaryCell" rowHeight="80" id="1o8-Vd-p4C" customClass="ExpertSummaryCell" customModule="aigoe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1o8-Vd-p4C" id="JBn-uU-V9m">
@@ -60,17 +60,16 @@
                                             <outlet property="descriptionLabel" destination="D7N-yr-p3B" id="JWa-dh-Rrs"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ContactExpertCell" rowHeight="60" id="Pp4-C0-Xyh" customClass="ContactExpertCell" customModule="dayangsurga_macro" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ContactExpertCell" rowHeight="60" id="Pp4-C0-Xyh" customClass="ContactExpertCell" customModule="aigoe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="124.5" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pp4-C0-Xyh" id="JWQ-xh-aF8">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tKs-RL-Ukx">
-                                                    <rect key="frame" x="13" y="14" width="244" height="31"/>
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tKs-RL-Ukx">
+                                                    <rect key="frame" x="13" y="14" width="414" height="31"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="244" id="S8Z-hB-n0m"/>
                                                         <constraint firstAttribute="height" constant="31" id="hcQ-a1-qzF"/>
                                                     </constraints>
                                                     <color key="tintColor" name="primaryBlue"/>
@@ -115,13 +114,11 @@
                                                             </fragment>
                                                         </attributedString>
                                                     </buttonConfiguration>
-                                                    <connections>
-                                                        <action selector="contactPressed:" destination="Pp4-C0-Xyh" eventType="touchUpInside" id="Ydg-yV-hgf"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="tKs-RL-Ukx" firstAttribute="leading" secondItem="JWQ-xh-aF8" secondAttribute="leading" constant="13" id="DB0-Ub-x1s"/>
+                                                <constraint firstItem="tKs-RL-Ukx" firstAttribute="width" secondItem="JWQ-xh-aF8" secondAttribute="width" id="ITF-0e-mmO"/>
                                                 <constraint firstItem="tKs-RL-Ukx" firstAttribute="top" secondItem="JWQ-xh-aF8" secondAttribute="top" constant="14" id="hFU-2b-KPX"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -154,13 +151,13 @@
                                 <color key="textColor" red="0.098039215690000001" green="0.1647058824" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7L-R6-Kpw">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7L-R6-Kpw">
                                 <rect key="frame" x="117" y="225.5" width="180" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" name="primaryDisable"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubc-6p-4G9" customClass="DesignableView" customModule="dayangsurga_macro" customModuleProvider="target">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubc-6p-4G9" customClass="DesignableView" customModule="aigoe" customModuleProvider="target">
                                 <rect key="frame" x="147" y="64" width="120" height="120"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l5X-lf-ZSd">
