@@ -32,7 +32,7 @@ class ExpertDetailViewController: MVVMViewController<ExpertDetailViewModel>, UIT
         setUpViewModel()
         expertDetailImage.image = UIImage(data: expertDetail.expert_image!)
         expertName.text = expertDetail.expert_name?.uppercased()
-        expertAvailability.text = "Availability: \(expertDetail.day_avail_time ?? "N/A")\n\(expertDetail.day_avail_time ?? "N/A")"
+        expertAvailability.text = "Availability: \(expertDetail.day_avail_time ?? "N/A")\n\(expertDetail.time_avail_time ?? "N/A")"
         contactExpertButton.dsLongFilledPrimaryButton(withImage: false, text: "  Ask in WhatsApp")
         expertDetailTable.reloadData()
     }
@@ -47,7 +47,7 @@ class ExpertDetailViewController: MVVMViewController<ExpertDetailViewModel>, UIT
     }
     
     func sendToWhatsApp(message: String){
-        let urlWhatsApp = "https://wa.me/6285311689228/?text=\(message)"
+        let urlWhatsApp = "https://wa.me/\(expertDetail.phone_number ?? "")/?text=\(message)"
         if let urlString = urlWhatsApp.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed){
             if let whatsAppURL = NSURL(string: urlString){
                 if UIApplication.shared.canOpenURL(whatsAppURL as URL){
@@ -60,9 +60,16 @@ class ExpertDetailViewController: MVVMViewController<ExpertDetailViewModel>, UIT
     }
     
     @IBAction func askWhatsAppTapped(_ sender: Any) {
-//        print("Ask \(expertDetail.expert_name ?? nil) on whatsapp")
-        sendToWhatsApp(message: "Hello, my name is: \nI am a user of aigoe.")
+
+        sendToWhatsApp(message: "Halo, perkenalkan saya\nNama:\nPekerjaan:\nSaya adalah pengguna aplikasi Aigoe. Saya ingin bertanya tentang proses rekrutmen dan seleksi kepada Ibu Utari.")
       
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 3{
+            print("Test")
+            goToLink()
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -83,8 +90,6 @@ class ExpertDetailViewController: MVVMViewController<ExpertDetailViewModel>, UIT
             return cell
         }else if indexPath.row == 3{
             let cell = expertDetailTable.dequeueReusableCell(withIdentifier: "ContactExpertCell", for: indexPath)as! ContactExpertCell
-            cell.setUpProtocol(dlgt: self)
-            goToLink()
             return cell
         }else{
             let cell = expertDetailTable.dequeueReusableCell(withIdentifier: "ExpertDetailInfoCell", for: indexPath)as! ExpertDetailInfoCell

@@ -17,7 +17,7 @@ class ContactExpertCell:UITableViewCell{
     weak var delegate: goToLinkedIn?
     
     @IBAction func contactPressed(_ sender: UIButton) {
-        print("Contact LinkedIn Expert Pressed")
+        
     }
     
     func setUpProtocol(dlgt: goToLinkedIn){
