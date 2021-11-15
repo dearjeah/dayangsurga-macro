@@ -7,23 +7,31 @@
 
 import UIKit
 
-class EducationListController: UIViewController {
+class EducationListController: MVVMViewController<EducationListViewModel> {
 
+    @IBOutlet weak var eduListView: EducationPageView!
+    
+    var eduData = [Education]()
+    var selectedEduData = Education()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        eduListView.setup(dlgt: self)
+    }
+}
 
-        // Do any additional setup after loading the view.
+extension EducationListController: ListEduDelegate {
+    func editEduForm(from: String) {
+        let storyboard = UIStoryboard(name: "EducationFormController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToEduForm") as! EducationFormController
+        vc.dataFrom = from
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func addEduForm(from: String) {
+        let storyboard = UIStoryboard(name: "EducationFormController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToEduForm") as! EducationFormController
+        vc.dataFrom = from
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-    */
-
 }
