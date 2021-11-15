@@ -98,8 +98,8 @@ extension CoreDataManager {
             preloadResumeTemplate()
         }
         if UserResumeRepository.shared.getAllUserResume()?.count == 0{
-            preloadUserResume()
-            preloadMyRessumeDummy()
+//            preloadUserResume()
+//            preloadMyRessumeDummy()
         }
         
         if PersonalInformationPlaceholderRepository.shared.getAllPIPh()?.count == 0  {
@@ -117,9 +117,7 @@ extension CoreDataManager {
         if ExperiencePlaceholderRepository.shared.getAllExpPh()?.count == 0 {
             preloadExpPh()
         }
-        if UserRepository.shared.getAllUser()?.count == 0{
-            preloadUser()
-        }
+        
         if ExpertProfileRepository.shared.getAllExpertProfile()?.count == 0{
             preloadExpertProfile()
         }
