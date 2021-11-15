@@ -24,10 +24,6 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
     @IBOutlet  var smallSetButtonView: SmallSetButton!
     @IBAction func unwind( _ seg: UIStoryboardSegue) {}
     
-    @IBAction func unwindToStep(_ unwindSegue: UIStoryboardSegue) {
-
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = StepByStepGuideViewModel()
@@ -45,11 +41,6 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
             pageController.expData = expData
             pageController.skillData = skillData
             pageController.accomData = accomData
-        } else if let vc = segue.destination as? ExperienceFormController {
-            //vc.setup(dlgt: self)
-            vc.isCreate = isCreate
-        } else if let vc = segue.destination as? EducationFormController {
-            //vc.setup(dlgt: self)
         }
     }
     
@@ -148,12 +139,26 @@ extension StepByStepGuideViewController: StepByStepGuideDelegate {
     }
     
     func goToEditExp(was: Bool, from: String, exp: Experience) {
-        //performSegue(withIdentifier: "goToExperienceForm", sender: self)
         let storyboard = UIStoryboard(name: "ExperienceFormController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToExperienceForm") as! ExperienceFormController
         vc.isCreate = isCreate
         vc.dataFrom = from
         vc.experience = exp
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func goToAddAccom(from: String) {
+        let storyboard = UIStoryboard(name: "AccomplishFormController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToAccomForm") as! AccomplishFormController
+        vc.dataFrom = from
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func goToEditAccom(from: String, accomp: Accomplishment) {
+        let storyboard = UIStoryboard(name: "AccomplishFormController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToAccomForm") as! AccomplishFormController
+        vc.dataFrom = from
+        vc.accomplish = accomp
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
