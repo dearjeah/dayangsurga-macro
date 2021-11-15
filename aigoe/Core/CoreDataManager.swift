@@ -129,8 +129,13 @@ extension CoreDataManager {
         if AccomplishmentPlaceholderRepository.shared.getAllAccomplishmentPlaceholder()?.count == 0{
             preloadAccomplishPh()
         }
-        if AccomplishmentRepository.shared.getAllAccomplishment()?.count == 0{
-            preloadAccomplish()
+        
+        if EducationPlaceholderRepository.shared.getAllEducationPlaceholder()?.count == 0{
+            preloadEduPlaceholder()
+            preloadEduSuggestion()
         }
+//        if AccomplishmentRepository.shared.getAllAccomplishment()?.count == 0{
+//            preloadAccomplish()
+//        }
     }
 }

@@ -105,14 +105,31 @@ class EducationRepository{
         }
     }
     
+    func updateSelectedEduStatus(edu_id: Int,
+                              isSelected: Bool) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "edu_id == %d", edu_id as CVarArg)
+        do {
+            let item = try context.fetch(fetchRequest) as? [Education]
+            let selectedEdu = item?.first
+            selectedEdu?.is_selected = isSelected
+            try context.save()
+        } catch let error as NSError {
+            print(error)
+        }
+        
+    }
+    
     // func delete
-    func deleteEducation(data: Education) {
+    func deleteEducation(data: Education) -> Bool {
         do {
             context.delete(data)
             try context.save()
+            return true
             
         } catch let error as NSError {
             print(error)
         }
+        return false
     }
 }
