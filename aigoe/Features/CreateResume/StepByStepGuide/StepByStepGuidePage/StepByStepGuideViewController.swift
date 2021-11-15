@@ -24,12 +24,15 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
     @IBOutlet  var smallSetButtonView: SmallSetButton!
     @IBAction func unwind( _ seg: UIStoryboardSegue) {}
     
+    @IBAction func unwindToStep(_ unwindSegue: UIStoryboardSegue) {
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = StepByStepGuideViewModel()
         smallSetButtonView.delegate = self
         progressBarView.dlgt = self
-        //        navigationStyle()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -43,8 +46,10 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
             pageController.skillData = skillData
             pageController.accomData = accomData
         } else if let vc = segue.destination as? ExperienceFormController {
-            vc.setup(dlgt: self)
+            //vc.setup(dlgt: self)
             vc.isCreate = isCreate
+        } else if let vc = segue.destination as? EducationFormController {
+            //vc.setup(dlgt: self)
         }
     }
     
@@ -60,10 +65,6 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
         } else {
             return
         }
-    }
-    
-    func navigationStyle(){
-        configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.primaryBlue, title: "Create Resume", preferredLargeTitle: false, hideBackButton: false)
     }
 }
 
@@ -123,6 +124,21 @@ extension StepByStepGuideViewController: SmallSetButtonDelegate {
 
 //MARK: Step Page Controller Delegate
 extension StepByStepGuideViewController: StepByStepGuideDelegate {
+    func goToAddEdu(was: Bool, from: String) {
+        let storyboard = UIStoryboard(name: "EducationFormController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToEduForm") as! EducationFormController
+        vc.dataFrom = from
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func goToEditEdu(was: Bool, from: String, edu: Education) {
+        let storyboard = UIStoryboard(name: "EducationFormController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToEduForm") as! EducationFormController
+        vc.dataFrom = from
+        vc.eduData = edu
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func goToAddExp(was: Bool, from: String) {
         let storyboard = UIStoryboard(name: "ExperienceFormController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToExperienceForm") as! ExperienceFormController
@@ -145,12 +161,6 @@ extension StepByStepGuideViewController: StepByStepGuideDelegate {
         if was {
             didTapGenerate()
         }
-    }
-}
-
-extension StepByStepGuideViewController: ExperiencePageDelegate {
-    func addExperience() {
-      
     }
 }
 

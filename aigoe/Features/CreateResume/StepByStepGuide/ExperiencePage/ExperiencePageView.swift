@@ -44,7 +44,6 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         notificationCenterSetup()
         
         initialSetup()
-        
     }
     
     convenience init(exp: [Experience]) {
@@ -103,7 +102,6 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
             emptyStateView.isHidden = true
         }
         return experience.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

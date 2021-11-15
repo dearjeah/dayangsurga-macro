@@ -69,6 +69,7 @@
                         <outlet property="smallSetButtonView" destination="i6R-d7-j4U" id="Zyc-pJ-hkO"/>
                         <segue destination="Rg4-cB-jBf" kind="show" identifier="goToGenerate" id="eN4-hH-cma"/>
                         <segue destination="8yH-8R-Ne8" kind="show" identifier="goToExperienceForm" id="p1G-r6-SUu"/>
+                        <segue destination="37q-pF-TQy" kind="show" identifier="goToEduForm" id="8bi-Lr-L06"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -88,17 +89,27 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgL-as-9O3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="859" y="84"/>
+            <point key="canvasLocation" x="1158" y="98"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--ExperienceFormController-->
         <scene sceneID="c3u-li-M4Y">
             <objects>
-                <viewControllerPlaceholder id="8yH-8R-Ne8" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="ExperienceFormController" id="8yH-8R-Ne8" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="b4x-NP-mwP"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bwM-ga-gfi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="647" y="-362"/>
+        </scene>
+        <!--EducationFormController-->
+        <scene sceneID="yOW-OZ-qQf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EducationFormController" id="37q-pF-TQy" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="1Ov-PY-Y3i"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b04-Z6-mwm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="817" y="-241"/>
         </scene>
         <!--GenerateResumeViewController-->
         <scene sceneID="e24-2r-YCm">

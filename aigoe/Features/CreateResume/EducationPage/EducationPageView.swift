@@ -9,7 +9,7 @@ import UIKit
 
 protocol ListEduDelegate: AnyObject{
     func addEduForm(from: String)
-    func editEduForm(from: String)
+    func editEduForm(from: String, edu: Education)
 }
 
 class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
@@ -18,7 +18,6 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
-    var totalData = 0
     var eduData = [Education]()
     weak var delegate: ListEduDelegate?
     var eduViewModel = EducationListViewModel()
@@ -38,12 +37,16 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
         super.init(coder: aDecoder)
         initWithNib()
         registerTableView()
+        notificationCenterSetup()
         tableView.tableFooterView = UIView()
     }
     
-    convenience init(text: String) {
+    convenience init(edu: [Education]) {
         self.init()
+        
+        eduData = edu
         registerTableView()
+        notificationCenterSetup()
     }
     
     fileprivate func initWithNib() {
@@ -66,9 +69,7 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     func navigateToEduForm(from: String, eduData: Education = Education()){
         delegate?.addEduForm(from: from)
     }
-    
-    
-    
+
     // seting for table view
     func registerTableView(){
         tableView.register(EducationTableCell.nib(), forCellReuseIdentifier: EducationTableCell.identifier)
@@ -122,11 +123,9 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180 // 160 + UIEdgeInsets (+12 bottom)
     }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    }
 }
 
+//MARK: Alert
 extension EducationPageView {
     func showEmptyState() {
         emptyStateView.isHidden = false
@@ -136,5 +135,21 @@ extension EducationPageView {
         emptyStateView.emptyStateTitle.isHidden = true
         emptyStateView.emptyStateImage.image = UIImage.imgEmptyStateEdu
         emptyStateView.emptyStateDescription.text = "You haven’t filled your educational history. Click the ‘Add’ button to add your educational information."
+    }
+}
+
+//MARK: Reload Function
+extension  EducationPageView {
+    func getAndReload(){
+        eduData = eduViewModel.getEduData()
+        tableView.reloadData()
+    }
+    
+    @objc func eduReload() {
+      getAndReload()
+    }
+    
+    func notificationCenterSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(eduReload), name: Notification.Name("eduReload"), object: nil)
     }
 }

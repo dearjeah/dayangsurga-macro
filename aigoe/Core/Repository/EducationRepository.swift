@@ -24,7 +24,7 @@ class EducationRepository{
                              gpa: Float,
                              activity : String,
                              currentlyStudy : Bool,
-                             isSelected : Bool){
+                             isSelected : Bool) -> Bool {
         do {
             // relation education-user
             if let educationToUser = UserRepository.shared.getUserById(id: userId) {
@@ -41,11 +41,14 @@ class EducationRepository{
                 
                 educationToUser.addToEducation(education)
                 try context.save()
+                return true
             }
         }
         catch let error as NSError {
             print(error)
         }
+        
+        return false
     }
     
     // retrieve education

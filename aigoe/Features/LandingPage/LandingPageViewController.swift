@@ -24,7 +24,7 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         setView()
         buttonView.delegate = self
         registerCollectionView()
-        //navigationStyle()
+        navigationStyle()
         
         self.viewModel = LandingPageViewModel()
         userResume = self.viewModel?.allUserResumeDataByDate() ?? []
