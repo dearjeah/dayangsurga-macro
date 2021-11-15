@@ -14,16 +14,21 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
     var selectedUserResume = User_Resume()
     var isCreate = Bool()
     var isGenerate = false
+    var formSource = String()
+    var eduData = [Education]()
+    var expData = [Experience]()
+    var skillData = [Skills]()
+    var accomData = [Accomplishment]()
     
     @IBOutlet weak var progressBarView: ProgressBarView!
     @IBOutlet  var smallSetButtonView: SmallSetButton!
+    @IBAction func unwind( _ seg: UIStoryboardSegue) {}
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = StepByStepGuideViewModel()
         smallSetButtonView.delegate = self
         progressBarView.dlgt = self
-        //        navigationStyle()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -32,11 +37,25 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
             pageController.prevNextSetup(prevNextDlgt: self)
             pageController.selectedResume = selectedUserResume
             pageController.isCreate = isCreate
+            pageController.eduData = eduData
+            pageController.expData = expData
+            pageController.skillData = skillData
+            pageController.accomData = accomData
         }
     }
     
-    func navigationStyle(){
-        configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.primaryBlue, title: "Create Resume", preferredLargeTitle: false, hideBackButton: false)
+    override func viewWillAppear(_ animated: Bool) {
+        if formSource == "education" {
+            NotificationCenter.default.post(name: Notification.Name("eduReload"), object: nil)
+        } else if formSource == "experience" {
+            NotificationCenter.default.post(name: Notification.Name("expReload"), object: nil)
+        } else if formSource == "skill" {
+            NotificationCenter.default.post(name: Notification.Name("skillReload"), object: nil)
+        } else if formSource == "accomplishment" {
+            NotificationCenter.default.post(name: Notification.Name("accompReload"), object: nil)
+        } else {
+            return
+        }
     }
 }
 
@@ -94,26 +113,59 @@ extension StepByStepGuideViewController: SmallSetButtonDelegate {
     }
 }
 
-extension StepByStepGuideViewController: StepByStepGuideDelegate, ExperienceListDelegate {
+//MARK: Step Page Controller Delegate
+extension StepByStepGuideViewController: StepByStepGuideDelegate {
+    func goToAddEdu(was: Bool, from: String) {
+        let storyboard = UIStoryboard(name: "EducationFormController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToEduForm") as! EducationFormController
+        vc.dataFrom = from
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func goToEditEdu(was: Bool, from: String, edu: Education) {
+        let storyboard = UIStoryboard(name: "EducationFormController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToEduForm") as! EducationFormController
+        vc.dataFrom = from
+        vc.eduData = edu
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func goToAddExp(was: Bool, from: String) {
+        let storyboard = UIStoryboard(name: "ExperienceFormController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToExperienceForm") as! ExperienceFormController
+        vc.isCreate = isCreate
+        vc.dataFrom = from
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func goToEditExp(was: Bool, from: String, exp: Experience) {
+        let storyboard = UIStoryboard(name: "ExperienceFormController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToExperienceForm") as! ExperienceFormController
+        vc.isCreate = isCreate
+        vc.dataFrom = from
+        vc.experience = exp
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func goToAddAccom(from: String) {
+        let storyboard = UIStoryboard(name: "AccomplishFormController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToAccomForm") as! AccomplishFormController
+        vc.dataFrom = from
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func goToEditAccom(from: String, accomp: Accomplishment) {
+        let storyboard = UIStoryboard(name: "AccomplishFormController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToAccomForm") as! AccomplishFormController
+        vc.dataFrom = from
+        vc.accomplish = accomp
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func goToGenerate(was: Bool) {
         if was {
             didTapGenerate()
         }
-    }
-    
-    //MARK: Delegate For Experience List to Form
-    func getSelectedIndex(index: Int) {
-        //
-    }
-    func goToAddExp() {
-        let storyboard = UIStoryboard(name: "ExperienceFormController", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "goToExperienceForm") as! ExperienceFormController
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func passingExpData(exp: Experience?) {
-        //        let experience = Experience()
-        performSegue(withIdentifier: "", sender: self)
     }
 }
 

@@ -19,6 +19,7 @@ class ExpertListViewController: MVVMViewController<ExpertListViewModel> {
         setupView()
         registerTableView()
         setupViewModel()
+        navigationStyle()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +46,10 @@ class ExpertListViewController: MVVMViewController<ExpertListViewModel> {
         tableView.register(ExpertListCell.nib(), forCellReuseIdentifier: ExpertListCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    func navigationStyle(){
+        configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.white, title: "Resume", preferredLargeTitle: true, hideBackButton: false)
     }
     
     @objc func infoWasPressed(sender: UIBarButtonItem) {
@@ -79,7 +84,7 @@ extension ExpertListViewController: UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.tabBarController?.tabBar.isHidden = true
         vc.index = selectedIndexExpert
-        self.navigationController?.pushViewController(vc, animated: false)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

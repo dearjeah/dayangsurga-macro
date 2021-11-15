@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExperiencePageView" customModule="dayangsurga_macro" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExperiencePageView" customModule="aigoe" customModuleProvider="target">
             <connections>
                 <outlet property="addEditButton" destination="Mdb-yt-pFv" id="Rs9-D9-usn"/>
                 <outlet property="emptyStateView" destination="tJb-Lm-Hlm" id="5r1-Qm-psK"/>
@@ -82,7 +82,7 @@
                                 <outlet property="delegate" destination="-1" id="V3L-xE-m1z"/>
                             </connections>
                         </tableView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJb-Lm-Hlm" customClass="EmptyState" customModule="dayangsurga_macro" customModuleProvider="target">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJb-Lm-Hlm" customClass="EmptyState" customModule="aigoe" customModuleProvider="target">
                             <rect key="frame" x="20.5" y="105" width="373" height="448"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>

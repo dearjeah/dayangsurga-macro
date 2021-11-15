@@ -10,6 +10,12 @@ import UIKit
 protocol StepByStepGuideDelegate: AnyObject {
     func progressBarUpdate(index: Int, totalData: Int)
     func goToGenerate(was: Bool)
+    func goToAddExp(was: Bool, from: String)
+    func goToEditExp(was: Bool, from: String, exp: Experience)
+    func goToAddEdu(was: Bool, from: String)
+    func goToEditEdu(was: Bool, from: String, edu: Education)
+    func goToAddAccom(from: String)
+    func goToEditAccom(from: String, accomp: Accomplishment)
 }
 
 protocol prevNextButtonDelegate: AnyObject {
@@ -29,10 +35,10 @@ class StepByStepGuidePageController: UIPageViewController {
     var pageType: [Int] = []
     var selectedResume = User_Resume()
     var personalData = User()
-    var eduData = Education()
-    var expData = Experience()
-    var skillData = Skills()
-    var accomData = Accomplishment()
+    var eduData = [Education]()
+    var expData = [Experience]()
+    var skillData = [Skills]()
+    var accomData = [Accomplishment]()
     
     weak var stepDelegate: StepByStepGuideDelegate?
     weak var prevNextDelegate: prevNextButtonDelegate?
@@ -91,7 +97,6 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
                 selectedPage = page
             }
         }
-        
         if selectedPage - 1 != currentPageIndex {
             goToDirectPage(selectedPageIndex: selectedPage)
         }
@@ -120,6 +125,42 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
             }
         }
     }
+}
+
+//MARK: Education List Delegate
+extension StepByStepGuidePageController: ListEduDelegate {
+    func addEduForm(from: String) {
+        stepDelegate?.goToAddEdu(was: true, from: "add")
+    }
+    
+    func editEduForm(from: String, edu: Education) {
+        stepDelegate?.goToEditEdu(was: true, from: "edit", edu: edu)
+    }
+}
+
+
+//MARK: Experience List Delegate
+extension StepByStepGuidePageController: ExperienceListDelegate {
+    func goToAddExp() {
+        stepDelegate?.goToAddExp(was: true, from: "add")
+    }
+    
+    func passingExpData(exp: Experience?) {
+        stepDelegate?.goToEditExp(was: true, from: "edit", exp: exp ?? Experience())
+    }
+}
+
+//MARK: Education List Delegate
+extension StepByStepGuidePageController: AccomplishListDelegate {
+    func goToAddAccom() {
+        stepDelegate?.goToAddAccom(from: "add")
+    }
+    
+    func passingAccomplishData(accomplish: Accomplishment?) {
+        stepDelegate?.goToEditAccom(from: "edit", accomp: accomplish ?? Accomplishment())
+    }
+    
+    
 }
 
 //MARK: Page Controller
@@ -202,10 +243,6 @@ extension StepByStepGuidePageController {
     func goToGenerate(){
         stepDelegate?.goToGenerate(was: true)
     }
-    
-    func addAndEditData(isAdd: Bool){
-        
-    }
 }
 
 //MARK: Checker
@@ -228,17 +265,6 @@ extension StepByStepGuidePageController {
             return true
         } else {
             return false
-        }
-    }
-    
-    func isAddEdit(data: Int, pageType: Int) {
-        //page type : 1-6, 6 = quiz
-        if pageType == 4 {
-            if data == 0 {
-                //button text = add
-            } else {
-                //button text = edit
-            }
         }
     }
     
@@ -295,12 +321,12 @@ extension StepByStepGuidePageController {
                 currentPageIndex = currentPageIndex + value
                 nextPageIndex = nextPageIndex + value
                 previousPageIndex = previousPageIndex + value
-            } /*else if value == 0 {
+            } else if value == 0 {
                //NEED UPDATE
                currentPageIndex = value
                nextPageIndex = value + 1
                previousPageIndex = stepControllerArr?.count ?? 1 - 1
-               }*/
+               }
         }
     }
 }
@@ -314,10 +340,10 @@ extension StepByStepGuidePageController {
             
             if data != nil {
                 personalData = UserRepository.shared.getUserById(id: Int(selectedResume.user_id)) ?? User()
-                eduData = EducationRepository.shared.getEducationById(educationId: Int(data?.edu_id ?? Int32())) ?? Education()
+                /*eduData = EducationRepository.shared.getEducationById(educationId: Int(data?.edu_id ?? Int32())) ?? Education()
                 expData = ExperienceRepository.shared.getExperienceById(experienceId: Int(data?.exp_id ?? Int32())) ?? Experience()
                 skillData = SkillRepository.shared.getSkillsById(skillId: data?.skill_id ?? Int32()) ?? Skills()
-                accomData = AccomplishmentRepository.shared.getAccomplishmentById(AccomplishmentId: Int(data?.accom_id ?? Int32())) ??  Accomplishment()
+                accomData = AccomplishmentRepository.shared.getAccomplishmentById(AccomplishmentId: Int(data?.accom_id ?? Int32())) ??  Accomplishment()*/
             }
         }
     }
@@ -333,9 +359,12 @@ extension StepByStepGuidePageController {
     }
     
     fileprivate func initEducation() -> UIViewController {
-        let controller = UIViewController()
-        let tmp =  EducationPageView.init(text: "")
-        //tmp.setup(delegate: self)
+        let controller = MVVMViewController<EducationListViewModel>()
+        controller.viewModel =  EducationListViewModel()
+        eduData = controller.viewModel?.getEduData() ?? []
+        
+        let tmp =  EducationPageView.init(edu: eduData)
+        tmp.setup(dlgt: self)
         controller.view = tmp
         return controller
     }
@@ -349,9 +378,12 @@ extension StepByStepGuidePageController {
     }
     
     fileprivate func initExperience() -> UIViewController {
-        let controller = UIViewController()
-        let tmp = ExperiencePageView.init(text: "")
-        //tmp.setup(delegate: self)
+        let controller = MVVMViewController<ExperiencePageViewModel>()
+        controller.viewModel = ExperiencePageViewModel()
+        expData = controller.viewModel?.getAllExpData() ?? []
+        
+        let tmp = ExperiencePageView.init(exp: expData)
+        tmp.setupExpList(dlgt: self)
         controller.view = tmp
         return controller
     }
@@ -365,9 +397,12 @@ extension StepByStepGuidePageController {
     }
     
     fileprivate func initAccomplishment() -> UIViewController {
-        let controller = UIViewController()
-        let tmp = AccomplishmentPageView.init(text: "")
-        //tmp.setup(delegate: self)
+        let controller = MVVMViewController<AccomplishmentPageViewModel>()
+        controller.viewModel = AccomplishmentPageViewModel()
+        accomData = controller.viewModel?.getAllAccomp() ?? []
+        
+        let tmp = AccomplishmentPageView.init(accom: accomData)
+        tmp.setup(dlgt: self)
         controller.view = tmp
         return controller
     }
