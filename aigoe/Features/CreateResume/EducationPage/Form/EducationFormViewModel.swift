@@ -32,7 +32,25 @@ class EducationFormViewModel: NSObject {
                                            gpa: Float(gpa) ?? 0.0,
                                            activity: activity,
                                            currentlyStudy: currentlyStudy,
-                                           isSelected: isSelected)
+                                           isSelected: isSelected
+        )
+        return data
+    }
+    
+    func updateEdu(eduId: Int, institution: String, title: String, startDate: Date, endDate: Date, gpa: String, activity: String, currentlyStudy: Bool, isSelected: Bool) -> Bool {
+        let data = eduRepo.updateEducation(
+            eduId: eduId,
+            userId: 0,
+            institution: institution,
+            title: title,
+            startDate: startDate,
+            endDate: endDate,
+            gpa: Float(gpa) ?? 0.0,
+            activity: activity,
+            currentlyStudy: currentlyStudy,
+            isSelected: isSelected
+        )
+        
         return data
     }
     

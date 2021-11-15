@@ -79,6 +79,28 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
         }
     }
     
+    @objc func updateEdu(sender: UIBarButtonItem) {
+        if !alertForCheckTF() {
+            let eduID = Int(eduData?.edu_id ?? 0)
+            guard let data = self.viewModel?.updateEdu(eduId: eduID,
+                institution: institutionView.textField.text ?? "",
+                title: qualificationView.textField.text ?? "",
+                startDate: eduPeriodView.startDatePicker.date,
+                endDate: eduPeriodView.endDatePicker.date,
+                gpa: gpaView.textField.text ?? "",
+                activity: activityView.textView.text ?? "",
+                currentlyStudy: eduStatusView.switchButton.isOn,
+                isSelected: true
+            ) else { return errorSaveData(from: "Update") }
+            
+            if data {
+                performSegue(withIdentifier: "backToStepVC", sender: self)
+            } else {
+                errorSaveData(from: "Update")
+            }
+        }
+    }
+    
     func deleteEduData(){
         guard let data = self.viewModel?.deleteEduData(eduData: eduData ?? Education()) else { return }
         if data {
@@ -149,40 +171,46 @@ extension EducationFormController {
     func setView(){
         self.title = "Education"
         self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationController?.navigationItem.leftBarButtonItem?.title = ""
         if dataFrom == "add" {
             addOrDeleteButton.dsLongFilledPrimaryButton(withImage: false, text: "Add Education")
         } else {
             addOrDeleteButton.dsLongUnfilledButton(isDelete: true, text: "Delete Education")
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(self.updateEdu(sender:)))
         }
     }
     
     func setupForm(){
-        // for institution
-        self.title = "Education"
         institutionView.titleLabel.text = "Institution*"
-        institutionView.textField.placeholder = eduPlaceholder?.institution_ph
-        
-        // for qualification
         qualificationView.titleLabel.text = "Qualification*"
-        qualificationView.textField.placeholder = eduPlaceholder?.title_ph
-        
-        // for edu status
         eduStatusView.titleLabel.text = "Education Status*"
         eduStatusView.switchTitle.text = "Currently Studying Here"
-        
-        //for period
         eduPeriodView.titleLabel.text = "Education Period*"
-        
-        // for gpa
         gpaView.titleLabel.text = "GPA*"
-        gpaView.textField.placeholder = eduPlaceholder?.gpa_ph
-        
-        // for activity / project
-        activityView.textView.delegate = self
         activityView.titleLabel.text = "Activity/Project"
-        activityView.textView.placeholder = eduPlaceholder?.activity_ph
-        activityView.textView.text = eduPlaceholder?.activity_ph
+        activityView.textView.delegate = self
         activityView.textView.textColor = .lightGray
         activityView.cueLabel.text = eduSuggestion?.activity_suggest
+        
+        institutionView.textField.placeholder = eduPlaceholder?.institution_ph
+        qualificationView.textField.placeholder = eduPlaceholder?.title_ph
+        gpaView.textField.placeholder = eduPlaceholder?.gpa_ph
+        activityView.textView.placeholder = eduPlaceholder?.activity_ph
+        activityView.textView.text = eduPlaceholder?.activity_ph
+       
+        
+        if dataFrom == "edit" {
+            if eduData != nil {
+                let gpa = String(describing: eduData?.gpa)
+                institutionView.textField.text = eduData?.institution
+                qualificationView.textField.text = eduData?.title
+                gpaView.textField.text = gpa
+                activityView.textView.text = eduData?.activity
+                
+                eduStatusView.switchButton.isOn = ((eduData?.currently_study) == true)
+                eduPeriodView.startDatePicker.date = eduData?.start_date ?? Date()
+                eduPeriodView.endDatePicker.date = eduData?.end_date ?? Date()
+            }
+        }
     }
 }
