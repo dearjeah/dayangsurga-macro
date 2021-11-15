@@ -31,6 +31,14 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
     var getIndexExp = Int()
     var dataFrom = String()
     
+    func setup(dlgt: EduFormDelegate) {
+        self.delegate = dlgt
+    }
+    
+    @IBAction func addorDeleteAction(_ sender: Any) {
+        tapToAddDeleteButton()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,13 +51,54 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
         hideKeyboardWhenTappedAround()
     }
     
-    @IBAction func addorDeleteAction(_ sender: Any) {
-        tapToAddDeleteButton()
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? StepByStepGuideViewController {
+            vc.formSource = "education"
+        }
     }
     
-    // protocol -- go to list edu
     func tapToAddDeleteButton(){
-        delegate?.addDeleteEdu()
+        if !alertForCheckTF() {
+            guard let data = self.viewModel?.addEdu(
+                institution: institutionView.textField.text ?? "",
+                title: qualificationView.textField.text ?? "",
+                startDate: eduPeriodView.startDatePicker.date,
+                endDate: eduPeriodView.endDatePicker.date,
+                gpa: gpaView.textField.text ?? "",
+                activity: activityView.textView.text ?? "",
+                currentlyStudy: eduStatusView.switchButton.isOn,
+                isSelected: true
+            ) else { return errorSaveData(from: "Save") }
+            
+            if data {
+                performSegue(withIdentifier: "backToStepVC", sender: self)
+            } else {
+                errorSaveData(from: "Save")
+            }
+        }
+    }
+    
+    @objc func updateEdu(sender: UIBarButtonItem) {
+        if !alertForCheckTF() {
+            let eduID = Int(eduData?.edu_id ?? 0)
+            guard let data = self.viewModel?.updateEdu(eduId: eduID,
+                institution: institutionView.textField.text ?? "",
+                title: qualificationView.textField.text ?? "",
+                startDate: eduPeriodView.startDatePicker.date,
+                endDate: eduPeriodView.endDatePicker.date,
+                gpa: gpaView.textField.text ?? "",
+                activity: activityView.textView.text ?? "",
+                currentlyStudy: eduStatusView.switchButton.isOn,
+                isSelected: true
+            ) else { return errorSaveData(from: "Update") }
+            
+            if data {
+                performSegue(withIdentifier: "backToStepVC", sender: self)
+            } else {
+                errorSaveData(from: "Update")
+            }
+        }
     }
     
     func deleteEduData(){
@@ -57,14 +106,25 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
         if data {
             self.navigationController?.popViewController(animated: false)
         } else {
-            //alert error
+            errorSaveData(from: "Delete")
+        }
+    }
+}
+
+//MARK: Delegate
+extension EducationFormController: LabelSwitchDelegate {
+    func getValueSwitch() {
+        if (eduStatusView.switchButton.isOn){
+            eduPeriodView.endDatePicker.isEnabled = false
+        } else {
+            eduPeriodView.endDatePicker.isEnabled = true
         }
     }
 }
 
 //MARK: Alert
 extension EducationFormController {
-    func alertForCheckTF(){
+    func alertForCheckTF() -> Bool {
         if ((institutionView.textField.text?.isEmpty) != false) ||
             ((qualificationView.textField.text?.isEmpty) != false) ||
             ((gpaView.textField.text?.isEmpty) != false ||
@@ -77,7 +137,9 @@ extension EducationFormController {
             )
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+            return true
         }
+        return false
     }
     
     func showAlertForDelete(){
@@ -86,14 +148,20 @@ extension EducationFormController {
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {action in self.deleteEduData()}))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func errorSaveData(from: String){
+        let alert = UIAlertController(title: "Unable to \(from) Data", message: "Your data is not saved. Please try again later", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension EducationFormController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView){
-       
+        eduPlaceholder = self.viewModel?.getEduPh()
         if ( activityView.textView.text.count  + 1 == eduPlaceholder?.activity_ph?.count){
-                activityView.textView.text = ""
-            }
+            activityView.textView.text = ""
+        }
         activityView.textView.textColor = .black
     }
 }
@@ -103,37 +171,46 @@ extension EducationFormController {
     func setView(){
         self.title = "Education"
         self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationController?.navigationItem.leftBarButtonItem?.title = ""
         if dataFrom == "add" {
             addOrDeleteButton.dsLongFilledPrimaryButton(withImage: false, text: "Add Education")
         } else {
             addOrDeleteButton.dsLongUnfilledButton(isDelete: true, text: "Delete Education")
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(self.updateEdu(sender:)))
         }
     }
     
     func setupForm(){
-        // for institution
         institutionView.titleLabel.text = "Institution*"
-        institutionView.textField.placeholder = eduPlaceholder?.institution_ph
-        
-        // for qualification
         qualificationView.titleLabel.text = "Qualification*"
-        qualificationView.textField.placeholder = eduPlaceholder?.title_ph
-        
-        // for edu status
         eduStatusView.titleLabel.text = "Education Status*"
         eduStatusView.switchTitle.text = "Currently Studying Here"
-        
-        //for period
         eduPeriodView.titleLabel.text = "Education Period*"
-        
-        // for gpa
         gpaView.titleLabel.text = "GPA*"
-        gpaView.textField.placeholder = eduPlaceholder?.gpa_ph
-        
-        // for activity / project
         activityView.titleLabel.text = "Activity/Project"
-        activityView.textView.placeholder = ""
-        activityView.textView.text = eduPlaceholder?.activity_ph
+        activityView.textView.delegate = self
+        activityView.textView.textColor = .lightGray
         activityView.cueLabel.text = eduSuggestion?.activity_suggest
+        
+        institutionView.textField.placeholder = eduPlaceholder?.institution_ph
+        qualificationView.textField.placeholder = eduPlaceholder?.title_ph
+        gpaView.textField.placeholder = eduPlaceholder?.gpa_ph
+        activityView.textView.placeholder = eduPlaceholder?.activity_ph
+        activityView.textView.text = eduPlaceholder?.activity_ph
+       
+        
+        if dataFrom == "edit" {
+            if eduData != nil {
+                let gpa = String(describing: eduData?.gpa)
+                institutionView.textField.text = eduData?.institution
+                qualificationView.textField.text = eduData?.title
+                gpaView.textField.text = gpa
+                activityView.textView.text = eduData?.activity
+                
+                eduStatusView.switchButton.isOn = ((eduData?.currently_study) == true)
+                eduPeriodView.startDatePicker.date = eduData?.start_date ?? Date()
+                eduPeriodView.endDatePicker.date = eduData?.end_date ?? Date()
+            }
+        }
     }
 }

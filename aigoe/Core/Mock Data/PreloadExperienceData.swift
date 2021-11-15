@@ -23,15 +23,3 @@ func preloadExpPh() {
                                                        jobDesc_ph: "Lead a new Aigoe application project with a team of 5 people focusing on ATS-friendly resume.",
                                                        companyName_ph: "e.g. Aigoe Ltd")
 }
-
-// dummy data
-
-
-func preloadUser(){
-    UserRepository.shared.createUser(user_id: 0,
-                                     username: "sfgd",
-                                     phoneNumber: "dfh",
-                                     email: "dasd",
-                                     location: "asf",
-                                     summary: "")
-}

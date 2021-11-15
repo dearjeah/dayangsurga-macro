@@ -28,7 +28,9 @@ class EducationTableCell: UITableViewCell {
         shadowView.layer.borderWidth = 1
         shadowView.layer.cornerRadius = 17
         selectionButton.setImage(UIImage(named: "icRoundSelectionFilled"), for: .normal)
-//        contentView.layer.borderColor = UIColor.primaryBlue.cgColor
+        
+        self.selectionButton.addTarget(self, action: #selector(selectEducation(_:)), for: .touchUpInside)
+        self.editEducationButton.addTarget(self, action: #selector(editCellTapped(_:)), for: .touchUpInside)
         
     }
     @IBAction func selectEducation(_ sender: Any) {
@@ -41,6 +43,10 @@ class EducationTableCell: UITableViewCell {
             selectionButton.setImage(UIImage.icRoundSelectionNoFill, for: .normal)
             shadowView.layer.borderColor = UIColor.clear.cgColor
         }
+    }
+    
+    @IBAction func editCellTapped(_ sender: UIButton) {
+        editButtonAction?()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

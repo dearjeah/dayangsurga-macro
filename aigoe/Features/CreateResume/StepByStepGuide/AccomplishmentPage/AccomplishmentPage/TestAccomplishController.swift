@@ -32,9 +32,6 @@ extension TestAccomplishController: AccomplishListDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func getSelectedIndex(index: Int) {
-    }
-    
     func goToAddAccom() {
         let storyboard = UIStoryboard(name: "AccomplishFormController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToAccomForm") as! AccomplishFormController

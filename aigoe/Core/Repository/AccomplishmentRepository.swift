@@ -22,7 +22,7 @@ class AccomplishmentRepository{
                              givenDate: Date,
                              issuer : String,
                              desc : String,
-                             isSelected : Bool){
+                             isSelected : Bool) -> Bool {
         do {
             // relation accomplishment-user
             if let AccomplishmentToUser = UserRepository.shared.getUserById(id: userId) {
@@ -37,11 +37,13 @@ class AccomplishmentRepository{
                 
                 AccomplishmentToUser.addToAccomplishment(accomplishment)
                 try context.save()
+                return true
             }
         }
         catch let error as NSError {
             print(error)
         }
+        return false
     }
     
     // retrieve education
@@ -75,7 +77,7 @@ class AccomplishmentRepository{
                                givenDate: Date,
                                issuer : String,
                                desc : String,
-                               isSelected : Bool) {
+                               isSelected : Bool) -> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "accomplishment_id == %d", accomId as CVarArg)
         do {
@@ -90,9 +92,12 @@ class AccomplishmentRepository{
             accomplishment?.is_selected = isSelected
          
             try context.save()
+            return true
         } catch let error as NSError {
             print(error)
         }
+        
+        return false
     }
     
     func updateSelectedAccomplishStatus(accomId: Int,
@@ -111,14 +116,17 @@ class AccomplishmentRepository{
     }
     
     // func delete
-    func deleteAccomplishment(data: Accomplishment) {
+    func deleteAccomplishment(data: Accomplishment) -> Bool {
         do {
             context.delete(data)
             try context.save()
+            return true
             
         } catch let error as NSError {
             print(error)
         }
+        
+        return false
     }
 }
 

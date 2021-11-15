@@ -104,9 +104,11 @@
                         <outlet property="certificateNameView" destination="abE-6h-hmw" id="BG2-eT-zZp"/>
                         <outlet property="dateView" destination="D9Y-wY-jMM" id="CDs-hM-FRx"/>
                         <outlet property="issuerView" destination="bLO-Ql-JfM" id="sWm-Pc-dZa"/>
+                        <segue destination="Lef-hF-RFG" kind="unwind" identifier="backToStepVC" unwindAction="unwind:" id="YSp-eB-Rcz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Lef-hF-RFG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1884.057971014493" y="71.651785714285708"/>
         </scene>
@@ -129,11 +131,6 @@
             <point key="canvasLocation" x="973.91304347826099" y="71.651785714285708"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="i0t-SG-dwT">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-    </designables>
     <resources>
         <namedColor name="primaryBG">
             <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
