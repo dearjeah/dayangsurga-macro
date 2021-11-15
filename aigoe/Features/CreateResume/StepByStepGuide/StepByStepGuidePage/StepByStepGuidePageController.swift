@@ -12,6 +12,8 @@ protocol StepByStepGuideDelegate: AnyObject {
     func goToGenerate(was: Bool)
     func goToAddExp(was: Bool, from: String)
     func goToEditExp(was: Bool, from: String, exp: Experience)
+    func goToAddEdu(was: Bool, from: String)
+    func goToEditEdu(was: Bool, from: String, edu: Education)
 }
 
 protocol prevNextButtonDelegate: AnyObject {
@@ -64,8 +66,6 @@ class StepByStepGuidePageController: UIPageViewController {
         setup()
         notificationCenterSetup()
     }
-    
-    
 }
 
 //MARK: Protocol Delegate
@@ -87,13 +87,6 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
         goToGenerate()
     }
     
-    @objc func expReload() {
-        if let expVC = stepControllerArr?[currentPageIndex] {
-            expVC.viewDidLoad()
-        }
-    }
-    
-    
     @objc func progressBarTapped(_ notification: Notification) {
         var selectedPage = 0
         if let data = notification.userInfo as? [String: Int] {
@@ -102,7 +95,6 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
                 selectedPage = page
             }
         }
-        
         if selectedPage - 1 != currentPageIndex {
             goToDirectPage(selectedPageIndex: selectedPage)
         }
@@ -130,6 +122,17 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
                 goToGenerate()
             }
         }
+    }
+}
+
+//MARK: Education List Delegate
+extension StepByStepGuidePageController: ListEduDelegate {
+    func addEduForm(from: String) {
+        stepDelegate?.goToAddEdu(was: true, from: "add")
+    }
+    
+    func editEduForm(from: String, edu: Education) {
+        stepDelegate?.goToEditEdu(was: true, from: "edit", edu: edu)
     }
 }
 
@@ -298,7 +301,6 @@ extension StepByStepGuidePageController {
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectPrev), name: Notification.Name("goToPrev"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectGenerate), name: Notification.Name("goToGenerate"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(progressBarTapped), name: Notification.Name("progressBarTapped"), object: nil)
-        //NotificationCenter.default.addObserver(self, selector: #selector(expReload), name: Notification.Name("expReload"), object: nil)
     }
     
     private func setPageIndex(value: Int, progressBar: Bool = false) {
@@ -357,9 +359,12 @@ extension StepByStepGuidePageController {
     }
     
     fileprivate func initEducation() -> UIViewController {
-        let controller = UIViewController()
-        let tmp =  EducationPageView.init(text: "")
-        //tmp.setup(delegate: self)
+        let controller = MVVMViewController<EducationListViewModel>()
+        controller.viewModel =  EducationListViewModel()
+        eduData = controller.viewModel?.getEduData() ?? []
+        
+        let tmp =  EducationPageView.init(edu: eduData)
+        tmp.setup(dlgt: self)
         controller.view = tmp
         return controller
     }
