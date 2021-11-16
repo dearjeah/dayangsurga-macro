@@ -21,6 +21,7 @@ enum progressBarType {
 class StepByStepGuideViewModel: NSObject {
     
     let emptyStateRepo = EmptyStateRepository.shared
+    let userRepo = UserRepository.shared
     let experienceRepo = ExperienceRepository.shared
     let eduRepo = EducationRepository.shared
     let skillRepo = SkillRepository.shared
@@ -66,6 +67,32 @@ class StepByStepGuideViewModel: NSObject {
         return SkillRepository.shared.getSkillsById(skillId: skillId)
     }
     
+    
+    func updatePersonalInfo(data: PersonalInfo) {
+        userRepo.updateUser(id: 0,
+                            newName: data.name,
+                            newPhoneNumber: data.phoneNumber,
+                            newEmail: data.email,
+                            newLocation: data.location,
+                            newSummary: data.summary
+        )
+    }
+    
+    func updateSelectedEduToResume() {
+        
+    }
+    
+    func updateSelectedExpToResume() {
+        
+    }
+    
+    func updateSelectedSkillsToResume() {
+        
+    }
+    
+    func updateSelectedAccompToResume() {
+        
+    }
 }
 
 //MARK: Progress Bar

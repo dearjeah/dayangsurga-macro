@@ -29,6 +29,7 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
         self.viewModel = StepByStepGuideViewModel()
         smallSetButtonView.delegate = self
         progressBarView.dlgt = self
+        hideKeyboardWhenTappedAround()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -92,6 +93,7 @@ extension StepByStepGuideViewController: SmallSetButtonDelegate {
     func didTapRightButton() {
         if smallSetButtonView.rightButton.titleLabel?.text == "Next" {
             didTapNext()
+            dataChecker(page: 0)
         } else {
             didTapGenerate()
         }
@@ -107,10 +109,23 @@ extension StepByStepGuideViewController: SmallSetButtonDelegate {
     func didTapGenerate() {
         performSegue(withIdentifier: "goToGenerate", sender: self)
     }
+    
+    func dataChecker(page: Int) {
+        switch page {
+        case 1:
+            self.viewModel?.updateSelectedEduToResume()
+        default:
+            print("not detected")
+        }
+    }
 }
 
 //MARK: Step Page Controller Delegate
 extension StepByStepGuideViewController: StepByStepGuideDelegate {
+    func personalInfoUpdate(data: PersonalInfo) {
+        self.viewModel?.updatePersonalInfo(data: data)
+    }
+    
     func goToAddEdu(was: Bool, from: String) {
         let storyboard = UIStoryboard(name: "EducationFormController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToEduForm") as! EducationFormController

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PersonalInfoPageDelegate: AnyObject {
-    func setPlaceHolder(fullName : String)
+    func isAllTextfieldFilled(was: Bool, data: PersonalInfo)
 
 }
 
@@ -85,6 +85,12 @@ class PersonalInfoPage: UIView{
             locationField.textField.text = userData.location
             summaryField.textView.text = userData.summary
         }
+        
+        fullNameField.setup(dlgt: self)
+        emailField.setup(dlgt: self)
+        phoneField.setup(dlgt: self)
+        locationField.setup(dlgt: self)
+        
     }
     
     func saveToCoreData() {
@@ -96,14 +102,14 @@ class PersonalInfoPage: UIView{
     }
     
     func checkAllFieldValue() -> Bool {
-        if fullNameField.textField.text?.count ?? 0 < 1
-            && emailField.textField.text?.count ?? 0 < 1
-            && phoneField.textField.text?.count ?? 0 < 1
-            && locationField.textField.text?.count ?? 0 < 1
-            && summaryField.textView.text.count < 1 {
-            return false
+        if fullNameField.textField.text?.isEmpty == false
+            && emailField.textField.text?.isEmpty == false
+            && phoneField.textField.text?.isEmpty == false
+            && locationField.textField.text?.isEmpty == false
+            && summaryField.textView.text.isEmpty == false {
+            return true
         }
-        return true
+        return false
     }
 }
 
@@ -116,4 +122,39 @@ extension PersonalInfoPage :  UITextViewDelegate {
         }
         summaryField.textView.textColor = .black
     }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        let tmp = checkAllFieldValue()
+        if tmp {
+            let data = PersonalInfo(
+                id: 0,
+                name: fullNameField.textField.text ?? "",
+                email: emailField.textField.text ?? "",
+                phoneNumber: phoneField.textField.text ?? "",
+                location: locationField.textField.text ?? "",
+                summary: summaryField.textView.text ?? ""
+            )
+            delegate?.isAllTextfieldFilled(was: true, data: data)
+        }
+    }
+}
+
+extension PersonalInfoPage :  LabelWithTextFieldDelegate {
+    func isTextfieldFilled(was: Bool) {
+        if was {
+            let tmp = checkAllFieldValue()
+            if tmp {
+                let data = PersonalInfo(
+                    id: 0,
+                    name: fullNameField.textField.text ?? "",
+                    email: emailField.textField.text ?? "",
+                    phoneNumber: phoneField.textField.text ?? "",
+                    location: locationField.textField.text ?? "",
+                    summary: summaryField.textView.text ?? ""
+                )
+                delegate?.isAllTextfieldFilled(was: true, data: data)
+            }
+        }
+    }
+
 }
