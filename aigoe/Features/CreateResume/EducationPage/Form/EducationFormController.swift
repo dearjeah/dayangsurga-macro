@@ -60,21 +60,25 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
     
     func tapToAddDeleteButton(){
         if !alertForCheckTF() {
-            guard let data = self.viewModel?.addEdu(
-                institution: institutionView.textField.text ?? "",
-                title: qualificationView.textField.text ?? "",
-                startDate: eduPeriodView.startDatePicker.date,
-                endDate: eduPeriodView.endDatePicker.date,
-                gpa: gpaView.textField.text ?? "",
-                activity: activityView.textView.text ?? "",
-                currentlyStudy: eduStatusView.switchButton.isOn,
-                isSelected: true
-            ) else { return errorSaveData(from: "Save") }
-            
-            if data {
-                performSegue(withIdentifier: "backToStepVC", sender: self)
+            if dataFrom == "Add" {
+                guard let data = self.viewModel?.addEdu(
+                    institution: institutionView.textField.text ?? "",
+                    title: qualificationView.textField.text ?? "",
+                    startDate: eduPeriodView.startDatePicker.date,
+                    endDate: eduPeriodView.endDatePicker.date,
+                    gpa: gpaView.textField.text ?? "",
+                    activity: activityView.textView.text ?? "",
+                    currentlyStudy: eduStatusView.switchButton.isOn,
+                    isSelected: true
+                ) else { return errorSaveData(from: "Save") }
+                
+                if data {
+                    performSegue(withIdentifier: "backToStepVC", sender: self)
+                } else {
+                    errorSaveData(from: "Save")
+                }
             } else {
-                errorSaveData(from: "Save")
+               showAlertForDelete()
             }
         }
     }
@@ -104,7 +108,7 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
     func deleteEduData(){
         guard let data = self.viewModel?.deleteEduData(eduData: eduData ?? Education()) else { return }
         if data {
-            self.navigationController?.popViewController(animated: false)
+            performSegue(withIdentifier: "backToStepVC", sender: self)
         } else {
             errorSaveData(from: "Delete")
         }

@@ -61,7 +61,7 @@ func preloadMyRessumeDummy() {
 }
 
 func preloadUserResume(){
-    UserResumeRepository.shared.createUserResume(resume_id: 1,
+    UserResumeRepository.shared.createUserResume(resume_id: UUID().uuidString,
                                                  template_id: 1,
                                                  user_id: 1,
                                                  image: UIImage.imgResumeTemplateGeorgia,
