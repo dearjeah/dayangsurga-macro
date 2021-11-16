@@ -39,7 +39,7 @@
                                 <color key="currentPageIndicatorTintColor" name="primaryBlue"/>
                             </pageControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zyh-AL-6v9" userLabel="ContainerView">
-                                <rect key="frame" x="0.0" y="94" width="414" height="627"/>
+                                <rect key="frame" x="0.0" y="74" width="414" height="627"/>
                                 <subviews>
                                     <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="L56-W2-vV0">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="568"/>
@@ -90,7 +90,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="zdH-iZ-cIR" secondAttribute="bottom" constant="20" id="d2p-xa-K3b"/>
                             <constraint firstItem="Zyh-AL-6v9" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="fSi-jf-PiX"/>
                             <constraint firstItem="zdH-iZ-cIR" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="jde-ab-s1a"/>
-                            <constraint firstItem="Zyh-AL-6v9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="50" id="qkJ-ty-T1T"/>
+                            <constraint firstItem="Zyh-AL-6v9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="qkJ-ty-T1T"/>
                         </constraints>
                     </view>
                     <connections>

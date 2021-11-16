@@ -76,6 +76,7 @@
 		B8FB96492743487000B64377 /* QuizRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB96482743487000B64377 /* QuizRepository.swift */; };
 		B8FB964B27434C7300B64377 /* PreloadQuizData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB964A27434C7300B64377 /* PreloadQuizData.swift */; };
 		BF09E0222743E5A800DB1C6B /* PersonalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF09E0212743E5A800DB1C6B /* PersonalInfo.swift */; };
+		BF09E02527440AA300DB1C6B /* SkillsPageviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF09E02427440AA300DB1C6B /* SkillsPageviewModel.swift */; };
 		BF0F8885272ED532000B87EE /* SkillAddEditController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF0F8884272ED532000B87EE /* SkillAddEditController.storyboard */; };
 		BF0F8887272ED54C000B87EE /* SkillAddEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0F8886272ED54C000B87EE /* SkillAddEditController.swift */; };
 		BF228E4C273B7CCC00966E23 /* EducationFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF228E46273B7CCC00966E23 /* EducationFormController.storyboard */; };
@@ -272,6 +273,7 @@
 		B8FB96482743487000B64377 /* QuizRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRepository.swift; sourceTree = "<group>"; };
 		B8FB964A27434C7300B64377 /* PreloadQuizData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadQuizData.swift; sourceTree = "<group>"; };
 		BF09E0212743E5A800DB1C6B /* PersonalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfo.swift; sourceTree = "<group>"; };
+		BF09E02427440AA300DB1C6B /* SkillsPageviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsPageviewModel.swift; sourceTree = "<group>"; };
 		BF0F8884272ED532000B87EE /* SkillAddEditController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SkillAddEditController.storyboard; sourceTree = "<group>"; };
 		BF0F8886272ED54C000B87EE /* SkillAddEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillAddEditController.swift; sourceTree = "<group>"; };
 		BF228E46273B7CCC00966E23 /* EducationFormController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EducationFormController.storyboard; sourceTree = "<group>"; };
@@ -448,6 +450,8 @@
 		6762A69227411F0400BA998D /* Form */ = {
 			isa = PBXGroup;
 			children = (
+				BF0F8884272ED532000B87EE /* SkillAddEditController.storyboard */,
+				BF0F8886272ED54C000B87EE /* SkillAddEditController.swift */,
 				6762A69727411F5700BA998D /* SkillsFormViewModel.swift */,
 			);
 			path = Form;
@@ -791,10 +795,9 @@
 			isa = PBXGroup;
 			children = (
 				6762A69227411F0400BA998D /* Form */,
+				BF09E02427440AA300DB1C6B /* SkillsPageviewModel.swift */,
 				BF8503A72722B82F00CC43FB /* SkillsPageView.swift */,
 				BF8503A92722B83700CC43FB /* SkillsPageView.xib */,
-				BF0F8884272ED532000B87EE /* SkillAddEditController.storyboard */,
-				BF0F8886272ED54C000B87EE /* SkillAddEditController.swift */,
 				6762A69A2741277D00BA998D /* TestSkills.storyboard */,
 				6762A69C274127AF00BA998D /* TestSkills.swift */,
 			);
@@ -1266,6 +1269,7 @@
 				BF8503922722B64600CC43FB /* ExpertListViewController.swift in Sources */,
 				B859B5402728532900627CDC /* ConsultHistoryRepository.swift in Sources */,
 				BF61D7FD27398E1C0011ACC0 /* UIPageViewController+Extension.swift in Sources */,
+				BF09E02527440AA300DB1C6B /* SkillsPageviewModel.swift in Sources */,
 				6712CF9F272EB29400449991 /* QuizPage.swift in Sources */,
 				BF281E2D273D70A100C44D04 /* ExpertSummaryCell.swift in Sources */,
 				B859B535272852EF00627CDC /* EmptyStateRepository.swift in Sources */,

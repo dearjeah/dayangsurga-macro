@@ -17,6 +17,8 @@ protocol StepByStepGuideDelegate: AnyObject {
     func goToAddAccom(from: String)
     func goToEditAccom(from: String, accomp: Accomplishment)
     func personalInfoUpdate(data: PersonalInfo)
+    func goToAddSkill(from: String)
+    func goToEditSkill(from: String, skills: [Skills])
 }
 
 protocol prevNextButtonDelegate: AnyObject {
@@ -157,6 +159,17 @@ extension StepByStepGuidePageController: ExperienceListDelegate {
     
     func passingExpData(exp: Experience?) {
         stepDelegate?.goToEditExp(was: true, from: "edit", exp: exp ?? Experience())
+    }
+}
+
+extension StepByStepGuidePageController: skillListDelegate {
+    func passDataFromEdit(from: String) {
+        if from == "Add" {
+            stepDelegate?.goToAddSkill(from: from)
+        } else {
+            stepDelegate?.goToEditSkill(from: from, skills: skillData)
+        }
+        
     }
 }
 
@@ -505,9 +518,12 @@ extension StepByStepGuidePageController {
     }
     
     fileprivate func initSkills() -> UIViewController {
-        let controller = UIViewController()
-        let tmp = SkillsPageView.init(text: "")
-        //tmp.setup(delegate: self)
+        let controller = MVVMViewController<SkillsPageviewModel>()
+        controller.viewModel = SkillsPageviewModel()
+        skillData = controller.viewModel?.getAllSkillData() ?? []
+        
+        let tmp = SkillsPageView.init(data: skillData)
+        tmp.skillDelegateSetup(dlgt: self)
         controller.view = tmp
         return controller
     }

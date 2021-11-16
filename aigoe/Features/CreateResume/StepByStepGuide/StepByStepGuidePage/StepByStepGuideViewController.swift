@@ -158,6 +158,21 @@ extension StepByStepGuideViewController: StepByStepGuideDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    func goToAddSkill(from: String) {
+        let storyboard = UIStoryboard(name: "SkillAddEditController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToEditSkills") as! SkillAddEditController
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func goToEditSkill(from: String, skills: [Skills]) {
+        let storyboard = UIStoryboard(name: "SkillAddEditController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToEditSkills") as! SkillAddEditController
+        vc.skill = skills
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func goToAddAccom(from: String) {
         let storyboard = UIStoryboard(name: "AccomplishFormController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToAccomForm") as! AccomplishFormController

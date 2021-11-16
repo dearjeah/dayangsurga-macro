@@ -8,9 +8,7 @@
 import UIKit
 
 protocol skillListDelegate: AnyObject{
-    func goToAddEditList()
-    func passSkillsData()
-    func passDataFromEdit()
+    func passDataFromEdit(from: String)
 }
 
 class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
@@ -27,7 +25,12 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
     let skillDataCount = 1
     
     @IBAction func addEditPressed(_ sender: UIButton) {
-        delegate?.passDataFromEdit()
+        let from = sender.titleLabel?.text ?? ""
+        delegate?.passDataFromEdit(from: from)
+    }
+    
+    func skillDelegateSetup(dlgt: skillListDelegate) {
+        self.delegate = dlgt
     }
     
     override init(frame: CGRect) {
@@ -41,33 +44,27 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
         initWithNib()
         setup()
         emptyState = stepViewModel.getEmptyStateId(Id: 3)
-        skills = stepViewModel.getSkillData() ?? []
+        //skills = stepViewModel.getSkillData() ?? []
         skillsTableView.reloadData()
     }
     
-    convenience init(text: String) {
+    convenience init(data: [Skills]) {
         self.init()
-    }
-    
-    fileprivate func initWithNib() {
-        guard let view = loadViewFromNib(nibName: "SkillsPageView") else { return }
-        view.frame = self.bounds
-        self.addSubview(view)
-    }
-    
-    func loadViewFromNib(nibName: String) -> UIView? {
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: nibName, bundle: bundle)
         
-        return nib.instantiate(withOwner: self, options: nil).first as? UIView
+        emptyState = stepViewModel.getEmptyStateId(Id: 3)
+        skills = data
+        setup()
+        skillsTableView.reloadData()
     }
-    
-    func setup() {
-        addEditButton.titleLabel?.textColor = UIColor.primaryBlue
-        skillsTableView.delegate = self
-        skillsTableView.dataSource = self
-        self.skillsTableView.register(UINib(nibName: "TechnicalSkillsListCell", bundle: nil), forCellReuseIdentifier: "TechnicalSkillsListCell")
+
+    func getAndReload(){
+        skills = stepViewModel.getSkillData() ?? []
+        skillsTableView.reloadData()
     }
+}
+
+//MARK: Table View
+extension SkillsPageView {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 58
     }
@@ -84,10 +81,6 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
             emptyStateView.isHidden = true
         }
         return skills.count
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.passDataFromEdit()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,9 +104,27 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
+}
+
+//MARK: Setup
+extension SkillsPageView {
+    fileprivate func initWithNib() {
+        guard let view = loadViewFromNib(nibName: "SkillsPageView") else { return }
+        view.frame = self.bounds
+        self.addSubview(view)
+    }
     
-    func getAndReload(){
-        skills = stepViewModel.getSkillData() ?? []
-        skillsTableView.reloadData()
+    func loadViewFromNib(nibName: String) -> UIView? {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: nibName, bundle: bundle)
+        
+        return nib.instantiate(withOwner: self, options: nil).first as? UIView
+    }
+    
+    func setup() {
+        addEditButton.titleLabel?.textColor = UIColor.primaryBlue
+        skillsTableView.delegate = self
+        skillsTableView.dataSource = self
+        self.skillsTableView.register(UINib(nibName: "TechnicalSkillsListCell", bundle: nil), forCellReuseIdentifier: "TechnicalSkillsListCell")
     }
 }
