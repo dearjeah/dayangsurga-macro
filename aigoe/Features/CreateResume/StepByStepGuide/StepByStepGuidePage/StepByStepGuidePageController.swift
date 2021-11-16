@@ -19,6 +19,7 @@ protocol StepByStepGuideDelegate: AnyObject {
     func personalInfoUpdate(data: PersonalInfo)
     func goToAddSkill(from: String)
     func goToEditSkill(from: String, skills: [Skills])
+    func updateData(page: Int)
 }
 
 protocol prevNextButtonDelegate: AnyObject {
@@ -237,6 +238,7 @@ extension StepByStepGuidePageController {
         setPageIndex(value: 1 + addedValue)
         hideUnHideButton(currentPage: currentPageIndex)
         stepDelegate?.progressBarUpdate(index: currentPageIndex, totalData: stepControllerArr?.count ?? 0)
+        stepDelegate?.updateData(page: currentPageIndex)
         reloadData()
         buttonFunctional(currentPage: currentPageIndex)
     }
@@ -248,6 +250,7 @@ extension StepByStepGuidePageController {
         setPageIndex(value: -1)
         hideUnHideButton(currentPage: currentPageIndex)
         stepDelegate?.progressBarUpdate(index: currentPageIndex, totalData: stepControllerArr?.count ?? 0)
+        stepDelegate?.updateData(page: currentPageIndex)
         reloadData()
         buttonFunctional(currentPage: currentPageIndex)
     }

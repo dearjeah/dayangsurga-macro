@@ -49,6 +49,7 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
         setView()
         setupForm()
         hideKeyboardWhenTappedAround()
+        self.activityView.textView.delegate = self
     }
     
     
@@ -60,7 +61,7 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
     
     func tapToAddDeleteButton(){
         if !alertForCheckTF() {
-            if dataFrom == "Add" {
+            if dataFrom == "add" {
                 guard let data = self.viewModel?.addEdu(
                     institution: institutionView.textField.text ?? "",
                     title: qualificationView.textField.text ?? "",
@@ -161,9 +162,9 @@ extension EducationFormController {
 }
 
 extension EducationFormController: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView){
+    func textViewDidBeginEditing(_ textView: UITextView){
         eduPlaceholder = self.viewModel?.getEduPh()
-        if ( activityView.textView.text.count  + 1 == eduPlaceholder?.activity_ph?.count){
+        if ( activityView.textView.text.lowercased()  == eduPlaceholder?.activity_ph?.lowercased() ){
             activityView.textView.text = ""
         }
         activityView.textView.textColor = .black

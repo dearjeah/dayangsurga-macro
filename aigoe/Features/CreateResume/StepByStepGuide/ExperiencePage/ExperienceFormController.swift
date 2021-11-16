@@ -43,6 +43,7 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
         expPlaceholder = self.viewModel?.getExpPh()
         expSuggestion = self.viewModel?.getExpSuggestion()
         hideKeyboardWhenTappedAround()
+        self.jobSummary.textView.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -145,7 +146,7 @@ extension ExperienceFormController: LabelSwitchDelegate {
 }
 
 extension ExperienceFormController: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView){
+    func textViewDidBeginEditing(_ textView: UITextView){
         expPlaceholder = self.viewModel?.getExpPh()
         if (jobSummary.textView.text.count  + 1 == expPlaceholder?.jobDesc_ph?.count){
             jobSummary.textView.text = ""

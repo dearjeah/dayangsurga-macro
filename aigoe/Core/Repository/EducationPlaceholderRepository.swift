@@ -30,7 +30,7 @@ class EducationPlaceholderRepository{
             educationPlaceholder.edu_id = eduId
             educationPlaceholder.edu_ph_id = Int32(eduPlaceholderId)
             educationPlaceholder.institution_ph = institutionPlaceholder
-            educationPlaceholder.title_ph = institutionPlaceholder
+            educationPlaceholder.title_ph = titlePlaceholder
             educationPlaceholder.gpa_ph = gpaPlaceholder
             educationPlaceholder.activity_ph = activityPlaceholder
             educationPlaceholder.start_date_ph = startDatePlaceholder

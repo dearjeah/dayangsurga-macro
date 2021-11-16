@@ -40,27 +40,24 @@ class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> 
         self.viewModel = ResumeTemplateViewModel()
         template = self.viewModel?.getTemplate() ?? []
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     @IBAction func didTapButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "StepByStepGuideViewController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToStepByStep") as! StepByStepGuideViewController
         vc.selectedTemplate = selectedTemplate
         vc.isCreate = true
+        createUserResume(selectedTemplate: selectedTemplate)
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.titleView?.tintColor = .white
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
-       print(selectedTemplate)
+    }
+    
+    func createUserResume(selectedTemplate: Int) {
+        let id = self.viewModel?.createResumeContent()
+        if id != "" {
+            self.viewModel?.createUserResume(resumeId: id ?? "abc000", selectedTemplate: selectedTemplate)
+        }
     }
 
 }
@@ -98,8 +95,6 @@ extension ResumeTemplateViewController: UICollectionViewDelegate, UICollectionVi
         resumeTemplatePageController.currentPage = currentPage % 3
         selectedTemplate = currentPage % 3
         targetContentOffset.pointee = offset
-        
-        
     }
         
 }

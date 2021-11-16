@@ -10,7 +10,7 @@ import UIKit
 class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel> {
     
     var index: Int?
-    var selectedTemplate: Int?
+    var selectedTemplate: Int = 0
     var selectedUserResume = User_Resume()
     var isCreate = Bool()
     var isGenerate = false
@@ -27,9 +27,12 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = StepByStepGuideViewModel()
+        self.navigationItem.title = "New Resume"
+        self.navigationItem.backButtonTitle = "Template"
         smallSetButtonView.delegate = self
         progressBarView.dlgt = self
         hideKeyboardWhenTappedAround()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -38,6 +41,8 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
             pageController.prevNextSetup(prevNextDlgt: self)
             pageController.selectedResume = selectedUserResume
             pageController.isCreate = isCreate
+        } else if let vc = segue.destination as? GenerateResumeController {
+            vc.selectedTemplate = selectedTemplate
         }
     }
     
@@ -93,7 +98,6 @@ extension StepByStepGuideViewController: SmallSetButtonDelegate {
     func didTapRightButton() {
         if smallSetButtonView.rightButton.titleLabel?.text == "Next" {
             didTapNext()
-            dataChecker(page: 0)
         } else {
             didTapGenerate()
         }
@@ -114,6 +118,12 @@ extension StepByStepGuideViewController: SmallSetButtonDelegate {
         switch page {
         case 1:
             self.viewModel?.updateSelectedEduToResume()
+        case 2:
+            self.viewModel?.updateSelectedExpToResume()
+        case 3:
+            self.viewModel?.updateSelectedSkillsToResume()
+        case 4:
+            self.viewModel?.updateSelectedAccompToResume()
         default:
             print("not detected")
         }
@@ -122,6 +132,10 @@ extension StepByStepGuideViewController: SmallSetButtonDelegate {
 
 //MARK: Step Page Controller Delegate
 extension StepByStepGuideViewController: StepByStepGuideDelegate {
+    func updateData(page: Int) {
+        dataChecker(page: page)
+    }
+    
     func personalInfoUpdate(data: PersonalInfo) {
         self.viewModel?.updatePersonalInfo(data: data)
     }

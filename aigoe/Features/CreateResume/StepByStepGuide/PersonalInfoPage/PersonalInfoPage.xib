@@ -131,6 +131,7 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="uZo-7Z-VDR" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="d2c-nD-VUb"/>
                 <constraint firstItem="SG9-3b-k51" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="jtA-6X-53N"/>
                 <constraint firstItem="SG9-3b-k51" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rk0-B8-MdF"/>
                 <constraint firstAttribute="bottom" secondItem="SG9-3b-k51" secondAttribute="bottom" id="udo-Qs-fDg"/>

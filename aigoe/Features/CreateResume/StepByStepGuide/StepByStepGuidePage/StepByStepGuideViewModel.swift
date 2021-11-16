@@ -26,6 +26,7 @@ class StepByStepGuideViewModel: NSObject {
     let eduRepo = EducationRepository.shared
     let skillRepo = SkillRepository.shared
     let accomRepo = AccomplishmentRepository.shared
+    let userResumeContent = UserResumeRepository.shared
 
     // for empty state
     func getEmptyStateId(Id: Int) -> Empty_State?{

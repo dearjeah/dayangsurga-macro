@@ -17,6 +17,12 @@ class UserProfileViewController: UIViewController {
         navigationStyle()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.title = "Profile"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
+        navigationController?.navigationBar.sizeToFit()
+    }
     
     func setComingSoon() {
         comingSoon.emptyStateImage.image = UIImage.comingSoon
@@ -29,7 +35,7 @@ class UserProfileViewController: UIViewController {
     }
     
     func navigationStyle(){
-        configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.white, title: "Resume", preferredLargeTitle: true, hideBackButton: false)
+        configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.white, title: "Profile", preferredLargeTitle: true, hideBackButton: false)
     }
 
 
