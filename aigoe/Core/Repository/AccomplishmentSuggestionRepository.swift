@@ -16,7 +16,7 @@ class AccomplishmentSuggestionRepository{
     let context = CoreDataManager.sharedManager.persistentContainer.viewContext
     
     // create data
-    func createAccomplishmentSuggestion(accomId: Int32,
+    func createAccomplishmentSuggestion(accomId: String,
                                         accomSuggestionId: Int32,
                                         title: String,
                                         desc : String){
@@ -28,7 +28,7 @@ class AccomplishmentSuggestionRepository{
             accomplishmentSuggestion.desc = desc
             
             // relation (one-to-one)
-            if let accomplishmentItem = AccomplishmentRepository.shared.getAccomplishmentById(AccomplishmentId: Int(accomId) ){
+            if let accomplishmentItem = AccomplishmentRepository.shared.getAccomplishmentById(AccomplishmentId: accomId){
                 accomplishmentSuggestion.accomplishment = accomplishmentItem
             }
             
@@ -64,7 +64,7 @@ class AccomplishmentSuggestionRepository{
     }
     
     // func updates
-    func updateAccomSuggestion(accomId: Int32,
+    func updateAccomSuggestion(accomId: String,
                                accomSuggestionId: Int32,
                                title: String,
                                desc : String) {

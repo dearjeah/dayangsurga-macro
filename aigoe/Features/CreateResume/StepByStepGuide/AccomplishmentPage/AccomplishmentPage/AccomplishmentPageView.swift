@@ -87,12 +87,12 @@ extension AccomplishmentPageView:  UITableViewDelegate, UITableViewDataSource {
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
                 self.accomplishment[indexPath.row].is_selected = true
-                AccomplishmentRepository.shared.updateSelectedAccomplishStatus(accomId: indexPath.row, is_Selected: true)
+                AccomplishmentRepository.shared.updateSelectedAccomplishStatus(accomId: UUID().uuidString, is_Selected: true)
             }else{
                 cell.selectionStatus = false
                 cell.checklistButtonUnSelected()
                 self.accomplishment[indexPath.row].is_selected = false
-                AccomplishmentRepository.shared.updateSelectedAccomplishStatus(accomId: indexPath.row, is_Selected: false)
+                AccomplishmentRepository.shared.updateSelectedAccomplishStatus(accomId: UUID().uuidString, is_Selected: false)
             }
         }
         return cell

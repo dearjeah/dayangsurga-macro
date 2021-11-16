@@ -81,7 +81,7 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
     
     @objc func updateEdu(sender: UIBarButtonItem) {
         if !alertForCheckTF() {
-            let eduID = Int(eduData?.edu_id ?? 0)
+            guard let eduID = eduData?.edu_id else { return }
             guard let data = self.viewModel?.updateEdu(eduId: eduID,
                 institution: institutionView.textField.text ?? "",
                 title: qualificationView.textField.text ?? "",

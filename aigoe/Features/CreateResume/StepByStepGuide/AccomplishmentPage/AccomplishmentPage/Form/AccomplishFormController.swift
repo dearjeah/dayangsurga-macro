@@ -109,7 +109,7 @@ class AccomplishFormController: MVVMViewController<AccomplishFormViewModel> {
         self.navigationController?.popViewController(animated: false)
     }
     @objc func updateAccomplish(sender: UIBarButtonItem) {
-        AccomplishmentRepository.shared.updateAccomplishment(accomId: 1,
+        AccomplishmentRepository.shared.updateAccomplishment(accomId: UUID().uuidString,
                                                              userId: 0,
                                                              title: certificateNameView.textField.text ?? String(),
                                                              givenDate: dateView.datePicker.date,

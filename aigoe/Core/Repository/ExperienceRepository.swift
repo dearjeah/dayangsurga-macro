@@ -15,7 +15,7 @@ class ExperienceRepository{
     let context = CoreDataManager.sharedManager.persistentContainer.viewContext
     
     // create data
-    func createExperience(exp_id: Int,
+    func createExperience(exp_id: String,
                           user_id: Int,
                           jobTitle: String,
                           jobDesc: String,
@@ -27,7 +27,7 @@ class ExperienceRepository{
         do {
             if let experienceToUser = UserRepository.shared.getUserById(id: user_id) {
                 let experience = Experience(context: context)
-                experience.exp_id = Int32(exp_id)
+                experience.exp_id = exp_id
                 experience.user_id = Int32(user_id)
                 experience.jobTitle = jobTitle
                 experience.jobDesc = jobDesc
@@ -61,7 +61,7 @@ class ExperienceRepository{
         return []
     }
     
-    func getExperienceById(experienceId: Int) -> Experience? {
+    func getExperienceById(experienceId: String) -> Experience? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "exp_id == %d", experienceId as CVarArg)
         do {
@@ -74,7 +74,7 @@ class ExperienceRepository{
     }
     
     // func updates
-    func updateExperience(exp_id: Int,
+    func updateExperience(exp_id: String,
                               user_id: Int,
                               newJobTitle: String,
                               newJobDesc: String,
@@ -102,7 +102,7 @@ class ExperienceRepository{
         
     }
     
-    func updateSelectedExpStatus(exp_id: Int,
+    func updateSelectedExpStatus(exp_id: String,
                               isSelected: Bool) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "exp_id == %d", exp_id as CVarArg)

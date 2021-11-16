@@ -16,7 +16,7 @@ class AccomplishmentRepository{
     let context = CoreDataManager.sharedManager.persistentContainer.viewContext
     
     // create data
-    func createAccomplishment(accomId: Int,
+    func createAccomplishment(accomId: String,
                              userId: Int,
                              title: String,
                              givenDate: Date,
@@ -27,7 +27,7 @@ class AccomplishmentRepository{
             // relation accomplishment-user
             if let AccomplishmentToUser = UserRepository.shared.getUserById(id: userId) {
                 let accomplishment = Accomplishment(context: context)
-                accomplishment.accomplishment_id = Int32(accomId)
+                accomplishment.accomplishment_id = accomId
                 accomplishment.user_id = Int32(userId)
                 accomplishment.given_date = givenDate
                 accomplishment.title = title
@@ -58,7 +58,7 @@ class AccomplishmentRepository{
         return []
     }
     
-    func getAccomplishmentById(AccomplishmentId: Int) -> Accomplishment? {
+    func getAccomplishmentById(AccomplishmentId: String) -> Accomplishment? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "accomplishment_id == %d", AccomplishmentId as CVarArg)
         do {
@@ -71,7 +71,7 @@ class AccomplishmentRepository{
     }
     
     // func updates
-    func updateAccomplishment( accomId: Int,
+    func updateAccomplishment( accomId: String,
                                userId: Int,
                                title: String,
                                givenDate: Date,
@@ -83,7 +83,7 @@ class AccomplishmentRepository{
         do {
             let item = try context.fetch(fetchRequest) as? [Accomplishment]
             let accomplishment = item?.first
-            accomplishment?.accomplishment_id = Int32(accomId)
+            accomplishment?.accomplishment_id = accomId
             accomplishment?.user_id = Int32(userId)
             accomplishment?.given_date = givenDate
             accomplishment?.title = title
@@ -100,7 +100,7 @@ class AccomplishmentRepository{
         return false
     }
     
-    func updateSelectedAccomplishStatus(accomId: Int,
+    func updateSelectedAccomplishStatus(accomId: String,
                                         is_Selected: Bool) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "accomplishment_id == %d", accomId as CVarArg)

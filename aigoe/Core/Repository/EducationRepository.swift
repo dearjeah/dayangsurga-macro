@@ -15,21 +15,21 @@ class EducationRepository{
     let context = CoreDataManager.sharedManager.persistentContainer.viewContext
     
     // create data
-    func createEducation(    eduId: Int,
-                             userId: Int,
-                             institution: String,
-                             title: String,
-                             startDate: Date,
-                             endDate : Date,
-                             gpa: Float,
-                             activity : String,
-                             currentlyStudy : Bool,
-                             isSelected : Bool) -> Bool {
+    func createEducation(eduId: String,
+                         userId: Int,
+                         institution: String,
+                         title: String,
+                         startDate: Date,
+                         endDate : Date,
+                         gpa: Float,
+                         activity : String,
+                         currentlyStudy : Bool,
+                         isSelected : Bool) -> Bool {
         do {
             // relation education-user
             if let educationToUser = UserRepository.shared.getUserById(id: userId) {
                 let education = Education(context: context)
-                education.edu_id = Int32(eduId)
+                education.edu_id = eduId
                 education.user_id = Int32(userId)
                 education.institution = institution
                 education.title = title
@@ -64,7 +64,7 @@ class EducationRepository{
         return []
     }
     
-    func getEducationById(educationId: Int) -> Education? {
+    func getEducationById(educationId: String) -> Education? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "edu_id == %d", educationId as CVarArg)
         do {
@@ -77,7 +77,7 @@ class EducationRepository{
     }
     
     // func updates
-    func updateEducation( eduId: Int,
+    func updateEducation( eduId: String,
                           userId: Int,
                           institution: String,
                           title: String,
@@ -92,7 +92,7 @@ class EducationRepository{
         do {
             let item = try context.fetch(fetchRequest) as? [Education]
             let education = item?.first
-            education?.edu_id = Int32(eduId)
+            education?.edu_id = eduId
             education?.user_id = Int32(userId)
             education?.title = title
             education?.start_date = startDate
@@ -101,7 +101,7 @@ class EducationRepository{
             education?.activity = activity
             education?.currently_study = currentlyStudy
             education?.is_selected = isSelected
-           
+            
             
             try context.save()
             
@@ -113,8 +113,8 @@ class EducationRepository{
         return false
     }
     
-    func updateSelectedEduStatus(edu_id: Int,
-                              isSelected: Bool) {
+    func updateSelectedEduStatus(edu_id: String,
+                                 isSelected: Bool) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "edu_id == %d", edu_id as CVarArg)
         do {

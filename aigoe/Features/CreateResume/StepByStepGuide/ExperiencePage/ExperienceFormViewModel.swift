@@ -23,12 +23,12 @@ class ExperienceFormViewModel: NSObject{
     }
     
     // for experience
-    func getExpByIndex(id: Int) -> Experience?{
+    func getExpByIndex(id: String) -> Experience?{
         return expRepo.getExperienceById(experienceId: id)
     }
     
     func addExpData(title: String, jobDesc: String, company: String, startDate: Date, endDate: Date, status: Bool, isSelected: Bool) -> Bool {
-        let addExp = expRepo.createExperience(exp_id: 1001, //nanti ganti ke uuid().uuidString
+        let addExp = expRepo.createExperience(exp_id: UUID().uuidString,
                                  user_id: 0,
                                  jobTitle: title,
                                  jobDesc: jobDesc,
@@ -41,7 +41,7 @@ class ExperienceFormViewModel: NSObject{
     }
     
     func updateExpData(title: String, jobDesc: String, company: String, startDate: Date, endDate: Date, status: Bool, isSelected: Bool) -> Bool {
-        let updateExp = expRepo.createExperience(exp_id: 1001, //nanti ganti ke uuid().uuidString
+        let updateExp = expRepo.createExperience(exp_id: UUID().uuidString, 
                                  user_id: 0,
                                  jobTitle: title,
                                  jobDesc: jobDesc,

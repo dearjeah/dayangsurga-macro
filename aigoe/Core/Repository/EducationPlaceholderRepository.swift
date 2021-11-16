@@ -16,7 +16,7 @@ class EducationPlaceholderRepository{
     let context = CoreDataManager.sharedManager.persistentContainer.viewContext
     
     // create
-    func createEducationPlaceholder(eduId: Int,
+    func createEducationPlaceholder(eduId: String,
                                     eduPlaceholderId:Int,
                                     institutionPlaceholder: String,
                                     titlePlaceholder: String,
@@ -27,7 +27,7 @@ class EducationPlaceholderRepository{
                                     ){
         do {
             let educationPlaceholder = Edu_Placeholder(context: context)
-            educationPlaceholder.edu_id = Int32(eduId)
+            educationPlaceholder.edu_id = eduId
             educationPlaceholder.edu_ph_id = Int32(eduPlaceholderId)
             educationPlaceholder.institution_ph = institutionPlaceholder
             educationPlaceholder.title_ph = institutionPlaceholder

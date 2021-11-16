@@ -111,12 +111,12 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
                 self.eduData[indexPath.row].is_selected = true
-                EducationRepository.shared.updateSelectedEduStatus(edu_id: Int(self.eduData[indexPath.row].edu_id), isSelected: true)
+                EducationRepository.shared.updateSelectedEduStatus(edu_id: UUID().uuidString, isSelected: true)
             } else {
                 cell.selectionStatus = false
                 cell.checklistButtonUnSelected()
                 self.eduData[indexPath.row].is_selected = false
-                EducationRepository.shared.updateSelectedEduStatus(edu_id: Int(self.eduData[indexPath.row].edu_id), isSelected: false)
+                EducationRepository.shared.updateSelectedEduStatus(edu_id: UUID().uuidString, isSelected: false)
             }
         }
         
