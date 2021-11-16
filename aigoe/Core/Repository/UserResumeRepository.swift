@@ -16,7 +16,7 @@ class UserResumeRepository {
     let context = CoreDataManager.sharedManager.persistentContainer.viewContext
     
     // func create, ini ga tau func nya begimana
-    func createUserResume(resume_id: Int,
+    func createUserResume(resume_id: String,
                           template_id: Int,
                           user_id: Int,
                           image: UIImage,
@@ -27,7 +27,7 @@ class UserResumeRepository {
             // relation ke template
             if let getTemplate = ResumeTemplateRepository.shared.getTemplateById(id: template_id){
                 let dataUserResume = User_Resume(context: context)
-                dataUserResume.resume_id = Int32(resume_id)
+                dataUserResume.resume_id = resume_id
                 dataUserResume.image = image.pngData()
                 dataUserResume.name = name
                 dataUserResume.lastUpdate = lastUpdate
@@ -89,7 +89,7 @@ class UserResumeRepository {
     }
     
     // func updates
-    func updateUserResume(resume_id: Int,
+    func updateUserResume(resume_id: String,
                           template_id: Int,
                           user_id: Int,
                           newImage: Data,
@@ -125,11 +125,11 @@ class UserResumeRepository {
     }
     
     // apakah perlu buat func sendiri untuk save editing progress?
-    func saveEditingProgress(resume_id: Int,
+    func saveEditingProgress(resume_id: String,
                              page: Int){
         do {
             let editingProgress = User_Resume(context: context)
-            editingProgress.resume_id = Int32(resume_id)
+            editingProgress.resume_id = resume_id
             editingProgress.editingProgress = Int32(page)
             
             try context.save()

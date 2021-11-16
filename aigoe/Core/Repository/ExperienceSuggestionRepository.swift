@@ -17,12 +17,12 @@ class ExperienceSuggestionRepository{
     
     // create data
     func createExpSuggestion(exp_suggest_id: Int,
-                             exp_id: Int,
+                             exp_id: String,
                              jobDescSuggest: String){
         do {
             let experienceSuggestion = Experience_Suggestion(context: context)
             experienceSuggestion.exp_suggest_id = Int32(exp_suggest_id)
-            experienceSuggestion.exp_id = Int32(exp_id)
+            experienceSuggestion.exp_id = exp_id
             experienceSuggestion.jobDescSuggest = jobDescSuggest
             
             // relation (one-to-one) experience to exp suggestion

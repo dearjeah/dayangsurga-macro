@@ -17,7 +17,7 @@ class ResumeContentRepository{
     
     // create data
     func createResumeContent(resume_id: Int,
-                             exp_id: Int,
+                             exp_id: String,
                              edu_id: Int,
                              accom_id: Int,
                              skill_id: Int){
@@ -29,7 +29,7 @@ class ResumeContentRepository{
                 
                 // relation ke experience
                 if let getExp = ExperienceRepository.shared.getExperienceById(experienceId: exp_id){
-                    getExp.exp_id = Int32(exp_id)
+                    getExp.exp_id = exp_id
                     getExp.addToResumeContent(resumeContent)
                 }
                 
@@ -55,7 +55,7 @@ class ResumeContentRepository{
         return []
     }
     
-    func getResumeContentById(resume_id: Int) -> Resume_Content? {
+    func getResumeContentById(resume_id: String) -> Resume_Content? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "resume_id == %d", resume_id as CVarArg)
         do {

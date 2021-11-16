@@ -36,7 +36,7 @@ class StepByStepGuideViewModel: NSObject {
         return experienceRepo.getAllExperience()
     }
     
-    func getExpByIndex(expId: Int) -> Experience?{
+    func getExpByIndex(expId: String) -> Experience?{
         return experienceRepo.getExperienceById(experienceId: expId)
     }
     
@@ -45,7 +45,7 @@ class StepByStepGuideViewModel: NSObject {
         return AccomplishmentRepository.shared.getAllAccomplishment()
     }
     
-    func getAccomplishByIndex(accomplishId: Int) -> Accomplishment?{
+    func getAccomplishByIndex(accomplishId: String) -> Accomplishment?{
         return AccomplishmentRepository.shared.getAccomplishmentById(AccomplishmentId: accomplishId)
     }
 

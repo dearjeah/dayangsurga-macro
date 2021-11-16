@@ -16,14 +16,14 @@ class AccomplishmentPlaceholderRepository{
     let context = CoreDataManager.sharedManager.persistentContainer.viewContext
     
     // create
-    func createAccomplishmentPlaceholder(accomId: Int,
+    func createAccomplishmentPlaceholder(accomId: String,
                                     accomPlaceholderId:Int,
                                     titlePlaceholder: String,
                                     givenDatePlaceholder : String
                                     ){
         do {
             let accomplishmentPlaceholder = Accomplish_Placeholder(context: context)
-            accomplishmentPlaceholder.accomplishment_id = Int32(accomId)
+            accomplishmentPlaceholder.accomplishment_id = accomId
             accomplishmentPlaceholder.accom_ph_id = Int32(accomPlaceholderId)
             accomplishmentPlaceholder.title_ph = titlePlaceholder
             accomplishmentPlaceholder.given_date_ph = givenDatePlaceholder
@@ -65,7 +65,7 @@ class AccomplishmentPlaceholderRepository{
     }
     
     // func updates
-    func updateAccomplishmentPlaceholder(accomId: Int,
+    func updateAccomplishmentPlaceholder(accomId: String,
                                          accomPlaceholderId:Int,
                                          titlePlaceholder: String,
                                          givenDatePlaceholder : String) {

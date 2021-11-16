@@ -10,7 +10,7 @@ import Foundation
 extension CoreDataManager {
     func preloadEduPlaceholder() {
         EducationPlaceholderRepository.shared.createEducationPlaceholder(
-            eduId: 0,
+            eduId: UUID().uuidString,
             eduPlaceholderId: 1,
             institutionPlaceholder: "e.g. Aigoe University",
             titlePlaceholder: "e.g. Bachelor of Computer Science",
@@ -23,7 +23,7 @@ extension CoreDataManager {
     
     func preloadEduSuggestion() {
         EducationSuggestionRepository.shared.createEducationSuggestion(
-            eduId: 0,
+            eduId: UUID().uuidString,
             eduSuggestionId: 1,
             activitySuggestion: "To show experiences or skills you want to highlight, consider to include relevant projects or activities that align with the job qualifications."
         )

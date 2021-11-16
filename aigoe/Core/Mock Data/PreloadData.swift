@@ -8,7 +8,7 @@
 import Foundation
 
 func preloadMyRessumeDummy() {
-    ResumeContentRepository.shared.createResumeContent(
+    /*ResumeContentRepository.shared.createResumeContent(
         resume_id: 1,
         exp_id: 0,
         edu_id: 0,
@@ -16,7 +16,7 @@ func preloadMyRessumeDummy() {
         skill_id: 0
     )
     
-    /*EducationRepository.shared.createEducation(
+    EducationRepository.shared.createEducation(
         eduId: 0,
         userId: 0,
         institution: "Dayang Surga University",

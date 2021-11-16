@@ -17,14 +17,14 @@ class ExperiencePlaceholderRepository{
     
     // create data
     func createExpPh(exp_ph_id: Int,
-                     exp_id: Int,
+                     exp_id: String,
                      jobTitle_Ph: String,
                      jobDesc_ph: String,
                      companyName_ph: String){
         do {
             let experiencePlaceholder = Experience_Placeholder(context: context)
             experiencePlaceholder.exp_ph_id = Int32(exp_ph_id)
-            experiencePlaceholder.exp_id = Int32(exp_id)
+            experiencePlaceholder.exp_id = exp_id
             experiencePlaceholder.jobTitle_ph = jobTitle_Ph
             experiencePlaceholder.jobDesc_ph = jobDesc_ph
             experiencePlaceholder.companyName_ph = companyName_ph

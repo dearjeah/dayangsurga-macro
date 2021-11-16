@@ -16,13 +16,13 @@ class EducationSuggestionRepository{
     let context = CoreDataManager.sharedManager.persistentContainer.viewContext
     
     // create
-    func createEducationSuggestion(eduId: Int,
+    func createEducationSuggestion(eduId: String,
                                     eduSuggestionId:Int,
                                     activitySuggestion: String
                                     ){
         do {
             let educationSuggestion = Edu_Suggestion(context: context)
-            educationSuggestion.edu_id = Int32(eduId)
+            educationSuggestion.edu_id = eduId
             educationSuggestion.edu_suggest_id =  Int32(eduSuggestionId)
             educationSuggestion.activity_suggest = activitySuggestion
             
@@ -63,7 +63,7 @@ class EducationSuggestionRepository{
     }
     
     // func updates
-    func updateEducationPlaceholder(eduId: Int,
+    func updateEducationPlaceholder(eduId: String,
                                     eduSuggestionId:Int,
                                     activitySuggestion: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)

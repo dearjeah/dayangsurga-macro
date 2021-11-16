@@ -336,7 +336,7 @@ extension StepByStepGuidePageController {
 extension StepByStepGuidePageController {
     func populateResumeData() {
         if !isCreate {
-            let data = ResumeContentRepository.shared.getResumeContentById(resume_id: Int(selectedResume.resume_id))
+            let data = ResumeContentRepository.shared.getResumeContentById(resume_id: UUID().uuidString)
             
             if data != nil {
                 personalData = UserRepository.shared.getUserById(id: Int(selectedResume.user_id)) ?? User()
