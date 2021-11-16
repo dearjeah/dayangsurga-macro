@@ -7,20 +7,40 @@
 
 import UIKit
 
-class TechnicalSkillsEditCell: UITableViewCell {
+protocol TechnicalSkillEditDelegate: AnyObject{
+    func checkIfEdit(index: Int, input: String)
+    
+}
 
+class TechnicalSkillsEditCell: UITableViewCell, UITextFieldDelegate {
+    weak var delegate: TechnicalSkillEditDelegate?
+    var textfieldAction : (() -> ())?
+    var deleteButtonAction : (() -> ())?
+    
     @IBOutlet weak var skillTextField: UITextField!
     @IBOutlet weak var deleteSkillButton: UIButton!
-    
+
     @IBAction func deletePressed(_ sender: UIButton) {
-        print("OLIP ROBOT")
+        deleteButtonAction?()
     }
     
+    func setUp(dlgt: TechnicalSkillEditDelegate){
+        self.delegate = dlgt
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.checkIfEdit(index: textField.tag, input: skillTextField.text ?? "")
+        deleteSkillButton.isHidden = false
+        print("Olip capek", textField.tag)
+        print("Olip lelah sama delegate")
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         //deleteSkillButton.isHidden = true
+        skillTextField.delegate = self
+        self.deleteSkillButton.addTarget(self, action: #selector(deletePressed(_:)), for: .touchUpInside)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

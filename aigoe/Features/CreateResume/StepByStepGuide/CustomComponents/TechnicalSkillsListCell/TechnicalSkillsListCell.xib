@@ -1,51 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TechnicalSkillsListCell" id="KGk-i7-Jjw" customClass="TechnicalSkillsListCell" customModule="dayangsurga_macro" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TechnicalSkillsListCell" id="KGk-i7-Jjw" customClass="TechnicalSkillsListCell" customModule="aigoe" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="361" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="361" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukf-gp-zig">
-                        <rect key="frame" x="20" y="12" width="278" height="20"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9zW-ts-RhM" customClass="DesignableButton" customModule="aigoe" customModuleProvider="target">
+                        <rect key="frame" x="2" y="2" width="357" height="40"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukf-gp-zig">
+                                <rect key="frame" x="20" y="12" width="277" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.098039215690000001" green="0.1647058824" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ssx-rm-ZX5">
+                                <rect key="frame" x="321" y="9" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="Lwo-Dt-znK"/>
+                                    <constraint firstAttribute="width" constant="22" id="VnY-Fw-Wcz"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="icRoundSelectionNoFill"/>
+                                <connections>
+                                    <action selector="selectButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iod-og-cCc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="primaryWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="278" id="P6w-4S-gC6"/>
+                            <constraint firstItem="ukf-gp-zig" firstAttribute="top" secondItem="9zW-ts-RhM" secondAttribute="top" constant="12" id="9AQ-ur-HTx"/>
+                            <constraint firstItem="ukf-gp-zig" firstAttribute="leading" secondItem="9zW-ts-RhM" secondAttribute="leading" constant="20" id="g8E-Ip-opg"/>
+                            <constraint firstAttribute="bottom" secondItem="ukf-gp-zig" secondAttribute="bottom" constant="12" id="wyk-L4-AEC"/>
+                            <constraint firstAttribute="trailing" secondItem="Ssx-rm-ZX5" secondAttribute="trailing" constant="14" id="xMf-Js-dc0"/>
+                            <constraint firstItem="Ssx-rm-ZX5" firstAttribute="leading" secondItem="ukf-gp-zig" secondAttribute="trailing" constant="24" id="yNV-0G-Ua3"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.098039215690000001" green="0.1647058824" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ssx-rm-ZX5">
-                        <rect key="frame" x="301" y="9" width="48" height="26"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="icRoundSelectionNoFill"/>
-                        <connections>
-                            <action selector="selectButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="iod-og-cCc"/>
-                        </connections>
-                    </button>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="17"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" systemColor="tertiaryLabelColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                <size key="value" width="1.5" height="1.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.29999999999999999"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowSpread">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="ukf-gp-zig" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="My2-Ov-NNL"/>
-                    <constraint firstItem="Ssx-rm-ZX5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="T4T-yU-noV"/>
-                    <constraint firstAttribute="bottom" secondItem="Ssx-rm-ZX5" secondAttribute="bottom" constant="9" id="bVb-je-2HM"/>
-                    <constraint firstAttribute="bottom" secondItem="ukf-gp-zig" secondAttribute="bottom" constant="12" id="dFk-pX-5Zf"/>
-                    <constraint firstItem="ukf-gp-zig" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="sxa-kW-hqE"/>
-                    <constraint firstAttribute="trailing" secondItem="Ssx-rm-ZX5" secondAttribute="trailing" constant="12" id="vIY-fC-7g1"/>
+                    <constraint firstItem="9zW-ts-RhM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4ei-d7-e7p"/>
+                    <constraint firstItem="Ssx-rm-ZX5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7Yi-fc-nmg"/>
+                    <constraint firstItem="9zW-ts-RhM" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="kfN-DF-3fY"/>
+                    <constraint firstItem="9zW-ts-RhM" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.9" id="kqE-0H-rRg"/>
+                    <constraint firstItem="9zW-ts-RhM" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.99" id="snR-Cp-X6v"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                        <integer key="value" value="17"/>
+                    </userDefinedRuntimeAttribute>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="selectionButton" destination="Ssx-rm-ZX5" id="QPs-i2-xwl"/>
+                <outlet property="shadowView" destination="9zW-ts-RhM" id="I7v-iz-4wL"/>
                 <outlet property="skillName" destination="ukf-gp-zig" id="GY4-dd-wTZ"/>
             </connections>
             <point key="canvasLocation" x="131.15942028985509" y="99.776785714285708"/>
@@ -53,5 +98,11 @@
     </objects>
     <resources>
         <image name="icRoundSelectionNoFill" width="24" height="24"/>
+        <namedColor name="primaryWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

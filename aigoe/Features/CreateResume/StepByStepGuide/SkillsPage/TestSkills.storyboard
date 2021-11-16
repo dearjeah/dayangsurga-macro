@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z8w-8o-TIN">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Test Skills-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="TestSkills" customModule="aigoe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EOC-nQ-btt" customClass="SkillsPageView" customModule="aigoe" customModuleProvider="target">
+                                <rect key="frame" x="20" y="66" width="374" height="818"/>
+                                <color key="backgroundColor" name="primaryBG"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="primaryBG"/>
+                        <constraints>
+                            <constraint firstItem="EOC-nQ-btt" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.912946" id="0mh-dx-M8K"/>
+                            <constraint firstItem="EOC-nQ-btt" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.903382" id="g1e-yr-R9K"/>
+                            <constraint firstItem="EOC-nQ-btt" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="gEe-61-FKN"/>
+                            <constraint firstItem="EOC-nQ-btt" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="jX5-Ng-rwS"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="6FU-mk-UHA"/>
+                    <connections>
+                        <outlet property="skillsView" destination="EOC-nQ-btt" id="cF3-yx-3QL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="57.589285714285708"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eIx-9R-JwT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z8w-8o-TIN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="D1M-cC-6BL">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="tQD-N1-PQx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ZK-ki-44h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="57.589285714285708"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="primaryBG">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
