@@ -57,6 +57,15 @@ class StepByStepGuideViewModel: NSObject {
         
         return (eduData, expData, skillData, accomData)
     }
+    
+    func getSkillData() -> [Skills]?{
+        return SkillRepository.shared.getAllSkill()
+    }
+    
+    func getSkillByIndex(skillId: Int) -> Skills?{
+        return SkillRepository.shared.getSkillsById(skillId: Int32(skillId))
+    }
+    
 }
 
 //MARK: Progress Bar

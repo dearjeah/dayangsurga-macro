@@ -16,6 +16,8 @@ class ExpertDetailViewController: MVVMViewController<ExpertDetailViewModel>, UIT
     }
     
     var index: Int?
+   
+    
     var expertDetail = Expert_Profile()
 
     @IBOutlet weak var expertDetailImage: UIImageView!

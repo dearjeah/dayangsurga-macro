@@ -41,12 +41,12 @@ func preloadMyRessumeDummy() {
         isSelected: true
     )*/
     
-    SkillRepository.shared.createSkill(
-        skillId: 0,
-        userId: 0,
-        skillName: "Hip Hip Hurray",
-        isSelected: true
-    )
+//    SkillRepository.shared.createSkill(
+//        skillId: 0,
+//        userId: 0,
+//        skillName: "Hip Hip Hurray",
+//        isSelected: true
+//    )
     
     /*AccomplishmentRepository.shared.createAccomplishment(
         accomId: 0,

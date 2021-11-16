@@ -135,5 +135,11 @@ extension CoreDataManager {
 //        if AccomplishmentRepository.shared.getAllAccomplishment()?.count == 0{
 //            preloadAccomplish()
 //        }
+        if SkillPlaceholderRepository.shared.getAllSkillPlaceholder()?.count == 0{
+            preloadSkillPh()
+        }
+        if SkillSuggestionRepository.shared.getAllSkillSuggestion()?.count == 0{
+            preloadSkillSuggestion()
+        }
     }
 }
