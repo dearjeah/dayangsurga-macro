@@ -21,34 +21,30 @@ class PersonalInfoPage: UIView{
     @IBOutlet weak var summaryField: LabelWithTextView!
     
     weak var delegate: PersonalInfoPageDelegate?
+    var userData = User()
+    var isFromCreate = Bool()
 
-    
     func setup(dlgt: PersonalInfoPageDelegate) {
         self.delegate = dlgt
-        
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         initWithNib()
-        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initWithNib()
-        setup()
     }
     
-    convenience init(fullName: String, email: String, phone: String, location: String, summary: String) {
+    convenience init(data: User, isCreate: Bool) {
         self.init()
-        fullNameField.textField.text = fullName
-        emailField.textField.text = email
-        phoneField.textField.text = phone
-        locationField.textField.text = location
+        
+        userData = data
+        isFromCreate = isCreate
+        setup()
         self.summaryField.textView.delegate = self
-//        MARK: cannot be assigned twice. Notes: textview don't have placeholder
-//        summaryField.textView.text = summary
     }
     
     fileprivate func initWithNib() {
@@ -65,7 +61,6 @@ class PersonalInfoPage: UIView{
     }
     
     func setup() {
-
         fullNameField.titleLabel.text = "Full Name*"
         emailField.titleLabel.text = "Email*"
         phoneField.titleLabel.text = "Phone Number*"
@@ -81,18 +76,22 @@ class PersonalInfoPage: UIView{
             locationField.textField.placeholder = personalInfoPlaceholder.address_ph
             summaryField.textView.text = personalInfoPlaceholder.summary_ph
             summaryField.textView.textColor = .lightGray
-            
-            
         }
-      
-     
+        
+        if userData.username != "" {
+            fullNameField.textField.text =  userData.username
+            emailField.textField.text = userData.email
+            phoneField.textField.text = userData.phoneNumber
+            locationField.textField.text = userData.location
+            summaryField.textView.text = userData.summary
+        }
     }
     
     func saveToCoreData() {
-        if UserRepository.shared.getUserById(id: 1) != nil{
-            UserRepository.shared.updateUser(id: 1, newName: fullNameField.textField.text ?? "", newPhoneNumber: phoneField.textField.text ?? "", newEmail: emailField.textField.text ?? "" , newLocation: locationField.textField.text ?? "", newSummary: summaryField.textView.text ?? "")
+        if UserRepository.shared.getUserById(id: 0) != nil{
+            UserRepository.shared.updateUser(id: 0, newName: fullNameField.textField.text ?? "", newPhoneNumber: phoneField.textField.text ?? "", newEmail: emailField.textField.text ?? "" , newLocation: locationField.textField.text ?? "", newSummary: summaryField.textView.text ?? "")
         } else {
-            UserRepository.shared.createUser(user_id: 1, username: fullNameField.textField.text ?? "", phoneNumber: phoneField.textField.text ?? "", email: emailField.textField.text ?? "", location: locationField.textField.text ?? "", summary: summaryField.textView.text ?? "")
+            UserRepository.shared.createUser(user_id: 0, username: fullNameField.textField.text ?? "", phoneNumber: phoneField.textField.text ?? "", email: emailField.textField.text ?? "", location: locationField.textField.text ?? "", summary: summaryField.textView.text ?? "")
         }
     }
     
@@ -107,13 +106,8 @@ class PersonalInfoPage: UIView{
         return true
     }
 }
-        
-  
 
-
-
-extension PersonalInfoPage :  UITextViewDelegate{
-    
+extension PersonalInfoPage :  UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if let personalInfoPlaceholder = PersonalInformationPlaceholderRepository.shared.getPIPhById(pi_ph_id: 1) {
             if (summaryField.textView.text.lowercased()  == (personalInfoPlaceholder.summary_ph?.lowercased())){
@@ -122,6 +116,4 @@ extension PersonalInfoPage :  UITextViewDelegate{
         }
         summaryField.textView.textColor = .black
     }
-
-   
 }

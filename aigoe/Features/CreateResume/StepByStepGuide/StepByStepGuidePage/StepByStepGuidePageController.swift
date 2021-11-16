@@ -351,8 +351,11 @@ extension StepByStepGuidePageController {
 
 extension StepByStepGuidePageController {
     fileprivate func initPersonalData(fullName: String, email: String, phone: String, location: String, summary: String) -> UIViewController {
-        let controller = UIViewController()
-        let tmp = PersonalInfoPage.init(fullName: fullName, email: email, phone: phone, location: location, summary: summary)
+        let controller = MVVMViewController<PersonalInfoViewModel>()
+        controller.viewModel =  PersonalInfoViewModel()
+        personalData = controller.viewModel?.getUserData() ?? User()
+        
+        let tmp = PersonalInfoPage.init(data: personalData, isCreate: isCreate)
         tmp.setup(dlgt: self)
         controller.view = tmp
         return controller

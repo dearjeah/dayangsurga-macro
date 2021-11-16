@@ -37,10 +37,6 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
             pageController.prevNextSetup(prevNextDlgt: self)
             pageController.selectedResume = selectedUserResume
             pageController.isCreate = isCreate
-            pageController.eduData = eduData
-            pageController.expData = expData
-            pageController.skillData = skillData
-            pageController.accomData = accomData
         }
     }
     
