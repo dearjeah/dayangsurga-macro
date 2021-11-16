@@ -9,8 +9,8 @@ import Foundation
 
 class SkillsFormViewModel: NSObject{
     
-    func getSkillsById(id: Int)-> Skills?{
-        return SkillRepository.shared.getSkillsById(skillId: Int32(id))
+    func getSkillsById(id: String)-> Skills?{
+        return SkillRepository.shared.getSkillsById(skillId: id)
     }
     
     func getPlacehoder(id:Int)->Skills_Placeholder?{
@@ -25,19 +25,19 @@ class SkillsFormViewModel: NSObject{
         return SkillRepository.shared.getAllSkill()
     }
     
-    func createSkill(skillId: Int, skillName: String, isSelected: Bool)-> Bool{
-        let skill = SkillRepository.shared.createSkill(skillId: Int32(skillId), userId: 0, skillName: skillName, isSelected: isSelected)
+    func createSkill(skillId: String, skillName: String, isSelected: Bool)-> Bool{
+        let skill = SkillRepository.shared.createSkill(skillId: skillId, userId: 0, skillName: skillName, isSelected: isSelected)
         return skill
     }
     
-    func updateSkill(skillId: Int, skillName: String, isSelected: Bool)-> Bool{
+    func updateSkill(skillId: String, skillName: String, isSelected: Bool)-> Bool{
         let skill = SkillRepository.shared.updateSkill(skillId: skillId, userId: 0, skillName: skillName, isSelected: isSelected)
         return skill
     }
     
     func deleteSkill(skill: Skills){
         let skillToDelete = Skills()
-        SkillRepository.shared.deleteSkills(data: skill ?? skillToDelete)
+        SkillRepository.shared.deleteSkills(data: skill )
     }
 
 }

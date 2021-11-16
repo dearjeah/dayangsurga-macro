@@ -16,12 +16,12 @@ class SkillPlaceholderRepository{
     let context = CoreDataManager.sharedManager.persistentContainer.viewContext
     
     // create
-    func createSkillPlaceholder(skillId: Int32,
+    func createSkillPlaceholder(skillId: String,
                                 skillPlaceholderId: Int,
                                 skillPlaceholderName: String){
         do {
             let skillPlaceholder = Skills_Placeholder(context: context)
-            skillPlaceholder.skills_id = Int32(skillId)
+            skillPlaceholder.skills_id = skillId
             skillPlaceholder.skills_ph_id = Int32(skillPlaceholderId)
             skillPlaceholder.skills_name_ph = skillPlaceholderName
             
@@ -62,7 +62,7 @@ class SkillPlaceholderRepository{
     }
     
     // func updates
-    func updateSkillPlaceholder(skillId: Int,
+    func updateSkillPlaceholder(skillId: String,
                                 skillPlaceholderId: Int,
                                 skillPlaceholderName: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
@@ -71,7 +71,7 @@ class SkillPlaceholderRepository{
             let item = try context.fetch(fetchRequest) as? [Skills_Placeholder]
             let skillPlaceholder = item?.first
             
-            skillPlaceholder?.skills_id = Int32(skillId)
+            skillPlaceholder?.skills_id = skillId
             skillPlaceholder?.skills_ph_id = Int32(skillPlaceholderId)
             skillPlaceholder?.skills_name_ph = skillPlaceholderName
             

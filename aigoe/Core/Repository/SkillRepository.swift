@@ -17,10 +17,10 @@ class SkillRepository{
     let context = CoreDataManager.sharedManager.persistentContainer.viewContext
     
     // create data
-    func createSkill(       skillId: Int32,
-                             userId: Int32,
-                             skillName: String,
-                             isSelected : Bool)-> Bool{
+    func createSkill(skillId: String,
+                     userId: Int32,
+                     skillName: String,
+                     isSelected : Bool)-> Bool{
         do {
             // relation accomplishment-user
             if let SkillToUser = UserRepository.shared.getUserById(id: Int(userId)) {
@@ -53,7 +53,7 @@ class SkillRepository{
         return []
     }
     
-    func getSkillsById(skillId: Int32) -> Skills? {
+    func getSkillsById(skillId: String) -> Skills? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "skill_id == %d", skillId as CVarArg)
         do {
@@ -66,20 +66,20 @@ class SkillRepository{
     }
     
     // func updates
-    func updateSkill( skillId: Int,
-                      userId: Int,
-                      skillName: String,
-                      isSelected : Bool)-> Bool {
+    func updateSkill(skillId: String,
+                     userId: Int,
+                     skillName: String,
+                     isSelected : Bool)-> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "skill_id == %d", skillId as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Skills]
             let skill = item?.first
-            skill?.skill_id = Int32(skillId)
+            skill?.skill_id = skillId
             skill?.user_id = Int32(userId)
             skill?.skill_name = skillName
             skill?.is_selected = isSelected
-         
+            
             try context.save()
             return true
         } catch let error as NSError {
@@ -88,8 +88,8 @@ class SkillRepository{
         return false
     }
     
-    func updateSelectedSkillStatus(skill_id: Int,
-                              isSelected: Bool) {
+    func updateSelectedSkillStatus(skill_id: String,
+                                   isSelected: Bool) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "skill_id == %d", skill_id as CVarArg)
         do {

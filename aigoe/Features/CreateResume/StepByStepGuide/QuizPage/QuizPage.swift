@@ -112,19 +112,23 @@ class QuizPage: UIView {
         var header = ""
         var desc = ""
         var cue = ""
+        var quiz: Quiz?
         switch type {
         case 1:
-            header = "Experience Question"
-            desc = "Do you have any professional experience?"
-            cue = "Example: Internship, Apprentice Program, etc."
+            quiz = getQuizId(id: 0)
+            header = quiz?.header ?? String()
+            desc = quiz?.desc ?? String()
+            cue = quiz?.cue ?? String()
         case 2:
-            header = "Skills Question"
-            desc = "Do you have any technical skills that related to the role that you want to apply?"
-            cue = "Example: Swift Programming, Sketch, Figma, Illustration, Project Management, etc."
+            quiz = getQuizId(id: 1)
+            header = quiz?.header ?? String()
+            desc = quiz?.desc ?? String()
+            cue = quiz?.cue ?? String()
         case 3:
-            header = "Accomplishment Question"
-            desc = "Do you have any accomplishment?"
-            cue = "Example: Certification of Project Management, IELTS, Graduate Level Certification in Data Science, etc. "
+            quiz = getQuizId(id: 2)
+            header = quiz?.header ?? String()
+            desc = quiz?.desc ?? String()
+            cue = quiz?.cue ?? String()
         default:
             header = ""
             desc = ""
@@ -132,5 +136,8 @@ class QuizPage: UIView {
         }
         return [header,desc,cue]
     }
-    
+
+    func getQuizId(id: Int) -> Quiz?{
+        return QuizRepository.shared.getQuizById(quiz_id: id)
+    }
 }

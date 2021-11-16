@@ -62,8 +62,8 @@ class StepByStepGuideViewModel: NSObject {
         return SkillRepository.shared.getAllSkill()
     }
     
-    func getSkillByIndex(skillId: Int) -> Skills?{
-        return SkillRepository.shared.getSkillsById(skillId: Int32(skillId))
+    func getSkillByIndex(skillId: String) -> Skills?{
+        return SkillRepository.shared.getSkillsById(skillId: skillId)
     }
     
 }

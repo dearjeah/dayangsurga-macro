@@ -17,9 +17,9 @@ class SkillSuggestionRepository{
     let context = CoreDataManager.sharedManager.persistentContainer.viewContext
     
     // create data
-    func createSkillSuggestion(skillId: Int32,
-                             skillSuggestionId: Int32,
-                             skillSuggest: String){
+    func createSkillSuggestion(skillId: String,
+                               skillSuggestionId: Int32,
+                               skillSuggest: String){
         do {
             let skillSuggestion = Skills_Suggest(context: context)
             skillSuggestion.skills_id = skillId
