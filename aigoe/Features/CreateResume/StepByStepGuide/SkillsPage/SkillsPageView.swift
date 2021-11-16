@@ -101,12 +101,12 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
                 self.skills[indexPath.row].is_selected = true
-                SkillRepository.shared.updateSelectedSkillStatus(skill_id: indexPath.row, isSelected: true)
+                SkillRepository.shared.updateSelectedSkillStatus(skill_id: self.skills[indexPath.row].skill_id ?? String(), isSelected: true)
             }else{
                 cell.selectionStatus = false
                 cell.checklistButtonUnSelected()
                 self.skills[indexPath.row].is_selected = false
-                SkillRepository.shared.updateSelectedSkillStatus(skill_id: indexPath.row, isSelected: false)
+                SkillRepository.shared.updateSelectedSkillStatus(skill_id: self.skills[indexPath.row].skill_id ?? String(), isSelected: false)
             }
         }
         return cell

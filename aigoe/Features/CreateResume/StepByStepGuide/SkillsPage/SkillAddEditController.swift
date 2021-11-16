@@ -14,7 +14,7 @@ class SkillAddEditController: MVVMViewController<SkillsFormViewModel>, UITableVi
     @IBOutlet weak var skillSuggest: UILabel!
     
     struct localSkills{
-        var id: Int
+        var id: String
         var name: String
     }
     
@@ -51,7 +51,7 @@ class SkillAddEditController: MVVMViewController<SkillsFormViewModel>, UITableVi
             let skillId = localSkill[i].id
             let skillName = localSkill[i].name
             print(skillName)
-            let skill = self.viewModel?.createSkill(skillId: Int(skillId), skillName: skillName , isSelected: true)
+            let skill = self.viewModel?.createSkill(skillId: skillId, skillName: skillName , isSelected: true)
             if skill == false{
                 let alert = UIAlertController(title: "Failed to save Skill Data", message: "Please try to save again later.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "oke", style: .default, handler: nil))
@@ -72,6 +72,7 @@ class SkillAddEditController: MVVMViewController<SkillsFormViewModel>, UITableVi
     func deleteData(index: Int){
         skillData = localSkill.count
         let skillId = localSkill[index].id
+//        print(skillId)
         guard let getIndex = self.viewModel?.getSkillsById(id: skillId) else { return }
         self.viewModel?.deleteSkill(skill: getIndex)
         self.localSkill.remove(at: index)
@@ -82,11 +83,11 @@ class SkillAddEditController: MVVMViewController<SkillsFormViewModel>, UITableVi
         let tmp = skill?.count ?? 0
         if tmp != 0 {
             for i in 0..<tmp {
-                let a = localSkills(id: Int(skill?[i].skill_id ?? 0), name: skill?[i].skill_name ?? "")
+                let a = localSkills(id: skill?[i].skill_id ?? String(), name: skill?[i].skill_name ?? "")
                 localSkill.append(a)
             }
         } else {
-            let a = localSkills(id: 1003, name: "")
+            let a = localSkills(id: UUID().uuidString, name: "")
             localSkill.append(a)
         }
         skillTableView.reloadData()
@@ -100,10 +101,10 @@ class SkillAddEditController: MVVMViewController<SkillsFormViewModel>, UITableVi
             let dataCount = skill?.count ?? 0 - 1
             for i in 0..<skillCount{
                 for j in 0..<dataCount{
-                    if skill?[j].skill_id ?? 0 != localSkill[i].id {
+                    if skill?[j].skill_id ?? String() != localSkill[i].id {
                         let skillId = localSkill[i].id
                         let skillName = localSkill[i].name
-                        let skill = self.viewModel?.createSkill(skillId: Int(skillId), skillName: skillName , isSelected: true)
+                        let skill = self.viewModel?.createSkill(skillId: skillId, skillName: skillName , isSelected: true)
                         if skill == false{
                             failSave()
                             return
@@ -111,7 +112,7 @@ class SkillAddEditController: MVVMViewController<SkillsFormViewModel>, UITableVi
                     } else {
                         let skillId = localSkill[i].id
                         let skillName = localSkill[i].name
-                        let skill = self.viewModel?.updateSkill(skillId: Int(skillId), skillName: skillName , isSelected: true)
+                        let skill = self.viewModel?.updateSkill(skillId: skillId, skillName: skillName , isSelected: true)
                         if skill == false {
                             failSave()
                             return
@@ -123,7 +124,7 @@ class SkillAddEditController: MVVMViewController<SkillsFormViewModel>, UITableVi
             for i in 0..<skillData{
                 let skillId = localSkill[i].id
                 let skillName = localSkill[i].name
-                let skill = self.viewModel?.updateSkill(skillId: Int(skillId), skillName: skillName , isSelected: true)
+                let skill = self.viewModel?.updateSkill(skillId: skillId, skillName: skillName , isSelected: true)
                 if skill == false{
                     failSave()
                     return
@@ -140,7 +141,7 @@ class SkillAddEditController: MVVMViewController<SkillsFormViewModel>, UITableVi
     }
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
-        let a = localSkills(id: 1001, name: "")
+        let a = localSkills(id: UUID().uuidString, name: "")
         localSkill.append(a)
         DispatchQueue.main.async {()->Void in
             self.skillTableView.reloadData()

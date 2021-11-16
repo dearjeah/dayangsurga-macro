@@ -16,16 +16,16 @@ class ResumeContentRepository{
     let context = CoreDataManager.sharedManager.persistentContainer.viewContext
     
     // create data
-    func createResumeContent(resume_id: Int,
+    func createResumeContent(resume_id: String,
                              exp_id: String,
-                             edu_id: Int,
-                             accom_id: Int,
-                             skill_id: Int){
+                             edu_id: String,
+                             accom_id: String,
+                             skill_id: String){
         do {
             // relation ke resume
             if let getResume = UserResumeRepository.shared.getUserResumeById(resume_id: resume_id){
                 let resumeContent = Resume_Content(context: context)
-                resumeContent.resume_id = Int32(resume_id)
+                resumeContent.resume_id = resume_id
                 
                 // relation ke experience
                 if let getExp = ExperienceRepository.shared.getExperienceById(experienceId: exp_id){
@@ -68,20 +68,20 @@ class ResumeContentRepository{
     }
     
     // func updates
-    func updateResumeContent(resume_id: Int,
-                             newExp_id: Int,
-                             newEdu_id: Int,
-                             newAccom_id: Int,
-                             newSkill_id: Int) {
+    func updateResumeContent(resume_id: String,
+                             newExp_id: String,
+                             newEdu_id: String,
+                             newAccom_id: String,
+                             newSkill_id: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "resume_id == %d", resume_id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [Resume_Content]
             let newResumeContent = item?.first
-            newResumeContent?.exp_id = Int32(newExp_id)
-            newResumeContent?.edu_id = Int32(newEdu_id)
-            newResumeContent?.accom_id = Int32(newAccom_id)
-            newResumeContent?.skill_id = Int32(newSkill_id)
+            newResumeContent?.exp_id = newExp_id
+            newResumeContent?.edu_id = newEdu_id
+            newResumeContent?.accom_id = newAccom_id
+            newResumeContent?.skill_id = newSkill_id
             
             try context.save()
         } catch let error as NSError {

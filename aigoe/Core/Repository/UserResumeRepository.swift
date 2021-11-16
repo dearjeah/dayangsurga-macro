@@ -76,7 +76,7 @@ class UserResumeRepository {
         return []
     }
     
-    func getUserResumeById(resume_id: Int) -> User_Resume? {
+    func getUserResumeById(resume_id: String) -> User_Resume? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "resume_id == %d", resume_id as CVarArg)
         do {

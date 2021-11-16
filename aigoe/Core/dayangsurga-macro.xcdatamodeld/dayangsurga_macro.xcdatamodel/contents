@@ -138,11 +138,11 @@
         <attribute name="quiz_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Resume_Content" representedClassName="Resume_Content" syncable="YES" codeGenerationType="class">
-        <attribute name="accom_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="edu_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="exp_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="resume_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="skill_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="accom_id" optional="YES" attributeType="String"/>
+        <attribute name="edu_id" optional="YES" attributeType="String"/>
+        <attribute name="exp_id" optional="YES" attributeType="String"/>
+        <attribute name="resume_id" optional="YES" attributeType="String"/>
+        <attribute name="skill_id" optional="YES" attributeType="String"/>
         <relationship name="accomplishment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accomplishment" inverseName="resumeContent" inverseEntity="Accomplishment"/>
         <relationship name="education" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Education" inverseName="resumeContent" inverseEntity="Education"/>
         <relationship name="experience" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Experience" inverseName="resumeContent" inverseEntity="Experience"/>
@@ -157,7 +157,7 @@
     </entity>
     <entity name="Skills" representedClassName="Skills" syncable="YES" codeGenerationType="class">
         <attribute name="is_selected" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="skill_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="skill_id" optional="YES" attributeType="String"/>
         <attribute name="skill_name" optional="YES" attributeType="String"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="placeholder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Skills_Placeholder" inverseName="skills" inverseEntity="Skills_Placeholder"/>
@@ -166,13 +166,13 @@
         <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="skill" inverseEntity="User"/>
     </entity>
     <entity name="Skills_Placeholder" representedClassName="Skills_Placeholder" syncable="YES" codeGenerationType="class">
-        <attribute name="skills_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="skills_id" optional="YES" attributeType="String"/>
         <attribute name="skills_name_ph" optional="YES" attributeType="String"/>
         <attribute name="skills_ph_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="skills" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Skills" inverseName="placeholder" inverseEntity="Skills"/>
     </entity>
     <entity name="Skills_Suggest" representedClassName="Skills_Suggest" syncable="YES" codeGenerationType="class">
-        <attribute name="skills_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="skills_id" optional="YES" attributeType="String"/>
         <attribute name="skills_suggest" optional="YES" attributeType="String"/>
         <attribute name="skills_suggest_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="skills" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Skills" inverseName="suggestion" inverseEntity="Skills"/>
@@ -220,6 +220,7 @@
         <element name="Expert_Profile" positionX="45" positionY="180" width="128" height="209"/>
         <element name="PersonalInformation_Placeholder" positionX="63" positionY="108" width="128" height="149"/>
         <element name="PersonalInformation_Suggestion" positionX="27" positionY="72" width="128" height="89"/>
+        <element name="Quiz" positionX="27" positionY="180" width="128" height="89"/>
         <element name="Resume_Content" positionX="36" positionY="81" width="128" height="179"/>
         <element name="Resume_Template" positionX="45" positionY="90" width="128" height="89"/>
         <element name="Skills" positionX="81" positionY="216" width="128" height="149"/>
@@ -227,6 +228,5 @@
         <element name="Skills_Suggest" positionX="36" positionY="171" width="128" height="89"/>
         <element name="User" positionX="54" positionY="99" width="128" height="239"/>
         <element name="User_Resume" positionX="72" positionY="117" width="128" height="179"/>
-        <element name="Quiz" positionX="27" positionY="180" width="128" height="89"/>
     </elements>
 </model>
