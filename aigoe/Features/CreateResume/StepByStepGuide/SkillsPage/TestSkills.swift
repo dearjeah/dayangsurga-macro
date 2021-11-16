@@ -7,12 +7,20 @@
 
 import UIKit
 
-class TestSkills: UIViewController, skillListDelegate {
+class TestSkills: MVVMViewController<StepByStepGuideViewModel>, skillListDelegate {
+    
+    var skill: [Skills]? = []
     
     func passDataFromEdit() {
         let storyboard = UIStoryboard(name: "SkillAddEditController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToEditSkills") as! SkillAddEditController
-        vc.dataFrom = "Edit"
+        self.viewModel = StepByStepGuideViewModel()
+        skill = self.viewModel?.getSkillData()
+        if skill?.count == 0{
+            vc.dataFrom = "Add"
+        }else{
+            vc.dataFrom = "Edit"
+        }
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -35,6 +43,7 @@ class TestSkills: UIViewController, skillListDelegate {
     func goToAddEditList() {
         let storyboard = UIStoryboard(name: "SkillAddEditController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToEditSkills") as! SkillAddEditController
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -34,4 +34,10 @@ class SkillsFormViewModel: NSObject{
         let skill = SkillRepository.shared.updateSkill(skillId: skillId, userId: 0, skillName: skillName, isSelected: isSelected)
         return skill
     }
+    
+    func deleteSkill(skill: Skills){
+        let skillToDelete = Skills()
+        SkillRepository.shared.deleteSkills(data: skill ?? skillToDelete)
+    }
+
 }

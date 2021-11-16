@@ -27,8 +27,7 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
     let skillDataCount = 1
     
     @IBAction func addEditPressed(_ sender: UIButton) {
-        print("Add edit pressed")
-        delegate?.goToAddEditList()
+        delegate?.passDataFromEdit()
     }
     
     override init(frame: CGRect) {
@@ -75,6 +74,7 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if skills.count == 0 {
             addEditButton.setTitle("Add", for: .normal)
+            emptyStateView.isHidden = false
             emptyStateView.emptyStateImage.image = UIImage(data: emptyState?.image ?? Data())
             emptyStateView.emptyStateTitle.text = nil
             emptyStateView.emptyStateDescription.text = emptyState?.title

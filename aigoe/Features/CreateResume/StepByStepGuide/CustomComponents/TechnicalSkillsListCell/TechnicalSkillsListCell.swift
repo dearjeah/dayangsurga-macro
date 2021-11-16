@@ -19,38 +19,23 @@ class TechnicalSkillsListCell: UITableViewCell {
     
     @IBAction func selectButtonPressed(_ sender: UIButton) {
         checklistButtonAction?()
-//        if selectionStatus == false{
-//            selectionStatus = true
-//            selectionButton.setImage(UIImage(named: "icRoundSelectionFilled"), for: .normal)
-//            self.layer.borderColor = UIColor.primaryBlue.cgColor
-//        }else{
-//            selectionStatus = false
-//            selectionButton.setImage(UIImage(named: "icRoundSelectionNoFill"), for: .normal)
-//            self.layer.borderColor = UIColor.clear.cgColor
-//        }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-//        self.layer.borderWidth = 1
-//        self.layer.cornerRadius = 17
-//        self.layer.borderColor = UIColor.primaryBlue.cgColor
         self.selectionButton.addTarget(self, action: #selector(selectButtonPressed(_:)), for: .touchUpInside)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     override func layoutSubviews() {
           super.layoutSubviews()
-          //set the values for top,left,bottom,right margins
           let margins = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
           contentView.frame = contentView.frame.inset(by: margins)
     }
+    
     func checklistButtonIfSelected(){
         shadowView.layer.borderWidth = 1
         shadowView.layer.cornerRadius = 17

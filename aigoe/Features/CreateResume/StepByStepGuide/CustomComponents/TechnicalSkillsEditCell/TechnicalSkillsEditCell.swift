@@ -13,16 +13,16 @@ protocol TechnicalSkillEditDelegate: AnyObject{
 }
 
 class TechnicalSkillsEditCell: UITableViewCell, UITextFieldDelegate {
-
-    @IBOutlet weak var skillTextField: UITextField!
-    @IBOutlet weak var deleteSkillButton: UIButton!
-    
-    @IBAction func deletePressed(_ sender: UIButton) {
-        print("OLIP ROBOT")
-    }
-    
     weak var delegate: TechnicalSkillEditDelegate?
     var textfieldAction : (() -> ())?
+    var deleteButtonAction : (() -> ())?
+    
+    @IBOutlet weak var skillTextField: UITextField!
+    @IBOutlet weak var deleteSkillButton: UIButton!
+
+    @IBAction func deletePressed(_ sender: UIButton) {
+        deleteButtonAction?()
+    }
     
     func setUp(dlgt: TechnicalSkillEditDelegate){
         self.delegate = dlgt
@@ -30,6 +30,7 @@ class TechnicalSkillsEditCell: UITableViewCell, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         delegate?.checkIfEdit(index: textField.tag, input: skillTextField.text ?? "")
+        deleteSkillButton.isHidden = false
         print("Olip capek", textField.tag)
         print("Olip lelah sama delegate")
     }
@@ -39,7 +40,7 @@ class TechnicalSkillsEditCell: UITableViewCell, UITextFieldDelegate {
         // Initialization code
         //deleteSkillButton.isHidden = true
         skillTextField.delegate = self
-//        self.selectionButton.addTarget(self, action: #selector(selectButtonPressed(_:)), for: .touchUpInside)
+        self.deleteSkillButton.addTarget(self, action: #selector(deletePressed(_:)), for: .touchUpInside)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

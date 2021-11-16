@@ -68,7 +68,7 @@
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMl-rQ-f9q" customClass="EmptyState" customModule="aigoe" customModuleProvider="target">
-                    <rect key="frame" x="20.5" y="58" width="373" height="448"/>
+                    <rect key="frame" x="20.5" y="78" width="373" height="358.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
@@ -76,11 +76,11 @@
             <constraints>
                 <constraint firstItem="k0O-dx-bFp" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="3ZE-DW-bX9"/>
                 <constraint firstItem="k0O-dx-bFp" firstAttribute="top" secondItem="0hB-FC-Pnk" secondAttribute="bottom" id="4iu-gA-Gk8"/>
-                <constraint firstItem="UMl-rQ-f9q" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="Bi0-K2-i1q"/>
+                <constraint firstItem="UMl-rQ-f9q" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.4" id="Bi0-K2-i1q"/>
                 <constraint firstItem="k0O-dx-bFp" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="EHD-95-GQt"/>
                 <constraint firstItem="UMl-rQ-f9q" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="IhJ-Gb-AxK"/>
                 <constraint firstItem="0hB-FC-Pnk" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="K5L-Ni-ohV"/>
-                <constraint firstItem="UMl-rQ-f9q" firstAttribute="top" secondItem="0hB-FC-Pnk" secondAttribute="bottom" id="PWh-nT-bkp"/>
+                <constraint firstItem="UMl-rQ-f9q" firstAttribute="top" secondItem="0hB-FC-Pnk" secondAttribute="bottom" constant="20" id="PWh-nT-bkp"/>
                 <constraint firstItem="UMl-rQ-f9q" firstAttribute="width" secondItem="k0O-dx-bFp" secondAttribute="width" id="VsA-y1-tUE"/>
                 <constraint firstItem="0hB-FC-Pnk" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="adA-5C-RXj"/>
                 <constraint firstItem="0hB-FC-Pnk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="jR2-1Y-Zvo"/>
