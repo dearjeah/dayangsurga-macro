@@ -75,10 +75,10 @@ extension ResumeTemplateViewController: UICollectionViewDelegate, UICollectionVi
         
         let image = UIImage(data: template[indexPath.row].image ?? Data())
         cell.resumeTemplateImage.image = image
-        cell.layer.shadowRadius = 10
-        cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowOpacity = 0.8
-        cell.layer.cornerRadius = 8
+//        cell.layer.shadowRadius = 10
+//        cell.layer.shadowColor = UIColor.black.cgColor
+//        cell.layer.shadowOpacity = 0.8
+//        cell.layer.cornerRadius = 8
         
         
         return cell

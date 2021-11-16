@@ -42,7 +42,7 @@ class ExperienceTableCell: UITableViewCell {
     }
     
     @IBAction func editCellTapped(_ sender: UIButton) {
-        delegate?.passData()
+//        delegate?.passData()
         editButtonAction?()
     }
     

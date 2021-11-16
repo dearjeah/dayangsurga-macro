@@ -16,7 +16,7 @@ func preloadMyRessumeDummy() {
         skill_id: 0
     )
     
-    EducationRepository.shared.createEducation(
+    /*EducationRepository.shared.createEducation(
         eduId: 0,
         userId: 0,
         institution: "Dayang Surga University",
@@ -39,7 +39,7 @@ func preloadMyRessumeDummy() {
         jobEndtDate: Date().nextDay,
         jobStatus: false,
         isSelected: true
-    )
+    )*/
     
 //    SkillRepository.shared.createSkill(
 //        skillId: 0,
@@ -48,7 +48,7 @@ func preloadMyRessumeDummy() {
 //        isSelected: true
 //    )
     
-    AccomplishmentRepository.shared.createAccomplishment(
+    /*AccomplishmentRepository.shared.createAccomplishment(
         accomId: 0,
         userId: 0,
         title: "Cheerleader Terbaik 2021",
@@ -56,5 +56,23 @@ func preloadMyRessumeDummy() {
         issuer: "Dayang Surga Pte Ltd",
         desc: "Pemberi semangat terbaik pada tahun 2021",
         isSelected: true
-    )
+    )*/
 }
+
+/*func preloadUserResume(){
+    UserResumeRepository.shared.createUserResume(resume_id: 1,
+                                                 template_id: 1,
+                                                 user_id: 1,
+                                                 image: UIImage.imgResumeTemplateGeorgia,
+                                                 name: "dfj",
+                                                 lastUpdate: Date(),
+                                                 editingProgress: 1)
+    UserResumeRepository.shared.createUserResume(resume_id: 1,
+                                                 template_id: 1,
+                                                 user_id: 1,
+                                                 image: UIImage.imgResumeTemplateHeletvica,
+                                                 name: "abc",
+                                                 lastUpdate: Date(),
+                                                 editingProgress: 1)
+}*/
+

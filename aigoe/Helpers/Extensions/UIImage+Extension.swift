@@ -12,6 +12,7 @@ import UIKit
 
 extension UIImage {
 
+    static let comingSoon = UIImage.image(named: "comingSoon")
     static let icAccomplishmentActive = UIImage.image(named: "icAccomplishmentActive")
     static let icAccomplishmentFill = UIImage.image(named: "icAccomplishmentFill")
     static let icAccomplishmentInactive = UIImage.image(named: "icAccomplishmentInactive")
@@ -21,6 +22,7 @@ extension UIImage {
     static let icExperienceActive = UIImage.image(named: "icExperienceActive")
     static let icExperienceFill = UIImage.image(named: "icExperienceFill")
     static let icExperienceNoFill = UIImage.image(named: "icExperienceNoFill")
+    static let icLinkedIn = UIImage.image(named: "icLinkedIn")
     static let icPersonalInformationActive = UIImage.image(named: "icPersonalInformationActive")
     static let icPersonalInformationFill = UIImage.image(named: "icPersonalInformationFill")
     static let icPreviewResume = UIImage.image(named: "icPreviewResume")
@@ -31,8 +33,10 @@ extension UIImage {
     static let icTechnicalSkillActive = UIImage.image(named: "icTechnicalSkillActive")
     static let icTechnicalSkillFill = UIImage.image(named: "icTechnicalSkillFill")
     static let icTechnicalSkillNoFill = UIImage.image(named: "icTechnicalSkillNoFill")
+    static let icWhatsApp = UIImage.image(named: "icWhatsApp")
     static let imgBtnCreateResume = UIImage.image(named: "imgBtnCreateResume")
     static let imgCreateResume = UIImage.image(named: "imgCreateResume")
+    static let imgEmptyStateAccom = UIImage.image(named: "imgEmptyStateAccom")
     static let imgEmptyStateEdu = UIImage.image(named: "imgEmptyStateEdu")
     static let imgEmptyStateLandingPage = UIImage.image(named: "imgEmptyStateLandingPage")
     static let imgExpEmptyState = UIImage.image(named: "imgExpEmptyState")
@@ -50,7 +54,6 @@ extension UIImage {
     static let imgResumeTemplateGeorgia = UIImage.image(named: "imgResumeTemplateGeorgia")
     static let imgResumeTemplateHeletvica = UIImage.image(named: "imgResumeTemplateHeletvica")
     static let imgSkillEmptyState = UIImage.image(named: "imgSkillEmptyState")
-    static let imgComingSoon = UIImage.image(named: "comingSoon")
 
     private static func image(named: String) -> UIImage {
         return UIImage(named: named)!

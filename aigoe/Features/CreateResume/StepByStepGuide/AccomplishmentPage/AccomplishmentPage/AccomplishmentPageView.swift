@@ -10,24 +10,28 @@ import UIKit
 protocol AccomplishListDelegate: AnyObject {
     func goToAddAccom()
     func passingAccomplishData(accomplish: Accomplishment?)
-    func getSelectedIndex(index: Int)
 }
 
-class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource {
+class AccomplishmentPageView: UIView {
 
     @IBOutlet weak var emptyStateView: EmptyState!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIButton!
-    var totalData = 1
     
     weak var delegate: AccomplishListDelegate?
     var stepViewModel = StepByStepGuideViewModel()
     var emptyState = Empty_State()
     var accomplishment = [Accomplishment]()
     
+    func setup(dlgt: AccomplishListDelegate) {
+        self.delegate = dlgt
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initWithNib()
+        
+        notificationCenterSetup()
         registerTableView()
         tableView.reloadData()
     }
@@ -35,6 +39,7 @@ class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initWithNib()
+        notificationCenterSetup()
         registerTableView()
         tableView.autoresizingMask = UIView.AutoresizingMask()
         emptyState = stepViewModel.getEmptyStateId(Id: 4) ?? emptyState
@@ -42,34 +47,29 @@ class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource
         tableView.reloadData()
     }
     
-    convenience init(text: String) {
+    convenience init(accom: [Accomplishment]) {
         self.init()
-    }
-    
-    fileprivate func initWithNib() {
-        guard let view = loadViewFromNib(nibName: "AccomplishmentPageView") else { return }
-        view.frame = self.bounds
-        self.addSubview(view)
-    }
-    
-    func loadViewFromNib(nibName: String) -> UIView? {
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: nibName, bundle: bundle)
         
-        return nib.instantiate(withOwner: self, options: nil).first as? UIView
+        notificationCenterSetup()
+        accomplishment = accom
     }
-    
-    func registerTableView(){
-        tableView.register(AccomplishmentTableCell.nib(), forCellReuseIdentifier: AccomplishmentTableCell.identifier)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.tableFooterView = UIView()
-    }
-    
+
     @IBAction func addAction(_ sender: Any) {
         delegate?.goToAddAccom()
     }
     
+    func getAndReload(){
+        accomplishment = stepViewModel.getAccomplishData() ?? []
+        tableView.reloadData()
+    }
+    
+    @objc func accompReload() {
+      getAndReload()
+    }
+}
+
+//MARK: Table View
+extension AccomplishmentPageView:  UITableViewDelegate, UITableViewDataSource {
     // setup table view
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AccomplishmentTableCell.identifier, for: indexPath) as? AccomplishmentTableCell else {
@@ -79,11 +79,10 @@ class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource
         cell.awardDate.text = accomplishment[indexPath.row].given_date?.string(format: Date.ISO8601Format.MonthYear)
         cell.awardIssuer.text = accomplishment[indexPath.row].issuer
         cell.editButtonAction = {
-            self.delegate?.getSelectedIndex(index: indexPath.row)
+           
             self.delegate?.passingAccomplishData(accomplish: self.accomplishment[indexPath.row])
         }
         cell.checklistButtonAction = {
-            self.delegate?.getSelectedIndex(index: indexPath.row)
             if cell.selectionStatus == false{
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
@@ -107,8 +106,8 @@ class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource
             emptyStateView.isHidden = false
             emptyState = stepViewModel.getEmptyStateId(Id: 4) ?? emptyState
             emptyStateView.emptyStateImage.image = UIImage(data: emptyState.image ?? Data())
-            emptyStateView.emptyStateTitle.text = nil
-            emptyStateView.emptyStateDescription.text = emptyState.description
+            emptyStateView.emptyStateTitle.isHidden = true
+            emptyStateView.emptyStateDescription.text = emptyState.title
             self.tableView.backgroundView = emptyStateView
         }
         return accomplishment.count
@@ -117,14 +116,36 @@ class AccomplishmentPageView: UIView, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print("dyusfgyasyu")
-//    }
-    
-    func getAndReload(){
-        accomplishment = stepViewModel.getAccomplishData() ?? []
-        tableView.reloadData()
-    }
-
 }
+
+//MARK: Initial Setup
+extension AccomplishmentPageView {
+    func registerTableView(){
+        tableView.register(AccomplishmentTableCell.nib(), forCellReuseIdentifier: AccomplishmentTableCell.identifier)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView()
+    }
+    
+    func notificationCenterSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(accompReload), name: Notification.Name("accompReload"), object: nil)
+    }
+}
+
+//MARK: XIB Setting
+extension AccomplishmentPageView {
+    fileprivate func initWithNib() {
+        guard let view = loadViewFromNib(nibName: "AccomplishmentPageView") else { return }
+        view.frame = self.bounds
+        self.addSubview(view)
+    }
+    
+    func loadViewFromNib(nibName: String) -> UIView? {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: nibName, bundle: bundle)
+        
+        return nib.instantiate(withOwner: self, options: nil).first as? UIView
+    }
+}
+
+

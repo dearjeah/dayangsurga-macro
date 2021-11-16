@@ -8,7 +8,8 @@
 import UIKit
 
 protocol ListEduDelegate: AnyObject{
-    func goToEduForm()
+    func addEduForm(from: String)
+    func editEduForm(from: String, edu: Education)
 }
 
 class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
@@ -17,8 +18,13 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
-    var totalData = 0
+    var eduData = [Education]()
     weak var delegate: ListEduDelegate?
+    var eduViewModel = EducationListViewModel()
+    
+    func setup(dlgt: ListEduDelegate) {
+        self.delegate = dlgt
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,11 +37,16 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
         super.init(coder: aDecoder)
         initWithNib()
         registerTableView()
+        notificationCenterSetup()
         tableView.tableFooterView = UIView()
     }
     
-    convenience init(text: String) {
+    convenience init(edu: [Education]) {
         self.init()
+        
+        eduData = edu
+        registerTableView()
+        notificationCenterSetup()
     }
     
     fileprivate func initWithNib() {
@@ -52,14 +63,13 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     @IBAction func addAction(_ sender: Any) {
-        actionButton()
+        navigateToEduForm(from: "add")
     }
     
-    // func protocol
-    func actionButton(){
-        delegate?.goToEduForm()
+    func navigateToEduForm(from: String, eduData: Education = Education()){
+        delegate?.addEduForm(from: from)
     }
-    
+
     // seting for table view
     func registerTableView(){
         tableView.register(EducationTableCell.nib(), forCellReuseIdentifier: EducationTableCell.identifier)
@@ -68,37 +78,81 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if totalData != 0 {
+        if eduData.count != 0 {
             emptyStateView.isHidden = true
-            return 2
+            return eduData.count
         } else {
-            emptyStateView.isHidden = false
-            emptyStateView.emptyStateImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
-            emptyStateView.emptyStateImage.contentMode = .scaleAspectFit
-            emptyStateView.emptyStateImage.clipsToBounds = true
-            emptyStateView.emptyStateImage.image = UIImage(named: "imgEmptyStateEdu")
-            emptyStateView.emptyStateDescription.text = "You haven’t filled your educational history. Click the ‘Add’ button to add your educational information."
+            showEmptyState()
             self.tableView.backgroundView = emptyStateView
+            return 0
         }
-        return Int()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EducationTableCell.identifier, for: indexPath) as? EducationTableCell else {
             return UITableViewCell()
         }
-        cell.institutionName.text = "Universitas Kami"
-        cell.educationTitle.text = "B.A in Finance"
-        cell.educationPeriod.text = "August 2020 - Present"
-        cell.educationGPA.text = "3.90"
-        cell.educationActivities.text = "Delivered 5+ Projects and Programs within agreed budget, time and quality for telecom operators in Indonesia and Singapore."
+        eduData = self.eduViewModel.getEduData()
+        let edu = eduData[indexPath.row]
+        let eduPeriod = "\(edu.start_date?.string(format: Date.ISO8601Format.MonthYear) ?? "") - \(edu.end_date?.string(format: Date.ISO8601Format.MonthYear) ?? "")"
+        
+        cell.institutionName.text = edu.institution
+        cell.educationTitle.text = edu.title
+        cell.educationPeriod.text = eduPeriod
+        cell.educationGPA.text = String(edu.gpa)
+        cell.educationActivities.text = edu.activity
+        
+        cell.editButtonAction = {
+            self.delegate?.editEduForm(from: "edit", edu: edu)
+        }
+        
+        cell.checklistButtonAction = {
+            if cell.selectionStatus == false{
+                cell.selectionStatus = true
+                cell.checklistButtonIfSelected()
+                self.eduData[indexPath.row].is_selected = true
+                EducationRepository.shared.updateSelectedEduStatus(edu_id: Int(self.eduData[indexPath.row].edu_id), isSelected: true)
+            } else {
+                cell.selectionStatus = false
+                cell.checklistButtonUnSelected()
+                self.eduData[indexPath.row].is_selected = false
+                EducationRepository.shared.updateSelectedEduStatus(edu_id: Int(self.eduData[indexPath.row].edu_id), isSelected: false)
+            }
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180 // 160 + UIEdgeInsets (+12 bottom)
     }
+}
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//MARK: Alert
+extension EducationPageView {
+    func showEmptyState() {
+        emptyStateView.isHidden = false
+        emptyStateView.emptyStateImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
+        emptyStateView.emptyStateImage.contentMode = .scaleAspectFit
+        emptyStateView.emptyStateImage.clipsToBounds = true
+        emptyStateView.emptyStateTitle.isHidden = true
+        emptyStateView.emptyStateImage.image = UIImage.imgEmptyStateEdu
+        emptyStateView.emptyStateDescription.text = "You haven’t filled your educational history. Click the ‘Add’ button to add your educational information."
+    }
+}
+
+//MARK: Reload Function
+extension  EducationPageView {
+    func getAndReload(){
+        eduData = eduViewModel.getEduData()
+        tableView.reloadData()
+    }
+    
+    @objc func eduReload() {
+      getAndReload()
+    }
+    
+    func notificationCenterSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(eduReload), name: Notification.Name("eduReload"), object: nil)
     }
 }
