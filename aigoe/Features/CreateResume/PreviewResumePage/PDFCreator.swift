@@ -49,7 +49,7 @@ class PDFCreator: NSObject{
     
     func addTitleSection(pageRect: CGRect, title: String, drawContext: CGContext, context: UIGraphicsPDFRendererContext)->CGFloat{
         let titleBottom = addTitle(pageRect: pageRect, text: title, context: context, template: 1)
-        let sectionBottom = addPersonalInformation(pageRect: pageRect, startPosition: titleBottom, text: "081211223344 | meme123@gmail.com | Tangerang, Indonesia", context: context, template: 1)
+        let sectionBottom = addPersonalInformation(pageRect: pageRect, startPosition: titleBottom, text: "082136123123 | oliviadwisusanti@gmail.com | Tangerang, Indonesia", context: context, template: 1)
     
         
         return sectionBottom + 12.0
@@ -58,7 +58,7 @@ class PDFCreator: NSObject{
     func addSummarySection(pageRect: CGRect,currentPosition: CGFloat, drawContext: CGContext, context:UIGraphicsPDFRendererContext)->CGFloat{
         let headerBottom = addHeader(pageRect: pageRect, headerTop: currentPosition, text: "Summary", context: context, template: 1)
         let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
-        let contentBottom = addParagraphText(pageRect: pageRect, textTop: separatorBottom, text: "Highly capable Product manager with 1+ year(s) of experience in managing various projects,seeking to apply strategic planning to grow revenue and market share", context: context, template: 1)
+        let contentBottom = addParagraphText(pageRect: pageRect, textTop: separatorBottom, text: "I'm a fersh graduate of BINUS University major on Management Undergraduate Student (specialization on E-Business). I have ability to work in a team or independent and fast learning.", context: context, template: 1)
         
         return contentBottom + 4.0
     }
@@ -67,16 +67,16 @@ class PDFCreator: NSObject{
         var sectionBottom: CGFloat = 0.0
         let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Education", context: context, template: 1)
         let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
-        for index in 0...2{
+        for index in 0...0{
             if index == 0{
-                sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: separatorBottom, text: "DS University", context: context, template: 1)
+                sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: separatorBottom, text: "BINUS University", context: context, template: 1)
             }else{
                 sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: sectionBottom, text: "Dayang Surga University", context: context, template: 1)
             }
-            addPeriodText(pageRect: pageRect, textTop: sectionBottom, text: "2014-2018", context: context, template: 1)
+            addPeriodText(pageRect: pageRect, textTop: sectionBottom, text: "2017 - 2021", context: context, template: 1)
             sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: "Bachelor of Economics", context: context, template: 1)
-            sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: "GPA 3.50", context: context, template: 1)
-            sectionBottom = addParagraphText(pageRect: pageRect, textTop: sectionBottom, text: "Actively partook in a number of club activities, participated in a number of competitions as a representative of the university", context: context, template: 1)
+            sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: "GPA 3.99", context: context, template: 1)
+            sectionBottom = addParagraphText(pageRect: pageRect, textTop: sectionBottom, text: "Actively partook in extracurricular activities (SPV of Academic Departement at HIMME BINUS)\nBecame a mentor and taught newly admitted university students", context: context, template: 1)
         }
             return sectionBottom + 4.0
         }
@@ -86,15 +86,15 @@ class PDFCreator: NSObject{
             var sectionBottom:CGFloat = 0.0
             let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Experience", context: context, template: 1)
             let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
-            for index in 0...2{
+            for index in 0...0{
                 if index == 0{
-                    sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: separatorBottom, text: "PT. Aga Aga", context: context, template: 1)
+                    sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: separatorBottom, text: "Apple Developer Academy @ BINUS", context: context, template: 1)
                 }else{
                     sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: sectionBottom, text: "PT. Dayang Surga", context: context, template: 1)
                 }
-                addPeriodText(pageRect: pageRect, textTop: sectionBottom, text: "2018-2020", context: context, template: 1)
-                sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: "Project Manager", context: context, template: 1)
-                sectionBottom = addParagraphText(pageRect: pageRect, textTop: sectionBottom, text: "Handled various projects\nTook part in supervising 5 major projects with various partners", context: context, template: 1)
+                addPeriodText(pageRect: pageRect, textTop: sectionBottom, text: "February 2021- Present", context: context, template: 1)
+                sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: "iOS Developer", context: context, template: 1)
+                sectionBottom = addParagraphText(pageRect: pageRect, textTop: sectionBottom, text: "Developed application and implemented various frameworks including:\n1. Core Data\n2. Health Kit\n3. UIKit\nDesigned custom assets for applications", context: context, template: 1)
             }
             
             return sectionBottom + 4.0
@@ -104,9 +104,9 @@ class PDFCreator: NSObject{
             let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Accomplishment", context: context, template: 1)
             let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
             var sectionBottom: CGFloat = 0.0
-            for index in 0...2{
+            for index in 0...0{
                 if index == 0{
-                    sectionBottom = addBodyText(pageRect: pageRect, textTop: separatorBottom, text: "Swift Certification", context: context, template: 1)
+                    sectionBottom = addBodyText(pageRect: pageRect, textTop: separatorBottom, text: "BINUS Mentor Scholarship 2020 - 2021", context: context, template: 1)
                 }else{
                     sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: "Google Languange Certification", context: context, template: 1)
                 }
@@ -119,9 +119,9 @@ class PDFCreator: NSObject{
             var sectionBottom: CGFloat = 0.0
             let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Technical Skills", context: context, template: 1)
             let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
-            for index in 0...2{
+            for index in 0...0{
                 if index == 0{
-                    sectionBottom = addBodyText(pageRect: pageRect, textTop: separatorBottom, text: "Sketch, Figma", context: context, template: 1)
+                    sectionBottom = addBodyText(pageRect: pageRect, textTop: separatorBottom, text: "Swift", context: context, template: 1)
                 }else{
                     sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: "Swift, Java, C++", context: context, template: 1)
                 }
@@ -328,7 +328,7 @@ class PDFCreator: NSObject{
           
             attributedParagraph.draw(in: paragraphRect)
             
-            return paragraphRect.origin.y + paragraphRect.height + 4.0
+        return paragraphRect.origin.y + attributedParagraph.size().height + 15
         }
         
         func drawSeparator(_ drawSeparator: CGContext, pageRect: CGRect, height: CGFloat)->CGFloat{
