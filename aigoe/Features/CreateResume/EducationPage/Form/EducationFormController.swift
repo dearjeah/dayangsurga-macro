@@ -203,6 +203,7 @@ extension EducationFormController {
         activityView.textView.placeholder = eduPlaceholder?.activity_ph
         activityView.textView.text = eduPlaceholder?.activity_ph
        
+       
         
         if dataFrom == "edit" {
             if eduData != nil {
@@ -215,7 +216,12 @@ extension EducationFormController {
                 eduStatusView.switchButton.isOn = ((eduData?.currently_study) == true)
                 eduPeriodView.startDatePicker.date = eduData?.start_date ?? Date()
                 eduPeriodView.endDatePicker.date = eduData?.end_date ?? Date()
+                if eduData?.activity != "" {
+                    activityView.textView.textColor = .black
+                }
             }
+        } else {
+            activityView.textView.textColor = .lightGray
         }
     }
 }

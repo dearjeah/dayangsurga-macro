@@ -84,6 +84,7 @@ class PersonalInfoPage: UIView{
             phoneField.textField.text = userData.phoneNumber
             locationField.textField.text = userData.location
             summaryField.textView.text = userData.summary
+            summaryField.textView.textColor = .black
         }
         
         fullNameField.setup(dlgt: self)
