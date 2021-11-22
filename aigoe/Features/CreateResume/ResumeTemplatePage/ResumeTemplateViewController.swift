@@ -42,22 +42,31 @@ class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> 
     }
 
     @IBAction func didTapButton(_ sender: Any) {
+        let userResume = createUserResume(selectedTemplate: selectedTemplate)
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.titleView?.tintColor = .white
+        self.tabBarController?.tabBar.isHidden = true
+        navigate(userResume: userResume)
+    }
+    
+    func navigate(userResume: User_Resume) {
         let storyboard = UIStoryboard(name: "StepByStepGuideViewController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToStepByStep") as! StepByStepGuideViewController
         vc.selectedTemplate = selectedTemplate
         vc.isCreate = true
-        createUserResume(selectedTemplate: selectedTemplate)
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.navigationItem.titleView?.tintColor = .white
-        self.tabBarController?.tabBar.isHidden = true
+        vc.selectedUserResume = userResume
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func createUserResume(selectedTemplate: Int) {
+    func createUserResume(selectedTemplate: Int) -> User_Resume {
         let id = self.viewModel?.createResumeContent()
         if id != "" {
             self.viewModel?.createUserResume(resumeId: id ?? "abc000", selectedTemplate: selectedTemplate)
+            guard let userResume = self.viewModel?.userResume.getUserResumeById(resume_id: id ?? "") else { return User_Resume() }
+            return userResume
         }
+        return User_Resume()
     }
 
 }

@@ -28,5 +28,13 @@ class ResumeTemplateViewModel: NSObject{
         userResume.createUserResume(resume_id: resumeId, template_id: selectedTemplate, user_id: 0, image: UIImage(), name: "My Resume", lastUpdate: Date(), editingProgress: 0)
     }
     
+    func getCurrentUserResumeContent(id: String) -> Resume_Content{
+        return resumeRepo.getResumeContentById(resume_id: id) ?? Resume_Content()
+    }
+    
+    func getCurrentUserResume(id: String) -> User_Resume{
+        return userResume.getUserResumeById(resume_id: id ) ?? User_Resume()
+    }
+    
     
 }

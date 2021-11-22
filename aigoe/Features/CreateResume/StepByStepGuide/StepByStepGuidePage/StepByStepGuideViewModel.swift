@@ -26,7 +26,8 @@ class StepByStepGuideViewModel: NSObject {
     let eduRepo = EducationRepository.shared
     let skillRepo = SkillRepository.shared
     let accomRepo = AccomplishmentRepository.shared
-    let userResumeContent = UserResumeRepository.shared
+    let resumeContentRepo = ResumeContentRepository.shared
+    let userResumeRepo = UserResumeRepository.shared
 
     // for empty state
     func getEmptyStateId(Id: Int) -> Empty_State?{
@@ -79,20 +80,20 @@ class StepByStepGuideViewModel: NSObject {
         )
     }
     
-    func updateSelectedEduToResume() {
-        
+    func updateSelectedEduToResume(resumeId: String, eduId: String) {
+        resumeContentRepo.updateResumeContentEdu(resume_id: resumeId, newEdu_id: eduId)
     }
     
-    func updateSelectedExpToResume() {
-        
+    func updateSelectedExpToResume(resumeId: String, expId: String) {
+        resumeContentRepo.updateResumeContentExp(resume_id: resumeId, newExp_id: expId)
     }
     
-    func updateSelectedSkillsToResume() {
-        
+    func updateSelectedSkillsToResume(resumeId: String, skillId: String) {
+        resumeContentRepo.updateResumeContentSkill(resume_id: resumeId, newSkill_id: skillId)
     }
     
-    func updateSelectedAccompToResume() {
-        
+    func updateSelectedAccompToResume(resumeId: String, accompId: String) {
+        resumeContentRepo.updateResumeContentAccomp(resume_id: resumeId, newAccomp_id: accompId)
     }
 }
 

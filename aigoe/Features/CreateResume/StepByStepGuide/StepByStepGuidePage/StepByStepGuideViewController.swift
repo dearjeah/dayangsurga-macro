@@ -114,16 +114,22 @@ extension StepByStepGuideViewController: SmallSetButtonDelegate {
         performSegue(withIdentifier: "goToGenerate", sender: self)
     }
     
-    func dataChecker(page: Int) {
+    func dataChecker(page: Int, edu: [Education], exp: [Experience], skill: [Skills], accomp: [Accomplishment]) {
+        let resumeId = selectedUserResume.resume_id ?? ""
+        let eduId = edu[0].edu_id ?? ""
+        let expId = exp[0].exp_id ?? ""
+        let skillId = skill[0].skill_id ?? ""
+        let accompId = accomp[0].accomplishment_id ?? ""
+        
         switch page {
         case 1:
-            self.viewModel?.updateSelectedEduToResume()
+            self.viewModel?.updateSelectedEduToResume(resumeId: resumeId, eduId: eduId)
         case 2:
-            self.viewModel?.updateSelectedExpToResume()
+            self.viewModel?.updateSelectedExpToResume(resumeId: resumeId, expId: expId)
         case 3:
-            self.viewModel?.updateSelectedSkillsToResume()
+            self.viewModel?.updateSelectedSkillsToResume(resumeId: resumeId, skillId: skillId)
         case 4:
-            self.viewModel?.updateSelectedAccompToResume()
+            self.viewModel?.updateSelectedAccompToResume(resumeId: resumeId, accompId: accompId)
         default:
             print("not detected")
         }
@@ -133,7 +139,12 @@ extension StepByStepGuideViewController: SmallSetButtonDelegate {
 //MARK: Step Page Controller Delegate
 extension StepByStepGuideViewController: StepByStepGuideDelegate {
     func updateData(page: Int) {
-        dataChecker(page: page)
+        let data = self.viewModel?.getAllInitialData()
+        let edu = data?.edu ?? []
+        let exp = data?.exp ?? []
+        let skills = data?.skill ?? []
+        let accomp =  data?.accom ?? []
+        //dataChecker(page: page, edu:edu, exp: exp, skill: skills, accomp: accomp)
     }
     
     func personalInfoUpdate(data: PersonalInfo) {
