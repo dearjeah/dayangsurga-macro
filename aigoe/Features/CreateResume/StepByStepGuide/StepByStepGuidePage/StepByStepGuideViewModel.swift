@@ -129,7 +129,7 @@ extension StepByStepGuideViewModel {
     }
     
     func eduProgressSelectedImage(progressBarView: ProgressBarView){
-        progressBarView.personalInformationButtonImage.image = UIImage.icPersonalInformationFill
+        progressBarView.personalInformationButtonImage.image = UIImage.icPersonalInformationUnfilled
         progressBarView.educationButtonImage.image = UIImage.icEducationActive
         progressBarView.workExperienceButtonImage.image = UIImage.icExperienceNoFill
         progressBarView.technicalSkillButtonImage.image = UIImage.icTechnicalSkillNoFill
@@ -137,50 +137,50 @@ extension StepByStepGuideViewModel {
     }
     
     func expQuizProgressSelectedImage(progressBarView: ProgressBarView){
-        progressBarView.personalInformationButtonImage.image = UIImage.icPersonalInformationFill
-        progressBarView.educationButtonImage.image = UIImage.icEducationFill
+        progressBarView.personalInformationButtonImage.image = UIImage.icPersonalInformationUnfilled
+        progressBarView.educationButtonImage.image = UIImage.icEducationUnfilled
         progressBarView.workExperienceButtonImage.image = UIImage.icExperienceActive
         progressBarView.technicalSkillButtonImage.image = UIImage.icTechnicalSkillNoFill
         progressBarView.accomplishmentButtonImage.image = UIImage.icAccomplishmentInactive
     }
     
     func expProgressSelectedImage(progressBarView: ProgressBarView){
-        progressBarView.personalInformationButtonImage.image = UIImage.icPersonalInformationFill
-        progressBarView.educationButtonImage.image = UIImage.icEducationFill
+        progressBarView.personalInformationButtonImage.image = UIImage.icPersonalInformationUnfilled
+        progressBarView.educationButtonImage.image = UIImage.icEducationUnfilled
         progressBarView.workExperienceButtonImage.image = UIImage.icExperienceActive
         progressBarView.technicalSkillButtonImage.image = UIImage.icTechnicalSkillNoFill
         progressBarView.accomplishmentButtonImage.image = UIImage.icAccomplishmentInactive
     }
     
     func skillQuizProgressSelectedImage(progressBarView: ProgressBarView){
-        progressBarView.personalInformationButtonImage.image = UIImage.icPersonalInformationFill
-        progressBarView.educationButtonImage.image = UIImage.icEducationFill
-        progressBarView.workExperienceButtonImage.image = UIImage.icExperienceFill
+        progressBarView.personalInformationButtonImage.image = UIImage.icPersonalInformationUnfilled
+        progressBarView.educationButtonImage.image = UIImage.icEducationUnfilled
+        progressBarView.workExperienceButtonImage.image = UIImage.icExperienceUnfilled
         progressBarView.technicalSkillButtonImage.image = UIImage.icTechnicalSkillActive
         progressBarView.accomplishmentButtonImage.image = UIImage.icAccomplishmentInactive
     }
     
     func skillProgressSelectedImage(progressBarView: ProgressBarView){
-        progressBarView.personalInformationButtonImage.image = UIImage.icPersonalInformationFill
-        progressBarView.educationButtonImage.image = UIImage.icEducationFill
-        progressBarView.workExperienceButtonImage.image = UIImage.icExperienceFill
+        progressBarView.personalInformationButtonImage.image = UIImage.icPersonalInformationUnfilled
+        progressBarView.educationButtonImage.image = UIImage.icEducationUnfilled
+        progressBarView.workExperienceButtonImage.image = UIImage.icExperienceUnfilled
         progressBarView.technicalSkillButtonImage.image = UIImage.icTechnicalSkillActive
         progressBarView.accomplishmentButtonImage.image = UIImage.icAccomplishmentInactive
     }
     
     func accomQuizProgressSelectedImage(progressBarView: ProgressBarView){
-        progressBarView.personalInformationButtonImage.image = UIImage.icPersonalInformationFill
-        progressBarView.educationButtonImage.image = UIImage.icEducationFill
-        progressBarView.workExperienceButtonImage.image = UIImage.icExperienceFill
-        progressBarView.technicalSkillButtonImage.image = UIImage.icTechnicalSkillFill
+        progressBarView.personalInformationButtonImage.image = UIImage.icPersonalInformationUnfilled
+        progressBarView.educationButtonImage.image = UIImage.icEducationUnfilled
+        progressBarView.workExperienceButtonImage.image = UIImage.icExperienceUnfilled
+        progressBarView.technicalSkillButtonImage.image = UIImage.icTechnicalSkillUnfilled
         progressBarView.accomplishmentButtonImage.image = UIImage.icAccomplishmentActive
     }
     
     func accomProgressSelectedImage(progressBarView: ProgressBarView){
-        progressBarView.personalInformationButtonImage.image = UIImage.icPersonalInformationFill
-        progressBarView.educationButtonImage.image = UIImage.icEducationFill
-        progressBarView.workExperienceButtonImage.image = UIImage.icExperienceFill
-        progressBarView.technicalSkillButtonImage.image = UIImage.icTechnicalSkillFill
+        progressBarView.personalInformationButtonImage.image = UIImage.icPersonalInformationUnfilled
+        progressBarView.educationButtonImage.image = UIImage.icEducationUnfilled
+        progressBarView.workExperienceButtonImage.image = UIImage.icExperienceUnfilled
+        progressBarView.technicalSkillButtonImage.image = UIImage.icTechnicalSkillUnfilled
         progressBarView.accomplishmentButtonImage.image = UIImage.icAccomplishmentActive
     }
 }

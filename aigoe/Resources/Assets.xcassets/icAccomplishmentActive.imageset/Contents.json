@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icAccomplishmentActive.png",
+      "filename" : "icAccomplishmentFill.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icAccomplishmentActive@2x.png",
+      "filename" : "icAccomplishmentFill@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icAccomplishmentActive@3x.png",
+      "filename" : "icAccomplishmentFill@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

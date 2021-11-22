@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icPersonalInformationActive.png",
+      "filename" : "icPersonalInformationFill.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icPersonalInformationActive@2x.png",
+      "filename" : "icPersonalInformationFill@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icPersonalInformationActive@3x.png",
+      "filename" : "icPersonalInformationFill@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
