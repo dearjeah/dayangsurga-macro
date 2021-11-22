@@ -10,7 +10,7 @@ import UIKit
 class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel> {
     
     var index: Int?
-    var selectedTemplate: Int?
+    var selectedTemplate: Int = 0
     var selectedUserResume = User_Resume()
     var isCreate = Bool()
     var isGenerate = false
@@ -27,8 +27,12 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = StepByStepGuideViewModel()
+        self.navigationItem.title = "New Resume"
+        self.navigationItem.backButtonTitle = "Template"
         smallSetButtonView.delegate = self
         progressBarView.dlgt = self
+        hideKeyboardWhenTappedAround()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -37,10 +41,8 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
             pageController.prevNextSetup(prevNextDlgt: self)
             pageController.selectedResume = selectedUserResume
             pageController.isCreate = isCreate
-            pageController.eduData = eduData
-            pageController.expData = expData
-            pageController.skillData = skillData
-            pageController.accomData = accomData
+        } else if let vc = segue.destination as? GenerateResumeController {
+            vc.selectedTemplate = selectedTemplate
         }
     }
     
@@ -111,10 +113,44 @@ extension StepByStepGuideViewController: SmallSetButtonDelegate {
     func didTapGenerate() {
         performSegue(withIdentifier: "goToGenerate", sender: self)
     }
+    
+    func dataChecker(page: Int, edu: [Education], exp: [Experience], skill: [Skills], accomp: [Accomplishment]) {
+        let resumeId = selectedUserResume.resume_id ?? ""
+        let eduId = edu[0].edu_id ?? ""
+        let expId = exp[0].exp_id ?? ""
+        let skillId = skill[0].skill_id ?? ""
+        let accompId = accomp[0].accomplishment_id ?? ""
+        
+        switch page {
+        case 1:
+            self.viewModel?.updateSelectedEduToResume(resumeId: resumeId, eduId: eduId)
+        case 2:
+            self.viewModel?.updateSelectedExpToResume(resumeId: resumeId, expId: expId)
+        case 3:
+            self.viewModel?.updateSelectedSkillsToResume(resumeId: resumeId, skillId: skillId)
+        case 4:
+            self.viewModel?.updateSelectedAccompToResume(resumeId: resumeId, accompId: accompId)
+        default:
+            print("not detected")
+        }
+    }
 }
 
 //MARK: Step Page Controller Delegate
 extension StepByStepGuideViewController: StepByStepGuideDelegate {
+    func updateData(page: Int) {
+        let data = self.viewModel?.getAllInitialData()
+        let edu = data?.edu ?? []
+        let exp = data?.exp ?? []
+        let skills = data?.skill ?? []
+        let accomp =  data?.accom ?? []
+        //dataChecker(page: page, edu:edu, exp: exp, skill: skills, accomp: accomp)
+    }
+    
+    func personalInfoUpdate(data: PersonalInfo) {
+        self.viewModel?.updatePersonalInfo(data: data)
+    }
+    
     func goToAddEdu(was: Bool, from: String) {
         let storyboard = UIStoryboard(name: "EducationFormController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToEduForm") as! EducationFormController
@@ -144,6 +180,21 @@ extension StepByStepGuideViewController: StepByStepGuideDelegate {
         vc.isCreate = isCreate
         vc.dataFrom = from
         vc.experience = exp
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func goToAddSkill(from: String) {
+        let storyboard = UIStoryboard(name: "SkillAddEditController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToEditSkills") as! SkillAddEditController
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func goToEditSkill(from: String, skills: [Skills]) {
+        let storyboard = UIStoryboard(name: "SkillAddEditController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToEditSkills") as! SkillAddEditController
+        vc.skill = skills
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

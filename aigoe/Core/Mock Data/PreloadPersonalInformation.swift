@@ -10,7 +10,7 @@ import Foundation
 func preloadPersonalInfoPlaceholder() {
     PersonalInformationPlaceholderRepository.shared.createUserPh(   pi_ph_id: 1,
                         user_id: 0,
-                        name_ph: "e.g: Olip Dayangz",
+                        name_ph: "e.g: Jane Doe",
                         phoneNumber_ph: "e.g: 08123456XXX",
                         email_ph: "e.g. Olipia@gmail.com",
                         address_ph: "e.g. Jakarta, Indonesia",

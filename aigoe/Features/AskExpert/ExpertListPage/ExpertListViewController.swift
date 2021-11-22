@@ -49,7 +49,7 @@ class ExpertListViewController: MVVMViewController<ExpertListViewModel> {
     }
     
     func navigationStyle(){
-        configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.white, title: "Resume", preferredLargeTitle: true, hideBackButton: false)
+        configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.white, title: "Ask Expert", preferredLargeTitle: true, hideBackButton: false)
     }
     
     @objc func infoWasPressed(sender: UIBarButtonItem) {

@@ -7,8 +7,13 @@
 
 import Foundation
 
-class PersonalInfoViewModel{
+class PersonalInfoViewModel: NSObject {
+    let userRepo = UserRepository.shared
     
+    func getUserData() -> User {
+        guard let data = userRepo.getUserById(id: 0) else { return User() }
+        return data
+    }
 }
 
 struct PersonalInformationPlaceholder {

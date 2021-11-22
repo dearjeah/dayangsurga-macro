@@ -16,6 +16,10 @@ protocol StepByStepGuideDelegate: AnyObject {
     func goToEditEdu(was: Bool, from: String, edu: Education)
     func goToAddAccom(from: String)
     func goToEditAccom(from: String, accomp: Accomplishment)
+    func personalInfoUpdate(data: PersonalInfo)
+    func goToAddSkill(from: String)
+    func goToEditSkill(from: String, skills: [Skills])
+    func updateData(page: Int)
 }
 
 protocol prevNextButtonDelegate: AnyObject {
@@ -72,6 +76,15 @@ class StepByStepGuidePageController: UIPageViewController {
 
 //MARK: Protocol Delegate
 extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDelegate {
+    func isAllTextfieldFilled(was: Bool, data: PersonalInfo) {
+        if currentPageIndex == 0 {
+            prevNextDelegate?.isButtonEnable(left: false, right: true)
+            stepDelegate?.personalInfoUpdate(data: data)
+        } else {
+            prevNextDelegate?.isButtonEnable(left: true, right: true)
+        }
+    }
+    
     func setPlaceHolder(fullName: String) {
         
     }
@@ -150,7 +163,18 @@ extension StepByStepGuidePageController: ExperienceListDelegate {
     }
 }
 
-//MARK: Education List Delegate
+extension StepByStepGuidePageController: skillListDelegate {
+    func passDataFromEdit(from: String) {
+        if from == "Add" {
+            stepDelegate?.goToAddSkill(from: from)
+        } else {
+            stepDelegate?.goToEditSkill(from: from, skills: skillData)
+        }
+        
+    }
+}
+
+//MARK: Accomplishment List Delegate
 extension StepByStepGuidePageController: AccomplishListDelegate {
     func goToAddAccom() {
         stepDelegate?.goToAddAccom(from: "add")
@@ -159,8 +183,6 @@ extension StepByStepGuidePageController: AccomplishListDelegate {
     func passingAccomplishData(accomplish: Accomplishment?) {
         stepDelegate?.goToEditAccom(from: "edit", accomp: accomplish ?? Accomplishment())
     }
-    
-    
 }
 
 //MARK: Page Controller
@@ -215,8 +237,10 @@ extension StepByStepGuidePageController {
         setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
         setPageIndex(value: 1 + addedValue)
         hideUnHideButton(currentPage: currentPageIndex)
-        buttonFunctional(currentPage: currentPageIndex)
         stepDelegate?.progressBarUpdate(index: currentPageIndex, totalData: stepControllerArr?.count ?? 0)
+        stepDelegate?.updateData(page: currentPageIndex)
+        reloadData()
+        buttonFunctional(currentPage: currentPageIndex)
     }
     
     func goToPrev(wasPage: Int){
@@ -225,8 +249,10 @@ extension StepByStepGuidePageController {
         setViewControllers([prevViewController], direction: .reverse, animated: true, completion: nil)
         setPageIndex(value: -1)
         hideUnHideButton(currentPage: currentPageIndex)
-        buttonFunctional(currentPage: currentPageIndex)
         stepDelegate?.progressBarUpdate(index: currentPageIndex, totalData: stepControllerArr?.count ?? 0)
+        stepDelegate?.updateData(page: currentPageIndex)
+        reloadData()
+        buttonFunctional(currentPage: currentPageIndex)
     }
     
     func goToDirectPage(selectedPageIndex: Int){
@@ -273,11 +299,114 @@ extension StepByStepGuidePageController {
             prevNextDelegate?.changeTitleToGenerate(was: true)
         } else {
             if currentPage == 0 {
-                prevNextDelegate?.isButtonEnable(left: false , right: true)
+                if personalData.username != "" {
+                    prevNextDelegate?.isButtonEnable(left: false , right: true)
+                } else {
+                    prevNextDelegate?.isButtonEnable(left: false , right: false)
+                }
             } else {
-                prevNextDelegate?.isButtonEnable(left: true, right: true)
+                if pageType[currentPage] != 6 {
+                    if pageType[currentPage] == 1 {
+                        if personalData.username == nil {
+                            prevNextDelegate?.isButtonEnable(left: false , right: false)
+                        } else {
+                            prevNextDelegate?.isButtonEnable(left: false , right: true)
+                        }
+                    }
+                   else if pageType[currentPage] == 2 {
+                        if eduData.isEmpty {
+                            prevNextDelegate?.isButtonEnable(left: true , right: false)
+                        } else {
+                            let checker = dataEduChecker(data: eduData)
+                            if checker {
+                                prevNextDelegate?.isButtonEnable(left: true , right: true)
+                            } else {
+                                prevNextDelegate?.isButtonEnable(left: true , right: false)
+                            }
+                        }
+                    } else if pageType[currentPage] == 3 {
+                        if expData.isEmpty {
+                            prevNextDelegate?.isButtonEnable(left: true , right: false)
+                        } else {
+                            let checker = dataExpChecker(data: expData)
+                            if checker {
+                                prevNextDelegate?.isButtonEnable(left: true , right: true)
+                            } else {
+                                prevNextDelegate?.isButtonEnable(left: true , right: false)
+                            }
+                        }
+                    } else if pageType[currentPage] == 4 {
+                        if skillData.isEmpty {
+                            prevNextDelegate?.isButtonEnable(left: true , right: false)
+                        } else {
+                            let checker = dataSkillsChecker(data: skillData)
+                            if checker {
+                                prevNextDelegate?.isButtonEnable(left: true , right: true)
+                            } else {
+                                prevNextDelegate?.isButtonEnable(left: true , right: false)
+                            }
+                        }
+                    } else if pageType[currentPage] == 5 {
+                        if accomData.isEmpty {
+                            prevNextDelegate?.isButtonEnable(left: true , right: false)
+                        } else {
+                            let checker = dataAccomChecker(data: accomData)
+                            if checker {
+                                prevNextDelegate?.isButtonEnable(left: true , right: true)
+                            } else {
+                                prevNextDelegate?.isButtonEnable(left: true , right: false)
+                            }
+                        }
+                    } else {
+                        prevNextDelegate?.isButtonEnable(left: true, right: true)
+                    }
+                }
             }
         }
+    }
+    
+    func dataExpChecker(data: [Experience]) -> Bool {
+        for i in 0...data.count - 1 {
+            if data[i].isSelected == true {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func dataEduChecker(data: [Education]) -> Bool {
+        for i in 0...data.count - 1 {
+            if data[i].is_selected == true {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func dataSkillsChecker(data: [Skills]) -> Bool {
+        for i in 0...data.count - 1 {
+            if data[i].is_selected == true {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func dataAccomChecker(data: [Accomplishment]) -> Bool {
+        for i in 0...data.count - 1 {
+            if data[i].is_selected == true {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func reloadData() {
+        personalData = UserRepository.shared.getUserById(id: 0) ?? User()
+        eduData = EducationRepository.shared.getAllEducation() ?? []
+        expData = ExperienceRepository.shared.getAllExperience() ?? []
+        skillData = SkillRepository.shared.getAllSkill() ?? []
+        accomData = AccomplishmentRepository.shared.getAllAccomplishment() ?? []
     }
 }
 
@@ -293,7 +422,7 @@ extension StepByStepGuidePageController {
         if let firstViewController = stepControllerArr?.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
-        prevNextDelegate?.isButtonEnable(left: false, right: true)
+        buttonFunctional(currentPage: currentPageIndex)
     }
     
     func notificationCenterSetup() {
@@ -350,9 +479,12 @@ extension StepByStepGuidePageController {
 }
 
 extension StepByStepGuidePageController {
-    fileprivate func initPersonalData(fullName: String, email: String, phone: String, location: String, summary: String) -> UIViewController {
-        let controller = UIViewController()
-        let tmp = PersonalInfoPage.init(fullName: fullName, email: email, phone: phone, location: location, summary: summary)
+    fileprivate func initPersonalData() -> UIViewController {
+        let controller = MVVMViewController<PersonalInfoViewModel>()
+        controller.viewModel =  PersonalInfoViewModel()
+        personalData = controller.viewModel?.getUserData() ?? User()
+        
+        let tmp = PersonalInfoPage.init(data: personalData, isCreate: isCreate)
         tmp.setup(dlgt: self)
         controller.view = tmp
         return controller
@@ -389,9 +521,12 @@ extension StepByStepGuidePageController {
     }
     
     fileprivate func initSkills() -> UIViewController {
-        let controller = UIViewController()
-        let tmp = SkillsPageView.init(text: "")
-        //tmp.setup(delegate: self)
+        let controller = MVVMViewController<SkillsPageviewModel>()
+        controller.viewModel = SkillsPageviewModel()
+        skillData = controller.viewModel?.getAllSkillData() ?? []
+        
+        let tmp = SkillsPageView.init(data: skillData)
+        tmp.skillDelegateSetup(dlgt: self)
         controller.view = tmp
         return controller
     }
@@ -409,7 +544,7 @@ extension StepByStepGuidePageController {
     
     fileprivate func populateItems() {
         //page type : 1-6, 6 = quiz
-        let personalInfo = initPersonalData(fullName: "", email: "", phone: "", location: "", summary: "")
+        let personalInfo = initPersonalData()
         let education = initEducation()
         let quiz = initQuiz(type: 1)
         let quiz2 = initQuiz(type: 2)

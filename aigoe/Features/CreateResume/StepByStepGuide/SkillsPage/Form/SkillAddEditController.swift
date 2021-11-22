@@ -45,6 +45,12 @@ class SkillAddEditController: MVVMViewController<SkillsFormViewModel>, UITableVi
         skillTableView.reloadData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? StepByStepGuideViewController {
+            vc.formSource = "skills"
+        }
+    }
+    
     func saveData(){
         skillData = localSkill.count
         for i in 0..<skillData{
@@ -54,7 +60,7 @@ class SkillAddEditController: MVVMViewController<SkillsFormViewModel>, UITableVi
             let skill = self.viewModel?.createSkill(skillId: skillId, skillName: skillName , isSelected: true)
             if skill == false{
                 let alert = UIAlertController(title: "Failed to save Skill Data", message: "Please try to save again later.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "oke", style: .default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 return
             }
@@ -155,7 +161,7 @@ class SkillAddEditController: MVVMViewController<SkillsFormViewModel>, UITableVi
         }else{
             saveData()
         }
-        performSegue(withIdentifier: "unwindToSkill", sender: self)
+        performSegue(withIdentifier: "backToStepVC", sender: self)
     }
     
     @objc func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -172,11 +178,9 @@ class SkillAddEditController: MVVMViewController<SkillsFormViewModel>, UITableVi
         cell.skillTextField.tag = indexPath.row
         skillData = localSkill.count
         if dataFrom == "Edit"{
-            for i in 0..<skillData{
                 cell.skillTextField.text = localSkill[indexPath.row].name
                 cell.deleteSkillButton.isHidden = false
-            }
-        }else{
+        } else {
             if skillData != 0 {
                 cell.skillTextField.text = localSkill[indexPath.row].name
                 cell.deleteSkillButton.isHidden = false
@@ -192,5 +196,4 @@ class SkillAddEditController: MVVMViewController<SkillsFormViewModel>, UITableVi
        
         return cell
     }
-    
 }

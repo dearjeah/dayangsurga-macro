@@ -52,6 +52,7 @@ extension UIButton {
         self.clipsToBounds = true
         self.layer.cornerRadius = corner_radius
         self.layer.borderWidth = 1.0
+        self.layer.backgroundColor = UIColor.primaryBlue.cgColor
         self.titleLabel?.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
         self.setTitle(text, for: .normal)
         self.setTitleColor(UIColor.primaryWhite, for: .normal)
@@ -60,6 +61,11 @@ extension UIButton {
         if (isDisable) {
             layer.borderColor = UIColor.primaryDisable.cgColor
             layer.backgroundColor = UIColor.primaryDisable.cgColor
+            self.isEnabled = false
+        } else {
+            layer.borderColor = UIColor.primaryBlue.cgColor
+            layer.backgroundColor = UIColor.primaryBlue.cgColor
+            self.isEnabled = true
         }
     }
     
@@ -81,6 +87,7 @@ extension UIButton {
         } else if (isDisable) {
             self.layer.borderColor = UIColor.primaryDisable.cgColor
             self.setTitleColor(UIColor.primaryDisable, for: .normal)
+            self.isEnabled = false
         }
     }
 }

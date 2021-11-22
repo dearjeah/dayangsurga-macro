@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PersonalInfoPageDelegate: AnyObject {
-    func setPlaceHolder(fullName : String)
+    func isAllTextfieldFilled(was: Bool, data: PersonalInfo)
 
 }
 
@@ -21,34 +21,30 @@ class PersonalInfoPage: UIView{
     @IBOutlet weak var summaryField: LabelWithTextView!
     
     weak var delegate: PersonalInfoPageDelegate?
+    var userData = User()
+    var isFromCreate = Bool()
 
-    
     func setup(dlgt: PersonalInfoPageDelegate) {
         self.delegate = dlgt
-        
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         initWithNib()
-        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initWithNib()
-        setup()
     }
     
-    convenience init(fullName: String, email: String, phone: String, location: String, summary: String) {
+    convenience init(data: User, isCreate: Bool) {
         self.init()
-        fullNameField.textField.text = fullName
-        emailField.textField.text = email
-        phoneField.textField.text = phone
-        locationField.textField.text = location
+        
+        userData = data
+        isFromCreate = isCreate
+        setup()
         self.summaryField.textView.delegate = self
-//        MARK: cannot be assigned twice. Notes: textview don't have placeholder
-//        summaryField.textView.text = summary
     }
     
     fileprivate func initWithNib() {
@@ -65,7 +61,6 @@ class PersonalInfoPage: UIView{
     }
     
     func setup() {
-
         fullNameField.titleLabel.text = "Full Name*"
         emailField.titleLabel.text = "Email*"
         phoneField.titleLabel.text = "Phone Number*"
@@ -81,39 +76,45 @@ class PersonalInfoPage: UIView{
             locationField.textField.placeholder = personalInfoPlaceholder.address_ph
             summaryField.textView.text = personalInfoPlaceholder.summary_ph
             summaryField.textView.textColor = .lightGray
-            
-            
         }
-      
-     
+        
+        if userData.username != "" {
+            fullNameField.textField.text =  userData.username
+            emailField.textField.text = userData.email
+            phoneField.textField.text = userData.phoneNumber
+            locationField.textField.text = userData.location
+            summaryField.textView.text = userData.summary
+            summaryField.textView.textColor = .black
+        }
+        
+        fullNameField.setup(dlgt: self)
+        emailField.setup(dlgt: self)
+        phoneField.setup(dlgt: self)
+        locationField.setup(dlgt: self)
+        
     }
     
     func saveToCoreData() {
-        if UserRepository.shared.getUserById(id: 1) != nil{
-            UserRepository.shared.updateUser(id: 1, newName: fullNameField.textField.text ?? "", newPhoneNumber: phoneField.textField.text ?? "", newEmail: emailField.textField.text ?? "" , newLocation: locationField.textField.text ?? "", newSummary: summaryField.textView.text ?? "")
+        if UserRepository.shared.getUserById(id: 0) != nil{
+            UserRepository.shared.updateUser(id: 0, newName: fullNameField.textField.text ?? "", newPhoneNumber: phoneField.textField.text ?? "", newEmail: emailField.textField.text ?? "" , newLocation: locationField.textField.text ?? "", newSummary: summaryField.textView.text ?? "")
         } else {
-            UserRepository.shared.createUser(user_id: 1, username: fullNameField.textField.text ?? "", phoneNumber: phoneField.textField.text ?? "", email: emailField.textField.text ?? "", location: locationField.textField.text ?? "", summary: summaryField.textView.text ?? "")
+            UserRepository.shared.createUser(user_id: 0, username: fullNameField.textField.text ?? "", phoneNumber: phoneField.textField.text ?? "", email: emailField.textField.text ?? "", location: locationField.textField.text ?? "", summary: summaryField.textView.text ?? "")
         }
     }
     
     func checkAllFieldValue() -> Bool {
-        if fullNameField.textField.text?.count ?? 0 < 1
-            && emailField.textField.text?.count ?? 0 < 1
-            && phoneField.textField.text?.count ?? 0 < 1
-            && locationField.textField.text?.count ?? 0 < 1
-            && summaryField.textView.text.count < 1 {
-            return false
+        if fullNameField.textField.text?.isEmpty == false
+            && emailField.textField.text?.isEmpty == false
+            && phoneField.textField.text?.isEmpty == false
+            && locationField.textField.text?.isEmpty == false
+            && summaryField.textView.text.isEmpty == false {
+            return true
         }
-        return true
+        return false
     }
 }
-        
-  
 
-
-
-extension PersonalInfoPage :  UITextViewDelegate{
-    
+extension PersonalInfoPage :  UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if let personalInfoPlaceholder = PersonalInformationPlaceholderRepository.shared.getPIPhById(pi_ph_id: 1) {
             if (summaryField.textView.text.lowercased()  == (personalInfoPlaceholder.summary_ph?.lowercased())){
@@ -122,6 +123,39 @@ extension PersonalInfoPage :  UITextViewDelegate{
         }
         summaryField.textView.textColor = .black
     }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        let tmp = checkAllFieldValue()
+        if tmp {
+            let data = PersonalInfo(
+                id: 0,
+                name: fullNameField.textField.text ?? "",
+                email: emailField.textField.text ?? "",
+                phoneNumber: phoneField.textField.text ?? "",
+                location: locationField.textField.text ?? "",
+                summary: summaryField.textView.text ?? ""
+            )
+            delegate?.isAllTextfieldFilled(was: true, data: data)
+        }
+    }
+}
 
-   
+extension PersonalInfoPage :  LabelWithTextFieldDelegate {
+    func isTextfieldFilled(was: Bool) {
+        if was {
+            let tmp = checkAllFieldValue()
+            if tmp {
+                let data = PersonalInfo(
+                    id: 0,
+                    name: fullNameField.textField.text ?? "",
+                    email: emailField.textField.text ?? "",
+                    phoneNumber: phoneField.textField.text ?? "",
+                    location: locationField.textField.text ?? "",
+                    summary: summaryField.textView.text ?? ""
+                )
+                delegate?.isAllTextfieldFilled(was: true, data: data)
+            }
+        }
+    }
+
 }

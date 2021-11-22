@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icExperienceActive.png",
+      "filename" : "icExperienceFill.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icExperienceActive@2x.png",
+      "filename" : "icExperienceFill@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icExperienceActive@3x.png",
+      "filename" : "icExperienceFill@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

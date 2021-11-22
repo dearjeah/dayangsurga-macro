@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icEducationActive.png",
+      "filename" : "icEducationFill.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icEducationActive@2x.png",
+      "filename" : "icEducationFill@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icEducationActive@3x.png",
+      "filename" : "icEducationFill@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

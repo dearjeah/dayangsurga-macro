@@ -49,6 +49,7 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
         setView()
         setupForm()
         hideKeyboardWhenTappedAround()
+        self.activityView.textView.delegate = self
     }
     
     
@@ -60,21 +61,25 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
     
     func tapToAddDeleteButton(){
         if !alertForCheckTF() {
-            guard let data = self.viewModel?.addEdu(
-                institution: institutionView.textField.text ?? "",
-                title: qualificationView.textField.text ?? "",
-                startDate: eduPeriodView.startDatePicker.date,
-                endDate: eduPeriodView.endDatePicker.date,
-                gpa: gpaView.textField.text ?? "",
-                activity: activityView.textView.text ?? "",
-                currentlyStudy: eduStatusView.switchButton.isOn,
-                isSelected: true
-            ) else { return errorSaveData(from: "Save") }
-            
-            if data {
-                performSegue(withIdentifier: "backToStepVC", sender: self)
+            if dataFrom == "add" {
+                guard let data = self.viewModel?.addEdu(
+                    institution: institutionView.textField.text ?? "",
+                    title: qualificationView.textField.text ?? "",
+                    startDate: eduPeriodView.startDatePicker.date,
+                    endDate: eduPeriodView.endDatePicker.date,
+                    gpa: gpaView.textField.text ?? "",
+                    activity: activityView.textView.text ?? "",
+                    currentlyStudy: eduStatusView.switchButton.isOn,
+                    isSelected: true
+                ) else { return errorSaveData(from: "Save") }
+                
+                if data {
+                    performSegue(withIdentifier: "backToStepVC", sender: self)
+                } else {
+                    errorSaveData(from: "Save")
+                }
             } else {
-                errorSaveData(from: "Save")
+               showAlertForDelete()
             }
         }
     }
@@ -104,7 +109,7 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
     func deleteEduData(){
         guard let data = self.viewModel?.deleteEduData(eduData: eduData ?? Education()) else { return }
         if data {
-            self.navigationController?.popViewController(animated: false)
+            performSegue(withIdentifier: "backToStepVC", sender: self)
         } else {
             errorSaveData(from: "Delete")
         }
@@ -157,9 +162,9 @@ extension EducationFormController {
 }
 
 extension EducationFormController: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView){
+    func textViewDidBeginEditing(_ textView: UITextView){
         eduPlaceholder = self.viewModel?.getEduPh()
-        if ( activityView.textView.text.count  + 1 == eduPlaceholder?.activity_ph?.count){
+        if ( activityView.textView.text.lowercased()  == eduPlaceholder?.activity_ph?.lowercased() ){
             activityView.textView.text = ""
         }
         activityView.textView.textColor = .black
@@ -198,6 +203,7 @@ extension EducationFormController {
         activityView.textView.placeholder = eduPlaceholder?.activity_ph
         activityView.textView.text = eduPlaceholder?.activity_ph
        
+       
         
         if dataFrom == "edit" {
             if eduData != nil {
@@ -210,7 +216,12 @@ extension EducationFormController {
                 eduStatusView.switchButton.isOn = ((eduData?.currently_study) == true)
                 eduPeriodView.startDatePicker.date = eduData?.start_date ?? Date()
                 eduPeriodView.endDatePicker.date = eduData?.end_date ?? Date()
+                if eduData?.activity != "" {
+                    activityView.textView.textColor = .black
+                }
             }
+        } else {
+            activityView.textView.textColor = .lightGray
         }
     }
 }

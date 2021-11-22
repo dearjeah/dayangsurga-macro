@@ -37,10 +37,10 @@
                                     <fragment content="Add">
                                         <attributes>
                                             <font key="NSFont" size="17" name="SFProDisplay-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
+                                <color key="baseForegroundColor" name="primaryBlue"/>
                             </buttonConfiguration>
                             <connections>
                                 <action selector="addEditPressed:" destination="-1" eventType="touchUpInside" id="tYH-3u-wVt"/>
@@ -91,6 +91,9 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="primaryBlue">
+            <color red="0.097999997437000275" green="0.16500000655651093" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="primarySubtitle">
             <color red="0.27099999785423279" green="0.25099998712539673" blue="0.25099998712539673" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

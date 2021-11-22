@@ -18,6 +18,8 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
     @IBOutlet weak var exportResumeButton: UIButton!
     @IBOutlet weak var finishCreateResume: UIButton!
     var userResume: User_Resume?
+    var selectedTemplate = Int()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         exportResumeButton.dsLongFilledPrimaryButton(withImage: false, text: " Export Resume")
