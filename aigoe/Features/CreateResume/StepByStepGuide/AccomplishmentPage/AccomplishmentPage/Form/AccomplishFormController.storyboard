@@ -39,18 +39,35 @@
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abE-6h-hmw" customClass="LabelWithTextField" customModule="aigoe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="100"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="F0w-0h-Rkr"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D9Y-wY-jMM" customClass="LabelWithDate" customModule="aigoe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="106" width="382" height="95"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="95" id="48g-qE-u2S"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2WL-Oz-3cy" customClass="LabelWithSwitch" customModule="aigoe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="201" width="382" height="80"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="c41-B3-v7y"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyh-S8-iPn" customClass="LabelWithDate" customModule="aigoe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="281" width="382" height="90"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="hc6-bQ-c7u"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bLO-Ql-JfM" customClass="LabelWithTextField" customModule="aigoe" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="201" width="382" height="95"/>
+                                        <rect key="frame" x="0.0" y="371" width="382" height="95"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="95" id="SoD-cA-ZOF"/>
                                         </constraints>
@@ -58,16 +75,22 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hyh-S8-iPn" secondAttribute="trailing" id="9lA-z5-5zf"/>
                                     <constraint firstItem="abE-6h-hmw" firstAttribute="top" secondItem="i0t-SG-dwT" secondAttribute="top" id="HFm-yh-beE"/>
+                                    <constraint firstItem="bLO-Ql-JfM" firstAttribute="top" secondItem="hyh-S8-iPn" secondAttribute="bottom" id="KCo-yP-ZAr"/>
+                                    <constraint firstAttribute="trailing" secondItem="2WL-Oz-3cy" secondAttribute="trailing" id="OLg-OC-jV5"/>
                                     <constraint firstAttribute="trailing" secondItem="BD6-HV-224" secondAttribute="trailing" constant="8" id="OR7-ca-j1J"/>
                                     <constraint firstItem="D9Y-wY-jMM" firstAttribute="top" secondItem="BD6-HV-224" secondAttribute="bottom" id="Pbt-je-Tmo"/>
                                     <constraint firstAttribute="trailing" secondItem="bLO-Ql-JfM" secondAttribute="trailing" id="PsR-13-5CM"/>
                                     <constraint firstItem="BD6-HV-224" firstAttribute="top" secondItem="abE-6h-hmw" secondAttribute="bottom" constant="-10" id="RBm-VL-mIJ"/>
                                     <constraint firstItem="bLO-Ql-JfM" firstAttribute="leading" secondItem="i0t-SG-dwT" secondAttribute="leading" id="RFd-H7-AEx"/>
-                                    <constraint firstItem="bLO-Ql-JfM" firstAttribute="top" secondItem="D9Y-wY-jMM" secondAttribute="bottom" id="cup-lL-NWv"/>
+                                    <constraint firstItem="2WL-Oz-3cy" firstAttribute="top" secondItem="D9Y-wY-jMM" secondAttribute="bottom" id="b8W-Qm-7oK"/>
+                                    <constraint firstItem="hyh-S8-iPn" firstAttribute="top" secondItem="2WL-Oz-3cy" secondAttribute="bottom" id="bcl-nH-hH4"/>
                                     <constraint firstItem="D9Y-wY-jMM" firstAttribute="leading" secondItem="i0t-SG-dwT" secondAttribute="leading" id="fe1-Sg-SBa"/>
+                                    <constraint firstItem="2WL-Oz-3cy" firstAttribute="leading" secondItem="i0t-SG-dwT" secondAttribute="leading" id="idG-Ut-hGT"/>
                                     <constraint firstItem="BD6-HV-224" firstAttribute="leading" secondItem="i0t-SG-dwT" secondAttribute="leading" constant="8" id="nOn-bj-qbJ"/>
                                     <constraint firstAttribute="trailing" secondItem="D9Y-wY-jMM" secondAttribute="trailing" id="tfr-j2-oWe"/>
+                                    <constraint firstItem="hyh-S8-iPn" firstAttribute="leading" secondItem="i0t-SG-dwT" secondAttribute="leading" id="vuk-4O-Ctn"/>
                                     <constraint firstItem="abE-6h-hmw" firstAttribute="leading" secondItem="i0t-SG-dwT" secondAttribute="leading" id="ynm-xH-dYP"/>
                                     <constraint firstAttribute="trailing" secondItem="abE-6h-hmw" secondAttribute="trailing" id="zNv-SP-ODi"/>
                                 </constraints>
@@ -103,7 +126,9 @@
                         <outlet property="backgroundView" destination="i0t-SG-dwT" id="VmZ-Ad-r35"/>
                         <outlet property="certificateNameView" destination="abE-6h-hmw" id="BG2-eT-zZp"/>
                         <outlet property="dateView" destination="D9Y-wY-jMM" id="CDs-hM-FRx"/>
-                        <outlet property="issuerView" destination="bLO-Ql-JfM" id="sWm-Pc-dZa"/>
+                        <outlet property="endDateView" destination="hyh-S8-iPn" id="CLQ-md-G5C"/>
+                        <outlet property="issuerView" destination="bLO-Ql-JfM" id="bTz-kE-dt6"/>
+                        <outlet property="statusView" destination="2WL-Oz-3cy" id="KFJ-jA-rfh"/>
                         <segue destination="Lef-hF-RFG" kind="unwind" identifier="backToStepVC" unwindAction="unwind:" id="YSp-eB-Rcz"/>
                     </connections>
                 </viewController>
@@ -131,6 +156,11 @@
             <point key="canvasLocation" x="973.91304347826099" y="71.651785714285708"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="i0t-SG-dwT">
+            <size key="intrinsicContentSize" width="30" height="34"/>
+        </designable>
+    </designables>
     <resources>
         <namedColor name="primaryBG">
             <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
