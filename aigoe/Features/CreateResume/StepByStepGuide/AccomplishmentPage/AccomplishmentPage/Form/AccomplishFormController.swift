@@ -62,8 +62,12 @@ class AccomplishFormController: MVVMViewController<AccomplishFormViewModel> {
     }
 
     func deleteAccomplishData(){
-        self.viewModel?.deleteAccomplishData(dataAccomplish: accomplish)
-        self.navigationController?.popViewController(animated: false)
+        guard let data = self.viewModel?.deleteAccomplishData(dataAccomplish: accomplish) else { return }
+        if data {
+            self.navigationController?.popViewController(animated: false)
+        } else {
+            errorSaveData(from: "Delete")
+        }
     }
 
     @objc func updateAccomplish(sender: UIBarButtonItem) {
@@ -77,13 +81,11 @@ class AccomplishFormController: MVVMViewController<AccomplishFormViewModel> {
                                                           issuer: issuerView.textField.text ?? "",
                                                           desc: ""
             ) else { return errorSaveData(from: "Update") }
-            
             if data {
                 performSegue(withIdentifier: "backToStepVC", sender: self)
             } else {
                 errorSaveData(from: "Update")
             }
-            
         }
     }
     
