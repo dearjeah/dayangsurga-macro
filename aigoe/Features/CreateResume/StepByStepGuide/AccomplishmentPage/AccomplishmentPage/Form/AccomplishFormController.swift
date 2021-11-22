@@ -60,8 +60,41 @@ class AccomplishFormController: MVVMViewController<AccomplishFormViewModel> {
             }
         }
     }
+
+    func deleteAccomplishData(){
+        self.viewModel?.deleteAccomplishData(dataAccomplish: accomplish)
+        self.navigationController?.popViewController(animated: false)
+    }
+
+    @objc func updateAccomplish(sender: UIBarButtonItem) {
+        if !alertForCheckTF() {
+            guard let accomId = accomplish?.accomplishment_id else { return }
+            guard let data = self.viewModel?.updateAccomp(accompId: accomId,
+                                                          title: certificateNameView.textField.text ?? "",
+                                                          givenDate: dateView.datePicker.date,
+                                                          endDate: dateView.datePicker.date,
+                                                          status: statusView.switchButton.isOn,
+                                                          issuer: issuerView.textField.text ?? "",
+                                                          desc: ""
+            ) else { return errorSaveData(from: "Update") }
+            
+            if data {
+                performSegue(withIdentifier: "backToStepVC", sender: self)
+            } else {
+                errorSaveData(from: "Update")
+            }
+            
+        }
+    }
     
-    
+}
+//MARK: ALERT
+extension AccomplishFormController {
+    func errorSaveData(from: String){
+        let alert = UIAlertController(title: "Unable to \(from) Data", message: "Your data is not saved. Please try again later", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     
     func alertForCheckTF() -> Bool {
         if ((certificateNameView.textField.text?.isEmpty) != false) || ((issuerView.textField.text?.isEmpty) != false) {
@@ -78,33 +111,6 @@ class AccomplishFormController: MVVMViewController<AccomplishFormViewModel> {
         let alert = UIAlertController(title: "Delete Data?", message: "You will not be able to recover it.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {action in self.deleteAccomplishData()}))
-        self.present(alert, animated: true, completion: nil)
-    }
-    // for delete and reload
-    func deleteAccomplishData(){
-        self.viewModel?.deleteAccomplishData(dataAccomplish: accomplish)
-        self.navigationController?.popViewController(animated: false)
-    }
-    @objc func updateAccomplish(sender: UIBarButtonItem) {
-        guard let accomId = accomplish?.accomplishment_id else { return }
-        AccomplishmentRepository.shared.updateAccomplishment(accomId: accomId,
-                                                             userId: 0,
-                                                             title: certificateNameView.textField.text ?? String(),
-                                                             givenDate: dateView.datePicker.date,
-                                                             endDate: endDateView.datePicker.date,
-                                                             status: Bool(),
-                                                             issuer: issuerView.textField.text ?? String(),
-                                                             desc: "",
-                                                             isSelected: true)
-        performSegue(withIdentifier: "backToStepVC", sender: self)
-    }
-    
-}
-//MARK: ALERT
-extension AccomplishFormController {
-    func errorSaveData(from: String){
-        let alert = UIAlertController(title: "Unable to \(from) Data", message: "Your data is not saved. Please try again later", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
 }
