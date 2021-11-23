@@ -25,7 +25,7 @@ extension CoreDataManager {
         EducationSuggestionRepository.shared.createEducationSuggestion(
             eduId: UUID().uuidString,
             eduSuggestionId: 1,
-            activitySuggestion: "To show experiences or skills you want to highlight, consider to include relevant projects or activities that align with the job qualifications."
+            activitySuggestion: "To show experiences or skills you want to highlight, consider including relevant projects or activities that align with the job qualifications."
         )
     }
 }
