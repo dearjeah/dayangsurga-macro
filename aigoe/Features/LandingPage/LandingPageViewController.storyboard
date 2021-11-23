@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFE-FT-7im">
-                                <rect key="frame" x="22" y="164" width="342" height="26"/>
+                                <rect key="frame" x="22" y="132" width="342" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="iG6-Vt-C92"/>
                                 </constraints>
@@ -33,7 +33,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lCH-GV-2q0">
-                                <rect key="frame" x="22" y="198" width="371" height="664"/>
+                                <rect key="frame" x="22" y="166" width="371" height="696"/>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eMV-e6-9Za">
                                     <size key="itemSize" width="151" height="230"/>
@@ -43,39 +43,44 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5EN-t7-o5f" customClass="BigButtonWithImage" customModule="aigoe" customModuleProvider="target">
-                                <rect key="frame" x="22" y="56" width="371" height="92"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="92" id="ofq-eb-FAL"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oox-Sv-mW1" customClass="EmptyState" customModule="aigoe" customModuleProvider="target">
-                                <rect key="frame" x="22" y="210" width="371" height="465"/>
+                                <rect key="frame" x="22" y="178" width="371" height="487"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWQ-8M-Vlt">
+                                <rect key="frame" x="16" y="64" width="382" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="k8w-Hk-WUU"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="buttonViewTapped:" destination="YzO-eF-oJX" eventType="touchUpInside" id="wOJ-5K-DOh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XSb-ph-njI"/>
                         <color key="backgroundColor" name="primaryBG"/>
                         <constraints>
                             <constraint firstItem="QFE-FT-7im" firstAttribute="leading" secondItem="XSb-ph-njI" secondAttribute="leading" constant="22" id="Fjw-vE-43i"/>
                             <constraint firstItem="Oox-Sv-mW1" firstAttribute="top" secondItem="QFE-FT-7im" secondAttribute="bottom" constant="20" id="Hac-er-9wz"/>
-                            <constraint firstItem="5EN-t7-o5f" firstAttribute="top" secondItem="XSb-ph-njI" secondAttribute="top" constant="12" id="LAL-xq-pZb"/>
+                            <constraint firstItem="rWQ-8M-Vlt" firstAttribute="top" secondItem="XSb-ph-njI" secondAttribute="top" constant="20" id="OqE-lF-Jl1"/>
                             <constraint firstItem="XSb-ph-njI" firstAttribute="trailing" secondItem="QFE-FT-7im" secondAttribute="trailing" constant="50" id="Tha-9I-LHZ"/>
-                            <constraint firstItem="XSb-ph-njI" firstAttribute="trailing" secondItem="5EN-t7-o5f" secondAttribute="trailing" constant="21" id="Y6l-fS-Qsb"/>
                             <constraint firstItem="lCH-GV-2q0" firstAttribute="leading" secondItem="XSb-ph-njI" secondAttribute="leading" constant="22" id="Z3Q-Tn-qPc"/>
                             <constraint firstItem="Oox-Sv-mW1" firstAttribute="height" secondItem="lCH-GV-2q0" secondAttribute="height" multiplier="0.7" id="amP-df-dUq"/>
                             <constraint firstItem="XSb-ph-njI" firstAttribute="trailing" secondItem="lCH-GV-2q0" secondAttribute="trailing" constant="21" id="cZ2-hk-tWR"/>
+                            <constraint firstItem="rWQ-8M-Vlt" firstAttribute="centerX" secondItem="XSb-ph-njI" secondAttribute="centerX" id="czs-LA-6pO"/>
                             <constraint firstItem="lCH-GV-2q0" firstAttribute="top" secondItem="QFE-FT-7im" secondAttribute="bottom" constant="8" id="dgw-gb-erk"/>
                             <constraint firstItem="Oox-Sv-mW1" firstAttribute="width" secondItem="lCH-GV-2q0" secondAttribute="width" id="eIs-jg-NTx"/>
                             <constraint firstItem="XSb-ph-njI" firstAttribute="bottom" secondItem="lCH-GV-2q0" secondAttribute="bottom" id="etM-dR-RxK"/>
-                            <constraint firstItem="5EN-t7-o5f" firstAttribute="leading" secondItem="XSb-ph-njI" secondAttribute="leading" constant="22" id="msc-Fb-cxG"/>
+                            <constraint firstItem="XSb-ph-njI" firstAttribute="trailing" secondItem="rWQ-8M-Vlt" secondAttribute="trailing" constant="16" id="pbN-SM-XSV"/>
+                            <constraint firstItem="rWQ-8M-Vlt" firstAttribute="leading" secondItem="XSb-ph-njI" secondAttribute="leading" constant="16" id="ryO-H8-LCY"/>
                             <constraint firstItem="Oox-Sv-mW1" firstAttribute="centerX" secondItem="lCH-GV-2q0" secondAttribute="centerX" id="sgx-lW-hXo"/>
-                            <constraint firstItem="QFE-FT-7im" firstAttribute="top" secondItem="5EN-t7-o5f" secondAttribute="bottom" constant="16" id="uVg-NH-Hrj"/>
+                            <constraint firstItem="QFE-FT-7im" firstAttribute="top" secondItem="rWQ-8M-Vlt" secondAttribute="bottom" constant="20" id="y7l-Mo-a0q"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="buttonView" destination="5EN-t7-o5f" id="OON-Gk-Lht"/>
+                        <outlet property="buttonView" destination="rWQ-8M-Vlt" id="nnH-vt-AqB"/>
                         <outlet property="collectionView" destination="lCH-GV-2q0" id="vyz-jm-b6I"/>
                         <outlet property="emptyStateView" destination="Oox-Sv-mW1" id="Ni1-Bu-uRm"/>
                         <outlet property="titleLabel" destination="QFE-FT-7im" id="zI7-yf-hr2"/>
