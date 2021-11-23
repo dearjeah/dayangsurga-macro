@@ -89,6 +89,66 @@ class ResumeContentRepository{
         }
     }
     
+    func updateResumeContentEdu(resume_id: String,
+                             newEdu_id: String) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == %d", resume_id as CVarArg)
+        do {
+            let item = try context.fetch(fetchRequest) as? [Resume_Content]
+            let newResumeContent = item?.first
+            newResumeContent?.edu_id = newEdu_id
+            
+            try context.save()
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    func updateResumeContentExp(resume_id: String,
+                             newExp_id: String) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == %d", resume_id as CVarArg)
+        do {
+            let item = try context.fetch(fetchRequest) as? [Resume_Content]
+            let newResumeContent = item?.first
+            newResumeContent?.exp_id = newExp_id
+            
+            try context.save()
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    func updateResumeContentSkill(resume_id: String,
+                             newSkill_id: String) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == %d", resume_id as CVarArg)
+        do {
+            let item = try context.fetch(fetchRequest) as? [Resume_Content]
+            let newResumeContent = item?.first
+            newResumeContent?.skill_id = newSkill_id
+            
+            try context.save()
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    func updateResumeContentAccomp(resume_id: String,
+                             newAccomp_id: String) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == %d", resume_id as CVarArg)
+        do {
+            let item = try context.fetch(fetchRequest) as? [Resume_Content]
+            let newResumeContent = item?.first
+            newResumeContent?.accom_id = newAccomp_id
+            
+            try context.save()
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
     // func delete
     func deleteUser(data: Resume_Content) {
         do {

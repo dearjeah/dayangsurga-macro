@@ -7,10 +7,20 @@
 
 import UIKit
 
+protocol LabelWithTextFieldDelegate: AnyObject {
+    func isTextfieldFilled(was: Bool)
+}
+
 class LabelWithTextField: UIView {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
+    
+    weak var delegate: LabelWithTextFieldDelegate?
+    
+    func setup(dlgt: LabelWithTextFieldDelegate) {
+        self.delegate = dlgt
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,6 +30,7 @@ class LabelWithTextField: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initWithNib()
+        textField.delegate = self
     }
     
     convenience init(title: String, textFieldPh: String, textFieldData: String?) {
@@ -27,6 +38,7 @@ class LabelWithTextField: UIView {
         titleLabel.text = title
         textField.placeholder = textFieldPh
         textField.text = textFieldData
+        textField.delegate = self
     }
     
     fileprivate func initWithNib() {
@@ -42,4 +54,13 @@ class LabelWithTextField: UIView {
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
 
+}
+extension LabelWithTextField: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.text?.count ?? 0 > 4 {
+            delegate?.isTextfieldFilled(was: true)
+        } else {
+            delegate?.isTextfieldFilled(was: false)
+        }
+    }
 }

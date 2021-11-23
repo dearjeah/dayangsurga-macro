@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icTechnicalSkillActive.png",
+      "filename" : "icTechnicalSkillFill.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icTechnicalSkillActive@2x.png",
+      "filename" : "icTechnicalSkillFill@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icTechnicalSkillActive@3x.png",
+      "filename" : "icTechnicalSkillFill@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

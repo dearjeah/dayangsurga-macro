@@ -43,6 +43,7 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
         expPlaceholder = self.viewModel?.getExpPh()
         expSuggestion = self.viewModel?.getExpSuggestion()
         hideKeyboardWhenTappedAround()
+        self.jobSummary.textView.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -145,9 +146,9 @@ extension ExperienceFormController: LabelSwitchDelegate {
 }
 
 extension ExperienceFormController: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView){
+    func textViewDidBeginEditing(_ textView: UITextView){
         expPlaceholder = self.viewModel?.getExpPh()
-        if (jobSummary.textView.text.count  + 1 == expPlaceholder?.jobDesc_ph?.count){
+        if (jobSummary.textView.text.lowercased() == expPlaceholder?.jobDesc_ph?.lowercased()){
             jobSummary.textView.text = ""
         }
         jobSummary.textView.textColor = .black
@@ -187,6 +188,11 @@ extension ExperienceFormController {
                 addExpBtn.dsLongUnfilledButton(isDelete: true, text: "Delete Experience")
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(self.updateExp(sender:)))
             }
+            
+            if experience?.jobDesc != "" {
+                jobSummary.textView.textColor = .black
+            }
+            
         } else {
             companyName.textField.placeholder = expPlaceholder?.companyName_ph
             jobTitle.textField.placeholder = expPlaceholder?.jobTitle_ph

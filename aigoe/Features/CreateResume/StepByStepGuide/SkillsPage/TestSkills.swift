@@ -11,7 +11,7 @@ class TestSkills: MVVMViewController<StepByStepGuideViewModel>, skillListDelegat
     
     var skill: [Skills]? = []
     
-    func passDataFromEdit() {
+    func passDataFromEdit(from: String) {
         let storyboard = UIStoryboard(name: "SkillAddEditController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToEditSkills") as! SkillAddEditController
         self.viewModel = StepByStepGuideViewModel()
