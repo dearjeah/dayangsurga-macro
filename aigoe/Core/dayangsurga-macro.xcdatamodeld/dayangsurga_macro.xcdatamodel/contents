@@ -140,11 +140,11 @@
         <attribute name="quiz_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Resume_Content" representedClassName="Resume_Content" syncable="YES" codeGenerationType="class">
-        <attribute name="accom_id" optional="YES" attributeType="String"/>
-        <attribute name="edu_id" optional="YES" attributeType="String"/>
-        <attribute name="exp_id" optional="YES" attributeType="String"/>
+        <attribute name="accom_id" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
+        <attribute name="edu_id" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
+        <attribute name="exp_id" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
         <attribute name="resume_id" optional="YES" attributeType="String"/>
-        <attribute name="skill_id" optional="YES" attributeType="String"/>
+        <attribute name="skill_id" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
         <relationship name="accomplishment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accomplishment" inverseName="resumeContent" inverseEntity="Accomplishment"/>
         <relationship name="education" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Education" inverseName="resumeContent" inverseEntity="Education"/>
         <relationship name="experience" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Experience" inverseName="resumeContent" inverseEntity="Experience"/>
