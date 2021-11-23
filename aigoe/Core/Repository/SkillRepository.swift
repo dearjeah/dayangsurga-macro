@@ -55,7 +55,7 @@ class SkillRepository{
     
     func getSkillsById(skillId: String) -> Skills? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "skill_id == %d", skillId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "skill_id == '\(skillId)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Skills]
             return item?.first
@@ -71,7 +71,7 @@ class SkillRepository{
                      skillName: String,
                      isSelected : Bool)-> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "skill_id == %d", skillId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "skill_id == '\(skillId)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Skills]
             let skill = item?.first
@@ -91,7 +91,7 @@ class SkillRepository{
     func updateSelectedSkillStatus(skill_id: String,
                                    isSelected: Bool) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "skill_id == %d", skill_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "skill_id == '\(skill_id)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Skills]
             let newSkill = item?.first

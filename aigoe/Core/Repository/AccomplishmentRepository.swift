@@ -64,7 +64,7 @@ class AccomplishmentRepository{
     
     func getAccomplishmentById(AccomplishmentId: String) -> Accomplishment? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "accomplishment_id == %d", AccomplishmentId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "accomplishment_id == '\(AccomplishmentId)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Accomplishment]
             return item?.first
@@ -85,7 +85,7 @@ class AccomplishmentRepository{
                                desc : String,
                                isSelected : Bool) -> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "accomplishment_id == %d", accomId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "accomplishment_id == '\(accomId)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Accomplishment]
             let accomplishment = item?.first
@@ -111,7 +111,7 @@ class AccomplishmentRepository{
     func updateSelectedAccomplishStatus(accomId: String,
                                         is_Selected: Bool) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "accomplishment_id == %d", accomId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "accomplishment_id == '\(accomId)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Accomplishment]
             let newAccom = item?.first

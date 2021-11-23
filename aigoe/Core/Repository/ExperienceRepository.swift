@@ -48,7 +48,7 @@ class ExperienceRepository{
         }
         return false
     }
-
+    
     // retrieve
     func getAllExperience() -> [Experience]? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
@@ -63,7 +63,7 @@ class ExperienceRepository{
     
     func getExperienceById(experienceId: String) -> Experience? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "exp_id == %d", experienceId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "exp_id == '\(experienceId)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Experience]
             return item?.first
@@ -75,16 +75,16 @@ class ExperienceRepository{
     
     // func updates
     func updateExperience(exp_id: String,
-                              user_id: Int,
-                              newJobTitle: String,
-                              newJobDesc: String,
-                              newJobCompanyName: String,
-                              newJobStartDate: Date,
-                              newJobEndtDate: Date,
-                              newJobStatus: Bool,
-                              newIsSelected: Bool) {
+                          user_id: Int,
+                          newJobTitle: String,
+                          newJobDesc: String,
+                          newJobCompanyName: String,
+                          newJobStartDate: Date,
+                          newJobEndtDate: Date,
+                          newJobStatus: Bool,
+                          newIsSelected: Bool) -> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "exp_id == %d", exp_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "exp_id == '\(exp_id)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Experience]
             let newExp = item?.first
@@ -96,16 +96,17 @@ class ExperienceRepository{
             newExp?.jobStatus = newJobStatus
             newExp?.isSelected = newIsSelected
             try context.save()
+            return true
         } catch let error as NSError {
             print(error)
         }
-        
+        return false
     }
     
     func updateSelectedExpStatus(exp_id: String,
-                              isSelected: Bool) {
+                                 isSelected: Bool) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "exp_id == %d", exp_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "exp_id == '\(exp_id)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Experience]
             let newExp = item?.first
