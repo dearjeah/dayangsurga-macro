@@ -79,7 +79,7 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
                     errorSaveData(from: "Save")
                 }
             } else {
-               showAlertForDelete()
+                showAlertForDelete()
             }
         }
     }
@@ -88,16 +88,16 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
         if !alertForCheckTF() {
             guard let eduID = eduData?.edu_id else { return }
             guard let data = self.viewModel?.updateEdu(eduId: eduID,
-                institution: institutionView.textField.text ?? "",
-                title: qualificationView.textField.text ?? "",
-                startDate: eduPeriodView.startDatePicker.date,
-                endDate: eduPeriodView.endDatePicker.date,
-                gpa: gpaView.textField.text ?? "",
-                activity: activityView.textView.text ?? "",
-                currentlyStudy: eduStatusView.switchButton.isOn,
-                isSelected: true
+                                                       institution: institutionView.textField.text ?? "",
+                                                       title: qualificationView.textField.text ?? "",
+                                                       startDate: eduPeriodView.startDatePicker.date,
+                                                       endDate: eduPeriodView.endDatePicker.date,
+                                                       gpa: gpaView.textField.text ?? "",
+                                                       activity: activityView.textView.text ?? "",
+                                                       currentlyStudy: eduStatusView.switchButton.isOn,
+                                                       isSelected: true
             ) else { return errorSaveData(from: "Update") }
-            
+
             if data {
                 performSegue(withIdentifier: "backToStepVC", sender: self)
             } else {
@@ -120,9 +120,9 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
 extension EducationFormController: LabelSwitchDelegate {
     func getValueSwitch() {
         if (eduStatusView.switchButton.isOn){
-            eduPeriodView.endDatePicker.isEnabled = false
+            eduPeriodView.endDatePicker.isUserInteractionEnabled = false
         } else {
-            eduPeriodView.endDatePicker.isEnabled = true
+            eduPeriodView.endDatePicker.isUserInteractionEnabled = true
         }
     }
 }
@@ -202,8 +202,6 @@ extension EducationFormController {
         gpaView.textField.placeholder = eduPlaceholder?.gpa_ph
         activityView.textView.placeholder = eduPlaceholder?.activity_ph
         activityView.textView.text = eduPlaceholder?.activity_ph
-       
-       
         
         if dataFrom == "edit" {
             if eduData != nil {

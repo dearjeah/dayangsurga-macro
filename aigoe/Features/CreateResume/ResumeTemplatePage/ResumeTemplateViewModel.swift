@@ -20,7 +20,7 @@ class ResumeTemplateViewModel: NSObject{
     
     func createResumeContent() -> String {
         let id = UUID().uuidString
-        resumeRepo.createResumeContent(resume_id:id, exp_id: "", edu_id: "", accom_id: "", skill_id: "")
+        resumeRepo.createResumeContent(resume_id:id, exp_id: "", edu_id: [], accom_id: [], skill_id: [])
         return id
     }
     

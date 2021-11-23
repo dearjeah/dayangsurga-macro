@@ -78,7 +78,7 @@ class UserResumeRepository {
     
     func getUserResumeById(resume_id: String) -> User_Resume? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "resume_id == %d", resume_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == '\(resume_id)'")
         do {
             let item = try context.fetch(fetchRequest) as? [User_Resume]
             return item?.first
@@ -97,7 +97,7 @@ class UserResumeRepository {
                           newLastUpdate: Date,
                           newEditingProgress: Int) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "resume_id == %d", resume_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == '\(resume_id)'")
         do {
             let item = try context.fetch(fetchRequest) as? [User_Resume]
             let newUserResume = item?.first
@@ -143,7 +143,7 @@ class UserResumeRepository {
     func updateEditingProgress(resume_id: Int,
                                newPage: Int){
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "resume_id == %d", resume_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == '\(resume_id)'")
         do {
             let item = try context.fetch(fetchRequest) as? [User_Resume]
             let newPages = item?.first
