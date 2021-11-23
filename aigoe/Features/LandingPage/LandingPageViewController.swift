@@ -30,7 +30,14 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         userResume = self.viewModel?.allUserResumeDataByDate() ?? []
         emptyState = self.viewModel?.getEmptyState()
         buttonView.dsLongFilledPrimaryButton(withImage: false, text: "Create Resume")
-    }
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.addResume(sender:)))
+                                                                       
+     }
+     
+     @objc func addResume(sender: UIBarButtonItem) {
+             didTapButton()
+                                                                         
+     }
     
     func navigationStyle(){
         configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.white, title: "Resume", preferredLargeTitle: true, hideBackButton: false)
