@@ -71,9 +71,11 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if userResume.count != 0 {
             emptyStateView.isHidden = true
+            buttonView.isHidden = true
             return userResume.count
         } else {
             emptyStateView.isHidden = false
+            buttonView.isHidden = false
             let image = UIImage(data: emptyState?.image ?? Data())
             emptyStateView.emptyStateImage.image = image
             emptyStateView.emptyStateTitle.text = nil
