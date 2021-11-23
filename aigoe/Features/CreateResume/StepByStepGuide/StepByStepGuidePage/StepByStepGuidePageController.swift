@@ -115,6 +115,11 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
         }
     }
     
+    @objc func dataUpdate() {
+        reloadData()
+        buttonFunctional(currentPage: currentPageIndex)
+    }
+    
     //MARK: Delegate Function
     func hideUnHideButton(currentPage: Int) {
         let isQuizPage = isQuizPage(currentIndex: currentPage)
@@ -163,6 +168,7 @@ extension StepByStepGuidePageController: ExperienceListDelegate {
     }
 }
 
+//MARK: Skills List Delegate
 extension StepByStepGuidePageController: skillListDelegate {
     func passDataFromEdit(from: String) {
         if from == "Add" {
@@ -430,6 +436,11 @@ extension StepByStepGuidePageController {
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectPrev), name: Notification.Name("goToPrev"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectGenerate), name: Notification.Name("goToGenerate"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(progressBarTapped), name: Notification.Name("progressBarTapped"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("eduReload"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("expReload"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("skillReload"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("accompReload"), object: nil)
     }
     
     private func setPageIndex(value: Int, progressBar: Bool = false) {

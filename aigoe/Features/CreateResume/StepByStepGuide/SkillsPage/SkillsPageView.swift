@@ -43,6 +43,7 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
         super.init(coder: aDecoder)
         initWithNib()
         setup()
+        notificationCenterSetup()
         emptyState = stepViewModel.getEmptyStateId(Id: 3)
         //skills = stepViewModel.getSkillData() ?? []
         skillsTableView.reloadData()
@@ -54,12 +55,21 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
         emptyState = stepViewModel.getEmptyStateId(Id: 3)
         skills = data
         setup()
+        notificationCenterSetup()
         skillsTableView.reloadData()
     }
 
     func getAndReload(){
         skills = stepViewModel.getSkillData() ?? []
         skillsTableView.reloadData()
+    }
+    
+    @objc func skillReload() {
+      getAndReload()
+    }
+    
+    func notificationCenterSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(skillReload), name: Notification.Name("skillReload"), object: nil)
     }
 }
 
