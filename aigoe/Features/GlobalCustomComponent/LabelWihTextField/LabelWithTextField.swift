@@ -12,7 +12,7 @@ protocol LabelWithTextFieldDelegate: AnyObject {
 }
 
 class LabelWithTextField: UIView {
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     
@@ -31,6 +31,7 @@ class LabelWithTextField: UIView {
         super.init(coder: aDecoder)
         initWithNib()
         textField.delegate = self
+        textField.tintColor = .black
     }
     
     convenience init(title: String, textFieldPh: String, textFieldData: String?) {
@@ -53,7 +54,7 @@ class LabelWithTextField: UIView {
         
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
-
+    
 }
 extension LabelWithTextField: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -62,5 +63,10 @@ extension LabelWithTextField: UITextFieldDelegate {
         } else {
             delegate?.isTextfieldFilled(was: false)
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.endEditing(true)
+        return false
     }
 }
