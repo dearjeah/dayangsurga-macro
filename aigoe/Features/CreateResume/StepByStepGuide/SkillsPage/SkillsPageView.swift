@@ -98,6 +98,12 @@ extension SkillsPageView {
         skills = stepViewModel.getSkillData() ?? []
 //        print(skills[indexPath.row].skill_name)
         cell.skillName.text = skills[indexPath.row].skill_name
+        
+        if skills[indexPath.row].is_selected {
+            cell.checklistButtonIfSelected()
+        } else {
+            cell.checklistButtonUnSelected()
+        }
         cell.checklistButtonAction = {
 //            self.skillListDelegate?.getSelectedIndex(index: indexPath.row)
             if cell.selectionStatus == false{

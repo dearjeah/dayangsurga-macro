@@ -51,7 +51,7 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
             NotificationCenter.default.post(name: Notification.Name("eduReload"), object: nil)
         } else if formSource == "experience" {
             NotificationCenter.default.post(name: Notification.Name("expReload"), object: nil)
-        } else if formSource == "skillsqj" {
+        } else if formSource == "skills" {
             NotificationCenter.default.post(name: Notification.Name("skillReload"), object: nil)
         } else if formSource == "accomplishment" {
             NotificationCenter.default.post(name: Notification.Name("accompReload"), object: nil)
