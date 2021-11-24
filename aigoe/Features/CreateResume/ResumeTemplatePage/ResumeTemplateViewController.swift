@@ -39,6 +39,8 @@ class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> 
         
         self.viewModel = ResumeTemplateViewModel()
         template = self.viewModel?.getTemplate() ?? []
+        let startIndex = IndexPath(item: currentPage, section: 0)
+     
     }
 
     @IBAction func didTapButton(_ sender: Any) {
@@ -81,6 +83,7 @@ extension ResumeTemplateViewController: UICollectionViewDelegate, UICollectionVi
         
         let image = UIImage(data: template[indexPath.row].image ?? Data())
         cell.resumeTemplateImage.image = image
+       
 //        cell.layer.shadowRadius = 10
 //        cell.layer.shadowColor = UIColor.black.cgColor
 //        cell.layer.shadowOpacity = 0.8
@@ -100,9 +103,29 @@ extension ResumeTemplateViewController: UICollectionViewDelegate, UICollectionVi
         let roundedIndex = round(index)
         offset = CGPoint(x: roundedIndex * widthWithSpacing - scrollView.contentInset.left,  y: scrollView.contentInset.top)
         
+        
         currentPage = Int(roundedIndex)
         resumeTemplatePageController.currentPage = currentPage % 3
         selectedTemplate = currentPage % 3
+        let currentIndex = IndexPath(item: currentPage, section: 0)
+        
+        
+        for i in 0...template.count{
+            if i == currentPage{
+                let cell = self.resumeTemplateCollection.cellForItem(at: currentIndex)
+                cell?.layer.borderColor = UIColor.primaryBlue.cgColor
+                cell?.contentView.layer.borderColor = UIColor.primaryBlue.cgColor
+                cell?.layer.borderWidth = 2
+                cell?.layer.cornerRadius = 18
+            }else{
+                let currentPage = IndexPath(item: i, section: 0)
+                let cell = self.resumeTemplateCollection.cellForItem(at: currentPage)
+                cell?.layer.borderColor = UIColor.clear.cgColor
+                cell?.contentView.layer.borderColor = UIColor.clear.cgColor
+                cell?.layer.cornerRadius = 18
+            }
+            
+        }
         targetContentOffset.pointee = offset
     }
         
