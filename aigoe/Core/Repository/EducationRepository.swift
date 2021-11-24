@@ -66,7 +66,7 @@ class EducationRepository{
     
     func getEducationById(educationId: String) -> Education? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "edu_id == %d", educationId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "edu_id == '\(educationId)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Education]
             return item?.first
@@ -88,7 +88,7 @@ class EducationRepository{
                           currentlyStudy : Bool,
                           isSelected : Bool) -> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "edu_id == %d", eduId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "edu_id == '\(eduId)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Education]
             let education = item?.first
@@ -116,7 +116,7 @@ class EducationRepository{
     func updateSelectedEduStatus(edu_id: String,
                                  isSelected: Bool) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "edu_id == %d", edu_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "edu_id == '\(edu_id)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Education]
             let selectedEdu = item?.first

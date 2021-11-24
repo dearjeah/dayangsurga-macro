@@ -10,9 +10,11 @@
     <entity name="Accomplishment" representedClassName="Accomplishment" syncable="YES" codeGenerationType="class">
         <attribute name="accomplishment_id" optional="YES" attributeType="String"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="end_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="given_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="is_selected" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="issuer" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="placeholder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Accomplish_Placeholder" inverseName="accomplishment" inverseEntity="Accomplish_Placeholder"/>
@@ -138,11 +140,11 @@
         <attribute name="quiz_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Resume_Content" representedClassName="Resume_Content" syncable="YES" codeGenerationType="class">
-        <attribute name="accom_id" optional="YES" attributeType="String"/>
-        <attribute name="edu_id" optional="YES" attributeType="String"/>
-        <attribute name="exp_id" optional="YES" attributeType="String"/>
+        <attribute name="accom_id" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
+        <attribute name="edu_id" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
+        <attribute name="exp_id" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
         <attribute name="resume_id" optional="YES" attributeType="String"/>
-        <attribute name="skill_id" optional="YES" attributeType="String"/>
+        <attribute name="skill_id" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
         <relationship name="accomplishment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accomplishment" inverseName="resumeContent" inverseEntity="Accomplishment"/>
         <relationship name="education" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Education" inverseName="resumeContent" inverseEntity="Education"/>
         <relationship name="experience" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Experience" inverseName="resumeContent" inverseEntity="Experience"/>
@@ -207,7 +209,7 @@
     </entity>
     <elements>
         <element name="Accomplish_Placeholder" positionX="72" positionY="207" width="128" height="104"/>
-        <element name="Accomplishment" positionX="54" positionY="189" width="128" height="194"/>
+        <element name="Accomplishment" positionX="54" positionY="189" width="128" height="224"/>
         <element name="Accomplishment_Suggest" positionX="63" positionY="198" width="128" height="104"/>
         <element name="Consult_History" positionX="-27" positionY="18" width="128" height="104"/>
         <element name="Edu_Placeholder" positionX="45" positionY="180" width="128" height="164"/>

@@ -18,9 +18,9 @@ class ResumeContentRepository{
     // create data
     func createResumeContent(resume_id: String,
                              exp_id: String,
-                             edu_id: String,
-                             accom_id: String,
-                             skill_id: String){
+                             edu_id: [String],
+                             accom_id: [String],
+                             skill_id: [String]){
         do {
             // relation ke resume
             if let getResume = UserResumeRepository.shared.getUserResumeById(resume_id: resume_id){
@@ -43,6 +43,25 @@ class ResumeContentRepository{
         }
     }
     
+    func saveLocation(model: [String],id: String){
+        let newUser = NSEntityDescription.insertNewObject(forEntityName: entityName, into: context)
+        do{
+            if let getResume = UserResumeRepository.shared.getUserResumeById(resume_id: id){
+                let resumeContent = Resume_Content(context: context)
+                resumeContent.accom_id = model
+            }
+            var dictArray = [[String: Any]]()
+            //            for i in 0..<model.count{
+            //                let dict = model[i].dictionaryRepresentation()
+            //                dictArray.append(dict)
+            //            }
+            try context.save()
+        }catch {
+            print("failure")
+        }
+        
+    }
+    
     // retrieve
     func getAllResumeContent() -> [Resume_Content]? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
@@ -57,7 +76,7 @@ class ResumeContentRepository{
     
     func getResumeContentById(resume_id: String) -> Resume_Content? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "resume_id == %d", resume_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == '\(resume_id)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Resume_Content]
             return item?.first
@@ -71,17 +90,17 @@ class ResumeContentRepository{
     func updateResumeContent(resume_id: String,
                              newExp_id: String,
                              newEdu_id: String,
-                             newAccom_id: String,
+                             newAccom_id: [String],
                              newSkill_id: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "resume_id == %d", resume_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == '\(resume_id)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Resume_Content]
             let newResumeContent = item?.first
-            newResumeContent?.exp_id = newExp_id
-            newResumeContent?.edu_id = newEdu_id
+            newResumeContent?.exp_id = [newExp_id]
+            newResumeContent?.edu_id = [newEdu_id]
             newResumeContent?.accom_id = newAccom_id
-            newResumeContent?.skill_id = newSkill_id
+            newResumeContent?.skill_id = [newSkill_id]
             
             try context.save()
         } catch let error as NSError {
@@ -90,13 +109,13 @@ class ResumeContentRepository{
     }
     
     func updateResumeContentEdu(resume_id: String,
-                             newEdu_id: String) {
+                                newEdu_id: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "resume_id == %d", resume_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == '\(resume_id)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Resume_Content]
             let newResumeContent = item?.first
-            newResumeContent?.edu_id = newEdu_id
+            newResumeContent?.edu_id = [newEdu_id]
             
             try context.save()
         } catch let error as NSError {
@@ -105,13 +124,13 @@ class ResumeContentRepository{
     }
     
     func updateResumeContentExp(resume_id: String,
-                             newExp_id: String) {
+                                newExp_id: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "resume_id == %d", resume_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == '\(resume_id)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Resume_Content]
             let newResumeContent = item?.first
-            newResumeContent?.exp_id = newExp_id
+            newResumeContent?.exp_id = [newExp_id]
             
             try context.save()
         } catch let error as NSError {
@@ -120,13 +139,13 @@ class ResumeContentRepository{
     }
     
     func updateResumeContentSkill(resume_id: String,
-                             newSkill_id: String) {
+                                  newSkill_id: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "resume_id == %d", resume_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == '\(resume_id)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Resume_Content]
             let newResumeContent = item?.first
-            newResumeContent?.skill_id = newSkill_id
+            newResumeContent?.skill_id = [newSkill_id]
             
             try context.save()
         } catch let error as NSError {
@@ -135,13 +154,13 @@ class ResumeContentRepository{
     }
     
     func updateResumeContentAccomp(resume_id: String,
-                             newAccomp_id: String) {
+                                   newAccomp_id: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "resume_id == %d", resume_id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == '\(resume_id)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Resume_Content]
             let newResumeContent = item?.first
-            newResumeContent?.accom_id = newAccomp_id
+            newResumeContent?.accom_id = []
             
             try context.save()
         } catch let error as NSError {

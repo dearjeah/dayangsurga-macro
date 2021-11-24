@@ -79,7 +79,9 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
     
     @objc func updateExp(sender: UIBarButtonItem) {
         if !alertForCheckTF() {
-            guard let data = self.viewModel?.updateExpData(title: jobTitle.textField.text ?? "",
+            guard let expId = experience?.exp_id else { return }
+            guard let data = self.viewModel?.updateExpData(expId: expId,
+                                                           title: jobTitle.textField.text ?? "",
                                                            jobDesc: jobSummary.textView.text,
                                                            company: companyName.textField.text ?? "",
                                                            startDate: jobPeriod.startDatePicker.date,

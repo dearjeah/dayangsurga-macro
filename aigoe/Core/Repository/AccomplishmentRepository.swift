@@ -17,12 +17,14 @@ class AccomplishmentRepository{
     
     // create data
     func createAccomplishment(accomId: String,
-                             userId: Int,
-                             title: String,
-                             givenDate: Date,
-                             issuer : String,
-                             desc : String,
-                             isSelected : Bool) -> Bool {
+                              userId: Int,
+                              title: String,
+                              givenDate: Date,
+                              endDate: Date,
+                              status: Bool,
+                              issuer : String,
+                              desc : String,
+                              isSelected : Bool) -> Bool {
         do {
             // relation accomplishment-user
             if let AccomplishmentToUser = UserRepository.shared.getUserById(id: userId) {
@@ -30,6 +32,8 @@ class AccomplishmentRepository{
                 accomplishment.accomplishment_id = accomId
                 accomplishment.user_id = Int32(userId)
                 accomplishment.given_date = givenDate
+                accomplishment.end_date = endDate
+                accomplishment.status = status
                 accomplishment.title = title
                 accomplishment.issuer = issuer
                 accomplishment.desc = desc
@@ -60,7 +64,7 @@ class AccomplishmentRepository{
     
     func getAccomplishmentById(AccomplishmentId: String) -> Accomplishment? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "accomplishment_id == %d", AccomplishmentId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "accomplishment_id == '\(AccomplishmentId)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Accomplishment]
             return item?.first
@@ -75,22 +79,26 @@ class AccomplishmentRepository{
                                userId: Int,
                                title: String,
                                givenDate: Date,
+                               endDate: Date,
+                               status: Bool,
                                issuer : String,
                                desc : String,
                                isSelected : Bool) -> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "accomplishment_id == %d", accomId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "accomplishment_id == '\(accomId)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Accomplishment]
             let accomplishment = item?.first
             accomplishment?.accomplishment_id = accomId
             accomplishment?.user_id = Int32(userId)
             accomplishment?.given_date = givenDate
+            accomplishment?.end_date = endDate
+            accomplishment?.status = status
             accomplishment?.title = title
             accomplishment?.issuer = issuer
             accomplishment?.desc = desc
             accomplishment?.is_selected = isSelected
-         
+            
             try context.save()
             return true
         } catch let error as NSError {
@@ -103,7 +111,7 @@ class AccomplishmentRepository{
     func updateSelectedAccomplishStatus(accomId: String,
                                         is_Selected: Bool) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "accomplishment_id == %d", accomId as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "accomplishment_id == '\(accomId)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Accomplishment]
             let newAccom = item?.first

@@ -12,6 +12,8 @@ class AccomplishFormController: MVVMViewController<AccomplishFormViewModel> {
     @IBOutlet weak var backgroundView: DesignableButton!
     @IBOutlet weak var certificateNameView: LabelWithTextField!
     @IBOutlet weak var dateView: LabelWithDate!
+    @IBOutlet weak var statusView: LabelWithSwitch!
+    @IBOutlet weak var endDateView: LabelWithDate!
     @IBOutlet weak var issuerView: LabelWithTextField!
     @IBOutlet weak var addOrDeleteButton: UIButton!
     @IBOutlet weak var addtionalCertificateLabel: UILabel!
@@ -19,6 +21,7 @@ class AccomplishFormController: MVVMViewController<AccomplishFormViewModel> {
     var accomplishPh: Accomplish_Placeholder?
     var accomplishSuggest: Accomplishment_Suggest?
     var dataFrom = String()
+    var accomId: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +29,7 @@ class AccomplishFormController: MVVMViewController<AccomplishFormViewModel> {
         self.viewModel = AccomplishFormViewModel()
         accomplishPh = self.viewModel?.getAccomplishPh()
         accomplishSuggest = self.viewModel?.getAccomplishSuggestion()
-        setView()
+        setup()
         hideKeyboardWhenTappedAround()
     }
     
@@ -42,6 +45,8 @@ class AccomplishFormController: MVVMViewController<AccomplishFormViewModel> {
                 guard let data = self.viewModel?.addAccomp(
                     title: certificateNameView.textField.text ?? "",
                     givenDate:  dateView.datePicker.date,
+                    endDate: endDateView.datePicker.date,
+                    status: statusView.switchButton.isOn,
                     issuer: issuerView.textField.text ?? "",
                     desc: ""
                 ) else { return errorSaveData(from: "Save") }
@@ -55,35 +60,42 @@ class AccomplishFormController: MVVMViewController<AccomplishFormViewModel> {
             }
         }
     }
-    
-    func setView(){
-        self.title = "Accomplishment"
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.viewModel = AccomplishFormViewModel()
-        accomplishPh = self.viewModel?.getAccomplishPh()
-        accomplishSuggest = self.viewModel?.getAccomplishSuggestion()
-        certificateNameView.titleLabel.text = "Certificate/Award Name*"
-        addtionalCertificateLabel.text = accomplishSuggest?.title
-        dateView.titleLabel.text = "Qualification*"
-        issuerView.titleLabel.text = "Issuer*"
-    
-        if dataFrom == "edit" {
-            if accomplish == nil {
-                certificateNameView.textField.placeholder = accomplishPh?.title_ph
-                issuerView.textField.placeholder = accomplishPh?.given_date_ph
-                addOrDeleteButton.dsLongFilledPrimaryButton(withImage: false, text: "Add Accomplishment")
-            } else {
-                certificateNameView.textField.text = accomplish?.title
-                issuerView.textField.text = accomplish?.issuer
-                dateView.datePicker.date = accomplish?.given_date ?? Date()
-                addOrDeleteButton.dsLongUnfilledButton(isDelete: true, text: "Delete Accomplishment")
-                self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(self.updateAccomplish(sender:)))
-            }
+
+    func deleteAccomplishData(){
+        guard let data = self.viewModel?.deleteAccomplishData(dataAccomplish: accomplish) else { return }
+        if data {
+            self.navigationController?.popViewController(animated: false)
         } else {
-            certificateNameView.textField.placeholder = accomplishPh?.title_ph
-            issuerView.textField.placeholder = accomplishPh?.given_date_ph
-            addOrDeleteButton.dsLongFilledPrimaryButton(withImage: false, text: "Add Accomplishment")
+            errorSaveData(from: "Delete")
         }
+    }
+
+    @objc func updateAccomplish(sender: UIBarButtonItem) {
+        if !alertForCheckTF() {
+            guard let accomId = accomplish?.accomplishment_id else { return }
+            guard let data = self.viewModel?.updateAccomp(accompId: accomId,
+                                                          title: certificateNameView.textField.text ?? "",
+                                                          givenDate: dateView.datePicker.date,
+                                                          endDate: dateView.datePicker.date,
+                                                          status: statusView.switchButton.isOn,
+                                                          issuer: issuerView.textField.text ?? "",
+                                                          desc: ""
+            ) else { return errorSaveData(from: "Update") }
+            if data {
+                performSegue(withIdentifier: "backToStepVC", sender: self)
+            } else {
+                errorSaveData(from: "Update")
+            }
+        }
+    }
+    
+}
+//MARK: ALERT
+extension AccomplishFormController {
+    func errorSaveData(from: String){
+        let alert = UIAlertController(title: "Unable to \(from) Data", message: "Your data is not saved. Please try again later", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func alertForCheckTF() -> Bool {
@@ -103,31 +115,54 @@ class AccomplishFormController: MVVMViewController<AccomplishFormViewModel> {
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {action in self.deleteAccomplishData()}))
         self.present(alert, animated: true, completion: nil)
     }
-    // for delete and reload
-    func deleteAccomplishData(){
-        self.viewModel?.deleteAccomplishData(dataAccomplish: accomplish)
-        self.navigationController?.popViewController(animated: false)
-    }
-    @objc func updateAccomplish(sender: UIBarButtonItem) {
-        AccomplishmentRepository.shared.updateAccomplishment(accomId: UUID().uuidString,
-                                                             userId: 0,
-                                                             title: certificateNameView.textField.text ?? String(),
-                                                             givenDate: dateView.datePicker.date,
-                                                             issuer: issuerView.textField.text ?? String(),
-                                                             desc: "",
-                                                             isSelected: true)
-        let storyboard = UIStoryboard(name: "TestAccomplish", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "goToTestAccomplish") as! TestAccomplishController
-        vc.navigationItem.setHidesBackButton(true, animated:false)
-        self.navigationController?.pushViewController(vc, animated: false)
-    }
-    
 }
-//MARK: ALERT
+
+//MARK: Delegate
+extension AccomplishFormController: LabelSwitchDelegate {
+    func getValueSwitch() {
+        if (statusView.switchButton.isOn){
+            endDateView.datePicker.isUserInteractionEnabled = true
+        } else {
+            endDateView.datePicker.isUserInteractionEnabled = false
+        }
+    }
+}
+
+//MARK: Initial Setup
 extension AccomplishFormController {
-    func errorSaveData(from: String){
-        let alert = UIAlertController(title: "Unable to \(from) Data", message: "Your data is not saved. Please try again later", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+    func setup(){
+        self.title = "Accomplishment"
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.viewModel = AccomplishFormViewModel()
+        accomplishPh = self.viewModel?.getAccomplishPh()
+        accomplishSuggest = self.viewModel?.getAccomplishSuggestion()
+        certificateNameView.titleLabel.text = "Certificate/Award Name*"
+        addtionalCertificateLabel.text = accomplishSuggest?.title
+        dateView.dateTitle.text = "Issued Date*"
+        statusView.titleLabel.text = "Certificate/Award Status"
+        statusView.switchTitle.text = "Currently Valid"
+        statusView.delegate = self
+        endDateView.dateTitle.text = "Expiration Date*"
+        issuerView.titleLabel.text = "Issuer*"
+    
+        if dataFrom == "edit" {
+            if accomplish == nil {
+                certificateNameView.textField.placeholder = accomplishPh?.title_ph
+                issuerView.textField.placeholder = accomplishPh?.given_date_ph
+                addOrDeleteButton.dsLongFilledPrimaryButton(withImage: false, text: "Add Accomplishment")
+            } else {
+                certificateNameView.textField.text = accomplish?.title
+                issuerView.textField.text = accomplish?.issuer
+                dateView.datePicker.date = accomplish?.given_date ?? Date()
+                statusView.switchButton.isOn = ((accomplish?.status) == true)
+                endDateView.datePicker.date = accomplish?.end_date ?? Date()
+                addOrDeleteButton.dsLongUnfilledButton(isDelete: true, text: "Delete Accomplishment")
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(self.updateAccomplish(sender:)))
+            }
+        } else {
+            certificateNameView.textField.placeholder = accomplishPh?.title_ph
+            issuerView.textField.placeholder = accomplishPh?.given_date_ph
+            addOrDeleteButton.dsLongFilledPrimaryButton(withImage: false, text: "Add Accomplishment")
+        }
     }
 }

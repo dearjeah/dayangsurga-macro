@@ -40,19 +40,18 @@ class ExperienceFormViewModel: NSObject{
         return addExp
     }
     
-    func updateExpData(title: String, jobDesc: String, company: String, startDate: Date, endDate: Date, status: Bool, isSelected: Bool) -> Bool {
-        let updateExp = expRepo.createExperience(exp_id: UUID().uuidString, 
-                                 user_id: 0,
-                                 jobTitle: title,
-                                 jobDesc: jobDesc,
-                                 jobCompanyName: company,
-                                 jobStartDate: startDate,
-                                 jobEndtDate: endDate,
-                                 jobStatus: status,
-                                 isSelected: isSelected)
+    func updateExpData(expId: String, title: String, jobDesc: String, company: String, startDate: Date, endDate: Date, status: Bool, isSelected: Bool) -> Bool {
+        let updateExp = expRepo.updateExperience(exp_id: expId,
+                                                 user_id: 0,
+                                                 newJobTitle: title,
+                                                 newJobDesc: jobDesc,
+                                                 newJobCompanyName: company,
+                                                 newJobStartDate: startDate,
+                                                 newJobEndtDate: endDate,
+                                                 newJobStatus: status,
+                                                 newIsSelected: isSelected)
         return updateExp
     }
-
     
     func deleteExpData(dataExperience: Experience?) -> Bool {
         let data = expRepo.deleteExperience(data: dataExperience ?? Experience())
