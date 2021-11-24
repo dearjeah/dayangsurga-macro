@@ -119,6 +119,13 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         cell.editButtonAction = {
             self.experienceDelegate?.passingExpData(exp: self.experience[indexPath.row])
         }
+        
+        if experience[indexPath.row].isSelected {
+            cell.checklistButtonIfSelected()
+        } else {
+            cell.checklistButtonUnSelected()
+        }
+        
         cell.checklistButtonAction = {
             if cell.selectionStatus == false{
                 cell.selectionStatus = true

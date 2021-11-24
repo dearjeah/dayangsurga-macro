@@ -101,6 +101,11 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
         cell.educationPeriod.text = eduPeriod
         cell.educationGPA.text = String(edu.gpa)
         cell.educationActivities.text = edu.activity
+        if edu.is_selected {
+            cell.checklistButtonIfSelected()
+        } else {
+            cell.checklistButtonUnSelected()
+        }
         
         cell.editButtonAction = {
             self.delegate?.editEduForm(from: "edit", edu: edu)

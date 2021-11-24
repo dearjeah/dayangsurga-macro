@@ -78,6 +78,11 @@ extension AccomplishmentPageView:  UITableViewDelegate, UITableViewDataSource {
         cell.awardName.text = accomplishment[indexPath.row].title
         cell.awardDate.text = accomplishment[indexPath.row].given_date?.string(format: Date.ISO8601Format.MonthYear)
         cell.awardIssuer.text = accomplishment[indexPath.row].issuer
+        if accomplishment[indexPath.row].is_selected {
+            cell.checklistButtonIfSelected()
+        } else {
+            cell.checklistButtonUnSelected()
+        }
         cell.editButtonAction = {
            
             self.delegate?.passingAccomplishData(accomplish: self.accomplishment[indexPath.row])
