@@ -36,7 +36,7 @@ class ExperienceFormViewModel: NSObject{
                                  jobStartDate: startDate,
                                  jobEndtDate: endDate,
                                  jobStatus: status,
-                                 isSelected: isSelected)
+                                 isSelected: true)
         return addExp
     }
     

@@ -72,16 +72,25 @@ class AccomplishmentPageView: UIView {
 extension AccomplishmentPageView:  UITableViewDelegate, UITableViewDataSource {
     // setup table view
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let accompData  = accomplishment[indexPath.row]
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AccomplishmentTableCell.identifier, for: indexPath) as? AccomplishmentTableCell else {
             return UITableViewCell()
         }
-        cell.awardName.text = accomplishment[indexPath.row].title
-        cell.awardDate.text = accomplishment[indexPath.row].given_date?.string(format: Date.ISO8601Format.MonthYear)
-        cell.awardIssuer.text = accomplishment[indexPath.row].issuer
+        cell.awardName.text = accompData.title
+        cell.awardDate.text = accompData.given_date?.string(format: Date.ISO8601Format.MonthYear)
+        cell.awardIssuer.text = accompData.issuer
         cell.editButtonAction = {
            
             self.delegate?.passingAccomplishData(accomplish: self.accomplishment[indexPath.row])
         }
+        
+        if accompData.is_selected == false{
+            cell.checklistButtonUnSelected()
+        }else{
+            cell.checklistButtonIfSelected()
+        }
+        
         cell.checklistButtonAction = {
             if cell.selectionStatus == false{
                 cell.selectionStatus = true
