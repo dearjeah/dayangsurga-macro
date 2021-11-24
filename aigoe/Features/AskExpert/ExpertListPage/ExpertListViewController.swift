@@ -73,6 +73,7 @@ extension ExpertListViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         cell.nameLabel.text = expert[indexPath.row].expert_name
+        cell.expertImage.image = UIImage(data: expert[indexPath.row].expert_image ?? Data())
         cell.industryAndExperienceLabel.text = "\(expert[indexPath.row].title_on_list ?? String()) | \(expert[indexPath.row].experience ?? String())"
         return cell
     }
