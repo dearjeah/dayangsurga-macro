@@ -9,7 +9,8 @@ import UIKit
 
 class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ResumeCellDelegate {
     
-    @IBOutlet weak var buttonView: BigButtonWithImage!
+    
+    @IBOutlet weak var buttonView: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var emptyStateView: EmptyState!
@@ -22,17 +23,28 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         super.viewDidLoad()
         
         setView()
-        buttonView.delegate = self
         registerCollectionView()
         navigationStyle()
         
         self.viewModel = LandingPageViewModel()
         userResume = self.viewModel?.allUserResumeDataByDate() ?? []
         emptyState = self.viewModel?.getEmptyState()
-    }
+        buttonView.dsLongFilledPrimaryButton(withImage: false, text: "Create Resume")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.addResume(sender:)))
+                                                                       
+     }
+     
+     @objc func addResume(sender: UIBarButtonItem) {
+             didTapButton()
+                                                                         
+     }
     
     func navigationStyle(){
         configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.white, title: "Resume", preferredLargeTitle: true, hideBackButton: false)
+    }
+    
+    @IBAction func buttonViewTapped(_ sender: Any) {
+        didTapButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,9 +78,11 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if userResume.count != 0 {
             emptyStateView.isHidden = true
+            buttonView.isHidden = true
             return userResume.count
         } else {
             emptyStateView.isHidden = false
+            buttonView.isHidden = false
             let image = UIImage(data: emptyState?.image ?? Data())
             emptyStateView.emptyStateImage.image = image
             emptyStateView.emptyStateTitle.text = nil

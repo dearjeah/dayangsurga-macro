@@ -72,7 +72,7 @@ extension StepByStepGuideViewController: prevNextButtonDelegate {
     }
     
     func changeTitleToGenerate(was: Bool) {
-        smallSetButtonView.rightButton.setTitle("Generate", for: .normal)
+        smallSetButtonView.rightButton.dsLongFilledPrimaryButton(withImage: false, text: "Preview")
         isGenerate = true
     }
     
@@ -84,9 +84,9 @@ extension StepByStepGuideViewController: prevNextButtonDelegate {
         }
         
         if !right {
-            smallSetButtonView.rightButton.dsShortFilledPrimaryButton(isDisable: true, text: "Next")
+            smallSetButtonView.rightButton.dsShortUnfilledButton(isDelete: false, isDisable: true, text: "Next")
         } else {
-            smallSetButtonView.rightButton.dsShortFilledPrimaryButton(isDisable: false, text: "Next")
+            smallSetButtonView.rightButton.dsShortUnfilledButton(isDelete: false, isDisable: false, text: "Next")
         }
         smallSetButtonView.leftButton.isEnabled = left
         smallSetButtonView.rightButton.isEnabled = right

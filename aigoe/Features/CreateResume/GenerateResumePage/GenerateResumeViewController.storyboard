@@ -35,9 +35,12 @@
                                     <constraint firstAttribute="height" constant="48" id="oEq-ZW-RM6"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system" title="  Export Resume"/>
+                                <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system" title="  Export Resume">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="semibold"/>
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="17"/>
+                                </buttonConfiguration>
                                 <connections>
-                                    <action selector="exportDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="01Y-xe-cVL"/>
+                                    <action selector="exportDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="DpN-fy-jmK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKU-Tr-lzk">
@@ -131,7 +134,7 @@
                     </view>
                     <connections>
                         <outlet property="editResumeNameButton" destination="G3J-IG-Jbr" id="A9A-Pb-Czt"/>
-                        <outlet property="exportResumeButton" destination="6mQ-FM-vfb" id="khP-DZ-RUX"/>
+                        <outlet property="exportResumeButton" destination="6mQ-FM-vfb" id="5Yw-Zf-XF9"/>
                         <outlet property="finishCreateResume" destination="JKU-Tr-lzk" id="XZT-IS-5kc"/>
                         <outlet property="previewResumeButton" destination="1fC-4C-Oy5" id="ZKk-3c-VJG"/>
                         <outlet property="resumeDate" destination="sGz-SP-EMM" id="aVQ-Dr-a0W"/>
