@@ -39,8 +39,6 @@ class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> 
         
         self.viewModel = ResumeTemplateViewModel()
         template = self.viewModel?.getTemplate() ?? []
-        let startIndex = IndexPath(item: currentPage, section: 0)
-     
     }
 
     @IBAction func didTapButton(_ sender: Any) {
@@ -118,14 +116,12 @@ extension ResumeTemplateViewController: UICollectionViewDelegate, UICollectionVi
             if i == currentPage{
                 let cell = self.resumeTemplateCollection.cellForItem(at: currentIndex)
                 cell?.layer.borderColor = UIColor.primaryBlue.cgColor
-                cell?.contentView.layer.borderColor = UIColor.primaryBlue.cgColor
                 cell?.layer.borderWidth = 2
                 cell?.layer.cornerRadius = 18
             }else{
                 let currentPage = IndexPath(item: i, section: 0)
                 let cell = self.resumeTemplateCollection.cellForItem(at: currentPage)
                 cell?.layer.borderColor = UIColor.primaryDisable.cgColor
-                cell?.contentView.layer.borderColor = UIColor.primaryDisable.cgColor
                 cell?.layer.cornerRadius = 18
             }
             
