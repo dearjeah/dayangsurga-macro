@@ -7,8 +7,7 @@
 
 import UIKit
 
-class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ResumeCellDelegate {
-    
+class LandingPageViewController: MVVMViewController<LandingPageViewModel> {
     
     @IBOutlet weak var buttonView: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
@@ -18,7 +17,7 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
     var userResume = [User_Resume]()
     var emptyState: Empty_State?
     var index = IndexPath()
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,22 +28,6 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         self.viewModel = LandingPageViewModel()
         userResume = self.viewModel?.allUserResumeDataByDate() ?? []
         emptyState = self.viewModel?.getEmptyState()
-        buttonView.dsLongFilledPrimaryButton(withImage: false, text: "Create Resume")
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.addResume(sender:)))
-                                                                       
-     }
-     
-     @objc func addResume(sender: UIBarButtonItem) {
-             didTapButton()
-                                                                         
-     }
-    
-    func navigationStyle(){
-        configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.white, title: "Resume", preferredLargeTitle: true, hideBackButton: false)
-    }
-    
-    @IBAction func buttonViewTapped(_ sender: Any) {
-        didTapButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,20 +38,64 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         self.collectionView.reloadData()
     }
     
-    func setView(){
-        self.title = "Resume"
-        titleLabel.text = "My Resumes"
+    @IBAction func buttonViewTapped(_ sender: Any) {
+        didTapButton()
     }
     
-    func didTapButton() {
-        let storyboard = UIStoryboard(name: "ResumeTemplateViewController", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "goToTemplateResume") as! ResumeTemplateViewController
+    @objc func addResume(sender: UIBarButtonItem) {
+        didTapButton()
+    }
+    
+    func goToPreview(){
+        let storyboard = UIStoryboard(name: "PreviewResumeViewController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToPreviewResume") as! PreviewResumeViewController
+        // passing data
+        vc.selectedData = userResume[selectedIndex]
+        let dataInput = "Test"
+        
+        let pdfCreator = PDFCreator(
+            dataInput: dataInput, userResume: userResume[selectedIndex]
+        )
+        
+        vc.documentData = pdfCreator.createPDF()
+        
         self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.titleView?.tintColor = .white
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    // setting for collection view
+    // for delete and reload
+    func deleteResumeData(){
+        self.viewModel?.deleteResumeData(resume: self.userResume[self.selectedIndex])
+        self.userResume.remove(at: selectedIndex)
+        userResume = self.viewModel?.getUserResume() ?? []
+        self.collectionView.performBatchUpdates({
+            self.collectionView.deleteItems(at: [index])
+        })
+        self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+        collectionView.reloadData()
+    }
+    
+}
+
+//MARK: Initial Setup
+extension LandingPageViewController {
+    func navigationStyle(){
+        configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.white, title: "Resume", preferredLargeTitle: true, hideBackButton: false)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create Resume", style: .plain, target: self, action: #selector(self.addResume(sender:)))
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.primaryWhite
+    }
+    
+    func setView(){
+        self.title = "Resume"
+        titleLabel.text = "Explore more feature by clicking your resume"
+        buttonView.dsLongFilledPrimaryButton(withImage: false, text: "Create Resume")
+    }
+}
+
+//MARK: Collection View
+extension LandingPageViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func registerCollectionView(){
         collectionView.register(ResumeCell.nib(), forCellWithReuseIdentifier: ResumeCell.identifier)
         collectionView.dataSource = self
@@ -79,9 +106,11 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         if userResume.count != 0 {
             emptyStateView.isHidden = true
             buttonView.isHidden = true
+            titleLabel.isHidden = false
             return userResume.count
         } else {
             emptyStateView.isHidden = false
+            titleLabel.isHidden = true
             buttonView.isHidden = false
             let image = UIImage(data: emptyState?.image ?? Data())
             emptyStateView.emptyStateImage.image = image
@@ -119,13 +148,12 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
         index = indexPath
-        createAlert()
+        goToPreview()
     }
-    
-    private func getCurrentIndex() -> Int {
-        return Int(collectionView.contentOffset.x / collectionView.frame.width)
-    }
-    
+}
+
+//MARK: Alert
+extension LandingPageViewController {
     func createAlert(){
         let alert = UIAlertController(title: "\(userResume[selectedIndex].name ?? "")", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Preview Resume", style: .default, handler: {action in self.goToPreview()}))
@@ -176,23 +204,11 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         self.present(alert, animated: true)
     }
     
-    func goToPreview(){
-        let storyboard = UIStoryboard(name: "PreviewResumeViewController", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "goToPreviewResume") as! PreviewResumeViewController
-        // passing data
-        vc.selectedData = userResume[selectedIndex]
-        let dataInput = "Test"
-        
-        let pdfCreator = PDFCreator(
-            dataInput: dataInput, userResume: userResume[selectedIndex]
-        )
-        
-        vc.documentData = pdfCreator.createPDF()
-        
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.navigationItem.titleView?.tintColor = .white
-        self.tabBarController?.tabBar.isHidden = true
-        self.navigationController?.pushViewController(vc, animated: true)
+    func showAlertForDelete(){
+        let alert = UIAlertController(title: "Delete Data?", message: "You will not be able to recover it.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {action in self.deleteResumeData()}))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func goToEdit(index: Int){
@@ -206,25 +222,6 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func showAlertForDelete(){
-        let alert = UIAlertController(title: "Delete Data?", message: "You will not be able to recover it.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {action in self.deleteResumeData()}))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    // for delete and reload
-    func deleteResumeData(){
-        self.viewModel?.deleteResumeData(resume: self.userResume[self.selectedIndex])
-        self.userResume.remove(at: selectedIndex)
-        userResume = self.viewModel?.getUserResume() ?? []
-        self.collectionView.performBatchUpdates({
-            self.collectionView.deleteItems(at: [index])
-        })
-        self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
-        collectionView.reloadData()
-    }
-
     func goToComingSoon(){
         let storyboard = UIStoryboard(name: "UserProfileViewController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "UserProfileView") as! UserProfileViewController
@@ -233,5 +230,15 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel>, UICol
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
+}
+
+//MARK: Delegate
+extension LandingPageViewController: ResumeCellDelegate {
+    func didTapButton() {
+        let storyboard = UIStoryboard(name: "ResumeTemplateViewController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToTemplateResume") as! ResumeTemplateViewController
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
