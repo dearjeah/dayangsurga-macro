@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CloudKit
 
 protocol StepByStepGuideDelegate: AnyObject {
     func progressBarUpdate(index: Int, totalData: Int)
@@ -20,6 +21,7 @@ protocol StepByStepGuideDelegate: AnyObject {
     func goToAddSkill(from: String)
     func goToEditSkill(from: String, skills: [Skills])
     func updateData(page: Int)
+    func updateTableChecklist(from: String, id: String, isSelected: Bool)
 }
 
 protocol prevNextButtonDelegate: AnyObject {
@@ -43,6 +45,7 @@ class StepByStepGuidePageController: UIPageViewController {
     var expData = [Experience]()
     var skillData = [Skills]()
     var accomData = [Accomplishment]()
+    var currentResume = Resume_Content() 
     
     weak var stepDelegate: StepByStepGuideDelegate?
     weak var prevNextDelegate: prevNextButtonDelegate?
@@ -115,6 +118,11 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
         }
     }
     
+    @objc func dataUpdate() {
+        reloadData()
+        buttonFunctional(currentPage: currentPageIndex)
+    }
+    
     //MARK: Delegate Function
     func hideUnHideButton(currentPage: Int) {
         let isQuizPage = isQuizPage(currentIndex: currentPage)
@@ -149,6 +157,11 @@ extension StepByStepGuidePageController: ListEduDelegate {
     func editEduForm(from: String, edu: Education) {
         stepDelegate?.goToEditEdu(was: true, from: "edit", edu: edu)
     }
+    
+    func selectButtonEdu(eduId: String, isSelected: Bool) {
+        stepDelegate?.updateTableChecklist(from: "edu", id: eduId, isSelected: isSelected)
+        dataUpdate()
+    }
 }
 
 
@@ -161,8 +174,14 @@ extension StepByStepGuidePageController: ExperienceListDelegate {
     func passingExpData(exp: Experience?) {
         stepDelegate?.goToEditExp(was: true, from: "edit", exp: exp ?? Experience())
     }
+    
+    func selectButtonExp(expId: String, isSelected: Bool) {
+        stepDelegate?.updateTableChecklist(from: "exp", id: expId, isSelected: isSelected)
+        dataUpdate()
+    }
 }
 
+//MARK: Skills List Delegate
 extension StepByStepGuidePageController: skillListDelegate {
     func passDataFromEdit(from: String) {
         if from == "Add" {
@@ -170,7 +189,11 @@ extension StepByStepGuidePageController: skillListDelegate {
         } else {
             stepDelegate?.goToEditSkill(from: from, skills: skillData)
         }
-        
+    }
+    
+    func selectButtonSkill(skillId: String, isSelected: Bool) {
+        stepDelegate?.updateTableChecklist(from: "skill", id: skillId, isSelected: isSelected)
+        dataUpdate()
     }
 }
 
@@ -182,6 +205,11 @@ extension StepByStepGuidePageController: AccomplishListDelegate {
     
     func passingAccomplishData(accomplish: Accomplishment?) {
         stepDelegate?.goToEditAccom(from: "edit", accomp: accomplish ?? Accomplishment())
+    }
+    
+    func selectButtonAccom(accomId: String, isSelected: Bool) {
+        stepDelegate?.updateTableChecklist(from: "accomp", id: accomId, isSelected: isSelected)
+        dataUpdate()
     }
 }
 
@@ -430,6 +458,11 @@ extension StepByStepGuidePageController {
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectPrev), name: Notification.Name("goToPrev"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectGenerate), name: Notification.Name("goToGenerate"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(progressBarTapped), name: Notification.Name("progressBarTapped"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("eduReload"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("expReload"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("skillReload"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("accompReload"), object: nil)
     }
     
     private func setPageIndex(value: Int, progressBar: Bool = false) {
