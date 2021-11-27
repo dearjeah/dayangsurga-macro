@@ -21,6 +21,10 @@ class EducationListController: MVVMViewController<EducationListViewModel> {
 }
 
 extension EducationListController: ListEduDelegate {
+    func selectButtonEdu(eduId: String, isSelected: Bool) {
+        //
+    }
+    
     func editEduForm(from: String, edu: Education) {
         let storyboard = UIStoryboard(name: "EducationFormController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToEduForm") as! EducationFormController

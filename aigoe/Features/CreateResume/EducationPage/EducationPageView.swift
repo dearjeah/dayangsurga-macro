@@ -10,6 +10,7 @@ import UIKit
 protocol ListEduDelegate: AnyObject{
     func addEduForm(from: String)
     func editEduForm(from: String, edu: Education)
+    func selectButtonEdu(eduId: String, isSelected: Bool)
 }
 
 class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
@@ -116,15 +117,16 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
                 self.eduData[indexPath.row].is_selected = true
-                EducationRepository.shared.updateSelectedEduStatus(edu_id: UUID().uuidString, isSelected: true)
+                //EducationRepository.shared.updateSelectedEduStatus(edu_id: edu.edu_id ?? "", isSelected: true)
+                self.delegate?.selectButtonEdu(eduId: edu.edu_id ?? "", isSelected: true)
             } else {
                 cell.selectionStatus = false
                 cell.checklistButtonUnSelected()
                 self.eduData[indexPath.row].is_selected = false
-                EducationRepository.shared.updateSelectedEduStatus(edu_id: UUID().uuidString, isSelected: false)
+                //EducationRepository.shared.updateSelectedEduStatus(edu_id: edu.edu_id ?? "", isSelected: false)
+                self.delegate?.selectButtonEdu(eduId: edu.edu_id ?? "", isSelected: false)
             }
         }
-        
         return cell
     }
     
