@@ -8,6 +8,10 @@
 import UIKit
 
 class TestSkills: MVVMViewController<StepByStepGuideViewModel>, skillListDelegate {
+    func selectButtonSkill(skillId: String, isSelected: Bool) {
+        //
+    }
+    
     
     var skill: [Skills]? = []
     

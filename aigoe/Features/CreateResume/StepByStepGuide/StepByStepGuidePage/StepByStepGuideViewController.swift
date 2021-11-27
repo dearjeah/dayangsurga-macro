@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel> {
     
@@ -19,6 +20,7 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
     var expData = [Experience]()
     var skillData = [Skills]()
     var accomData = [Accomplishment]()
+    var selectedResumeContentId = String()
     
     @IBOutlet weak var progressBarView: ProgressBarView!
     @IBOutlet  var smallSetButtonView: SmallSetButton!
@@ -43,6 +45,7 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
             pageController.isCreate = isCreate
         } else if let vc = segue.destination as? GenerateResumeController {
             vc.selectedTemplate = selectedTemplate
+            vc.userResume = selectedUserResume
         }
     }
     
@@ -51,7 +54,7 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
             NotificationCenter.default.post(name: Notification.Name("eduReload"), object: nil)
         } else if formSource == "experience" {
             NotificationCenter.default.post(name: Notification.Name("expReload"), object: nil)
-        } else if formSource == "skill" {
+        } else if formSource == "skills" {
             NotificationCenter.default.post(name: Notification.Name("skillReload"), object: nil)
         } else if formSource == "accomplishment" {
             NotificationCenter.default.post(name: Notification.Name("accompReload"), object: nil)
@@ -138,6 +141,21 @@ extension StepByStepGuideViewController: SmallSetButtonDelegate {
 
 //MARK: Step Page Controller Delegate
 extension StepByStepGuideViewController: StepByStepGuideDelegate {
+    func updateTableChecklist(from: String, id: String, isSelected: Bool) {
+        if from == "edu" {
+            self.viewModel?.updateEduSelection(resumeContentId: selectedResumeContentId, id: id, isSelected: isSelected)
+        } else if from == "exp" {
+            self.viewModel?.updateExpSelection(resumeContentId: selectedResumeContentId, id: id, isSelected: isSelected)
+        } else if from == "skill" {
+            self.viewModel?.updateSkillSelection(resumeContentId: selectedResumeContentId, id: id, isSelected: isSelected)
+        } else if from == "accomp" {
+            self.viewModel?.updateAccomSelection(resumeContentId: selectedResumeContentId, id: id, isSelected: isSelected)
+        } else {
+            print("Step View Controller =======checklist is from unknown directory========")
+        }
+        
+    }
+    
     func updateData(page: Int) {
         let data = self.viewModel?.getAllInitialData()
         let edu = data?.edu ?? []
