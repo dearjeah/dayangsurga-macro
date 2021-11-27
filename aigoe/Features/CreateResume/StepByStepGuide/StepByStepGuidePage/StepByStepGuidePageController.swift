@@ -172,6 +172,10 @@ extension StepByStepGuidePageController: ExperienceListDelegate {
     func passingExpData(exp: Experience?) {
         stepDelegate?.goToEditExp(was: true, from: "edit", exp: exp ?? Experience())
     }
+    
+    func selectButtonExp(expId: String, isSelected: Bool) {
+        stepDelegate?.updateTableChecklist(from: "exp", id: expId, isSelected: isSelected)
+    }
 }
 
 //MARK: Skills List Delegate

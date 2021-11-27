@@ -142,7 +142,18 @@ extension StepByStepGuideViewController: SmallSetButtonDelegate {
 //MARK: Step Page Controller Delegate
 extension StepByStepGuideViewController: StepByStepGuideDelegate {
     func updateTableChecklist(from: String, id: String, isSelected: Bool) {
-        self.viewModel?.updateEduSelection(resumeContentId: selectedResumeContentId, id: id, isSelected: isSelected)
+        if from == "edu" {
+            self.viewModel?.updateEduSelection(resumeContentId: selectedResumeContentId, id: id, isSelected: isSelected)
+        } else if from == "exp" {
+            self.viewModel?.updateExpSelection(resumeContentId: selectedResumeContentId, id: id, isSelected: isSelected)
+        } else if from == "skill" {
+            self.viewModel?.updateSkillSelection(resumeContentId: selectedResumeContentId, id: id, isSelected: isSelected)
+        } else if from == "accomp" {
+            self.viewModel?.updateAccomSelection(resumeContentId: selectedResumeContentId, id: id, isSelected: isSelected)
+        } else {
+            print("Step View Controller =======checklist is from unknown directory========")
+        }
+        
     }
     
     func updateData(page: Int) {

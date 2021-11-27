@@ -102,11 +102,37 @@ class StepByStepGuideViewModel: NSObject {
 extension StepByStepGuideViewModel {
     func updateEduSelection(resumeContentId: String, id: String, isSelected: Bool) {
         eduRepo.updateSelectedEduStatus(edu_id: id, isSelected: isSelected)
-        
         if isSelected {
             updateSelectedEduToResume(resumeId: resumeContentId, eduId: id)
         } else {
             resumeContentRepo.deleteResumeContentEdu(resume_id: id, eduId: id)
+        }
+    }
+    
+    func updateExpSelection(resumeContentId: String, id: String, isSelected: Bool) {
+        experienceRepo.updateSelectedExpStatus(exp_id: id, isSelected: isSelected)
+        if isSelected {
+           updateSelectedExpToResume(resumeId: resumeContentId, expId: id)
+        } else {
+            resumeContentRepo.deleteResumeContentExp(resume_id: id, expId: id)
+        }
+    }
+    
+    func updateSkillSelection(resumeContentId: String, id: String, isSelected: Bool) {
+        skillRepo.updateSelectedSkillStatus(skill_id: id, isSelected: isSelected)
+        if isSelected {
+           updateSelectedSkillsToResume(resumeId: resumeContentId, skillId: id)
+        } else {
+            resumeContentRepo.deleteResumeContentSkill(resume_id: resumeContentId, skillId: id)
+        }
+    }
+    
+    func updateAccomSelection(resumeContentId: String, id: String, isSelected: Bool) {
+        accomRepo.updateSelectedAccomplishStatus(accomId: id, is_Selected: isSelected)
+        if isSelected {
+           updateSelectedAccompToResume(resumeId: resumeContentId, accompId: id)
+        } else {
+            resumeContentRepo.deleteResumeContentAccomp(resume_id: resumeContentId, accompId: id)
         }
     }
 }
