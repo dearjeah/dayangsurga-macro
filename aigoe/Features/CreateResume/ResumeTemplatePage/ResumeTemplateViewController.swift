@@ -81,13 +81,13 @@ extension ResumeTemplateViewController: UICollectionViewDelegate, UICollectionVi
         
         let image = UIImage(data: template[indexPath.row].image ?? Data())
         cell.resumeTemplateImage.image = image
-        cell.layer.borderColor = UIColor.primaryDisable.cgColor
-        cell.layer.borderWidth = 2
+        cell.layer.borderColor = UIColor.textviewBorder.cgColor
+        cell.layer.borderWidth = 1
         cell.layer.cornerRadius = 18
         
         if indexPath.row == 0 && currentPage == 0{
             cell.layer.borderColor = UIColor.primaryBlue.cgColor
-            cell.layer.borderWidth = 2
+            cell.layer.borderWidth = 3
             cell.layer.cornerRadius = 18
         }
         
@@ -116,13 +116,14 @@ extension ResumeTemplateViewController: UICollectionViewDelegate, UICollectionVi
             if i == currentPage{
                 let cell = self.resumeTemplateCollection.cellForItem(at: currentIndex)
                 cell?.layer.borderColor = UIColor.primaryBlue.cgColor
-                cell?.layer.borderWidth = 2
+                cell?.layer.borderWidth = 3
                 cell?.layer.cornerRadius = 18
             }else{
                 let currentPage = IndexPath(item: i, section: 0)
                 let cell = self.resumeTemplateCollection.cellForItem(at: currentPage)
-                cell?.layer.borderColor = UIColor.primaryDisable.cgColor
+                cell?.layer.borderColor = UIColor.textviewBorder.cgColor
                 cell?.layer.cornerRadius = 18
+                cell?.layer.borderWidth = 1
             }
             
         }
