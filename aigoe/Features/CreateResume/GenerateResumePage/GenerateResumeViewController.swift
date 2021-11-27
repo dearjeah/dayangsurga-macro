@@ -22,9 +22,12 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        exportResumeButton.dsLongFilledPrimaryButton(withImage: false, text: " Export Resume")
-        exportResumeButton.tintColor = .white
         finishCreateResume.dsLongUnfilledButton(isDelete: false, text: "Finish")
+      //  exportResumeButton.dsLongFilledPrimaryButton(withImage: false, text: " Export Resume")
+        exportResumeButton.backgroundColor = UIColor.primaryBlue
+        exportResumeButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
+        exportResumeButton.layer.cornerRadius = 18
+        exportResumeButton.tintColor = .white
         resumePreviewImage.layer.borderColor = UIColor.primaryBlue.cgColor
         resumePreviewImage.layer.shadowOpacity = 0.5
         resumePreviewImage.layer.shadowRadius = 1

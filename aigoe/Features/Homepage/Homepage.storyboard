@@ -68,11 +68,11 @@
             </objects>
             <point key="canvasLocation" x="1254" y="738"/>
         </scene>
-        <!--User-->
+        <!--About Me-->
         <scene sceneID="h70-Z2-sZj">
             <objects>
                 <navigationController id="y03-MT-H2B" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="User" image="person.circle.fill" catalog="system" landscapeImage="person.circle.fill" selectedImage="person.circle.fill" id="st2-mi-dVC"/>
+                    <tabBarItem key="tabBarItem" title="About Me" image="person.circle.fill" catalog="system" landscapeImage="person.circle.fill" selectedImage="person.circle.fill" id="st2-mi-dVC"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="gUd-g7-Zif">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -10,6 +10,7 @@ import UIKit
 protocol ExperienceListDelegate: AnyObject {
     func goToAddExp()
     func passingExpData(exp: Experience?)
+    func selectButtonExp(expId: String, isSelected: Bool)
 }
 
 class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
@@ -128,6 +129,7 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.checklistButtonAction = {
+            let expId =  self.experience[indexPath.row].exp_id ?? ""
             if cell.selectionStatus == false{
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
