@@ -160,6 +160,7 @@ extension StepByStepGuidePageController: ListEduDelegate {
     
     func selectButtonEdu(eduId: String, isSelected: Bool) {
         stepDelegate?.updateTableChecklist(from: "edu", id: eduId, isSelected: isSelected)
+        dataUpdate()
     }
 }
 
@@ -176,6 +177,7 @@ extension StepByStepGuidePageController: ExperienceListDelegate {
     
     func selectButtonExp(expId: String, isSelected: Bool) {
         stepDelegate?.updateTableChecklist(from: "exp", id: expId, isSelected: isSelected)
+        dataUpdate()
     }
 }
 
@@ -191,6 +193,7 @@ extension StepByStepGuidePageController: skillListDelegate {
     
     func selectButtonSkill(skillId: String, isSelected: Bool) {
         stepDelegate?.updateTableChecklist(from: "skill", id: skillId, isSelected: isSelected)
+        dataUpdate()
     }
 }
 
@@ -206,6 +209,7 @@ extension StepByStepGuidePageController: AccomplishListDelegate {
     
     func selectButtonAccom(accomId: String, isSelected: Bool) {
         stepDelegate?.updateTableChecklist(from: "accomp", id: accomId, isSelected: isSelected)
+        dataUpdate()
     }
 }
 
