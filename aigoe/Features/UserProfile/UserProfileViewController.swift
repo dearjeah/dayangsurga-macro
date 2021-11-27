@@ -13,12 +13,11 @@ class UserProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setComingSoon()
-        self.title = "Profile"
         navigationStyle()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.title = "Profile"
+        self.title = "About Me"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
         navigationController?.navigationBar.sizeToFit()
@@ -35,7 +34,7 @@ class UserProfileViewController: UIViewController {
     }
     
     func navigationStyle(){
-        configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.white, title: "Profile", preferredLargeTitle: true, hideBackButton: false)
+        configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.white, title: "About Me", preferredLargeTitle: true, hideBackButton: false)
     }
 
 
