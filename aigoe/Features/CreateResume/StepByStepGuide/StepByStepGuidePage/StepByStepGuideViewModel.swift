@@ -97,6 +97,20 @@ class StepByStepGuideViewModel: NSObject {
     }
 }
 
+//MARK: Update Checklist on Table View
+
+extension StepByStepGuideViewModel {
+    func updateEduSelection(resumeContentId: String, id: String, isSelected: Bool) {
+        eduRepo.updateSelectedEduStatus(edu_id: id, isSelected: isSelected)
+        
+        if isSelected {
+            updateSelectedEduToResume(resumeId: resumeContentId, eduId: id)
+        } else {
+            resumeContentRepo.deleteResumeContentEdu(resume_id: id, eduId: id)
+        }
+    }
+}
+
 //MARK: Progress Bar
 extension StepByStepGuideViewModel {
     func updateImage(progress: progressBarType, progressBarView: ProgressBarView) {

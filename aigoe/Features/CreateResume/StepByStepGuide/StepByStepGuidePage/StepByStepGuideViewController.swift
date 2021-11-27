@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel> {
     
@@ -19,6 +20,7 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
     var expData = [Experience]()
     var skillData = [Skills]()
     var accomData = [Accomplishment]()
+    var selectedResumeContentId = String()
     
     @IBOutlet weak var progressBarView: ProgressBarView!
     @IBOutlet  var smallSetButtonView: SmallSetButton!
@@ -43,6 +45,7 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
             pageController.isCreate = isCreate
         } else if let vc = segue.destination as? GenerateResumeController {
             vc.selectedTemplate = selectedTemplate
+            vc.userResume = selectedUserResume
         }
     }
     
@@ -138,6 +141,10 @@ extension StepByStepGuideViewController: SmallSetButtonDelegate {
 
 //MARK: Step Page Controller Delegate
 extension StepByStepGuideViewController: StepByStepGuideDelegate {
+    func updateTableChecklist(from: String, id: String, isSelected: Bool) {
+        self.viewModel?.updateEduSelection(resumeContentId: selectedResumeContentId, id: id, isSelected: isSelected)
+    }
+    
     func updateData(page: Int) {
         let data = self.viewModel?.getAllInitialData()
         let edu = data?.edu ?? []

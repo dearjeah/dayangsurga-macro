@@ -20,6 +20,7 @@ protocol StepByStepGuideDelegate: AnyObject {
     func goToAddSkill(from: String)
     func goToEditSkill(from: String, skills: [Skills])
     func updateData(page: Int)
+    func updateTableChecklist(from: String, id: String, isSelected: Bool)
 }
 
 protocol prevNextButtonDelegate: AnyObject {
@@ -43,6 +44,7 @@ class StepByStepGuidePageController: UIPageViewController {
     var expData = [Experience]()
     var skillData = [Skills]()
     var accomData = [Accomplishment]()
+    var currentResume = Resume_Content() 
     
     weak var stepDelegate: StepByStepGuideDelegate?
     weak var prevNextDelegate: prevNextButtonDelegate?
@@ -153,6 +155,10 @@ extension StepByStepGuidePageController: ListEduDelegate {
     
     func editEduForm(from: String, edu: Education) {
         stepDelegate?.goToEditEdu(was: true, from: "edit", edu: edu)
+    }
+    
+    func selectButtonEdu(eduId: String, isSelected: Bool) {
+        stepDelegate?.updateTableChecklist(from: "edu", id: eduId, isSelected: isSelected)
     }
 }
 

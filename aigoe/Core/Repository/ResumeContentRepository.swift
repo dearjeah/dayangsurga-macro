@@ -17,7 +17,7 @@ class ResumeContentRepository{
     
     // create data
     func createResumeContent(resume_id: String,
-                             exp_id: String,
+                             exp_id: [String],
                              edu_id: [String],
                              accom_id: [String],
                              skill_id: [String]){
@@ -27,12 +27,6 @@ class ResumeContentRepository{
                 let resumeContent = Resume_Content(context: context)
                 resumeContent.resume_id = resume_id
                 
-                // relation ke experience
-                if let getExp = ExperienceRepository.shared.getExperienceById(experienceId: exp_id){
-                    getExp.exp_id = exp_id
-                    getExp.addToResumeContent(resumeContent)
-                }
-                
                 // relation dari template
                 getResume.addToResumeContent(resumeContent)
                 try context.save()
@@ -41,25 +35,6 @@ class ResumeContentRepository{
         catch let error as NSError {
             print(error)
         }
-    }
-    
-    func saveLocation(model: [String],id: String){
-        let newUser = NSEntityDescription.insertNewObject(forEntityName: entityName, into: context)
-        do{
-            if let getResume = UserResumeRepository.shared.getUserResumeById(resume_id: id){
-                let resumeContent = Resume_Content(context: context)
-                resumeContent.accom_id = model
-            }
-            var dictArray = [[String: Any]]()
-            //            for i in 0..<model.count{
-            //                let dict = model[i].dictionaryRepresentation()
-            //                dictArray.append(dict)
-            //            }
-            try context.save()
-        }catch {
-            print("failure")
-        }
-        
     }
     
     // retrieve
@@ -160,7 +135,7 @@ class ResumeContentRepository{
         do {
             let item = try context.fetch(fetchRequest) as? [Resume_Content]
             let newResumeContent = item?.first
-            newResumeContent?.accom_id = []
+            newResumeContent?.accom_id = [newAccomp_id]
             
             try context.save()
         } catch let error as NSError {
@@ -169,7 +144,87 @@ class ResumeContentRepository{
     }
     
     // func delete
-    func deleteUser(data: Resume_Content) {
+    func deleteResumeContentEdu(resume_id: String,
+                                eduId: String) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == '\(resume_id)'")
+        do {
+            let item = try context.fetch(fetchRequest) as? [Resume_Content]
+            let resumeContent = item?.first
+            let eduIdCount = resumeContent?.edu_id?.count ?? 0
+            for i in 0..<eduIdCount {
+                if resumeContent?.edu_id?[i] == eduId {
+                    resumeContent?.edu_id?.remove(at: i)
+                    try context.save()
+                    break
+                }
+            }
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    func deleteResumeContentExp(resume_id: String,
+                                expId: String) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == '\(resume_id)'")
+        do {
+            let item = try context.fetch(fetchRequest) as? [Resume_Content]
+            let resumeContent = item?.first
+            let expIdCount = resumeContent?.exp_id?.count ?? 0
+            for i in 0..<expIdCount {
+                if resumeContent?.exp_id?[i] == expId {
+                    resumeContent?.edu_id?.remove(at: i)
+                    try context.save()
+                    break
+                }
+            }
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    func deleteResumeContentSkill(resume_id: String,
+                                  skillId: String) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == '\(resume_id)'")
+        do {
+            let item = try context.fetch(fetchRequest) as? [Resume_Content]
+            let resumeContent = item?.first
+            let skillIdCount = resumeContent?.skill_id?.count ?? 0
+            for i in 0..<skillIdCount {
+                if resumeContent?.skill_id?[i] == skillId {
+                    resumeContent?.skill_id?.remove(at: i)
+                    try context.save()
+                    break
+                }
+            }
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    func deleteResumeContentAccomp(resume_id: String,
+                                   accompId: String) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == '\(resume_id)'")
+        do {
+            let item = try context.fetch(fetchRequest) as? [Resume_Content]
+            let resumeContent = item?.first
+            let accomIdCount = resumeContent?.accom_id?.count ?? 0
+            for i in 0..<accomIdCount {
+                if resumeContent?.accom_id?[i] == accompId {
+                    resumeContent?.accom_id?.remove(at: i)
+                    try context.save()
+                    break
+                }
+            }
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    func deleteResumeContent(data: Resume_Content) {
         do {
             context.delete(data)
             try context.save()
