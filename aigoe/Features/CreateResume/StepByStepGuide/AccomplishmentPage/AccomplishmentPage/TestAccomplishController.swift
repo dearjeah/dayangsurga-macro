@@ -24,6 +24,10 @@ class TestAccomplishController: MVVMViewController<StepByStepGuideViewModel> {
 }
 
 extension TestAccomplishController: AccomplishListDelegate {
+    func selectButtonAccom(accomId: String, isSelected: Bool) {
+        //
+    }
+    
     func passingAccomplishData(accomplish: Accomplishment?) {
         let storyboard = UIStoryboard(name: "AccomplishFormController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToAccomForm") as! AccomplishFormController

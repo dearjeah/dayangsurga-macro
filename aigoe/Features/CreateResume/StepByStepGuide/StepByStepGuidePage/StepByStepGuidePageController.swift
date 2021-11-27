@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CloudKit
 
 protocol StepByStepGuideDelegate: AnyObject {
     func progressBarUpdate(index: Int, totalData: Int)
@@ -186,7 +187,10 @@ extension StepByStepGuidePageController: skillListDelegate {
         } else {
             stepDelegate?.goToEditSkill(from: from, skills: skillData)
         }
-        
+    }
+    
+    func selectButtonSkill(skillId: String, isSelected: Bool) {
+        stepDelegate?.updateTableChecklist(from: "skill", id: skillId, isSelected: isSelected)
     }
 }
 
@@ -198,6 +202,10 @@ extension StepByStepGuidePageController: AccomplishListDelegate {
     
     func passingAccomplishData(accomplish: Accomplishment?) {
         stepDelegate?.goToEditAccom(from: "edit", accomp: accomplish ?? Accomplishment())
+    }
+    
+    func selectButtonAccom(accomId: String, isSelected: Bool) {
+        stepDelegate?.updateTableChecklist(from: "accomp", id: accomId, isSelected: isSelected)
     }
 }
 

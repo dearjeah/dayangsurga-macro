@@ -9,6 +9,7 @@ import UIKit
 
 protocol skillListDelegate: AnyObject{
     func passDataFromEdit(from: String)
+    func selectButtonSkill(skillId: String, isSelected: Bool)
 }
 
 class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
@@ -105,17 +106,19 @@ extension SkillsPageView {
             cell.checklistButtonUnSelected()
         }
         cell.checklistButtonAction = {
-//            self.skillListDelegate?.getSelectedIndex(index: indexPath.row)
+            let skillId = self.skills[indexPath.row].skill_id ?? ""
             if cell.selectionStatus == false{
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
                 self.skills[indexPath.row].is_selected = true
-                SkillRepository.shared.updateSelectedSkillStatus(skill_id: self.skills[indexPath.row].skill_id ?? String(), isSelected: true)
+                //SkillRepository.shared.updateSelectedSkillStatus(skill_id: self.skills[indexPath.row].skill_id ?? String(), isSelected: true)
+                self.delegate?.selectButtonSkill(skillId: skillId, isSelected: true)
             }else{
                 cell.selectionStatus = false
                 cell.checklistButtonUnSelected()
                 self.skills[indexPath.row].is_selected = false
-                SkillRepository.shared.updateSelectedSkillStatus(skill_id: self.skills[indexPath.row].skill_id ?? String(), isSelected: false)
+                //SkillRepository.shared.updateSelectedSkillStatus(skill_id: self.skills[indexPath.row].skill_id ?? String(), isSelected: false)
+                self.delegate?.selectButtonSkill(skillId: skillId, isSelected: false)
             }
         }
         return cell
