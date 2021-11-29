@@ -107,11 +107,12 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //experience = stepViewModel.getExpData() ?? []
+        let expData = experience[indexPath.row]
         selectedExp = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExperienceTableCell") as! ExperienceTableCell
         cell.jobCompanyName.text = experience[indexPath.row].jobCompanyName
         cell.jobTitle.text = experience[indexPath.row].jobTitle
-        if experience[indexPath.row].jobStatus == true {
+        if expData.jobStatus == true {
             cell.jobExperience.text = "\(experience[indexPath.row].jobStartDate?.string(format: Date.ISO8601Format.MonthYear) ?? String()) - Present"
         } else {
             cell.jobExperience.text = "\(experience[indexPath.row].jobStartDate?.string(format: Date.ISO8601Format.MonthYear) ?? String()) - \(experience[indexPath.row].jobEndDate?.string(format: Date.ISO8601Format.MonthYear) ?? String())"
@@ -121,10 +122,10 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
             self.experienceDelegate?.passingExpData(exp: self.experience[indexPath.row])
         }
         
-        if experience[indexPath.row].isSelected {
-            cell.checklistButtonIfSelected()
-        } else {
+        if expData.isSelected == false{
             cell.checklistButtonUnSelected()
+        }else{
+            cell.checklistButtonIfSelected()
         }
         
         cell.checklistButtonAction = {
@@ -132,15 +133,13 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
             if cell.selectionStatus == false{
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
-                self.experience[indexPath.row].isSelected = true
-                //ExperienceRepository.shared.updateSelectedExpStatus(exp_id: UUID().uuidString, isSelected: true)
-                self.experienceDelegate?.selectButtonExp(expId: expId, isSelected: true)
+                expData.isSelected = true
+                ExperienceRepository.shared.updateSelectedExpStatus(exp_id: UUID().uuidString, isSelected: true)
             }else{
                 cell.selectionStatus = false
                 cell.checklistButtonUnSelected()
-                self.experience[indexPath.row].isSelected = false
-                //ExperienceRepository.shared.updateSelectedExpStatus(exp_id: UUID().uuidString, isSelected: false)
-                self.experienceDelegate?.selectButtonExp(expId: expId, isSelected: false)
+                expData.isSelected = false
+                ExperienceRepository.shared.updateSelectedExpStatus(exp_id: UUID().uuidString, isSelected: false)
             }
         }
         return cell

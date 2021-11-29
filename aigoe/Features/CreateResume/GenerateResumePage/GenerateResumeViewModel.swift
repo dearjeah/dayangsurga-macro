@@ -7,6 +7,12 @@
 
 import Foundation
 
-class GenerateResumeViewModel {
+class GenerateResumeViewModel: NSObject {
+    let resumeRepo = UserResumeRepository.shared
     
+    func updateResumeName(resume_id: String, resumeName: String)->Bool{
+        let data = resumeRepo.updateResumeName(resume_id: resume_id, newResumeName: resumeName)
+
+        return data
+    }
 }
