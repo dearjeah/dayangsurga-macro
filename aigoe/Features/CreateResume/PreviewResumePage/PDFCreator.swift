@@ -25,6 +25,7 @@ class PDFCreator: NSObject {
     
     func createPDF() -> Data {
         //user data
+        getResumeContentData()
         let userName = userResume?.user?.username ?? ""
         // 1
         let pdfMetaData = [
@@ -394,3 +395,45 @@ class PDFCreator: NSObject {
         }
         
     }
+
+extension PDFCreator {
+    func getResumeContentData(){
+        getEduData()
+        getExpData()
+        getSkillData()
+        getAccomData()
+    }
+    
+    func getEduData() {
+        if let eduId = resumeContent.edu_id {
+            for i in 0..<eduId.count {
+                let tmp = EducationRepository.shared.getEducationById(educationId: eduId[i]) ?? Education()
+                eduData.append(tmp)
+            }
+        }
+    }
+    func getExpData(){
+        if let expId = resumeContent.exp_id {
+            for i in 0..<expId.count {
+                let tmp = ExperienceRepository.shared.getExperienceById(experienceId: expId[i]) ?? Experience()
+                expData.append(tmp)
+            }
+        }
+    }
+    func getSkillData(){
+        if let skillId = resumeContent.skill_id {
+            for i in 0..<skillId.count {
+                let tmp = SkillRepository.shared.getSkillsById(skillId: skillId[i]) ?? Skills()
+                skillData.append(tmp)
+            }
+        }
+    }
+    func getAccomData(){
+        if let accomId = resumeContent.accom_id {
+            for i in 0..<accomId.count {
+                let tmp = AccomplishmentRepository.shared.getAccomplishmentById(AccomplishmentId: accomId[i]) ?? Accomplishment()
+                accomData.append(tmp)
+            }
+        }
+    }
+}
