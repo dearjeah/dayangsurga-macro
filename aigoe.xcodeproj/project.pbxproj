@@ -73,6 +73,8 @@
 		B8C53B1A273E52A70031143B /* TestAccomplish.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8C53B19273E52A70031143B /* TestAccomplish.storyboard */; };
 		B8C65000273E05250005BAAA /* PreloadAccomplishmentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C64FFF273E05250005BAAA /* PreloadAccomplishmentData.swift */; };
 		B8C65002273E06450005BAAA /* AccomplishFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C65001273E06450005BAAA /* AccomplishFormViewModel.swift */; };
+		B8D1047A2754A1EF00774F41 /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D104782754A1EF00774F41 /* LabelCell.swift */; };
+		B8D1047B2754A1EF00774F41 /* LabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D104792754A1EF00774F41 /* LabelCell.xib */; };
 		B8FB96492743487000B64377 /* QuizRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB96482743487000B64377 /* QuizRepository.swift */; };
 		B8FB964B27434C7300B64377 /* PreloadQuizData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB964A27434C7300B64377 /* PreloadQuizData.swift */; };
 		BF09E0222743E5A800DB1C6B /* PersonalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF09E0212743E5A800DB1C6B /* PersonalInfo.swift */; };
@@ -270,6 +272,8 @@
 		B8C53B19273E52A70031143B /* TestAccomplish.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TestAccomplish.storyboard; sourceTree = "<group>"; };
 		B8C64FFF273E05250005BAAA /* PreloadAccomplishmentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadAccomplishmentData.swift; sourceTree = "<group>"; };
 		B8C65001273E06450005BAAA /* AccomplishFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccomplishFormViewModel.swift; sourceTree = "<group>"; };
+		B8D104782754A1EF00774F41 /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
+		B8D104792754A1EF00774F41 /* LabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelCell.xib; sourceTree = "<group>"; };
 		B8FB96482743487000B64377 /* QuizRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizRepository.swift; sourceTree = "<group>"; };
 		B8FB964A27434C7300B64377 /* PreloadQuizData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadQuizData.swift; sourceTree = "<group>"; };
 		BF09E0212743E5A800DB1C6B /* PersonalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfo.swift; sourceTree = "<group>"; };
@@ -434,6 +438,8 @@
 			children = (
 				675812BF2727900600E106AF /* TechnicalSkillsEditCell.swift */,
 				675812C02727900600E106AF /* TechnicalSkillsEditCell.xib */,
+				B8D104782754A1EF00774F41 /* LabelCell.swift */,
+				B8D104792754A1EF00774F41 /* LabelCell.xib */,
 			);
 			path = TechnicalSkillsEditCell;
 			sourceTree = "<group>";
@@ -1183,6 +1189,7 @@
 				675812BE27278FE700E106AF /* TechnicalSkillsListCell.xib in Resources */,
 				675812C22727900600E106AF /* TechnicalSkillsEditCell.xib in Resources */,
 				BF228E4E273B7CCC00966E23 /* EducationPageView.xib in Resources */,
+				B8D1047B2754A1EF00774F41 /* LabelCell.xib in Resources */,
 				BF85038E2722B59500CC43FB /* ProgressBarView.xib in Resources */,
 				BFE0035027272F450070BD40 /* LabelWithDate.xib in Resources */,
 				BF8503982722B6A300CC43FB /* ExpertDetailsViewController.storyboard in Resources */,
@@ -1345,6 +1352,7 @@
 				BF85030C2722551B00CC43FB /* SceneDelegate.swift in Sources */,
 				B8C65002273E06450005BAAA /* AccomplishFormViewModel.swift in Sources */,
 				84EE0709273737AC00C6C70A /* PreloadPersonalInformation.swift in Sources */,
+				B8D1047A2754A1EF00774F41 /* LabelCell.swift in Sources */,
 				BF5F1BF42722D87A004D0756 /* GenerateResumeViewController.swift in Sources */,
 				BF8503692722643100CC43FB /* CommonFunction.swift in Sources */,
 				BF8503B32722BA0300CC43FB /* StepByStepGuideViewController.swift in Sources */,

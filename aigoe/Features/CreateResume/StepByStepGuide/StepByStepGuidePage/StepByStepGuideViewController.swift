@@ -212,6 +212,7 @@ extension StepByStepGuideViewController: StepByStepGuideDelegate {
         let storyboard = UIStoryboard(name: "SkillAddEditController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToEditSkills") as! SkillAddEditController
         vc.skill = skills
+        vc.dataFrom = from
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
