@@ -50,6 +50,7 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
         setupForm()
         hideKeyboardWhenTappedAround()
         self.activityView.textView.delegate = self
+        self.eduStatusView.delegate = self
     }
     
     
@@ -179,7 +180,9 @@ extension EducationFormController {
         qualificationView.titleLabel.text = "Qualification*"
         eduStatusView.titleLabel.text = "Education Status*"
         eduStatusView.switchTitle.text = "Currently Studying Here"
+        eduStatusView.delegate = self
         eduPeriodView.titleLabel.text = "Education Period*"
+        eduPeriodView.endDatePicker.maximumDate = Date()
         gpaView.titleLabel.text = "GPA*"
         gpaView.textField.keyboardType = .decimalPad
         activityView.titleLabel.text = "Activity/Project"
@@ -192,7 +195,7 @@ extension EducationFormController {
         gpaView.textField.placeholder = eduPlaceholder?.gpa_ph
         activityView.textView.placeholder = eduPlaceholder?.activity_ph
         activityView.textView.text = eduPlaceholder?.activity_ph
-        
+        getValueSwitch()
         if dataFrom == "edit" {
             if eduData != nil {
                 let gpa = "\(eduData?.gpa ?? Float())"

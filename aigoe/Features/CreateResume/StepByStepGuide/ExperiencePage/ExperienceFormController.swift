@@ -166,7 +166,7 @@ extension ExperienceFormController {
         jobSummary.cueLabel.text = expSuggestion?.jobDescSuggest
         jobSummary.textView.delegate = self
         jobPeriod.endDatePicker.maximumDate = Date()
-        
+        getValueSwitch()
         if dataFrom == "edit"{
             if experience == nil {
                 companyName.textField.placeholder = expPlaceholder?.companyName_ph

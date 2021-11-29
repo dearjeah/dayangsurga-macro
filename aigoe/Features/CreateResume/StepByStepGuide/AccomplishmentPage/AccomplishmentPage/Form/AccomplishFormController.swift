@@ -138,7 +138,7 @@ extension AccomplishFormController {
         endDateView.dateTitle.text = "Expiration Date*"
         endDateView.datePicker.maximumDate = Date()
         issuerView.titleLabel.text = "Issuer*"
-    
+        getValueSwitch()
         if dataFrom == "edit" {
             if accomplish == nil {
                 certificateNameView.textField.placeholder = accomplishPh?.title_ph
