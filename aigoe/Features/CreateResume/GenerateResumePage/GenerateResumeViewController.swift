@@ -121,3 +121,29 @@ extension GenerateResumeController {
            resumeDate.text = dateFormatter.string(from: date)
     }
 }
+
+//MARK: Initial Setup
+extension GenerateResumeController {
+    func getResumeContentData() {
+        let data = self.viewModel?.getResumeContentData(resumeId: resumeContentId)
+        userResumeContent = data ?? Resume_Content()
+    }
+    
+    func displaySetup(){
+        exportResumeButton.backgroundColor = UIColor.primaryBlue
+        exportResumeButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
+        exportResumeButton.layer.cornerRadius = 18
+        exportResumeButton.tintColor = .white
+        resumePreviewImage.layer.borderColor = UIColor.primaryBlue.cgColor
+        resumePreviewImage.layer.shadowOpacity = 0.5
+        resumePreviewImage.layer.shadowRadius = 1
+        resumePreviewImage.layer.shadowColor = UIColor.lightGray.cgColor
+        self.navigationItem.title = "Preview Resume"
+        finishCreateResume.dsLongUnfilledButton(isDelete: false, text: "Finish")
+        
+        let date = Date()
+           let dateFormatter = DateFormatter()
+           dateFormatter.dateFormat = "E, dd MMM YYYY"
+           resumeDate.text = dateFormatter.string(from: date)
+    }
+}
