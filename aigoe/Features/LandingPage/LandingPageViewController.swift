@@ -27,7 +27,6 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel> {
         
         self.viewModel = LandingPageViewModel()
         getInitialData()
-       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +41,14 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel> {
     func getInitialData() {
         userResume = self.viewModel?.allUserResumeDataByDate() ?? []
         emptyState = self.viewModel?.getEmptyState()
+        
+        if userResume.isEmpty {
+            navigationItem.rightBarButtonItem?.isEnabled = false
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
+        } else {
+            navigationItem.rightBarButtonItem?.isEnabled = true
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.primaryWhite
+        }
     }
     
     @IBAction func buttonViewTapped(_ sender: Any) {

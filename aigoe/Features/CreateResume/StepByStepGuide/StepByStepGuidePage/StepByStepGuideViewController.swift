@@ -49,6 +49,7 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
             vc.selectedTemplate = selectedTemplate
             vc.userResume = selectedUserResume
             vc.resumeContentId = selectedResumeContentId
+            vc.userResumeContent = selectedResumeContent
         }
     }
     
