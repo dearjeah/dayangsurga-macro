@@ -128,11 +128,13 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
                 self.eduData[indexPath.row].is_selected = true
+                self.eduViewModel.addSelectedEdu(resumeId: self.resumeContentData.resume_id ?? "", eduId: self.eduData[indexPath.row].edu_id ?? "")
                 self.delegate?.selectButtonEdu(eduId: edu.edu_id ?? "", isSelected: true)
             } else {
                 cell.selectionStatus = false
                 cell.checklistButtonUnSelected()
                 self.eduData[indexPath.row].is_selected = false
+                self.eduViewModel.removeUnselectedEdu(resumeId: self.resumeContentData.resume_id ?? "", eduId: self.eduData[indexPath.row].edu_id ?? "")
                 self.delegate?.selectButtonEdu(eduId: edu.edu_id ?? "", isSelected: false)
             }
         }
