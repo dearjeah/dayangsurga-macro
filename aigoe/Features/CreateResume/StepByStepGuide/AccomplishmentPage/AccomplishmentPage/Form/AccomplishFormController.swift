@@ -106,10 +106,7 @@ extension AccomplishFormController {
     }
     
     func showAlertForDelete(){
-        let alert = UIAlertController(title: "Delete Data?", message: "You will not be able to recover it.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {action in self.deleteAccomplishData()}))
-        self.present(alert, animated: true, completion: nil)
+        showAlertDelete(title: "Delete Data?", msg: "You will not be able to recover it.", completionBlock: {action in self.deleteAccomplishData()})
     }
 }
 
