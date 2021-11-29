@@ -17,13 +17,12 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
     @IBOutlet weak var previewResumeButton: UIButton!
     @IBOutlet weak var exportResumeButton: UIButton!
     @IBOutlet weak var finishCreateResume: UIButton!
-    var userResume: User_Resume?
+    var userResume: User_Resume? = nil
     var selectedTemplate = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         finishCreateResume.dsLongUnfilledButton(isDelete: false, text: "Finish")
-      //  exportResumeButton.dsLongFilledPrimaryButton(withImage: false, text: " Export Resume")
         exportResumeButton.backgroundColor = UIColor.primaryBlue
         exportResumeButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
         exportResumeButton.layer.cornerRadius = 18
@@ -33,6 +32,7 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
         resumePreviewImage.layer.shadowRadius = 1
         resumePreviewImage.layer.shadowColor = UIColor.lightGray.cgColor
         self.navigationItem.title = "Preview Resume"
+        self.viewModel = GenerateResumeViewModel()
         let date = Date()
            let dateFormatter = DateFormatter()
            dateFormatter.dateFormat = "E, dd MMM YYYY"
@@ -49,7 +49,6 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
         self.navigationController?.pushViewController(vc, animated: true)
         self.navigationItem.backButtonTitle = "Preview"
         let pdfCreator = PDFCreator(dataInput: "Test", userResume: userResume)
-        
         vc.documentData = pdfCreator.createPDF()
         
     }
@@ -66,9 +65,13 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
         editResume.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak editResume] (_) in
             let textField = editResume?.textFields![0]
             self.resumeName.text = textField?.text
+            guard let resumeID = self.userResume?.resume_id else {return}
+            guard (self.viewModel?.updateResumeName(resume_id: resumeID, resumeName: self.resumeName.text ?? "")) != nil else{
+                return print("Failed to update resume name")
+            }
         }))
         editResume.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
+      
         self.present(editResume, animated: true, completion: nil)
     }
     
@@ -77,10 +80,18 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
     }
     
     @IBAction func exportDidTap(_ sender: Any) {
-        print("Export button tapped")
         let pdfCreator = PDFCreator(dataInput: "Test", userResume: userResume)
         let pdfData = pdfCreator.createPDF()
-        let vc = UIActivityViewController(activityItems: [pdfData], applicationActivities: nil)
-        present(vc, animated: true, completion: nil)
+        let temporaryFolder = FileManager.default.temporaryDirectory
+        let fileName = "\(resumeName.text!).pdf"
+        let temporaryFileURL = temporaryFolder.appendingPathComponent(fileName)
+    
+        do {
+            try pdfData.write(to: temporaryFileURL)
+            let vc = UIActivityViewController(activityItems: [temporaryFileURL], applicationActivities: nil)
+            present(vc, animated: true, completion: nil)
+        } catch {
+            print(error)
+        }
     }
 }
