@@ -25,9 +25,8 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      //  exportResumeButton.dsLongFilledPrimaryButton(withImage: false, text: " Export Resume")
         displaySetup()
-        getResumeContentData()
+        //getResumeContentData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
