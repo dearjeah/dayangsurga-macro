@@ -22,6 +22,7 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
     var stepViewModel = StepByStepGuideViewModel()
     var emptyState: Empty_State?
     var skills = [Skills]()
+    var resumeContentData = Resume_Content()
     
     let skillDataCount = 1
     

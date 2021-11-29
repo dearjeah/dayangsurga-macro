@@ -17,28 +17,28 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
     @IBOutlet weak var previewResumeButton: UIButton!
     @IBOutlet weak var exportResumeButton: UIButton!
     @IBOutlet weak var finishCreateResume: UIButton!
-    var userResume: User_Resume? = nil
+    var userResume: User_Resume?
+    var userResumeContent = Resume_Content()
+    var resumeContentId = String()
     var selectedTemplate = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        finishCreateResume.dsLongUnfilledButton(isDelete: false, text: "Finish")
-        exportResumeButton.backgroundColor = UIColor.primaryBlue
-        exportResumeButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
-        exportResumeButton.layer.cornerRadius = 18
-        exportResumeButton.tintColor = .white
-        resumePreviewImage.layer.borderColor = UIColor.primaryBlue.cgColor
-        resumePreviewImage.layer.shadowOpacity = 0.5
-        resumePreviewImage.layer.shadowRadius = 1
-        resumePreviewImage.layer.shadowColor = UIColor.lightGray.cgColor
-        self.navigationItem.title = "Preview Resume"
-        self.viewModel = GenerateResumeViewModel()
-        let date = Date()
-           let dateFormatter = DateFormatter()
-           dateFormatter.dateFormat = "E, dd MMM YYYY"
-           resumeDate.text = dateFormatter.string(from: date)
+        
+      //  exportResumeButton.dsLongFilledPrimaryButton(withImage: false, text: " Export Resume")
+        displaySetup()
+        getResumeContentData()
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? PreviewResumeViewController {
+            let pdfCreator = PDFCreator(resumeContent: userResumeContent, userResume: userResume, selectedTemplate: selectedTemplate)
+            
+            vc.documentData = pdfCreator.createPDF()
+        }
+    }
+    
+    //MARK: Button Action
     @IBAction func previewDidTap(_ sender: Any) {
         let storyboard = UIStoryboard(name: "PreviewResumeViewController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToPreviewResume") as! PreviewResumeViewController
@@ -48,9 +48,8 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
         self.navigationItem.backButtonTitle = "Preview"
-        let pdfCreator = PDFCreator(dataInput: "Test", userResume: userResume)
+        let pdfCreator = PDFCreator(resumeContent: userResumeContent, userResume: userResume, selectedTemplate: selectedTemplate)
         vc.documentData = pdfCreator.createPDF()
-        
     }
     
     
@@ -80,7 +79,8 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
     }
     
     @IBAction func exportDidTap(_ sender: Any) {
-        let pdfCreator = PDFCreator(dataInput: "Test", userResume: userResume)
+        print("Export button tapped")
+        let pdfCreator = PDFCreator(resumeContent: userResumeContent, userResume: userResume, selectedTemplate: selectedTemplate)
         let pdfData = pdfCreator.createPDF()
         let temporaryFolder = FileManager.default.temporaryDirectory
         let fileName = "\(resumeName.text!).pdf"
@@ -93,5 +93,31 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
         } catch {
             print(error)
         }
+    }
+}
+
+//MARK: Initial Setup
+extension GenerateResumeController {
+    func getResumeContentData() {
+        let data = self.viewModel?.getResumeContentData(resumeId: resumeContentId)
+        userResumeContent = data ?? Resume_Content()
+    }
+    
+    func displaySetup(){
+        exportResumeButton.backgroundColor = UIColor.primaryBlue
+        exportResumeButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
+        exportResumeButton.layer.cornerRadius = 18
+        exportResumeButton.tintColor = .white
+        resumePreviewImage.layer.borderColor = UIColor.primaryBlue.cgColor
+        resumePreviewImage.layer.shadowOpacity = 0.5
+        resumePreviewImage.layer.shadowRadius = 1
+        resumePreviewImage.layer.shadowColor = UIColor.lightGray.cgColor
+        self.navigationItem.title = "Preview Resume"
+        finishCreateResume.dsLongUnfilledButton(isDelete: false, text: "Finish")
+        
+        let date = Date()
+           let dateFormatter = DateFormatter()
+           dateFormatter.dateFormat = "E, dd MMM YYYY"
+           resumeDate.text = dateFormatter.string(from: date)
     }
 }

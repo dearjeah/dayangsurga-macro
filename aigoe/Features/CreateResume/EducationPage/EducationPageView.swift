@@ -20,6 +20,7 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     var eduData = [Education]()
+    var resumeContentData = Resume_Content()
     weak var delegate: ListEduDelegate?
     var eduViewModel = EducationListViewModel()
     
@@ -42,10 +43,11 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
         tableView.tableFooterView = UIView()
     }
     
-    convenience init(edu: [Education]) {
+    convenience init(edu: [Education], resumeContent: Resume_Content) {
         self.init()
         
         eduData = edu
+        resumeContentData = resumeContent
         registerTableView()
         notificationCenterSetup()
     }
@@ -102,10 +104,19 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
         cell.educationPeriod.text = eduPeriod
         cell.educationGPA.text = "\(edu.gpa)"
         cell.educationActivities.text = edu.activity
-        if edu.is_selected {
-            cell.checklistButtonIfSelected()
+        
+        let selectedEduId = resumeContentData.edu_id
+        let counter = resumeContentData.edu_id?.count ?? 0
+        if counter != 0 {
+            for i in 0..<counter {
+                if edu.edu_id == selectedEduId?[i] {
+                    cell.checklistButtonIfSelected()
+                    cell.selectionStatus = true
+                }
+            }
         } else {
             cell.checklistButtonUnSelected()
+            cell.selectionStatus = false
         }
         
         cell.editButtonAction = {
@@ -113,17 +124,15 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
         }
         
         cell.checklistButtonAction = {
-            if cell.selectionStatus == false{
+            if cell.selectionStatus == false {
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
                 self.eduData[indexPath.row].is_selected = true
-                //EducationRepository.shared.updateSelectedEduStatus(edu_id: edu.edu_id ?? "", isSelected: true)
                 self.delegate?.selectButtonEdu(eduId: edu.edu_id ?? "", isSelected: true)
             } else {
                 cell.selectionStatus = false
                 cell.checklistButtonUnSelected()
                 self.eduData[indexPath.row].is_selected = false
-                //EducationRepository.shared.updateSelectedEduStatus(edu_id: edu.edu_id ?? "", isSelected: false)
                 self.delegate?.selectButtonEdu(eduId: edu.edu_id ?? "", isSelected: false)
             }
         }

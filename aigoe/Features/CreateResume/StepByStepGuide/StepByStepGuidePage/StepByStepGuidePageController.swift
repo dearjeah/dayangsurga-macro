@@ -45,7 +45,7 @@ class StepByStepGuidePageController: UIPageViewController {
     var expData = [Experience]()
     var skillData = [Skills]()
     var accomData = [Accomplishment]()
-    var currentResume = Resume_Content() 
+    var currentResumeContent = Resume_Content() 
     
     weak var stepDelegate: StepByStepGuideDelegate?
     weak var prevNextDelegate: prevNextButtonDelegate?
@@ -528,7 +528,7 @@ extension StepByStepGuidePageController {
         controller.viewModel =  EducationListViewModel()
         eduData = controller.viewModel?.getEduData() ?? []
         
-        let tmp =  EducationPageView.init(edu: eduData)
+        let tmp =  EducationPageView.init(edu: eduData, resumeContent: currentResumeContent)
         tmp.setup(dlgt: self)
         controller.view = tmp
         return controller
@@ -547,7 +547,7 @@ extension StepByStepGuidePageController {
         controller.viewModel = ExperiencePageViewModel()
         expData = controller.viewModel?.getAllExpData() ?? []
         
-        let tmp = ExperiencePageView.init(exp: expData)
+        let tmp = ExperiencePageView.init(exp: expData, resumeContent: currentResumeContent)
         tmp.setupExpList(dlgt: self)
         controller.view = tmp
         return controller
