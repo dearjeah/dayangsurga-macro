@@ -32,7 +32,7 @@ class EducationFormViewModel: NSObject {
                                            gpa: Float(gpa) ?? 0.0,
                                            activity: activity,
                                            currentlyStudy: currentlyStudy,
-                                           isSelected: isSelected
+                                           isSelected: true
         )
         return data
     }

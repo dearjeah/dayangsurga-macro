@@ -34,7 +34,7 @@ class EducationTableCell: UITableViewCell {
         
     }
     @IBAction func selectEducation(_ sender: Any) {
-        if selectionStatus == false {
+        /*if selectionStatus == false {
             selectionStatus = true
             selectionButton.setImage(UIImage.icRoundSelectionFilled, for: .normal)
             shadowView.layer.borderColor = UIColor.primaryBlue.cgColor
@@ -42,7 +42,8 @@ class EducationTableCell: UITableViewCell {
             selectionStatus = false
             selectionButton.setImage(UIImage.icRoundSelectionNoFill, for: .normal)
             shadowView.layer.borderColor = UIColor.clear.cgColor
-        }
+        }*/
+        checklistButtonAction?()
     }
     
     @IBAction func editCellTapped(_ sender: UIButton) {
@@ -66,12 +67,14 @@ class EducationTableCell: UITableViewCell {
         shadowView.layer.borderWidth = 1
         shadowView.layer.cornerRadius = 17
         shadowView.layer.borderColor = UIColor.primaryBlue.cgColor
+        institutionName.textColor = UIColor.primaryBlue
         selectionButton.setImage(UIImage.icRoundSelectionFilled, for: .normal)
     }
     
     func checklistButtonUnSelected(){
         selectionButton.setImage(UIImage.icRoundSelectionNoFill, for: .normal)
         shadowView.layer.borderColor = UIColor.clear.cgColor
+        institutionName.textColor = UIColor.primaryDisable
     }
     
 }

@@ -9,6 +9,7 @@ import UIKit
 
 protocol skillListDelegate: AnyObject{
     func passDataFromEdit(from: String)
+    func selectButtonSkill(skillId: String, isSelected: Bool)
 }
 
 class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
@@ -43,6 +44,7 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
         super.init(coder: aDecoder)
         initWithNib()
         setup()
+        notificationCenterSetup()
         emptyState = stepViewModel.getEmptyStateId(Id: 3)
         //skills = stepViewModel.getSkillData() ?? []
         skillsTableView.reloadData()
@@ -54,12 +56,21 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
         emptyState = stepViewModel.getEmptyStateId(Id: 3)
         skills = data
         setup()
+        notificationCenterSetup()
         skillsTableView.reloadData()
     }
 
     func getAndReload(){
         skills = stepViewModel.getSkillData() ?? []
         skillsTableView.reloadData()
+    }
+    
+    @objc func skillReload() {
+      getAndReload()
+    }
+    
+    func notificationCenterSetup() {
+        NotificationCenter.default.addObserver(self, selector: #selector(skillReload), name: Notification.Name("skillReload"), object: nil)
     }
 }
 
@@ -88,18 +99,26 @@ extension SkillsPageView {
         skills = stepViewModel.getSkillData() ?? []
 //        print(skills[indexPath.row].skill_name)
         cell.skillName.text = skills[indexPath.row].skill_name
+        
+        if skills[indexPath.row].is_selected {
+            cell.checklistButtonIfSelected()
+        } else {
+            cell.checklistButtonUnSelected()
+        }
         cell.checklistButtonAction = {
-//            self.skillListDelegate?.getSelectedIndex(index: indexPath.row)
+            let skillId = self.skills[indexPath.row].skill_id ?? ""
             if cell.selectionStatus == false{
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
                 self.skills[indexPath.row].is_selected = true
-                SkillRepository.shared.updateSelectedSkillStatus(skill_id: self.skills[indexPath.row].skill_id ?? String(), isSelected: true)
+                //SkillRepository.shared.updateSelectedSkillStatus(skill_id: self.skills[indexPath.row].skill_id ?? String(), isSelected: true)
+                self.delegate?.selectButtonSkill(skillId: skillId, isSelected: true)
             }else{
                 cell.selectionStatus = false
                 cell.checklistButtonUnSelected()
                 self.skills[indexPath.row].is_selected = false
-                SkillRepository.shared.updateSelectedSkillStatus(skill_id: self.skills[indexPath.row].skill_id ?? String(), isSelected: false)
+                //SkillRepository.shared.updateSelectedSkillStatus(skill_id: self.skills[indexPath.row].skill_id ?? String(), isSelected: false)
+                self.delegate?.selectButtonSkill(skillId: skillId, isSelected: false)
             }
         }
         return cell

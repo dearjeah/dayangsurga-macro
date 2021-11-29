@@ -10,6 +10,8 @@ import UIKit
 protocol AccomplishListDelegate: AnyObject {
     func goToAddAccom()
     func passingAccomplishData(accomplish: Accomplishment?)
+    func selectButtonAccom(accomId: String, isSelected: Bool)
+    
 }
 
 class AccomplishmentPageView: UIView {
@@ -72,27 +74,44 @@ class AccomplishmentPageView: UIView {
 extension AccomplishmentPageView:  UITableViewDelegate, UITableViewDataSource {
     // setup table view
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let accompData  = accomplishment[indexPath.row]
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AccomplishmentTableCell.identifier, for: indexPath) as? AccomplishmentTableCell else {
             return UITableViewCell()
         }
         cell.awardName.text = accomplishment[indexPath.row].title
         cell.awardDate.text = accomplishment[indexPath.row].given_date?.string(format: Date.ISO8601Format.MonthYear)
         cell.awardIssuer.text = accomplishment[indexPath.row].issuer
+        if accomplishment[indexPath.row].is_selected {
+            cell.checklistButtonIfSelected()
+        } else {
+            cell.checklistButtonUnSelected()
+        }
         cell.editButtonAction = {
            
             self.delegate?.passingAccomplishData(accomplish: self.accomplishment[indexPath.row])
         }
+        
+        if accompData.is_selected == false{
+            cell.checklistButtonUnSelected()
+        }else{
+            cell.checklistButtonIfSelected()
+        }
+        
         cell.checklistButtonAction = {
-            if cell.selectionStatus == false{
+            let accomId = self.accomplishment[indexPath.row].accomplishment_id ?? ""
+            if cell.selectionStatus == false {
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
                 self.accomplishment[indexPath.row].is_selected = true
-                AccomplishmentRepository.shared.updateSelectedAccomplishStatus(accomId: UUID().uuidString, is_Selected: true)
+                //AccomplishmentRepository.shared.updateSelectedAccomplishStatus(accomId: UUID().uuidString, is_Selected: true)
+                self.delegate?.selectButtonAccom(accomId: accomId , isSelected: true)
             }else{
                 cell.selectionStatus = false
                 cell.checklistButtonUnSelected()
                 self.accomplishment[indexPath.row].is_selected = false
-                AccomplishmentRepository.shared.updateSelectedAccomplishStatus(accomId: UUID().uuidString, is_Selected: false)
+                //AccomplishmentRepository.shared.updateSelectedAccomplishStatus(accomId: UUID().uuidString, is_Selected: false)
+                self.delegate?.selectButtonAccom(accomId: accomId , isSelected: false)
             }
         }
         return cell
