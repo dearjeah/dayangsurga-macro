@@ -86,12 +86,12 @@ class PDFCreator: NSObject {
         let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
         for index in 0..<eduData.count {
             let institutionName = eduData[index].institution ?? ""
-            let startYear = eduData[index].start_date?.string(format: Date.ISO8601Format.Year)
-            let endYear = eduData[index].end_date?.string(format: Date.ISO8601Format.Year)
-            let duration =  "\(String(describing: startYear)) - \(String(describing: endYear))"
+            let startYear = eduData[index].start_date?.string(format: Date.ISO8601Format.Year) ?? ""
+            let endYear = eduData[index].end_date?.string(format: Date.ISO8601Format.Year) ?? ""
+            let duration =  "\(startYear) - \(endYear)"
             let title = eduData[index].title ?? ""
             let gpa = String(eduData[index].gpa)
-            let desc = eduData[index].description
+            let desc = eduData[index].activity ?? ""
             
             if index == 0 {
                 sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: separatorBottom, text: institutionName, context: context, template: 1)
@@ -114,8 +114,8 @@ class PDFCreator: NSObject {
             for index in 0..<expData.count{
                 let company = expData[index].jobCompanyName ?? ""
                 let position = expData[index].jobTitle ?? ""
-                let desc = expData[index].description
-                let startDate = expData[index].jobStartDate?.string(format: Date.ISO8601Format.MonthYear)
+                let desc = expData[index].jobDesc ?? ""
+                let startDate = expData[index].jobStartDate?.string(format: Date.ISO8601Format.MonthYear) ?? ""
                 var endDate = ""
                 let isCurrently = expData[index].jobStatus
                 if isCurrently {
@@ -144,13 +144,13 @@ class PDFCreator: NSObject {
             var sectionBottom: CGFloat = 0.0
             for index in 0..<accomData.count {
                 let title = accomData[index].title ?? ""
-                let givenDate = accomData[index].given_date?.string(format: Date.ISO8601Format.Year)
-                let endDate = accomData[index].end_date?.string(format: Date.ISO8601Format.Year)
+                let givenDate = accomData[index].given_date?.string(format: Date.ISO8601Format.Year) ?? ""
+                let endDate = accomData[index].end_date?.string(format: Date.ISO8601Format.Year) ?? ""
                 let issuer = accomData[index].issuer ?? ""
                 let desc = accomData[index].desc
                 
                 if index == 0{
-                    sectionBottom = addBodyText(pageRect: pageRect, textTop: separatorBottom, text: "\(title) \(String(describing: givenDate)) - \(String(describing: endDate))", context: context, template: selectedTemplate)
+                    sectionBottom = addBodyText(pageRect: pageRect, textTop: separatorBottom, text: "\(title) \(givenDate) - \(endDate)", context: context, template: selectedTemplate)
                 }else{
                     sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: "Google Languange Certification", context: context, template: selectedTemplate)
                 }
