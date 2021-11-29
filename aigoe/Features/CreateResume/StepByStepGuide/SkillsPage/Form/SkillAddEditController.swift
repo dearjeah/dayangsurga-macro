@@ -237,9 +237,7 @@ extension SkillAddEditController {
 //            print(skillName)
             let skill = self.viewModel?.createSkill(skillId: skillId, skillName: skillName , isSelected: true)
             if skill == false{
-                let alert = UIAlertController(title: "Failed to save Skill Data", message: "Please try to save again later.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                failSave()
                 return
             }
         }
@@ -255,7 +253,7 @@ extension SkillAddEditController {
 //MARK: Alert
 extension SkillAddEditController {
     func failSave(){
-        showAlert(title: "Failed to save Skill Data", msg: "Please try to save again later.")
+        showAlert(title: "Failed to save Skill Data", msg: "Please try to save again later.", style: .default, titleAction: "OK")
     }
 }
 

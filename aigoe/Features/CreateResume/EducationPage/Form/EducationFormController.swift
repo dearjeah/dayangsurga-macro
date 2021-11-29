@@ -135,13 +135,7 @@ extension EducationFormController {
             ((gpaView.textField.text?.isEmpty) != false ||
              (activityView.textView.text.isEmpty) != false )
         {
-            let alert = UIAlertController(
-                title: "Field Can't Be Empty",
-                message: "You must fill in every mandatory fields in this form.",
-                preferredStyle: .alert
-            )
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            showAlert(title: "Field Can't Be Empty", msg: "You must fill in every mandatory fields in this form.", style: .default, titleAction: "OK")
             return true
         }
         return false
@@ -155,9 +149,7 @@ extension EducationFormController {
     }
     
     func errorSaveData(from: String){
-        let alert = UIAlertController(title: "Unable to \(from) Data", message: "Your data is not saved. Please try again later", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        showAlert(title: "Unable to \(from) Data", msg: "Your data is not saved. Please try again later", style: .default, titleAction: "OK")
     }
 }
 
