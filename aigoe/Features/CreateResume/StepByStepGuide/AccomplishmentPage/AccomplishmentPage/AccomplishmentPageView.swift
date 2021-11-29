@@ -74,6 +74,8 @@ class AccomplishmentPageView: UIView {
 extension AccomplishmentPageView:  UITableViewDelegate, UITableViewDataSource {
     // setup table view
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let accompData  = accomplishment[indexPath.row]
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AccomplishmentTableCell.identifier, for: indexPath) as? AccomplishmentTableCell else {
             return UITableViewCell()
         }
@@ -89,6 +91,13 @@ extension AccomplishmentPageView:  UITableViewDelegate, UITableViewDataSource {
            
             self.delegate?.passingAccomplishData(accomplish: self.accomplishment[indexPath.row])
         }
+        
+        if accompData.is_selected == false{
+            cell.checklistButtonUnSelected()
+        }else{
+            cell.checklistButtonIfSelected()
+        }
+        
         cell.checklistButtonAction = {
             let accomId = self.accomplishment[indexPath.row].accomplishment_id ?? ""
             if cell.selectionStatus == false {

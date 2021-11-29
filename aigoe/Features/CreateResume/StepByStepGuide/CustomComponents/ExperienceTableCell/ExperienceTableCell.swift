@@ -62,12 +62,14 @@ class ExperienceTableCell: UITableViewCell {
         shadowView.layer.borderWidth = 1
         shadowView.layer.cornerRadius = 17
         shadowView.layer.borderColor = UIColor.primaryBlue.cgColor
+        jobCompanyName.textColor = UIColor.primaryBlue
         selectExperienceButton.setImage(UIImage(named: "icRoundSelectionFilled"), for: .normal)
     }
     
     func checklistButtonUnSelected(){
         selectExperienceButton.setImage(UIImage(named: "icRoundSelectionNoFill"), for: .normal)
         shadowView.layer.borderColor = UIColor.clear.cgColor
+        jobCompanyName.textColor = UIColor.primaryDisable
     }
     
     func teststststtst(){

@@ -51,11 +51,13 @@ class AccomplishmentTableCell: UITableViewCell {
         shadowView.layer.cornerRadius = 17
         shadowView.layer.borderColor = UIColor.primaryBlue.cgColor
         selectionButton.setImage(UIImage(named: "icRoundSelectionFilled"), for: .normal)
+        awardName.textColor = UIColor.primaryBlue
     }
     
     func checklistButtonUnSelected(){
         selectionButton.setImage(UIImage(named: "icRoundSelectionNoFill"), for: .normal)
         shadowView.layer.borderColor = UIColor.clear.cgColor
+        awardName.textColor = UIColor.primaryDisable
     }
     
     static func nib() -> UINib {

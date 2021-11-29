@@ -40,11 +40,13 @@ class TechnicalSkillsListCell: UITableViewCell {
         shadowView.layer.borderWidth = 1
         shadowView.layer.cornerRadius = 17
         shadowView.layer.borderColor = UIColor.primaryBlue.cgColor
+        skillName.textColor = UIColor.primaryBlue
         selectionButton.setImage(UIImage(named: "icRoundSelectionFilled"), for: .normal)
     }
     
     func checklistButtonUnSelected(){
         selectionButton.setImage(UIImage(named: "icRoundSelectionNoFill"), for: .normal)
         shadowView.layer.borderColor = UIColor.clear.cgColor
+        skillName.textColor = UIColor.primaryDisable
     }
 }
