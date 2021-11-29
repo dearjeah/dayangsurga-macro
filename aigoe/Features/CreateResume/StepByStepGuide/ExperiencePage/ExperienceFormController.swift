@@ -140,9 +140,9 @@ extension ExperienceFormController {
 extension ExperienceFormController: LabelSwitchDelegate {
     func getValueSwitch() {
         if (jobStatus.switchButton.isOn){
-            jobPeriod.endDatePicker.isEnabled = true
+            jobPeriod.endDatePicker.isUserInteractionEnabled = false
         } else {
-            jobPeriod.endDatePicker.isEnabled = false
+            jobPeriod.endDatePicker.isUserInteractionEnabled = true
         }
     }
 }
@@ -172,6 +172,7 @@ extension ExperienceFormController {
         jobSummary.titleLabel.text = "Job Summary*"
         jobSummary.cueLabel.text = expSuggestion?.jobDescSuggest
         jobSummary.textView.delegate = self
+        jobPeriod.endDatePicker.maximumDate = Date()
         
         if dataFrom == "edit"{
             if experience == nil {

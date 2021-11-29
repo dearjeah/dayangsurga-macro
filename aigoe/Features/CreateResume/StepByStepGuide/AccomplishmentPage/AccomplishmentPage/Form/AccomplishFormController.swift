@@ -117,9 +117,9 @@ extension AccomplishFormController {
 extension AccomplishFormController: LabelSwitchDelegate {
     func getValueSwitch() {
         if (statusView.switchButton.isOn){
-            endDateView.datePicker.isUserInteractionEnabled = true
-        } else {
             endDateView.datePicker.isUserInteractionEnabled = false
+        } else {
+            endDateView.datePicker.isUserInteractionEnabled = true
         }
     }
 }
@@ -139,6 +139,7 @@ extension AccomplishFormController {
         statusView.switchTitle.text = "Currently Valid"
         statusView.delegate = self
         endDateView.dateTitle.text = "Expiration Date*"
+        endDateView.datePicker.maximumDate = Date()
         issuerView.titleLabel.text = "Issuer*"
     
         if dataFrom == "edit" {

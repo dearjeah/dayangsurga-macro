@@ -184,6 +184,7 @@ extension EducationFormController {
         eduStatusView.switchTitle.text = "Currently Studying Here"
         eduPeriodView.titleLabel.text = "Education Period*"
         gpaView.titleLabel.text = "GPA*"
+        gpaView.textField.keyboardType = .decimalPad
         activityView.titleLabel.text = "Activity/Project"
         activityView.textView.delegate = self
         activityView.textView.textColor = .lightGray
@@ -197,7 +198,7 @@ extension EducationFormController {
         
         if dataFrom == "edit" {
             if eduData != nil {
-                let gpa = String(describing: eduData?.gpa)
+                let gpa = "\(eduData?.gpa ?? Float())"
                 institutionView.textField.text = eduData?.institution
                 qualificationView.textField.text = eduData?.title
                 gpaView.textField.text = gpa

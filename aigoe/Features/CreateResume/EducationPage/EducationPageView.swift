@@ -100,7 +100,7 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
         cell.institutionName.text = edu.institution
         cell.educationTitle.text = edu.title
         cell.educationPeriod.text = eduPeriod
-        cell.educationGPA.text = String(edu.gpa)
+        cell.educationGPA.text = "\(edu.gpa)"
         cell.educationActivities.text = edu.activity
         if edu.is_selected {
             cell.checklistButtonIfSelected()

@@ -129,17 +129,17 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.checklistButtonAction = {
-            let expId =  self.experience[indexPath.row].exp_id ?? ""
+            let expId = self.experience[indexPath.row].exp_id ?? ""
             if cell.selectionStatus == false{
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
                 expData.isSelected = true
-                ExperienceRepository.shared.updateSelectedExpStatus(exp_id: UUID().uuidString, isSelected: true)
+                ExperienceRepository.shared.updateSelectedExpStatus(exp_id: expId, isSelected: true)
             }else{
                 cell.selectionStatus = false
                 cell.checklistButtonUnSelected()
                 expData.isSelected = false
-                ExperienceRepository.shared.updateSelectedExpStatus(exp_id: UUID().uuidString, isSelected: false)
+                ExperienceRepository.shared.updateSelectedExpStatus(exp_id: expId, isSelected: false)
             }
         }
         return cell
