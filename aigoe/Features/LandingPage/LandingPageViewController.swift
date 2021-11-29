@@ -26,8 +26,8 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel> {
         navigationStyle()
         
         self.viewModel = LandingPageViewModel()
-        userResume = self.viewModel?.allUserResumeDataByDate() ?? []
-        emptyState = self.viewModel?.getEmptyState()
+        getInitialData()
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,7 +35,13 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel> {
         navigationItem.largeTitleDisplayMode = .automatic
         navigationController?.navigationBar.sizeToFit()
         self.tabBarController?.tabBar.isHidden = false
+        getInitialData()
         self.collectionView.reloadData()
+    }
+    
+    func getInitialData() {
+        userResume = self.viewModel?.allUserResumeDataByDate() ?? []
+        emptyState = self.viewModel?.getEmptyState()
     }
     
     @IBAction func buttonViewTapped(_ sender: Any) {
@@ -46,17 +52,19 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel> {
         didTapButton()
     }
     
+    func getUserResumeContent(resumeId: String) -> Resume_Content {
+        return self.viewModel?.getUserResumeContent(id: resumeId) ?? Resume_Content()
+    }
+    
     func goToPreview(){
         let storyboard = UIStoryboard(name: "PreviewResumeViewController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToPreviewResume") as! PreviewResumeViewController
         // passing data
         vc.selectedData = userResume[selectedIndex]
-        let dataInput = "Test"
+        let resumeContent = getUserResumeContent(resumeId: userResume[selectedIndex].resume_id ?? "" )
         
-        let pdfCreator = PDFCreator(
-            dataInput: dataInput, userResume: userResume[selectedIndex]
-        )
-        
+        let pdfCreator = PDFCreator(resumeContent: resumeContent, userResume: userResume[selectedIndex], selectedTemplate: 0)
+        //
         vc.documentData = pdfCreator.createPDF()
         
         self.navigationController?.navigationBar.prefersLargeTitles = false

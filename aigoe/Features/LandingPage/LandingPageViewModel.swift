@@ -11,6 +11,7 @@ class LandingPageViewModel: NSObject {
     
     var emptyState: Empty_State?
     let userResumeRepo = UserResumeRepository.shared
+    let resumeContentRepo = ResumeContentRepository.shared
     let emptyStateRepo = EmptyStateRepository.shared
     
     func allUserResumeDataByDate() -> [User_Resume]?{
@@ -28,6 +29,10 @@ class LandingPageViewModel: NSObject {
     
     func getEmptyState() -> Empty_State?{
         return emptyStateRepo.getEmptyStateById(id: 0)
+    }
+    
+    func getUserResumeContent(id: String) -> Resume_Content {
+        return resumeContentRepo.getResumeContentById(resume_id: id) ?? Resume_Content()
     }
 
 }
