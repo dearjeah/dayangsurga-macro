@@ -156,4 +156,20 @@ class UserResumeRepository {
         }
     }
     
+    func updateResumeName(resume_id: String, newResumeName: String)-> Bool{
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == '\(resume_id)'")
+        do{
+            let item = try context.fetch(fetchRequest)as? [User_Resume]
+            let resumeName = item?.first
+            
+            resumeName?.name = newResumeName
+            try context.save()
+            return true
+        } catch let error as NSError {
+            print(error)
+        }
+        
+        return false
+    }
 }
