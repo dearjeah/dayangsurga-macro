@@ -14,6 +14,7 @@ class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> 
     var currentPage = 0
     let cellWidthScale = 0.71
     let cellHeightScale = 0.67
+    var resumeContentId = String()
    
     @IBOutlet weak var resumeTemplateCollection: UICollectionView!
     @IBOutlet weak var resumeTemplatePageController: UIPageControl!
@@ -56,17 +57,19 @@ class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> 
         vc.selectedTemplate = selectedTemplate
         vc.isCreate = true
         vc.selectedUserResume = userResume
+        vc.selectedResumeContentId = resumeContentId
+        vc.selectedResumeContent = self.viewModel?.getCurrentUserResumeContent(id: resumeContentId) ?? Resume_Content()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func createUserResume(selectedTemplate: Int) -> User_Resume {
-        let id = self.viewModel?.createResumeContent()
-        if id != "" {
-            self.viewModel?.createUserResume(resumeId: id ?? "abc000", selectedTemplate: selectedTemplate)
-            guard let userResume = self.viewModel?.userResume.getUserResumeById(resume_id: id ?? "") else { return User_Resume() }
-            return userResume
+        let resumeId = self.viewModel?.createUserResume(selectedTemplate: selectedTemplate) ?? ""
+        if resumeId != "" {
+            resumeContentId = self.viewModel?.createResumeContent(resumeId: resumeId) ?? ""
         }
-        return User_Resume()
+        
+        guard let userResume = self.viewModel?.userResume.getUserResumeById(resume_id: resumeContentId) else { return User_Resume() }
+        return userResume
     }
 
 }
