@@ -24,6 +24,7 @@ class AccomplishmentPageView: UIView {
     var stepViewModel = StepByStepGuideViewModel()
     var emptyState = Empty_State()
     var accomplishment = [Accomplishment]()
+    var accomViewModel = AccomplishmentPageViewModel()
     var resumeContentData = Resume_Content()
     
     func setup(dlgt: AccomplishListDelegate) {
@@ -112,13 +113,13 @@ extension AccomplishmentPageView:  UITableViewDelegate, UITableViewDataSource {
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
                 self.accomplishment[indexPath.row].is_selected = true
-                //AccomplishmentRepository.shared.updateSelectedAccomplishStatus(accomId: UUID().uuidString, is_Selected: true)
+                self.accomViewModel.addSelectedAccomp(resumeId: self.resumeContentData.resume_id ?? "", accomId: self.accomplishment[indexPath.row].accomplishment_id ?? "")
                 self.delegate?.selectButtonAccom(accomId: accomId , isSelected: true)
             }else{
                 cell.selectionStatus = false
                 cell.checklistButtonUnSelected()
                 self.accomplishment[indexPath.row].is_selected = false
-                //AccomplishmentRepository.shared.updateSelectedAccomplishStatus(accomId: UUID().uuidString, is_Selected: false)
+                self.accomViewModel.removeUnselectedAccomp(resumeId: self.resumeContentData.resume_id ?? "", accomId: self.accomplishment[indexPath.row].accomplishment_id ?? "")
                 self.delegate?.selectButtonAccom(accomId: accomId , isSelected: false)
             }
         }

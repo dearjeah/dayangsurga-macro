@@ -28,6 +28,7 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     var stepViewModel = StepByStepGuideViewModel()
     var emptyState: Empty_State?
     var experience = [Experience]()
+    var expViewModel = ExperiencePageViewModel()
     var resumeContentData = Resume_Content()
     
     func setupExpList(dlgt: ExperienceListDelegate) {
@@ -150,13 +151,13 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
                 self.experience[indexPath.row].isSelected = true
-                //ExperienceRepository.shared.updateSelectedExpStatus(exp_id: UUID().uuidString, isSelected: true)
+                self.expViewModel.addSelectedExp(resumeId: self.resumeContentData.resume_id ?? "", expId: self.experience[indexPath.row].exp_id ?? "")
                 self.experienceDelegate?.selectButtonExp(expId: expId, isSelected: true)
             }else{
                 cell.selectionStatus = false
                 cell.checklistButtonUnSelected()
                 self.experience[indexPath.row].isSelected = false
-                //ExperienceRepository.shared.updateSelectedExpStatus(exp_id: UUID().uuidString, isSelected: false)
+                self.expViewModel.removeUnselectedExp(resumeId: self.resumeContentData.resume_id ?? "", expId: self.experience[indexPath.row].exp_id ?? "")
                 self.experienceDelegate?.selectButtonExp(expId: expId, isSelected: false)
             }
         }
