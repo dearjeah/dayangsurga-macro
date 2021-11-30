@@ -39,7 +39,7 @@ class LabelWithSwitch: UIView {
         self.init()
         titleLabel.text = title
         switchTitle.text = switchText
-        switchButton.isOn = switchValue ?? false
+//        switchButton.isOn = switchValue ?? false
     }
     
     fileprivate func initWithNib() {

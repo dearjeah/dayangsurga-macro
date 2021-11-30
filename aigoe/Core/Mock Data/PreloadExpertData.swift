@@ -27,11 +27,11 @@ func preloadExpertProfile(){
                                                        experience: "3 Years",
                                                        expertise: "Recruiter at Financial Technology Company",
                                                        phoneNumber: "6287838448246",
-                                                       dayAvailTime: "Monday - Sunday",
+                                                       dayAvailTime: "Monday - Friday",
                                                        timeAvailTime: "19.00 - 21.00 WIB",
                                                        linkedIn: "https://www.linkedin.com/in/fahriasen",
                                                        image: UIImage(named: "imgExpertFahri") ?? UIImage(),
-                                                       titleOnList: "Recruiter at Fin Tech",
+                                                       titleOnList: "People Development at Fin Tech",
                                                        summary: "Currently, I am responsible for recruiting top talent and development people. My specialties include : People Development, Recruiting, and Organizational Behavior.")
     ExpertProfileRepository.shared.createExpertProfile(expertId: 2,
                                                        name: "Rasyid Wardianto",

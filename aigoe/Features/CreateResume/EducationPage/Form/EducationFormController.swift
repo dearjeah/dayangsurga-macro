@@ -50,6 +50,7 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
         setupForm()
         hideKeyboardWhenTappedAround()
         self.activityView.textView.delegate = self
+        self.eduStatusView.delegate = self
     }
     
     
@@ -142,10 +143,7 @@ extension EducationFormController {
     }
     
     func showAlertForDelete(){
-        let alert = UIAlertController(title: "Delete Data?", message: "You will not be able to recover it.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {action in self.deleteEduData()}))
-        self.present(alert, animated: true, completion: nil)
+        showAlertDelete(title: "Delete Data?", msg: "You will not be able to recover it.", completionBlock: {action in self.deleteEduData()})
     }
     
     func errorSaveData(from: String){
@@ -182,8 +180,11 @@ extension EducationFormController {
         qualificationView.titleLabel.text = "Qualification*"
         eduStatusView.titleLabel.text = "Education Status*"
         eduStatusView.switchTitle.text = "Currently Studying Here"
+        eduStatusView.delegate = self
         eduPeriodView.titleLabel.text = "Education Period*"
+        eduPeriodView.endDatePicker.maximumDate = Date()
         gpaView.titleLabel.text = "GPA*"
+        gpaView.textField.keyboardType = .decimalPad
         activityView.titleLabel.text = "Activity/Project"
         activityView.textView.delegate = self
         activityView.textView.textColor = .lightGray
@@ -194,10 +195,10 @@ extension EducationFormController {
         gpaView.textField.placeholder = eduPlaceholder?.gpa_ph
         activityView.textView.placeholder = eduPlaceholder?.activity_ph
         activityView.textView.text = eduPlaceholder?.activity_ph
-        
+        getValueSwitch()
         if dataFrom == "edit" {
             if eduData != nil {
-                let gpa = String(describing: eduData?.gpa)
+                let gpa = "\(eduData?.gpa ?? Float())"
                 institutionView.textField.text = eduData?.institution
                 qualificationView.textField.text = eduData?.title
                 gpaView.textField.text = gpa

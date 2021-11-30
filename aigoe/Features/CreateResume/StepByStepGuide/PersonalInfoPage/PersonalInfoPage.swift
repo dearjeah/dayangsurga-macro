@@ -72,6 +72,8 @@ extension PersonalInfoPage {
         locationField.titleLabel.text = "Location*"
         summaryField.titleLabel.text = "Summary*"
         summaryField.cueLabel.text = "Tell us about who you are and what you do that fits the job you're applying for, make sure you use action verbs."
+        emailField.textField.keyboardType = .emailAddress
+        phoneField.textField.keyboardType = .numberPad
         
         //MARK: Implement with protocol delegate for loose coupling
         if let personalInfoPlaceholder = PersonalInformationPlaceholderRepository.shared.getPIPhById(pi_ph_id: 1) {

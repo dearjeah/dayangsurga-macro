@@ -106,10 +106,7 @@ extension AccomplishFormController {
     }
     
     func showAlertForDelete(){
-        let alert = UIAlertController(title: "Delete Data?", message: "You will not be able to recover it.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {action in self.deleteAccomplishData()}))
-        self.present(alert, animated: true, completion: nil)
+        showAlertDelete(title: "Delete Data?", msg: "You will not be able to recover it.", completionBlock: {action in self.deleteAccomplishData()})
     }
 }
 
@@ -117,9 +114,9 @@ extension AccomplishFormController {
 extension AccomplishFormController: LabelSwitchDelegate {
     func getValueSwitch() {
         if (statusView.switchButton.isOn){
-            endDateView.datePicker.isUserInteractionEnabled = true
-        } else {
             endDateView.datePicker.isUserInteractionEnabled = false
+        } else {
+            endDateView.datePicker.isUserInteractionEnabled = true
         }
     }
 }
@@ -139,8 +136,9 @@ extension AccomplishFormController {
         statusView.switchTitle.text = "Currently Valid"
         statusView.delegate = self
         endDateView.dateTitle.text = "Expiration Date*"
+        endDateView.datePicker.maximumDate = Date()
         issuerView.titleLabel.text = "Issuer*"
-    
+        getValueSwitch()
         if dataFrom == "edit" {
             if accomplish == nil {
                 certificateNameView.textField.placeholder = accomplishPh?.title_ph
