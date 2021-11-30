@@ -22,6 +22,8 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
     var stepViewModel = StepByStepGuideViewModel()
     var emptyState: Empty_State?
     var skills = [Skills]()
+    var skillViewModel = SkillsPageviewModel()
+    var resumeContentData = Resume_Content()
     
     let skillDataCount = 1
     
@@ -100,24 +102,34 @@ extension SkillsPageView {
 //        print(skills[indexPath.row].skill_name)
         cell.skillName.text = skills[indexPath.row].skill_name
         
-        if skills[indexPath.row].is_selected {
-            cell.checklistButtonIfSelected()
+        let selectedSkillId = resumeContentData.skill_id
+        let counter = resumeContentData.skill_id?.count ?? 0
+        if counter != 0 {
+            for i in 0..<counter {
+                if skills[indexPath.row].skill_id == selectedSkillId?[i] {
+                    cell.checklistButtonIfSelected()
+                    cell.selectionStatus = true
+                }
+            }
         } else {
             cell.checklistButtonUnSelected()
+            cell.selectionStatus = false
         }
+        
+        
         cell.checklistButtonAction = {
             let skillId = self.skills[indexPath.row].skill_id ?? ""
             if cell.selectionStatus == false{
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
                 self.skills[indexPath.row].is_selected = true
-                //SkillRepository.shared.updateSelectedSkillStatus(skill_id: self.skills[indexPath.row].skill_id ?? String(), isSelected: true)
+                self.skillViewModel.addSelectedSkill(resumeId: self.resumeContentData.resume_id ?? "", skillId: self.skills[indexPath.row].skill_id ?? "")
                 self.delegate?.selectButtonSkill(skillId: skillId, isSelected: true)
             }else{
                 cell.selectionStatus = false
                 cell.checklistButtonUnSelected()
                 self.skills[indexPath.row].is_selected = false
-                //SkillRepository.shared.updateSelectedSkillStatus(skill_id: self.skills[indexPath.row].skill_id ?? String(), isSelected: false)
+                self.skillViewModel.removeUnselectedSkill(resumeId: self.resumeContentData.resume_id ?? "", skillId: self.skills[indexPath.row].skill_id ?? "")
                 self.delegate?.selectButtonSkill(skillId: skillId, isSelected: false)
             }
         }

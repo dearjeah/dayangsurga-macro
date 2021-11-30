@@ -10,9 +10,10 @@ import CloudKit
 
 class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel> {
     
-    var index: Int?
+    var index: Int = 0
     var selectedTemplate: Int = 0
     var selectedUserResume = User_Resume()
+    var selectedResumeContent = Resume_Content()
     var isCreate = Bool()
     var isGenerate = false
     var formSource = String()
@@ -43,9 +44,12 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
             pageController.prevNextSetup(prevNextDlgt: self)
             pageController.selectedResume = selectedUserResume
             pageController.isCreate = isCreate
+            pageController.currentResumeContent = selectedResumeContent
         } else if let vc = segue.destination as? GenerateResumeController {
             vc.selectedTemplate = selectedTemplate
             vc.userResume = selectedUserResume
+            vc.resumeContentId = selectedResumeContentId
+            vc.userResumeContent = selectedResumeContent
         }
     }
     
@@ -114,7 +118,13 @@ extension StepByStepGuideViewController: SmallSetButtonDelegate {
     }
     
     func didTapGenerate() {
-        performSegue(withIdentifier: "goToGenerate", sender: self)
+        if let resumeContent = ResumeContentRepository.shared.getResumeContentById(resume_id: selectedResumeContentId) {
+            let pdfCreator = PDFCreator(resumeContent: resumeContent, userResume: selectedUserResume, selectedTemplate: selectedTemplate)
+            performSegue(withIdentifier: "goToGenerate", sender: self)
+        } else {
+            print("Step VC =========== Cannot get user resume content ID")
+        }
+         
     }
     
     func dataChecker(page: Int, edu: [Education], exp: [Experience], skill: [Skills], accomp: [Accomplishment]) {

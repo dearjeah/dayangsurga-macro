@@ -45,7 +45,7 @@ class StepByStepGuidePageController: UIPageViewController {
     var expData = [Experience]()
     var skillData = [Skills]()
     var accomData = [Accomplishment]()
-    var currentResume = Resume_Content() 
+    var currentResumeContent = Resume_Content() 
     
     weak var stepDelegate: StepByStepGuideDelegate?
     weak var prevNextDelegate: prevNextButtonDelegate?
@@ -342,48 +342,56 @@ extension StepByStepGuidePageController {
                         }
                     }
                    else if pageType[currentPage] == 2 {
-                        if eduData.isEmpty {
+                        //if eduData.isEmpty {
+                       if currentResumeContent.edu_id == nil || currentResumeContent.edu_id?.count == 0 {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
-                            let checker = dataEduChecker(data: eduData)
+                            prevNextDelegate?.isButtonEnable(left: true , right: true)
+                            /*let checker = dataEduChecker(data: eduData)
                             if checker {
                                 prevNextDelegate?.isButtonEnable(left: true , right: true)
                             } else {
                                 prevNextDelegate?.isButtonEnable(left: true , right: false)
-                            }
+                            }*/
                         }
                     } else if pageType[currentPage] == 3 {
-                        if expData.isEmpty {
+                        //if expData.isEmpty {
+                        if currentResumeContent.exp_id == nil || currentResumeContent.exp_id?.count  == 0 {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
-                            let checker = dataExpChecker(data: expData)
+                            prevNextDelegate?.isButtonEnable(left: true , right: true)
+                            /*let checker = dataExpChecker(data: expData)
                             if checker {
                                 prevNextDelegate?.isButtonEnable(left: true , right: true)
                             } else {
                                 prevNextDelegate?.isButtonEnable(left: true , right: false)
-                            }
+                            }*/
                         }
                     } else if pageType[currentPage] == 4 {
-                        if skillData.isEmpty {
+                        //if skillData.isEmpty {
+                        if currentResumeContent.skill_id == nil || currentResumeContent.skill_id?.count == 0 {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
-                            let checker = dataSkillsChecker(data: skillData)
+                            prevNextDelegate?.isButtonEnable(left: true , right: true)
+                            /*let checker = dataSkillsChecker(data: skillData)
                             if checker {
                                 prevNextDelegate?.isButtonEnable(left: true , right: true)
                             } else {
                                 prevNextDelegate?.isButtonEnable(left: true , right: false)
-                            }
+                            }*/
                         }
                     } else if pageType[currentPage] == 5 {
-                        if accomData.isEmpty {
+                        //if accomData.isEmpty {
+                        if currentResumeContent.accom_id == nil || currentResumeContent.accom_id?.count == 0 {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
-                            let checker = dataAccomChecker(data: accomData)
+                            prevNextDelegate?.isButtonEnable(left: true , right: true)
+                            /*let checker = dataAccomChecker(data: accomData)
                             if checker {
                                 prevNextDelegate?.isButtonEnable(left: true , right: true)
                             } else {
                                 prevNextDelegate?.isButtonEnable(left: true , right: false)
-                            }
+                            }*/
                         }
                     } else {
                         prevNextDelegate?.isButtonEnable(left: true, right: true)
@@ -528,7 +536,7 @@ extension StepByStepGuidePageController {
         controller.viewModel =  EducationListViewModel()
         eduData = controller.viewModel?.getEduData() ?? []
         
-        let tmp =  EducationPageView.init(edu: eduData)
+        let tmp =  EducationPageView.init(edu: eduData, resumeContent: currentResumeContent)
         tmp.setup(dlgt: self)
         controller.view = tmp
         return controller
@@ -547,7 +555,7 @@ extension StepByStepGuidePageController {
         controller.viewModel = ExperiencePageViewModel()
         expData = controller.viewModel?.getAllExpData() ?? []
         
-        let tmp = ExperiencePageView.init(exp: expData)
+        let tmp = ExperiencePageView.init(exp: expData, resumeContent: currentResumeContent)
         tmp.setupExpList(dlgt: self)
         controller.view = tmp
         return controller
@@ -569,7 +577,7 @@ extension StepByStepGuidePageController {
         controller.viewModel = AccomplishmentPageViewModel()
         accomData = controller.viewModel?.getAllAccomp() ?? []
         
-        let tmp = AccomplishmentPageView.init(accom: accomData)
+        let tmp = AccomplishmentPageView.init(accom: accomData, resumeContent: currentResumeContent)
         tmp.setup(dlgt: self)
         controller.view = tmp
         return controller

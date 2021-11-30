@@ -24,6 +24,8 @@ class AccomplishmentPageView: UIView {
     var stepViewModel = StepByStepGuideViewModel()
     var emptyState = Empty_State()
     var accomplishment = [Accomplishment]()
+    var accomViewModel = AccomplishmentPageViewModel()
+    var resumeContentData = Resume_Content()
     
     func setup(dlgt: AccomplishListDelegate) {
         self.delegate = dlgt
@@ -49,11 +51,12 @@ class AccomplishmentPageView: UIView {
         tableView.reloadData()
     }
     
-    convenience init(accom: [Accomplishment]) {
+    convenience init(accom: [Accomplishment], resumeContent: Resume_Content) {
         self.init()
         
         notificationCenterSetup()
         accomplishment = accom
+        resumeContentData = resumeContent
     }
 
     @IBAction func addAction(_ sender: Any) {
@@ -79,23 +82,31 @@ extension AccomplishmentPageView:  UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AccomplishmentTableCell.identifier, for: indexPath) as? AccomplishmentTableCell else {
             return UITableViewCell()
         }
+        let accom = accomplishment[indexPath.row]
         cell.awardName.text = accomplishment[indexPath.row].title
         cell.awardDate.text = accomplishment[indexPath.row].given_date?.string(format: Date.ISO8601Format.MonthYear)
         cell.awardIssuer.text = accomplishment[indexPath.row].issuer
-        if accomplishment[indexPath.row].is_selected {
+        /*if accomplishment[indexPath.row].is_selected {
             cell.checklistButtonIfSelected()
         } else {
             cell.checklistButtonUnSelected()
-        }
-        cell.editButtonAction = {
-           
-            self.delegate?.passingAccomplishData(accomplish: self.accomplishment[indexPath.row])
+        }*/
+        let selectedAccomId = resumeContentData.accom_id
+        let counter = resumeContentData.accom_id?.count ?? 0
+        if counter != 0 {
+            for i in 0..<counter {
+                if accom.accomplishment_id == selectedAccomId?[i] {
+                    cell.checklistButtonIfSelected()
+                    cell.selectionStatus = true
+                }
+            }
+        } else {
+            cell.checklistButtonUnSelected()
+            cell.selectionStatus = false
         }
         
-        if accompData.is_selected == false{
-            cell.checklistButtonUnSelected()
-        }else{
-            cell.checklistButtonIfSelected()
+        cell.editButtonAction = {
+            self.delegate?.passingAccomplishData(accomplish: self.accomplishment[indexPath.row])
         }
         
         cell.checklistButtonAction = {
@@ -104,13 +115,13 @@ extension AccomplishmentPageView:  UITableViewDelegate, UITableViewDataSource {
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
                 self.accomplishment[indexPath.row].is_selected = true
-                //AccomplishmentRepository.shared.updateSelectedAccomplishStatus(accomId: UUID().uuidString, is_Selected: true)
+                self.accomViewModel.addSelectedAccomp(resumeId: self.resumeContentData.resume_id ?? "", accomId: self.accomplishment[indexPath.row].accomplishment_id ?? "")
                 self.delegate?.selectButtonAccom(accomId: accomId , isSelected: true)
             }else{
                 cell.selectionStatus = false
                 cell.checklistButtonUnSelected()
                 self.accomplishment[indexPath.row].is_selected = false
-                //AccomplishmentRepository.shared.updateSelectedAccomplishStatus(accomId: UUID().uuidString, is_Selected: false)
+                self.accomViewModel.removeUnselectedAccomp(resumeId: self.resumeContentData.resume_id ?? "", accomId: self.accomplishment[indexPath.row].accomplishment_id ?? "")
                 self.delegate?.selectButtonAccom(accomId: accomId , isSelected: false)
             }
         }
