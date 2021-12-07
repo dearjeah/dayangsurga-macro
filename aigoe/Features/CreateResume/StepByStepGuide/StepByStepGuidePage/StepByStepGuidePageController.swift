@@ -566,7 +566,7 @@ extension StepByStepGuidePageController {
         controller.viewModel = SkillsPageviewModel()
         skillData = controller.viewModel?.getAllSkillData() ?? []
         
-        let tmp = SkillsPageView.init(data: skillData)
+        let tmp = SkillsPageView.init(skill: skillData, resumeContent: currentResumeContent)
         tmp.skillDelegateSetup(dlgt: self)
         controller.view = tmp
         return controller
