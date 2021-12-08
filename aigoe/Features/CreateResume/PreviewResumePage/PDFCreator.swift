@@ -81,7 +81,8 @@ class PDFCreator: NSObject {
     
     func addEducationSection(pageRect: CGRect,startPosition: CGFloat, drawContext: CGContext, context: UIGraphicsPDFRendererContext)->CGFloat{
         //User Data
-        var sectionBottom: CGFloat = 0.0
+        var sectionBottom: CGFloat = startPosition
+        if eduData.count != 0 {
         let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Education", context: context, template: 1)
         let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
         for index in 0..<eduData.count {
@@ -103,12 +104,16 @@ class PDFCreator: NSObject {
             sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: "GPA \(gpa)", context: context, template: selectedTemplate)
             sectionBottom = addParagraphText(pageRect: pageRect, textTop: sectionBottom, text: desc, context: context, template: selectedTemplate)
         }
-            return sectionBottom + 4.0
+            return sectionBottom + 4.0}
+        else{
+            return sectionBottom
+        }
         }
     
         func addExperienceSection(pageRect: CGRect, drawContext: CGContext, startPosition: CGFloat, context:UIGraphicsPDFRendererContext)-> CGFloat{
             //Check if empty
-            var sectionBottom:CGFloat = 0.0
+            var sectionBottom:CGFloat = startPosition
+            if expData.count != 0 {
             let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Experience", context: context, template: 1)
             let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
             for index in 0..<expData.count{
@@ -135,13 +140,17 @@ class PDFCreator: NSObject {
                 sectionBottom = addParagraphText(pageRect: pageRect, textTop: sectionBottom, text: desc, context: context, template: selectedTemplate)
             }
             
-            return sectionBottom + 4.0
+                return sectionBottom + 4.0}
+            else{
+                return sectionBottom
+            }
         }
     
         func addAccomplishmentSection(pageRect:CGRect, drawContext: CGContext, startPosition: CGFloat, context: UIGraphicsPDFRendererContext)-> CGFloat{
+            if accomData.count != 0 {
             let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Accomplishment", context: context, template: 1)
             let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
-            var sectionBottom: CGFloat = 0.0
+            var sectionBottom: CGFloat = startPosition
             for index in 0..<accomData.count {
                 let title = accomData[index].title ?? ""
                 let givenDate = accomData[index].given_date?.string(format: Date.ISO8601Format.Year) ?? ""
@@ -155,11 +164,15 @@ class PDFCreator: NSObject {
                     sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: "\(title) \(givenDate) - \(endDate)", context: context, template: selectedTemplate)
                 }
             }
-            return sectionBottom + 4.0
+                return sectionBottom + 4.0}
+            else{
+                return startPosition
+            }
         }
         
         func addSkillSection(pageRect: CGRect, drawContext: CGContext, startPosition: CGFloat, context: UIGraphicsPDFRendererContext)->CGFloat{
-            var sectionBottom: CGFloat = 0.0
+            var sectionBottom: CGFloat = startPosition
+            if skillData.count != 0{
             let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Technical Skills", context: context, template: 1)
             let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
             for index in 0..<skillData.count {
@@ -171,7 +184,10 @@ class PDFCreator: NSObject {
                 }
             }
             
-            return sectionBottom + 4.0
+                return sectionBottom + 4.0}
+            else{
+                return sectionBottom
+            }
         }
         
     func addTitle(pageRect: CGRect, text: String, context: UIGraphicsPDFRendererContext, template: Int)->CGFloat{
@@ -391,7 +407,7 @@ class PDFCreator: NSObject {
             // Restore CG State
             drawSeparator.restoreGState()
             
-            return height + 4.0
+           return height + 4.0
         }
         
     }
