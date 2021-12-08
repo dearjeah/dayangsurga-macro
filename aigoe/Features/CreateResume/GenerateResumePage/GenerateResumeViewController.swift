@@ -74,6 +74,7 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
     }
     
     @IBAction func finishDidTap(_ sender: Any) {
+        NotificationCenter.default.post(name: Notification.Name("clearStep"), object: nil)
         navigationController?.popToRootViewController(animated: true)
     }
     

@@ -123,6 +123,10 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
         buttonFunctional(currentPage: currentPageIndex)
     }
     
+    @objc func clearStep() {
+       currentPageIndex = 0
+    }
+    
     //MARK: Delegate Function
     func hideUnHideButton(currentPage: Int) {
         let isQuizPage = isQuizPage(currentIndex: currentPage)
@@ -471,6 +475,7 @@ extension StepByStepGuidePageController {
         NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("expReload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("skillReload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("accompReload"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(clearStep), name: Notification.Name("clearStep"), object: nil)
     }
     
     private func setPageIndex(value: Int, progressBar: Bool = false) {
