@@ -64,7 +64,7 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
             let textField = editResume?.textFields![0]
             self.resumeName.text = textField?.text
             guard let resumeID = self.userResume?.resume_id else {return}
-            guard (self.viewModel?.updateResumeName(resume_id: resumeID, resumeName: self.resumeName.text ?? "")) != nil else{
+            guard (self.viewModel?.updateResumeName(resume_id: resumeID, resumeName: self.resumeName.text ?? "")) != false else{
                 return print("Failed to update resume name")
             }
         }))
