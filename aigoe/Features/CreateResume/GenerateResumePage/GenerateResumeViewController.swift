@@ -9,7 +9,9 @@ import UIKit
 import PDFKit
 
 class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
-
+    
+    
+    @IBOutlet weak var imageContainer: UIView!
     @IBOutlet weak var resumePreviewImage: UIImageView!
     @IBOutlet weak var resumeName: UILabel!
     @IBOutlet weak var resumeDate: UILabel!
@@ -131,13 +133,16 @@ extension GenerateResumeController {
     }
     
     func displaySetup(){
+        let image = UIImage(data: userResume?.image ?? Data())
+        resumeName.text = userResume?.name ?? "Resume Title"
+        
         exportResumeButton.backgroundColor = UIColor.primaryBlue
         exportResumeButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
         exportResumeButton.layer.cornerRadius = 18
         exportResumeButton.tintColor = .white
-        resumePreviewImage.layer.borderColor = UIColor.primaryBlue.cgColor
+        resumePreviewImage.image = image
         resumePreviewImage.layer.shadowOpacity = 0.5
-        resumePreviewImage.layer.shadowRadius = 1
+        resumePreviewImage.layer.shadowRadius = 3
         resumePreviewImage.layer.shadowColor = UIColor.lightGray.cgColor
         self.navigationItem.title = "Preview Resume"
         finishCreateResume.dsLongUnfilledButton(isDelete: false, text: "Finish")

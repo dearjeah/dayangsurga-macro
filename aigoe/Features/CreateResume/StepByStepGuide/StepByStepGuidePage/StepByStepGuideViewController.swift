@@ -119,12 +119,20 @@ extension StepByStepGuideViewController: SmallSetButtonDelegate {
     
     func didTapGenerate() {
         if let resumeContent = ResumeContentRepository.shared.getResumeContentById(resume_id: selectedResumeContentId) {
-            let pdfCreator = PDFCreator(resumeContent: resumeContent, userResume: selectedUserResume, selectedTemplate: selectedTemplate)
+            createPDFThumbnail(resumeContent: resumeContent)
             performSegue(withIdentifier: "goToGenerate", sender: self)
         } else {
             print("Step VC =========== Cannot get user resume content ID")
         }
          
+    }
+    
+    func createPDFThumbnail(resumeContent: Resume_Content){
+        let pdfCreator = PDFCreator(resumeContent: resumeContent, userResume: selectedUserResume, selectedTemplate: selectedTemplate)
+        let pdfData = pdfCreator.createPDF()
+        let thumbnailSize = CGSize(width: 260, height: 463)
+        let thumbnail = pdfCreator.generatePdfThumbnail(of: thumbnailSize, atPage: 0, pdfData: pdfData)
+        self.viewModel?.updateUserResumePDFThumbnail(resumeId: resumeContent.resume_id ?? "", img: thumbnail ?? UIImage())
     }
     
     func dataChecker(page: Int, edu: [Education], exp: [Experience], skill: [Skills], accomp: [Accomplishment]) {
