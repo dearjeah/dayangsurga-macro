@@ -10,10 +10,6 @@ import Foundation
 class GenerateResumeViewModel {
     var resumeContentRepo = ResumeContentRepository.shared
     let resumeRepo = UserResumeRepository.shared
-<<<<<<< HEAD
-=======
-    //var resumeContentRepo = ResumeContentRepository.shared
->>>>>>> page-integration
     
     func getResumeContentData(resumeId: String) -> Resume_Content {
         let data = resumeContentRepo.getResumeContentById(resume_id: resumeId) ?? Resume_Content()
