@@ -94,6 +94,7 @@ class EducationRepository{
             let education = item?.first
             education?.edu_id = eduId
             education?.user_id = Int32(userId)
+            education?.institution = institution
             education?.title = title
             education?.start_date = startDate
             education?.end_date = endDate
