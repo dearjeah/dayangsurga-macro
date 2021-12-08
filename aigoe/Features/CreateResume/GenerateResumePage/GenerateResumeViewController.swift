@@ -60,17 +60,44 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
             textField.placeholder = "Input your resume name"
         }
 
-        editResume.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak editResume] (_) in
+        /*editResume.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak editResume] (_) in
+            self.changeName()
             let textField = editResume?.textFields![0]
             self.resumeName.text = textField?.text
-            guard let resumeID = self.userResume?.resume_id else {return}
-            guard (self.viewModel?.updateResumeName(resume_id: resumeID, resumeName: self.resumeName.text ?? "")) != false else{
+                
+            /*guard (self.viewModel?.updateResumeName(resume_id: resumeID, resumeName: self.resumeName.text ?? "")) != false else  {
                 return print("Failed to update resume name")
+            }*/
+        }))*/
+        
+        editResume.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak editResume] (_) in
+            let textField = editResume?.textFields![0]
+            let data = self.changeName(resumeName: textField?.text ?? "")
+            
+            if data {
+                self.resumeName.text = textField?.text
+            } else {
+                print("change name failed")
             }
+            /*guard (self.viewModel?.updateResumeName(resume_id: resumeID, resumeName: self.resumeName.text ?? "")) != false else  {
+                return print("Failed to update resume name")
+            }*/
         }))
         editResume.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
       
         self.present(editResume, animated: true, completion: nil)
+    }
+    
+    func changeName(resumeName: String) -> Bool {
+        let resumeID = self.userResume?.resume_id ?? ""
+        let userResumeRepo = UserResumeRepository.shared
+        let changeName = userResumeRepo.updateResumeName(resume_id: resumeID, newResumeName: resumeName)
+        if changeName {
+            return true
+        } else {
+            print("Failed to update resume name")
+            return false
+        }
     }
     
     @IBAction func finishDidTap(_ sender: Any) {
