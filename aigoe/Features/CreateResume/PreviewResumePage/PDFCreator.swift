@@ -56,6 +56,12 @@ class PDFCreator: NSObject {
         return data
     }
     
+    func generatePdfThumbnail(of thumbnailSize: CGSize , atPage pageIndex: Int, pdfData: Data) -> UIImage? {
+        let pdfDocument = PDFDocument(data: pdfData)
+        let pdfDocumentPage = pdfDocument?.page(at: pageIndex)
+        return pdfDocumentPage?.thumbnail(of: thumbnailSize, for: PDFDisplayBox.trimBox)
+    }
+    
     func addTitleSection(pageRect: CGRect, title: String, drawContext: CGContext, context: UIGraphicsPDFRendererContext)->CGFloat{
         //User Data
         let phone = userResume?.user?.phoneNumber ?? ""

@@ -9,7 +9,9 @@ import UIKit
 import PDFKit
 
 class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
-
+    
+    
+    @IBOutlet weak var imageContainer: UIView!
     @IBOutlet weak var resumePreviewImage: UIImageView!
     @IBOutlet weak var resumeName: UILabel!
     @IBOutlet weak var resumeDate: UILabel!
@@ -60,20 +62,48 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
             textField.placeholder = "Input your resume name"
         }
 
-        editResume.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak editResume] (_) in
+        /*editResume.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak editResume] (_) in
+            self.changeName()
             let textField = editResume?.textFields![0]
             self.resumeName.text = textField?.text
-            guard let resumeID = self.userResume?.resume_id else {return}
-            guard (self.viewModel?.updateResumeName(resume_id: resumeID, resumeName: self.resumeName.text ?? "")) != nil else{
+                
+            /*guard (self.viewModel?.updateResumeName(resume_id: resumeID, resumeName: self.resumeName.text ?? "")) != false else  {
                 return print("Failed to update resume name")
+            }*/
+        }))*/
+        
+        editResume.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak editResume] (_) in
+            let textField = editResume?.textFields![0]
+            let data = self.changeName(resumeName: textField?.text ?? "")
+            
+            if data {
+                self.resumeName.text = textField?.text
+            } else {
+                print("change name failed")
             }
+            /*guard (self.viewModel?.updateResumeName(resume_id: resumeID, resumeName: self.resumeName.text ?? "")) != false else  {
+                return print("Failed to update resume name")
+            }*/
         }))
         editResume.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
       
         self.present(editResume, animated: true, completion: nil)
     }
     
+    func changeName(resumeName: String) -> Bool {
+        let resumeID = self.userResume?.resume_id ?? ""
+        let userResumeRepo = UserResumeRepository.shared
+        let changeName = userResumeRepo.updateResumeName(resume_id: resumeID, newResumeName: resumeName)
+        if changeName {
+            return true
+        } else {
+            print("Failed to update resume name")
+            return false
+        }
+    }
+    
     @IBAction func finishDidTap(_ sender: Any) {
+        NotificationCenter.default.post(name: Notification.Name("clearStep"), object: nil)
         navigationController?.popToRootViewController(animated: true)
     }
     
@@ -103,13 +133,16 @@ extension GenerateResumeController {
     }
     
     func displaySetup(){
+        let image = UIImage(data: userResume?.image ?? Data())
+        resumeName.text = userResume?.name ?? "Resume Title"
+        
         exportResumeButton.backgroundColor = UIColor.primaryBlue
         exportResumeButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
         exportResumeButton.layer.cornerRadius = 18
         exportResumeButton.tintColor = .white
-        resumePreviewImage.layer.borderColor = UIColor.primaryBlue.cgColor
+        resumePreviewImage.image = image
         resumePreviewImage.layer.shadowOpacity = 0.5
-        resumePreviewImage.layer.shadowRadius = 1
+        resumePreviewImage.layer.shadowRadius = 3
         resumePreviewImage.layer.shadowColor = UIColor.lightGray.cgColor
         self.navigationItem.title = "Preview Resume"
         finishCreateResume.dsLongUnfilledButton(isDelete: false, text: "Finish")
