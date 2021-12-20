@@ -10,9 +10,10 @@ import CloudKit
 
 class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel> {
     
-    var index: Int?
+    var index: Int = 0
     var selectedTemplate: Int = 0
     var selectedUserResume = User_Resume()
+    var selectedResumeContent = Resume_Content()
     var isCreate = Bool()
     var isGenerate = false
     var formSource = String()
@@ -34,7 +35,7 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
         smallSetButtonView.delegate = self
         progressBarView.dlgt = self
         hideKeyboardWhenTappedAround()
-        
+        smallSetButtonView.buttonStyle(from: "step")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -43,9 +44,12 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
             pageController.prevNextSetup(prevNextDlgt: self)
             pageController.selectedResume = selectedUserResume
             pageController.isCreate = isCreate
+            pageController.currentResumeContent = selectedResumeContent
         } else if let vc = segue.destination as? GenerateResumeController {
             vc.selectedTemplate = selectedTemplate
             vc.userResume = selectedUserResume
+            vc.resumeContentId = selectedResumeContentId
+            vc.userResumeContent = selectedResumeContent
         }
     }
     
@@ -109,12 +113,26 @@ extension StepByStepGuideViewController: SmallSetButtonDelegate {
         NotificationCenter.default.post(name: Notification.Name("goToNext"), object: nil)
     }
     
-    func didTapPrevious() {
+    func didTapLeftButton() {
         NotificationCenter.default.post(name: Notification.Name("goToPrev"), object: nil)
     }
     
     func didTapGenerate() {
-        performSegue(withIdentifier: "goToGenerate", sender: self)
+        if let resumeContent = ResumeContentRepository.shared.getResumeContentById(resume_id: selectedResumeContentId) {
+            createPDFThumbnail(resumeContent: resumeContent)
+            performSegue(withIdentifier: "goToGenerate", sender: self)
+        } else {
+            print("Step VC =========== Cannot get user resume content ID")
+        }
+         
+    }
+    
+    func createPDFThumbnail(resumeContent: Resume_Content){
+        let pdfCreator = PDFCreator(resumeContent: resumeContent, userResume: selectedUserResume, selectedTemplate: selectedTemplate)
+        let pdfData = pdfCreator.createPDF()
+        let thumbnailSize = CGSize(width: 260, height: 463)
+        let thumbnail = pdfCreator.generatePdfThumbnail(of: thumbnailSize, atPage: 0, pdfData: pdfData)
+        self.viewModel?.updateUserResumePDFThumbnail(resumeId: resumeContent.resume_id ?? "", img: thumbnail ?? UIImage())
     }
     
     func dataChecker(page: Int, edu: [Education], exp: [Experience], skill: [Skills], accomp: [Accomplishment]) {
@@ -158,10 +176,10 @@ extension StepByStepGuideViewController: StepByStepGuideDelegate {
     
     func updateData(page: Int) {
         let data = self.viewModel?.getAllInitialData()
-        let edu = data?.edu ?? []
-        let exp = data?.exp ?? []
-        let skills = data?.skill ?? []
-        let accomp =  data?.accom ?? []
+        eduData = data?.edu ?? []
+        expData = data?.exp ?? []
+        skillData = data?.skill ?? []
+        accomData =  data?.accom ?? []
         //dataChecker(page: page, edu:edu, exp: exp, skill: skills, accomp: accomp)
     }
     
@@ -212,6 +230,7 @@ extension StepByStepGuideViewController: StepByStepGuideDelegate {
         let storyboard = UIStoryboard(name: "SkillAddEditController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToEditSkills") as! SkillAddEditController
         vc.skill = skills
+        vc.dataFrom = from
         
         self.navigationController?.pushViewController(vc, animated: true)
     }

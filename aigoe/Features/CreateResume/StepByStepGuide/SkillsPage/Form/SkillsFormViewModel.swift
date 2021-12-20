@@ -35,9 +35,9 @@ class SkillsFormViewModel: NSObject{
         return skill
     }
     
-    func deleteSkill(skill: Skills){
-        let skillToDelete = Skills()
-        SkillRepository.shared.deleteSkills(data: skill )
+    func deleteSkill(skill: Skills) -> Bool{
+        let skill = SkillRepository.shared.deleteSkills(data: skill)
+        return skill
     }
 
 }

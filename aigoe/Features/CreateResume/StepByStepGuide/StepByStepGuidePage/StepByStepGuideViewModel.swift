@@ -95,6 +95,10 @@ class StepByStepGuideViewModel: NSObject {
     func updateSelectedAccompToResume(resumeId: String, accompId: String) {
         resumeContentRepo.updateResumeContentAccomp(resume_id: resumeId, newAccomp_id: accompId)
     }
+    
+    func updateUserResumePDFThumbnail(resumeId: String, img: UIImage) {
+        userResumeRepo.updateResumeThumbnail(resume_id: resumeId, resumeThumbnail: img)
+    }
 }
 
 //MARK: Update Checklist on Table View

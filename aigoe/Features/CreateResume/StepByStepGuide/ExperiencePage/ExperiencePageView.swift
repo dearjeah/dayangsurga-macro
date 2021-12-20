@@ -28,6 +28,8 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     var stepViewModel = StepByStepGuideViewModel()
     var emptyState: Empty_State?
     var experience = [Experience]()
+    var expViewModel = ExperiencePageViewModel()
+    var resumeContentData = Resume_Content()
     
     func setupExpList(dlgt: ExperienceListDelegate) {
         self.experienceDelegate = dlgt
@@ -47,11 +49,12 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         initialSetup()
     }
     
-    convenience init(exp: [Experience]) {
+    convenience init(exp: [Experience], resumeContent: Resume_Content) {
         self.init()
         
         notificationCenterSetup()
         experience  = exp
+        resumeContentData = resumeContent
         initialSetup()
     }
     
@@ -109,6 +112,7 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         //experience = stepViewModel.getExpData() ?? []
         let expData = experience[indexPath.row]
         selectedExp = indexPath.row
+        let exp = experience[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExperienceTableCell") as! ExperienceTableCell
         cell.jobCompanyName.text = experience[indexPath.row].jobCompanyName
         cell.jobTitle.text = experience[indexPath.row].jobTitle
@@ -122,24 +126,34 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
             self.experienceDelegate?.passingExpData(exp: self.experience[indexPath.row])
         }
         
-        if expData.isSelected == false{
+        let selectedExpId = resumeContentData.exp_id
+        let counter = resumeContentData.exp_id?.count ?? 0
+        if counter != 0 {
+            for i in 0..<counter {
+                if exp.exp_id == selectedExpId?[i] {
+                    cell.checklistButtonIfSelected()
+                    cell.selectionStatus = true
+                }
+            }
+        } else {
             cell.checklistButtonUnSelected()
-        }else{
-            cell.checklistButtonIfSelected()
+            cell.selectionStatus = false
         }
         
         cell.checklistButtonAction = {
-            let expId =  self.experience[indexPath.row].exp_id ?? ""
+            let expId = self.experience[indexPath.row].exp_id ?? ""
             if cell.selectionStatus == false{
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
-                expData.isSelected = true
-                ExperienceRepository.shared.updateSelectedExpStatus(exp_id: UUID().uuidString, isSelected: true)
+                self.experience[indexPath.row].isSelected = true
+                self.expViewModel.addSelectedExp(resumeId: self.resumeContentData.resume_id ?? "", expId: self.experience[indexPath.row].exp_id ?? "")
+                self.experienceDelegate?.selectButtonExp(expId: expId, isSelected: true)
             }else{
                 cell.selectionStatus = false
                 cell.checklistButtonUnSelected()
-                expData.isSelected = false
-                ExperienceRepository.shared.updateSelectedExpStatus(exp_id: UUID().uuidString, isSelected: false)
+                self.experience[indexPath.row].isSelected = false
+                self.expViewModel.removeUnselectedExp(resumeId: self.resumeContentData.resume_id ?? "", expId: self.experience[indexPath.row].exp_id ?? "")
+                self.experienceDelegate?.selectButtonExp(expId: expId, isSelected: false)
             }
         }
         return cell

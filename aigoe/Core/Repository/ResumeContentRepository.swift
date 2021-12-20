@@ -145,7 +145,7 @@ class ResumeContentRepository{
     
     // func delete
     func deleteResumeContentEdu(resume_id: String,
-                                eduId: String) {
+                                eduId: String) -> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "resume_id == '\(resume_id)'")
         do {
@@ -159,9 +159,11 @@ class ResumeContentRepository{
                     break
                 }
             }
+            return true
         } catch let error as NSError {
             print(error)
         }
+        return false
     }
     
     func deleteResumeContentExp(resume_id: String,

@@ -123,12 +123,22 @@ extension UIViewController {
         return controller
     }
     
-    func showAlert(title: String, msg: String) {
+    func showAlert(title: String, msg: String, style: UIAlertAction.Style, titleAction: String) {
         let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         
-        let cancelButton = UIAlertAction(title: "Close", style: .destructive, handler: nil)
+        let cancelButton = UIAlertAction(title: titleAction, style: style, handler: nil)
         
         alert.addAction(cancelButton)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showAlertDelete(title: String, msg: String, completionBlock: @escaping (Bool) -> Void){
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
+            
+            completionBlock(true)
+        }))
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -170,7 +180,7 @@ extension UIViewController {
         
         alert.addAction(cancelButton)
         alert.addAction(okButton)
-
+        
         self.present(alert, animated: true, completion: nil)
     }
 }
@@ -198,7 +208,7 @@ extension UIViewController {
             navigationController?.navigationBar.standardAppearance = navBarAppearance
             navigationController?.navigationBar.compactAppearance = navBarAppearance
             navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-           
+            
             
             navigationController?.navigationBar.prefersLargeTitles = preferredLargeTitle
             navigationController?.navigationBar.isTranslucent = false

@@ -31,7 +31,7 @@ protocol prevNextButtonDelegate: AnyObject {
 }
 
 class StepByStepGuidePageController: UIPageViewController {
-    
+
     var stepControllerArr: [UIViewController]? = []
     var isCreate: Bool = true //false = edit resume
     var currentPageIndex: Int = 0
@@ -45,7 +45,7 @@ class StepByStepGuidePageController: UIPageViewController {
     var expData = [Experience]()
     var skillData = [Skills]()
     var accomData = [Accomplishment]()
-    var currentResume = Resume_Content() 
+    var currentResumeContent = Resume_Content() 
     
     weak var stepDelegate: StepByStepGuideDelegate?
     weak var prevNextDelegate: prevNextButtonDelegate?
@@ -78,7 +78,7 @@ class StepByStepGuidePageController: UIPageViewController {
 }
 
 //MARK: Protocol Delegate
-extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDelegate {
+extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDelegate, SmallSetButtonDelegate {
     func isAllTextfieldFilled(was: Bool, data: PersonalInfo) {
         if currentPageIndex == 0 {
             prevNextDelegate?.isButtonEnable(left: false, right: true)
@@ -123,6 +123,10 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
         buttonFunctional(currentPage: currentPageIndex)
     }
     
+    @objc func clearStep() {
+       currentPageIndex = 0
+    }
+    
     //MARK: Delegate Function
     func hideUnHideButton(currentPage: Int) {
         let isQuizPage = isQuizPage(currentIndex: currentPage)
@@ -145,6 +149,22 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
                 goToGenerate()
             }
         }
+    }
+    //for Quiz
+    func didTapNext() {
+        //
+    }
+    
+    func didTapGenerate() {
+        //
+    }
+    
+    func didTapLeftButton() {
+        quizAnswer(was: false)
+    }
+    
+    func didTapRightButton() {
+        quizAnswer(was: true)
     }
 }
 
@@ -342,48 +362,56 @@ extension StepByStepGuidePageController {
                         }
                     }
                    else if pageType[currentPage] == 2 {
-                        if eduData.isEmpty {
+                        //if eduData.isEmpty {
+                       if currentResumeContent.edu_id == nil || currentResumeContent.edu_id?.count == 0 {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
-                            let checker = dataEduChecker(data: eduData)
+                            prevNextDelegate?.isButtonEnable(left: true , right: true)
+                            /*let checker = dataEduChecker(data: eduData)
                             if checker {
                                 prevNextDelegate?.isButtonEnable(left: true , right: true)
                             } else {
                                 prevNextDelegate?.isButtonEnable(left: true , right: false)
-                            }
+                            }*/
                         }
                     } else if pageType[currentPage] == 3 {
-                        if expData.isEmpty {
+                        //if expData.isEmpty {
+                        if currentResumeContent.exp_id == nil || currentResumeContent.exp_id?.count  == 0 {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
-                            let checker = dataExpChecker(data: expData)
+                            prevNextDelegate?.isButtonEnable(left: true , right: true)
+                            /*let checker = dataExpChecker(data: expData)
                             if checker {
                                 prevNextDelegate?.isButtonEnable(left: true , right: true)
                             } else {
                                 prevNextDelegate?.isButtonEnable(left: true , right: false)
-                            }
+                            }*/
                         }
                     } else if pageType[currentPage] == 4 {
-                        if skillData.isEmpty {
+                        //if skillData.isEmpty {
+                        if currentResumeContent.skill_id == nil || currentResumeContent.skill_id?.count == 0 {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
-                            let checker = dataSkillsChecker(data: skillData)
+                            prevNextDelegate?.isButtonEnable(left: true , right: true)
+                            /*let checker = dataSkillsChecker(data: skillData)
                             if checker {
                                 prevNextDelegate?.isButtonEnable(left: true , right: true)
                             } else {
                                 prevNextDelegate?.isButtonEnable(left: true , right: false)
-                            }
+                            }*/
                         }
                     } else if pageType[currentPage] == 5 {
-                        if accomData.isEmpty {
+                        //if accomData.isEmpty {
+                        if currentResumeContent.accom_id == nil || currentResumeContent.accom_id?.count == 0 {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
-                            let checker = dataAccomChecker(data: accomData)
+                            prevNextDelegate?.isButtonEnable(left: true , right: true)
+                            /*let checker = dataAccomChecker(data: accomData)
                             if checker {
                                 prevNextDelegate?.isButtonEnable(left: true , right: true)
                             } else {
                                 prevNextDelegate?.isButtonEnable(left: true , right: false)
-                            }
+                            }*/
                         }
                     } else {
                         prevNextDelegate?.isButtonEnable(left: true, right: true)
@@ -463,6 +491,7 @@ extension StepByStepGuidePageController {
         NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("expReload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("skillReload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("accompReload"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(clearStep), name: Notification.Name("clearStep"), object: nil)
     }
     
     private func setPageIndex(value: Int, progressBar: Bool = false) {
@@ -528,7 +557,7 @@ extension StepByStepGuidePageController {
         controller.viewModel =  EducationListViewModel()
         eduData = controller.viewModel?.getEduData() ?? []
         
-        let tmp =  EducationPageView.init(edu: eduData)
+        let tmp =  EducationPageView.init(edu: eduData, resumeContent: currentResumeContent)
         tmp.setup(dlgt: self)
         controller.view = tmp
         return controller
@@ -538,6 +567,7 @@ extension StepByStepGuidePageController {
         let controller = UIViewController()
         let tmp = QuizPage.init(type: type)
         tmp.quizPageSetup(dlgt: self)
+        tmp.yesNoSelection.delegate = self
         controller.view = tmp
         return controller
     }
@@ -547,7 +577,7 @@ extension StepByStepGuidePageController {
         controller.viewModel = ExperiencePageViewModel()
         expData = controller.viewModel?.getAllExpData() ?? []
         
-        let tmp = ExperiencePageView.init(exp: expData)
+        let tmp = ExperiencePageView.init(exp: expData, resumeContent: currentResumeContent)
         tmp.setupExpList(dlgt: self)
         controller.view = tmp
         return controller
@@ -558,7 +588,7 @@ extension StepByStepGuidePageController {
         controller.viewModel = SkillsPageviewModel()
         skillData = controller.viewModel?.getAllSkillData() ?? []
         
-        let tmp = SkillsPageView.init(data: skillData)
+        let tmp = SkillsPageView.init(skill: skillData, resumeContent: currentResumeContent)
         tmp.skillDelegateSetup(dlgt: self)
         controller.view = tmp
         return controller
@@ -569,7 +599,7 @@ extension StepByStepGuidePageController {
         controller.viewModel = AccomplishmentPageViewModel()
         accomData = controller.viewModel?.getAllAccomp() ?? []
         
-        let tmp = AccomplishmentPageView.init(accom: accomData)
+        let tmp = AccomplishmentPageView.init(accom: accomData, resumeContent: currentResumeContent)
         tmp.setup(dlgt: self)
         controller.view = tmp
         return controller

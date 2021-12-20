@@ -61,6 +61,10 @@ class PersonalInfoPage: UIView{
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
     
+}
+
+//MARK: Initial Setup
+extension PersonalInfoPage {
     func setup() {
         fullNameField.titleLabel.text = "Full Name*"
         emailField.titleLabel.text = "Email*"
@@ -68,6 +72,8 @@ class PersonalInfoPage: UIView{
         locationField.titleLabel.text = "Location*"
         summaryField.titleLabel.text = "Summary*"
         summaryField.cueLabel.text = "Tell us about who you are and what you do that fits the job you're applying for, make sure you use action verbs."
+        emailField.textField.keyboardType = .emailAddress
+        phoneField.textField.keyboardType = .numberPad
         
         //MARK: Implement with protocol delegate for loose coupling
         if let personalInfoPlaceholder = PersonalInformationPlaceholderRepository.shared.getPIPhById(pi_ph_id: 1) {
@@ -95,14 +101,6 @@ class PersonalInfoPage: UIView{
         
     }
     
-    func saveToCoreData() {
-        if UserRepository.shared.getUserById(id: 0) != nil{
-            UserRepository.shared.updateUser(id: 0, newName: fullNameField.textField.text ?? "", newPhoneNumber: phoneField.textField.text ?? "", newEmail: emailField.textField.text ?? "" , newLocation: locationField.textField.text ?? "", newSummary: summaryField.textView.text ?? "")
-        } else {
-            UserRepository.shared.createUser(user_id: 0, username: fullNameField.textField.text ?? "", phoneNumber: phoneField.textField.text ?? "", email: emailField.textField.text ?? "", location: locationField.textField.text ?? "", summary: summaryField.textView.text ?? "")
-        }
-    }
-    
     func checkAllFieldValue() -> Bool {
         if fullNameField.textField.text?.isEmpty == false
             && emailField.textField.text?.isEmpty == false
@@ -114,8 +112,19 @@ class PersonalInfoPage: UIView{
         return false
     }
 }
+//MARK: Core Data
+extension PersonalInfoPage {
+    func saveToCoreData() {
+        if UserRepository.shared.getUserById(id: 0) != nil{
+            UserRepository.shared.updateUser(id: 0, newName: fullNameField.textField.text ?? "", newPhoneNumber: phoneField.textField.text ?? "", newEmail: emailField.textField.text ?? "" , newLocation: locationField.textField.text ?? "", newSummary: summaryField.textView.text ?? "")
+        } else {
+            UserRepository.shared.createUser(user_id: 0, username: fullNameField.textField.text ?? "", phoneNumber: phoneField.textField.text ?? "", email: emailField.textField.text ?? "", location: locationField.textField.text ?? "", summary: summaryField.textView.text ?? "")
+        }
+    }
+}
 
-extension PersonalInfoPage :  UITextViewDelegate {
+//MARK: Delegate
+extension PersonalInfoPage :  UITextViewDelegate, LabelWithTextFieldDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if let personalInfoPlaceholder = PersonalInformationPlaceholderRepository.shared.getPIPhById(pi_ph_id: 1) {
             if (summaryField.textView.text.lowercased()  == (personalInfoPlaceholder.summary_ph?.lowercased())){
@@ -139,9 +148,7 @@ extension PersonalInfoPage :  UITextViewDelegate {
             delegate?.isAllTextfieldFilled(was: true, data: data)
         }
     }
-}
-
-extension PersonalInfoPage :  LabelWithTextFieldDelegate {
+    
     func isTextfieldFilled(was: Bool) {
         if was {
             let tmp = checkAllFieldValue()
@@ -158,5 +165,4 @@ extension PersonalInfoPage :  LabelWithTextFieldDelegate {
             }
         }
     }
-
 }

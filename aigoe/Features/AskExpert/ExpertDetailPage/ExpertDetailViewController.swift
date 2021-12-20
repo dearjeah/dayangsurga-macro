@@ -62,8 +62,9 @@ class ExpertDetailViewController: MVVMViewController<ExpertDetailViewModel>, UIT
     }
     
     @IBAction func askWhatsAppTapped(_ sender: Any) {
+        let expertName = expertName.text ?? ""
 
-        sendToWhatsApp(message: "Halo, perkenalkan saya\nNama:\nPekerjaan:\nSaya adalah pengguna aplikasi Aigoe. Saya ingin bertanya tentang proses rekrutmen dan seleksi kepada Ibu/Bapak \(String(describing: expertName.text)).")
+        sendToWhatsApp(message: "Halo, perkenalkan saya\nNama:\nPekerjaan:\nSaya adalah pengguna aplikasi Aigoe. Saya ingin bertanya tentang proses rekrutmen dan seleksi kepada Ibu/Bapak \(expertName).")
       
     }
     

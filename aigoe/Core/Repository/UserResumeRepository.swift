@@ -156,4 +156,35 @@ class UserResumeRepository {
         }
     }
     
+    func updateResumeName(resume_id: String, newResumeName: String)-> Bool{
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == '\(resume_id)'")
+        do{
+            let item = try context.fetch(fetchRequest)as? [User_Resume]
+            let resumeName = item?.first
+            
+            resumeName?.name = newResumeName
+            try context.save()
+            return true
+        } catch let error as NSError {
+            print(error)
+        }
+        
+        return false
+    }
+    
+    func updateResumeThumbnail(resume_id: String, resumeThumbnail: UIImage) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == '\(resume_id)'")
+        do{
+            let item = try context.fetch(fetchRequest)as? [User_Resume]
+            let resumeName = item?.first
+            
+            resumeName?.image = resumeThumbnail.pngData()
+            try context.save()
+            print("===Update Resume Thumbnail=== PDF Thumbnail saved")
+        } catch let error as NSError {
+            print(error)
+        }
+    }
 }

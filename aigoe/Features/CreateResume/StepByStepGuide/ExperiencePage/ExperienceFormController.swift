@@ -102,6 +102,7 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
     func deleteExpData(){
         guard let data = self.viewModel?.deleteExpData(dataExperience: experience) else { return errorSaveData() }
         if data {
+            self.viewModel?.removeExpFromoResumeContent(resumeId: "", expId: experience?.exp_id ?? "")
             performSegue(withIdentifier: "backToStepVC", sender: self)
         } else {
             errorSaveData()
@@ -113,9 +114,7 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
 extension ExperienceFormController {
     func alertForCheckTF() -> Bool {
         if ((companyName.textField.text?.isEmpty) != false) || ((jobTitle.textField.text?.isEmpty) != false) || ((jobSummary.textView.text?.isEmpty) != false){
-            let alert = UIAlertController(title: "Field Can't Be Empty", message: "You must fill in every mandatory fields in this form.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            showAlert(title: "Field Can't Be Empty", msg: "You must fill in every mandatory fields in this form.", style: .default, titleAction: "OK")
             return true
         } else {
             return false
@@ -123,16 +122,11 @@ extension ExperienceFormController {
     }
     
     func showAlertForDelete(){
-        let alert = UIAlertController(title: "Delete Data?", message: "You will not be able to recover it.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {action in self.deleteExpData()}))
-        self.present(alert, animated: true, completion: nil)
+        showAlertDelete(title: "Delete Data?", msg: "You will not be able to recover it.", completionBlock: {action in self.deleteExpData()})
     }
     
     func errorSaveData(){
-        let alert = UIAlertController(title: "Unable to Save Data", message: "Your data is not saved. Please try again later", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        showAlert(title: "Unable to Save Data", msg: "Your data is not saved. Please try again later", style: .default, titleAction: "OK")
     }
 }
 
@@ -140,9 +134,9 @@ extension ExperienceFormController {
 extension ExperienceFormController: LabelSwitchDelegate {
     func getValueSwitch() {
         if (jobStatus.switchButton.isOn){
-            jobPeriod.endDatePicker.isEnabled = true
+            jobPeriod.endDatePicker.isUserInteractionEnabled = false
         } else {
-            jobPeriod.endDatePicker.isEnabled = false
+            jobPeriod.endDatePicker.isUserInteractionEnabled = true
         }
     }
 }
@@ -172,7 +166,8 @@ extension ExperienceFormController {
         jobSummary.titleLabel.text = "Job Summary*"
         jobSummary.cueLabel.text = expSuggestion?.jobDescSuggest
         jobSummary.textView.delegate = self
-        
+        jobPeriod.endDatePicker.maximumDate = Date()
+        getValueSwitch()
         if dataFrom == "edit"{
             if experience == nil {
                 companyName.textField.placeholder = expPlaceholder?.companyName_ph

@@ -4,14 +4,13 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SmallSetButton" customModule="dayangsurga_macro" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SmallSetButton" customModule="aigoe" customModuleProvider="target">
             <connections>
-                <outlet property="leftButton" destination="0fy-Cv-JDQ" id="O7n-6c-iaN"/>
-                <outlet property="rightButton" destination="ejT-bn-Rfw" id="1V1-lc-r30"/>
+                <outlet property="leftButton" destination="Gwg-QY-7Kn" id="azR-Et-rvv"/>
+                <outlet property="rightButton" destination="6RJ-OS-Vyq" id="5dh-ZV-g30"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -19,42 +18,61 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="87"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejT-bn-Rfw">
-                    <rect key="frame" x="238" y="41.5" width="160" height="48"/>
-                    <color key="backgroundColor" name="primaryBlue"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sK6-rx-pno">
+                    <rect key="frame" x="20.5" y="19.5" width="373" height="48"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gwg-QY-7Kn">
+                            <rect key="frame" x="0.0" y="0.0" width="168" height="48"/>
+                            <color key="backgroundColor" name="primaryWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="kqh-uy-7wE"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Previous">
+                                <color key="titleColor" name="primaryBlue"/>
+                            </state>
+                            <connections>
+                                <action selector="leftButtonPressed:" destination="-1" eventType="touchUpInside" id="Hle-Tb-Jld"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BdQ-D4-k4D">
+                            <rect key="frame" x="168" y="0.0" width="37" height="48"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6RJ-OS-Vyq">
+                            <rect key="frame" x="205" y="0.0" width="168" height="48"/>
+                            <color key="backgroundColor" name="primaryBlue"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="2dV-zE-INl"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Next"/>
+                            <connections>
+                                <action selector="rightButtonPressed:" destination="-1" eventType="touchUpInside" id="bEl-ae-kga"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="160" id="XPw-fR-FrV"/>
-                        <constraint firstAttribute="height" constant="48" id="jY6-kV-iHb"/>
+                        <constraint firstItem="BdQ-D4-k4D" firstAttribute="height" secondItem="sK6-rx-pno" secondAttribute="height" id="93n-pR-XdW"/>
+                        <constraint firstItem="Gwg-QY-7Kn" firstAttribute="leading" secondItem="sK6-rx-pno" secondAttribute="leading" id="Gwz-GQ-LL0"/>
+                        <constraint firstAttribute="trailing" secondItem="6RJ-OS-Vyq" secondAttribute="trailing" id="PnC-7P-Fkq"/>
+                        <constraint firstItem="BdQ-D4-k4D" firstAttribute="centerY" secondItem="sK6-rx-pno" secondAttribute="centerY" id="UqI-Gn-t9h"/>
+                        <constraint firstItem="6RJ-OS-Vyq" firstAttribute="leading" secondItem="BdQ-D4-k4D" secondAttribute="trailing" id="ZO7-wn-vWr"/>
+                        <constraint firstItem="BdQ-D4-k4D" firstAttribute="leading" secondItem="Gwg-QY-7Kn" secondAttribute="trailing" id="fQn-Ru-Yoj"/>
+                        <constraint firstItem="BdQ-D4-k4D" firstAttribute="width" secondItem="sK6-rx-pno" secondAttribute="width" multiplier="0.1" id="krQ-fE-dLL"/>
+                        <constraint firstItem="Gwg-QY-7Kn" firstAttribute="centerY" secondItem="sK6-rx-pno" secondAttribute="centerY" id="ls4-As-3L6"/>
+                        <constraint firstItem="6RJ-OS-Vyq" firstAttribute="centerY" secondItem="sK6-rx-pno" secondAttribute="centerY" id="xYS-6F-sAV"/>
+                        <constraint firstItem="BdQ-D4-k4D" firstAttribute="centerX" secondItem="sK6-rx-pno" secondAttribute="centerX" id="zx4-zn-cSV"/>
                     </constraints>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="Next"/>
-                    <connections>
-                        <action selector="rightButtonPressed:" destination="-1" eventType="touchUpInside" id="O1s-CC-NGI"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fy-Cv-JDQ">
-                    <rect key="frame" x="16" y="41.5" width="160" height="48"/>
-                    <color key="backgroundColor" name="primaryWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="48" id="VbL-05-3cA"/>
-                        <constraint firstAttribute="width" constant="160" id="bJX-pr-7KD"/>
-                    </constraints>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="Previous">
-                        <color key="titleColor" name="primaryBlue"/>
-                    </state>
-                    <connections>
-                        <action selector="leftButtonPressed:" destination="-1" eventType="touchUpInside" id="idp-ux-gGS"/>
-                    </connections>
-                </button>
+                </view>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="ejT-bn-Rfw" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="Drh-qD-6fV"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ejT-bn-Rfw" secondAttribute="trailing" constant="16" id="gTu-nr-c96"/>
-                <constraint firstItem="0fy-Cv-JDQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="mZM-E5-mGB"/>
-                <constraint firstItem="0fy-Cv-JDQ" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="vN7-q2-M6v"/>
+                <constraint firstItem="sK6-rx-pno" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.55" id="5c8-Sd-mRN"/>
+                <constraint firstItem="sK6-rx-pno" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.9" id="7t7-2n-BvQ"/>
+                <constraint firstItem="sK6-rx-pno" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="FjK-NK-BGq"/>
+                <constraint firstItem="sK6-rx-pno" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QW3-dt-845"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="131.8840579710145" y="391.40625"/>

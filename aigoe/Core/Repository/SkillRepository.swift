@@ -103,14 +103,15 @@ class SkillRepository{
         
     }
     // func delete
-    func deleteSkills(data: Skills) {
+    func deleteSkills(data: Skills) -> Bool {
         do {
             context.delete(data)
             try context.save()
-            
+            return true
         } catch let error as NSError {
             print(error)
         }
+        return false
     }
 }
 

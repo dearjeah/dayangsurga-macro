@@ -13,6 +13,7 @@ class ExperienceFormViewModel: NSObject{
     let expSuggestionRepo = ExperienceSuggestionRepository.shared
     let expPhRepo = ExperiencePlaceholderRepository.shared
     let expRepo = ExperienceRepository.shared
+    let resumeContentRepo = ResumeContentRepository.shared
     
     // for experience suggestion + ph
     func getExpSuggestion() -> Experience_Suggestion?{
@@ -56,6 +57,15 @@ class ExperienceFormViewModel: NSObject{
     func deleteExpData(dataExperience: Experience?) -> Bool {
         let data = expRepo.deleteExperience(data: dataExperience ?? Experience())
         return data
+    }
+    
+    //resume content
+    func addExpToResumeContent(resumeId: String, expId: String) {
+        resumeContentRepo.updateResumeContentExp(resume_id: resumeId, newExp_id: expId)
+    }
+    
+    func removeExpFromoResumeContent(resumeId: String, expId: String) {
+        resumeContentRepo.deleteResumeContentExp(resume_id: resumeId, expId: expId)
     }
 
 }
