@@ -31,7 +31,7 @@ protocol prevNextButtonDelegate: AnyObject {
 }
 
 class StepByStepGuidePageController: UIPageViewController {
-    
+
     var stepControllerArr: [UIViewController]? = []
     var isCreate: Bool = true //false = edit resume
     var currentPageIndex: Int = 0
@@ -78,7 +78,7 @@ class StepByStepGuidePageController: UIPageViewController {
 }
 
 //MARK: Protocol Delegate
-extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDelegate {
+extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDelegate, SmallSetButtonDelegate {
     func isAllTextfieldFilled(was: Bool, data: PersonalInfo) {
         if currentPageIndex == 0 {
             prevNextDelegate?.isButtonEnable(left: false, right: true)
@@ -149,6 +149,22 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
                 goToGenerate()
             }
         }
+    }
+    //for Quiz
+    func didTapNext() {
+        //
+    }
+    
+    func didTapGenerate() {
+        //
+    }
+    
+    func didTapLeftButton() {
+        quizAnswer(was: false)
+    }
+    
+    func didTapRightButton() {
+        quizAnswer(was: true)
     }
 }
 
@@ -551,6 +567,7 @@ extension StepByStepGuidePageController {
         let controller = UIViewController()
         let tmp = QuizPage.init(type: type)
         tmp.quizPageSetup(dlgt: self)
+        tmp.yesNoSelection.delegate = self
         controller.view = tmp
         return controller
     }
