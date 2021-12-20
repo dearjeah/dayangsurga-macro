@@ -24,6 +24,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gwg-QY-7Kn">
                             <rect key="frame" x="0.0" y="0.0" width="168" height="48"/>
                             <color key="backgroundColor" name="primaryWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="kqh-uy-7wE"/>
+                            </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" title="Previous">
                                 <color key="titleColor" name="primaryBlue"/>
@@ -39,6 +42,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6RJ-OS-Vyq">
                             <rect key="frame" x="205" y="0.0" width="168" height="48"/>
                             <color key="backgroundColor" name="primaryBlue"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="2dV-zE-INl"/>
+                            </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" title="Next"/>
                             <connections>
@@ -50,12 +56,10 @@
                     <constraints>
                         <constraint firstItem="BdQ-D4-k4D" firstAttribute="height" secondItem="sK6-rx-pno" secondAttribute="height" id="93n-pR-XdW"/>
                         <constraint firstItem="Gwg-QY-7Kn" firstAttribute="leading" secondItem="sK6-rx-pno" secondAttribute="leading" id="Gwz-GQ-LL0"/>
-                        <constraint firstItem="Gwg-QY-7Kn" firstAttribute="height" secondItem="sK6-rx-pno" secondAttribute="height" id="Pbf-cK-vPf"/>
                         <constraint firstAttribute="trailing" secondItem="6RJ-OS-Vyq" secondAttribute="trailing" id="PnC-7P-Fkq"/>
                         <constraint firstItem="BdQ-D4-k4D" firstAttribute="centerY" secondItem="sK6-rx-pno" secondAttribute="centerY" id="UqI-Gn-t9h"/>
                         <constraint firstItem="6RJ-OS-Vyq" firstAttribute="leading" secondItem="BdQ-D4-k4D" secondAttribute="trailing" id="ZO7-wn-vWr"/>
                         <constraint firstItem="BdQ-D4-k4D" firstAttribute="leading" secondItem="Gwg-QY-7Kn" secondAttribute="trailing" id="fQn-Ru-Yoj"/>
-                        <constraint firstItem="6RJ-OS-Vyq" firstAttribute="height" secondItem="sK6-rx-pno" secondAttribute="height" id="jDC-ak-E07"/>
                         <constraint firstItem="BdQ-D4-k4D" firstAttribute="width" secondItem="sK6-rx-pno" secondAttribute="width" multiplier="0.1" id="krQ-fE-dLL"/>
                         <constraint firstItem="Gwg-QY-7Kn" firstAttribute="centerY" secondItem="sK6-rx-pno" secondAttribute="centerY" id="ls4-As-3L6"/>
                         <constraint firstItem="6RJ-OS-Vyq" firstAttribute="centerY" secondItem="sK6-rx-pno" secondAttribute="centerY" id="xYS-6F-sAV"/>
