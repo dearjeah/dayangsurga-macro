@@ -69,6 +69,13 @@ class StepByStepGuideViewModel: NSObject {
         return SkillRepository.shared.getSkillsById(skillId: skillId)
     }
     
+    func getResumeContentId(resumeId: String) -> String {
+        let resumeContent = resumeContentRepo.getResumeContentById(resume_id: resumeId)
+        let resumeContentId = resumeContent?.resume_id ?? ""
+        
+        return resumeContentId
+    }
+    
     
     func updatePersonalInfo(data: PersonalInfo) {
         userRepo.updateUser(id: 0,
