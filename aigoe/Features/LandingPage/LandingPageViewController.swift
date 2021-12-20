@@ -163,7 +163,8 @@ extension LandingPageViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
         index = indexPath
-        goToPreview()
+        //goToPreview()
+        createAlert()
     }
 }
 
