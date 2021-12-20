@@ -35,7 +35,7 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
         smallSetButtonView.delegate = self
         progressBarView.dlgt = self
         hideKeyboardWhenTappedAround()
-        
+        smallSetButtonView.buttonStyle(from: "step")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -113,7 +113,7 @@ extension StepByStepGuideViewController: SmallSetButtonDelegate {
         NotificationCenter.default.post(name: Notification.Name("goToNext"), object: nil)
     }
     
-    func didTapPrevious() {
+    func didTapLeftButton() {
         NotificationCenter.default.post(name: Notification.Name("goToPrev"), object: nil)
     }
     
@@ -176,10 +176,10 @@ extension StepByStepGuideViewController: StepByStepGuideDelegate {
     
     func updateData(page: Int) {
         let data = self.viewModel?.getAllInitialData()
-        let edu = data?.edu ?? []
-        let exp = data?.exp ?? []
-        let skills = data?.skill ?? []
-        let accomp =  data?.accom ?? []
+        eduData = data?.edu ?? []
+        expData = data?.exp ?? []
+        skillData = data?.skill ?? []
+        accomData =  data?.accom ?? []
         //dataChecker(page: page, edu:edu, exp: exp, skill: skills, accomp: accomp)
     }
     

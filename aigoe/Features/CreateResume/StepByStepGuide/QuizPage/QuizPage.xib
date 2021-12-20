@@ -7,12 +7,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuizPage" customModule="dayangsurga_macro" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuizPage" customModule="aigoe" customModuleProvider="target">
             <connections>
                 <outlet property="baseView" destination="iN0-l3-epB" id="uvS-Jb-j6U"/>
                 <outlet property="containerView" destination="DFO-pf-HtJ" id="Ssg-Ry-ORG"/>
                 <outlet property="quizCard" destination="bbO-re-yzN" id="oDB-v2-arw"/>
-                <outlet property="swipeImages" destination="qDM-Fd-uSQ" id="Bxh-Or-Mh4"/>
+                <outlet property="yesNoSelection" destination="qDM-Fd-uSQ" id="2jN-Hg-HKT"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,8 +23,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DFO-pf-HtJ">
                     <rect key="frame" x="0.0" y="10" width="414" height="517"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbO-re-yzN" customClass="QuizPageView" customModule="dayangsurga_macro" customModuleProvider="target">
-                            <rect key="frame" x="71" y="9.5" width="272" height="498"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbO-re-yzN" customClass="QuizPageView" customModule="aigoe" customModuleProvider="target">
+                            <rect key="frame" x="71" y="13" width="272" height="491"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <gestureRecognizers/>
                             <connections>
@@ -37,30 +37,40 @@
                         <constraint firstItem="bbO-re-yzN" firstAttribute="centerX" secondItem="DFO-pf-HtJ" secondAttribute="centerX" id="1lF-Gx-xEo"/>
                         <constraint firstItem="bbO-re-yzN" firstAttribute="width" secondItem="DFO-pf-HtJ" secondAttribute="width" multiplier="0.657005" id="A4j-SE-k7g"/>
                         <constraint firstItem="bbO-re-yzN" firstAttribute="centerY" secondItem="DFO-pf-HtJ" secondAttribute="centerY" id="Fht-72-7DN"/>
-                        <constraint firstItem="bbO-re-yzN" firstAttribute="height" secondItem="DFO-pf-HtJ" secondAttribute="height" multiplier="0.96325" id="J6A-jY-Lmj"/>
+                        <constraint firstItem="bbO-re-yzN" firstAttribute="height" secondItem="DFO-pf-HtJ" secondAttribute="height" multiplier="0.95" id="J6A-jY-Lmj"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDM-Fd-uSQ" customClass="YesNoSwipeView" customModule="dayangsurga_macro" customModuleProvider="target">
-                    <rect key="frame" x="40" y="546" width="334" height="80"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lcp-v2-M84">
+                    <rect key="frame" x="0.0" y="527" width="414" height="119"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDM-Fd-uSQ" customClass="SmallSetButton" customModule="aigoe" customModuleProvider="target">
+                            <rect key="frame" x="10" y="6" width="394" height="107"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="80" id="qg4-1f-BHN"/>
+                        <constraint firstItem="qDM-Fd-uSQ" firstAttribute="height" secondItem="Lcp-v2-M84" secondAttribute="height" multiplier="0.9" id="6bK-rA-Ee8"/>
+                        <constraint firstItem="qDM-Fd-uSQ" firstAttribute="width" secondItem="Lcp-v2-M84" secondAttribute="width" multiplier="0.951691" id="G8w-zo-cxr"/>
+                        <constraint firstItem="qDM-Fd-uSQ" firstAttribute="centerY" secondItem="Lcp-v2-M84" secondAttribute="centerY" id="iDX-6Q-B4S"/>
+                        <constraint firstItem="qDM-Fd-uSQ" firstAttribute="centerX" secondItem="Lcp-v2-M84" secondAttribute="centerX" id="qKb-mi-jSx"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="DFO-pf-HtJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="53l-Ay-UQI"/>
-                <constraint firstItem="qDM-Fd-uSQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="8Gg-aL-7lD"/>
                 <constraint firstItem="DFO-pf-HtJ" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="FTW-hd-BQC"/>
                 <constraint firstItem="DFO-pf-HtJ" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.8" id="HAq-td-I3o"/>
                 <constraint firstItem="DFO-pf-HtJ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="OVQ-0O-pWU"/>
-                <constraint firstAttribute="trailing" secondItem="qDM-Fd-uSQ" secondAttribute="trailing" constant="40" id="c52-go-20R"/>
-                <constraint firstItem="qDM-Fd-uSQ" firstAttribute="top" secondItem="DFO-pf-HtJ" secondAttribute="bottom" constant="19" id="y3H-kd-PjX"/>
+                <constraint firstAttribute="bottom" secondItem="Lcp-v2-M84" secondAttribute="bottom" id="b1L-bp-cCz"/>
+                <constraint firstItem="Lcp-v2-M84" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jcw-nP-jkl"/>
+                <constraint firstAttribute="trailing" secondItem="Lcp-v2-M84" secondAttribute="trailing" id="pgs-yM-7CU"/>
+                <constraint firstItem="Lcp-v2-M84" firstAttribute="top" secondItem="DFO-pf-HtJ" secondAttribute="bottom" id="zlP-Yq-urJ"/>
             </constraints>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="132" y="118"/>
+            <point key="canvasLocation" x="131.8840579710145" y="117.85714285714285"/>
         </view>
         <panGestureRecognizer minimumNumberOfTouches="1" id="zmK-RC-eiM">
             <connections>
