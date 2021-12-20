@@ -71,6 +71,11 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
     
+  
+}
+
+//MARK: INITIAL SETUP
+extension ExperiencePageView{
     func initialSetup(){
         self.expTableView.register(UINib(nibName: "ExperienceTableCell", bundle: nil), forCellReuseIdentifier: "ExperienceTableCell")
         
@@ -92,8 +97,22 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     func notificationCenterSetup() {
         NotificationCenter.default.addObserver(self, selector: #selector(expReload), name: Notification.Name("expReload"), object: nil)
     }
+}
+
+//MARK: LOAD AND PASSING DATA
+extension ExperiencePageView: ExperiencePageDelegate, expCellDelegate {
+    func passData() -> Experience? {
+        let expData = experience[selectedExp]
+        return expData
+    }
     
-    //MARK: TABLE VIEW
+    func addExperience() {
+       getAndReload()
+    }
+}
+
+//MARK: TABLE VIEW
+extension ExperiencePageView{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if experience.count == 0 {
             emptyState = stepViewModel.getEmptyStateId(Id: 2)
@@ -169,18 +188,5 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedExp = indexPath.row
-    }
-    
-   
-}
-
-extension ExperiencePageView: ExperiencePageDelegate, expCellDelegate {
-    func passData() -> Experience? {
-        let expData = experience[selectedExp]
-        return expData
-    }
-    
-    func addExperience() {
-       getAndReload()
     }
 }
