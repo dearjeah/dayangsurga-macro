@@ -41,14 +41,17 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel> {
     func getInitialData() {
         userResume = self.viewModel?.allUserResumeDataByDate() ?? []
         emptyState = self.viewModel?.getEmptyState()
-        
-        /*if userResume.isEmpty {
+        showTopRightCreateResume()
+    }
+    
+    func showTopRightCreateResume() {
+        if userResume.isEmpty {
             navigationItem.rightBarButtonItem?.isEnabled = false
             navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
         } else {
             navigationItem.rightBarButtonItem?.isEnabled = true
             navigationItem.rightBarButtonItem?.tintColor = UIColor.primaryWhite
-        }*/
+        }
     }
     
     @IBAction func buttonViewTapped(_ sender: Any) {
@@ -89,6 +92,7 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel> {
             self.collectionView.deleteItems(at: [index])
         })
         self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+        showTopRightCreateResume()
         collectionView.reloadData()
     }
     
