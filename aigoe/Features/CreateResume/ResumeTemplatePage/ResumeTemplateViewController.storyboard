@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,11 +17,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="L56-W2-vV0">
+                                <rect key="frame" x="0.0" y="79" width="414" height="627"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="30" minimumInteritemSpacing="0.0" id="esJ-Qw-UcL">
+                                    <size key="itemSize" width="276" height="565"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="nZc-GN-OXN"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="CEg-Vc-r20"/>
+                                </connections>
+                            </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdH-iZ-cIR">
-                                <rect key="frame" x="27" y="794" width="360" height="48"/>
+                                <rect key="frame" x="41.5" y="794" width="331" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="8Ab-X7-Yrr"/>
-                                    <constraint firstAttribute="width" constant="360" id="inX-OQ-1EH"/>
+                                    <constraint firstAttribute="height" constant="48" id="ixJ-El-5d5"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Use Template"/>
@@ -31,66 +44,27 @@
                                 </connections>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="wx0-OZ-sbe">
-                                <rect key="frame" x="32" y="748" width="350" height="26"/>
+                                <rect key="frame" x="41.5" y="744" width="331" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="26" id="mDo-DR-u7e"/>
+                                    <constraint firstAttribute="height" constant="30" id="MhM-pQ-AkJ"/>
                                 </constraints>
                                 <color key="pageIndicatorTintColor" name="textviewBorder"/>
                                 <color key="currentPageIndicatorTintColor" name="primaryBlue"/>
                             </pageControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zyh-AL-6v9" userLabel="ContainerView">
-                                <rect key="frame" x="0.0" y="74" width="414" height="627"/>
-                                <subviews>
-                                    <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="L56-W2-vV0">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="568"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="568" id="mBg-pU-HwU"/>
-                                        </constraints>
-                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="30" minimumInteritemSpacing="0.0" id="esJ-Qw-UcL">
-                                            <size key="itemSize" width="276" height="568"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ResumeTemplateCollection" id="04k-kD-ox1" customClass="ResumeTemplateCell" customModule="aigoe" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="1.5" width="276" height="565"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="tpp-fX-2ZC">
-                                                    <rect key="frame" x="0.0" y="0.0" width="276" height="565"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </collectionViewCellContentView>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <size key="customSize" width="276" height="565"/>
-                                            </collectionViewCell>
-                                        </cells>
-                                        <connections>
-                                            <outlet property="dataSource" destination="Y6W-OH-hqX" id="nZc-GN-OXN"/>
-                                            <outlet property="delegate" destination="Y6W-OH-hqX" id="CEg-Vc-r20"/>
-                                        </connections>
-                                    </collectionView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="L56-W2-vV0" firstAttribute="top" secondItem="Zyh-AL-6v9" secondAttribute="top" id="Fuy-6T-HxU"/>
-                                    <constraint firstItem="L56-W2-vV0" firstAttribute="leading" secondItem="Zyh-AL-6v9" secondAttribute="leading" id="Ix3-Ri-qLQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="L56-W2-vV0" secondAttribute="trailing" id="jbC-TG-Kqo"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="wx0-OZ-sbe" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="BHz-T0-oyf"/>
-                            <constraint firstItem="Zyh-AL-6v9" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="BjK-pe-QG6"/>
-                            <constraint firstItem="Zyh-AL-6v9" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.7" id="C6g-iS-4H6"/>
-                            <constraint firstItem="wx0-OZ-sbe" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.845411" id="D2K-MM-YlF"/>
-                            <constraint firstItem="zdH-iZ-cIR" firstAttribute="top" secondItem="wx0-OZ-sbe" secondAttribute="bottom" constant="20" id="Ef1-gN-2Qb"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="zdH-iZ-cIR" secondAttribute="bottom" constant="20" id="d2p-xa-K3b"/>
-                            <constraint firstItem="Zyh-AL-6v9" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="fSi-jf-PiX"/>
-                            <constraint firstItem="zdH-iZ-cIR" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="jde-ab-s1a"/>
-                            <constraint firstItem="Zyh-AL-6v9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="qkJ-ty-T1T"/>
+                            <constraint firstItem="L56-W2-vV0" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" id="5fQ-LP-zGe"/>
+                            <constraint firstItem="zdH-iZ-cIR" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="HQE-2I-gnM"/>
+                            <constraint firstItem="zdH-iZ-cIR" firstAttribute="top" secondItem="wx0-OZ-sbe" secondAttribute="bottom" constant="20" id="No6-6A-GpK"/>
+                            <constraint firstItem="wx0-OZ-sbe" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="RKc-zh-Ck1"/>
+                            <constraint firstItem="L56-W2-vV0" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Utd-VM-7aF"/>
+                            <constraint firstItem="wx0-OZ-sbe" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.8" id="Vnm-Zg-Q1q"/>
+                            <constraint firstItem="L56-W2-vV0" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.7" id="e8S-fh-Vkn"/>
+                            <constraint firstItem="zdH-iZ-cIR" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.8" id="hYr-qL-dYQ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="zdH-iZ-cIR" secondAttribute="bottom" constant="20" id="sSL-iy-gXx"/>
+                            <constraint firstItem="L56-W2-vV0" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="35" id="uCx-YR-a6Z"/>
                         </constraints>
                     </view>
                     <connections>

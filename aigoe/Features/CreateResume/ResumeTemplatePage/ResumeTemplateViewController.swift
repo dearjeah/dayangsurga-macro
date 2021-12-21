@@ -8,40 +8,28 @@
 import UIKit
 
 class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> {
-
+    
     var selectedTemplate = 0
     var template = [Resume_Template]()
     var currentPage = 0
     let cellWidthScale = 0.71
     let cellHeightScale = 0.67
     var resumeContentId = String()
-   
+    
     @IBOutlet weak var resumeTemplateCollection: UICollectionView!
     @IBOutlet weak var resumeTemplatePageController: UIPageControl!
     @IBOutlet weak var selectResumeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        resumeTemplateCollection.register(UINib.init(nibName: "ResumeTemplateCell", bundle: nil), forCellWithReuseIdentifier: "ResumeTemplateCell")
-        selectResumeButton.dsLongFilledPrimaryButton(withImage: false, text: "Use This Template")
-        
-        let screenSize = UIScreen.main.bounds.size
-        let collectionViewWidth = floor(screenSize.width*cellWidthScale)
-        let collectionViewHeight = floor(screenSize.height*cellHeightScale)
-        let insetX = (view.bounds.width - collectionViewWidth)/2.0
-        let layout = resumeTemplateCollection?.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize(width: collectionViewWidth, height: collectionViewHeight)
-        resumeTemplateCollection.contentInset = UIEdgeInsets(top: 0, left: insetX, bottom: 0, right: insetX)
-        self.navigationController?.navigationBar.barStyle = .default
-        self.navigationController?.view.tintColor = UIColor.white
-        self.navigationItem.title = "Resume Template"
-        self.navigationItem.backButtonTitle = "Template"
         
         self.viewModel = ResumeTemplateViewModel()
-        template = self.viewModel?.getTemplate() ?? []
+        setupView()
+        registerCollectionView()
+        updateCarouselCollectionView()
+        getInitialData()
     }
-
+    
     @IBAction func didTapButton(_ sender: Any) {
         let userResume = createUserResume(selectedTemplate: selectedTemplate)
         
@@ -62,19 +50,35 @@ class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> 
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func createUserResume(selectedTemplate: Int) -> User_Resume {
-        let resumeId = self.viewModel?.createUserResume(selectedTemplate: selectedTemplate) ?? ""
-        if resumeId != "" {
-            resumeContentId = self.viewModel?.createResumeContent(resumeId: resumeId) ?? ""
-        }
-        
-        guard let userResume = self.viewModel?.userResume.getUserResumeById(resume_id: resumeContentId) else { return User_Resume() }
-        return userResume
-    }
-
 }
 
+//MARK: Initial Setup
+extension ResumeTemplateViewController {
+    func setupView(){
+        self.navigationController?.navigationBar.barStyle = .default
+        self.navigationController?.view.tintColor = UIColor.white
+        self.navigationItem.title = "Resume Template"
+        self.navigationItem.backButtonTitle = "Template"
+        selectResumeButton.dsLongFilledPrimaryButton(withImage: false, text: "Use This Template")
+    }
+}
+
+//MARK: Setup Collection View
 extension ResumeTemplateViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    func registerCollectionView(){
+        resumeTemplateCollection.register(UINib.init(nibName: "ResumeTemplateCell", bundle: nil), forCellWithReuseIdentifier: "ResumeTemplateCell")
+    }
+    
+    func updateCarouselCollectionView(){
+        let screenSize = UIScreen.main.bounds.size
+        let collectionViewWidth = floor(screenSize.width*cellWidthScale)
+        let collectionViewHeight = floor(screenSize.height*cellHeightScale)
+        let insetX = (view.bounds.width - collectionViewWidth)/2.0
+        let layout = resumeTemplateCollection?.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: collectionViewWidth, height: collectionViewHeight)
+        resumeTemplateCollection.contentInset = UIEdgeInsets(top: 0, left: insetX, bottom: 0, right: insetX)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return template.count
     }
@@ -94,12 +98,11 @@ extension ResumeTemplateViewController: UICollectionViewDelegate, UICollectionVi
             cell.layer.cornerRadius = 18
         }
         
-        
         return cell
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-      
+        
         let layout = self.resumeTemplateCollection?.collectionViewLayout as! UICollectionViewFlowLayout
         let widthWithSpacing = layout.itemSize.width + layout.minimumLineSpacing
         var offset = targetContentOffset.pointee
@@ -108,12 +111,10 @@ extension ResumeTemplateViewController: UICollectionViewDelegate, UICollectionVi
         let roundedIndex = round(index)
         offset = CGPoint(x: roundedIndex * widthWithSpacing - scrollView.contentInset.left,  y: scrollView.contentInset.top)
         
-        
         currentPage = Int(roundedIndex)
         resumeTemplatePageController.currentPage = currentPage % 3
         selectedTemplate = currentPage % 3
         let currentIndex = IndexPath(item: currentPage, section: 0)
-        
         
         for i in 0...template.count{
             if i == currentPage{
@@ -128,9 +129,24 @@ extension ResumeTemplateViewController: UICollectionViewDelegate, UICollectionVi
                 cell?.layer.cornerRadius = 18
                 cell?.layer.borderWidth = 1
             }
-            
         }
         targetContentOffset.pointee = offset
     }
+}
+
+// MARK: Core Data
+extension ResumeTemplateViewController {
+    func getInitialData() {
+        template = self.viewModel?.getTemplate() ?? []
+    }
+    
+    func createUserResume(selectedTemplate: Int) -> User_Resume {
+        let resumeId = self.viewModel?.createUserResume(selectedTemplate: selectedTemplate) ?? ""
+        if resumeId != "" {
+            resumeContentId = self.viewModel?.createResumeContent(resumeId: resumeId) ?? ""
+        }
         
+        guard let userResume = self.viewModel?.userResume.getUserResumeById(resume_id: resumeContentId) else { return User_Resume() }
+        return userResume
+    }
 }
