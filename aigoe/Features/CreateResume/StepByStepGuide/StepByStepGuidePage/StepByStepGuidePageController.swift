@@ -527,14 +527,11 @@ extension StepByStepGuidePageController {
 extension StepByStepGuidePageController {
     func populateResumeData() {
         if !isCreate {
-            let data = ResumeContentRepository.shared.getResumeContentById(resume_id: UUID().uuidString)
+            let data = ResumeContentRepository.shared.getResumeContentById(resume_id: selectedResume.resume_id ?? "")
             
             if data != nil {
                 personalData = UserRepository.shared.getUserById(id: Int(selectedResume.user_id)) ?? User()
-                /*eduData = EducationRepository.shared.getEducationById(educationId: Int(data?.edu_id ?? Int32())) ?? Education()
-                expData = ExperienceRepository.shared.getExperienceById(experienceId: Int(data?.exp_id ?? Int32())) ?? Experience()
-                skillData = SkillRepository.shared.getSkillsById(skillId: data?.skill_id ?? Int32()) ?? Skills()
-                accomData = AccomplishmentRepository.shared.getAccomplishmentById(AccomplishmentId: Int(data?.accom_id ?? Int32())) ??  Accomplishment()*/
+                currentResumeContent = data ?? Resume_Content()
             }
         }
     }

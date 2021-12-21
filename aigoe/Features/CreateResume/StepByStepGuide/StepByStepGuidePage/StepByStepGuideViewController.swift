@@ -36,6 +36,10 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
         progressBarView.dlgt = self
         hideKeyboardWhenTappedAround()
         smallSetButtonView.buttonStyle(from: "step")
+        
+        if !isCreate {
+            selectedResumeContentId = self.viewModel?.getResumeContentId(resumeId: selectedUserResume.resume_id ?? "") ?? ""
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
