@@ -27,6 +27,7 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel> {
         
         self.viewModel = LandingPageViewModel()
         getInitialData()
+        emptyStateSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,53 +38,22 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel> {
         getInitialData()
         self.collectionView.reloadData()
     }
-    
-    func getInitialData() {
-        userResume = self.viewModel?.allUserResumeDataByDate() ?? []
-        emptyState = self.viewModel?.getEmptyState()
-        showTopRightCreateResume()
-    }
-    
-    func showTopRightCreateResume() {
-        if userResume.isEmpty {
-            navigationItem.rightBarButtonItem?.isEnabled = false
-            navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
-        } else {
-            navigationItem.rightBarButtonItem?.isEnabled = true
-            navigationItem.rightBarButtonItem?.tintColor = UIColor.primaryWhite
-        }
-    }
-    
+
     @IBAction func buttonViewTapped(_ sender: Any) {
         didTapButton()
+    }
+}
+
+//MARK: CRUD Code
+extension LandingPageViewController {
+    func getUserResumeContent(resumeId: String) -> Resume_Content {
+        return self.viewModel?.getUserResumeContent(id: resumeId) ?? Resume_Content()
     }
     
     @objc func addResume(sender: UIBarButtonItem) {
         didTapButton()
     }
     
-    func getUserResumeContent(resumeId: String) -> Resume_Content {
-        return self.viewModel?.getUserResumeContent(id: resumeId) ?? Resume_Content()
-    }
-    
-    func goToPreview(){
-        let storyboard = UIStoryboard(name: "PreviewResumeViewController", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "goToPreviewResume") as! PreviewResumeViewController
-        // passing data
-        vc.selectedData = userResume[selectedIndex]
-        let resumeContent = getUserResumeContent(resumeId: userResume[selectedIndex].resume_id ?? "" )
-        
-        let pdfCreator = PDFCreator(resumeContent: resumeContent, userResume: userResume[selectedIndex], selectedTemplate: 0)
-        //
-        vc.documentData = pdfCreator.createPDF()
-        
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.navigationItem.titleView?.tintColor = .white
-        self.tabBarController?.tabBar.isHidden = true
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    // for delete and reload
     func deleteResumeData(){
         self.viewModel?.deleteResumeData(resume: self.userResume[self.selectedIndex])
         self.userResume.remove(at: selectedIndex)
@@ -95,21 +65,80 @@ class LandingPageViewController: MVVMViewController<LandingPageViewModel> {
         showTopRightCreateResume()
         collectionView.reloadData()
     }
-    
 }
 
-//MARK: Initial Setup
+//MARK: Functional Code
 extension LandingPageViewController {
-    func navigationStyle(){
-        configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.white, title: "Resume", preferredLargeTitle: true, hideBackButton: false)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create Resume", style: .plain, target: self, action: #selector(self.addResume(sender:)))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor.primaryWhite
+    func showTopRightCreateResume() {
+        if userResume.isEmpty {
+            navigationItem.rightBarButtonItem?.isEnabled = false
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
+        } else {
+            navigationItem.rightBarButtonItem?.isEnabled = true
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.primaryWhite
+        }
+    }
+
+    func userResumeEmpty(was: Bool) {
+        if was {
+            emptyStateView.isHidden = false
+            titleLabel.isHidden = true
+            buttonView.isHidden = false
+            self.collectionView.backgroundView = emptyStateView
+        } else {
+            emptyStateView.isHidden = true
+            buttonView.isHidden = true
+            titleLabel.isHidden = false
+        }
     }
     
-    func setView(){
-        self.title = "Resume"
-        titleLabel.text = "Explore more feature by clicking your resume"
-        buttonView.dsLongFilledPrimaryButton(withImage: false, text: "Create Resume")
+    func setIconImageForAlert(img: UIImage, x: Int, y: Int, width: Int, height: Int, isRed: Bool) -> UIImageView {
+        let imgViewTitle = UIImageView(frame: CGRect(x: Int(self.view.frame.midX) + x, y: y, width: width, height: height))
+        imgViewTitle.contentMode = .scaleAspectFit
+        imgViewTitle.image = img
+        if isRed {
+            imgViewTitle.tintColor = UIColor.red
+        }
+        
+        return imgViewTitle
+    }
+}
+
+//MARK: Navigation
+extension LandingPageViewController {
+    func goToEdit(index: Int){
+        let storyboard = UIStoryboard(name: "StepByStepGuideViewController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToStepByStep") as! StepByStepGuideViewController
+        vc.selectedUserResume = userResume[selectedIndex]
+        vc.isCreate = false
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.titleView?.tintColor = .white
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func goToComingSoon(){
+        let storyboard = UIStoryboard(name: "UserProfileViewController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "UserProfileView") as! UserProfileViewController
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.titleView?.tintColor = .white
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func goToPreview(){
+        let storyboard = UIStoryboard(name: "PreviewResumeViewController", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToPreviewResume") as! PreviewResumeViewController
+        vc.selectedData = userResume[selectedIndex]
+        let resumeContent = getUserResumeContent(resumeId: userResume[selectedIndex].resume_id ?? "" )
+        
+        let pdfCreator = PDFCreator(resumeContent: resumeContent, userResume: userResume[selectedIndex], selectedTemplate: 0)
+        vc.documentData = pdfCreator.createPDF()
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.titleView?.tintColor = .white
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -123,21 +152,11 @@ extension LandingPageViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if userResume.count != 0 {
-            emptyStateView.isHidden = true
-            buttonView.isHidden = true
-            titleLabel.isHidden = false
-            return userResume.count
+            userResumeEmpty(was: false)
         } else {
-            emptyStateView.isHidden = false
-            titleLabel.isHidden = true
-            buttonView.isHidden = false
-            let image = UIImage(data: emptyState?.image ?? Data())
-            emptyStateView.emptyStateImage.image = image
-            emptyStateView.emptyStateTitle.text = nil
-            emptyStateView.emptyStateDescription.text = emptyState?.title
-            self.collectionView.backgroundView = emptyStateView
+            userResumeEmpty(was: true)
         }
-        return Int()
+        return userResume.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -184,36 +203,12 @@ extension LandingPageViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.view.tintColor = UIColor.primaryBlue
         
-        let img1 = UIImage(systemName: "doc.text")
-        let imgViewTitle1 = UIImageView(frame: CGRect(x: self.view.frame.midX + 68, y: 62, width: 25, height: 25))
-        imgViewTitle1.contentMode = .scaleAspectFit
-        imgViewTitle1.image = img1
-        
-        let img2 = UIImage(systemName: "pencil")
-        let imgViewTitle2 = UIImageView(frame: CGRect(x: self.view.frame.midX + 50, y: 115, width: 25, height: 25))
-        imgViewTitle2.contentMode = .scaleAspectFit
-        imgViewTitle2.image = img2
-        
-        let img3 = UIImage(systemName: "text.badge.checkmark")
-        let imgViewTitle3 = UIImageView(frame: CGRect(x: self.view.frame.midX + 50, y: 175, width: 25, height: 25))
-        imgViewTitle3.contentMode = .scaleAspectFit
-        imgViewTitle3.image = img3
-        
-        let img4 = UIImage(systemName: "repeat")
-        let imgViewTitle4 = UIImageView(frame: CGRect(x: self.view.frame.midX + 75, y: 233, width: 25, height: 25))
-        imgViewTitle4.contentMode = .scaleAspectFit
-        imgViewTitle4.image = img4
-        
-        let img5 = UIImage(systemName: "trash")
-        let imgViewTitle5 = UIImageView(frame: CGRect(x: self.view.frame.midX + 60, y: 290, width: 25, height: 25))
-        imgViewTitle5.contentMode = .scaleAspectFit
-        imgViewTitle5.tintColor = UIColor.red
-        imgViewTitle5.image = img5
-        
-        let img6 = UIImage(systemName: "xmark")
-        let imgViewTitle6 = UIImageView(frame: CGRect(x: self.view.frame.midX + 28, y: 355, width: 25, height: 25))
-        imgViewTitle6.contentMode = .scaleAspectFit
-        imgViewTitle6.image = img6
+        let imgViewTitle1 = setIconImageForAlert(img:  UIImage.icDoc ?? UIImage(), x: 68, y: 62, width: 25, height: 25, isRed: false)
+        let imgViewTitle2 = setIconImageForAlert(img:  UIImage.icPencil ?? UIImage(), x: 50, y: 115, width: 25, height: 25, isRed: false)
+        let imgViewTitle3 = setIconImageForAlert(img:  UIImage.icTextCheck ?? UIImage(), x: 50, y: 175, width: 25, height: 25, isRed: false)
+        let imgViewTitle4 = setIconImageForAlert(img:  UIImage.icRepeat ?? UIImage(), x: 75, y: 233, width: 25, height: 25, isRed: false)
+        let imgViewTitle5 = setIconImageForAlert(img:  UIImage.icTrash ?? UIImage(), x: 60, y: 290, width: 25, height: 25, isRed: true)
+        let imgViewTitle6 = setIconImageForAlert(img:  UIImage.icXmark ?? UIImage(), x: 28, y: 355, width: 25, height: 25, isRed: false)
         
         alert.view.addSubview(imgViewTitle1)
         alert.view.addSubview(imgViewTitle2)
@@ -231,24 +226,12 @@ extension LandingPageViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func goToEdit(index: Int){
-        let storyboard = UIStoryboard(name: "StepByStepGuideViewController", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "goToStepByStep") as! StepByStepGuideViewController
-        vc.selectedUserResume = userResume[selectedIndex]
-        vc.isCreate = false
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.navigationItem.titleView?.tintColor = .white
-        self.tabBarController?.tabBar.isHidden = true
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func goToComingSoon(){
-        let storyboard = UIStoryboard(name: "UserProfileViewController", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "UserProfileView") as! UserProfileViewController
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.navigationItem.titleView?.tintColor = .white
-        self.tabBarController?.tabBar.isHidden = true
-        self.navigationController?.pushViewController(vc, animated: true)
+    func alertViewSimple(title: String, message: String) {
+        let controller = UIAlertController.init(title: title, message: message, preferredStyle: .alert)
+        controller.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+            controller.dismiss(animated: true, completion: nil)
+        }))
+        self.present(controller, animated: true, completion: nil)
     }
 }
 
@@ -260,5 +243,33 @@ extension LandingPageViewController: ResumeCellDelegate {
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+//MARK: Initial Setup
+extension LandingPageViewController {
+    func navigationStyle(){
+        configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.white, title: "Resume", preferredLargeTitle: true, hideBackButton: false)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create Resume", style: .plain, target: self, action: #selector(self.addResume(sender:)))
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.primaryWhite
+    }
+    
+    func setView(){
+        self.title = "Resume"
+        titleLabel.text = "Explore more feature by clicking your resume"
+        buttonView.dsLongFilledPrimaryButton(withImage: false, text: "Create Resume")
+    }
+    
+    func getInitialData() {
+        userResume = self.viewModel?.allUserResumeDataByDate() ?? []
+        emptyState = self.viewModel?.getEmptyState()
+        showTopRightCreateResume()
+    }
+    
+    func emptyStateSetup() {
+        let image = UIImage(data: emptyState?.image ?? Data())
+        emptyStateView.emptyStateImage.image = image
+        emptyStateView.emptyStateTitle.text = nil
+        emptyStateView.emptyStateDescription.text = emptyState?.title
     }
 }
