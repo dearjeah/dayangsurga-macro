@@ -86,8 +86,6 @@
 		BF228E4D273B7CCC00966E23 /* EducationFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF228E47273B7CCC00966E23 /* EducationFormController.swift */; };
 		BF228E4E273B7CCC00966E23 /* EducationPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF228E48273B7CCC00966E23 /* EducationPageView.xib */; };
 		BF228E4F273B7CCC00966E23 /* EducationPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF228E49273B7CCC00966E23 /* EducationPageView.swift */; };
-		BF228E50273B7CCC00966E23 /* EducationListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF228E4A273B7CCC00966E23 /* EducationListController.swift */; };
-		BF228E51273B7CCC00966E23 /* EducationListController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF228E4B273B7CCC00966E23 /* EducationListController.storyboard */; };
 		BF281E2A273D70A100C44D04 /* ExpertDetailInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF281E26273D70A100C44D04 /* ExpertDetailInfoCell.xib */; };
 		BF281E2B273D70A100C44D04 /* ExpertDetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF281E27273D70A100C44D04 /* ExpertDetailInfoCell.swift */; };
 		BF281E2C273D70A100C44D04 /* ContactExpertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF281E28273D70A100C44D04 /* ContactExpertCell.swift */; };
@@ -309,8 +307,6 @@
 		BF228E47273B7CCC00966E23 /* EducationFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationFormController.swift; sourceTree = "<group>"; };
 		BF228E48273B7CCC00966E23 /* EducationPageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EducationPageView.xib; sourceTree = "<group>"; };
 		BF228E49273B7CCC00966E23 /* EducationPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationPageView.swift; sourceTree = "<group>"; };
-		BF228E4A273B7CCC00966E23 /* EducationListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationListController.swift; sourceTree = "<group>"; };
-		BF228E4B273B7CCC00966E23 /* EducationListController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EducationListController.storyboard; sourceTree = "<group>"; };
 		BF281E26273D70A100C44D04 /* ExpertDetailInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpertDetailInfoCell.xib; sourceTree = "<group>"; };
 		BF281E27273D70A100C44D04 /* ExpertDetailInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpertDetailInfoCell.swift; sourceTree = "<group>"; };
 		BF281E28273D70A100C44D04 /* ContactExpertCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactExpertCell.swift; sourceTree = "<group>"; };
@@ -590,9 +586,7 @@
 				BF228E45273B7CCC00966E23 /* Form */,
 				BF228E49273B7CCC00966E23 /* EducationPageView.swift */,
 				BF34E87D274137D100EE7276 /* EducationListViewModel.swift */,
-				BF228E4A273B7CCC00966E23 /* EducationListController.swift */,
 				BF228E48273B7CCC00966E23 /* EducationPageView.xib */,
-				BF228E4B273B7CCC00966E23 /* EducationListController.storyboard */,
 			);
 			name = EducationPage;
 			path = ../EducationPage;
@@ -1435,7 +1429,6 @@
 				679DBEA32723FAAD00CE9E8F /* ResumeTemplateCell.xib in Resources */,
 				BF8503942722B65600CC43FB /* ExpertListViewController.storyboard in Resources */,
 				BF8503B12722B9E700CC43FB /* StepByStepGuideViewController.storyboard in Resources */,
-				BF228E51273B7CCC00966E23 /* EducationListController.storyboard in Resources */,
 				BF5F1BF22722D869004D0756 /* GenerateResumeViewController.storyboard in Resources */,
 				BF423DEB272C52A2006DC552 /* ExperienceFormController.storyboard in Resources */,
 			);

@@ -45,24 +45,10 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     convenience init(edu: [Education], resumeContent: Resume_Content) {
         self.init()
-        
         eduData = edu
         resumeContentData = resumeContent
         registerTableView()
         notificationCenterSetup()
-    }
-    
-    fileprivate func initWithNib() {
-        guard let view = loadViewFromNib(nibName: "EducationPageView") else { return }
-        view.frame = self.bounds
-        self.addSubview(view)
-    }
-    
-    func loadViewFromNib(nibName: String) -> UIView? {
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: nibName, bundle: bundle)
-        
-        return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
     
     @IBAction func addAction(_ sender: Any) {
@@ -72,8 +58,10 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     func navigateToEduForm(from: String, eduData: Education = Education()){
         delegate?.addEduForm(from: from)
     }
+}
 
-    // seting for table view
+//MARK: Table View
+extension EducationPageView {
     func registerTableView(){
         tableView.register(EducationTableCell.nib(), forCellReuseIdentifier: EducationTableCell.identifier)
         tableView.delegate = self
@@ -83,20 +71,20 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if eduData.count != 0 {
             emptyStateView.isHidden = true
-            return eduData.count
         } else {
             showEmptyState()
             self.tableView.backgroundView = emptyStateView
-            return 0
         }
+        return eduData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: EducationTableCell.identifier, for: indexPath) as? EducationTableCell else {
             return UITableViewCell()
         }
-        eduData = self.eduViewModel.getEduData()
         let edu = eduData[indexPath.row]
+        let selectedEduId = resumeContentData.edu_id
+        let counter = resumeContentData.edu_id?.count ?? 0
         let eduPeriod = "\(edu.start_date?.string(format: Date.ISO8601Format.MonthYear) ?? "") - \(edu.end_date?.string(format: Date.ISO8601Format.MonthYear) ?? "")"
         
         cell.institutionName.text = edu.institution
@@ -105,8 +93,6 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
         cell.educationGPA.text = "\(edu.gpa)"
         cell.educationActivities.text = edu.activity
         
-        let selectedEduId = resumeContentData.edu_id
-        let counter = resumeContentData.edu_id?.count ?? 0
         if counter != 0 {
             for i in 0..<counter {
                 if edu.edu_id == selectedEduId?[i] {
@@ -172,5 +158,21 @@ extension  EducationPageView {
     
     func notificationCenterSetup() {
         NotificationCenter.default.addObserver(self, selector: #selector(eduReload), name: Notification.Name("eduReload"), object: nil)
+    }
+}
+
+//MARK: Nib
+extension  EducationPageView {
+    fileprivate func initWithNib() {
+        guard let view = loadViewFromNib(nibName: "EducationPageView") else { return }
+        view.frame = self.bounds
+        self.addSubview(view)
+    }
+    
+    func loadViewFromNib(nibName: String) -> UIView? {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: nibName, bundle: bundle)
+        
+        return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
 }
