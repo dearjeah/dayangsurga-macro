@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProgressBarView" customModule="dayangsurga_macro" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProgressBarView" customModule="aigoe" customModuleProvider="target">
             <connections>
                 <outlet property="accomplishmentButton" destination="XNt-l8-pXL" id="vG3-WJ-Lr2"/>
                 <outlet property="accomplishmentButtonImage" destination="itL-6k-mQH" id="JKI-sz-L7l"/>
@@ -26,8 +26,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" id="u5l-G9-PM3">
-                    <rect key="frame" x="41" y="-16" width="353" height="110"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" id="u5l-G9-PM3">
+                    <rect key="frame" x="35" y="-16" width="353" height="110"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Biv-ty-uHj" userLabel="personalInfo">
@@ -163,18 +163,31 @@
                     </subviews>
                     <viewLayoutGuide key="safeArea" id="qxb-uF-7k5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Biv-ty-uHj" firstAttribute="top" secondItem="qyY-0h-LXA" secondAttribute="top" id="Fvs-RZ-FWW"/>
+                        <constraint firstItem="FGQ-cK-VYz" firstAttribute="leading" secondItem="u5l-G9-PM3" secondAttribute="leading" constant="282.5" id="OhU-Nw-AQZ"/>
+                        <constraint firstAttribute="trailing" secondItem="Biv-ty-uHj" secondAttribute="trailing" constant="282.5" id="W0O-Z8-Sy3"/>
+                        <constraint firstItem="Biv-ty-uHj" firstAttribute="top" secondItem="SeQ-Qw-Xib" secondAttribute="top" id="fQf-uD-NhJ"/>
+                        <constraint firstAttribute="trailing" secondItem="T3k-zM-YeF" secondAttribute="trailing" constant="212" id="hCj-Q6-ZIC"/>
+                        <constraint firstItem="Biv-ty-uHj" firstAttribute="top" secondItem="T3k-zM-YeF" secondAttribute="top" id="jdR-wp-t3S"/>
+                        <constraint firstItem="T3k-zM-YeF" firstAttribute="leading" secondItem="Biv-ty-uHj" secondAttribute="trailing" id="mdh-3S-pyQ"/>
+                        <constraint firstItem="SeQ-Qw-Xib" firstAttribute="leading" secondItem="T3k-zM-YeF" secondAttribute="trailing" id="pbv-HU-eA9"/>
+                        <constraint firstItem="Biv-ty-uHj" firstAttribute="bottom" secondItem="qxb-uF-7k5" secondAttribute="bottom" id="tqz-9C-83D"/>
+                        <constraint firstItem="Biv-ty-uHj" firstAttribute="top" secondItem="FGQ-cK-VYz" secondAttribute="top" id="y39-GT-K0z"/>
+                        <constraint firstItem="FGQ-cK-VYz" firstAttribute="leading" secondItem="qyY-0h-LXA" secondAttribute="trailing" id="zt3-9w-f4m"/>
+                    </constraints>
                 </stackView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="121.73913043478262" y="356.58482142857139"/>
+            <point key="canvasLocation" x="121.73913043478262" y="356.25"/>
         </view>
     </objects>
     <resources>
         <image name="icAccomplishmentInactive" width="31" height="30"/>
         <image name="icEducationNoFill" width="91" height="30"/>
         <image name="icExperienceNoFill" width="92" height="30"/>
-        <image name="icPersonalInformationActive" width="93" height="30"/>
+        <image name="icPersonalInformationActive" width="83" height="30"/>
         <image name="icTechnicalSkillNoFill" width="91" height="30"/>
     </resources>
 </document>
