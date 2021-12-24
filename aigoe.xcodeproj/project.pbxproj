@@ -46,6 +46,11 @@
 		8435DB5927335FD300862FF0 /* ExpertProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8435DB5827335FD300862FF0 /* ExpertProfileRepository.swift */; };
 		84EE0709273737AC00C6C70A /* PreloadPersonalInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE0708273737AC00C6C70A /* PreloadPersonalInformation.swift */; };
 		B82BD30E2733879200BCF6DF /* PreloadResumeTemplateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82BD30D2733879200BCF6DF /* PreloadResumeTemplateData.swift */; };
+		B8532B80277340ED009C58C6 /* ExpertProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8532B7E277340ED009C58C6 /* ExpertProfileCell.swift */; };
+		B8532B81277340ED009C58C6 /* ExpertProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8532B7F277340ED009C58C6 /* ExpertProfileCell.xib */; };
+		B8532B84277355A5009C58C6 /* ExpertButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8532B82277355A5009C58C6 /* ExpertButtonCell.swift */; };
+		B8532B85277355A5009C58C6 /* ExpertButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8532B83277355A5009C58C6 /* ExpertButtonCell.xib */; };
+		B8532B8727736068009C58C6 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8532B8627736068009C58C6 /* UIDevice+Extension.swift */; };
 		B859B535272852EF00627CDC /* EmptyStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52B272852EE00627CDC /* EmptyStateRepository.swift */; };
 		B859B537272852EF00627CDC /* ResumeTemplateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */; };
 		B859B538272852EF00627CDC /* ExperiencePlaceholderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B859B52E272852EF00627CDC /* ExperiencePlaceholderRepository.swift */; };
@@ -239,6 +244,11 @@
 		8435DB5827335FD300862FF0 /* ExpertProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertProfileRepository.swift; sourceTree = "<group>"; };
 		84EE0708273737AC00C6C70A /* PreloadPersonalInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadPersonalInformation.swift; sourceTree = "<group>"; };
 		B82BD30D2733879200BCF6DF /* PreloadResumeTemplateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadResumeTemplateData.swift; sourceTree = "<group>"; };
+		B8532B7E277340ED009C58C6 /* ExpertProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertProfileCell.swift; sourceTree = "<group>"; };
+		B8532B7F277340ED009C58C6 /* ExpertProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpertProfileCell.xib; sourceTree = "<group>"; };
+		B8532B82277355A5009C58C6 /* ExpertButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertButtonCell.swift; sourceTree = "<group>"; };
+		B8532B83277355A5009C58C6 /* ExpertButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpertButtonCell.xib; sourceTree = "<group>"; };
+		B8532B8627736068009C58C6 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		B859B52B272852EE00627CDC /* EmptyStateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyStateRepository.swift; sourceTree = "<group>"; };
 		B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumeTemplateRepository.swift; sourceTree = "<group>"; };
 		B859B52E272852EF00627CDC /* ExperiencePlaceholderRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExperiencePlaceholderRepository.swift; sourceTree = "<group>"; };
@@ -555,6 +565,10 @@
 				BF281E27273D70A100C44D04 /* ExpertDetailInfoCell.swift */,
 				BF281E28273D70A100C44D04 /* ContactExpertCell.swift */,
 				BF281E29273D70A100C44D04 /* ExpertSummaryCell.swift */,
+				B8532B7E277340ED009C58C6 /* ExpertProfileCell.swift */,
+				B8532B7F277340ED009C58C6 /* ExpertProfileCell.xib */,
+				B8532B82277355A5009C58C6 /* ExpertButtonCell.swift */,
+				B8532B83277355A5009C58C6 /* ExpertButtonCell.xib */,
 			);
 			path = ExpertDetailCell;
 			sourceTree = "<group>";
@@ -948,6 +962,7 @@
 				BF85037D2722836800CC43FB /* UIViewController+Extension.swift */,
 				B88AFA38272AB10D007408A5 /* UIImageView+Extension.swift */,
 				BF61D7FC27398E1C0011ACC0 /* UIPageViewController+Extension.swift */,
+				B8532B8627736068009C58C6 /* UIDevice+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1196,6 +1211,7 @@
 				B8825E55273ADF3100FE0086 /* ExpertListCell.xib in Resources */,
 				BF8503112722551B00CC43FB /* UserProfileViewController.storyboard in Resources */,
 				6712CFAB272EEB6900449991 /* QuizPageTestViewController.storyboard in Resources */,
+				B8532B85277355A5009C58C6 /* ExpertButtonCell.xib in Resources */,
 				67AA824F273ACB2B004937B7 /* ExpertInfoViewController.storyboard in Resources */,
 				BF2ABB342726FCC900AAC6C2 /* LabelWithTextField.xib in Resources */,
 				BF5F1BF82722D977004D0756 /* PreviewResumeViewController.storyboard in Resources */,
@@ -1206,6 +1222,7 @@
 				6722E2402726C7C3007315AB /* ExperienceTableCell.xib in Resources */,
 				BF5F1BEC2722D7F0004D0756 /* ResumeTemplateViewController.storyboard in Resources */,
 				7E8A5A532740054900DB0DCA /* SplashScreen.storyboard in Resources */,
+				B8532B81277340ED009C58C6 /* ExpertProfileCell.xib in Resources */,
 				BF8503A62722B81600CC43FB /* ExperiencePageView.xib in Resources */,
 				679DBEA32723FAAD00CE9E8F /* ResumeTemplateCell.xib in Resources */,
 				BF8503942722B65600CC43FB /* ExpertListViewController.storyboard in Resources */,
@@ -1302,6 +1319,7 @@
 				B8825E54273ADF3100FE0086 /* ExpertListCell.swift in Sources */,
 				BF2ABB362726FCD600AAC6C2 /* LabelWithTextField.swift in Sources */,
 				8435DB4B27320AA400862FF0 /* SkillRepository.swift in Sources */,
+				B8532B8727736068009C58C6 /* UIDevice+Extension.swift in Sources */,
 				BF85037A272282C500CC43FB /* UILabel+Extension.swift in Sources */,
 				B859B537272852EF00627CDC /* ResumeTemplateRepository.swift in Sources */,
 				BF8503902722B5E100CC43FB /* RoundedButton.swift in Sources */,
@@ -1354,6 +1372,8 @@
 				BF85037C2722832600CC43FB /* UIView+Extension.swift in Sources */,
 				67280DB22726D0DF006569DD /* EmptyState.swift in Sources */,
 				BF7267E52730E73000B5A95F /* AccomplishmentPageView.swift in Sources */,
+				B8532B84277355A5009C58C6 /* ExpertButtonCell.swift in Sources */,
+				B8532B80277340ED009C58C6 /* ExpertProfileCell.swift in Sources */,
 				BF85036527225FA300CC43FB /* MVVMController.swift in Sources */,
 				B859B53E272852EF00627CDC /* ResumeContentRepository.swift in Sources */,
 				BF8503B92722BDCF00CC43FB /* HomepageController.swift in Sources */,
