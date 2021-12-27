@@ -374,7 +374,6 @@ class PDFCreator: NSObject {
                     paragraphFont = UIFont(name: "Helvetica", size: 12.0)
                 }
             
-            
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .natural
             paragraphStyle.lineBreakMode = .byWordWrapping
@@ -384,14 +383,22 @@ class PDFCreator: NSObject {
             let attributedParagraph = NSAttributedString(
                 string: text, attributes: paragraphAttribute)
             var paragraphRect: CGRect
-            
+            var fixedTextHeight: CGFloat
+            let textHeight = attributedParagraph.size().width/pageRect.width
+    
+            if round(textHeight)<textHeight{
+                fixedTextHeight = round(textHeight) + 1
+            }else{
+                fixedTextHeight = round(textHeight)
+            }
+        
             if textTop + attributedParagraph.size().height <= 822{
-                paragraphRect = CGRect(x:20, y: textTop, width: pageRect.width - 25, height:  round(attributedParagraph.size().width / pageRect.width) * attributedParagraph.size().height + attributedParagraph.size().height)
+                paragraphRect = CGRect(x:20, y: textTop, width: pageRect.width - 25, height: fixedTextHeight * attributedParagraph.size().height + attributedParagraph.size().height)
             }else{
                 context.beginPage()
-                paragraphRect = CGRect(x:20, y: 20, width: pageRect.width - 25, height:  round(round(attributedParagraph.size().width / pageRect.width) ) * attributedParagraph.size().height + attributedParagraph.size().height)
+                paragraphRect = CGRect(x:20, y: 20, width: pageRect.width - 25, height:  fixedTextHeight * attributedParagraph.size().height + attributedParagraph.size().height)
             }
-          
+      
             attributedParagraph.draw(in: paragraphRect)
             
         return paragraphRect.origin.y + attributedParagraph.size().height + 15
