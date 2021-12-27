@@ -6,6 +6,28 @@
 //
 
 import Foundation
+import UIKit
+
+extension UIDatePicker {
+
+     var textColor: UIColor? {
+         set {
+              setValue(newValue, forKeyPath: "textColor")
+             }
+         get {
+              return value(forKeyPath: "textColor") as? UIColor
+             }
+     }
+
+     var highlightsToday : Bool? {
+         set {
+              setValue(newValue, forKeyPath: "highlightsToday")
+             }
+         get {
+              return value(forKey: "highlightsToday") as? Bool
+             }
+     }
+ }
 
 extension Date {
     

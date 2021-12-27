@@ -31,7 +31,7 @@ class LabelWithTextField: UIView {
         super.init(coder: aDecoder)
         initWithNib()
         textField.delegate = self
-        textField.tintColor = .black
+        setupStyle()
     }
     
     convenience init(title: String, textFieldPh: String, textFieldData: String?) {
@@ -68,5 +68,12 @@ extension LabelWithTextField: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.endEditing(true)
         return false
+    }
+    
+    func setupStyle() {
+        textField.tintColor = .black
+        textField.layer.cornerRadius = 5
+        textField.layer.borderWidth = 1.0
+        textField.layer.borderColor =  UIColor.textviewBorder.cgColor
     }
 }

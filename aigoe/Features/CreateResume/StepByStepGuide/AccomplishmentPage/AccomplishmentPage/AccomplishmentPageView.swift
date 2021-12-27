@@ -58,7 +58,10 @@ class AccomplishmentPageView: UIView {
         accomplishment = accom
         resumeContentData = resumeContent
     }
+}
 
+//MARK: Reload + CRUD
+extension AccomplishmentPageView {
     @IBAction func addAction(_ sender: Any) {
         delegate?.goToAddAccom()
     }
@@ -77,20 +80,15 @@ class AccomplishmentPageView: UIView {
 extension AccomplishmentPageView:  UITableViewDelegate, UITableViewDataSource {
     // setup table view
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let accompData  = accomplishment[indexPath.row]
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AccomplishmentTableCell.identifier, for: indexPath) as? AccomplishmentTableCell else {
             return UITableViewCell()
         }
+        
         let accom = accomplishment[indexPath.row]
-        cell.awardName.text = accomplishment[indexPath.row].title
-        cell.awardDate.text = accomplishment[indexPath.row].given_date?.string(format: Date.ISO8601Format.MonthYear)
-        cell.awardIssuer.text = accomplishment[indexPath.row].issuer
-        /*if accomplishment[indexPath.row].is_selected {
-            cell.checklistButtonIfSelected()
-        } else {
-            cell.checklistButtonUnSelected()
-        }*/
+        cell.awardName.text = accom.title
+        cell.awardDate.text = accom.given_date?.string(format: Date.ISO8601Format.MonthYear)
+        cell.awardIssuer.text = accom.issuer
+
         let selectedAccomId = resumeContentData.accom_id
         let counter = resumeContentData.accom_id?.count ?? 0
         if counter != 0 {
