@@ -10,7 +10,6 @@
 		6712CF9D272EABF600449991 /* PDFCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6712CF9C272EABF600449991 /* PDFCreator.swift */; };
 		6712CF9F272EB29400449991 /* QuizPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6712CF9E272EB29400449991 /* QuizPage.swift */; };
 		6712CFA5272EE8BF00449991 /* QuizPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6712CFA4272EE8BF00449991 /* QuizPage.xib */; };
-		6712CFAB272EEB6900449991 /* QuizPageTestViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6712CFAA272EEB6900449991 /* QuizPageTestViewController.storyboard */; };
 		6722E23F2726C7C3007315AB /* ExperienceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722E23D2726C7C3007315AB /* ExperienceTableCell.swift */; };
 		6722E2402726C7C3007315AB /* ExperienceTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6722E23E2726C7C3007315AB /* ExperienceTableCell.xib */; };
 		67280DB22726D0DF006569DD /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67280DB12726D0DF006569DD /* EmptyState.swift */; };
@@ -230,8 +229,6 @@
 		6712CF9C272EABF600449991 /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
 		6712CF9E272EB29400449991 /* QuizPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizPage.swift; sourceTree = "<group>"; };
 		6712CFA4272EE8BF00449991 /* QuizPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizPage.xib; sourceTree = "<group>"; };
-		6712CFA6272EEAF700449991 /* QuizPageTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizPageTestViewController.swift; sourceTree = "<group>"; };
-		6712CFAA272EEB6900449991 /* QuizPageTestViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QuizPageTestViewController.storyboard; sourceTree = "<group>"; };
 		6722E23D2726C7C3007315AB /* ExperienceTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceTableCell.swift; sourceTree = "<group>"; };
 		6722E23E2726C7C3007315AB /* ExperienceTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExperienceTableCell.xib; sourceTree = "<group>"; };
 		67280DB12726D0DF006569DD /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
@@ -858,8 +855,6 @@
 				BF8503A12722B7F800CC43FB /* QuizPageView.xib */,
 				6712CF9E272EB29400449991 /* QuizPage.swift */,
 				6712CFA4272EE8BF00449991 /* QuizPage.xib */,
-				6712CFA6272EEAF700449991 /* QuizPageTestViewController.swift */,
-				6712CFAA272EEB6900449991 /* QuizPageTestViewController.storyboard */,
 			);
 			path = QuizPage;
 			sourceTree = "<group>";
@@ -1411,7 +1406,6 @@
 				BFE00357272733310070BD40 /* BigButtonWithImage.xib in Resources */,
 				B8825E55273ADF3100FE0086 /* ExpertListCell.xib in Resources */,
 				BF8503112722551B00CC43FB /* UserProfileViewController.storyboard in Resources */,
-				6712CFAB272EEB6900449991 /* QuizPageTestViewController.storyboard in Resources */,
 				B8532B85277355A5009C58C6 /* ExpertButtonCell.xib in Resources */,
 				67AA824F273ACB2B004937B7 /* ExpertInfoViewController.storyboard in Resources */,
 				BF856518277583090061930C /* UP-Experience.storyboard in Resources */,
@@ -1586,7 +1580,6 @@
 				B859B539272852EF00627CDC /* PersonalInformationPlaceholderRepository.swift in Sources */,
 				BF7267EA2730E9C200B5A95F /* AccomplishmentTableCell.swift in Sources */,
 				BF856502277581230061930C /* UPSkillFormVC.swift in Sources */,
-				BF228E50273B7CCC00966E23 /* EducationListController.swift in Sources */,
 				B859B548272858B900627CDC /* PersonalInformationSuggestionRepository.swift in Sources */,
 				BF85037C2722832600CC43FB /* UIView+Extension.swift in Sources */,
 				67280DB22726D0DF006569DD /* EmptyState.swift in Sources */,
