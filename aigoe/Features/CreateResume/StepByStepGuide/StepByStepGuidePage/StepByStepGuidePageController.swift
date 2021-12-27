@@ -360,19 +360,12 @@ extension StepByStepGuidePageController {
                         } else {
                             prevNextDelegate?.isButtonEnable(left: false , right: true)
                         }
-                    }
-                   else if pageType[currentPage] == 2 {
+                    } else if pageType[currentPage] == 2 {
                         //if eduData.isEmpty {
                        if currentResumeContent.edu_id == nil || currentResumeContent.edu_id?.count == 0 {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
                             prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            /*let checker = dataEduChecker(data: eduData)
-                            if checker {
-                                prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            } else {
-                                prevNextDelegate?.isButtonEnable(left: true , right: false)
-                            }*/
                         }
                     } else if pageType[currentPage] == 3 {
                         //if expData.isEmpty {
@@ -380,12 +373,6 @@ extension StepByStepGuidePageController {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
                             prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            /*let checker = dataExpChecker(data: expData)
-                            if checker {
-                                prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            } else {
-                                prevNextDelegate?.isButtonEnable(left: true , right: false)
-                            }*/
                         }
                     } else if pageType[currentPage] == 4 {
                         //if skillData.isEmpty {
@@ -393,12 +380,6 @@ extension StepByStepGuidePageController {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
                             prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            /*let checker = dataSkillsChecker(data: skillData)
-                            if checker {
-                                prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            } else {
-                                prevNextDelegate?.isButtonEnable(left: true , right: false)
-                            }*/
                         }
                     } else if pageType[currentPage] == 5 {
                         //if accomData.isEmpty {
@@ -406,16 +387,12 @@ extension StepByStepGuidePageController {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
                             prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            /*let checker = dataAccomChecker(data: accomData)
-                            if checker {
-                                prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            } else {
-                                prevNextDelegate?.isButtonEnable(left: true , right: false)
-                            }*/
                         }
                     } else {
                         prevNextDelegate?.isButtonEnable(left: true, right: true)
                     }
+                } else if pageType[currentPage] == 6{
+                    prevNextDelegate?.isButtonEnable(left: true , right: true)
                 }
             }
         }
