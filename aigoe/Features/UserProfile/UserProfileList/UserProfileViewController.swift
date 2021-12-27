@@ -7,20 +7,70 @@
 
 import UIKit
 
-class UserProfileViewController: UIViewController {
+class UserProfileViewController: MVVMViewController<UserProfileListViewModel> {
 
     @IBOutlet weak var comingSoon: EmptyState!
+    @IBOutlet weak var userProfileListTableView: UITableView!
+    
+    var userProfileData = [UserProfileList]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setComingSoon()
-        navigationStyle()
+        self.viewModel = UserProfileListViewModel()
+        
+        getInitialSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.title = "About Me"
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        navigationStyle()
         navigationItem.largeTitleDisplayMode = .automatic
         navigationController?.navigationBar.sizeToFit()
+    }
+    
+   
+}
+
+//MARK: Table View
+extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableSetup(){
+        userProfileListTableView.register(UINib.init(nibName: "UserProfileListCell", bundle: nil), forCellReuseIdentifier: "UserProfileListCell")
+        userProfileListTableView.delegate = self
+        userProfileListTableView.dataSource = self
+        userProfileListTableView.reloadData()
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return userProfileData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserProfileListCell", for:indexPath) as? UserProfileListCell else { return UITableViewCell()}
+                
+        let data = userProfileData[indexPath.row]
+        
+        cell.img.image = data.img
+        cell.titleLabel.text = data.title
+        
+        return cell
+    }
+}
+
+//MARK: Setup
+extension UserProfileViewController {
+    func getInitialSetup(){
+        userProfileData = viewModel?.getUserProfileList() ?? []
+        navigationStyle()
+        tableSetup()
+    }
+    
+    func navigationStyle(){
+        configureNavigationBar(largeTitleColor: .white,
+                               backgoundColor:UIColor.primaryBlue,
+                               tintColor: UIColor.white,
+                               title: "Profile",
+                               preferredLargeTitle: true,
+                               hideBackButton: false )
     }
     
     func setComingSoon() {
@@ -32,11 +82,4 @@ class UserProfileViewController: UIViewController {
         comingSoon.emptyStateDescription.font = UIFont.systemFont(ofSize: 17)
         comingSoon.emptyStateDescription.textColor = UIColor.primaryBlue
     }
-    
-    func navigationStyle(){
-        configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.white, title: "About Me", preferredLargeTitle: true, hideBackButton: false)
-    }
-
-
 }
-
