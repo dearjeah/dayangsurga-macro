@@ -26,7 +26,7 @@ func preloadExpertProfile(){
                                                        name: "Fahri Al Irsyad",
                                                        experience: "3 Years",
                                                        expertise: "Recruiter at Financial Technology Company",
-                                                       phoneNumber: "6287838448246",
+                                                       phoneNumber: "6285881056414",
                                                        dayAvailTime: "Monday - Friday",
                                                        timeAvailTime: "19.00 - 21.00 WIB",
                                                        linkedIn: "https://www.linkedin.com/in/fahriasen",

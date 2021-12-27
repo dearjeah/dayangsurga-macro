@@ -16,7 +16,7 @@ class QuizPage: UIView {
     @IBOutlet var baseView: UIView!
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var quizCard: QuizPageView!
-    @IBOutlet weak var swipeImages: YesNoSwipeView!
+    @IBOutlet weak var yesNoSelection: SmallSetButton!
     
     var divisor: CGFloat!
     var delegate: QuizPageDelegate?
@@ -62,7 +62,8 @@ class QuizPage: UIView {
     }
     
     @IBAction func panMoved(_ sender: UIPanGestureRecognizer) {
-        let card = sender.view ?? UIView()
+        //matikan untuk beberapa waktu hehe
+       /* let card = sender.view ?? UIView()
         //detect how far you move
         let point = sender.translation(in: containerView)
         let xFromCenter = card.center.x - containerView.center.x
@@ -91,7 +92,7 @@ class QuizPage: UIView {
                 delegate?.quizAnswer(was: true)
             }
             resetCard()
-        }
+        }*/
     }
     
     func resetCard() {
@@ -106,6 +107,7 @@ class QuizPage: UIView {
         quizCard.layer.cornerRadius = 8
         quizCard.layer.borderWidth = 2.0
         quizCard.layer.borderColor = UIColor.primaryBlue.cgColor
+        yesNoSelection.buttonStyle(from: "quiz")
     }
     
     func loadData(type: Int) -> [String] {

@@ -52,11 +52,12 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
         skillsTableView.reloadData()
     }
     
-    convenience init(data: [Skills]) {
+    convenience init(skill: [Skills], resumeContent: Resume_Content) {
         self.init()
         
         emptyState = stepViewModel.getEmptyStateId(Id: 3)
-        skills = data
+        skills = skill
+        resumeContentData = resumeContent
         setup()
         notificationCenterSetup()
         skillsTableView.reloadData()

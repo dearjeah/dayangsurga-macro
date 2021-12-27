@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6CR-Uv-7Oi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6CR-Uv-7Oi">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -21,10 +21,10 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nsW-B8-rTo" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1254.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="940"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BOq-Ci-CuN" customClass="DesignableView" customModule="aigoe" customModuleProvider="target">
-                                                <rect key="frame" x="20.5" y="25" width="373" height="1003.5"/>
+                                                <rect key="frame" x="20.5" y="25" width="373" height="752"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="okm-Ly-rFM" customClass="LabelWithTextField" customModule="aigoe" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="373" height="100"/>
@@ -100,7 +100,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8mG-7v-f4b">
-                                                <rect key="frame" x="20.5" y="1048.5" width="373" height="48"/>
+                                                <rect key="frame" x="20.5" y="797" width="373" height="48"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="sXc-FY-jno"/>
                                                 </constraints>
@@ -117,6 +117,7 @@
                                             <constraint firstItem="8mG-7v-f4b" firstAttribute="top" secondItem="BOq-Ci-CuN" secondAttribute="bottom" constant="20" id="DTV-3m-Y6N"/>
                                             <constraint firstItem="BOq-Ci-CuN" firstAttribute="height" secondItem="nsW-B8-rTo" secondAttribute="height" multiplier="0.8" id="KIr-HG-gyz"/>
                                             <constraint firstItem="BOq-Ci-CuN" firstAttribute="top" secondItem="nsW-B8-rTo" secondAttribute="top" constant="25" id="bfv-Cv-1rN"/>
+                                            <constraint firstAttribute="height" constant="940" id="mHL-LP-cWN"/>
                                             <constraint firstItem="8mG-7v-f4b" firstAttribute="width" secondItem="BOq-Ci-CuN" secondAttribute="width" id="nNf-Qx-ZEt"/>
                                             <constraint firstItem="8mG-7v-f4b" firstAttribute="centerX" secondItem="nsW-B8-rTo" secondAttribute="centerX" id="rZJ-sf-v3v"/>
                                             <constraint firstItem="BOq-Ci-CuN" firstAttribute="width" secondItem="nsW-B8-rTo" secondAttribute="width" multiplier="0.9" id="rmk-nd-F1h"/>
@@ -137,7 +138,6 @@
                         <constraints>
                             <constraint firstItem="nsW-B8-rTo" firstAttribute="width" secondItem="3IJ-8b-5nb" secondAttribute="width" id="Et2-ML-XOl"/>
                             <constraint firstItem="NTe-96-Yph" firstAttribute="leading" secondItem="rqm-j6-tGh" secondAttribute="leading" id="J6B-bS-cPs"/>
-                            <constraint firstItem="nsW-B8-rTo" firstAttribute="height" secondItem="3IJ-8b-5nb" secondAttribute="height" multiplier="1.4" id="R2r-9O-Rg9"/>
                             <constraint firstItem="NTe-96-Yph" firstAttribute="top" secondItem="rqm-j6-tGh" secondAttribute="top" id="ZId-ul-FKg"/>
                             <constraint firstItem="rqm-j6-tGh" firstAttribute="bottom" secondItem="NTe-96-Yph" secondAttribute="bottom" id="ZT3-0T-7gB"/>
                             <constraint firstItem="rqm-j6-tGh" firstAttribute="trailing" secondItem="NTe-96-Yph" secondAttribute="trailing" id="lYu-sB-BpX"/>

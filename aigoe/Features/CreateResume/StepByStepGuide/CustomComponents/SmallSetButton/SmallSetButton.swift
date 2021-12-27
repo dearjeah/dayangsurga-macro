@@ -9,8 +9,8 @@ import UIKit
 
 protocol SmallSetButtonDelegate: AnyObject {
     func didTapNext()
-    func didTapPrevious()
     func didTapGenerate()
+    func didTapLeftButton()
     func didTapRightButton()
 }
 
@@ -29,17 +29,24 @@ class SmallSetButton: UIView {
         self.delegate = dlgt
     }
     
-    func buttonStyle() {
-        rightButton.dsShortFilledPrimaryButton(isDisable: false, text: "Next")
-        leftButton.dsShortFilledPrimaryButton(isDisable: false, text: "Previous")
-        rightButton.setTitle("Next", for: .normal)
-        leftButton.setTitle("Previous", for: .normal)
+    func buttonStyle(from: String) {
+        if from == "quiz" {
+            setButtonTitle(right: "Yes", left: "No")
+            rightButton.dsShortUnfilledButton(isDelete: false, isDisable: false, text: "Yes")
+            leftButton.dsShortUnfilledButton(isDelete: false, isDisable: false, text: "No")
+        } else {
+            setButtonTitle(right: "Next", left: "Previous")
+        }
+    }
+    
+    func setButtonTitle(right: String, left: String) {
+        rightButton.setTitle(right, for: .normal)
+        leftButton.setTitle(left, for: .normal)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initWithNib()
-        buttonStyle()
     }
     
     fileprivate func initWithNib() {
@@ -64,6 +71,6 @@ class SmallSetButton: UIView {
     }
     
     @IBAction func leftButtonPressed(_ sender: Any) {
-        delegate?.didTapPrevious()
+        delegate?.didTapLeftButton()
     }
 }

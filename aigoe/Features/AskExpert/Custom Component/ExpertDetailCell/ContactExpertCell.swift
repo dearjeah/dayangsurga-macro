@@ -16,10 +16,6 @@ class ContactExpertCell:UITableViewCell{
     @IBOutlet weak var contactLinkedIn: UIButton!
     weak var delegate: goToLinkedIn?
     
-    @IBAction func contactPressed(_ sender: UIButton) {
-        
-    }
-    
     func setUpProtocol(dlgt: goToLinkedIn){
         self.delegate = dlgt
     }
@@ -27,7 +23,5 @@ class ContactExpertCell:UITableViewCell{
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-      
     }
 }

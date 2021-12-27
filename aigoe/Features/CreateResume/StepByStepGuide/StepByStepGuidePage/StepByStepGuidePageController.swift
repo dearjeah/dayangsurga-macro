@@ -31,7 +31,7 @@ protocol prevNextButtonDelegate: AnyObject {
 }
 
 class StepByStepGuidePageController: UIPageViewController {
-    
+
     var stepControllerArr: [UIViewController]? = []
     var isCreate: Bool = true //false = edit resume
     var currentPageIndex: Int = 0
@@ -78,7 +78,7 @@ class StepByStepGuidePageController: UIPageViewController {
 }
 
 //MARK: Protocol Delegate
-extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDelegate {
+extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDelegate, SmallSetButtonDelegate {
     func isAllTextfieldFilled(was: Bool, data: PersonalInfo) {
         if currentPageIndex == 0 {
             prevNextDelegate?.isButtonEnable(left: false, right: true)
@@ -123,6 +123,10 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
         buttonFunctional(currentPage: currentPageIndex)
     }
     
+    @objc func clearStep() {
+       currentPageIndex = 0
+    }
+    
     //MARK: Delegate Function
     func hideUnHideButton(currentPage: Int) {
         let isQuizPage = isQuizPage(currentIndex: currentPage)
@@ -145,6 +149,22 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
                 goToGenerate()
             }
         }
+    }
+    //for Quiz
+    func didTapNext() {
+        //
+    }
+    
+    func didTapGenerate() {
+        //
+    }
+    
+    func didTapLeftButton() {
+        quizAnswer(was: false)
+    }
+    
+    func didTapRightButton() {
+        quizAnswer(was: true)
     }
 }
 
@@ -340,19 +360,12 @@ extension StepByStepGuidePageController {
                         } else {
                             prevNextDelegate?.isButtonEnable(left: false , right: true)
                         }
-                    }
-                   else if pageType[currentPage] == 2 {
+                    } else if pageType[currentPage] == 2 {
                         //if eduData.isEmpty {
                        if currentResumeContent.edu_id == nil || currentResumeContent.edu_id?.count == 0 {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
                             prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            /*let checker = dataEduChecker(data: eduData)
-                            if checker {
-                                prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            } else {
-                                prevNextDelegate?.isButtonEnable(left: true , right: false)
-                            }*/
                         }
                     } else if pageType[currentPage] == 3 {
                         //if expData.isEmpty {
@@ -360,12 +373,6 @@ extension StepByStepGuidePageController {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
                             prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            /*let checker = dataExpChecker(data: expData)
-                            if checker {
-                                prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            } else {
-                                prevNextDelegate?.isButtonEnable(left: true , right: false)
-                            }*/
                         }
                     } else if pageType[currentPage] == 4 {
                         //if skillData.isEmpty {
@@ -373,12 +380,6 @@ extension StepByStepGuidePageController {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
                             prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            /*let checker = dataSkillsChecker(data: skillData)
-                            if checker {
-                                prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            } else {
-                                prevNextDelegate?.isButtonEnable(left: true , right: false)
-                            }*/
                         }
                     } else if pageType[currentPage] == 5 {
                         //if accomData.isEmpty {
@@ -386,16 +387,12 @@ extension StepByStepGuidePageController {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
                             prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            /*let checker = dataAccomChecker(data: accomData)
-                            if checker {
-                                prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            } else {
-                                prevNextDelegate?.isButtonEnable(left: true , right: false)
-                            }*/
                         }
                     } else {
                         prevNextDelegate?.isButtonEnable(left: true, right: true)
                     }
+                } else if pageType[currentPage] == 6{
+                    prevNextDelegate?.isButtonEnable(left: true , right: true)
                 }
             }
         }
@@ -471,6 +468,7 @@ extension StepByStepGuidePageController {
         NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("expReload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("skillReload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("accompReload"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(clearStep), name: Notification.Name("clearStep"), object: nil)
     }
     
     private func setPageIndex(value: Int, progressBar: Bool = false) {
@@ -506,14 +504,11 @@ extension StepByStepGuidePageController {
 extension StepByStepGuidePageController {
     func populateResumeData() {
         if !isCreate {
-            let data = ResumeContentRepository.shared.getResumeContentById(resume_id: UUID().uuidString)
+            let data = ResumeContentRepository.shared.getResumeContentById(resume_id: selectedResume.resume_id ?? "")
             
             if data != nil {
                 personalData = UserRepository.shared.getUserById(id: Int(selectedResume.user_id)) ?? User()
-                /*eduData = EducationRepository.shared.getEducationById(educationId: Int(data?.edu_id ?? Int32())) ?? Education()
-                expData = ExperienceRepository.shared.getExperienceById(experienceId: Int(data?.exp_id ?? Int32())) ?? Experience()
-                skillData = SkillRepository.shared.getSkillsById(skillId: data?.skill_id ?? Int32()) ?? Skills()
-                accomData = AccomplishmentRepository.shared.getAccomplishmentById(AccomplishmentId: Int(data?.accom_id ?? Int32())) ??  Accomplishment()*/
+                currentResumeContent = data ?? Resume_Content()
             }
         }
     }
@@ -546,6 +541,7 @@ extension StepByStepGuidePageController {
         let controller = UIViewController()
         let tmp = QuizPage.init(type: type)
         tmp.quizPageSetup(dlgt: self)
+        tmp.yesNoSelection.delegate = self
         controller.view = tmp
         return controller
     }
@@ -566,7 +562,7 @@ extension StepByStepGuidePageController {
         controller.viewModel = SkillsPageviewModel()
         skillData = controller.viewModel?.getAllSkillData() ?? []
         
-        let tmp = SkillsPageView.init(data: skillData)
+        let tmp = SkillsPageView.init(skill: skillData, resumeContent: currentResumeContent)
         tmp.skillDelegateSetup(dlgt: self)
         controller.view = tmp
         return controller

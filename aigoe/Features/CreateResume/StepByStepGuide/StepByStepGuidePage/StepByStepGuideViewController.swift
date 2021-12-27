@@ -35,7 +35,11 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
         smallSetButtonView.delegate = self
         progressBarView.dlgt = self
         hideKeyboardWhenTappedAround()
+        smallSetButtonView.buttonStyle(from: "step")
         
+        if !isCreate {
+            selectedResumeContentId = self.viewModel?.getResumeContentId(resumeId: selectedUserResume.resume_id ?? "") ?? ""
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -113,18 +117,26 @@ extension StepByStepGuideViewController: SmallSetButtonDelegate {
         NotificationCenter.default.post(name: Notification.Name("goToNext"), object: nil)
     }
     
-    func didTapPrevious() {
+    func didTapLeftButton() {
         NotificationCenter.default.post(name: Notification.Name("goToPrev"), object: nil)
     }
     
     func didTapGenerate() {
         if let resumeContent = ResumeContentRepository.shared.getResumeContentById(resume_id: selectedResumeContentId) {
-            let pdfCreator = PDFCreator(resumeContent: resumeContent, userResume: selectedUserResume, selectedTemplate: selectedTemplate)
+            createPDFThumbnail(resumeContent: resumeContent)
             performSegue(withIdentifier: "goToGenerate", sender: self)
         } else {
             print("Step VC =========== Cannot get user resume content ID")
         }
          
+    }
+    
+    func createPDFThumbnail(resumeContent: Resume_Content){
+        let pdfCreator = PDFCreator(resumeContent: resumeContent, userResume: selectedUserResume, selectedTemplate: selectedTemplate)
+        let pdfData = pdfCreator.createPDF()
+        let thumbnailSize = CGSize(width: 260, height: 463)
+        let thumbnail = pdfCreator.generatePdfThumbnail(of: thumbnailSize, atPage: 0, pdfData: pdfData)
+        self.viewModel?.updateUserResumePDFThumbnail(resumeId: resumeContent.resume_id ?? "", img: thumbnail ?? UIImage())
     }
     
     func dataChecker(page: Int, edu: [Education], exp: [Experience], skill: [Skills], accomp: [Accomplishment]) {
@@ -168,10 +180,10 @@ extension StepByStepGuideViewController: StepByStepGuideDelegate {
     
     func updateData(page: Int) {
         let data = self.viewModel?.getAllInitialData()
-        let edu = data?.edu ?? []
-        let exp = data?.exp ?? []
-        let skills = data?.skill ?? []
-        let accomp =  data?.accom ?? []
+        eduData = data?.edu ?? []
+        expData = data?.exp ?? []
+        skillData = data?.skill ?? []
+        accomData =  data?.accom ?? []
         //dataChecker(page: page, edu:edu, exp: exp, skill: skills, accomp: accomp)
     }
     
