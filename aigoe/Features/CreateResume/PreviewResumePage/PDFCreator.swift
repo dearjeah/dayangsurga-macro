@@ -401,7 +401,7 @@ class PDFCreator: NSObject {
       
             attributedParagraph.draw(in: paragraphRect)
             
-        return paragraphRect.origin.y + attributedParagraph.size().height + 15
+        return paragraphRect.origin.y + (fixedTextHeight * attributedParagraph.size().height) + 15
         }
         
         func drawSeparator(_ drawSeparator: CGContext, pageRect: CGRect, height: CGFloat)->CGFloat{
@@ -451,6 +451,7 @@ extension PDFCreator {
     }
     func getSkillData(){
         if let skillId = resumeContent.skill_id {
+            print(skillId.count)
             for i in 0..<skillId.count {
                 let tmp = SkillRepository.shared.getSkillsById(skillId: skillId[i]) ?? Skills()
                 skillData.append(tmp)
