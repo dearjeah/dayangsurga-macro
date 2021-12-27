@@ -9,6 +9,7 @@ import UIKit
 
 class UPAchievementListVC: MVVMViewController<UPAchievementListViewModel> {
 
+    @IBOutlet weak var accomplishmentList: AccomplishmentPageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
