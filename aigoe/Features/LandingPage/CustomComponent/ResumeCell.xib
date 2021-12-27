@@ -96,11 +96,6 @@
             <point key="canvasLocation" x="136.95652173913044" y="123.88392857142857"/>
         </collectionViewCell>
     </objects>
-    <designables>
-        <designable name="OsH-NW-Lmo">
-            <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-    </designables>
     <resources>
         <systemColor name="tertiaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>

@@ -10,7 +10,6 @@
 		6712CF9D272EABF600449991 /* PDFCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6712CF9C272EABF600449991 /* PDFCreator.swift */; };
 		6712CF9F272EB29400449991 /* QuizPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6712CF9E272EB29400449991 /* QuizPage.swift */; };
 		6712CFA5272EE8BF00449991 /* QuizPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6712CFA4272EE8BF00449991 /* QuizPage.xib */; };
-		6712CFAB272EEB6900449991 /* QuizPageTestViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6712CFAA272EEB6900449991 /* QuizPageTestViewController.storyboard */; };
 		6722E23F2726C7C3007315AB /* ExperienceTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6722E23D2726C7C3007315AB /* ExperienceTableCell.swift */; };
 		6722E2402726C7C3007315AB /* ExperienceTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6722E23E2726C7C3007315AB /* ExperienceTableCell.xib */; };
 		67280DB22726D0DF006569DD /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67280DB12726D0DF006569DD /* EmptyState.swift */; };
@@ -86,8 +85,6 @@
 		BF228E4D273B7CCC00966E23 /* EducationFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF228E47273B7CCC00966E23 /* EducationFormController.swift */; };
 		BF228E4E273B7CCC00966E23 /* EducationPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF228E48273B7CCC00966E23 /* EducationPageView.xib */; };
 		BF228E4F273B7CCC00966E23 /* EducationPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF228E49273B7CCC00966E23 /* EducationPageView.swift */; };
-		BF228E50273B7CCC00966E23 /* EducationListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF228E4A273B7CCC00966E23 /* EducationListController.swift */; };
-		BF228E51273B7CCC00966E23 /* EducationListController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF228E4B273B7CCC00966E23 /* EducationListController.storyboard */; };
 		BF281E2A273D70A100C44D04 /* ExpertDetailInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF281E26273D70A100C44D04 /* ExpertDetailInfoCell.xib */; };
 		BF281E2B273D70A100C44D04 /* ExpertDetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF281E27273D70A100C44D04 /* ExpertDetailInfoCell.swift */; };
 		BF281E2C273D70A100C44D04 /* ContactExpertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF281E28273D70A100C44D04 /* ContactExpertCell.swift */; };
@@ -232,8 +229,6 @@
 		6712CF9C272EABF600449991 /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
 		6712CF9E272EB29400449991 /* QuizPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizPage.swift; sourceTree = "<group>"; };
 		6712CFA4272EE8BF00449991 /* QuizPage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizPage.xib; sourceTree = "<group>"; };
-		6712CFA6272EEAF700449991 /* QuizPageTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizPageTestViewController.swift; sourceTree = "<group>"; };
-		6712CFAA272EEB6900449991 /* QuizPageTestViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QuizPageTestViewController.storyboard; sourceTree = "<group>"; };
 		6722E23D2726C7C3007315AB /* ExperienceTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceTableCell.swift; sourceTree = "<group>"; };
 		6722E23E2726C7C3007315AB /* ExperienceTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExperienceTableCell.xib; sourceTree = "<group>"; };
 		67280DB12726D0DF006569DD /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
@@ -309,8 +304,6 @@
 		BF228E47273B7CCC00966E23 /* EducationFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationFormController.swift; sourceTree = "<group>"; };
 		BF228E48273B7CCC00966E23 /* EducationPageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EducationPageView.xib; sourceTree = "<group>"; };
 		BF228E49273B7CCC00966E23 /* EducationPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationPageView.swift; sourceTree = "<group>"; };
-		BF228E4A273B7CCC00966E23 /* EducationListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationListController.swift; sourceTree = "<group>"; };
-		BF228E4B273B7CCC00966E23 /* EducationListController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EducationListController.storyboard; sourceTree = "<group>"; };
 		BF281E26273D70A100C44D04 /* ExpertDetailInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpertDetailInfoCell.xib; sourceTree = "<group>"; };
 		BF281E27273D70A100C44D04 /* ExpertDetailInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpertDetailInfoCell.swift; sourceTree = "<group>"; };
 		BF281E28273D70A100C44D04 /* ContactExpertCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactExpertCell.swift; sourceTree = "<group>"; };
@@ -590,9 +583,7 @@
 				BF228E45273B7CCC00966E23 /* Form */,
 				BF228E49273B7CCC00966E23 /* EducationPageView.swift */,
 				BF34E87D274137D100EE7276 /* EducationListViewModel.swift */,
-				BF228E4A273B7CCC00966E23 /* EducationListController.swift */,
 				BF228E48273B7CCC00966E23 /* EducationPageView.xib */,
-				BF228E4B273B7CCC00966E23 /* EducationListController.storyboard */,
 			);
 			name = EducationPage;
 			path = ../EducationPage;
@@ -864,8 +855,6 @@
 				BF8503A12722B7F800CC43FB /* QuizPageView.xib */,
 				6712CF9E272EB29400449991 /* QuizPage.swift */,
 				6712CFA4272EE8BF00449991 /* QuizPage.xib */,
-				6712CFA6272EEAF700449991 /* QuizPageTestViewController.swift */,
-				6712CFAA272EEB6900449991 /* QuizPageTestViewController.storyboard */,
 			);
 			path = QuizPage;
 			sourceTree = "<group>";
@@ -1417,7 +1406,6 @@
 				BFE00357272733310070BD40 /* BigButtonWithImage.xib in Resources */,
 				B8825E55273ADF3100FE0086 /* ExpertListCell.xib in Resources */,
 				BF8503112722551B00CC43FB /* UserProfileViewController.storyboard in Resources */,
-				6712CFAB272EEB6900449991 /* QuizPageTestViewController.storyboard in Resources */,
 				B8532B85277355A5009C58C6 /* ExpertButtonCell.xib in Resources */,
 				67AA824F273ACB2B004937B7 /* ExpertInfoViewController.storyboard in Resources */,
 				BF856518277583090061930C /* UP-Experience.storyboard in Resources */,
@@ -1435,7 +1423,6 @@
 				679DBEA32723FAAD00CE9E8F /* ResumeTemplateCell.xib in Resources */,
 				BF8503942722B65600CC43FB /* ExpertListViewController.storyboard in Resources */,
 				BF8503B12722B9E700CC43FB /* StepByStepGuideViewController.storyboard in Resources */,
-				BF228E51273B7CCC00966E23 /* EducationListController.storyboard in Resources */,
 				BF5F1BF22722D869004D0756 /* GenerateResumeViewController.storyboard in Resources */,
 				BF423DEB272C52A2006DC552 /* ExperienceFormController.storyboard in Resources */,
 			);
@@ -1593,7 +1580,6 @@
 				B859B539272852EF00627CDC /* PersonalInformationPlaceholderRepository.swift in Sources */,
 				BF7267EA2730E9C200B5A95F /* AccomplishmentTableCell.swift in Sources */,
 				BF856502277581230061930C /* UPSkillFormVC.swift in Sources */,
-				BF228E50273B7CCC00966E23 /* EducationListController.swift in Sources */,
 				B859B548272858B900627CDC /* PersonalInformationSuggestionRepository.swift in Sources */,
 				BF85037C2722832600CC43FB /* UIView+Extension.swift in Sources */,
 				67280DB22726D0DF006569DD /* EmptyState.swift in Sources */,

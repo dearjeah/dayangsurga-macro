@@ -32,6 +32,8 @@ class SmallSetButton: UIView {
     func buttonStyle(from: String) {
         if from == "quiz" {
             setButtonTitle(right: "Yes", left: "No")
+            rightButton.dsShortUnfilledButton(isDelete: false, isDisable: false, text: "Yes")
+            leftButton.dsShortUnfilledButton(isDelete: false, isDisable: false, text: "No")
         } else {
             setButtonTitle(right: "Next", left: "Previous")
         }
@@ -40,14 +42,11 @@ class SmallSetButton: UIView {
     func setButtonTitle(right: String, left: String) {
         rightButton.setTitle(right, for: .normal)
         leftButton.setTitle(left, for: .normal)
-        rightButton.dsShortUnfilledButton(isDelete: false, isDisable: false, text: right)
-        leftButton.dsShortUnfilledButton(isDelete: false, isDisable: false, text: left)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initWithNib()
-        //buttonStyle(from: )
     }
     
     fileprivate func initWithNib() {
