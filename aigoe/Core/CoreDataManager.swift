@@ -89,10 +89,11 @@ extension CoreDataManager {
 
     func preloadData() {
         
-        PreloadUserData().preloadInitialUser()
+        
         
         if EmptyStateRepository.shared.getAllEmptyState()?.count == 0 {
             preloadEmptyState()
+            PreloadUserData().preloadInitialUser()
         }
         if ResumeTemplateRepository.shared.getAllTemplate()?.count == 0 {
             preloadResumeTemplate()
