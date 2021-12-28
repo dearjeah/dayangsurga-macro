@@ -13,7 +13,7 @@ class PreloadUserData {
     //create user
     func preloadInitialUser(){
         UserRepository.shared.createUser(
-            user_id: 0,
+            user_id: Int(),
             username: "",
             phoneNumber: "",
             email: "",
