@@ -199,6 +199,10 @@
 		BF856518277583090061930C /* UP-Experience.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF856517277583090061930C /* UP-Experience.storyboard */; };
 		BF85651A277583130061930C /* UP-Skill.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF856519277583130061930C /* UP-Skill.storyboard */; };
 		BF85651C2775832A0061930C /* UP-Achievement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF85651B2775832A0061930C /* UP-Achievement.storyboard */; };
+		BF88DD312779B94200AB74E9 /* UserProfileListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF88DD302779B94200AB74E9 /* UserProfileListViewModel.swift */; };
+		BF88DD352779BA2800AB74E9 /* UserProfileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF88DD332779BA2800AB74E9 /* UserProfileListCell.swift */; };
+		BF88DD362779BA2800AB74E9 /* UserProfileListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF88DD342779BA2800AB74E9 /* UserProfileListCell.xib */; };
+		BF88DD392779C39600AB74E9 /* UserProfileListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF88DD382779C39600AB74E9 /* UserProfileListModel.swift */; };
 		BFA6AABF273E368100A4D677 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6AABE273E368100A4D677 /* LandingPageViewController.swift */; };
 		BFBA47AC27294AE600D4771E /* StepByStepGuidePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA47AB27294AE600D4771E /* StepByStepGuidePageController.swift */; };
 		BFBA47B4272AE5C400D4771E /* ExperienceFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA47B3272AE5C400D4771E /* ExperienceFormController.swift */; };
@@ -422,6 +426,10 @@
 		BF856517277583090061930C /* UP-Experience.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "UP-Experience.storyboard"; sourceTree = "<group>"; };
 		BF856519277583130061930C /* UP-Skill.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "UP-Skill.storyboard"; sourceTree = "<group>"; };
 		BF85651B2775832A0061930C /* UP-Achievement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "UP-Achievement.storyboard"; sourceTree = "<group>"; };
+		BF88DD302779B94200AB74E9 /* UserProfileListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileListViewModel.swift; sourceTree = "<group>"; };
+		BF88DD332779BA2800AB74E9 /* UserProfileListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileListCell.swift; sourceTree = "<group>"; };
+		BF88DD342779BA2800AB74E9 /* UserProfileListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserProfileListCell.xib; sourceTree = "<group>"; };
+		BF88DD382779C39600AB74E9 /* UserProfileListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileListModel.swift; sourceTree = "<group>"; };
 		BFA6AABE273E368100A4D677 /* LandingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		BFBA47AB27294AE600D4771E /* StepByStepGuidePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepGuidePageController.swift; sourceTree = "<group>"; };
 		BFBA47B3272AE5C400D4771E /* ExperienceFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceFormController.swift; sourceTree = "<group>"; };
@@ -1154,8 +1162,11 @@
 		BF8564DA27757DC10061930C /* UserProfileList */ = {
 			isa = PBXGroup;
 			children = (
+				BF88DD372779C38900AB74E9 /* Model */,
+				BF88DD322779BA0600AB74E9 /* UserProfileListCell */,
 				BF85030F2722551B00CC43FB /* UserProfileViewController.storyboard */,
 				BF85030D2722551B00CC43FB /* UserProfileViewController.swift */,
+				BF88DD302779B94200AB74E9 /* UserProfileListViewModel.swift */,
 			);
 			path = UserProfileList;
 			sourceTree = "<group>";
@@ -1248,6 +1259,23 @@
 				BF85650F277581AC0061930C /* UPAchievementListViewModel.swift */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		BF88DD322779BA0600AB74E9 /* UserProfileListCell */ = {
+			isa = PBXGroup;
+			children = (
+				BF88DD332779BA2800AB74E9 /* UserProfileListCell.swift */,
+				BF88DD342779BA2800AB74E9 /* UserProfileListCell.xib */,
+			);
+			path = UserProfileListCell;
+			sourceTree = "<group>";
+		};
+		BF88DD372779C38900AB74E9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF88DD382779C39600AB74E9 /* UserProfileListModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		BFE0034E27272F290070BD40 /* LabelWithDate */ = {
@@ -1392,6 +1420,7 @@
 				BF228E4C273B7CCC00966E23 /* EducationFormController.storyboard in Resources */,
 				BF8503532722596400CC43FB /* LandingPageViewController.storyboard in Resources */,
 				BF856516277582F40061930C /* UP-Education.storyboard in Resources */,
+				BF88DD362779BA2800AB74E9 /* UserProfileListCell.xib in Resources */,
 				BF85651A277583130061930C /* UP-Skill.storyboard in Resources */,
 				67280DB42726D0F0006569DD /* EmptyState.xib in Resources */,
 				67280DB927270D7E006569DD /* YesNoSwipeView.xib in Resources */,
@@ -1491,6 +1520,7 @@
 				BF0F8887272ED54C000B87EE /* SkillAddEditController.swift in Sources */,
 				B8FB96492743487000B64377 /* QuizRepository.swift in Sources */,
 				8435DB4F2732234A00862FF0 /* SkillSuggestionRepository.swift in Sources */,
+				BF88DD392779C39600AB74E9 /* UserProfileListModel.swift in Sources */,
 				BF8503142722551B00CC43FB /* dayangsurga-macro.xcdatamodeld in Sources */,
 				BF8503822722B2C300CC43FB /* CoreDataManager.swift in Sources */,
 				BF8503862722B35800CC43FB /* DataRepository.swift in Sources */,
@@ -1546,6 +1576,7 @@
 				8435DB4D27321FAB00862FF0 /* SkillPlaceholderRepository.swift in Sources */,
 				BF8503A42722B80F00CC43FB /* ExperiencePageView.swift in Sources */,
 				BF5F1BEE2722D805004D0756 /* ResumeTemplateViewController.swift in Sources */,
+				BF88DD312779B94200AB74E9 /* UserProfileListViewModel.swift in Sources */,
 				B88AFA39272AB10D007408A5 /* UIImageView+Extension.swift in Sources */,
 				BF85036C272265A800CC43FB /* UIButton+Extemsion.swift in Sources */,
 				B859B5442728533600627CDC /* PreloadUserData.swift in Sources */,
@@ -1584,6 +1615,7 @@
 				BF85037C2722832600CC43FB /* UIView+Extension.swift in Sources */,
 				67280DB22726D0DF006569DD /* EmptyState.swift in Sources */,
 				BF7267E52730E73000B5A95F /* AccomplishmentPageView.swift in Sources */,
+				BF88DD352779BA2800AB74E9 /* UserProfileListCell.swift in Sources */,
 				BF8564E727757E450061930C /* UPPersonalInfoListVC.swift in Sources */,
 				B8532B84277355A5009C58C6 /* ExpertButtonCell.swift in Sources */,
 				B8532B80277340ED009C58C6 /* ExpertProfileCell.swift in Sources */,

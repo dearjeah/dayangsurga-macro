@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserProfileListCell" rowHeight="110" id="KGk-i7-Jjw" customClass="UserProfileListCell" customModule="aigoe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="352" height="77"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="352" height="77"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E2j-f6-H4S">
+                        <rect key="frame" x="9" y="4" width="334" height="69"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r1v-YN-pBs" userLabel="ImageContainer">
+                                <rect key="frame" x="0.0" y="0.0" width="66.5" height="69"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icAccomplishmentUnfilled" translatesAutoresizingMaskIntoConstraints="NO" id="xRs-t4-bav">
+                                        <rect key="frame" x="15.5" y="19.5" width="35" height="30"/>
+                                        <color key="tintColor" name="primaryBlue"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="24v-hg-xBS"/>
+                                            <constraint firstAttribute="width" constant="35" id="WQ4-qH-7B8"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="xRs-t4-bav" firstAttribute="centerX" secondItem="r1v-YN-pBs" secondAttribute="centerX" id="5dk-gF-Z4R"/>
+                                    <constraint firstItem="xRs-t4-bav" firstAttribute="centerY" secondItem="r1v-YN-pBs" secondAttribute="centerY" id="xrr-bG-H6S"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nxi-5D-27K" userLabel="TitleContainer">
+                                <rect key="frame" x="66.5" y="0.0" width="234.5" height="69"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vr3-zt-Kaw">
+                                        <rect key="frame" x="0.0" y="0.0" width="234.5" height="69"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Label">
+                                                <attributes>
+                                                    <color key="NSColor" name="primaryBlue"/>
+                                                    <font key="NSFont" size="17" name="SFProText-Medium"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Vr3-zt-Kaw" firstAttribute="top" secondItem="Nxi-5D-27K" secondAttribute="top" id="8hh-qU-5ic"/>
+                                    <constraint firstItem="Vr3-zt-Kaw" firstAttribute="leading" secondItem="Nxi-5D-27K" secondAttribute="leading" id="Zhm-M3-B31"/>
+                                    <constraint firstAttribute="bottom" secondItem="Vr3-zt-Kaw" secondAttribute="bottom" id="z0P-O2-F9i"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vr3-zt-Kaw" secondAttribute="trailing" id="zPl-Bw-4R2"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SOM-7n-qlF" userLabel="ChevronContainer">
+                                <rect key="frame" x="301" y="0.0" width="33" height="69"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3Da-fs-nsQ">
+                                        <rect key="frame" x="6.5" y="23" width="20" height="23"/>
+                                        <color key="tintColor" name="textviewBorder"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="2sF-Ab-k1x"/>
+                                            <constraint firstAttribute="width" constant="20" id="sBC-B3-nKN"/>
+                                        </constraints>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="3Da-fs-nsQ" firstAttribute="centerY" secondItem="SOM-7n-qlF" secondAttribute="centerY" id="PJb-9f-pvo"/>
+                                    <constraint firstItem="3Da-fs-nsQ" firstAttribute="centerX" secondItem="SOM-7n-qlF" secondAttribute="centerX" id="b6j-wP-BPm"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="primaryWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Nxi-5D-27K" secondAttribute="bottom" id="3cA-a8-rTo"/>
+                            <constraint firstItem="SOM-7n-qlF" firstAttribute="width" secondItem="E2j-f6-H4S" secondAttribute="width" multiplier="0.1" id="DNx-lk-ton"/>
+                            <constraint firstAttribute="trailing" secondItem="SOM-7n-qlF" secondAttribute="trailing" id="Ogw-A6-kYk"/>
+                            <constraint firstAttribute="bottom" secondItem="SOM-7n-qlF" secondAttribute="bottom" id="QHE-aF-5um"/>
+                            <constraint firstAttribute="bottom" secondItem="r1v-YN-pBs" secondAttribute="bottom" id="SZR-Tr-9LL"/>
+                            <constraint firstItem="r1v-YN-pBs" firstAttribute="leading" secondItem="E2j-f6-H4S" secondAttribute="leading" id="THb-Hj-t4w"/>
+                            <constraint firstItem="SOM-7n-qlF" firstAttribute="top" secondItem="E2j-f6-H4S" secondAttribute="top" id="aL5-Ma-5P8"/>
+                            <constraint firstItem="r1v-YN-pBs" firstAttribute="top" secondItem="E2j-f6-H4S" secondAttribute="top" id="fUa-SW-gQQ"/>
+                            <constraint firstItem="SOM-7n-qlF" firstAttribute="leading" secondItem="Nxi-5D-27K" secondAttribute="trailing" id="hI9-KY-pQ2"/>
+                            <constraint firstItem="Nxi-5D-27K" firstAttribute="leading" secondItem="r1v-YN-pBs" secondAttribute="trailing" id="lN1-gd-zZU"/>
+                            <constraint firstItem="r1v-YN-pBs" firstAttribute="width" secondItem="E2j-f6-H4S" secondAttribute="width" multiplier="0.2" id="myg-yg-G2i"/>
+                            <constraint firstItem="Nxi-5D-27K" firstAttribute="top" secondItem="E2j-f6-H4S" secondAttribute="top" id="uDw-2W-3D1"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" name="primaryWhite"/>
+                <constraints>
+                    <constraint firstItem="E2j-f6-H4S" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="AKn-IX-wi0"/>
+                    <constraint firstItem="E2j-f6-H4S" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.95" id="NHs-JT-HPD"/>
+                    <constraint firstItem="E2j-f6-H4S" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.9" id="hKv-jB-TMS"/>
+                    <constraint firstItem="E2j-f6-H4S" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ioh-9c-uxd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="img" destination="xRs-t4-bav" id="fnI-Gx-lUF"/>
+                <outlet property="titleLabel" destination="Vr3-zt-Kaw" id="hkj-eI-OBI"/>
+            </connections>
+            <point key="canvasLocation" x="155.07246376811597" y="95.424107142857139"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="icAccomplishmentUnfilled" width="31" height="30"/>
+        <namedColor name="primaryBlue">
+            <color red="0.097999997437000275" green="0.16500000655651093" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primaryWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textviewBorder">
+            <color red="0.79600000381469727" green="0.80800002813339233" blue="0.80800002813339233" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
