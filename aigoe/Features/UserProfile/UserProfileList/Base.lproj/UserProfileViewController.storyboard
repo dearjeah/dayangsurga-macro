@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,7 +18,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="77" estimatedRowHeight="77" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tV6-i9-Rmy">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="primaryBG"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserProfileListCell" id="Tqw-OJ-X9s" customClass="UserProfileListCell" customModule="aigoe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="77"/>
@@ -43,19 +42,71 @@
                     </view>
                     <connections>
                         <outlet property="userProfileListTableView" destination="tV6-i9-Rmy" id="gud-tl-rjb"/>
+                        <segue destination="mqO-RV-xgC" kind="show" identifier="goToPersonalInfo" id="hb2-d4-N07"/>
+                        <segue destination="nIk-v0-UND" kind="show" identifier="goToEducation" id="FXM-ez-j0M"/>
+                        <segue destination="UOa-XD-UR5" kind="show" identifier="goToExperience" id="Tsx-Fg-7eu"/>
+                        <segue destination="sow-ao-A4q" kind="show" identifier="goToSkill" id="pN0-ca-Cpu"/>
+                        <segue destination="6IX-tW-Ov4" kind="show" identifier="goToAchievement" id="z8d-Fd-Ufd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="28.985507246376812" y="83.705357142857139"/>
         </scene>
+        <!--UP-PersonalInfo-->
+        <scene sceneID="qMk-lm-zT2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UP-PersonalInfo" id="mqO-RV-xgC" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="zdM-O4-Pqk"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gUW-AD-IDP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="957" y="-58"/>
+        </scene>
+        <!--UP-Education-->
+        <scene sceneID="Cfl-Xw-2q8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UP-Education" id="nIk-v0-UND" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="BHS-aj-Kra"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kg6-po-Jbm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="945" y="11"/>
+        </scene>
+        <!--UP-Experience-->
+        <scene sceneID="8Ka-ta-rto">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UP-Experience" id="UOa-XD-UR5" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="QeY-PE-DEu"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fwr-dM-vuv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="950" y="84"/>
+        </scene>
+        <!--UP-Skill-->
+        <scene sceneID="1nR-kM-pCa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UP-Skill" id="sow-ao-A4q" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="prw-oV-Sbh"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="inb-OK-sNM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="921" y="159"/>
+        </scene>
+        <!--UP-Achievement-->
+        <scene sceneID="JsX-Gq-lpE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UP-Achievement" id="6IX-tW-Ov4" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="zgj-Id-MJe"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5mA-uE-1n1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="958" y="234"/>
+        </scene>
     </scenes>
     <resources>
         <namedColor name="primaryBG">
             <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

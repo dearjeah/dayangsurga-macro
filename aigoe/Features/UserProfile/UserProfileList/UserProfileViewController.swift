@@ -8,7 +8,7 @@
 import UIKit
 
 class UserProfileViewController: MVVMViewController<UserProfileListViewModel> {
-
+    
     @IBOutlet weak var comingSoon: EmptyState!
     @IBOutlet weak var userProfileListTableView: UITableView!
     
@@ -26,8 +26,6 @@ class UserProfileViewController: MVVMViewController<UserProfileListViewModel> {
         navigationItem.largeTitleDisplayMode = .automatic
         navigationController?.navigationBar.sizeToFit()
     }
-    
-   
 }
 
 //MARK: Table View
@@ -37,7 +35,6 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate 
         userProfileListTableView.delegate = self
         userProfileListTableView.dataSource = self
         userProfileListTableView.reloadData()
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,13 +43,17 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserProfileListCell", for:indexPath) as? UserProfileListCell else { return UITableViewCell()}
-                
-        let data = userProfileData[indexPath.row]
         
+        let data = userProfileData[indexPath.row]
         cell.img.image = data.img
         cell.titleLabel.text = data.title
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = userProfileData[indexPath.row].type
+        navigateTo(segue: data)
     }
 }
 
@@ -81,5 +82,20 @@ extension UserProfileViewController {
         comingSoon.emptyStateDescription.text = "Features are currently in progress"
         comingSoon.emptyStateDescription.font = UIFont.systemFont(ofSize: 17)
         comingSoon.emptyStateDescription.textColor = UIColor.primaryBlue
+    }
+    
+    func navigateTo(segue: UserProfileType) {
+        switch segue {
+        case .personal:
+            performSegue(withIdentifier: "goToPersonalInfo", sender: self)
+        case .education:
+            performSegue(withIdentifier: "goToEducation", sender: self)
+        case .experience:
+            performSegue(withIdentifier: "goToExperience", sender: self)
+        case .skill:
+            performSegue(withIdentifier: "goToSkill", sender: self)
+        case .achievement:
+            performSegue(withIdentifier: "goToAchievement", sender: self)
+        }
     }
 }

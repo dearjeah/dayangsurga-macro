@@ -55,9 +55,11 @@ enum UserProfileType: String, CaseIterable {
 struct UserProfileList {
     var img: UIImage
     var title: String
+    var type: UserProfileType
     
-    init(img: UIImage, title: String) {
+    init(img: UIImage, title: String, type: UserProfileType) {
         self.img = img
         self.title = title
+        self.type = type
     }
 }
