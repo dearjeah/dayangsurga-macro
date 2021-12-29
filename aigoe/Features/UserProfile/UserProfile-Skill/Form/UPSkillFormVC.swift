@@ -257,5 +257,6 @@ extension UPSkillFormVC {
     
     func navigationSetup(){
         configureNavigationBar(largeTitleColor: .white, backgoundColor:UIColor.primaryBlue, tintColor: UIColor.white, title: "Technical Skills", preferredLargeTitle: false, hideBackButton: false)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
     }
 }
