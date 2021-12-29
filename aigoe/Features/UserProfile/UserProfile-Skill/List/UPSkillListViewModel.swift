@@ -8,4 +8,9 @@
 import Foundation
 
 class UPSkillListViewModel: NSObject {
+    let skillRepo = SkillRepository.shared
+    
+    func getAllUserSkill() -> [Skills]{
+        return skillRepo.getAllSkill() ?? []
+    }
 }
