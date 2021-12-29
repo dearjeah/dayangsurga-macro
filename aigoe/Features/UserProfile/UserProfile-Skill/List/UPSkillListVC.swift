@@ -54,6 +54,7 @@ extension UPSkillListVC {
                                hideBackButton: false )
         self.tabBarController?.tabBar.isHidden = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(self.editSkill(sender:)))
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
     }
     
     func viewSetup(){
