@@ -17,6 +17,7 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var addEditButton: UIButton!
     @IBOutlet weak var skillsTableView: UITableView!
     @IBOutlet weak var emptyStateView: EmptyState!
+    @IBOutlet weak var titleLabel: UILabel!
     
     weak var delegate: skillListDelegate?
     var stepViewModel = StepByStepGuideViewModel()
@@ -24,6 +25,7 @@ class SkillsPageView: UIView, UITableViewDelegate, UITableViewDataSource {
     var skills = [Skills]()
     var skillViewModel = SkillsPageviewModel()
     var resumeContentData = Resume_Content()
+    var withResumeContent = true
     
     let skillDataCount = 1
     
@@ -103,19 +105,25 @@ extension SkillsPageView {
 //        print(skills[indexPath.row].skill_name)
         cell.skillName.text = skills[indexPath.row].skill_name
         
-        let selectedSkillId = resumeContentData.skill_id
-        let counter = resumeContentData.skill_id?.count ?? 0
-        if counter != 0 {
-            for i in 0..<counter {
-                if skills[indexPath.row].skill_id == selectedSkillId?[i] {
-                    cell.checklistButtonIfSelected()
-                    cell.selectionStatus = true
+        if withResumeContent {
+            let selectedSkillId = resumeContentData.skill_id
+            let counter = resumeContentData.skill_id?.count ?? 0
+            if counter != 0 {
+                for i in 0..<counter {
+                    if skills[indexPath.row].skill_id == selectedSkillId?[i] {
+                        cell.checklistButtonIfSelected()
+                        cell.selectionStatus = true
+                    }
                 }
+            } else {
+                cell.checklistButtonUnSelected()
+                cell.selectionStatus = false
             }
         } else {
-            cell.checklistButtonUnSelected()
-            cell.selectionStatus = false
+            cell.selectionButton.isHidden = true
+            cell.selectionButton.isEnabled = false
         }
+        
         
         
         cell.checklistButtonAction = {
@@ -158,5 +166,11 @@ extension SkillsPageView {
         skillsTableView.delegate = self
         skillsTableView.dataSource = self
         self.skillsTableView.register(UINib(nibName: "TechnicalSkillsListCell", bundle: nil), forCellReuseIdentifier: "TechnicalSkillsListCell")
+    }
+    
+    func setupForUserProfile() {
+        titleLabel.isHidden = true
+        addEditButton.isHidden = true
+        withResumeContent = false
     }
 }
