@@ -25,6 +25,7 @@ class UserProfileViewController: MVVMViewController<UserProfileListViewModel> {
         navigationStyle()
         navigationItem.largeTitleDisplayMode = .automatic
         navigationController?.navigationBar.sizeToFit()
+        self.tabBarController?.tabBar.isHidden = false
     }
 }
 
