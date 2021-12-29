@@ -31,7 +31,33 @@ class UPPersonalInfoListVC: MVVMViewController<UPPersonalInfoListViewModel> {
     }
     
     @IBAction func addAction(_ sender: Any) {
-        goToForm(dataSource: "Add")
+        goToForm(dataSource: "Add", totalData: personalInfo.count)
+    }
+}
+
+// MARK: Initial Setup
+extension UPPersonalInfoListVC {
+    func setup(){
+        self.title = "Personal Information"
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(self.goToPIForm(sender:)))
+        addBtn.dsLongFilledPrimaryButton(withImage: false, text: "Add")
+    }
+    
+    @objc func goToPIForm(sender: UIBarButtonItem) {
+        goToForm(dataSource: "Add", totalData: personalInfo.count)
+    }
+    
+    func showTopRightCreateResume() {
+        if personalInfo.isEmpty {
+            navigationItem.rightBarButtonItem?.isEnabled = false
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
+        } else {
+            navigationItem.rightBarButtonItem?.isEnabled = true
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.primaryWhite
+        }
     }
     
     func showEmptyState() {
@@ -46,36 +72,13 @@ class UPPersonalInfoListVC: MVVMViewController<UPPersonalInfoListViewModel> {
     }
 }
 
-// MARK: Initial Setup
-extension UPPersonalInfoListVC {
-    func setup(){
-        self.title = "Personal Information"
-        emptyState.isHidden = true
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(self.goToPIForm(sender:)))
-        addBtn.dsLongFilledPrimaryButton(withImage: false, text: "Add")
-    }
-    
-    @objc func goToPIForm(sender: UIBarButtonItem) {
-        goToForm(dataSource: "Add")
-    }
-    
-    func showTopRightCreateResume() {
-        if personalInfo.isEmpty {
-            navigationItem.rightBarButtonItem?.isEnabled = false
-            navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
-        } else {
-            navigationItem.rightBarButtonItem?.isEnabled = true
-            navigationItem.rightBarButtonItem?.tintColor = UIColor.primaryWhite
-        }
-    }
-}
-
 // MARK: Segue
 extension UPPersonalInfoListVC {
-    func goToForm(dataSource: String){
+    func goToForm(dataSource: String, totalData: Int){
         let storyboard = UIStoryboard(name: "UP-PersonalInfo", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToPIForm") as! UPPersonalInfoFormVC
         vc.dataSource = dataSource
+        vc.totalData = totalData
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

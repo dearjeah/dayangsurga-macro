@@ -75,6 +75,7 @@ class UserRepository{
             let item = try context.fetch(fetchRequest) as? [User]
             let user = item?.first
             
+            user?.user_id = Int32(id)
             user?.username = newName
             user?.phoneNumber = newPhoneNumber
             user?.email = newEmail
