@@ -14,7 +14,8 @@ protocol PersonalInfoPageDelegate: AnyObject {
 
 class PersonalInfoPage: UIView{
     
-    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var designableView: DesignableView!
+    @IBOutlet weak var viewTitle: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var fullNameField: LabelWithTextField!
     @IBOutlet weak var emailField: LabelWithTextField!

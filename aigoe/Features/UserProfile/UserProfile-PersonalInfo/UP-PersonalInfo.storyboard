@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QJu-sc-qUM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D2o-5P-XII">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -14,20 +14,20 @@
             <objects>
                 <viewController id="D2o-5P-XII" customClass="UPPersonalInfoListVC" customModule="aigoe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UBZ-T0-cf1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="180" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="j5E-Xv-CSe">
-                                <rect key="frame" x="16" y="104" width="382" height="742"/>
+                                <rect key="frame" x="16" y="16" width="382" height="776"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ijw-ub-BLp" customClass="EmptyState" customModule="aigoe" customModuleProvider="target">
-                                <rect key="frame" x="16" y="144" width="382" height="445"/>
+                                <rect key="frame" x="16" y="76" width="382" height="465.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMR-Ed-nzK">
-                                <rect key="frame" x="16" y="798" width="382" height="48"/>
+                                <rect key="frame" x="16" y="744" width="382" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="qZL-r6-fUG"/>
                                 </constraints>
@@ -43,7 +43,7 @@
                         <constraints>
                             <constraint firstItem="t2d-BP-Gdf" firstAttribute="trailing" secondItem="j5E-Xv-CSe" secondAttribute="trailing" constant="16" id="1Zd-oG-TnQ"/>
                             <constraint firstItem="Ijw-ub-BLp" firstAttribute="height" secondItem="j5E-Xv-CSe" secondAttribute="height" multiplier="0.6" id="3z9-2r-Z5H"/>
-                            <constraint firstItem="Ijw-ub-BLp" firstAttribute="top" secondItem="j5E-Xv-CSe" secondAttribute="top" constant="40" id="DT7-Mf-BJX"/>
+                            <constraint firstItem="Ijw-ub-BLp" firstAttribute="top" secondItem="j5E-Xv-CSe" secondAttribute="top" constant="60" id="DT7-Mf-BJX"/>
                             <constraint firstItem="Ijw-ub-BLp" firstAttribute="width" secondItem="j5E-Xv-CSe" secondAttribute="width" id="Ma6-D6-qwu"/>
                             <constraint firstItem="t2d-BP-Gdf" firstAttribute="bottom" secondItem="CMR-Ed-nzK" secondAttribute="bottom" constant="16" id="NEQ-eA-cbi"/>
                             <constraint firstItem="j5E-Xv-CSe" firstAttribute="top" secondItem="t2d-BP-Gdf" secondAttribute="top" constant="16" id="UQa-Yb-FH1"/>
@@ -65,24 +65,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xtp-uQ-Yo3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1647.826086956522" y="71.651785714285708"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="z2L-hy-oTa">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QJu-sc-qUM" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9vO-dA-pNr">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="D2o-5P-XII" kind="relationship" relationship="rootViewController" id="GxM-dX-QcI"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FNl-Uc-fqP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="737.68115942028987" y="71.651785714285708"/>
         </scene>
         <!--Personal Information-->
         <scene sceneID="djx-iN-hvR">
@@ -108,6 +90,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="saveorDeleteAction:" destination="ZWt-hw-dyc" eventType="touchUpInside" id="p3e-pm-eah"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zSe-Tw-jrp"/>
@@ -126,6 +111,7 @@
                     <connections>
                         <outlet property="addEditBtn" destination="klm-iV-MVc" id="kub-BE-f4U"/>
                         <outlet property="formView" destination="lem-ld-J3U" id="1uD-mo-QnS"/>
+                        <segue destination="D2o-5P-XII" kind="show" identifier="backToList" id="0py-sd-zO9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Pb-XH-Hrf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
