@@ -7,11 +7,16 @@
 
 import UIKit
 
-class UPAchievementFormVC: MVVMViewController<UPAchievementFormViewModel> {
-
+class UPAchievementFormVC: MVVMViewController<UPAchievementFormViewModel>{
+    
+    var dataFrom = String()
+    var accomplish: Accomplishment? = nil
+    var achievementPh: Accomplish_Placeholder?
+    var achievementSuggest: Accomplishment_Suggest?
+    var achievementId: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 }

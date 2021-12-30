@@ -11,7 +11,7 @@
         <!--Achievement ListVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="UPAchievementListVC" customModule="aigoe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AchievementListController" id="Y6W-OH-hqX" customClass="UPAchievementListVC" customModule="aigoe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,7 +41,7 @@
         <!--Achievement FormVC-->
         <scene sceneID="rTQ-Ut-dZm">
             <objects>
-                <viewController id="IwV-3c-snz" customClass="UPAchievementFormVC" customModule="aigoe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AchievementFormController" id="IwV-3c-snz" customClass="UPAchievementFormVC" customModule="aigoe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Iuc-qy-j4S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
