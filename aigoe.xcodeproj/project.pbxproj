@@ -216,6 +216,8 @@
 		BFE0035227272F500070BD40 /* LabelWithDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE0035127272F500070BD40 /* LabelWithDate.swift */; };
 		BFE003552727331F0070BD40 /* BigButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE003542727331F0070BD40 /* BigButtonWithImage.swift */; };
 		BFE00357272733310070BD40 /* BigButtonWithImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE00356272733310070BD40 /* BigButtonWithImage.xib */; };
+		BFF8397B277C8A8200DB9908 /* PersonalInfoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF83979277C8A8200DB9908 /* PersonalInfoList.swift */; };
+		BFF8397C277C8A8200DB9908 /* PersonalInfoList.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFF8397A277C8A8200DB9908 /* PersonalInfoList.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -449,6 +451,8 @@
 		BFE0035127272F500070BD40 /* LabelWithDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithDate.swift; sourceTree = "<group>"; };
 		BFE003542727331F0070BD40 /* BigButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButtonWithImage.swift; sourceTree = "<group>"; };
 		BFE00356272733310070BD40 /* BigButtonWithImage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BigButtonWithImage.xib; sourceTree = "<group>"; };
+		BFF83979277C8A8200DB9908 /* PersonalInfoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoList.swift; sourceTree = "<group>"; };
+		BFF8397A277C8A8200DB9908 /* PersonalInfoList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalInfoList.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -864,6 +868,7 @@
 		BF850342272255D500CC43FB /* PersonalInfoPage */ = {
 			isa = PBXGroup;
 			children = (
+				BFF83978277C8A5100DB9908 /* List */,
 				BF09E0232743E5AC00DB1C6B /* Model */,
 				BF5F1BE92722D5CA004D0756 /* PersonalInfoViewModel.swift */,
 				BF85035A27225C3400CC43FB /* PersonalInfoPage.swift */,
@@ -1338,6 +1343,15 @@
 			path = BigButtonWithImage;
 			sourceTree = "<group>";
 		};
+		BFF83978277C8A5100DB9908 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				BFF83979277C8A8200DB9908 /* PersonalInfoList.swift */,
+				BFF8397A277C8A8200DB9908 /* PersonalInfoList.xib */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1472,6 +1486,7 @@
 				BF8503AA2722B83700CC43FB /* SkillsPageView.xib in Resources */,
 				BF2ABB3E27270A5D00AAC6C2 /* LabelWithSwitch.xib in Resources */,
 				BF85035D27225C4300CC43FB /* PersonalInfoPage.xib in Resources */,
+				BFF8397C277C8A8200DB9908 /* PersonalInfoList.xib in Resources */,
 				BF8503BC2722BDE900CC43FB /* Homepage.storyboard in Resources */,
 				BF2ABB4527270D4D00AAC6C2 /* LabelWithStartEndDate.xib in Resources */,
 				BF8564F42775800D0061930C /* UP-PersonalInfo.storyboard in Resources */,
@@ -1617,6 +1632,7 @@
 				BF281E2C273D70A100C44D04 /* ContactExpertCell.swift in Sources */,
 				BF8564FA277580F10061930C /* UPEducationFormVC.swift in Sources */,
 				BF85035B27225C3400CC43FB /* PersonalInfoPage.swift in Sources */,
+				BFF8397B277C8A8200DB9908 /* PersonalInfoList.swift in Sources */,
 				B88AFA36272A903A007408A5 /* ResumeCell.swift in Sources */,
 				B898B30F277B12F300EFC13A /* PersonalInfoTableCell.swift in Sources */,
 				B859B53B272852EF00627CDC /* ExperienceRepository.swift in Sources */,
