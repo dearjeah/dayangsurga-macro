@@ -71,6 +71,8 @@
 		B88AFA37272A903A007408A5 /* ResumeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88AFA35272A903A007408A5 /* ResumeCell.xib */; };
 		B88AFA39272AB10D007408A5 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88AFA38272AB10D007408A5 /* UIImageView+Extension.swift */; };
 		B88C82562736E7BA00335314 /* ExperienceFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88C82552736E7BA00335314 /* ExperienceFormViewModel.swift */; };
+		B898B30F277B12F300EFC13A /* PersonalInfoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B898B30D277B12F200EFC13A /* PersonalInfoTableCell.swift */; };
+		B898B310277B12F300EFC13A /* PersonalInfoTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B898B30E277B12F300EFC13A /* PersonalInfoTableCell.xib */; };
 		B8C65000273E05250005BAAA /* PreloadAccomplishmentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C64FFF273E05250005BAAA /* PreloadAccomplishmentData.swift */; };
 		B8C65002273E06450005BAAA /* AccomplishFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C65001273E06450005BAAA /* AccomplishFormViewModel.swift */; };
 		B8D1047A2754A1EF00774F41 /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D104782754A1EF00774F41 /* LabelCell.swift */; };
@@ -104,6 +106,10 @@
 		BF34E87C274119FC00EE7276 /* PreloadEducationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34E87B274119FC00EE7276 /* PreloadEducationData.swift */; };
 		BF34E87E274137D100EE7276 /* EducationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34E87D274137D100EE7276 /* EducationListViewModel.swift */; };
 		BF423DEB272C52A2006DC552 /* ExperienceFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF423DEA272C52A2006DC552 /* ExperienceFormController.storyboard */; };
+		BF4C38E4277AFC57007781AA /* TranslateResumeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C38E2277AFC57007781AA /* TranslateResumeVC.swift */; };
+		BF4C38E7277AFC7C007781AA /* TranslateResume.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4C38E6277AFC7C007781AA /* TranslateResume.storyboard */; };
+		BF4C38E9277AFF44007781AA /* CheckTypoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C38E8277AFF44007781AA /* CheckTypoVC.swift */; };
+		BF4C38EB277AFF52007781AA /* CheckTypo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4C38EA277AFF52007781AA /* CheckTypo.storyboard */; };
 		BF5F1BEA2722D5CA004D0756 /* PersonalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BE92722D5CA004D0756 /* PersonalInfoViewModel.swift */; };
 		BF5F1BEC2722D7F0004D0756 /* ResumeTemplateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5F1BEB2722D7F0004D0756 /* ResumeTemplateViewController.storyboard */; };
 		BF5F1BEE2722D805004D0756 /* ResumeTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F1BED2722D805004D0756 /* ResumeTemplateViewController.swift */; };
@@ -199,6 +205,10 @@
 		BF856518277583090061930C /* UP-Experience.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF856517277583090061930C /* UP-Experience.storyboard */; };
 		BF85651A277583130061930C /* UP-Skill.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF856519277583130061930C /* UP-Skill.storyboard */; };
 		BF85651C2775832A0061930C /* UP-Achievement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF85651B2775832A0061930C /* UP-Achievement.storyboard */; };
+		BF88DD312779B94200AB74E9 /* UserProfileListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF88DD302779B94200AB74E9 /* UserProfileListViewModel.swift */; };
+		BF88DD352779BA2800AB74E9 /* UserProfileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF88DD332779BA2800AB74E9 /* UserProfileListCell.swift */; };
+		BF88DD362779BA2800AB74E9 /* UserProfileListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF88DD342779BA2800AB74E9 /* UserProfileListCell.xib */; };
+		BF88DD392779C39600AB74E9 /* UserProfileListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF88DD382779C39600AB74E9 /* UserProfileListModel.swift */; };
 		BFA6AABF273E368100A4D677 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6AABE273E368100A4D677 /* LandingPageViewController.swift */; };
 		BFBA47AC27294AE600D4771E /* StepByStepGuidePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA47AB27294AE600D4771E /* StepByStepGuidePageController.swift */; };
 		BFBA47B4272AE5C400D4771E /* ExperienceFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA47B3272AE5C400D4771E /* ExperienceFormController.swift */; };
@@ -290,6 +300,8 @@
 		B88AFA35272A903A007408A5 /* ResumeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResumeCell.xib; sourceTree = "<group>"; };
 		B88AFA38272AB10D007408A5 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		B88C82552736E7BA00335314 /* ExperienceFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceFormViewModel.swift; sourceTree = "<group>"; };
+		B898B30D277B12F200EFC13A /* PersonalInfoTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalInfoTableCell.swift; sourceTree = "<group>"; };
+		B898B30E277B12F300EFC13A /* PersonalInfoTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PersonalInfoTableCell.xib; sourceTree = "<group>"; };
 		B8C64FFF273E05250005BAAA /* PreloadAccomplishmentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreloadAccomplishmentData.swift; sourceTree = "<group>"; };
 		B8C65001273E06450005BAAA /* AccomplishFormViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccomplishFormViewModel.swift; sourceTree = "<group>"; };
 		B8D104782754A1EF00774F41 /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
@@ -323,6 +335,10 @@
 		BF34E87B274119FC00EE7276 /* PreloadEducationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadEducationData.swift; sourceTree = "<group>"; };
 		BF34E87D274137D100EE7276 /* EducationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationListViewModel.swift; sourceTree = "<group>"; };
 		BF423DEA272C52A2006DC552 /* ExperienceFormController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExperienceFormController.storyboard; sourceTree = "<group>"; };
+		BF4C38E2277AFC57007781AA /* TranslateResumeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateResumeVC.swift; sourceTree = "<group>"; };
+		BF4C38E6277AFC7C007781AA /* TranslateResume.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TranslateResume.storyboard; sourceTree = "<group>"; };
+		BF4C38E8277AFF44007781AA /* CheckTypoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTypoVC.swift; sourceTree = "<group>"; };
+		BF4C38EA277AFF52007781AA /* CheckTypo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CheckTypo.storyboard; sourceTree = "<group>"; };
 		BF5F1BE92722D5CA004D0756 /* PersonalInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewModel.swift; sourceTree = "<group>"; };
 		BF5F1BEB2722D7F0004D0756 /* ResumeTemplateViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ResumeTemplateViewController.storyboard; sourceTree = "<group>"; };
 		BF5F1BED2722D805004D0756 /* ResumeTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeTemplateViewController.swift; sourceTree = "<group>"; };
@@ -422,6 +438,10 @@
 		BF856517277583090061930C /* UP-Experience.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "UP-Experience.storyboard"; sourceTree = "<group>"; };
 		BF856519277583130061930C /* UP-Skill.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "UP-Skill.storyboard"; sourceTree = "<group>"; };
 		BF85651B2775832A0061930C /* UP-Achievement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "UP-Achievement.storyboard"; sourceTree = "<group>"; };
+		BF88DD302779B94200AB74E9 /* UserProfileListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileListViewModel.swift; sourceTree = "<group>"; };
+		BF88DD332779BA2800AB74E9 /* UserProfileListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileListCell.swift; sourceTree = "<group>"; };
+		BF88DD342779BA2800AB74E9 /* UserProfileListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserProfileListCell.xib; sourceTree = "<group>"; };
+		BF88DD382779C39600AB74E9 /* UserProfileListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileListModel.swift; sourceTree = "<group>"; };
 		BFA6AABE273E368100A4D677 /* LandingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		BFBA47AB27294AE600D4771E /* StepByStepGuidePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepGuidePageController.swift; sourceTree = "<group>"; };
 		BFBA47B3272AE5C400D4771E /* ExperienceFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceFormController.swift; sourceTree = "<group>"; };
@@ -569,6 +589,15 @@
 			path = ExpertListCell;
 			sourceTree = "<group>";
 		};
+		B898B30C277B129A00EFC13A /* PersonalProfileTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				B898B30D277B12F200EFC13A /* PersonalInfoTableCell.swift */,
+				B898B30E277B12F300EFC13A /* PersonalInfoTableCell.xib */,
+			);
+			path = PersonalProfileTableCell;
+			sourceTree = "<group>";
+		};
 		BF09E0232743E5AC00DB1C6B /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -657,6 +686,24 @@
 				BF2ABB4227270D4200AAC6C2 /* LabelWithStartEndDate.swift */,
 			);
 			path = LabelWithStartEndDate;
+			sourceTree = "<group>";
+		};
+		BF4C38E0277AFC1E007781AA /* CheckTypo */ = {
+			isa = PBXGroup;
+			children = (
+				BF4C38E8277AFF44007781AA /* CheckTypoVC.swift */,
+				BF4C38EA277AFF52007781AA /* CheckTypo.storyboard */,
+			);
+			path = CheckTypo;
+			sourceTree = "<group>";
+		};
+		BF4C38E1277AFC28007781AA /* TranslateResume */ = {
+			isa = PBXGroup;
+			children = (
+				BF4C38E2277AFC57007781AA /* TranslateResumeVC.swift */,
+				BF4C38E6277AFC7C007781AA /* TranslateResume.storyboard */,
+			);
+			path = TranslateResume;
 			sourceTree = "<group>";
 		};
 		BF7267DD2730E73000B5A95F /* AccomplishmentPage */ = {
@@ -757,6 +804,8 @@
 				BF8503B62722BCFA00CC43FB /* Homepage */,
 				BF85033E272255A000CC43FB /* LandingPage */,
 				BF85033F272255AE00CC43FB /* CreateResume */,
+				BF4C38E1277AFC28007781AA /* TranslateResume */,
+				BF4C38E0277AFC1E007781AA /* CheckTypo */,
 				BF85034B2722588900CC43FB /* AskExpert */,
 				BF85034C272258E000CC43FB /* UserProfile */,
 				BF8503892722B50F00CC43FB /* GlobalCustomComponent */,
@@ -883,6 +932,7 @@
 		BF85034A2722582900CC43FB /* CustomComponents */ = {
 			isa = PBXGroup;
 			children = (
+				B898B30C277B129A00EFC13A /* PersonalProfileTableCell */,
 				BF7267E72730E9C200B5A95F /* AccomplishmentTableCell */,
 				67280DC027270F0B006569DD /* TechnicalSkillsListCell */,
 				67280DBF27270EF8006569DD /* TechnicalSkillsEditCell */,
@@ -1154,8 +1204,11 @@
 		BF8564DA27757DC10061930C /* UserProfileList */ = {
 			isa = PBXGroup;
 			children = (
+				BF88DD372779C38900AB74E9 /* Model */,
+				BF88DD322779BA0600AB74E9 /* UserProfileListCell */,
 				BF85030F2722551B00CC43FB /* UserProfileViewController.storyboard */,
 				BF85030D2722551B00CC43FB /* UserProfileViewController.swift */,
+				BF88DD302779B94200AB74E9 /* UserProfileListViewModel.swift */,
 			);
 			path = UserProfileList;
 			sourceTree = "<group>";
@@ -1248,6 +1301,23 @@
 				BF85650F277581AC0061930C /* UPAchievementListViewModel.swift */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		BF88DD322779BA0600AB74E9 /* UserProfileListCell */ = {
+			isa = PBXGroup;
+			children = (
+				BF88DD332779BA2800AB74E9 /* UserProfileListCell.swift */,
+				BF88DD342779BA2800AB74E9 /* UserProfileListCell.xib */,
+			);
+			path = UserProfileListCell;
+			sourceTree = "<group>";
+		};
+		BF88DD372779C38900AB74E9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF88DD382779C39600AB74E9 /* UserProfileListModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		BFE0034E27272F290070BD40 /* LabelWithDate */ = {
@@ -1377,6 +1447,7 @@
 				BF8503192722551C00CC43FB /* LaunchScreen.storyboard in Resources */,
 				675812BE27278FE700E106AF /* TechnicalSkillsListCell.xib in Resources */,
 				675812C22727900600E106AF /* TechnicalSkillsEditCell.xib in Resources */,
+				BF4C38EB277AFF52007781AA /* CheckTypo.storyboard in Resources */,
 				BF228E4E273B7CCC00966E23 /* EducationPageView.xib in Resources */,
 				B8D1047B2754A1EF00774F41 /* LabelCell.xib in Resources */,
 				BF85038E2722B59500CC43FB /* ProgressBarView.xib in Resources */,
@@ -1388,10 +1459,12 @@
 				BF7267EB2730E9C200B5A95F /* AccomplishmentTableCell.xib in Resources */,
 				BF7267E62730E73000B5A95F /* AccomplishmentPageView.xib in Resources */,
 				B88AFA37272A903A007408A5 /* ResumeCell.xib in Resources */,
+				B898B310277B12F300EFC13A /* PersonalInfoTableCell.xib in Resources */,
 				BF281E2A273D70A100C44D04 /* ExpertDetailInfoCell.xib in Resources */,
 				BF228E4C273B7CCC00966E23 /* EducationFormController.storyboard in Resources */,
 				BF8503532722596400CC43FB /* LandingPageViewController.storyboard in Resources */,
 				BF856516277582F40061930C /* UP-Education.storyboard in Resources */,
+				BF88DD362779BA2800AB74E9 /* UserProfileListCell.xib in Resources */,
 				BF85651A277583130061930C /* UP-Skill.storyboard in Resources */,
 				67280DB42726D0F0006569DD /* EmptyState.xib in Resources */,
 				67280DB927270D7E006569DD /* YesNoSwipeView.xib in Resources */,
@@ -1415,6 +1488,7 @@
 				67AA824B273AB4E6004937B7 /* ExpertInfoCell.xib in Resources */,
 				BF7267E42730E73000B5A95F /* AccomplishFormController.storyboard in Resources */,
 				BF8503A22722B7F800CC43FB /* QuizPageView.xib in Resources */,
+				BF4C38E7277AFC7C007781AA /* TranslateResume.storyboard in Resources */,
 				6722E2402726C7C3007315AB /* ExperienceTableCell.xib in Resources */,
 				BF5F1BEC2722D7F0004D0756 /* ResumeTemplateViewController.storyboard in Resources */,
 				7E8A5A532740054900DB0DCA /* SplashScreen.storyboard in Resources */,
@@ -1491,6 +1565,7 @@
 				BF0F8887272ED54C000B87EE /* SkillAddEditController.swift in Sources */,
 				B8FB96492743487000B64377 /* QuizRepository.swift in Sources */,
 				8435DB4F2732234A00862FF0 /* SkillSuggestionRepository.swift in Sources */,
+				BF88DD392779C39600AB74E9 /* UserProfileListModel.swift in Sources */,
 				BF8503142722551B00CC43FB /* dayangsurga-macro.xcdatamodeld in Sources */,
 				BF8503822722B2C300CC43FB /* CoreDataManager.swift in Sources */,
 				BF8503862722B35800CC43FB /* DataRepository.swift in Sources */,
@@ -1530,6 +1605,7 @@
 				BF34E8782740D5BA00EE7276 /* ExperiencePageViewModel.swift in Sources */,
 				BF85030A2722551B00CC43FB /* AppDelegate.swift in Sources */,
 				BF856508277581680061930C /* UPExperiecenFormVC.swift in Sources */,
+				BF4C38E4277AFC57007781AA /* TranslateResumeVC.swift in Sources */,
 				BF8503742722675000CC43FB /* Cell+Extension.swift in Sources */,
 				7E8A5A552740055F00DB0DCA /* SplashScreenViewController.swift in Sources */,
 				BFA6AABF273E368100A4D677 /* LandingPageViewController.swift in Sources */,
@@ -1542,10 +1618,12 @@
 				BF8564FA277580F10061930C /* UPEducationFormVC.swift in Sources */,
 				BF85035B27225C3400CC43FB /* PersonalInfoPage.swift in Sources */,
 				B88AFA36272A903A007408A5 /* ResumeCell.swift in Sources */,
+				B898B30F277B12F300EFC13A /* PersonalInfoTableCell.swift in Sources */,
 				B859B53B272852EF00627CDC /* ExperienceRepository.swift in Sources */,
 				8435DB4D27321FAB00862FF0 /* SkillPlaceholderRepository.swift in Sources */,
 				BF8503A42722B80F00CC43FB /* ExperiencePageView.swift in Sources */,
 				BF5F1BEE2722D805004D0756 /* ResumeTemplateViewController.swift in Sources */,
+				BF88DD312779B94200AB74E9 /* UserProfileListViewModel.swift in Sources */,
 				B88AFA39272AB10D007408A5 /* UIImageView+Extension.swift in Sources */,
 				BF85036C272265A800CC43FB /* UIButton+Extemsion.swift in Sources */,
 				B859B5442728533600627CDC /* PreloadUserData.swift in Sources */,
@@ -1577,6 +1655,7 @@
 				8435DB532732A81700862FF0 /* EducationSuggestionRepository.swift in Sources */,
 				BF09E0222743E5A800DB1C6B /* PersonalInfo.swift in Sources */,
 				BF8564FE2775810C0061930C /* UPSkillListVC.swift in Sources */,
+				BF4C38E9277AFF44007781AA /* CheckTypoVC.swift in Sources */,
 				B859B539272852EF00627CDC /* PersonalInformationPlaceholderRepository.swift in Sources */,
 				BF7267EA2730E9C200B5A95F /* AccomplishmentTableCell.swift in Sources */,
 				BF856502277581230061930C /* UPSkillFormVC.swift in Sources */,
@@ -1584,6 +1663,7 @@
 				BF85037C2722832600CC43FB /* UIView+Extension.swift in Sources */,
 				67280DB22726D0DF006569DD /* EmptyState.swift in Sources */,
 				BF7267E52730E73000B5A95F /* AccomplishmentPageView.swift in Sources */,
+				BF88DD352779BA2800AB74E9 /* UserProfileListCell.swift in Sources */,
 				BF8564E727757E450061930C /* UPPersonalInfoListVC.swift in Sources */,
 				B8532B84277355A5009C58C6 /* ExpertButtonCell.swift in Sources */,
 				B8532B80277340ED009C58C6 /* ExpertProfileCell.swift in Sources */,
