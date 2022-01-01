@@ -9,7 +9,14 @@ import UIKit
 
 class UPAchievementFormVC: MVVMViewController<UPAchievementFormViewModel>{
     
-    @IBOutlet weak var accomplishmentForm: AccomplishmentPageView!
+    @IBOutlet weak var BackgroundView: DesignableButton!
+    @IBOutlet weak var CertificateNameView: LabelWithTextField!
+    @IBOutlet weak var additionalCertificateLabel: UILabel!
+    @IBOutlet weak var givenDateView: LabelWithDate!
+    @IBOutlet weak var achievementStatusView: LabelWithSwitch!
+ 
+    @IBOutlet weak var endDateView: LabelWithDate!
+    
     var dataFrom = String()
     var accomplish: Accomplishment? = nil
     var achievementPh: Accomplish_Placeholder?
