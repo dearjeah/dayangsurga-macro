@@ -44,6 +44,7 @@ extension UPPersonalInfoListVC {
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(self.goToPIForm(sender:)))
         addBtn.dsLongFilledPrimaryButton(withImage: false, text: "Add")
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     @objc func goToPIForm(sender: UIBarButtonItem) {
