@@ -16,4 +16,7 @@ class UPAchievementListViewModel: NSObject {
         return data
     }
   
+    func getEmptyStateId(Id: Int)-> Empty_State?{
+        return EmptyStateRepository.shared.getEmptyStateById(id: Id)
+    }
 }

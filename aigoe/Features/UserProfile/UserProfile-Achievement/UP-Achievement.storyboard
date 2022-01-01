@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nQw-PQ-4dF">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -16,42 +16,114 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jdi-sf-2D2" customClass="AccomplishmentPageView" customModule="aigoe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MdD-uW-lXY">
+                                <rect key="frame" x="16" y="148" width="382" height="698"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pam-HK-oev" customClass="EmptyState" customModule="aigoe" customModuleProvider="target">
+                                <rect key="frame" x="16" y="208" width="382" height="419"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuC-54-hQx">
+                                <rect key="frame" x="16" y="798" width="382" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="fB4-fu-MZG"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="addActionWith_sender:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="aKy-7H-QpH"/>
+                                    <segue destination="IwV-3c-snz" kind="show" identifier="goToAchieveForm" id="gS4-SX-MMp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Jdi-sf-2D2" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="5ae-eg-dQX"/>
-                            <constraint firstItem="Jdi-sf-2D2" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="IYp-JX-aWz"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Jdi-sf-2D2" secondAttribute="trailing" id="Jp8-V0-axd"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Jdi-sf-2D2" secondAttribute="bottom" id="UWy-Cj-5ct"/>
+                            <constraint firstItem="MdD-uW-lXY" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="60" id="0Li-Ps-KlG"/>
+                            <constraint firstItem="xuC-54-hQx" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="2lj-Lz-ndo"/>
+                            <constraint firstItem="Pam-HK-oev" firstAttribute="height" secondItem="MdD-uW-lXY" secondAttribute="height" multiplier="0.6" id="BRD-ZU-aDq"/>
+                            <constraint firstItem="MdD-uW-lXY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="HZj-30-3qO"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="MdD-uW-lXY" secondAttribute="trailing" constant="16" id="Z82-W8-Mvt"/>
+                            <constraint firstItem="xuC-54-hQx" firstAttribute="width" secondItem="MdD-uW-lXY" secondAttribute="width" id="ame-MC-yl9"/>
+                            <constraint firstItem="Pam-HK-oev" firstAttribute="centerX" secondItem="MdD-uW-lXY" secondAttribute="centerX" id="eM0-Oy-W7P"/>
+                            <constraint firstItem="Pam-HK-oev" firstAttribute="width" secondItem="MdD-uW-lXY" secondAttribute="width" id="ez1-ni-zWL"/>
+                            <constraint firstItem="Pam-HK-oev" firstAttribute="top" secondItem="MdD-uW-lXY" secondAttribute="top" constant="60" id="fAl-Bb-Ueq"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="MdD-uW-lXY" secondAttribute="bottom" constant="16" id="p5m-vO-WgQ"/>
+                            <constraint firstItem="MdD-uW-lXY" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="xIx-7b-pcF"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="xuC-54-hQx" secondAttribute="bottom" constant="16" id="ycx-se-cl4"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="qER-h8-fgC"/>
                     <connections>
-                        <outlet property="accomplishmentList" destination="Jdi-sf-2D2" id="cpJ-Vg-QV2"/>
+                        <outlet property="addAchievementButton" destination="xuC-54-hQx" id="YYY-22-rKa"/>
+                        <outlet property="emptyStateView" destination="Pam-HK-oev" id="2Br-1H-XjJ"/>
+                        <outlet property="tableView" destination="MdD-uW-lXY" id="njQ-v2-abk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="99" y="70"/>
+            <point key="canvasLocation" x="1008.6956521739131" y="69.642857142857139"/>
         </scene>
         <!--Achievement FormVC-->
         <scene sceneID="rTQ-Ut-dZm">
             <objects>
-                <viewController storyboardIdentifier="AchievementFormController" id="IwV-3c-snz" customClass="UPAchievementFormVC" customModule="aigoe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="goToAchieveForm" id="IwV-3c-snz" customClass="UPAchievementFormVC" customModule="aigoe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Iuc-qy-j4S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7qK-j9-5T0" customClass="AccomplishmentPageView" customModule="aigoe" customModuleProvider="target">
+                                <rect key="frame" x="16.5" y="104" width="381" height="672"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uti-bc-dti">
+                                <rect key="frame" x="16.5" y="804" width="381" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="yFh-Tw-3Pt"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="fNN-0k-fuA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7qK-j9-5T0" firstAttribute="top" secondItem="fNN-0k-fuA" secondAttribute="top" constant="16" id="4h1-la-Kt5"/>
+                            <constraint firstItem="7qK-j9-5T0" firstAttribute="height" secondItem="Iuc-qy-j4S" secondAttribute="height" multiplier="0.75" id="a0Q-r9-Bvz"/>
+                            <constraint firstItem="7qK-j9-5T0" firstAttribute="centerX" secondItem="fNN-0k-fuA" secondAttribute="centerX" id="g6I-7I-k3W"/>
+                            <constraint firstItem="fNN-0k-fuA" firstAttribute="bottom" secondItem="Uti-bc-dti" secondAttribute="bottom" constant="10" id="hmz-Wd-wLe"/>
+                            <constraint firstItem="Uti-bc-dti" firstAttribute="centerX" secondItem="fNN-0k-fuA" secondAttribute="centerX" id="lic-KJ-48d"/>
+                            <constraint firstItem="Uti-bc-dti" firstAttribute="width" secondItem="7qK-j9-5T0" secondAttribute="width" id="tfe-fv-NGv"/>
+                            <constraint firstItem="7qK-j9-5T0" firstAttribute="width" secondItem="Iuc-qy-j4S" secondAttribute="width" multiplier="0.92" id="ukV-gh-zZU"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="z3U-Hg-RiG"/>
+                    <connections>
+                        <outlet property="accomplishmentForm" destination="7qK-j9-5T0" id="Uqb-MI-Ffn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o7Q-Dt-wX0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="945" y="70"/>
+            <point key="canvasLocation" x="1855.072463768116" y="69.642857142857139"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xri-G0-QKW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nQw-PQ-4dF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mlb-b9-koa">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="sKQ-0h-4fa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kR6-Lk-mIG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="98.550724637681171" y="69.642857142857139"/>
         </scene>
     </scenes>
     <resources>

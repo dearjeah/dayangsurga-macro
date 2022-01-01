@@ -9,6 +9,7 @@ import UIKit
 
 class UPAchievementFormVC: MVVMViewController<UPAchievementFormViewModel>{
     
+    @IBOutlet weak var accomplishmentForm: AccomplishmentPageView!
     var dataFrom = String()
     var accomplish: Accomplishment? = nil
     var achievementPh: Accomplish_Placeholder?
