@@ -8,4 +8,10 @@
 import Foundation
 
 class UPEducationListViewModel: NSObject {
+    
+    func getAllEducation() -> [Education] {
+        guard let data = EducationRepository.shared.getAllEducation() else {
+            return [Education]()}
+        return data
+    }
 }

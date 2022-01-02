@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EducationPageView" customModule="dayangsurga_macro" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EducationPageView" customModule="aigoe" customModuleProvider="target">
             <connections>
                 <outlet property="addButton" destination="t0H-WL-Qzs" id="hzm-T6-8aa"/>
                 <outlet property="emptyStateView" destination="d8x-EX-O43" id="rlf-Ym-DwI"/>
                 <outlet property="tableView" destination="9wP-0F-FPS" id="yA1-qn-D8a"/>
+                <outlet property="titleLbl" destination="ZW0-L7-SDA" id="a4f-oq-g6U"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -22,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9wP-0F-FPS">
-                    <rect key="frame" x="20" y="65" width="374" height="829"/>
+                    <rect key="frame" x="20" y="51" width="374" height="843"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZW0-L7-SDA">
@@ -62,8 +63,8 @@
                         <action selector="addAction:" destination="-1" eventType="touchUpInside" id="77K-pe-5Vg"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d8x-EX-O43" customClass="EmptyState" customModule="dayangsurga_macro" customModuleProvider="target">
-                    <rect key="frame" x="20" y="65" width="374" height="497.5"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d8x-EX-O43" customClass="EmptyState" customModule="aigoe" customModuleProvider="target">
+                    <rect key="frame" x="20" y="81" width="374" height="506"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
             </subviews>
@@ -76,8 +77,8 @@
                 <constraint firstItem="ZW0-L7-SDA" firstAttribute="top" secondItem="oEI-oh-fPO" secondAttribute="top" constant="8" id="Dk6-J1-PZm"/>
                 <constraint firstItem="d8x-EX-O43" firstAttribute="height" secondItem="9wP-0F-FPS" secondAttribute="height" multiplier="0.6" id="JD4-8p-AK0"/>
                 <constraint firstItem="d8x-EX-O43" firstAttribute="width" secondItem="9wP-0F-FPS" secondAttribute="width" id="KoN-72-JC9"/>
-                <constraint firstItem="9wP-0F-FPS" firstAttribute="top" secondItem="ZW0-L7-SDA" secondAttribute="bottom" constant="22" id="LnU-Ap-VYO"/>
-                <constraint firstItem="d8x-EX-O43" firstAttribute="top" secondItem="9wP-0F-FPS" secondAttribute="top" id="Uxu-yC-bKD"/>
+                <constraint firstItem="9wP-0F-FPS" firstAttribute="top" secondItem="ZW0-L7-SDA" secondAttribute="bottom" constant="8" id="LnU-Ap-VYO"/>
+                <constraint firstItem="d8x-EX-O43" firstAttribute="top" secondItem="9wP-0F-FPS" secondAttribute="top" constant="30" id="Uxu-yC-bKD"/>
                 <constraint firstItem="t0H-WL-Qzs" firstAttribute="top" secondItem="oEI-oh-fPO" secondAttribute="top" constant="8" id="Zue-yJ-9nJ"/>
                 <constraint firstAttribute="bottom" secondItem="9wP-0F-FPS" secondAttribute="bottom" constant="2" id="feR-WK-JnY"/>
                 <constraint firstItem="d8x-EX-O43" firstAttribute="centerX" secondItem="9wP-0F-FPS" secondAttribute="centerX" id="kKI-98-oWl"/>
