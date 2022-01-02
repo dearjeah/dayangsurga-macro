@@ -27,13 +27,6 @@ class UPPersonalInfoFormVC: MVVMViewController<UPPersonalInfoFormViewModel> {
         hideKeyboardWhenTappedAround()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "backToList" {
-            let vc = segue.destination as? UPPersonalInfoListVC
-            vc?.navigationItem.hidesBackButton = true
-        }
-    }
-    
     @IBAction func saveorDeleteAction(_ sender: Any) {
         addOrDelete()
     }
@@ -127,7 +120,7 @@ extension UPPersonalInfoFormVC {
                                                                           loc: formView.locationField.textField.text ?? "",
                                                                           sum: formView.summaryField.textView.text ?? "")
                 if (data != nil) {
-                    performSegue(withIdentifier: "backToList", sender: self)
+                    performSegue(withIdentifier: "backToPIList", sender: self)
                 } else {
                     errorSaveData()
                 }
@@ -147,7 +140,7 @@ extension UPPersonalInfoFormVC {
                                                                       loc: formView.locationField.textField.text ?? "",
                                                                       sum: formView.summaryField.textView.text ?? "")
             if (data != nil) {
-                performSegue(withIdentifier: "backToList", sender: self)
+                performSegue(withIdentifier: "backToPIList", sender: self)
             } else {
                 errorSaveData()
             }
@@ -174,7 +167,7 @@ extension UPPersonalInfoFormVC {
     func deletePIData(){
         let data: ()? = self.viewModel?.deletePersonalInformation(data: personalInfo ?? User())
         if (data != nil) {
-            performSegue(withIdentifier: "backToList", sender: self)
+            performSegue(withIdentifier: "backToPIList", sender: self)
         } else {
             errorSaveData()
         }

@@ -27,11 +27,23 @@ class UPPersonalInfoListVC: MVVMViewController<UPPersonalInfoListViewModel> {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.prefersLargeTitles = false
+        getInitialData()
         tableView.reloadData()
     }
     
     @IBAction func addAction(_ sender: Any) {
-        goToForm(dataSource: "Add", totalData: personalInfo.count)
+        performSegue(withIdentifier: "goToUPPIForm", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToUPPIForm" {
+            let vc = segue.destination as? UPPersonalInfoFormVC
+            vc?.dataSource = "Add"
+            vc?.totalData = personalInfo.count
+        }
+    }
+    
+    @IBAction func unwindToUPPIForm(_ unwindSegue: UIStoryboardSegue) {
     }
 }
 
@@ -48,7 +60,7 @@ extension UPPersonalInfoListVC {
     }
     
     @objc func goToPIForm(sender: UIBarButtonItem) {
-        goToForm(dataSource: "Add", totalData: personalInfo.count)
+        performSegue(withIdentifier: "goToUPPIForm", sender: self)
     }
     
     func showTopRightCreateResume() {
@@ -75,14 +87,6 @@ extension UPPersonalInfoListVC {
 
 // MARK: Segue
 extension UPPersonalInfoListVC {
-    func goToForm(dataSource: String, totalData: Int){
-        let storyboard = UIStoryboard(name: "UP-PersonalInfo", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "goToPIForm") as! UPPersonalInfoFormVC
-        vc.dataSource = dataSource
-        vc.totalData = totalData
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
     func passingDataToForm(dataSource: String, personalInfo: User){
         let storyboard = UIStoryboard(name: "UP-PersonalInfo", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToPIForm") as! UPPersonalInfoFormVC
