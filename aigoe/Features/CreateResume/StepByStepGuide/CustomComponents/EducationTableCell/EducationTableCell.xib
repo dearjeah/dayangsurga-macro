@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J3O-mb-OGN" customClass="DesignableButton" customModule="aigoe" customModuleProvider="target">
-                        <rect key="frame" x="3.5" y="2.5" width="352" height="170"/>
+                        <rect key="frame" x="3" y="3" width="353" height="169"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDZ-xE-9Sa">
                                 <rect key="frame" x="24" y="9" width="260" height="21"/>
@@ -50,22 +50,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGV-1I-LKG">
-                                <rect key="frame" x="24" y="101" width="260" height="55"/>
+                                <rect key="frame" x="24" y="101" width="260" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8KJ-Z9-eGu">
-                                <rect key="frame" x="303" y="131" width="39" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="bBa-GN-gx1"/>
-                                    <constraint firstAttribute="width" constant="39" id="tLN-1H-zCG"/>
-                                </constraints>
-                                <color key="tintColor" red="0.098039215690000001" green="0.1647058824" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system" imagePlacement="trailing" title="Edit"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rN3-wp-ajW">
-                                <rect key="frame" x="314" y="8" width="26" height="24"/>
+                                <rect key="frame" x="315" y="8" width="26" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="eie-it-0ls"/>
                                     <constraint firstAttribute="width" constant="26" id="hW2-3C-cu2"/>
@@ -79,26 +70,62 @@
                                     <action selector="selectEducation:" destination="Fb9-UM-zHB" eventType="touchUpInside" id="ZSa-ug-N4W"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6l-6d-gqi" customClass="DesignableButton" customModule="aigoe" customModuleProvider="target">
+                                <rect key="frame" x="288" y="130" width="55" height="25"/>
+                                <color key="backgroundColor" red="1" green="0.71764705880000002" blue="0.0" alpha="0.33000000000000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="A1V-Zw-N7M"/>
+                                    <constraint firstAttribute="width" constant="55" id="hgZ-Xt-dNC"/>
+                                </constraints>
+                                <color key="tintColor" name="primaryBlue"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Edit" cornerStyle="dynamic" titleAlignment="center">
+                                    <imageReference key="image" image="pencil" catalog="system" symbolScale="default"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                    <attributedString key="attributedSubtitle"/>
+                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" systemColor="tertiaryLabelColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="1" height="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowSpread">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="primaryWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="E6l-6d-gqi" secondAttribute="bottom" constant="14" id="0Fb-RS-LHB"/>
                             <constraint firstItem="T9P-aF-iDG" firstAttribute="leading" secondItem="QG3-r7-Hl2" secondAttribute="leading" id="1vQ-ku-EiP"/>
                             <constraint firstItem="T9P-aF-iDG" firstAttribute="trailing" secondItem="QG3-r7-Hl2" secondAttribute="trailing" id="2Cn-Jf-xj5"/>
-                            <constraint firstAttribute="bottom" secondItem="8KJ-Z9-eGu" secondAttribute="bottom" constant="14" id="2DU-Ez-ITB"/>
                             <constraint firstItem="QG3-r7-Hl2" firstAttribute="trailing" secondItem="9J0-1y-LyU" secondAttribute="trailing" id="4NP-4k-b7C"/>
-                            <constraint firstAttribute="trailing" secondItem="8KJ-Z9-eGu" secondAttribute="trailing" constant="10" id="8Fh-RK-IwF"/>
                             <constraint firstItem="LGV-1I-LKG" firstAttribute="leading" secondItem="T9P-aF-iDG" secondAttribute="leading" id="A3Q-1T-VS7"/>
                             <constraint firstItem="LGV-1I-LKG" firstAttribute="trailing" secondItem="T9P-aF-iDG" secondAttribute="trailing" id="A5i-rl-k5R"/>
                             <constraint firstItem="9J0-1y-LyU" firstAttribute="leading" secondItem="J3O-mb-OGN" secondAttribute="leading" constant="24" id="B12-F4-edf"/>
                             <constraint firstItem="9J0-1y-LyU" firstAttribute="top" secondItem="EDZ-xE-9Sa" secondAttribute="bottom" constant="5" id="GBM-Es-5Nj"/>
                             <constraint firstAttribute="trailing" secondItem="rN3-wp-ajW" secondAttribute="trailing" constant="12" id="Klr-M8-aZb"/>
+                            <constraint firstAttribute="trailing" secondItem="E6l-6d-gqi" secondAttribute="trailing" constant="10" id="L7G-ZO-UH3"/>
                             <constraint firstAttribute="bottom" secondItem="LGV-1I-LKG" secondAttribute="bottom" constant="14" id="M4X-X6-xw9"/>
                             <constraint firstItem="9J0-1y-LyU" firstAttribute="centerX" secondItem="EDZ-xE-9Sa" secondAttribute="centerX" id="TRe-qr-bTb"/>
                             <constraint firstItem="EDZ-xE-9Sa" firstAttribute="top" secondItem="J3O-mb-OGN" secondAttribute="top" constant="9" id="WNB-Jp-mN7"/>
                             <constraint firstItem="LGV-1I-LKG" firstAttribute="top" secondItem="T9P-aF-iDG" secondAttribute="bottom" constant="5" id="ZKk-L0-6GW"/>
                             <constraint firstItem="QG3-r7-Hl2" firstAttribute="top" secondItem="9J0-1y-LyU" secondAttribute="bottom" constant="5" id="bo8-OS-xws"/>
                             <constraint firstItem="EDZ-xE-9Sa" firstAttribute="leading" secondItem="J3O-mb-OGN" secondAttribute="leading" constant="24" id="kJm-ae-6wA"/>
-                            <constraint firstAttribute="bottom" secondItem="8KJ-Z9-eGu" secondAttribute="bottom" constant="14" id="qpf-bB-T9M"/>
                             <constraint firstItem="rN3-wp-ajW" firstAttribute="top" secondItem="J3O-mb-OGN" secondAttribute="top" constant="8" id="tDX-Gy-9Jk"/>
                             <constraint firstItem="QG3-r7-Hl2" firstAttribute="leading" secondItem="9J0-1y-LyU" secondAttribute="leading" id="wER-II-mzI"/>
                             <constraint firstItem="T9P-aF-iDG" firstAttribute="top" secondItem="QG3-r7-Hl2" secondAttribute="bottom" constant="5" id="wmd-FY-wUc"/>
@@ -116,12 +143,6 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                                 <real key="value" value="10"/>
                             </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
-                                <real key="value" value="6"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="shadowSpread">
-                                <real key="value" value="10"/>
-                            </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
                                 <color key="value" systemColor="tertiaryLabelColor"/>
                             </userDefinedRuntimeAttribute>
@@ -130,10 +151,12 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="J3O-mb-OGN" firstAttribute="width" secondItem="Ozp-DP-wqI" secondAttribute="width" multiplier="0.98" id="0mI-GO-Ecr"/>
-                    <constraint firstItem="J3O-mb-OGN" firstAttribute="height" secondItem="Ozp-DP-wqI" secondAttribute="height" multiplier="0.97" id="1Ee-cz-JxQ"/>
                     <constraint firstItem="J3O-mb-OGN" firstAttribute="centerX" secondItem="Ozp-DP-wqI" secondAttribute="centerX" id="2TJ-gL-NPn"/>
                     <constraint firstItem="J3O-mb-OGN" firstAttribute="centerY" secondItem="Ozp-DP-wqI" secondAttribute="centerY" id="38M-cm-g4e"/>
+                    <constraint firstAttribute="bottom" secondItem="J3O-mb-OGN" secondAttribute="bottom" constant="3" id="LRk-zd-b59"/>
+                    <constraint firstItem="J3O-mb-OGN" firstAttribute="leading" secondItem="Ozp-DP-wqI" secondAttribute="leading" constant="3" id="Upo-cr-QLl"/>
+                    <constraint firstItem="J3O-mb-OGN" firstAttribute="top" secondItem="Ozp-DP-wqI" secondAttribute="top" constant="3" id="ZwL-mG-Yoa"/>
+                    <constraint firstAttribute="trailing" secondItem="J3O-mb-OGN" secondAttribute="trailing" constant="3" id="xYP-oZ-HPR"/>
                 </constraints>
                 <userDefinedRuntimeAttributes>
                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -144,7 +167,7 @@
             <viewLayoutGuide key="safeArea" id="oGV-tf-ePC"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="editEducationButton" destination="8KJ-Z9-eGu" id="mJb-kH-Uul"/>
+                <outlet property="editEducationButton" destination="E6l-6d-gqi" id="RAV-xU-uOe"/>
                 <outlet property="educationActivities" destination="LGV-1I-LKG" id="Zoz-T8-GM0"/>
                 <outlet property="educationGPA" destination="T9P-aF-iDG" id="p4d-SN-TgU"/>
                 <outlet property="educationPeriod" destination="QG3-r7-Hl2" id="RdR-Ld-w2o"/>
@@ -157,6 +180,9 @@
         </tableViewCell>
     </objects>
     <designables>
+        <designable name="E6l-6d-gqi">
+            <size key="intrinsicContentSize" width="39.5" height="17"/>
+        </designable>
         <designable name="J3O-mb-OGN">
             <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
@@ -164,6 +190,9 @@
     <resources>
         <image name="icRoundSelectionNoFill" width="24" height="24"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
+        <namedColor name="primaryBlue">
+            <color red="0.097999997437000275" green="0.16500000655651093" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="primaryWhite">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -16,22 +16,68 @@
                 <rect key="frame" x="0.0" y="0.0" width="278" height="566"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kr8-4k-FRm">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MD9-cr-jsx" customClass="DesignableView" customModule="aigoe" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="278" height="566"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" systemColor="tertiaryLabelColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                <size key="value" width="1" height="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.10000000000000001"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowSpread">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kr8-4k-FRm">
+                        <rect key="frame" x="2" y="2" width="274" height="562"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="Kr8-4k-FRm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="2gf-Mp-N2S"/>
-                <constraint firstAttribute="trailing" secondItem="Kr8-4k-FRm" secondAttribute="trailing" id="KHI-Xl-9js"/>
-                <constraint firstItem="Kr8-4k-FRm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="V5h-lQ-NsL"/>
-                <constraint firstAttribute="bottom" secondItem="Kr8-4k-FRm" secondAttribute="bottom" id="hVl-MG-5ZD"/>
+                <constraint firstItem="MD9-cr-jsx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="2U6-2Q-KpC"/>
+                <constraint firstAttribute="bottom" secondItem="MD9-cr-jsx" secondAttribute="bottom" id="AaP-jE-bVU"/>
+                <constraint firstAttribute="trailing" secondItem="Kr8-4k-FRm" secondAttribute="trailing" constant="2" id="CVx-y7-bKY"/>
+                <constraint firstAttribute="bottom" secondItem="Kr8-4k-FRm" secondAttribute="bottom" constant="2" id="IMZ-Du-PqZ"/>
+                <constraint firstItem="Kr8-4k-FRm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="Lb7-Ro-Feg"/>
+                <constraint firstItem="MD9-cr-jsx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="SlK-qC-D4T"/>
+                <constraint firstAttribute="trailing" secondItem="MD9-cr-jsx" secondAttribute="trailing" id="la5-Uf-HmF"/>
+                <constraint firstItem="MD9-cr-jsx" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="qKN-ZF-saL"/>
+                <constraint firstItem="Kr8-4k-FRm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="uZB-dQ-23c"/>
             </constraints>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="8"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="resumeTemplateImage" destination="Kr8-4k-FRm" id="tgZ-RI-isQ"/>
             </connections>
             <point key="canvasLocation" x="130.43478260869566" y="99.776785714285708"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
