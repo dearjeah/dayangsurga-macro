@@ -14,6 +14,10 @@ class PersonalInfoViewModel: NSObject {
         guard let data = userRepo.getUserById(id: 0) else { return User() }
         return data
     }
+    
+    func getAllUserData() -> [User] {
+        return []
+    }
 }
 
 struct PersonalInformationPlaceholder {

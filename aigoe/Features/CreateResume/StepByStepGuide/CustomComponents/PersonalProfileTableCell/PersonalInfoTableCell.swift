@@ -8,7 +8,8 @@
 import UIKit
 
 class PersonalInfoTableCell: UITableViewCell {
-
+    
+    static let identifier = "PersonalInfoTableCell"
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var emailLbl: UILabel!
     @IBOutlet weak var phoneNumberLbl: UILabel!
@@ -33,6 +34,10 @@ class PersonalInfoTableCell: UITableViewCell {
     
     override func layoutSubviews() {
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0))
+    }
+    
+    static func nib() -> UINib {
+        return UINib(nibName: "PersonalInfoTableCell", bundle: nil)
     }
     
     @IBAction func editAction(_ sender: Any) {
