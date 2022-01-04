@@ -27,14 +27,37 @@ class UPAchievementFormVC: MVVMViewController<UPAchievementFormViewModel>{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.viewModel = UPAchievementFormViewModel()
+        achievementPh = self.viewModel?.getAchievementPh()
+        achievementSuggest = self.viewModel?.getAchievementSuggest()
         setUp()
         setupScrollView()
         hideKeyboardWhenTappedAround()
     }
     
-
-
+    @IBAction func buttonWasPressed(_ sender: Any){
+        if !alertForCheckTF() {
+            if accomplish == nil{
+                guard let data = self.viewModel?.addAchievement(
+                    title: certificateNameView.textField.text ?? "",
+                    givenDate:  givenDateView.datePicker.date,
+                    endDate: endDateView.datePicker.date,
+                    status: achievementStatusView.switchButton.isOn,
+                    issuer: issuerView.textField.text ?? "",
+                    desc: ""
+                ) else { return errorSaveData(from: "Save") }
+                if data {
+                    performSegue(withIdentifier: "backToListVC", sender: self)
+                } else {
+                    errorSaveData(from: "Save")
+                }
+            } else { // update and edit
+                showAlertForDelete()
+            }
+        }
+    }
 }
+
 //MARK: Delegate
 extension UPAchievementFormVC: LabelSwitchDelegate{
     func getValueSwitch() {
@@ -53,12 +76,13 @@ extension UPAchievementFormVC{
         self.title = "Accomplishment"
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.viewModel = UPAchievementFormViewModel()
+        self.tabBarController?.tabBar.isHidden = true
         achievementPh = self.viewModel?.getAchievementPh()
         achievementSuggest = self.viewModel?.getAchievementSuggest()
         certificateNameView.titleLabel.text = "Certificate/Award Name*"
         additionalCertificateLabel.text = achievementSuggest?.title
         givenDateView.dateTitle.text = "Issued Date*"
-        achievementStatusView.titleLabel.text = "Certification/Award Status"
+        achievementStatusView.switchTitle.text = "Certification/Award Status"
         endDateView.dateTitle.text = "Expiration Date"
         achievementStatusView.titleLabel.text = "Currently Valid"
         achievementStatusView.delegate = self
@@ -86,15 +110,16 @@ extension UPAchievementFormVC{
         }
     }
         
-        func setupScrollView(){
-            if UIDevice.current.modelName == "iPhone10,4"{
-                scrollView.isScrollEnabled = true
-            } else if UIDevice.current.modelName == "iPhone12,1" {
-                scrollView.isScrollEnabled = false
-            } else if UIDevice.current.modelName == "iPhone13,2" {
-                scrollView.isScrollEnabled = false
-            }
+    func setupScrollView(){
+        if UIDevice.current.modelName == "iPhone10,4" {
+            scrollView.isScrollEnabled = true
+        } else if UIDevice.current.modelName == "iPhone12,1" {
+            scrollView.isScrollEnabled = false
+        } else if UIDevice.current.modelName == "iPhone13,2" {
+            scrollView.isScrollEnabled = false
         }
+    }
+    
 }
 
 //MARK: Alert
@@ -137,7 +162,7 @@ extension UPAchievementFormVC{
             if data{
                 performSegue(withIdentifier: "backToListVC", sender: self)
             }else{
-                errorSaveData(from: "Update")
+                errorSaveData(from: "")
             }
         }
     }

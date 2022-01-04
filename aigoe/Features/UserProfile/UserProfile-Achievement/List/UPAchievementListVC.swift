@@ -18,6 +18,7 @@ class UPAchievementListVC: MVVMViewController<UPAchievementListViewModel> {
     var emptyState = Empty_State()
     var achievement = [Accomplishment]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

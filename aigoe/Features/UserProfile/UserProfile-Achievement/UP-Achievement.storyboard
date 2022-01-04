@@ -14,23 +14,23 @@
             <objects>
                 <viewController storyboardIdentifier="backToListVC" id="Y6W-OH-hqX" customClass="UPAchievementListVC" customModule="aigoe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MdD-uW-lXY">
-                                <rect key="frame" x="16" y="148" width="382" height="698"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="16" y="60" width="382" height="732"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="wNq-A8-RAY"/>
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="H0d-UC-fDv"/>
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pam-HK-oev" customClass="EmptyState" customModule="aigoe" customModuleProvider="target">
-                                <rect key="frame" x="16" y="208" width="382" height="419"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="16" y="120" width="382" height="439"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuC-54-hQx">
-                                <rect key="frame" x="16" y="798" width="382" height="48"/>
+                                <rect key="frame" x="16" y="744" width="382" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="fB4-fu-MZG"/>
                                 </constraints>
@@ -63,6 +63,7 @@
                         <outlet property="addAchievementButton" destination="xuC-54-hQx" id="YYY-22-rKa"/>
                         <outlet property="emptyStateView" destination="Pam-HK-oev" id="2Br-1H-XjJ"/>
                         <outlet property="tableView" destination="MdD-uW-lXY" id="njQ-v2-abk"/>
+                        <segue destination="IwV-3c-snz" kind="show" id="a0o-YJ-KNz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -74,11 +75,11 @@
             <objects>
                 <viewController storyboardIdentifier="goToAchieveForm" id="IwV-3c-snz" customClass="UPAchievementFormVC" customModule="aigoe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Iuc-qy-j4S">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IC9-Fs-eqE">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w3W-Xc-Pix">
                                         <rect key="frame" x="0.0" y="20" width="414" height="625"/>
@@ -94,34 +95,34 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HS5-Au-Z6l" customClass="LabelWithSwitch" customModule="aigoe" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="185" width="382" height="80"/>
+                                                        <rect key="frame" x="0.0" y="201" width="382" height="80"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="80" id="qhr-HE-oCc"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6cR-2W-Ij9" customClass="LabelWithDate" customModule="aigoe" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="90" width="382" height="95"/>
+                                                        <rect key="frame" x="0.0" y="106" width="382" height="95"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="95" id="JK5-nK-d4m"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6NC-9h-r5X">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6NC-9h-r5X">
                                                         <rect key="frame" x="8" y="90" width="366" height="16"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" name="primaryDisable"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wBG-gf-egD" customClass="LabelWithDate" customModule="aigoe" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="265" width="382" height="90"/>
+                                                        <rect key="frame" x="0.0" y="281" width="382" height="90"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="90" id="rRQ-VB-zeK"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f6p-U4-0GI" customClass="LabelWithTextField" customModule="aigoe" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="355" width="382" height="95"/>
+                                                        <rect key="frame" x="0.0" y="371" width="382" height="95"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="95" id="14o-G3-GR0"/>
@@ -144,7 +145,7 @@
                                                     <constraint firstItem="QfO-9c-oym" firstAttribute="top" secondItem="ESY-XI-hFh" secondAttribute="top" id="VO0-oo-L4X"/>
                                                     <constraint firstItem="QfO-9c-oym" firstAttribute="leading" secondItem="ESY-XI-hFh" secondAttribute="leading" id="aT4-dU-bK2"/>
                                                     <constraint firstAttribute="trailing" secondItem="QfO-9c-oym" secondAttribute="trailing" id="c8f-rg-2fO"/>
-                                                    <constraint firstItem="6cR-2W-Ij9" firstAttribute="top" secondItem="6NC-9h-r5X" secondAttribute="top" id="dNK-EV-iKl"/>
+                                                    <constraint firstItem="6cR-2W-Ij9" firstAttribute="top" secondItem="6NC-9h-r5X" secondAttribute="bottom" id="dNK-EV-iKl"/>
                                                     <constraint firstItem="f6p-U4-0GI" firstAttribute="leading" secondItem="ESY-XI-hFh" secondAttribute="leading" id="egQ-kn-s5f"/>
                                                     <constraint firstAttribute="trailing" secondItem="wBG-gf-egD" secondAttribute="trailing" id="mgc-ts-dzR"/>
                                                     <constraint firstItem="6NC-9h-r5X" firstAttribute="leading" secondItem="ESY-XI-hFh" secondAttribute="leading" constant="8" id="vTI-es-b79"/>
@@ -172,27 +173,28 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmy-u4-ovr">
-                                        <rect key="frame" x="16" y="690" width="382" height="48"/>
+                                        <rect key="frame" x="16" y="665" width="382" height="48"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="kOw-5H-RPX"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <connections>
+                                            <action selector="buttonWasPressed:" destination="IwV-3c-snz" eventType="touchUpInside" id="HhJ-rZ-U1W"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="w3W-Xc-Pix" secondAttribute="trailing" id="1JT-Mg-tSE"/>
                                     <constraint firstItem="w3W-Xc-Pix" firstAttribute="centerX" secondItem="IC9-Fs-eqE" secondAttribute="centerX" id="Du2-TA-hjI"/>
-                                    <constraint firstAttribute="bottom" secondItem="vmy-u4-ovr" secondAttribute="bottom" constant="20" id="It7-i5-aXE"/>
+                                    <constraint firstAttribute="bottom" secondItem="vmy-u4-ovr" secondAttribute="bottom" constant="40" id="It7-i5-aXE"/>
                                     <constraint firstItem="vmy-u4-ovr" firstAttribute="centerX" secondItem="IC9-Fs-eqE" secondAttribute="centerX" id="LMi-Ur-tVR"/>
                                     <constraint firstItem="w3W-Xc-Pix" firstAttribute="leading" secondItem="IC9-Fs-eqE" secondAttribute="leading" id="dNV-ic-x9j"/>
                                     <constraint firstItem="w3W-Xc-Pix" firstAttribute="width" secondItem="IC9-Fs-eqE" secondAttribute="width" id="doX-ks-BOr"/>
-                                    <constraint firstItem="vmy-u4-ovr" firstAttribute="top" secondItem="w3W-Xc-Pix" secondAttribute="bottom" constant="45" id="hmH-Z1-vjJ"/>
+                                    <constraint firstItem="vmy-u4-ovr" firstAttribute="top" secondItem="w3W-Xc-Pix" secondAttribute="bottom" constant="20" id="hmH-Z1-vjJ"/>
                                     <constraint firstItem="vmy-u4-ovr" firstAttribute="width" secondItem="ESY-XI-hFh" secondAttribute="width" id="kPl-MK-WaU"/>
                                     <constraint firstItem="w3W-Xc-Pix" firstAttribute="top" secondItem="IC9-Fs-eqE" secondAttribute="top" constant="20" id="mMl-UV-f08"/>
                                 </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="1dj-iy-Dsi"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="rqf-QB-rqX"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fNN-0k-fuA"/>
@@ -216,6 +218,7 @@
                         <outlet property="givenDateView" destination="6cR-2W-Ij9" id="KX1-bM-Cqw"/>
                         <outlet property="issuerView" destination="f6p-U4-0GI" id="ydi-4m-dsA"/>
                         <outlet property="scrollView" destination="IC9-Fs-eqE" id="gCP-Ax-yto"/>
+                        <segue destination="Y6W-OH-hqX" kind="show" identifier="backToListVC" id="VEr-x4-lWe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o7Q-Dt-wX0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -246,6 +249,9 @@
             <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
     </designables>
+    <inferredMetricsTieBreakers>
+        <segue reference="VEr-x4-lWe"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="primaryDisable">
             <color red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
