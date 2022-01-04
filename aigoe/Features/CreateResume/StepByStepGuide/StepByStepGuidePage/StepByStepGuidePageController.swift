@@ -182,6 +182,9 @@ extension StepByStepGuidePageController: ListEduDelegate {
         stepDelegate?.updateTableChecklist(from: "edu", id: eduId, isSelected: isSelected)
         dataUpdate()
     }
+    
+    func editUPEduForm(from: String, edu: Education) {
+    }
 }
 
 
