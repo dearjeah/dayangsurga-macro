@@ -9,12 +9,14 @@ import UIKit
 
 class UPAchievementFormVC: MVVMViewController<UPAchievementFormViewModel>{
     
-    @IBOutlet weak var BackgroundView: DesignableButton!
-    @IBOutlet weak var CertificateNameView: LabelWithTextField!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var backgroundView: DesignableButton!
+    @IBOutlet weak var certificateNameView: LabelWithTextField!
     @IBOutlet weak var additionalCertificateLabel: UILabel!
     @IBOutlet weak var givenDateView: LabelWithDate!
     @IBOutlet weak var achievementStatusView: LabelWithSwitch!
- 
+    @IBOutlet weak var issuerView: LabelWithTextField!
+    @IBOutlet weak var addOrDeleteButton: UIButton!
     @IBOutlet weak var endDateView: LabelWithDate!
     
     var dataFrom = String()
@@ -25,6 +27,119 @@ class UPAchievementFormVC: MVVMViewController<UPAchievementFormViewModel>{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setUp()
+        setupScrollView()
+        hideKeyboardWhenTappedAround()
+    }
+    
+
+
+}
+//MARK: Delegate
+extension UPAchievementFormVC: LabelSwitchDelegate{
+    func getValueSwitch() {
+        if (achievementStatusView.switchButton.isOn){
+            endDateView.datePicker.isUserInteractionEnabled = false
+        }else{
+            endDateView.datePicker.isUserInteractionEnabled = true
+        }
     }
 }
+
+//MARK: Initial Setup
+
+extension UPAchievementFormVC{
+    func setUp(){
+        self.title = "Accomplishment"
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.viewModel = UPAchievementFormViewModel()
+        achievementPh = self.viewModel?.getAchievementPh()
+        achievementSuggest = self.viewModel?.getAchievementSuggest()
+        certificateNameView.titleLabel.text = "Certificate/Award Name*"
+        additionalCertificateLabel.text = achievementSuggest?.title
+        givenDateView.dateTitle.text = "Issued Date*"
+        achievementStatusView.titleLabel.text = "Certification/Award Status"
+        endDateView.dateTitle.text = "Expiration Date"
+        achievementStatusView.titleLabel.text = "Currently Valid"
+        achievementStatusView.delegate = self
+        endDateView.datePicker.maximumDate = Date()
+        issuerView.titleLabel.text = "Issuer*"
+        getValueSwitch()
+        if dataFrom == "edit"{
+            if accomplish == nil {
+            certificateNameView.textField.placeholder = achievementPh?.title_ph
+            issuerView.textField.placeholder = achievementPh?.given_date_ph
+                addOrDeleteButton.dsLongFilledPrimaryButton(withImage: false, text: "Add Accomplishment")
+            }else{
+                certificateNameView.textField.text = accomplish?.title
+                issuerView.textField.text = accomplish?.issuer
+                givenDateView.datePicker.date = accomplish?.given_date ?? Date()
+                achievementStatusView.switchButton.isOn = ((accomplish?.status) == true)
+                endDateView.datePicker.date = accomplish?.end_date ?? Date()
+                addOrDeleteButton.dsLongUnfilledButton(isDelete: true, text: "Delete Accomplishment")
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(self.updateAccomplish(sender:)))
+            }
+        }else{
+            certificateNameView.textField.placeholder = achievementPh?.title_ph
+            issuerView.textField.placeholder = achievementPh?.given_date_ph
+            addOrDeleteButton.dsLongFilledPrimaryButton(withImage: false, text: "Add Accomplishment")
+        }
+    }
+        
+        func setupScrollView(){
+            if UIDevice.current.modelName == "iPhone10,4"{
+                scrollView.isScrollEnabled = true
+            } else if UIDevice.current.modelName == "iPhone12,1" {
+                scrollView.isScrollEnabled = false
+            } else if UIDevice.current.modelName == "iPhone13,2" {
+                scrollView.isScrollEnabled = false
+            }
+        }
+}
+
+//MARK: Alert
+extension UPAchievementFormVC{
+    func errorSaveData(from: String){
+        showAlert(title: "Unable to \(from) Data", msg: "Your data is not saved. Please try again later", style: .default, titleAction: "OK")
+    }
+    
+    func alertForCheckTF() -> Bool{
+        if((certificateNameView.textField.text?.isEmpty) != false || (issuerView.textField.text?.isEmpty) != false){
+            showAlert(title: "Field Can't Be Empty", msg: "You must fill in every mandatory fields in this form.", style: .default, titleAction: "OK")
+         return true
+        } else {
+            return false
+        }
+    }
+    
+    func showAlertForDelete(){
+        showAlertDelete(title: "Delete Data?", msg: "You will not be able to recover it.", completionBlock: {action in self.deleteAchivementData()})
+    }
+}
+
+//MARK: Core Data
+extension UPAchievementFormVC{
+    func deleteAchivementData(){
+        guard let data = self.viewModel?.deleteAchievementData(dataAchievement: accomplish)
+        else{ return }
+        if data {
+            self.navigationController?.popViewController(animated: false)
+        }else{
+            errorSaveData(from: "Delete")
+        }
+    }
+    
+    @objc func updateAccomplish(sender: UIBarButtonItem){
+        if !alertForCheckTF() {
+            guard let achivementId = accomplish?.accomplishment_id else {return}
+            guard let data = self.viewModel?.updateAchievement(achievementId: achivementId, title: certificateNameView.textField.text ?? "", givenDate: givenDateView.datePicker.date, endDate: endDateView.datePicker.date, status: achievementStatusView.switchButton.isOn, issuer: issuerView.textField.text ?? "", desc: "") else {
+                return errorSaveData(from: "Update") }
+            if data{
+                performSegue(withIdentifier: "backToListVC", sender: self)
+            }else{
+                errorSaveData(from: "Update")
+            }
+        }
+    }
+}
+
