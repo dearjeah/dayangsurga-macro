@@ -14,26 +14,17 @@
             <objects>
                 <viewController storyboardIdentifier="backToListVC" id="Y6W-OH-hqX" customClass="UPAchievementListVC" customModule="aigoe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="MdD-uW-lXY">
-                                <rect key="frame" x="16" y="60" width="382" height="732"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="wNq-A8-RAY"/>
-                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="H0d-UC-fDv"/>
-                                </connections>
-                            </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pam-HK-oev" customClass="EmptyState" customModule="aigoe" customModuleProvider="target">
-                                <rect key="frame" x="16" y="120" width="382" height="439"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OSw-y8-fkZ" customClass="AccomplishmentPageView" customModule="aigoe" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="-40" width="414" height="920"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuC-54-hQx">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuC-54-hQx">
                                 <rect key="frame" x="16" y="744" width="382" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="fB4-fu-MZG"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
@@ -43,43 +34,29 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="MdD-uW-lXY" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="60" id="0Li-Ps-KlG"/>
-                            <constraint firstItem="xuC-54-hQx" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="2lj-Lz-ndo"/>
-                            <constraint firstItem="Pam-HK-oev" firstAttribute="height" secondItem="MdD-uW-lXY" secondAttribute="height" multiplier="0.6" id="BRD-ZU-aDq"/>
-                            <constraint firstItem="MdD-uW-lXY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="HZj-30-3qO"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="MdD-uW-lXY" secondAttribute="trailing" constant="16" id="Z82-W8-Mvt"/>
-                            <constraint firstItem="xuC-54-hQx" firstAttribute="width" secondItem="MdD-uW-lXY" secondAttribute="width" id="ame-MC-yl9"/>
-                            <constraint firstItem="Pam-HK-oev" firstAttribute="centerX" secondItem="MdD-uW-lXY" secondAttribute="centerX" id="eM0-Oy-W7P"/>
-                            <constraint firstItem="Pam-HK-oev" firstAttribute="width" secondItem="MdD-uW-lXY" secondAttribute="width" id="ez1-ni-zWL"/>
-                            <constraint firstItem="Pam-HK-oev" firstAttribute="top" secondItem="MdD-uW-lXY" secondAttribute="top" constant="60" id="fAl-Bb-Ueq"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="MdD-uW-lXY" secondAttribute="bottom" constant="16" id="p5m-vO-WgQ"/>
-                            <constraint firstItem="MdD-uW-lXY" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="xIx-7b-pcF"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="xuC-54-hQx" secondAttribute="bottom" constant="16" id="ycx-se-cl4"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qER-h8-fgC"/>
                     <connections>
+                        <outlet property="accomplishmentList" destination="OSw-y8-fkZ" id="Wxv-FN-RQc"/>
                         <outlet property="addAchievementButton" destination="xuC-54-hQx" id="YYY-22-rKa"/>
-                        <outlet property="emptyStateView" destination="Pam-HK-oev" id="2Br-1H-XjJ"/>
-                        <outlet property="tableView" destination="MdD-uW-lXY" id="njQ-v2-abk"/>
-                        <segue destination="IwV-3c-snz" kind="show" id="a0o-YJ-KNz"/>
+                        <segue destination="IwV-3c-snz" kind="show" identifier="goToUPAccompForm" id="a0o-YJ-KNz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="aJ6-ZP-iJv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1008.6956521739131" y="69.642857142857139"/>
         </scene>
         <!--Achievement FormVC-->
         <scene sceneID="rTQ-Ut-dZm">
             <objects>
-                <viewController storyboardIdentifier="goToAchieveForm" id="IwV-3c-snz" customClass="UPAchievementFormVC" customModule="aigoe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="goToAccompForm" id="IwV-3c-snz" customClass="UPAchievementFormVC" customModule="aigoe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Iuc-qy-j4S">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IC9-Fs-eqE">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w3W-Xc-Pix">
                                         <rect key="frame" x="0.0" y="20" width="414" height="625"/>
@@ -218,7 +195,7 @@
                         <outlet property="givenDateView" destination="6cR-2W-Ij9" id="KX1-bM-Cqw"/>
                         <outlet property="issuerView" destination="f6p-U4-0GI" id="ydi-4m-dsA"/>
                         <outlet property="scrollView" destination="IC9-Fs-eqE" id="gCP-Ax-yto"/>
-                        <segue destination="Y6W-OH-hqX" kind="show" identifier="backToListVC" id="VEr-x4-lWe"/>
+                        <segue destination="aJ6-ZP-iJv" kind="unwind" unwindAction="unwindToUPAccompList:" id="HFO-9T-80d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o7Q-Dt-wX0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -249,9 +226,6 @@
             <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
     </designables>
-    <inferredMetricsTieBreakers>
-        <segue reference="VEr-x4-lWe"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="primaryDisable">
             <color red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -7,145 +7,114 @@
 
 import UIKit
 
-class UPAchievementListVC: MVVMViewController<UPAchievementListViewModel> {
-
-  
-    @IBOutlet weak var emptyStateView: EmptyState!
-    @IBOutlet weak var tableView: UITableView!
+class UPAchievementListVC:  MVVMViewController<UPAchievementListViewModel> {
+ 
+    @IBOutlet weak var accomplishmentList: AccomplishmentPageView!
     @IBOutlet weak var addAchievementButton: UIButton!
     
     weak var delegate: AccomplishListDelegate?
-    var emptyState = Empty_State()
     var achievement = [Accomplishment]()
+    var achievementModel = AccomplishmentPageViewModel()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         self.viewModel = UPAchievementListViewModel()
-        setUp()
-        registerTableView()
-        getInitData()
+        getInitialData()
+        setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-        tableView.reloadData()
+        accomplishmentList.getAndReload()
+        getInitialData()
+        showAddBtn()
     }
     
-    @IBAction func addAction(_sender: Any){
-        goToForm(from: "Add")
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToUPAccompForm"{
+            let vc = segue.destination as? UPAchievementFormVC
+            vc?.dataFrom = "Add"
+        }
     }
     
+    @IBAction func addAction(_ sender: Any){
+        performSegue(withIdentifier: "goToUPAccompForm", sender: self)
+    }
+    
+    @IBAction func unwindToUPAccompList(_ unwindSegue: UIStoryboardSegue){
+    }
+
 }
 
 //MARK: Initial Setup
+
 extension UPAchievementListVC{
-    func setUp(){
-    self.title = "Accomplishment"
-    let backButton = UIBarButtonItem()
-    backButton.title = ""
-    self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action:#selector(self.goToAccompForm(sender:)))
+    func setup(){
+        self.title = "Accomplishment"
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.tabBarController?.tabBar.isHidden = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(self.goToAccompForm(sender:)))
+        showAddBtn()
+        
         addAchievementButton.dsLongFilledPrimaryButton(withImage: false, text: "Add")
+        accomplishmentList.delegate = self
+        accomplishmentList.accomplishment = achievement
+        accomplishmentList.addButton.isHidden = true
+        accomplishmentList.withResumeContent = false
+        
     }
     
     @objc func goToAccompForm(sender: UIBarButtonItem){
-    goToForm(from: "Add")
+        performSegue(withIdentifier: "goToUPAccompForm", sender: self)
     }
     
-    func showAddBarBtn(){
-        if achievement.isEmpty{
+    func showAddBtn(){
+        if achievement.isEmpty {
             navigationItem.rightBarButtonItem?.isEnabled = false
             navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
+            addAchievementButton.isHidden = false
         }else{
             navigationItem.rightBarButtonItem?.isEnabled = true
-            navigationItem.rightBarButtonItem?.tintColor = UIColor.primaryBlue
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.primaryWhite
+            addAchievementButton.isHidden = true
         }
     }
-    
-    func showEmptyState(){
-        emptyStateView.isHidden = false
-        emptyStateView.emptyStateImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
-        emptyStateView.emptyStateImage.contentMode = .scaleAspectFill
-        emptyStateView.emptyStateImage.clipsToBounds = true
-        emptyStateView.emptyStateTitle.isHidden = true
-        emptyStateView.emptyStateImage.image = UIImage(data: emptyState.image ?? Data())
-        emptyStateView.emptyStateDescription.text = emptyState.title
-        self.tableView.backgroundView = emptyStateView
+}
+
+//MARK: Delegate
+extension UPAchievementListVC: AccomplishListDelegate{
+    func selectButtonAccom(accomId: String, isSelected: Bool) {
+        
     }
+    
+    func editAccompForm(from: String, accomp: Accomplishment) {
+        
+    }
+    
+    func goToAddAccom() {
+        
+    }
+    
+    func editUPAccompForm(from: String, accomp: Accomplishment){
+        let storyboard = UIStoryboard(name: "UP-Achievement", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "goToAccompForm")as! UPAchievementFormVC
+        vc.dataFrom = from
+        vc.accomplish = accomp
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
 }
 
 //MARK: Core Data
+
 extension UPAchievementListVC {
-    func getInitData(){
+    func getInitialData(){
         achievement = self.viewModel?.getAllAchievement() ?? []
-        emptyState = self.viewModel?.getEmptyStateId(Id: 4) ?? Empty_State()
-        showAddBarBtn()
     }
 }
 
-//MARK: Segue
-extension UPAchievementListVC {
-     func goToForm(from: String) {
-        let storyboard = UIStoryboard(name: "UP-Achievement", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "goToAchieveForm") as! UPAchievementFormVC
-        vc.dataFrom = from
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func passDataToForm(dataSource: String, accompData: Accomplishment){
-        let storyboard = UIStoryboard(name: "UP-Achievement", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "goToAccompForm")as! UPAchievementFormVC
-        vc.dataFrom = dataSource
-        vc.accomplish = accompData
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-}
 
-extension UPAchievementListVC: UITableViewDelegate, UITableViewDataSource{
-   
-    
-    
-    func registerTableView(){
-        tableView.register(UINib.init(nibName: "AccomplishmentTableCell", bundle: nil), forCellReuseIdentifier: "AccomplishmentTableCell")
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AccomplishmentTableCell", for: indexPath)as? AccomplishmentTableCell else {
-            return UITableViewCell()
-        }
-        cell.selectionStyle = .none
-        let accomplishmentData = achievement[indexPath.row]
-        cell.awardName.text = accomplishmentData.title
-        cell.awardDate.text = accomplishmentData.given_date?.string(format: Date.ISO8601Format.MonthYear)
-        cell.awardIssuer.text = accomplishmentData.issuer
-        cell.selectionButton.isEnabled = false
-        cell.selectionButton.isHidden = true
-        
-        cell.editButtonAction = {
-            self.delegate?.passingAccomplishData(accomplish: self.achievement[indexPath.row])
-        }
-        return cell
-        
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if achievement.isEmpty {
-            showEmptyState()
-            addAchievementButton.isHidden = false
-        }else{
-            emptyStateView.isHidden = true
-            addAchievementButton.isHidden = true
-        }
-        return achievement.count
-    }
-  
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
-    }
-    
-}

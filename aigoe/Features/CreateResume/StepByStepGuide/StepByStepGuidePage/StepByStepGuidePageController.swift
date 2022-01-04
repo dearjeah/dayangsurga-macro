@@ -15,8 +15,8 @@ protocol StepByStepGuideDelegate: AnyObject {
     func goToEditExp(was: Bool, from: String, exp: Experience)
     func goToAddEdu(was: Bool, from: String)
     func goToEditEdu(was: Bool, from: String, edu: Education)
-    func goToAddAccom(from: String)
-    func goToEditAccom(from: String, accomp: Accomplishment)
+    func goToAddAccom(was: Bool, from: String)
+    func goToEditAccom(was: Bool, from: String, accomp: Accomplishment)
     func personalInfoUpdate(data: PersonalInfo)
     func goToAddSkill(from: String)
     func goToEditSkill(from: String, skills: [Skills])
@@ -222,13 +222,21 @@ extension StepByStepGuidePageController: skillListDelegate {
 
 //MARK: Accomplishment List Delegate
 extension StepByStepGuidePageController: AccomplishListDelegate {
-    func goToAddAccom() {
-        stepDelegate?.goToAddAccom(from: "add")
+    func editAccompForm(from: String, accomp: Accomplishment) {
+        stepDelegate?.goToEditAccom(was: true, from: "edit", accomp: accomp)
     }
     
-    func passingAccomplishData(accomplish: Accomplishment?) {
-        stepDelegate?.goToEditAccom(from: "edit", accomp: accomplish ?? Accomplishment())
+    func editUPAccompForm(from: String, accomp: Accomplishment) {
+        
     }
+    
+    func goToAddAccom() {
+        stepDelegate?.goToAddAccom(was: true, from: "add")
+    }
+    
+//    func passingAccomplishData(accomplish: Accomplishment?) {
+//        stepDelegate?.goToEditAccom(was: true, from: "edit", accomp: accomplish ?? Accomplishment())
+//    }
     
     func selectButtonAccom(accomId: String, isSelected: Bool) {
         stepDelegate?.updateTableChecklist(from: "accomp", id: accomId, isSelected: isSelected)
