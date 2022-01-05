@@ -32,6 +32,7 @@ class UPAchievementFormVC: MVVMViewController<UPAchievementFormViewModel>{
         achievementSuggest = self.viewModel?.getAchievementSuggest()
         setUp()
         setupScrollView()
+        getInitialData()
         hideKeyboardWhenTappedAround()
     }
     
@@ -89,7 +90,7 @@ extension UPAchievementFormVC{
         endDateView.datePicker.maximumDate = Date()
         issuerView.titleLabel.text = "Issuer*"
         getValueSwitch()
-        if dataFrom == "edit"{
+        if dataFrom == "Edit"{
             if accomplish == nil {
             certificateNameView.textField.placeholder = achievementPh?.title_ph
             issuerView.textField.placeholder = achievementPh?.given_date_ph
@@ -144,6 +145,26 @@ extension UPAchievementFormVC{
 
 //MARK: Core Data
 extension UPAchievementFormVC{
+    func getInitialData(){
+        achievementPh = self.viewModel?.getAchievementPh()
+        achievementSuggest = self.viewModel?.getAchievementSuggest()
+    }
+    
+    func addOrDeleteAccomp(){
+        if !alertForCheckTF(){
+            if dataFrom == "Add"{
+                guard let data = self.viewModel?.addAchievement(title: certificateNameView.textField.text ?? "", givenDate: givenDateView.datePicker.date, endDate: endDateView.datePicker.date, status: achievementStatusView.switchButton.isOn, issuer: issuerView.textField.text ?? "", desc: "") else {return errorSaveData(from: "Save")}
+                if data{
+                    performSegue(withIdentifier: "backToListVC", sender: self)
+                }else{
+                    return errorSaveData(from: "Save")
+                }
+            }else{
+                showAlertForDelete()
+            }
+        }
+    }
+    
     func deleteAchivementData(){
         guard let data = self.viewModel?.deleteAchievementData(dataAchievement: accomplish)
         else{ return }

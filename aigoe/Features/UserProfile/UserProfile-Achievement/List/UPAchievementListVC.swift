@@ -63,6 +63,7 @@ extension UPAchievementListVC{
         accomplishmentList.delegate = self
         accomplishmentList.accomplishment = achievement
         accomplishmentList.addButton.isHidden = true
+        accomplishmentList.titleLabel.isHidden = true
         accomplishmentList.withResumeContent = false
         
     }

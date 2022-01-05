@@ -20,6 +20,7 @@ class AccomplishmentPageView: UIView {
     @IBOutlet weak var emptyStateView: EmptyState!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
     
     weak var delegate: AccomplishListDelegate?
     var stepViewModel = StepByStepGuideViewModel()
