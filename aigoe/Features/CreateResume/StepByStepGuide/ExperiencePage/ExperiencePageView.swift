@@ -11,10 +11,12 @@ protocol ExperienceListDelegate: AnyObject {
     func goToAddExp()
     func passingExpData(exp: Experience?)
     func selectButtonExp(expId: String, isSelected: Bool)
+    func editExpUpForm(from: String, exp: Experience)
 }
 
 class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var expLabel: UILabel!
     @IBOutlet weak var addEditButton: UIButton!
     @IBOutlet weak var expTableView: UITableView!
     @IBOutlet weak var emptyStateView: EmptyState!
@@ -30,6 +32,7 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     var experience = [Experience]()
     var expViewModel = ExperiencePageViewModel()
     var resumeContentData = Resume_Content()
+    var withResumeContent = true
     
     func setupExpList(dlgt: ExperienceListDelegate) {
         self.experienceDelegate = dlgt
