@@ -9,14 +9,15 @@ import UIKit
 
 class PersonalInfoList: UIView {
     
+    @IBOutlet weak var titleAndButton: HorizontalLabelAndButton!
     @IBOutlet weak var emptyStateView: EmptyState!
-    @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     var personalData = [User]()
     var resumeContentData = Resume_Content()
     weak var delegate: ListEduDelegate?
     var personalInfoViewModel = PersonalInfoViewModel()
+    var withResumeContent = true
     
     func setup(dlgt: ListEduDelegate) {
         self.delegate = dlgt
@@ -26,6 +27,7 @@ class PersonalInfoList: UIView {
         super.init(frame: frame)
         initWithNib()
         registerTableView()
+        setup()
         tableView.tableFooterView = UIView()
     }
     
@@ -34,6 +36,7 @@ class PersonalInfoList: UIView {
         initWithNib()
         registerTableView()
         notificationCenterSetup()
+        setup()
         tableView.tableFooterView = UIView()
     }
     
@@ -63,6 +66,7 @@ extension PersonalInfoList: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("Personal Data", personalData)
         if personalData.count != 0 {
             emptyStateView.isHidden = true
         } else {
@@ -77,28 +81,34 @@ extension PersonalInfoList: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         let personalInfo = personalData[indexPath.row]
-        let selectedPersonalInfoId = resumeContentData.edu_id
-        let counter = resumeContentData.edu_id?.count ?? 0
         
-        /*cell.institutionName.text = edu.institution
-        cell.educationTitle.text = edu.title
-        cell.educationPeriod.text = eduPeriod
-        cell.educationGPA.text = "\(edu.gpa)"
-        cell.educationActivities.text = edu.activity*/
         
-        /*if counter != 0 {
-            for i in 0..<counter {
-                if edu.edu_id == selectedEduId?[i] {
-                    cell.checklistButtonIfSelected()
-                    cell.selectionStatus = true
+        cell.nameLbl.text = personalInfo.username
+        cell.emailLbl.text = personalInfo.email
+        cell.phoneNumberLbl.text = personalInfo.phoneNumber
+        cell.locLbl.text = personalInfo.location
+        cell.summaryLbl.text = personalInfo.summary
+        
+        if withResumeContent {
+            let selectedPersonalInfoId = resumeContentData.personalInfo_id
+            let counter = resumeContentData.personalInfo_id?.count ?? 0
+            if counter != 0 {
+                for i in 0..<counter {
+                    if personalData[indexPath.row].personalInfo_id == selectedPersonalInfoId?[i] {
+                        /*cell.checklistButtonIfSelected()
+                        cell.selectionStatus = true*/
+                    }
                 }
+            } else {
+//                cell.checklistButtonUnSelected()
+//                cell.selectionStatus = false
             }
         } else {
-            cell.checklistButtonUnSelected()
-            cell.selectionStatus = false
+           /* cell.selectionButton.isHidden = true
+            cell.selectionButton.isEnabled = false*/
         }
         
-        cell.editButtonAction = {
+        /*cell.editButtonAction = {
             //self.delegate?.editEduForm(from: "edit", edu: edu)
         }
         
@@ -156,6 +166,10 @@ extension  PersonalInfoList {
 
 //MARK: Nib
 extension  PersonalInfoList {
+    func setup(){
+        titleAndButton.viewSetup(labelTitle: "Personal Information", buttonTitle: "Add")
+    }
+    
     fileprivate func initWithNib() {
         guard let view = loadViewFromNib(nibName: "PersonalInfoList") else { return }
         view.frame = self.bounds

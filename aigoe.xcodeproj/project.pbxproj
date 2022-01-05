@@ -83,6 +83,9 @@
 		BF09E02527440AA300DB1C6B /* SkillsPageviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF09E02427440AA300DB1C6B /* SkillsPageviewModel.swift */; };
 		BF0F8885272ED532000B87EE /* SkillAddEditController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF0F8884272ED532000B87EE /* SkillAddEditController.storyboard */; };
 		BF0F8887272ED54C000B87EE /* SkillAddEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0F8886272ED54C000B87EE /* SkillAddEditController.swift */; };
+		BF125C012785F6EE0063399E /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125C002785F6EE0063399E /* TextButton.swift */; };
+		BF125C032785F86A0063399E /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF125C022785F86A0063399E /* TextLabel.swift */; };
+		BF125C052785FF270063399E /* PersonalInfoList.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF125C042785FF270063399E /* PersonalInfoList.xib */; };
 		BF228E4C273B7CCC00966E23 /* EducationFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF228E46273B7CCC00966E23 /* EducationFormController.storyboard */; };
 		BF228E4D273B7CCC00966E23 /* EducationFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF228E47273B7CCC00966E23 /* EducationFormController.swift */; };
 		BF228E4E273B7CCC00966E23 /* EducationPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF228E48273B7CCC00966E23 /* EducationPageView.xib */; };
@@ -106,6 +109,10 @@
 		BF34E87C274119FC00EE7276 /* PreloadEducationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34E87B274119FC00EE7276 /* PreloadEducationData.swift */; };
 		BF34E87E274137D100EE7276 /* EducationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF34E87D274137D100EE7276 /* EducationListViewModel.swift */; };
 		BF423DEB272C52A2006DC552 /* ExperienceFormController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF423DEA272C52A2006DC552 /* ExperienceFormController.storyboard */; };
+		BF4A5A0827853DE3000D52C2 /* PersonalInfoForm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4A5A0727853DE3000D52C2 /* PersonalInfoForm.storyboard */; };
+		BF4A5A0A27853DFA000D52C2 /* PersonalInfoFormVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A5A0927853DFA000D52C2 /* PersonalInfoFormVC.swift */; };
+		BF4A5A0C278587EE000D52C2 /* HorizontalLabelAndButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF4A5A0B278587EE000D52C2 /* HorizontalLabelAndButton.xib */; };
+		BF4A5A0F2785882D000D52C2 /* HorizontalLabelAndButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A5A0E2785882D000D52C2 /* HorizontalLabelAndButton.swift */; };
 		BF4C38E4277AFC57007781AA /* TranslateResumeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C38E2277AFC57007781AA /* TranslateResumeVC.swift */; };
 		BF4C38E7277AFC7C007781AA /* TranslateResume.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4C38E6277AFC7C007781AA /* TranslateResume.storyboard */; };
 		BF4C38E9277AFF44007781AA /* CheckTypoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4C38E8277AFF44007781AA /* CheckTypoVC.swift */; };
@@ -217,7 +224,6 @@
 		BFE003552727331F0070BD40 /* BigButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE003542727331F0070BD40 /* BigButtonWithImage.swift */; };
 		BFE00357272733310070BD40 /* BigButtonWithImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE00356272733310070BD40 /* BigButtonWithImage.xib */; };
 		BFF8397B277C8A8200DB9908 /* PersonalInfoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF83979277C8A8200DB9908 /* PersonalInfoList.swift */; };
-		BFF8397C277C8A8200DB9908 /* PersonalInfoList.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFF8397A277C8A8200DB9908 /* PersonalInfoList.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -314,6 +320,9 @@
 		BF09E02427440AA300DB1C6B /* SkillsPageviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsPageviewModel.swift; sourceTree = "<group>"; };
 		BF0F8884272ED532000B87EE /* SkillAddEditController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SkillAddEditController.storyboard; sourceTree = "<group>"; };
 		BF0F8886272ED54C000B87EE /* SkillAddEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillAddEditController.swift; sourceTree = "<group>"; };
+		BF125C002785F6EE0063399E /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
+		BF125C022785F86A0063399E /* TextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
+		BF125C042785FF270063399E /* PersonalInfoList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalInfoList.xib; sourceTree = "<group>"; };
 		BF228E46273B7CCC00966E23 /* EducationFormController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EducationFormController.storyboard; sourceTree = "<group>"; };
 		BF228E47273B7CCC00966E23 /* EducationFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EducationFormController.swift; sourceTree = "<group>"; };
 		BF228E48273B7CCC00966E23 /* EducationPageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EducationPageView.xib; sourceTree = "<group>"; };
@@ -337,6 +346,10 @@
 		BF34E87B274119FC00EE7276 /* PreloadEducationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreloadEducationData.swift; sourceTree = "<group>"; };
 		BF34E87D274137D100EE7276 /* EducationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationListViewModel.swift; sourceTree = "<group>"; };
 		BF423DEA272C52A2006DC552 /* ExperienceFormController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExperienceFormController.storyboard; sourceTree = "<group>"; };
+		BF4A5A0727853DE3000D52C2 /* PersonalInfoForm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PersonalInfoForm.storyboard; sourceTree = "<group>"; };
+		BF4A5A0927853DFA000D52C2 /* PersonalInfoFormVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoFormVC.swift; sourceTree = "<group>"; };
+		BF4A5A0B278587EE000D52C2 /* HorizontalLabelAndButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalLabelAndButton.xib; sourceTree = "<group>"; };
+		BF4A5A0E2785882D000D52C2 /* HorizontalLabelAndButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLabelAndButton.swift; sourceTree = "<group>"; };
 		BF4C38E2277AFC57007781AA /* TranslateResumeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateResumeVC.swift; sourceTree = "<group>"; };
 		BF4C38E6277AFC7C007781AA /* TranslateResume.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TranslateResume.storyboard; sourceTree = "<group>"; };
 		BF4C38E8277AFF44007781AA /* CheckTypoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTypoVC.swift; sourceTree = "<group>"; };
@@ -453,7 +466,6 @@
 		BFE003542727331F0070BD40 /* BigButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButtonWithImage.swift; sourceTree = "<group>"; };
 		BFE00356272733310070BD40 /* BigButtonWithImage.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BigButtonWithImage.xib; sourceTree = "<group>"; };
 		BFF83979277C8A8200DB9908 /* PersonalInfoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoList.swift; sourceTree = "<group>"; };
-		BFF8397A277C8A8200DB9908 /* PersonalInfoList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalInfoList.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -693,6 +705,24 @@
 			path = LabelWithStartEndDate;
 			sourceTree = "<group>";
 		};
+		BF4A5A0627853DD2000D52C2 /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				BF4A5A0727853DE3000D52C2 /* PersonalInfoForm.storyboard */,
+				BF4A5A0927853DFA000D52C2 /* PersonalInfoFormVC.swift */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
+		BF4A5A0D278587F3000D52C2 /* HorizontalLabelAndButton */ = {
+			isa = PBXGroup;
+			children = (
+				BF4A5A0B278587EE000D52C2 /* HorizontalLabelAndButton.xib */,
+				BF4A5A0E2785882D000D52C2 /* HorizontalLabelAndButton.swift */,
+			);
+			path = HorizontalLabelAndButton;
+			sourceTree = "<group>";
+		};
 		BF4C38E0277AFC1E007781AA /* CheckTypo */ = {
 			isa = PBXGroup;
 			children = (
@@ -869,6 +899,7 @@
 		BF850342272255D500CC43FB /* PersonalInfoPage */ = {
 			isa = PBXGroup;
 			children = (
+				BF4A5A0627853DD2000D52C2 /* Form */,
 				BFF83978277C8A5100DB9908 /* List */,
 				BF09E0232743E5AC00DB1C6B /* Model */,
 				BF5F1BE92722D5CA004D0756 /* PersonalInfoViewModel.swift */,
@@ -938,6 +969,7 @@
 		BF85034A2722582900CC43FB /* CustomComponents */ = {
 			isa = PBXGroup;
 			children = (
+				BF4A5A0D278587F3000D52C2 /* HorizontalLabelAndButton */,
 				B898B30C277B129A00EFC13A /* PersonalProfileTableCell */,
 				BF7267E72730E9C200B5A95F /* AccomplishmentTableCell */,
 				67280DC027270F0B006569DD /* TechnicalSkillsListCell */,
@@ -1124,6 +1156,8 @@
 				BF2ABB372726FF8300AAC6C2 /* LabelWithTextView */,
 				BF2ABB322726FCB300AAC6C2 /* LabelWihTextField */,
 				BF85038F2722B5E100CC43FB /* RoundedButton.swift */,
+				BF125C002785F6EE0063399E /* TextButton.swift */,
+				BF125C022785F86A0063399E /* TextLabel.swift */,
 			);
 			path = GlobalCustomComponent;
 			sourceTree = "<group>";
@@ -1348,7 +1382,7 @@
 			isa = PBXGroup;
 			children = (
 				BFF83979277C8A8200DB9908 /* PersonalInfoList.swift */,
-				BFF8397A277C8A8200DB9908 /* PersonalInfoList.xib */,
+				BF125C042785FF270063399E /* PersonalInfoList.xib */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -1465,11 +1499,13 @@
 				BF4C38EB277AFF52007781AA /* CheckTypo.storyboard in Resources */,
 				BF228E4E273B7CCC00966E23 /* EducationPageView.xib in Resources */,
 				B8D1047B2754A1EF00774F41 /* LabelCell.xib in Resources */,
+				BF4A5A0827853DE3000D52C2 /* PersonalInfoForm.storyboard in Resources */,
 				BF85038E2722B59500CC43FB /* ProgressBarView.xib in Resources */,
 				BFE0035027272F450070BD40 /* LabelWithDate.xib in Resources */,
 				BF8503982722B6A300CC43FB /* ExpertDetailsViewController.storyboard in Resources */,
 				BF2ABB3B2726FFAF00AAC6C2 /* LabelWithTextView.xib in Resources */,
 				BF8503162722551C00CC43FB /* Assets.xcassets in Resources */,
+				BF125C052785FF270063399E /* PersonalInfoList.xib in Resources */,
 				BF85651C2775832A0061930C /* UP-Achievement.storyboard in Resources */,
 				BF7267EB2730E9C200B5A95F /* AccomplishmentTableCell.xib in Resources */,
 				BF7267E62730E73000B5A95F /* AccomplishmentPageView.xib in Resources */,
@@ -1487,9 +1523,9 @@
 				BF8503AA2722B83700CC43FB /* SkillsPageView.xib in Resources */,
 				BF2ABB3E27270A5D00AAC6C2 /* LabelWithSwitch.xib in Resources */,
 				BF85035D27225C4300CC43FB /* PersonalInfoPage.xib in Resources */,
-				BFF8397C277C8A8200DB9908 /* PersonalInfoList.xib in Resources */,
 				BF8503BC2722BDE900CC43FB /* Homepage.storyboard in Resources */,
 				BF2ABB4527270D4D00AAC6C2 /* LabelWithStartEndDate.xib in Resources */,
+				BF4A5A0C278587EE000D52C2 /* HorizontalLabelAndButton.xib in Resources */,
 				BF8564F42775800D0061930C /* UP-PersonalInfo.storyboard in Resources */,
 				BF0F8885272ED532000B87EE /* SkillAddEditController.storyboard in Resources */,
 				BFE00357272733310070BD40 /* BigButtonWithImage.xib in Resources */,
@@ -1582,6 +1618,7 @@
 				B8FB96492743487000B64377 /* QuizRepository.swift in Sources */,
 				8435DB4F2732234A00862FF0 /* SkillSuggestionRepository.swift in Sources */,
 				BF88DD392779C39600AB74E9 /* UserProfileListModel.swift in Sources */,
+				BF4A5A0A27853DFA000D52C2 /* PersonalInfoFormVC.swift in Sources */,
 				BF8503142722551B00CC43FB /* dayangsurga-macro.xcdatamodeld in Sources */,
 				BF8503822722B2C300CC43FB /* CoreDataManager.swift in Sources */,
 				BF8503862722B35800CC43FB /* DataRepository.swift in Sources */,
@@ -1625,9 +1662,11 @@
 				BF8503742722675000CC43FB /* Cell+Extension.swift in Sources */,
 				7E8A5A552740055F00DB0DCA /* SplashScreenViewController.swift in Sources */,
 				BFA6AABF273E368100A4D677 /* LandingPageViewController.swift in Sources */,
+				BF125C012785F6EE0063399E /* TextButton.swift in Sources */,
 				B859B53A272852EF00627CDC /* UserResumeRepository.swift in Sources */,
 				BF85036727225FB400CC43FB /* Constants.swift in Sources */,
 				BFE003552727331F0070BD40 /* BigButtonWithImage.swift in Sources */,
+				BF125C032785F86A0063399E /* TextLabel.swift in Sources */,
 				8435DB492731830F00862FF0 /* AccomplishmentRepository.swift in Sources */,
 				BF850370272266BC00CC43FB /* String+Extension.swift in Sources */,
 				BF281E2C273D70A100C44D04 /* ContactExpertCell.swift in Sources */,
@@ -1668,6 +1707,7 @@
 				BF85650A2775817F0061930C /* UPAchievementListVC.swift in Sources */,
 				B82BD30E2733879200BCF6DF /* PreloadResumeTemplateData.swift in Sources */,
 				B859B5462728533600627CDC /* PreloadExperienceData.swift in Sources */,
+				BF4A5A0F2785882D000D52C2 /* HorizontalLabelAndButton.swift in Sources */,
 				B8FB964B27434C7300B64377 /* PreloadQuizData.swift in Sources */,
 				8435DB532732A81700862FF0 /* EducationSuggestionRepository.swift in Sources */,
 				BF09E0222743E5A800DB1C6B /* PersonalInfo.swift in Sources */,

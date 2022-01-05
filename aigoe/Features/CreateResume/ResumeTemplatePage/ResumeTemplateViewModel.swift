@@ -19,7 +19,7 @@ class ResumeTemplateViewModel: NSObject{
     }
     
     func createResumeContent(resumeId: String) -> String {
-        resumeRepo.createResumeContent(resume_id: resumeId, exp_id: [], edu_id: [], accom_id: [], skill_id: [])
+        resumeRepo.createResumeContent(resume_id: resumeId, personal_id: [], exp_id: [], edu_id: [], accom_id: [], skill_id: [])
         let data = resumeRepo.getResumeContentById(resume_id: resumeId)
         let contentId = data?.resume_id ?? ""
         return contentId

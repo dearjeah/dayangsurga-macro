@@ -40,7 +40,7 @@ class StepByStepGuidePageController: UIPageViewController {
     var quizAnswer: [Bool] = []
     var pageType: [Int] = []
     var selectedResume = User_Resume()
-    var personalData = User()
+    var personalData = [User]()
     var eduData = [Education]()
     var expData = [Experience]()
     var skillData = [Skills]()
@@ -350,7 +350,7 @@ extension StepByStepGuidePageController {
             prevNextDelegate?.changeTitleToGenerate(was: true)
         } else {
             if currentPage == 0 {
-                if personalData.username != "" {
+                if personalData.count != 0 {
                     prevNextDelegate?.isButtonEnable(left: false , right: true)
                 } else {
                     prevNextDelegate?.isButtonEnable(left: false , right: false)
@@ -358,7 +358,7 @@ extension StepByStepGuidePageController {
             } else {
                 if pageType[currentPage] != 6 {
                     if pageType[currentPage] == 1 {
-                        if personalData.username == nil {
+                        if currentResumeContent.personalInfo_id == nil || currentResumeContent.personalInfo_id?.count == 0{
                             prevNextDelegate?.isButtonEnable(left: false , right: false)
                         } else {
                             prevNextDelegate?.isButtonEnable(left: false , right: true)
@@ -438,7 +438,7 @@ extension StepByStepGuidePageController {
     }
     
     func reloadData() {
-        personalData = UserRepository.shared.getUserById(id: 0) ?? User()
+        personalData = UserRepository.shared.getAllUser() ?? []
         eduData = EducationRepository.shared.getAllEducation() ?? []
         expData = ExperienceRepository.shared.getAllExperience() ?? []
         skillData = SkillRepository.shared.getAllSkill() ?? []
@@ -510,7 +510,8 @@ extension StepByStepGuidePageController {
             let data = ResumeContentRepository.shared.getResumeContentById(resume_id: selectedResume.resume_id ?? "")
             
             if data != nil {
-                personalData = UserRepository.shared.getUserById(id: Int(selectedResume.user_id)) ?? User()
+                personalData = UserRepository.shared.getAllUser() ?? []
+                //personalData = UserRepository.shared.getUserById(id: Int(selectedResume.user_id)) ?? User()
                 currentResumeContent = data ?? Resume_Content()
             }
         }
@@ -521,12 +522,20 @@ extension StepByStepGuidePageController {
     fileprivate func initPersonalData() -> UIViewController {
         let controller = MVVMViewController<PersonalInfoViewModel>()
         controller.viewModel =  PersonalInfoViewModel()
+        personalData = controller.viewModel?.getAllUserData() ?? []
+        
+        let tmp = PersonalInfoList.init(userData: personalData, resumeContent: currentResumeContent)
+        tmp.setup(dlgt: self)
+        controller.view = tmp
+        return controller
+        /*let controller = MVVMViewController<PersonalInfoViewModel>()
+        controller.viewModel =  PersonalInfoViewModel()
         personalData = controller.viewModel?.getUserData() ?? User()
         
         let tmp = PersonalInfoPage.init(data: personalData, isCreate: isCreate)
         tmp.setup(dlgt: self)
         controller.view = tmp
-        return controller
+        return controller*/
     }
     
     fileprivate func initEducation() -> UIViewController {
