@@ -13,29 +13,31 @@ class UPExperienceListVC: MVVMViewController<UPExperienceListViewModel> {
     
     var exp = [Experience]()
     var expViewModel = ExpertListViewModel()
+    @IBOutlet weak var addButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = UPExperienceListViewModel()
         setup()
         getInitialData()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         getInitialData()
         experienceListView.getAndReload()
-        //add func show Top Add
+        showAddBtn()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToUPExpForm" {
             let vc = segue.destination as? UPExperiecenFormVC
-            //add dataFrom
+            vc?.dataFrom = "Add"
         }
     }
     
-    //function add Button
+    @IBAction func addBtnPressed(_ sender: Any){
+        performSegue(withIdentifier: "goToUPExpForm", sender: self)
+    }
     
     @IBAction func unwindToUPExpList(_ unwindSegue: UIStoryboardSegue){
     }
@@ -52,6 +54,14 @@ extension UPExperienceListVC{
         self.tabBarController?.tabBar.isHidden = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(self.goToExpForm(sender:)))
         showAddBtn()
+        
+        addButton.dsLongFilledPrimaryButton(withImage: false, text: "Add Experience")
+        experienceListView.experienceDelegate = self
+        experienceListView.experience = exp
+        experienceListView.addEditButton.isHidden = true
+        experienceListView.expLabel.isHidden = true
+        experienceListView.withResumeContent = false
+        
     }
     
     func showAddBtn(){
@@ -73,6 +83,33 @@ extension UPExperienceListVC{
 //MARK: Core Data
 extension UPExperienceListVC{
     func getInitialData(){
-        exp = self.viewModel.getAllExperience() ?? []
+        exp = self.viewModel?.getAllExperience() ?? []
     }
+}
+
+//MARK: Delegate
+
+extension UPExperienceListVC: ExperienceListDelegate{
+    
+    func editExpUpForm(from: String, exp: Experience) {
+        let storyboard = UIStoryboard(name: "UP-Experience", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToUPExpForm") as! UPExperiecenFormVC
+        vc.dataFrom = from
+        vc.exp = exp
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    func goToAddExp() {
+        
+    }
+    
+    func passingExpData(exp: Experience?) {
+        
+    }
+    
+    func selectButtonExp(expId: String, isSelected: Bool) {
+        
+    }
+    
 }
