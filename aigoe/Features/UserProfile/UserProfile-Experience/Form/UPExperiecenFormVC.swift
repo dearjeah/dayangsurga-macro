@@ -67,7 +67,7 @@ extension UPExperiecenFormVC{
         jobPeriodView.endDatePicker.maximumDate = Date()
         getValueSwitch()
         
-        if dataFrom == "edit"{
+        if dataFrom == "Edit"{
             if exp == nil{
                 companyNameView.textField.placeholder = expPh?.companyName_ph
                 jobTitleView.textField.placeholder = expPh?.jobTitle_ph

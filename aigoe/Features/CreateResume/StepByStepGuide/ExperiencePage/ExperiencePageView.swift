@@ -129,18 +129,33 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
             self.experienceDelegate?.passingExpData(exp: self.experience[indexPath.row])
         }
         
-        let selectedExpId = resumeContentData.exp_id
-        let counter = resumeContentData.exp_id?.count ?? 0
-        if counter != 0 {
-            for i in 0..<counter {
-                if exp.exp_id == selectedExpId?[i] {
-                    cell.checklistButtonIfSelected()
-                    cell.selectionStatus = true
+        if withResumeContent{
+            let selectedExpId = resumeContentData.exp_id
+            let counter = resumeContentData.exp_id?.count ?? 0
+            if counter != 0 {
+                for i in 0..<counter {
+                    if exp.exp_id == selectedExpId?[i] {
+                        cell.checklistButtonIfSelected()
+                        cell.selectionStatus = true
+                    }
                 }
+            } else {
+                cell.checklistButtonUnSelected()
+                cell.selectionStatus = false
             }
-        } else {
-            cell.checklistButtonUnSelected()
-            cell.selectionStatus = false
+        }else{
+            cell.selectExperienceButton.isHidden = true
+            cell.selectExperienceButton.isEnabled = false
+        }
+       
+        if withResumeContent {
+            cell.editButtonAction = {
+                self.experienceDelegate?.editExpUpForm(from: "edit", exp: exp)
+            }
+        }else{
+            cell.editButtonAction = {
+                self.experienceDelegate?.editExpUpForm(from: "Edit", exp: exp)
+            }
         }
         
         cell.checklistButtonAction = {

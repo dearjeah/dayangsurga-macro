@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OZg-JO-TyN" customClass="ExperiencePageView" customModule="aigoe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5C1-7R-06t">
@@ -34,13 +34,13 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="primaryBG"/>
                         <constraints>
                             <constraint firstItem="5C1-7R-06t" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.922705" id="4B1-rc-gxh"/>
                             <constraint firstItem="OZg-JO-TyN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Hv3-W3-6cn"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="OZg-JO-TyN" secondAttribute="trailing" id="LUz-v3-3cs"/>
                             <constraint firstItem="5C1-7R-06t" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Nnp-qv-hGK"/>
-                            <constraint firstItem="OZg-JO-TyN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="nZC-dg-7Qs"/>
+                            <constraint firstItem="OZg-JO-TyN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="-40" id="csP-cR-s4Z"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="5C1-7R-06t" secondAttribute="bottom" id="t7b-JK-9y1"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="OZg-JO-TyN" secondAttribute="bottom" id="vTi-Sg-n6K"/>
                         </constraints>
@@ -53,13 +53,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="s2F-RA-eIT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1918.840579710145" y="69.642857142857139"/>
         </scene>
         <!--Experiecen FormVC-->
         <scene sceneID="xcv-qs-Cw2">
             <objects>
-                <viewController id="jL6-8F-qYQ" customClass="UPExperiecenFormVC" customModule="aigoe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="goToUPExpForm" id="jL6-8F-qYQ" customClass="UPExperiecenFormVC" customModule="aigoe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aAH-N7-iUy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -141,9 +142,15 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jiB-aG-PBR">
-                                                <rect key="frame" x="20.5" y="1063.5" width="373" height="31"/>
+                                                <rect key="frame" x="20.5" y="1063.5" width="373" height="48"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="JGD-dN-15k"/>
+                                                </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                <connections>
+                                                    <action selector="addAction:" destination="jL6-8F-qYQ" eventType="touchUpInside" id="w0i-nQ-IOU"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -188,6 +195,7 @@
                         <outlet property="jobSummaryView" destination="g0w-ne-uIZ" id="D31-c0-vx4"/>
                         <outlet property="jobTitleView" destination="JJM-tm-V44" id="0rJ-Az-G2a"/>
                         <outlet property="scrollView" destination="rE7-JH-4bK" id="fSB-ZJ-jqy"/>
+                        <segue destination="s2F-RA-eIT" kind="unwind" identifier="backToUPExpList" unwindAction="unwindToUPExpList:" id="lAb-8Z-Cbt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9dm-UO-eHv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -214,6 +222,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="primaryBG">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="primaryWhite">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
