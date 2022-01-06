@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UPExperienceListVC: MVVMViewController<UPExperienceListViewModel> {
+class UPExperienceListVC:  MVVMViewController<UPExperienceListViewModel> {
 
     @IBOutlet weak var experienceListView: ExperiencePageView!
     
@@ -54,7 +54,6 @@ extension UPExperienceListVC{
         self.tabBarController?.tabBar.isHidden = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(self.goToExpForm(sender:)))
         showAddBtn()
-        
         addButton.dsLongFilledPrimaryButton(withImage: false, text: "Add Experience")
         experienceListView.experienceDelegate = self
         experienceListView.experience = exp
@@ -68,10 +67,11 @@ extension UPExperienceListVC{
         if exp.isEmpty{
             navigationItem.rightBarButtonItem?.isEnabled = false
             navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
-            //button is hidden = false
+            addButton.isHidden = false
         }else{
             navigationItem.rightBarButtonItem?.isEnabled = true
-            navigationItem.rightBarButtonItem?.tintColor = UIColor.primaryBlue
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.primaryWhite
+            addButton.isHidden = true
         }
     }
     
