@@ -26,6 +26,7 @@ class UPSkillFormVC: MVVMViewController<UPSkillFormViewModel> {
     var skillPh = Skills_Placeholder()
     var localDataCounter = 0
     var isAdd = true
+    var currentUserId = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,7 +132,7 @@ extension UPSkillFormVC: TechnicalSkillEditDelegate {
 //MARK: Local & Core Data Function
 extension UPSkillFormVC {
     func addSkill(skillId: String, skillName: String){
-        let skill = self.viewModel?.createSkill(skillId: skillId, skillName: skillName , isSelected: false)
+        let skill = self.viewModel?.createSkill(userId: currentUserId, skillId: skillId, skillName: skillName , isSelected: false)
         if skill == false {
             failSave()
             return
@@ -186,7 +187,7 @@ extension UPSkillFormVC {
         for i in 0..<localDataCounter{
             let skillId = localSkills[i].id
             let skillName = localSkills[i].name
-            let skill = self.viewModel?.createSkill(skillId: skillId, skillName: skillName , isSelected: true)
+            let skill = self.viewModel?.createSkill(userId: currentUserId, skillId: skillId, skillName: skillName , isSelected: true)
             if skill == false{
                 failSave()
                 return

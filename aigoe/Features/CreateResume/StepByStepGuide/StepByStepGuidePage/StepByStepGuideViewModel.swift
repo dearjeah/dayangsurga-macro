@@ -22,6 +22,7 @@ class StepByStepGuideViewModel: NSObject {
     
     let emptyStateRepo = EmptyStateRepository.shared
     let userRepo = UserRepository.shared
+    let personalInfoRepo = PersonalInfoRepository.shared
     let experienceRepo = ExperienceRepository.shared
     let eduRepo = EducationRepository.shared
     let skillRepo = SkillRepository.shared
@@ -77,13 +78,13 @@ class StepByStepGuideViewModel: NSObject {
     }
     
     
-    func updatePersonalInfo(data: PersonalInfo) {
-        userRepo.updateUser(id: 0,
-                            newName: data.name,
-                            newPhoneNumber: data.phoneNumber,
-                            newEmail: data.email,
-                            newLocation: data.location,
-                            newSummary: data.summary
+    func updatePersonalInfo(data: PersonalInfo, userId: String) {
+        personalInfoRepo.updatePersonalInfo(id: data.id,
+                                            newName: data.name ,
+                                            newPhoneNumber: data.phoneNumber ,
+                                            newEmail: data.email ,
+                                            newLocation: data.location ,
+                                            newSummary: data.summary 
         )
     }
     

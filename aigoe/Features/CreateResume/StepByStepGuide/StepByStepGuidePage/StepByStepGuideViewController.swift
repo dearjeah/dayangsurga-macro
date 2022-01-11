@@ -22,6 +22,7 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
     var skillData = [Skills]()
     var accomData = [Accomplishment]()
     var selectedResumeContentId = String()
+    var currentUserId = ""
     
     @IBOutlet weak var progressBarView: ProgressBarView!
     @IBOutlet  var smallSetButtonView: SmallSetButton!
@@ -49,11 +50,13 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
             pageController.selectedResume = selectedUserResume
             pageController.isCreate = isCreate
             pageController.currentResumeContent = selectedResumeContent
+            pageController.currentUserId = currentUserId
         } else if let vc = segue.destination as? GenerateResumeController {
             vc.selectedTemplate = selectedTemplate
             vc.userResume = selectedUserResume
             vc.resumeContentId = selectedResumeContentId
             vc.userResumeContent = selectedResumeContent
+            vc.currentUserId = currentUserId
         }
     }
     
@@ -188,13 +191,14 @@ extension StepByStepGuideViewController: StepByStepGuideDelegate {
     }
     
     func personalInfoUpdate(data: PersonalInfo) {
-        self.viewModel?.updatePersonalInfo(data: data)
+        self.viewModel?.updatePersonalInfo(data: data, userId: currentUserId)
     }
     
     func goToAddEdu(was: Bool, from: String) {
         let storyboard = UIStoryboard(name: "EducationFormController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToEduForm") as! EducationFormController
         vc.dataFrom = from
+        vc.currentUserId = currentUserId
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -203,6 +207,7 @@ extension StepByStepGuideViewController: StepByStepGuideDelegate {
         let vc = storyboard.instantiateViewController(identifier: "goToEduForm") as! EducationFormController
         vc.dataFrom = from
         vc.eduData = edu
+        vc.currentUserId = currentUserId
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -211,6 +216,7 @@ extension StepByStepGuideViewController: StepByStepGuideDelegate {
         let vc = storyboard.instantiateViewController(identifier: "goToExperienceForm") as! ExperienceFormController
         vc.isCreate = isCreate
         vc.dataFrom = from
+        vc.currentUserId = currentUserId
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -220,13 +226,14 @@ extension StepByStepGuideViewController: StepByStepGuideDelegate {
         vc.isCreate = isCreate
         vc.dataFrom = from
         vc.experience = exp
+        vc.currentUserId = currentUserId
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func goToAddSkill(from: String) {
         let storyboard = UIStoryboard(name: "SkillAddEditController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToEditSkills") as! SkillAddEditController
-        
+        vc.currentUserId = currentUserId
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -235,7 +242,7 @@ extension StepByStepGuideViewController: StepByStepGuideDelegate {
         let vc = storyboard.instantiateViewController(identifier: "goToEditSkills") as! SkillAddEditController
         vc.skill = skills
         vc.dataFrom = from
-        
+        vc.currentUserId = currentUserId
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -243,6 +250,7 @@ extension StepByStepGuideViewController: StepByStepGuideDelegate {
         let storyboard = UIStoryboard(name: "AccomplishFormController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToAccomForm") as! AccomplishFormController
         vc.dataFrom = from
+        vc.currentUserId = currentUserId
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -251,6 +259,7 @@ extension StepByStepGuideViewController: StepByStepGuideDelegate {
         let vc = storyboard.instantiateViewController(identifier: "goToAccomForm") as! AccomplishFormController
         vc.dataFrom = from
         vc.accomplish = accomp
+        vc.currentUserId = currentUserId
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -258,6 +267,15 @@ extension StepByStepGuideViewController: StepByStepGuideDelegate {
         if was {
             didTapGenerate()
         }
+    }
+    
+    func goToPersonalInfoForm(from: String, personalInfo: Personal_Info) {
+        let storyboard = UIStoryboard(name: "PersonalInfoForm", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToPersonalInfoForm") as! PersonalInfoFormVC
+        vc.dataFrom = from
+        vc.personalInfoData = personalInfo
+        vc.currentUserId = currentUserId
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

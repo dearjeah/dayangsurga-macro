@@ -9,7 +9,7 @@ import Foundation
 
 class UPPersonalInfoFormViewModel: NSObject {
     
-    func getPhbyID() -> PersonalInformation_Placeholder?{
+   /* func getPhbyID() -> PersonalInformation_Placeholder?{
         return PersonalInformationPlaceholderRepository.shared.getPIPhById(pi_ph_id: 1)
     }
     
@@ -37,6 +37,6 @@ class UPPersonalInfoFormViewModel: NSObject {
     
     func deletePersonalInformation(data: User?){
         UserRepository.shared.deleteUser(data: data ?? User())
-    }
+    }*/
 
 }

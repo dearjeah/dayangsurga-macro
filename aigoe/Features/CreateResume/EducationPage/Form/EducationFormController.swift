@@ -30,6 +30,7 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
     var switcherStatus: Bool!
     var getIndexExp = Int()
     var dataFrom = String()
+    var currentUserId = ""
     
     func setup(dlgt: EduFormDelegate) {
         self.delegate = dlgt
@@ -64,6 +65,7 @@ class EducationFormController: MVVMViewController<EducationFormViewModel> {
         if !alertForCheckTF() {
             if dataFrom == "add" {
                 guard let data = self.viewModel?.addEdu(
+                    userId: currentUserId,
                     institution: institutionView.textField.text ?? "",
                     title: qualificationView.textField.text ?? "",
                     startDate: eduPeriodView.startDatePicker.date,

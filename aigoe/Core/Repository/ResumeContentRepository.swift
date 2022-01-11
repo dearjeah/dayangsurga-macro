@@ -78,7 +78,7 @@ class ResumeContentRepository{
             newResumeContent?.edu_id = [newEdu_id]
             newResumeContent?.accom_id = newAccom_id
             newResumeContent?.skill_id = [newSkill_id]
-            newResumeContent?.personalInfo_id = [newPersonal_id]
+            newResumeContent?.personalInfo_id = newPersonal_id
             
             try context.save()
         } catch let error as NSError {
@@ -93,7 +93,7 @@ class ResumeContentRepository{
         do {
             let item = try context.fetch(fetchRequest) as? [Resume_Content]
             let newResumeContent = item?.first
-            newResumeContent?.personalInfo_id = [newPersonal_id]
+            newResumeContent?.personalInfo_id = newPersonal_id
             
             try context.save()
         } catch let error as NSError {
@@ -169,15 +169,14 @@ class ResumeContentRepository{
         do {
             let item = try context.fetch(fetchRequest) as? [Resume_Content]
             let resumeContent = item?.first
-            let personalIdCount = resumeContent?.personalInfo_id?.count ?? 0
-            for i in 0..<personalIdCount {
-                if resumeContent?.personalInfo_id?[i] == personalInfoId {
-                    resumeContent?.personalInfo_id?.remove(at: i)
-                    try context.save()
-                    break
-                }
+            let currentPersonalId = resumeContent?.personalInfo_id
+            
+            if currentPersonalId == personalInfoId {
+                resumeContent?.personalInfo_id = ""
+                return true
             }
-            return true
+            
+            return false
         } catch let error as NSError {
             print(error)
         }

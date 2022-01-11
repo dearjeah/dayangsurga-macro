@@ -16,7 +16,7 @@
         <attribute name="issuer" optional="YES" attributeType="String"/>
         <attribute name="status" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="String"/>
         <relationship name="placeholder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Accomplish_Placeholder" inverseName="accomplishment" inverseEntity="Accomplish_Placeholder"/>
         <relationship name="resumeContent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Resume_Content" inverseName="accomplishment" inverseEntity="Resume_Content"/>
         <relationship name="suggestion" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accomplishment_Suggest" inverseName="accomplishment" inverseEntity="Accomplishment_Suggest"/>
@@ -32,7 +32,7 @@
     <entity name="Consult_History" representedClassName="Consult_History" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="expert_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="String"/>
         <relationship name="expertProfile" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expert_Profile" inverseName="consultHistory" inverseEntity="Expert_Profile"/>
         <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="consultHistory" inverseEntity="User"/>
     </entity>
@@ -63,7 +63,7 @@
         <attribute name="is_selected" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="start_date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="String"/>
         <relationship name="placeholder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Edu_Placeholder" inverseName="education" inverseEntity="Edu_Placeholder"/>
         <relationship name="resumeContent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Resume_Content" inverseName="education" inverseEntity="Resume_Content"/>
         <relationship name="suggestion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Edu_Suggestion" inverseName="education" inverseEntity="Edu_Suggestion"/>
@@ -83,7 +83,7 @@
         <attribute name="jobStartDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="jobStatus" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="jobTitle" optional="YES" attributeType="String"/>
-        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="String"/>
         <relationship name="experiencePlaceholder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Experience_Placeholder" inverseName="experience" inverseEntity="Experience_Placeholder"/>
         <relationship name="experienceSuggestion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Experience_Suggestion" inverseName="experience" inverseEntity="Experience_Suggestion"/>
         <relationship name="resumeContent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Resume_Content" inverseName="experience" inverseEntity="Resume_Content"/>
@@ -117,6 +117,20 @@
         <attribute name="title_on_list" optional="YES" attributeType="String"/>
         <relationship name="consultHistory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Consult_History" inverseName="expertProfile" inverseEntity="Consult_History"/>
     </entity>
+    <entity name="Personal_Info" representedClassName="Personal_Info" syncable="YES" codeGenerationType="class">
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="fullName" optional="YES" attributeType="String"/>
+        <attribute name="location" optional="YES" attributeType="String"/>
+        <attribute name="personalInfo_id" optional="YES" attributeType="String"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String"/>
+        <attribute name="summary" optional="YES" attributeType="String"/>
+        <attribute name="user_id" optional="YES" attributeType="String"/>
+        <relationship name="placeholder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonalInformation_Placeholder" inverseName="user" inverseEntity="PersonalInformation_Placeholder"/>
+        <relationship name="resumeContent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Resume_Content" inverseName="personalInfo" inverseEntity="Resume_Content"/>
+        <relationship name="suggestion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonalInformation_Suggestion" inverseName="user" inverseEntity="PersonalInformation_Suggestion"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="personalInfo" inverseEntity="User"/>
+        <relationship name="userResume" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User_Resume" inverseName="personalInfo" inverseEntity="User_Resume"/>
+    </entity>
     <entity name="PersonalInformation_Placeholder" representedClassName="PersonalInformation_Placeholder" syncable="YES" codeGenerationType="class">
         <attribute name="address_ph" optional="YES" attributeType="String"/>
         <attribute name="email_ph" optional="YES" attributeType="String"/>
@@ -125,13 +139,13 @@
         <attribute name="pi_ph_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="summary_ph" optional="YES" attributeType="String"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userPlaceholder" inverseEntity="User"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Personal_Info" inverseName="placeholder" inverseEntity="Personal_Info"/>
     </entity>
     <entity name="PersonalInformation_Suggestion" representedClassName="PersonalInformation_Suggestion" syncable="YES" codeGenerationType="class">
         <attribute name="pi_suggestion_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="summarySuggest" optional="YES" attributeType="String"/>
-        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userSuggestion" inverseEntity="User"/>
+        <attribute name="user_id" optional="YES" attributeType="String"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Personal_Info" inverseName="suggestion" inverseEntity="Personal_Info"/>
     </entity>
     <entity name="Quiz" representedClassName="Quiz" syncable="YES" codeGenerationType="class">
         <attribute name="cue" optional="YES" attributeType="String"/>
@@ -143,16 +157,16 @@
         <attribute name="accom_id" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
         <attribute name="edu_id" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
         <attribute name="exp_id" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
-        <attribute name="personalInfo_id" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
+        <attribute name="personalInfo_id" optional="YES" attributeType="String" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="String"/>
         <attribute name="resume_id" optional="YES" attributeType="String"/>
         <attribute name="resumeTemplate_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="skill_id" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer" customClassName="[String]"/>
         <relationship name="accomplishment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accomplishment" inverseName="resumeContent" inverseEntity="Accomplishment"/>
         <relationship name="education" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Education" inverseName="resumeContent" inverseEntity="Education"/>
         <relationship name="experience" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Experience" inverseName="resumeContent" inverseEntity="Experience"/>
+        <relationship name="personalInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Personal_Info" inverseName="resumeContent" inverseEntity="Personal_Info"/>
         <relationship name="resumeTemplate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Resume_Template" inverseName="resumeContent" inverseEntity="Resume_Template"/>
         <relationship name="skills" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Skills" inverseName="resumeContent" inverseEntity="Skills"/>
-        <relationship name="user_personalInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="resumeContent" inverseEntity="User"/>
         <relationship name="userResume" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User_Resume" inverseName="resumeContent" inverseEntity="User_Resume"/>
     </entity>
     <entity name="Resume_Template" representedClassName="Resume_Template" syncable="YES" codeGenerationType="class">
@@ -166,7 +180,7 @@
         <attribute name="is_selected" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="skill_id" optional="YES" attributeType="String"/>
         <attribute name="skill_name" optional="YES" attributeType="String"/>
-        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="String"/>
         <relationship name="placeholder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Skills_Placeholder" inverseName="skills" inverseEntity="Skills_Placeholder"/>
         <relationship name="resumeContent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Resume_Content" inverseName="skills" inverseEntity="Resume_Content"/>
         <relationship name="suggestion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Skills_Suggest" inverseName="skills" inverseEntity="Skills_Suggest"/>
@@ -186,21 +200,18 @@
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="email" optional="YES" attributeType="String"/>
-        <attribute name="location" optional="YES" attributeType="String"/>
-        <attribute name="personalInfo_id" optional="YES" attributeType="String"/>
-        <attribute name="phoneNumber" optional="YES" attributeType="String"/>
-        <attribute name="summary" optional="YES" attributeType="String"/>
-        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="user_id" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="accomplishment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Accomplishment" inverseName="user" inverseEntity="Accomplishment"/>
         <relationship name="consultHistory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Consult_History" inverseName="user" inverseEntity="Consult_History"/>
         <relationship name="education" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Education" inverseName="user" inverseEntity="Education"/>
         <relationship name="experience" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Experience" inverseName="user" inverseEntity="Experience"/>
-        <relationship name="resumeContent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Resume_Content" inverseName="user_personalInfo" inverseEntity="Resume_Content"/>
+        <relationship name="personalInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Personal_Info" inverseName="user" inverseEntity="Personal_Info"/>
         <relationship name="skill" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Skills" inverseName="user" inverseEntity="Skills"/>
-        <relationship name="userPlaceholder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonalInformation_Placeholder" inverseName="user" inverseEntity="PersonalInformation_Placeholder"/>
-        <relationship name="userResume" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User_Resume" inverseName="user" inverseEntity="User_Resume"/>
-        <relationship name="userSuggestion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonalInformation_Suggestion" inverseName="user" inverseEntity="PersonalInformation_Suggestion"/>
+        <relationship name="userPlaceholder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonalInformation_Placeholder"/>
+        <relationship name="userResume" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User_Resume"/>
+        <relationship name="userSuggestion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonalInformation_Suggestion"/>
     </entity>
     <entity name="User_Resume" representedClassName="User_Resume" syncable="YES" codeGenerationType="class">
         <attribute name="editingProgress" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -210,9 +221,9 @@
         <attribute name="resume_id" optional="YES" attributeType="String"/>
         <attribute name="template_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="personalInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Personal_Info" inverseName="userResume" inverseEntity="Personal_Info"/>
         <relationship name="resumeContent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Resume_Content" inverseName="userResume" inverseEntity="Resume_Content"/>
         <relationship name="template" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Resume_Template" inverseName="userResume" inverseEntity="Resume_Template"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userResume" inverseEntity="User"/>
     </entity>
     <elements>
         <element name="Accomplish_Placeholder" positionX="72" positionY="207" width="128" height="104"/>
@@ -227,6 +238,7 @@
         <element name="Experience_Placeholder" positionX="18" positionY="63" width="128" height="119"/>
         <element name="Experience_Suggestion" positionX="27" positionY="72" width="128" height="89"/>
         <element name="Expert_Profile" positionX="45" positionY="180" width="128" height="209"/>
+        <element name="Personal_Info" positionX="27" positionY="180" width="128" height="209"/>
         <element name="PersonalInformation_Placeholder" positionX="63" positionY="108" width="128" height="149"/>
         <element name="PersonalInformation_Suggestion" positionX="27" positionY="72" width="128" height="89"/>
         <element name="Quiz" positionX="27" positionY="180" width="128" height="89"/>
@@ -235,7 +247,7 @@
         <element name="Skills" positionX="81" positionY="216" width="128" height="149"/>
         <element name="Skills_Placeholder" positionX="27" positionY="162" width="128" height="89"/>
         <element name="Skills_Suggest" positionX="36" positionY="171" width="128" height="89"/>
-        <element name="User" positionX="54" positionY="99" width="128" height="269"/>
+        <element name="User" positionX="54" positionY="99" width="128" height="224"/>
         <element name="User_Resume" positionX="72" positionY="117" width="128" height="179"/>
     </elements>
 </model>

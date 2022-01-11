@@ -24,13 +24,13 @@ class UPSkillFormViewModel: NSObject {
         return SkillRepository.shared.getAllSkill()
     }
     
-    func createSkill(skillId: String, skillName: String, isSelected: Bool)-> Bool{
-        let skill = SkillRepository.shared.createSkill(skillId: skillId, userId: 0, skillName: skillName, isSelected: isSelected)
+    func createSkill(userId: String, skillId: String, skillName: String, isSelected: Bool)-> Bool{
+        let skill = SkillRepository.shared.createSkill(skillId: skillId, userId: userId, skillName: skillName, isSelected: isSelected)
         return skill
     }
     
     func updateSkill(skillId: String, skillName: String, isSelected: Bool)-> Bool{
-        let skill = SkillRepository.shared.updateSkill(skillId: skillId, userId: 0, skillName: skillName, isSelected: isSelected)
+        let skill = SkillRepository.shared.updateSkill(skillId: skillId, skillName: skillName, isSelected: isSelected)
         return skill
     }
     

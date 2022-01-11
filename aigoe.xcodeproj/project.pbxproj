@@ -219,6 +219,8 @@
 		BFA6AABF273E368100A4D677 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6AABE273E368100A4D677 /* LandingPageViewController.swift */; };
 		BFBA47AC27294AE600D4771E /* StepByStepGuidePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA47AB27294AE600D4771E /* StepByStepGuidePageController.swift */; };
 		BFBA47B4272AE5C400D4771E /* ExperienceFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA47B3272AE5C400D4771E /* ExperienceFormController.swift */; };
+		BFCFA6CA2789560C0005829B /* PersonalInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCFA6C92789560C0005829B /* PersonalInfoRepository.swift */; };
+		BFDBFBE6278C34DD0093D327 /* UIApllication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDBFBE5278C34DD0093D327 /* UIApllication+Extension.swift */; };
 		BFE0035027272F450070BD40 /* LabelWithDate.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFE0034F27272F450070BD40 /* LabelWithDate.xib */; };
 		BFE0035227272F500070BD40 /* LabelWithDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE0035127272F500070BD40 /* LabelWithDate.swift */; };
 		BFE003552727331F0070BD40 /* BigButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE003542727331F0070BD40 /* BigButtonWithImage.swift */; };
@@ -461,6 +463,8 @@
 		BFA6AABE273E368100A4D677 /* LandingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		BFBA47AB27294AE600D4771E /* StepByStepGuidePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepGuidePageController.swift; sourceTree = "<group>"; };
 		BFBA47B3272AE5C400D4771E /* ExperienceFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceFormController.swift; sourceTree = "<group>"; };
+		BFCFA6C92789560C0005829B /* PersonalInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoRepository.swift; sourceTree = "<group>"; };
+		BFDBFBE5278C34DD0093D327 /* UIApllication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApllication+Extension.swift"; sourceTree = "<group>"; };
 		BFE0034F27272F450070BD40 /* LabelWithDate.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelWithDate.xib; sourceTree = "<group>"; };
 		BFE0035127272F500070BD40 /* LabelWithDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithDate.swift; sourceTree = "<group>"; };
 		BFE003542727331F0070BD40 /* BigButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButtonWithImage.swift; sourceTree = "<group>"; };
@@ -1094,6 +1098,7 @@
 				B88AFA38272AB10D007408A5 /* UIImageView+Extension.swift */,
 				BF61D7FC27398E1C0011ACC0 /* UIPageViewController+Extension.swift */,
 				B8532B8627736068009C58C6 /* UIDevice+Extension.swift */,
+				BFDBFBE5278C34DD0093D327 /* UIApllication+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1137,6 +1142,7 @@
 				8435DB56273358F900862FF0 /* AccomplishmentPlaceholderRepository.swift */,
 				B859B52D272852EF00627CDC /* ResumeTemplateRepository.swift */,
 				B859B533272852EF00627CDC /* UserRepository.swift */,
+				BFCFA6C92789560C0005829B /* PersonalInfoRepository.swift */,
 				B859B52F272852EF00627CDC /* PersonalInformationPlaceholderRepository.swift */,
 				B859B547272858B900627CDC /* PersonalInformationSuggestionRepository.swift */,
 				B859B530272852EF00627CDC /* UserResumeRepository.swift */,
@@ -1629,6 +1635,7 @@
 				67E4D00B2742105800F17BAF /* PreloadSkillData.swift in Sources */,
 				BF85039A2722B6D600CC43FB /* ExpertDetailViewController.swift in Sources */,
 				BF8503B52722BABF00CC43FB /* StepByStepGuideViewModel.swift in Sources */,
+				BFDBFBE6278C34DD0093D327 /* UIApllication+Extension.swift in Sources */,
 				BF8503A02722B7EE00CC43FB /* QuizPageView.swift in Sources */,
 				BF8564F227757FA60061930C /* UPPersonalInfoFormViewModel.swift in Sources */,
 				BF8503502722594C00CC43FB /* LandingPageViewModel.swift in Sources */,
@@ -1697,6 +1704,7 @@
 				BF856500277581180061930C /* UPSkillListViewModel.swift in Sources */,
 				BF85037E2722836800CC43FB /* UIViewController+Extension.swift in Sources */,
 				BF5F1BF02722D824004D0756 /* ResumeTemplateViewModel.swift in Sources */,
+				BFCFA6CA2789560C0005829B /* PersonalInfoRepository.swift in Sources */,
 				BF8503882722B36700CC43FB /* PreloadData.swift in Sources */,
 				B8692A33273AD62200AC0834 /* PreloadExpertData.swift in Sources */,
 				B859B5452728533600627CDC /* PreloadEmptyStateData.swift in Sources */,

@@ -26,10 +26,10 @@ class AccomplishFormViewModel: NSObject {
         return AccomplishmentRepository.shared.getAccomplishmentById(AccomplishmentId: id)
     }
     
-    func addAccomp(title: String, givenDate: Date, endDate: Date, status: Bool, issuer: String, desc: String) -> Bool {
+    func addAccomp(title: String, givenDate: Date, endDate: Date, status: Bool, issuer: String, desc: String, userId: String) -> Bool {
         let data = accompRepo.createAccomplishment(
             accomId: UUID().uuidString,
-            userId: 0,
+            userId: userId,
             title: title,
             givenDate: givenDate,
             endDate: endDate,
@@ -44,7 +44,6 @@ class AccomplishFormViewModel: NSObject {
     func updateAccomp(accompId: String, title: String, givenDate: Date, endDate: Date, status: Bool, issuer: String, desc: String) -> Bool {
         let data = accompRepo.updateAccomplishment(
             accomId: accompId,
-            userId: 0,
             title: title,
             givenDate: givenDate,
             endDate: endDate,
