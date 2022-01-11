@@ -24,8 +24,10 @@ class PersonalInfoPage: UIView{
     @IBOutlet weak var summaryField: LabelWithTextView!
     
     weak var delegate: PersonalInfoPageDelegate?
-    var userData = User()
+    var personalInfoData: Personal_Info? = nil
     var isFromCreate = Bool()
+    var viewModel = PersonalInfoViewModel()
+    var currentUserId = ""
 
     func setup(dlgt: PersonalInfoPageDelegate) {
         self.delegate = dlgt
@@ -41,10 +43,10 @@ class PersonalInfoPage: UIView{
         initWithNib()
     }
     
-    convenience init(data: User, isCreate: Bool) {
+    convenience init(data: Personal_Info, isCreate: Bool) {
         self.init()
         
-        userData = data
+        personalInfoData = data
         isFromCreate = isCreate
         setup()
         self.summaryField.textView.delegate = self
@@ -87,12 +89,12 @@ extension PersonalInfoPage {
             summaryField.textView.textColor = .lightGray
         }
         
-        if userData.username != "" {
-            fullNameField.textField.text =  userData.username
-            emailField.textField.text = userData.email
-            phoneField.textField.text = userData.phoneNumber
-            locationField.textField.text = userData.location
-            summaryField.textView.text = userData.summary
+        if personalInfoData != nil {
+            fullNameField.textField.text =  personalInfoData?.fullName
+            emailField.textField.text = personalInfoData?.email
+            phoneField.textField.text = personalInfoData?.phoneNumber
+            locationField.textField.text = personalInfoData?.location
+            summaryField.textView.text = personalInfoData?.summary
             summaryField.textView.textColor = .black
         }
         
@@ -117,10 +119,11 @@ extension PersonalInfoPage {
 //MARK: Core Data
 extension PersonalInfoPage {
     func saveToCoreData() {
-        if UserRepository.shared.getUserById(id: 0) != nil{
-            UserRepository.shared.updateUser(id: 0, newName: fullNameField.textField.text ?? "", newPhoneNumber: phoneField.textField.text ?? "", newEmail: emailField.textField.text ?? "" , newLocation: locationField.textField.text ?? "", newSummary: summaryField.textView.text ?? "")
+        if PersonalInfoRepository.shared.getPersonalInfoById(id: personalInfoData?.personalInfo_id ?? "") != nil{
+            PersonalInfoRepository.shared.updatePersonalInfo(id: personalInfoData?.personalInfo_id ?? "", newName: fullNameField.textField.text ?? "", newPhoneNumber: phoneField.textField.text ?? "", newEmail: emailField.textField.text ?? "" , newLocation: locationField.textField.text ?? "", newSummary: summaryField.textView.text ?? "")
         } else {
-            UserRepository.shared.createUser(user_id: 0, username: fullNameField.textField.text ?? "", phoneNumber: phoneField.textField.text ?? "", email: emailField.textField.text ?? "", location: locationField.textField.text ?? "", summary: summaryField.textView.text ?? "")
+            PersonalInfoRepository.shared.createPersonalInfo(user_id: currentUserId, fullName: fullNameField.textField.text ?? "", phoneNumber: phoneField.textField.text ?? "", email: emailField.textField.text ?? "", location: locationField.textField.text ?? "", summary: summaryField.textView.text ?? "")
+            
         }
     }
 }
@@ -137,7 +140,7 @@ extension PersonalInfoPage :  UITextViewDelegate, LabelWithTextFieldDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        let tmp = checkAllFieldValue()
+        /*let tmp = checkAllFieldValue()
         if tmp {
             let data = PersonalInfo(
                 id: 0,
@@ -148,11 +151,11 @@ extension PersonalInfoPage :  UITextViewDelegate, LabelWithTextFieldDelegate {
                 summary: summaryField.textView.text ?? ""
             )
             delegate?.isAllTextfieldFilled(was: true, data: data)
-        }
+        }*/
     }
     
     func isTextfieldFilled(was: Bool) {
-        if was {
+        /*if was {
             let tmp = checkAllFieldValue()
             if tmp {
                 let data = PersonalInfo(
@@ -165,6 +168,6 @@ extension PersonalInfoPage :  UITextViewDelegate, LabelWithTextFieldDelegate {
                 )
                 delegate?.isAllTextfieldFilled(was: true, data: data)
             }
-        }
+        }*/
     }
 }

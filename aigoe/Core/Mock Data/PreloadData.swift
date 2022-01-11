@@ -63,18 +63,10 @@ func preloadMyRessumeDummy() {
 func preloadUserResume(){
     UserResumeRepository.shared.createUserResume(resume_id: UUID().uuidString,
                                                  template_id: 1,
-                                                 user_id: 1,
+                                                 user_id: UUID().uuidString,
                                                  image: UIImage.imgResumeTemplateGeorgia,
                                                  name: "My Resume",
                                                  lastUpdate: Date(),
                                                  editingProgress: 1)
-    
-    /*UserResumeRepository.shared.createUserResume(resume_id: 1,
-                                                 template_id: 1,
-                                                 user_id: 1,
-                                                 image: UIImage.imgResumeTemplateHeletvica,
-                                                 name: "abc",
-                                                 lastUpdate: Date(),
-                                                 editingProgress: 1)*/
 }
 

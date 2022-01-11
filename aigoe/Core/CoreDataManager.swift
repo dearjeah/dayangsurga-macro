@@ -78,6 +78,13 @@ class CoreDataManager {
         preloadData()
     }
     
+    func createUser() {
+        let userRepo = UserRepository.shared
+        let userId = UUID().uuidString
+        userRepo.createUser(user_id: userId, username: "Guest001", email: "", password: "")
+        userRepo.currentUserId = userId
+    }
+    
 }
 
 //MARK: PreloadData
@@ -88,24 +95,16 @@ extension CoreDataManager {
     }
 
     func preloadData() {
-        
-        
-        
         if EmptyStateRepository.shared.getAllEmptyState()?.count == 0 {
             preloadEmptyState()
-            PreloadUserData().preloadInitialUser()
+            //PreloadUserData().preloadInitialUser()
         }
         if ResumeTemplateRepository.shared.getAllTemplate()?.count == 0 {
             preloadResumeTemplate()
         }
-        if UserResumeRepository.shared.getAllUserResume()?.count == 0{
-            //            preloadUserResume()
-            //            preloadMyRessumeDummy()
-        }
         
         if PersonalInformationPlaceholderRepository.shared.getAllPIPh()?.count == 0  {
             PreloadUserData().preloadUserPh()
-            
         }
         
         if PersonalInformationSuggestionRepository.shared.getAllPISuggestion()?.count == 0 {

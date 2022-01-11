@@ -26,11 +26,11 @@ class PDFCreator: NSObject {
     func createPDF() -> Data {
         //user data
         getResumeContentData()
-        let userName = userResume?.user?.username ?? ""
+        let userName = userResume?.personalInfo?.fullName ?? ""
         // 1
         let pdfMetaData = [
             kCGPDFContextCreator: "Resume Creator",
-            kCGPDFContextAuthor: userResume?.user?.username,
+            kCGPDFContextAuthor: userResume?.personalInfo?.fullName,
             kCGPDFContextTitle: userResume?.name
         ]
         let format = UIGraphicsPDFRendererFormat()
@@ -64,9 +64,9 @@ class PDFCreator: NSObject {
     
     func addTitleSection(pageRect: CGRect, title: String, drawContext: CGContext, context: UIGraphicsPDFRendererContext)->CGFloat{
         //User Data
-        let phone = userResume?.user?.phoneNumber ?? ""
-        let email = userResume?.user?.email ?? ""
-        let location = userResume?.user?.location ?? ""
+        let phone = userResume?.personalInfo?.phoneNumber ?? ""
+        let email = userResume?.personalInfo?.email ?? ""
+        let location = userResume?.personalInfo?.location ?? ""
         
         let titleBottom = addTitle(pageRect: pageRect, text: title, context: context, template: 1)
         let sectionBottom = addPersonalInformation(pageRect: pageRect, startPosition: titleBottom, text: "\(phone) | \(email) | \(location)", context: context, template: selectedTemplate)
@@ -77,7 +77,7 @@ class PDFCreator: NSObject {
     
     func addSummarySection(pageRect: CGRect,currentPosition: CGFloat, drawContext: CGContext, context:UIGraphicsPDFRendererContext)->CGFloat{
         //User Data
-        let summary = userResume?.user?.summary ?? ""
+        let summary = userResume?.personalInfo?.summary ?? ""
         let headerBottom = addHeader(pageRect: pageRect, headerTop: currentPosition, text: "Summary", context: context, template: 1)
         let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
         let contentBottom = addParagraphText(pageRect: pageRect, textTop: separatorBottom, text: "\(summary)", context: context, template: selectedTemplate)

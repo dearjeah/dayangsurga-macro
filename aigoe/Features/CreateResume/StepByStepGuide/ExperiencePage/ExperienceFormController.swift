@@ -30,6 +30,7 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
     var getIndexExp = Int()
     var isCreate = Bool()
     var dataFrom = String()
+    var currentUserId = ""
     
     func setup(dlgt: ExperiencePageDelegate) {
         self.expDelegate = dlgt
@@ -58,7 +59,8 @@ extension ExperienceFormController {
         if !alertForCheckTF() {
             if experience == nil{
                 //add
-                guard let addExp = self.viewModel?.addExpData(title: jobTitle.textField.text ?? "",
+                guard let addExp = self.viewModel?.addExpData(userId: currentUserId,
+                                                              title: jobTitle.textField.text ?? "",
                                                               jobDesc: jobSummary.textView.text ?? "",
                                                               company: companyName.textField.text ?? "",
                                                               startDate: jobPeriod.startDatePicker.date,

@@ -7,19 +7,23 @@
 
 import UIKit
 
+protocol PersonalInfoListDelegate: AnyObject {
+    func goToPersonalInfoForm(from: String)
+}
+
 class PersonalInfoList: UIView {
     
     @IBOutlet weak var titleAndButton: HorizontalLabelAndButton!
     @IBOutlet weak var emptyStateView: EmptyState!
     @IBOutlet weak var tableView: UITableView!
     
-    var personalData = [User]()
+    var personalData = [Personal_Info]()
     var resumeContentData = Resume_Content()
-    weak var delegate: ListEduDelegate?
+    weak var delegate: PersonalInfoListDelegate?
     var personalInfoViewModel = PersonalInfoViewModel()
     var withResumeContent = true
     
-    func setup(dlgt: ListEduDelegate) {
+    func setup(dlgt: PersonalInfoListDelegate) {
         self.delegate = dlgt
     }
     
@@ -40,20 +44,19 @@ class PersonalInfoList: UIView {
         tableView.tableFooterView = UIView()
     }
     
-    convenience init(userData: [User], resumeContent: Resume_Content) {
+    convenience init(personalInfoData: [Personal_Info], resumeContent: Resume_Content) {
         self.init()
-        personalData = userData
+        personalData = personalInfoData
         resumeContentData = resumeContent
         registerTableView()
         notificationCenterSetup()
     }
-    
-    @IBAction func addAction(_ sender: Any) {
-        navigateToPersonalInfoForm(from: "add")
-    }
-    
-    func navigateToPersonalInfoForm(from: String, userData: User = User()){
-        delegate?.addEduForm(from: from)
+}
+
+//MARK: Delegate
+extension PersonalInfoList: HorizontalLabelAndButtonDelegate {
+    func buttonPressed(title: String) {
+        delegate?.goToPersonalInfoForm(from: "add")
     }
 }
 
@@ -66,7 +69,6 @@ extension PersonalInfoList: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Personal Data", personalData)
         if personalData.count != 0 {
             emptyStateView.isHidden = true
         } else {
@@ -83,7 +85,7 @@ extension PersonalInfoList: UITableViewDataSource, UITableViewDelegate {
         let personalInfo = personalData[indexPath.row]
         
         
-        cell.nameLbl.text = personalInfo.username
+        cell.nameLbl.text = personalInfo.fullName
         cell.emailLbl.text = personalInfo.email
         cell.phoneNumberLbl.text = personalInfo.phoneNumber
         cell.locLbl.text = personalInfo.location
@@ -94,10 +96,10 @@ extension PersonalInfoList: UITableViewDataSource, UITableViewDelegate {
             let counter = resumeContentData.personalInfo_id?.count ?? 0
             if counter != 0 {
                 for i in 0..<counter {
-                    if personalData[indexPath.row].personalInfo_id == selectedPersonalInfoId?[i] {
+                    //if personalData[indexPath.row].personalInfo_id == selectedPersonalInfoId?[i] {
                         /*cell.checklistButtonIfSelected()
                         cell.selectionStatus = true*/
-                    }
+                    //}
                 }
             } else {
 //                cell.checklistButtonUnSelected()
@@ -151,7 +153,7 @@ extension PersonalInfoList {
 //MARK: Reload Function
 extension  PersonalInfoList {
     func getAndReload(){
-        personalData = personalInfoViewModel.getAllUserData()
+        personalData = personalInfoViewModel.getAllPersonalInfoData()
         tableView.reloadData()
     }
     
@@ -168,6 +170,7 @@ extension  PersonalInfoList {
 extension  PersonalInfoList {
     func setup(){
         titleAndButton.viewSetup(labelTitle: "Personal Information", buttonTitle: "Add")
+        titleAndButton.delegate = self
     }
     
     fileprivate func initWithNib() {

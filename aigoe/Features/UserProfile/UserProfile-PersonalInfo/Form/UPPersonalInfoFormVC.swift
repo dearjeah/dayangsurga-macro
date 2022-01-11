@@ -12,13 +12,13 @@ class UPPersonalInfoFormVC: MVVMViewController<UPPersonalInfoFormViewModel> {
     @IBOutlet weak var formView: PersonalInfoPage!
     @IBOutlet weak var addEditBtn: UIButton!
     
-    var personalInfo: User? = nil
+   var personalInfo: Personal_Info? = nil
     var dataSource: String? = ""
     var totalData = Int()
     
     var ph: PersonalInformation_Placeholder?
     
-    override func viewDidLoad() {
+    /* override func viewDidLoad() {
         super.viewDidLoad()
         
         self.viewModel = UPPersonalInfoFormViewModel()
@@ -63,7 +63,7 @@ extension UPPersonalInfoFormVC {
                 formView.summaryField.textView.textColor = .lightGray
                 addEditBtn.dsLongFilledPrimaryButton(withImage: false, text: "Add Personal Information")
             } else {
-                formView.fullNameField.textField.text = personalInfo?.username
+                formView.fullNameField.textField.text = personalInfo?.fullName
                 formView.emailField.textField.text = personalInfo?.email
                 formView.phoneField.textField.text = personalInfo?.phoneNumber
                 formView.locationField.textField.text = personalInfo?.location
@@ -133,7 +133,7 @@ extension UPPersonalInfoFormVC {
     
     @objc func updatePI(sender: UIBarButtonItem) {
         if !checkAllFieldValue() {
-            let data: ()? = self.viewModel?.updatePersonalInformation(userId: Int(personalInfo?.user_id ?? 0),
+            let data: ()? = self.viewModel?.updatePersonalInformation(userId: ,
                                                                       username: formView.fullNameField.textField.text ?? "",
                                                                       phoneNumber: formView.phoneField.textField.text ?? "",
                                                                       email: formView.emailField.textField.text ?? "",
@@ -175,7 +175,7 @@ extension UPPersonalInfoFormVC {
     
     func errorSaveData(){
         showAlert(title: "Unable to Save Data", msg: "Your data is not saved. Please try again later", style: .default, titleAction: "OK")
-    }
+    }*/
     
     
 }

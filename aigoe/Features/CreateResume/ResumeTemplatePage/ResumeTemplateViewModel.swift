@@ -13,6 +13,7 @@ class ResumeTemplateViewModel: NSObject{
     let templateRepo = ResumeTemplateRepository.shared
     let resumeRepo = ResumeContentRepository.shared
     let userResume = UserResumeRepository.shared
+    let userRepo = UserRepository.shared
     
     func getTemplate() -> [Resume_Template]?{
         return templateRepo.getAllTemplate()
@@ -25,9 +26,9 @@ class ResumeTemplateViewModel: NSObject{
         return contentId
     }
     
-    func createUserResume(selectedTemplate: Int) -> String {
+    func createUserResume(selectedTemplate: Int, userId: String) -> String {
         let id = UUID().uuidString
-        userResume.createUserResume(resume_id: id, template_id: selectedTemplate, user_id: 0, image: UIImage(), name: "My Resume", lastUpdate: Date(), editingProgress: 0)
+        userResume.createUserResume(resume_id: id, template_id: selectedTemplate, user_id: userId, image: UIImage(), name: "My Resume", lastUpdate: Date(), editingProgress: 0)
         return id
     }
     
@@ -39,5 +40,7 @@ class ResumeTemplateViewModel: NSObject{
         return userResume.getUserResumeById(resume_id: id ) ?? User_Resume()
     }
     
-    
+    func getCurrentUserId() -> String {
+        return userRepo.currentUserId
+    }
 }

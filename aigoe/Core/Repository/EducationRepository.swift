@@ -16,7 +16,7 @@ class EducationRepository{
     
     // create data
     func createEducation(eduId: String,
-                         userId: Int,
+                         userId: String,
                          institution: String,
                          title: String,
                          startDate: Date,
@@ -30,7 +30,7 @@ class EducationRepository{
             if let educationToUser = UserRepository.shared.getUserById(id: userId) {
                 let education = Education(context: context)
                 education.edu_id = eduId
-                education.user_id = Int32(userId)
+                education.user_id = userId
                 education.institution = institution
                 education.title = title
                 education.start_date = startDate
@@ -78,7 +78,6 @@ class EducationRepository{
     
     // func updates
     func updateEducation( eduId: String,
-                          userId: Int,
                           institution: String,
                           title: String,
                           startDate: Date,
@@ -93,7 +92,6 @@ class EducationRepository{
             let item = try context.fetch(fetchRequest) as? [Education]
             let education = item?.first
             education?.edu_id = eduId
-            education?.user_id = Int32(userId)
             education?.institution = institution
             education?.title = title
             education?.start_date = startDate

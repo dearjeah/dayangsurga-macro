@@ -8,15 +8,20 @@
 import Foundation
 
 class PersonalInfoViewModel: NSObject {
-    let userRepo = UserRepository.shared
+    let personalInfoRepo = PersonalInfoRepository.shared
     
-    func getUserData() -> User {
-        guard let data = userRepo.getUserById(id: 0) else { return User() }
+    func getPersonalInfoDataById(personalInfoId: String) -> Personal_Info {
+        guard let data = personalInfoRepo.getPersonalInfoById(id: personalInfoId) else { return Personal_Info() }
         return data
     }
     
-    func getAllUserData() -> [User] {
-        return []
+    func getAllPersonalInfoData() -> [Personal_Info] {
+        guard let data = personalInfoRepo.getAllPersonalInfo() else { return []}
+        return data
+    }
+    
+    func updatePersonalInfo(id: String, name: String, phone: String, email: String, location: String, summary: String) {
+        personalInfoRepo.updatePersonalInfo(id: id, newName: name, newPhoneNumber: phone, newEmail: email, newLocation: location, newSummary: summary)
     }
 }
 

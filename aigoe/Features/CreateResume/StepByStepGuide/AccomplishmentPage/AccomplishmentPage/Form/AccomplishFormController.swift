@@ -23,6 +23,7 @@ class AccomplishFormController: MVVMViewController<AccomplishFormViewModel> {
     var accomplishSuggest: Accomplishment_Suggest?
     var dataFrom = String()
     var accomId: String = ""
+    var currentUserId = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +51,8 @@ class AccomplishFormController: MVVMViewController<AccomplishFormViewModel> {
                     endDate: endDateView.datePicker.date,
                     status: statusView.switchButton.isOn,
                     issuer: issuerView.textField.text ?? "",
-                    desc: ""
+                    desc: "",
+                    userId: currentUserId
                 ) else { return errorSaveData(from: "Save") }
                 if data {
                     performSegue(withIdentifier: "backToStepVC", sender: self)
