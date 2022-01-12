@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PersonalInfoListDelegate: AnyObject {
-    func goToPersonalInfoForm(from: String)
+    func goToPersonalInfoForm(from: String, data: Personal_Info)
 }
 
 class PersonalInfoList: UIView {
@@ -17,10 +17,11 @@ class PersonalInfoList: UIView {
     @IBOutlet weak var emptyStateView: EmptyState!
     @IBOutlet weak var tableView: UITableView!
     
+    weak var delegate: PersonalInfoListDelegate?
     var personalData = [Personal_Info]()
     var resumeContentData = Resume_Content()
-    weak var delegate: PersonalInfoListDelegate?
     var personalInfoViewModel = PersonalInfoViewModel()
+    var viewModel = PersonalInfoViewModel()
     var withResumeContent = true
     
     func setup(dlgt: PersonalInfoListDelegate) {
@@ -56,7 +57,7 @@ class PersonalInfoList: UIView {
 //MARK: Delegate
 extension PersonalInfoList: HorizontalLabelAndButtonDelegate {
     func buttonPressed(title: String) {
-        delegate?.goToPersonalInfoForm(from: "add")
+        delegate?.goToPersonalInfoForm(from: "add", data: Personal_Info())
     }
 }
 
@@ -93,42 +94,33 @@ extension PersonalInfoList: UITableViewDataSource, UITableViewDelegate {
         
         if withResumeContent {
             let selectedPersonalInfoId = resumeContentData.personalInfo_id
-            let counter = resumeContentData.personalInfo_id?.count ?? 0
-            if counter != 0 {
-                for i in 0..<counter {
-                    //if personalData[indexPath.row].personalInfo_id == selectedPersonalInfoId?[i] {
-                        /*cell.checklistButtonIfSelected()
-                        cell.selectionStatus = true*/
-                    //}
-                }
+            if personalInfo.personalInfo_id == selectedPersonalInfoId {
+                cell.checklistButtonIfSelected()
+                cell.selectionStatus = true
             } else {
-//                cell.checklistButtonUnSelected()
-//                cell.selectionStatus = false
+                cell.checklistButtonUnSelected()
+                cell.selectionStatus = false
             }
         } else {
-           /* cell.selectionButton.isHidden = true
-            cell.selectionButton.isEnabled = false*/
+            cell.checklistButn.isHidden = true
+            cell.checklistButn.isEnabled = false
         }
         
-        /*cell.editButtonAction = {
-            //self.delegate?.editEduForm(from: "edit", edu: edu)
+        cell.editActionButton = {
+            self.delegate?.goToPersonalInfoForm(from: "edit", data: personalInfo)
         }
         
         cell.checklistButtonAction = {
             if cell.selectionStatus == false {
                 cell.selectionStatus = true
                 cell.checklistButtonIfSelected()
-                self.personalData[indexPath.row].is_selected = true
-                self.eduViewModel.addSelectedEdu(resumeId: self.resumeContentData.resume_id ?? "", eduId: self.eduData[indexPath.row].edu_id ?? "")
-                self.delegate?.selectButtonEdu(eduId: edu.edu_id ?? "", isSelected: true)
+                self.viewModel.addSelectedPersonalInfo(resumeId: self.resumeContentData.resume_id ?? "", personalInfoId: personalInfo.personalInfo_id ?? "")
             } else {
                 cell.selectionStatus = false
                 cell.checklistButtonUnSelected()
-                self.eduData[indexPath.row].is_selected = false
-                self.eduViewModel.removeUnselectedEdu(resumeId: self.resumeContentData.resume_id ?? "", eduId: self.eduData[indexPath.row].edu_id ?? "")
-                self.delegate?.selectButtonEdu(eduId: edu.edu_id ?? "", isSelected: false)
+                self.viewModel.deleteSelectedPersonalInfo(resumeId: self.resumeContentData.resume_id ?? "", personalInfoId: personalInfo.personalInfo_id ?? "")
             }
-        }*/
+        }
         return cell
     }
     

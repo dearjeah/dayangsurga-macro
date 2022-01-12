@@ -21,7 +21,7 @@ class PersonalInfoRepository{
                     phoneNumber: String,
                     email: String,
                     location: String,
-                    summary: String){
+                    summary: String) -> Bool {
         do {
             let user = Personal_Info(context: context)
             user.user_id = user_id
@@ -33,10 +33,12 @@ class PersonalInfoRepository{
             user.summary = summary
             
             try context.save()
+            return true
         }
         catch let error as NSError {
             print(error)
         }
+        return false
     }
     
     // retrieve
@@ -69,7 +71,7 @@ class PersonalInfoRepository{
                 newPhoneNumber: String,
                 newEmail: String,
                 newLocation: String,
-                newSummary: String) {
+                newSummary: String) -> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "perosnalInfo_id == %d", id as CVarArg)
         do {
@@ -84,20 +86,23 @@ class PersonalInfoRepository{
             user?.summary = newSummary
             
             try context.save()
+            return true
         } catch let error as NSError {
             print(error)
         }
-        
+        return false
     }
     
     // func delete
-    func deletePersonalInfo(data: Personal_Info) {
+    func deletePersonalInfo(data: Personal_Info) -> Bool {
         do {
             context.delete(data)
             try context.save()
+            return true
             
         } catch let error as NSError {
             print(error)
         }
+        return false
     }
 }

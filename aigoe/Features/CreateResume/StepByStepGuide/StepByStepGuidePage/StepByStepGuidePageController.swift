@@ -172,8 +172,8 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
 
 //MARK: Personal Info List Delegate
 extension StepByStepGuidePageController: PersonalInfoListDelegate {
-    func goToPersonalInfoForm(from: String) {
-        stepDelegate?.goToPersonalInfoForm(from: from, personalInfo: Personal_Info())
+    func goToPersonalInfoForm(from: String, data: Personal_Info) {
+        stepDelegate?.goToPersonalInfoForm(from: from, personalInfo: data)
     }
 }
 
@@ -476,6 +476,7 @@ extension StepByStepGuidePageController {
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectGenerate), name: Notification.Name("goToGenerate"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(progressBarTapped), name: Notification.Name("progressBarTapped"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("personalInfoReload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("eduReload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("expReload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("skillReload"), object: nil)

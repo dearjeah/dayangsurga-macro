@@ -216,6 +216,7 @@
 		BF88DD352779BA2800AB74E9 /* UserProfileListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF88DD332779BA2800AB74E9 /* UserProfileListCell.swift */; };
 		BF88DD362779BA2800AB74E9 /* UserProfileListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF88DD342779BA2800AB74E9 /* UserProfileListCell.xib */; };
 		BF88DD392779C39600AB74E9 /* UserProfileListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF88DD382779C39600AB74E9 /* UserProfileListModel.swift */; };
+		BF8BC752278D698D008C8384 /* PersonalInfoFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8BC751278D698D008C8384 /* PersonalInfoFormViewModel.swift */; };
 		BFA6AABF273E368100A4D677 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA6AABE273E368100A4D677 /* LandingPageViewController.swift */; };
 		BFBA47AC27294AE600D4771E /* StepByStepGuidePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA47AB27294AE600D4771E /* StepByStepGuidePageController.swift */; };
 		BFBA47B4272AE5C400D4771E /* ExperienceFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA47B3272AE5C400D4771E /* ExperienceFormController.swift */; };
@@ -460,6 +461,7 @@
 		BF88DD332779BA2800AB74E9 /* UserProfileListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileListCell.swift; sourceTree = "<group>"; };
 		BF88DD342779BA2800AB74E9 /* UserProfileListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserProfileListCell.xib; sourceTree = "<group>"; };
 		BF88DD382779C39600AB74E9 /* UserProfileListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileListModel.swift; sourceTree = "<group>"; };
+		BF8BC751278D698D008C8384 /* PersonalInfoFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoFormViewModel.swift; sourceTree = "<group>"; };
 		BFA6AABE273E368100A4D677 /* LandingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		BFBA47AB27294AE600D4771E /* StepByStepGuidePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepByStepGuidePageController.swift; sourceTree = "<group>"; };
 		BFBA47B3272AE5C400D4771E /* ExperienceFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceFormController.swift; sourceTree = "<group>"; };
@@ -714,6 +716,7 @@
 			children = (
 				BF4A5A0727853DE3000D52C2 /* PersonalInfoForm.storyboard */,
 				BF4A5A0927853DFA000D52C2 /* PersonalInfoFormVC.swift */,
+				BF8BC751278D698D008C8384 /* PersonalInfoFormViewModel.swift */,
 			);
 			path = Form;
 			sourceTree = "<group>";
@@ -903,9 +906,9 @@
 		BF850342272255D500CC43FB /* PersonalInfoPage */ = {
 			isa = PBXGroup;
 			children = (
+				BF09E0232743E5AC00DB1C6B /* Model */,
 				BF4A5A0627853DD2000D52C2 /* Form */,
 				BFF83978277C8A5100DB9908 /* List */,
-				BF09E0232743E5AC00DB1C6B /* Model */,
 				BF5F1BE92722D5CA004D0756 /* PersonalInfoViewModel.swift */,
 				BF85035A27225C3400CC43FB /* PersonalInfoPage.swift */,
 				BF85035C27225C4300CC43FB /* PersonalInfoPage.xib */,
@@ -1685,6 +1688,7 @@
 				B859B53B272852EF00627CDC /* ExperienceRepository.swift in Sources */,
 				8435DB4D27321FAB00862FF0 /* SkillPlaceholderRepository.swift in Sources */,
 				BF8503A42722B80F00CC43FB /* ExperiencePageView.swift in Sources */,
+				BF8BC752278D698D008C8384 /* PersonalInfoFormViewModel.swift in Sources */,
 				BF5F1BEE2722D805004D0756 /* ResumeTemplateViewController.swift in Sources */,
 				BF88DD312779B94200AB74E9 /* UserProfileListViewModel.swift in Sources */,
 				B88AFA39272AB10D007408A5 /* UIImageView+Extension.swift in Sources */,

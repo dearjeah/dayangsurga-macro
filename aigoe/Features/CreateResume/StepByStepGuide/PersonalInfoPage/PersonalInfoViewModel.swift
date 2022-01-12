@@ -9,6 +9,7 @@ import Foundation
 
 class PersonalInfoViewModel: NSObject {
     let personalInfoRepo = PersonalInfoRepository.shared
+    let resumeContentRepo = ResumeContentRepository.shared
     
     func getPersonalInfoDataById(personalInfoId: String) -> Personal_Info {
         guard let data = personalInfoRepo.getPersonalInfoById(id: personalInfoId) else { return Personal_Info() }
@@ -21,7 +22,13 @@ class PersonalInfoViewModel: NSObject {
     }
     
     func updatePersonalInfo(id: String, name: String, phone: String, email: String, location: String, summary: String) {
-        personalInfoRepo.updatePersonalInfo(id: id, newName: name, newPhoneNumber: phone, newEmail: email, newLocation: location, newSummary: summary)
+       let data = personalInfoRepo.updatePersonalInfo(id: id, newName: name, newPhoneNumber: phone, newEmail: email, newLocation: location, newSummary: summary)
+    }
+    func addSelectedPersonalInfo(resumeId: String, personalInfoId: String) {
+        resumeContentRepo.updateResumeContentPersonalInfo(resume_id: resumeId, newPersonal_id: personalInfoId)
+    }
+    func deleteSelectedPersonalInfo(resumeId: String, personalInfoId: String) {
+        let data = resumeContentRepo.deleteResumeContentPersonalInfo(resume_id: resumeId, personalInfoId: personalInfoId)
     }
 }
 
