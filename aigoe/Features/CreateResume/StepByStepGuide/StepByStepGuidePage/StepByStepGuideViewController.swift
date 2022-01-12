@@ -40,6 +40,7 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
         
         if !isCreate {
             selectedResumeContentId = self.viewModel?.getResumeContentId(resumeId: selectedUserResume.resume_id ?? "") ?? ""
+            currentUserId = self.viewModel?.getCurrentUserId() ?? ""
         }
     }
     

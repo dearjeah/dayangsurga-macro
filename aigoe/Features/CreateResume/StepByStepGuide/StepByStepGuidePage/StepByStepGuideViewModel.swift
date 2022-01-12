@@ -29,12 +29,16 @@ class StepByStepGuideViewModel: NSObject {
     let accomRepo = AccomplishmentRepository.shared
     let resumeContentRepo = ResumeContentRepository.shared
     let userResumeRepo = UserResumeRepository.shared
+    
+    //user id
+    func getCurrentUserId() -> String {
+        return userRepo.currentUserId ?? ""
+    }
 
     // for empty state
     func getEmptyStateId(Id: Int) -> Empty_State?{
         return emptyStateRepo.getEmptyStateById(id: Id)
     }
-    
     // for experience
     func getExpData() -> [Experience]?{
         return experienceRepo.getAllExperience()

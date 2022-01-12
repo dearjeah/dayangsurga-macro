@@ -13,6 +13,7 @@ class UPEducationFormVC: MVVMViewController<UPEducationFormViewModel> {
     var eduData: Education? = nil
     var eduPlaceholder: Edu_Placeholder?
     var eduSuggestion: Edu_Suggestion?
+    var currentUserId = ""
     
     @IBOutlet weak var institutionView: LabelWithTextField!
     @IBOutlet weak var qualificationView: LabelWithTextField!
@@ -112,7 +113,7 @@ extension UPEducationFormVC {
         if !alertForCheckTF() {
             if dataSource == "Add" {
                 guard let data = self.viewModel?.addEdu(
-                    userId: String(),
+                    userId: currentUserId,
                     institution: institutionView.textField.text ?? "",
                     title: qualificationView.textField.text ?? "",
                     startDate: eduPeriodView.startDatePicker.date,

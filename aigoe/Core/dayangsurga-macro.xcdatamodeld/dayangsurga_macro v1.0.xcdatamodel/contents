@@ -207,7 +207,7 @@
         <relationship name="consultHistory" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Consult_History" inverseName="user" inverseEntity="Consult_History"/>
         <relationship name="education" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Education" inverseName="user" inverseEntity="Education"/>
         <relationship name="experience" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Experience" inverseName="user" inverseEntity="Experience"/>
-        <relationship name="personalInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Personal_Info" inverseName="user" inverseEntity="Personal_Info"/>
+        <relationship name="personalInfo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Personal_Info" inverseName="user" inverseEntity="Personal_Info"/>
         <relationship name="skill" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Skills" inverseName="user" inverseEntity="Skills"/>
         <relationship name="userPlaceholder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PersonalInformation_Placeholder"/>
         <relationship name="userResume" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User_Resume"/>

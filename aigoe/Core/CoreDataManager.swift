@@ -83,6 +83,7 @@ class CoreDataManager {
         let userId = UUID().uuidString
         userRepo.createUser(user_id: userId, username: "Guest001", email: "", password: "")
         userRepo.currentUserId = userId
+        UserDefaults.standard.set(userId, forKey: "currentUserId")
     }
     
 }
