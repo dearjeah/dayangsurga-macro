@@ -24,6 +24,7 @@ class UPExperienceListVC:  MVVMViewController<UPExperienceListViewModel> {
     
     override func viewWillAppear(_ animated: Bool) {
         getInitialData()
+        setup()
         experienceListView.getAndReload()
         showAddBtn()
     }

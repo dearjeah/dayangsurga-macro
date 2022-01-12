@@ -19,10 +19,9 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OZg-JO-TyN" customClass="ExperiencePageView" customModule="aigoe" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="48" width="414" height="814"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5C1-7R-06t">
-                                <rect key="frame" x="16" y="814" width="382" height="48"/>
+                                <rect key="frame" x="16" y="794" width="382" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="fFL-99-jxt"/>
                                 </constraints>
@@ -41,7 +40,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="OZg-JO-TyN" secondAttribute="trailing" id="LUz-v3-3cs"/>
                             <constraint firstItem="5C1-7R-06t" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Nnp-qv-hGK"/>
                             <constraint firstItem="OZg-JO-TyN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="-40" id="csP-cR-s4Z"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="5C1-7R-06t" secondAttribute="bottom" id="t7b-JK-9y1"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="5C1-7R-06t" secondAttribute="bottom" constant="20" id="t7b-JK-9y1"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="OZg-JO-TyN" secondAttribute="bottom" id="vTi-Sg-n6K"/>
                         </constraints>
                     </view>
@@ -131,7 +130,7 @@
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="10"/>
+                                                        <real key="value" value="20"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                         <real key="value" value="1"/>
@@ -175,7 +174,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZS3-5q-JPU"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="primaryBG"/>
                         <constraints>
                             <constraint firstItem="98q-ws-Qah" firstAttribute="width" secondItem="aAH-N7-iUy" secondAttribute="width" id="HrU-Ff-nMd"/>
                             <constraint firstItem="rE7-JH-4bK" firstAttribute="bottom" secondItem="ZS3-5q-JPU" secondAttribute="bottom" id="Tfr-Lt-h1o"/>
