@@ -28,6 +28,7 @@ class PersonalInfoPage: UIView{
     var isFromCreate = Bool()
     var viewModel = PersonalInfoViewModel()
     var currentUserId = ""
+    var dataFrom = "add"
 
     func setup(dlgt: PersonalInfoPageDelegate) {
         self.delegate = dlgt
@@ -89,7 +90,7 @@ extension PersonalInfoPage {
             summaryField.textView.textColor = .lightGray
         }
         
-        if personalInfoData != nil {
+        if dataFrom == "edit" {
             fullNameField.textField.text =  personalInfoData?.fullName
             emailField.textField.text = personalInfoData?.email
             phoneField.textField.text = personalInfoData?.phoneNumber
@@ -140,10 +141,11 @@ extension PersonalInfoPage :  UITextViewDelegate, LabelWithTextFieldDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        /*let tmp = checkAllFieldValue()
+        let tmp = checkAllFieldValue()
         if tmp {
             let data = PersonalInfo(
-                id: 0,
+                id: "",
+                userId: currentUserId,
                 name: fullNameField.textField.text ?? "",
                 email: emailField.textField.text ?? "",
                 phoneNumber: phoneField.textField.text ?? "",
@@ -151,15 +153,16 @@ extension PersonalInfoPage :  UITextViewDelegate, LabelWithTextFieldDelegate {
                 summary: summaryField.textView.text ?? ""
             )
             delegate?.isAllTextfieldFilled(was: true, data: data)
-        }*/
+        }
     }
     
     func isTextfieldFilled(was: Bool) {
-        /*if was {
+        if was {
             let tmp = checkAllFieldValue()
             if tmp {
                 let data = PersonalInfo(
-                    id: 0,
+                    id: "",
+                    userId: currentUserId,
                     name: fullNameField.textField.text ?? "",
                     email: emailField.textField.text ?? "",
                     phoneNumber: phoneField.textField.text ?? "",
@@ -168,6 +171,6 @@ extension PersonalInfoPage :  UITextViewDelegate, LabelWithTextFieldDelegate {
                 )
                 delegate?.isAllTextfieldFilled(was: true, data: data)
             }
-        }*/
+        }
     }
 }

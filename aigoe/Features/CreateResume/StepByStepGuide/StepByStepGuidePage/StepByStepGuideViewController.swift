@@ -61,7 +61,9 @@ class StepByStepGuideViewController: MVVMViewController<StepByStepGuideViewModel
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if formSource == "education" {
+        if formSource == "personalInfo" {
+            NotificationCenter.default.post(name: Notification.Name("personalInfoReload"), object: nil)
+        } else if formSource == "education" {
             NotificationCenter.default.post(name: Notification.Name("eduReload"), object: nil)
         } else if formSource == "experience" {
             NotificationCenter.default.post(name: Notification.Name("expReload"), object: nil)
