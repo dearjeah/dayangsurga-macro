@@ -28,9 +28,9 @@ class ExperienceFormViewModel: NSObject{
         return expRepo.getExperienceById(experienceId: id)
     }
     
-    func addExpData(title: String, jobDesc: String, company: String, startDate: Date, endDate: Date, status: Bool, isSelected: Bool) -> Bool {
+    func addExpData(userId: String, title: String, jobDesc: String, company: String, startDate: Date, endDate: Date, status: Bool, isSelected: Bool) -> Bool {
         let addExp = expRepo.createExperience(exp_id: UUID().uuidString,
-                                 user_id: 0,
+                                 user_id: userId,
                                  jobTitle: title,
                                  jobDesc: jobDesc,
                                  jobCompanyName: company,
@@ -43,7 +43,6 @@ class ExperienceFormViewModel: NSObject{
     
     func updateExpData(expId: String, title: String, jobDesc: String, company: String, startDate: Date, endDate: Date, status: Bool, isSelected: Bool) -> Bool {
         let updateExp = expRepo.updateExperience(exp_id: expId,
-                                                 user_id: 0,
                                                  newJobTitle: title,
                                                  newJobDesc: jobDesc,
                                                  newJobCompanyName: company,

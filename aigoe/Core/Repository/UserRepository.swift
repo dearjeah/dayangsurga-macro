@@ -9,27 +9,24 @@ import Foundation
 import UIKit
 import CoreData
 
-class UserRepository{
+class UserRepository {
     
     static let shared = UserRepository()
     let entityName = User.self.description()
     let context = CoreDataManager.sharedManager.persistentContainer.viewContext
+    var currentUserId = ""
     
     // create data
-    func createUser(user_id: Int,
+    func createUser(user_id: String,
                     username: String,
-                    phoneNumber: String,
                     email: String,
-                    location: String,
-                    summary: String){
+                    password: String){
         do {
             let user = User(context: context)
-            user.user_id = Int32(user_id)
+            user.user_id = user_id
             user.username = username
-            user.phoneNumber = phoneNumber
             user.email = email
-            user.location = location
-            user.summary = summary
+            user.password = password
             
             try context.save()
         }
@@ -50,7 +47,7 @@ class UserRepository{
         return []
     }
     
-    func getUserById(id: Int) -> User? {
+    func getUserById(id: String) -> User? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "user_id == %d", id as CVarArg)
         do {
@@ -63,24 +60,20 @@ class UserRepository{
     }
     
     // func updates
-    func updateUser(id: Int,
-                newName: String,
-                newPhoneNumber: String,
+    func updateUser(id: String,
+                newUsername: String,
                 newEmail: String,
-                newLocation: String,
-                newSummary: String) {
+                newPassword: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "user_id == %d", id as CVarArg)
         do {
             let item = try context.fetch(fetchRequest) as? [User]
             let user = item?.first
             
-            user?.user_id = Int32(id)
-            user?.username = newName
-            user?.phoneNumber = newPhoneNumber
+            user?.user_id = id
+            user?.username = newUsername
             user?.email = newEmail
-            user?.location = newLocation
-            user?.summary = newSummary
+            user?.password = newPassword
             
             try context.save()
         } catch let error as NSError {

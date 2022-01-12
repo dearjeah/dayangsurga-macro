@@ -99,6 +99,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="icRoundSelectionNoFill"/>
+                                <connections>
+                                    <action selector="selectAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kpn-is-rdV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="primaryWhite"/>
@@ -158,6 +161,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" name="primaryBG"/>
             <connections>
+                <outlet property="cellBox" destination="yyx-9k-WuJ" id="0lJ-js-sZ0"/>
                 <outlet property="checklistButn" destination="qWp-eT-GmF" id="dZ3-kj-7ZX"/>
                 <outlet property="editBtn" destination="IY6-cY-0Dx" id="d2m-v1-aZD"/>
                 <outlet property="emailLbl" destination="bap-Vg-OhY" id="WRg-dF-Pt6"/>

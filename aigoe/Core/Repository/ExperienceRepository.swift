@@ -16,7 +16,7 @@ class ExperienceRepository{
     
     // create data
     func createExperience(exp_id: String,
-                          user_id: Int,
+                          user_id: String,
                           jobTitle: String,
                           jobDesc: String,
                           jobCompanyName: String,
@@ -28,7 +28,7 @@ class ExperienceRepository{
             if let experienceToUser = UserRepository.shared.getUserById(id: user_id) {
                 let experience = Experience(context: context)
                 experience.exp_id = exp_id
-                experience.user_id = Int32(user_id)
+                experience.user_id = user_id
                 experience.jobTitle = jobTitle
                 experience.jobDesc = jobDesc
                 experience.jobCompanyName = jobCompanyName
@@ -75,7 +75,6 @@ class ExperienceRepository{
     
     // func updates
     func updateExperience(exp_id: String,
-                          user_id: Int,
                           newJobTitle: String,
                           newJobDesc: String,
                           newJobCompanyName: String,

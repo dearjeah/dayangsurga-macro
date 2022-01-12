@@ -15,6 +15,7 @@ class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> 
     let cellWidthScale = 0.71
     let cellHeightScale = 0.67
     var resumeContentId = String()
+    var currentUserId = ""
     
     @IBOutlet weak var resumeTemplateCollection: UICollectionView!
     @IBOutlet weak var resumeTemplatePageController: UIPageControl!
@@ -31,7 +32,7 @@ class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> 
     }
     
     @IBAction func didTapButton(_ sender: Any) {
-        let userResume = createUserResume(selectedTemplate: selectedTemplate)
+        let userResume = createUserResume(selectedTemplate: selectedTemplate, userId: currentUserId)
         
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.titleView?.tintColor = .white
@@ -47,6 +48,7 @@ class ResumeTemplateViewController: MVVMViewController<ResumeTemplateViewModel> 
         vc.selectedUserResume = userResume
         vc.selectedResumeContentId = resumeContentId
         vc.selectedResumeContent = self.viewModel?.getCurrentUserResumeContent(id: resumeContentId) ?? Resume_Content()
+        vc.currentUserId = currentUserId
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -138,10 +140,11 @@ extension ResumeTemplateViewController: UICollectionViewDelegate, UICollectionVi
 extension ResumeTemplateViewController {
     func getInitialData() {
         template = self.viewModel?.getTemplate() ?? []
+        currentUserId = self.viewModel?.getCurrentUserId() ?? ""
     }
     
-    func createUserResume(selectedTemplate: Int) -> User_Resume {
-        let resumeId = self.viewModel?.createUserResume(selectedTemplate: selectedTemplate) ?? ""
+    func createUserResume(selectedTemplate: Int, userId: String) -> User_Resume {
+        let resumeId = self.viewModel?.createUserResume(selectedTemplate: selectedTemplate, userId: userId) ?? ""
         if resumeId != "" {
             resumeContentId = self.viewModel?.createResumeContent(resumeId: resumeId) ?? ""
         }

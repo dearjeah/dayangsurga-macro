@@ -87,7 +87,15 @@ extension UPPersonalInfoListVC {
 
 // MARK: Segue
 extension UPPersonalInfoListVC {
-    func passingDataToForm(dataSource: String, personalInfo: User){
+    func goToForm(dataSource: String, totalData: Int){
+        let storyboard = UIStoryboard(name: "UP-PersonalInfo", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "goToPIForm") as! UPPersonalInfoFormVC
+        vc.dataSource = dataSource
+        vc.totalData = totalData
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func passingDataToForm(dataSource: String, personalInfo: Personal_Info){
         let storyboard = UIStoryboard(name: "UP-PersonalInfo", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToPIForm") as! UPPersonalInfoFormVC
         vc.dataSource = dataSource
@@ -129,7 +137,7 @@ extension UPPersonalInfoListVC: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PersonalInfoTableCell", for: indexPath) as? PersonalInfoTableCell else {
             return UITableViewCell()
         }
-        cell.selectionStyle = .none
+        /*cell.selectionStyle = .none
         let personalInfoData = personalInfo[indexPath.row]
         cell.nameLbl.text = personalInfoData.username
         cell.emailLbl.text = personalInfoData.email
@@ -140,7 +148,7 @@ extension UPPersonalInfoListVC: UITableViewDelegate, UITableViewDataSource {
         
         cell.editActionButton = {
             self.passingDataToForm(dataSource: "Edit", personalInfo: personalInfoData)
-        }
+        }*/
         return cell
     }
     
