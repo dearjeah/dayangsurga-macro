@@ -14,7 +14,7 @@ class UserRepository {
     static let shared = UserRepository()
     let entityName = User.self.description()
     let context = CoreDataManager.sharedManager.persistentContainer.viewContext
-    var currentUserId = ""
+    var currentUserId =  UserDefaults.standard.string(forKey: "currentUserId")
     
     // create data
     func createUser(user_id: String,
@@ -49,7 +49,7 @@ class UserRepository {
     
     func getUserById(id: String) -> User? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "user_id == %d", id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "user_id == '\(id)'")
         do {
             let item = try context.fetch(fetchRequest) as? [User]
             return item?.first
@@ -65,7 +65,7 @@ class UserRepository {
                 newEmail: String,
                 newPassword: String) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "user_id == %d", id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "user_id == '\(id)'")
         do {
             let item = try context.fetch(fetchRequest) as? [User]
             let user = item?.first

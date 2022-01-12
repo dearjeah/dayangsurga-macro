@@ -13,6 +13,7 @@ class UserProfileViewController: MVVMViewController<UserProfileListViewModel> {
     @IBOutlet weak var userProfileListTableView: UITableView!
     
     var userProfileData = [UserProfileList]()
+    var currentUserId = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,20 @@ class UserProfileViewController: MVVMViewController<UserProfileListViewModel> {
         navigationItem.largeTitleDisplayMode = .automatic
         navigationController?.navigationBar.sizeToFit()
         self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? UPPersonalInfoListVC {
+            vc.currentUserId = currentUserId
+        } else if let vc = segue.destination as? UPEducationListVC {
+            vc.currentUserId = currentUserId
+        } else if let vc = segue.destination as? UPExperienceListVC {
+            //vc.currentUserId = currentUserId
+        } else if let vc = segue.destination as? UPSkillListVC {
+            vc.currentUserId = currentUserId
+        } else if let vc = segue.destination as? UPAchievementListVC {
+           // vc.currentUserId = currentUserId
+        }
     }
 }
 
@@ -64,6 +79,7 @@ extension UserProfileViewController {
         userProfileData = viewModel?.getUserProfileList() ?? []
         navigationStyle()
         tableSetup()
+        currentUserId = self.viewModel?.getCurrentUserId() ?? ""
     }
     
     func navigationStyle(){
