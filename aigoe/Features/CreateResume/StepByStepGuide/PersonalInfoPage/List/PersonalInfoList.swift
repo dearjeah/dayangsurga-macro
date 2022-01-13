@@ -9,6 +9,7 @@ import UIKit
 
 protocol PersonalInfoListDelegate: AnyObject {
     func goToPersonalInfoForm(from: String, data: Personal_Info)
+    func editUPPersonalInfoForm(from: String, data: Personal_Info)
 }
 
 class PersonalInfoList: UIView {
@@ -106,8 +107,15 @@ extension PersonalInfoList: UITableViewDataSource, UITableViewDelegate {
             cell.checklistButn.isEnabled = false
         }
         
-        cell.editActionButton = {
-            self.delegate?.goToPersonalInfoForm(from: "edit", data: personalInfo)
+        if withResumeContent {
+            cell.editActionButton = {
+                self.delegate?.goToPersonalInfoForm(from: "edit", data: personalInfo)
+            }
+        } else {
+            cell.cellBox.layer.borderColor = UIColor.clear.cgColor
+            cell.editActionButton = {
+                self.delegate?.editUPPersonalInfoForm(from: "Edit", data: personalInfo)
+            }
         }
         
         cell.checklistButtonAction = {

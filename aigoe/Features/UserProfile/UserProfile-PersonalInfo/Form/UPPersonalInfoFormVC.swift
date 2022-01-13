@@ -12,13 +12,11 @@ class UPPersonalInfoFormVC: MVVMViewController<UPPersonalInfoFormViewModel> {
     @IBOutlet weak var formView: PersonalInfoPage!
     @IBOutlet weak var addEditBtn: UIButton!
     
-   var personalInfo: Personal_Info? = nil
-    var dataSource: String? = ""
-    var totalData = Int()
-    
     var ph: PersonalInformation_Placeholder?
+    var personalInfo: Personal_Info? = nil
+    var dataSource: String? = ""
     
-    /* override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         self.viewModel = UPPersonalInfoFormViewModel()
@@ -113,12 +111,12 @@ extension UPPersonalInfoFormVC {
     func addOrDelete(){
         if !checkAllFieldValue() {
             if dataSource == "Add" {
-                let data: ()? = self.viewModel?.createPersonalInformation(userId: totalData + 1,
-                                                                          username: formView.fullNameField.textField.text ?? "",
-                                                                          phoneNumber: formView.phoneField.textField.text ?? "",
-                                                                          email: formView.emailField.textField.text ?? "",
-                                                                          loc: formView.locationField.textField.text ?? "",
-                                                                          sum: formView.summaryField.textView.text ?? "")
+                let data = self.viewModel?.createPersonalInformation(userId: String(),
+                                                                     fullName: formView.fullNameField.textField.text ?? "",
+                                                                     phoneNumber: formView.phoneField.textField.text ?? "",
+                                                                     email: formView.emailField.textField.text ?? "",
+                                                                     loc: formView.locationField.textField.text ?? "",
+                                                                     sum: formView.summaryField.textView.text ?? "")
                 if (data != nil) {
                     performSegue(withIdentifier: "backToPIList", sender: self)
                 } else {
@@ -133,12 +131,13 @@ extension UPPersonalInfoFormVC {
     
     @objc func updatePI(sender: UIBarButtonItem) {
         if !checkAllFieldValue() {
-            let data: ()? = self.viewModel?.updatePersonalInformation(userId: ,
-                                                                      username: formView.fullNameField.textField.text ?? "",
-                                                                      phoneNumber: formView.phoneField.textField.text ?? "",
-                                                                      email: formView.emailField.textField.text ?? "",
-                                                                      loc: formView.locationField.textField.text ?? "",
-                                                                      sum: formView.summaryField.textView.text ?? "")
+            let data = self.viewModel?.updatePersonalInfo(id: personalInfo?.personalInfo_id ?? "",
+                                                          name: formView.fullNameField.textField.text ?? "",
+                                                          phone: formView.phoneField.textField.text ?? "",
+                                                          email: formView.emailField.textField.text ?? "",
+                                                          location: formView.locationField.textField.text ?? "",
+                                                          summary: formView.summaryField.textView.text ?? "")
+            
             if (data != nil) {
                 performSegue(withIdentifier: "backToPIList", sender: self)
             } else {
@@ -146,7 +145,6 @@ extension UPPersonalInfoFormVC {
             }
         }
     }
-    
 }
 
 // MARK: Delegate
@@ -165,7 +163,7 @@ extension UPPersonalInfoFormVC: UITextViewDelegate{
 // MARK: Alert
 extension UPPersonalInfoFormVC {
     func deletePIData(){
-        let data: ()? = self.viewModel?.deletePersonalInformation(data: personalInfo ?? User())
+        let data = self.viewModel?.deletePersonalInfo(data: personalInfo ?? Personal_Info())
         if (data != nil) {
             performSegue(withIdentifier: "backToPIList", sender: self)
         } else {
@@ -175,7 +173,6 @@ extension UPPersonalInfoFormVC {
     
     func errorSaveData(){
         showAlert(title: "Unable to Save Data", msg: "Your data is not saved. Please try again later", style: .default, titleAction: "OK")
-    }*/
-    
+    }
     
 }
