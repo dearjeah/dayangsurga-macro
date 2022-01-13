@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "imgSkillEmptyState.png",
+      "filename" : "Skill.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "imgSkillEmptyState@2x.png",
+      "filename" : "Skill@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "imgSkillEmptyState@3x.png",
+      "filename" : "Skill@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

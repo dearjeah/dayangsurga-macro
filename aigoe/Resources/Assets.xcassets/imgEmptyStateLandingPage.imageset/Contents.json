@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "imgEmptyStateLandingPage.png",
+      "filename" : "Landing page.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "imgEmptyStateLandingPage@2x.png",
+      "filename" : "Landing page@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "imgEmptyStateLandingPage@3x.png",
+      "filename" : "Landing page@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
