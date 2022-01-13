@@ -112,6 +112,7 @@ extension UPEducationFormVC {
         if !alertForCheckTF() {
             if dataSource == "Add" {
                 guard let data = self.viewModel?.addEdu(
+                    userId: String(),
                     institution: institutionView.textField.text ?? "",
                     title: qualificationView.textField.text ?? "",
                     startDate: eduPeriodView.startDatePicker.date,
