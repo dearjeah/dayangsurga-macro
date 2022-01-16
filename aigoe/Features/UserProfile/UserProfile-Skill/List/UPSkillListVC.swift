@@ -8,19 +8,20 @@
 import UIKit
 
 class UPSkillListVC: MVVMViewController<UPSkillListViewModel> {
-
+    
     @IBOutlet weak var skillListView: SkillsPageView!
     @IBOutlet weak var addButtonView: UIView!
     @IBOutlet weak var addButton: UIButton!
-   
+    
     var userSkills = [Skills]()
     var isAdd = true
+    var currentUserId = ""
     @IBAction func unwindToSkillList( _ seg: UIStoryboardSegue) {}
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = UPSkillListViewModel()
-
+        
         initialSetup()
     }
     
@@ -30,9 +31,10 @@ class UPSkillListVC: MVVMViewController<UPSkillListViewModel> {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if let vc = segue.destination as? UPSkillFormVC {
+        if let vc = segue.destination as? UPSkillFormVC {
             vc.userSkills = userSkills
             vc.isAdd = isAdd
+            vc.currentUserId = currentUserId
         }
     }
 }

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "imgPersonalInformationEmptyState.png",
+      "filename" : "Personal info.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "imgPersonalInformationEmptyState@2x.png",
+      "filename" : "Personal info@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "imgPersonalInformationEmptyState@3x.png",
+      "filename" : "Personal info@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

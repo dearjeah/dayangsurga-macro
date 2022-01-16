@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "imgEmptyStateEdu.png",
+      "filename" : "Education.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "imgEmptyStateEdu@2x.png",
+      "filename" : "Education@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "imgEmptyStateEdu@3x.png",
+      "filename" : "Education@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

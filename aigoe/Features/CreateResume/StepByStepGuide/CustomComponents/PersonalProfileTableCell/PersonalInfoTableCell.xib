@@ -20,34 +20,34 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yyx-9k-WuJ" customClass="DesignableView" customModule="aigoe" customModuleProvider="target">
-                        <rect key="frame" x="3" y="3" width="354" height="164"/>
+                        <rect key="frame" x="12.5" y="3" width="335" height="164"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7O-RT-PUu">
-                                <rect key="frame" x="20" y="12" width="275" height="21"/>
+                                <rect key="frame" x="20" y="12" width="256" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <color key="textColor" name="primaryBlue"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bap-Vg-OhY">
-                                <rect key="frame" x="20" y="37" width="275" height="17"/>
+                                <rect key="frame" x="20" y="37" width="256" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" name="primaryDisableDark"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zaT-5D-cYI">
-                                <rect key="frame" x="20" y="58" width="275" height="17"/>
+                                <rect key="frame" x="20" y="58" width="256" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" name="primaryDisableDark"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onj-Fh-gmb">
-                                <rect key="frame" x="20" y="79" width="275" height="17"/>
+                                <rect key="frame" x="20" y="79" width="256" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" name="primaryDisableDark"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3lp-ft-DQW">
-                                <rect key="frame" x="20" y="100" width="263" height="60"/>
+                                <rect key="frame" x="20" y="100" width="244" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="09c-be-Xum"/>
                                 </constraints>
@@ -56,7 +56,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IY6-cY-0Dx" customClass="DesignableButton" customModule="aigoe" customModuleProvider="target">
-                                <rect key="frame" x="288" y="126" width="50" height="22"/>
+                                <rect key="frame" x="269" y="126" width="50" height="22"/>
                                 <color key="backgroundColor" red="1" green="0.71764705882352942" blue="0.0" alpha="0.33000000000000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="S0N-BO-KLx"/>
@@ -93,12 +93,15 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qWp-eT-GmF">
-                                <rect key="frame" x="298" y="12" width="40" height="38"/>
+                                <rect key="frame" x="279" y="12" width="40" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="3xY-1C-HF9"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="icRoundSelectionNoFill"/>
+                                <connections>
+                                    <action selector="selectAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kpn-is-rdV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="primaryWhite"/>
@@ -145,9 +148,9 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="yyx-9k-WuJ" secondAttribute="bottom" constant="3" id="7wt-wE-ce4"/>
+                    <constraint firstItem="yyx-9k-WuJ" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.93" id="EPq-Cx-eTG"/>
                     <constraint firstItem="yyx-9k-WuJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="Glz-iu-OMQ"/>
-                    <constraint firstItem="yyx-9k-WuJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="3" id="elA-yI-rGW"/>
-                    <constraint firstAttribute="trailing" secondItem="yyx-9k-WuJ" secondAttribute="trailing" constant="3" id="xcj-0x-wAO"/>
+                    <constraint firstItem="yyx-9k-WuJ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="pjU-kz-V5a"/>
                 </constraints>
                 <userDefinedRuntimeAttributes>
                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -158,6 +161,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" name="primaryBG"/>
             <connections>
+                <outlet property="cellBox" destination="yyx-9k-WuJ" id="0lJ-js-sZ0"/>
                 <outlet property="checklistButn" destination="qWp-eT-GmF" id="dZ3-kj-7ZX"/>
                 <outlet property="editBtn" destination="IY6-cY-0Dx" id="d2m-v1-aZD"/>
                 <outlet property="emailLbl" destination="bap-Vg-OhY" id="WRg-dF-Pt6"/>

@@ -22,9 +22,9 @@ class EducationFormViewModel: NSObject {
         return data
     }
     
-    func addEdu(institution: String, title: String, startDate: Date, endDate: Date, gpa: String, activity: String, currentlyStudy: Bool, isSelected: Bool) -> Bool {
-        let data = eduRepo.createEducation(eduId: UUID().uuidString, //ganti uuid().string nanti
-                                           userId: 0,
+    func addEdu(userId: String, institution: String, title: String, startDate: Date, endDate: Date, gpa: String, activity: String, currentlyStudy: Bool, isSelected: Bool) -> Bool {
+        let data = eduRepo.createEducation(eduId: UUID().uuidString,
+                                           userId: userId,
                                            institution: institution,
                                            title: title,
                                            startDate: startDate,
@@ -40,7 +40,6 @@ class EducationFormViewModel: NSObject {
     func updateEdu(eduId: String, institution: String, title: String, startDate: Date, endDate: Date, gpa: String, activity: String, currentlyStudy: Bool, isSelected: Bool) -> Bool {
         let data = eduRepo.updateEducation(
             eduId: eduId,
-            userId: 0,
             institution: institution,
             title: title,
             startDate: startDate,

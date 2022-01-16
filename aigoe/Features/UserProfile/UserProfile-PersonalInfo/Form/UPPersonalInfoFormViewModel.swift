@@ -9,34 +9,29 @@ import Foundation
 
 class UPPersonalInfoFormViewModel: NSObject {
     
-    func getPhbyID() -> PersonalInformation_Placeholder?{
+   func getPhbyID() -> PersonalInformation_Placeholder?{
         return PersonalInformationPlaceholderRepository.shared.getPIPhById(pi_ph_id: 1)
     }
     
-    func createPersonalInformation(userId: Int, username: String, phoneNumber: String, email: String, loc: String, sum: String) {
-        UserRepository.shared.createUser(user_id: userId,
-                                         username: username,
-                                         phoneNumber: phoneNumber,
-                                         email: email,
-                                         location: loc,
-                                         summary: sum)
+    func createPersonalInformation(userId: String, fullName: String, phoneNumber: String, email: String, loc: String, sum: String) -> Bool {
+        return PersonalInfoRepository.shared.createPersonalInfo(user_id: userId,
+                                                         fullName: fullName,
+                                                         phoneNumber: phoneNumber,
+                                                         email: email,
+                                                         location: loc,
+                                                         summary: sum)
     }
     
-    func update(id: Int, newName: String, newPN: String, newEmail: String, newLoc: String, newSum: String) {
-        UserRepository.shared.updateUser(id: id, newName: newName, newPhoneNumber: newPN, newEmail: newEmail, newLocation: newLoc, newSummary: newSum)
+    func updatePersonalInfo(id: String, name: String, phone: String, email: String, location: String, summary: String) -> Bool {
+        return PersonalInfoRepository.shared.updatePersonalInfo(id: id,
+                                                                newName: name,
+                                                                newPhoneNumber: phone,
+                                                                newEmail: email,
+                                                                newLocation: location,
+                                                                newSummary: summary)
     }
     
-    func updatePersonalInformation(userId: Int, username: String, phoneNumber: String, email: String, loc: String, sum: String) {
-        UserRepository.shared.updateUser(id: userId,
-                                         newName: username,
-                                         newPhoneNumber: phoneNumber,
-                                         newEmail: email,
-                                         newLocation: loc,
-                                         newSummary: sum)
+    func deletePersonalInfo(data: Personal_Info) -> Bool {
+        return PersonalInfoRepository.shared.deletePersonalInfo(data: data)
     }
-    
-    func deletePersonalInformation(data: User?){
-        UserRepository.shared.deleteUser(data: data ?? User())
-    }
-
 }

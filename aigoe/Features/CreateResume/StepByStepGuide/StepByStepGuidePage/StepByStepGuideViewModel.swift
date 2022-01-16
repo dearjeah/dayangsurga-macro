@@ -22,18 +22,23 @@ class StepByStepGuideViewModel: NSObject {
     
     let emptyStateRepo = EmptyStateRepository.shared
     let userRepo = UserRepository.shared
+    let personalInfoRepo = PersonalInfoRepository.shared
     let experienceRepo = ExperienceRepository.shared
     let eduRepo = EducationRepository.shared
     let skillRepo = SkillRepository.shared
     let accomRepo = AccomplishmentRepository.shared
     let resumeContentRepo = ResumeContentRepository.shared
     let userResumeRepo = UserResumeRepository.shared
+    
+    //user id
+    func getCurrentUserId() -> String {
+        return userRepo.currentUserId ?? ""
+    }
 
     // for empty state
     func getEmptyStateId(Id: Int) -> Empty_State?{
         return emptyStateRepo.getEmptyStateById(id: Id)
     }
-    
     // for experience
     func getExpData() -> [Experience]?{
         return experienceRepo.getAllExperience()
@@ -77,13 +82,13 @@ class StepByStepGuideViewModel: NSObject {
     }
     
     
-    func updatePersonalInfo(data: PersonalInfo) {
-        userRepo.updateUser(id: 0,
-                            newName: data.name,
-                            newPhoneNumber: data.phoneNumber,
-                            newEmail: data.email,
-                            newLocation: data.location,
-                            newSummary: data.summary
+    func updatePersonalInfo(data: PersonalInfo, userId: String) {
+        personalInfoRepo.updatePersonalInfo(id: data.id,
+                                            newName: data.name ,
+                                            newPhoneNumber: data.phoneNumber ,
+                                            newEmail: data.email ,
+                                            newLocation: data.location ,
+                                            newSummary: data.summary 
         )
     }
     

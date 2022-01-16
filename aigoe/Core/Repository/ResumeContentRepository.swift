@@ -17,6 +17,7 @@ class ResumeContentRepository{
     
     // create data
     func createResumeContent(resume_id: String,
+                             personal_id: [String],
                              exp_id: [String],
                              edu_id: [String],
                              accom_id: [String],
@@ -63,6 +64,7 @@ class ResumeContentRepository{
     
     // func updates
     func updateResumeContent(resume_id: String,
+                             newPersonal_id: String,
                              newExp_id: String,
                              newEdu_id: String,
                              newAccom_id: [String],
@@ -76,6 +78,22 @@ class ResumeContentRepository{
             newResumeContent?.edu_id = [newEdu_id]
             newResumeContent?.accom_id = newAccom_id
             newResumeContent?.skill_id = [newSkill_id]
+            newResumeContent?.personalInfo_id = newPersonal_id
+            
+            try context.save()
+        } catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    func updateResumeContentPersonalInfo(resume_id: String,
+                                         newPersonal_id: String) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == '\(resume_id)'")
+        do {
+            let item = try context.fetch(fetchRequest) as? [Resume_Content]
+            let newResumeContent = item?.first
+            newResumeContent?.personalInfo_id = newPersonal_id
             
             try context.save()
         } catch let error as NSError {
@@ -144,6 +162,27 @@ class ResumeContentRepository{
     }
     
     // func delete
+    func deleteResumeContentPersonalInfo(resume_id: String,
+                                         personalInfoId: String) -> Bool {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "resume_id == '\(resume_id)'")
+        do {
+            let item = try context.fetch(fetchRequest) as? [Resume_Content]
+            let resumeContent = item?.first
+            let currentPersonalId = resumeContent?.personalInfo_id
+            
+            if currentPersonalId == personalInfoId {
+                resumeContent?.personalInfo_id = ""
+                return true
+            }
+            
+            return false
+        } catch let error as NSError {
+            print(error)
+        }
+        return false
+    }
+    
     func deleteResumeContentEdu(resume_id: String,
                                 eduId: String) -> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)

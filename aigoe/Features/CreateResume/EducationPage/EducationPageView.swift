@@ -118,6 +118,7 @@ extension EducationPageView {
                 self.delegate?.editEduForm(from: "edit", edu: edu)
             }
         } else {
+            cell.shadowView.layer.borderColor = UIColor.clear.cgColor
             cell.editButtonAction = {
                 self.delegate?.editUPEduForm(from: "Edit", edu: edu)
             }

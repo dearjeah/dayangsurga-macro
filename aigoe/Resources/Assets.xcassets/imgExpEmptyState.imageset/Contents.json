@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "imgExpEmptyState.png",
+      "filename" : "Experience.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "imgExpEmptyState@2x.png",
+      "filename" : "Experience@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "imgExpEmptyState@3x.png",
+      "filename" : "Experience@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

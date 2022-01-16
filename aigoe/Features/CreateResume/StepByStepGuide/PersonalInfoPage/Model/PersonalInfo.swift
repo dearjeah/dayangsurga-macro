@@ -8,7 +8,8 @@
 import Foundation
 
 struct PersonalInfo {
-    var id: Int
+    var id: String
+    var userId: String
     var name: String
     var email: String
     var phoneNumber: String
