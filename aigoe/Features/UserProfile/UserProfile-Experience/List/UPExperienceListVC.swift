@@ -12,7 +12,9 @@ class UPExperienceListVC:  MVVMViewController<UPExperienceListViewModel> {
     @IBOutlet weak var experienceListView: ExperiencePageView!
     
     var exp = [Experience]()
+    var currentUserId = ""
     var expViewModel = ExpertListViewModel()
+    
     @IBOutlet weak var addButton: UIButton!
     
     override func viewDidLoad() {
@@ -24,7 +26,6 @@ class UPExperienceListVC:  MVVMViewController<UPExperienceListViewModel> {
     
     override func viewWillAppear(_ animated: Bool) {
         getInitialData()
-        setup()
         experienceListView.getAndReload()
         showAddBtn()
     }
