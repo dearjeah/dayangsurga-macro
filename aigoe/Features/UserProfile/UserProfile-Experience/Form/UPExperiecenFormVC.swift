@@ -23,7 +23,7 @@ class UPExperiecenFormVC: MVVMViewController<UPExperienceFormViewModel> {
     var expPh: Experience_Placeholder?
     var expSuggest: Experience_Suggestion?
     var exp: Experience? = nil
-    
+    var currentUserId = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = UPExperienceFormViewModel()
@@ -108,7 +108,7 @@ extension UPExperiecenFormVC{
     func addOrDeleteExp(){
         if !alertForCheckTF(){
             if dataFrom == "Add"{
-                guard let data = self.viewModel?.addExp(expId: UUID().uuidString,
+                guard let data = self.viewModel?.addExp(userId: currentUserId, expId: UUID().uuidString,
                                                         title: jobTitleView.textField.text ?? "",
                                                         jobDesc: jobSummaryView.textView.text,
                                                         company: companyNameView.textField.text ?? "",

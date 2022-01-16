@@ -25,7 +25,7 @@ class ExperienceRepository{
                           jobStatus: Bool,
                           isSelected: Bool) -> Bool {
         do {
-            if let experienceToUser = UserRepository.shared.getUserById(id: user_id) {
+           
                 let experience = Experience(context: context)
                 experience.exp_id = exp_id
                 experience.user_id = user_id
@@ -37,14 +37,12 @@ class ExperienceRepository{
                 experience.jobStatus = jobStatus
                 experience.isSelected = isSelected
                 
-                experienceToUser.addToExperience(experience)
                 try context.save()
                 return true
-            }
+            
         }
         catch let error as NSError {
             print(error)
-            return false
         }
         return false
     }
