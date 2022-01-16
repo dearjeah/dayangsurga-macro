@@ -247,14 +247,6 @@ extension StepByStepGuidePageController: AccomplishListDelegate {
     }
     
     func goToAddAccom() {
-        stepDelegate?.goToAddAccom(from: "add")
-    }
-    
-    func editUPAccompForm(from: String, accomp: Accomplishment) {
-        
-    }
-    
-    func goToAddAccom() {
         stepDelegate?.goToAddAccom(was: true, from: "add")
     }
     
