@@ -14,6 +14,7 @@ class UPEducationListVC: MVVMViewController<UPEducationListViewModel> {
     
     var edu = [Education]()
     var eduViewModel = EducationListViewModel()
+    var currentUserId = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()

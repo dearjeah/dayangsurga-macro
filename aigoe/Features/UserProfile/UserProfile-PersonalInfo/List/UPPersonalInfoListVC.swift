@@ -13,6 +13,8 @@ class UPPersonalInfoListVC: MVVMViewController<UPPersonalInfoListViewModel> {
     @IBOutlet weak var personalInfoList: PersonalInfoList!
     
     var personalInfo = [Personal_Info]()
+    var emptyStateData = Empty_State()
+    var currentUserId = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()

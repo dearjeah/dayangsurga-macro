@@ -41,6 +41,6 @@ class ResumeTemplateViewModel: NSObject{
     }
     
     func getCurrentUserId() -> String {
-        return userRepo.currentUserId
+        return userRepo.currentUserId ?? ""
     }
 }
