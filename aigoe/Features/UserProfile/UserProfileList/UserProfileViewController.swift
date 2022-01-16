@@ -40,6 +40,7 @@ class UserProfileViewController: MVVMViewController<UserProfileListViewModel> {
             vc.currentUserId = currentUserId
         } else if let vc = segue.destination as? UPAchievementListVC {
             vc.currentUserId = currentUserId
+
         }
     }
 }
