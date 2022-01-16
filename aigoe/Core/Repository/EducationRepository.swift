@@ -39,6 +39,10 @@ class EducationRepository{
             education.currently_study = currentlyStudy
             education.is_selected = isSelected
             
+            if let educationToUser = UserRepository.shared.getUserById(id: userId) {
+                educationToUser.addToEducation(education)
+            }
+            
             try context.save()
             return true
             

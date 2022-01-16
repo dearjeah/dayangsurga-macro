@@ -27,7 +27,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7UF-4X-BAL">
-                            <rect key="frame" x="16" y="59.5" width="374" height="791.5"/>
+                            <rect key="frame" x="0.0" y="59.5" width="406" height="791.5"/>
                             <color key="backgroundColor" name="primaryBG"/>
                         </tableView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tW5-8t-WNZ" customClass="EmptyState" customModule="aigoe" customModuleProvider="target">
@@ -43,9 +43,9 @@
                         <constraint firstItem="tW5-8t-WNZ" firstAttribute="centerY" secondItem="aaY-hB-Pey" secondAttribute="centerY" constant="-100" id="XPX-SA-1gE"/>
                         <constraint firstAttribute="bottom" secondItem="7UF-4X-BAL" secondAttribute="bottom" id="b2b-9y-Ym3"/>
                         <constraint firstItem="tW5-8t-WNZ" firstAttribute="width" secondItem="aaY-hB-Pey" secondAttribute="width" multiplier="0.7" id="ckA-4c-BZL"/>
-                        <constraint firstAttribute="trailing" secondItem="7UF-4X-BAL" secondAttribute="trailing" constant="16" id="dc9-3o-Z5A"/>
+                        <constraint firstAttribute="trailing" secondItem="7UF-4X-BAL" secondAttribute="trailing" id="dc9-3o-Z5A"/>
                         <constraint firstItem="tW5-8t-WNZ" firstAttribute="centerX" secondItem="aaY-hB-Pey" secondAttribute="centerX" id="gT3-1J-KUC"/>
-                        <constraint firstItem="7UF-4X-BAL" firstAttribute="leading" secondItem="aaY-hB-Pey" secondAttribute="leading" constant="16" id="iUX-S2-7T1"/>
+                        <constraint firstItem="7UF-4X-BAL" firstAttribute="leading" secondItem="aaY-hB-Pey" secondAttribute="leading" id="iUX-S2-7T1"/>
                         <constraint firstItem="ksv-nZ-Fe1" firstAttribute="height" secondItem="aaY-hB-Pey" secondAttribute="height" multiplier="0.07" id="lT0-gC-rQ9"/>
                         <constraint firstAttribute="trailing" secondItem="ksv-nZ-Fe1" secondAttribute="trailing" id="rJe-S8-UYg"/>
                         <constraint firstItem="7UF-4X-BAL" firstAttribute="top" secondItem="ksv-nZ-Fe1" secondAttribute="bottom" id="xTm-VN-OmM"/>

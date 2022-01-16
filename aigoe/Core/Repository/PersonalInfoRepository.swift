@@ -24,20 +24,20 @@ class PersonalInfoRepository{
                             summary: String) -> Bool {
         do {
             // relation education-user
+            let user = Personal_Info(context: context)
+            user.user_id = user_id
+            user.personalInfo_id = UUID().uuidString
+            user.fullName = fullName
+            user.phoneNumber = phoneNumber
+            user.email = email
+            user.location = location
+            user.summary = summary
+            
             if let personalInfoToUser = UserRepository.shared.getUserById(id: user_id) {
-                let user = Personal_Info(context: context)
-                user.user_id = user_id
-                user.personalInfo_id = UUID().uuidString
-                user.fullName = fullName
-                user.phoneNumber = phoneNumber
-                user.email = email
-                user.location = location
-                user.summary = summary
-                
                 personalInfoToUser.addToPersonalInfo(user)
-                try context.save()
-                return true
             }
+            try context.save()
+            return true
         }
         catch let error as NSError {
             print(error)
