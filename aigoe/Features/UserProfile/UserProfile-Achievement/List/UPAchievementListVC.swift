@@ -15,7 +15,7 @@ class UPAchievementListVC:  MVVMViewController<UPAchievementListViewModel> {
     weak var delegate: AccomplishListDelegate?
     var achievement = [Accomplishment]()
     var achievementModel = AccomplishmentPageViewModel()
-    
+    var currentUserId = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()

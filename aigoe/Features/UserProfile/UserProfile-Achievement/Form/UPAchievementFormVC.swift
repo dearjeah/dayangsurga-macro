@@ -23,7 +23,7 @@ class UPAchievementFormVC: MVVMViewController<UPAchievementFormViewModel>{
     var accomplish: Accomplishment? = nil
     var achievementPh: Accomplish_Placeholder?
     var achievementSuggest: Accomplishment_Suggest?
-    var achievementId: String = ""
+    var currentUserId = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class UPAchievementFormVC: MVVMViewController<UPAchievementFormViewModel>{
         if !alertForCheckTF() {
             if accomplish == nil{
                 guard let data = self.viewModel?.addAchievement(
-                    title: certificateNameView.textField.text ?? "",
+                    userId: currentUserId, title: certificateNameView.textField.text ?? "",
                     givenDate:  givenDateView.datePicker.date,
                     endDate: endDateView.datePicker.date,
                     status: achievementStatusView.switchButton.isOn,
@@ -153,7 +153,7 @@ extension UPAchievementFormVC{
     func addOrDeleteAccomp(){
         if !alertForCheckTF(){
             if dataFrom == "Add"{
-                guard let data = self.viewModel?.addAchievement(title: certificateNameView.textField.text ?? "", givenDate: givenDateView.datePicker.date, endDate: endDateView.datePicker.date, status: achievementStatusView.switchButton.isOn, issuer: issuerView.textField.text ?? "", desc: "") else {return errorSaveData(from: "Save")}
+                guard let data = self.viewModel?.addAchievement(userId: currentUserId, title: certificateNameView.textField.text ?? "", givenDate: givenDateView.datePicker.date, endDate: endDateView.datePicker.date, status: achievementStatusView.switchButton.isOn, issuer: issuerView.textField.text ?? "", desc: "") else {return errorSaveData(from: "Save")}
                 if data{
                     performSegue(withIdentifier: "backToListVC", sender: self)
                 }else{

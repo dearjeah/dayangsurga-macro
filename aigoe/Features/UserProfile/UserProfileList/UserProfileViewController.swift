@@ -39,7 +39,7 @@ class UserProfileViewController: MVVMViewController<UserProfileListViewModel> {
         } else if let vc = segue.destination as? UPSkillListVC {
             vc.currentUserId = currentUserId
         } else if let vc = segue.destination as? UPAchievementListVC {
-           // vc.currentUserId = currentUserId
+            vc.currentUserId = currentUserId
         }
     }
 }

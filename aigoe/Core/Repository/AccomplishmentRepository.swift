@@ -27,7 +27,6 @@ class AccomplishmentRepository{
                               isSelected : Bool) -> Bool {
         do {
             // relation accomplishment-user
-            if let AccomplishmentToUser = UserRepository.shared.getUserById(id: userId) {
                 let accomplishment = Accomplishment(context: context)
                 accomplishment.accomplishment_id = accomId
                 accomplishment.user_id = userId
@@ -39,10 +38,9 @@ class AccomplishmentRepository{
                 accomplishment.desc = desc
                 accomplishment.is_selected = isSelected
                 
-                AccomplishmentToUser.addToAccomplishment(accomplishment)
                 try context.save()
                 return true
-            }
+            
         }
         catch let error as NSError {
             print(error)

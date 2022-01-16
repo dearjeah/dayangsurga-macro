@@ -24,10 +24,10 @@ class UPAchievementFormViewModel: NSObject {
         return achievementRepo.getAccomplishmentById(AccomplishmentId: id)
     }
     
-    func addAchievement(title: String, givenDate: Date, endDate: Date, status: Bool, issuer: String, desc: String)-> Bool{
+    func addAchievement(userId: String, title: String, givenDate: Date, endDate: Date, status: Bool, issuer: String, desc: String)-> Bool{
         let data = achievementRepo.createAccomplishment(
             accomId: UUID().uuidString,
-            userId: 0,
+            userId: userId,
             title: title,
             givenDate: givenDate,
             endDate: endDate,
@@ -42,7 +42,6 @@ class UPAchievementFormViewModel: NSObject {
     func updateAchievement(achievementId: String, title: String,givenDate: Date, endDate: Date, status: Bool, issuer: String, desc: String) -> Bool{
         let data = achievementRepo.updateAccomplishment(
             accomId: achievementId,
-            userId: 0,
             title: title,
             givenDate: givenDate,
             endDate: endDate,
