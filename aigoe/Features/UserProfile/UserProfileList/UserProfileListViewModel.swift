@@ -8,6 +8,12 @@
 import Foundation
 
 class UserProfileListViewModel: NSObject {
+    var userRepo = UserRepository.shared
+    
+    func getCurrentUserId() -> String {
+        return userRepo.currentUserId ?? ""
+    }
+    
     func getUserProfileList() -> [UserProfileList] {
         let data = [
             UserProfileList(img: UserProfileType.personal.getImage(), title: UserProfileType.personal.getTitle(), type: .personal),

@@ -103,6 +103,7 @@ extension PersonalInfoPage {
         emailField.setup(dlgt: self)
         phoneField.setup(dlgt: self)
         locationField.setup(dlgt: self)
+        summaryField.textView.delegate = self
         
     }
     
