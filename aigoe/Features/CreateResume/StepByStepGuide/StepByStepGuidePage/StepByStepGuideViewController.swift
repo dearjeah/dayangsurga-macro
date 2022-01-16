@@ -249,7 +249,7 @@ extension StepByStepGuideViewController: StepByStepGuideDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func goToAddAccom(from: String) {
+    func goToAddAccom(was: Bool, from: String) {
         let storyboard = UIStoryboard(name: "AccomplishFormController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToAccomForm") as! AccomplishFormController
         vc.dataFrom = from
@@ -257,7 +257,7 @@ extension StepByStepGuideViewController: StepByStepGuideDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func goToEditAccom(from: String, accomp: Accomplishment) {
+    func goToEditAccom(was: Bool, from: String, accomp: Accomplishment) {
         let storyboard = UIStoryboard(name: "AccomplishFormController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToAccomForm") as! AccomplishFormController
         vc.dataFrom = from
