@@ -202,6 +202,10 @@ extension StepByStepGuidePageController: ListEduDelegate {
 
 //MARK: Experience List Delegate
 extension StepByStepGuidePageController: ExperienceListDelegate {
+    func editExpUpForm(from: String, exp: Experience) {
+        
+    }
+    
     func goToAddExp() {
         stepDelegate?.goToAddExp(was: true, from: "add")
     }
@@ -235,7 +239,7 @@ extension StepByStepGuidePageController: skillListDelegate {
 //MARK: Accomplishment List Delegate
 extension StepByStepGuidePageController: AccomplishListDelegate {
     func editAccompForm(from: String, accomp: Accomplishment) {
-        stepDelegate?.goToEditAccom(was: true, from: "edit", accomp: accomp)
+        
     }
     
     func editUPAccompForm(from: String, accomp: Accomplishment) {
