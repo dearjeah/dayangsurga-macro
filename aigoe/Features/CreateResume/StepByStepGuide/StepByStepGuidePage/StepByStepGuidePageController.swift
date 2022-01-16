@@ -172,6 +172,9 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
 
 //MARK: Personal Info List Delegate
 extension StepByStepGuidePageController: PersonalInfoListDelegate {
+    func editUPPersonalInfoForm(from: String, data: Personal_Info) {
+    }
+    
     func goToPersonalInfoForm(from: String, data: Personal_Info) {
         stepDelegate?.goToPersonalInfoForm(from: from, personalInfo: data)
     }

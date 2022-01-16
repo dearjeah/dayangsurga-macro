@@ -73,7 +73,7 @@ class PersonalInfoRepository{
                 newLocation: String,
                 newSummary: String) -> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "perosnalInfo_id == %d", id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "personalInfo_id == '\(id)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Personal_Info]
             let user = item?.first

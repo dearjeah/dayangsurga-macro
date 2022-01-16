@@ -27,23 +27,21 @@ class EducationRepository{
                          isSelected : Bool) -> Bool {
         do {
             // relation education-user
-            if let educationToUser = UserRepository.shared.getUserById(id: userId) {
-                let education = Education(context: context)
-                education.edu_id = eduId
-                education.user_id = userId
-                education.institution = institution
-                education.title = title
-                education.start_date = startDate
-                education.end_date = endDate
-                education.gpa =   gpa
-                education.activity = activity
-                education.currently_study = currentlyStudy
-                education.is_selected = isSelected
-                
-                educationToUser.addToEducation(education)
-                try context.save()
-                return true
-            }
+            let education = Education(context: context)
+            education.edu_id = eduId
+            education.user_id = userId
+            education.institution = institution
+            education.title = title
+            education.start_date = startDate
+            education.end_date = endDate
+            education.gpa =   gpa
+            education.activity = activity
+            education.currently_study = currentlyStudy
+            education.is_selected = isSelected
+            
+            try context.save()
+            return true
+            
         }
         catch let error as NSError {
             print(error)

@@ -9,13 +9,9 @@ import Foundation
 
 class UPPersonalInfoListViewModel: NSObject {
     
-    func getEmptyStateId(Id: Int) -> Empty_State?{
-        return EmptyStateRepository.shared.getEmptyStateById(id: Id)
-    }
-    
-    func getAllPersonalInfo() -> [User] {
-        guard let data = UserRepository.shared.getAllUser() else {
-            return [User]()}
+    func getAllPersonalInfo() -> [Personal_Info] {
+        guard let data = PersonalInfoRepository.shared.getAllPersonalInfo() else {
+            return [Personal_Info]()}
         return data
     }
 }
