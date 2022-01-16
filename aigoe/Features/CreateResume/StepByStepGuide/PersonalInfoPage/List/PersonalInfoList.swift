@@ -23,6 +23,7 @@ class PersonalInfoList: UIView {
     var personalInfoViewModel = PersonalInfoViewModel()
     var viewModel = PersonalInfoViewModel()
     var withResumeContent = true
+    var personalIndex: [(index: Int, personalId: String, isSelected: Bool)] = []
     
     func setup(dlgt: PersonalInfoListDelegate) {
         self.delegate = dlgt
@@ -51,6 +52,7 @@ class PersonalInfoList: UIView {
         resumeContentData = resumeContent
         registerTableView()
         notificationCenterSetup()
+        setup()
     }
 }
 
@@ -84,7 +86,7 @@ extension PersonalInfoList: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         let personalInfo = personalData[indexPath.row]
-        
+        var currentSelected = ""
         
         cell.nameLbl.text = personalInfo.fullName
         cell.emailLbl.text = personalInfo.email
@@ -93,15 +95,15 @@ extension PersonalInfoList: UITableViewDataSource, UITableViewDelegate {
         cell.summaryLbl.text = personalInfo.summary
         
         if withResumeContent {
-            let selectedPersonalInfoId = resumeContentData.personalInfo_id
-            if personalInfo.personalInfo_id == selectedPersonalInfoId {
-                cell.checklistButtonIfSelected()
-                cell.selectionStatus = true
-            } else {
-                cell.checklistButtonUnSelected()
-                cell.selectionStatus = false
+            if !personalIndex.isEmpty {
+                if personalIndex[indexPath.row].isSelected == true {
+                    cell.checklistButtonIfSelected()
+                    currentSelected = personalIndex[indexPath.row].personalId
+                } else {
+                    cell.checklistButtonUnSelected()
+                }
             }
-        } else {
+        }else {
             cell.checklistButn.isHidden = true
             cell.checklistButn.isEnabled = false
         }
@@ -109,16 +111,25 @@ extension PersonalInfoList: UITableViewDataSource, UITableViewDelegate {
         cell.editActionButton = {
             self.delegate?.goToPersonalInfoForm(from: "edit", data: personalInfo)
         }
-        
+       
         cell.checklistButtonAction = {
-            if cell.selectionStatus == false {
-                cell.selectionStatus = true
+            if self.personalIndex[indexPath.row].isSelected == false {
+                if currentSelected != "" {
+                    self.viewModel.deleteSelectedPersonalInfo(resumeId: self.resumeContentData.resume_id ?? "", personalInfoId: currentSelected)
+                }
+                for i in 0...self.personalIndex.count - 1 {
+                    self.personalIndex[i].isSelected = false
+                }
+                self.personalIndex[indexPath.row].isSelected = true
+                currentSelected = self.personalIndex[indexPath.row].personalId
+                self.viewModel.addSelectedPersonalInfo(resumeId: self.resumeContentData.resume_id ?? "", personalInfoId: currentSelected)
                 cell.checklistButtonIfSelected()
-                self.viewModel.addSelectedPersonalInfo(resumeId: self.resumeContentData.resume_id ?? "", personalInfoId: personalInfo.personalInfo_id ?? "")
+                tableView.reloadData()
             } else {
-                cell.selectionStatus = false
+                self.viewModel.deleteSelectedPersonalInfo(resumeId: self.resumeContentData.resume_id ?? "", personalInfoId: currentSelected)
+                self.personalIndex[indexPath.row].isSelected = false
+                currentSelected = ""
                 cell.checklistButtonUnSelected()
-                self.viewModel.deleteSelectedPersonalInfo(resumeId: self.resumeContentData.resume_id ?? "", personalInfoId: personalInfo.personalInfo_id ?? "")
             }
         }
         return cell
@@ -146,6 +157,7 @@ extension PersonalInfoList {
 extension  PersonalInfoList {
     func getAndReload(){
         personalData = personalInfoViewModel.getAllPersonalInfoData()
+        populateData()
         tableView.reloadData()
     }
     
@@ -163,6 +175,21 @@ extension  PersonalInfoList {
     func setup(){
         titleAndButton.viewSetup(labelTitle: "Personal Information", buttonTitle: "Add")
         titleAndButton.delegate = self
+        populateData()
+    }
+    
+    func populateData(){
+        if !personalData.isEmpty {
+            for i in 0...personalData.count - 1 {
+                if withResumeContent {
+                    if personalData[i].personalInfo_id == resumeContentData.personalInfo_id {
+                        personalIndex.append((index: i, personalId: personalData[i].personalInfo_id ?? "", isSelected: true))
+                    } else {
+                        personalIndex.append((index: i, personalId: personalData[i].personalInfo_id ?? "", isSelected: false))
+                    }
+                }
+            }
+        }
     }
     
     fileprivate func initWithNib() {

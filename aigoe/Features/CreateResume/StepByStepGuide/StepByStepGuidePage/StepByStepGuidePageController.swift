@@ -538,14 +538,6 @@ extension StepByStepGuidePageController {
         tmp.setup(dlgt: self)
         controller.view = tmp
         return controller
-        /*let controller = MVVMViewController<PersonalInfoViewModel>()
-        controller.viewModel =  PersonalInfoViewModel()
-        personalData = controller.viewModel?.getUserData() ?? User()
-        
-        let tmp = PersonalInfoPage.init(data: personalData, isCreate: isCreate)
-        tmp.setup(dlgt: self)
-        controller.view = tmp
-        return controller*/
     }
     
     fileprivate func initEducation() -> UIViewController {
