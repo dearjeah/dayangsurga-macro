@@ -97,7 +97,7 @@ extension UPEducationFormVC {
             }
         } else {
             activityView.textView.textColor = .lightGray
-            addOrDeleteButton.dsLongFilledPrimaryButton(withImage: false, text: "Add Eduxcation")
+            addOrDeleteButton.dsLongFilledPrimaryButton(withImage: false, text: "Add Education")
         }
     }
 }
