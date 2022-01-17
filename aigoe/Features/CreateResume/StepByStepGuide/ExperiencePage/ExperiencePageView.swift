@@ -48,7 +48,6 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         super.init(coder: aDecoder)
         initWithNib()
         notificationCenterSetup()
-        
         initialSetup()
     }
     
@@ -188,6 +187,7 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
    
 }
 
+//MARK: Reload Data
 extension ExperiencePageView: ExperiencePageDelegate, expCellDelegate {
     func passData() -> Experience? {
         let expData = experience[selectedExp]
@@ -209,5 +209,19 @@ extension ExperiencePageView: ExperiencePageDelegate, expCellDelegate {
         emptyStateView.emptyStateImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
         emptyStateView.emptyStateImage.contentMode = .scaleAspectFit
         self.expTableView.backgroundView = emptyStateView
+    }
+}
+
+//MARK: Empty State
+extension ExperiencePageView{
+    func showEmptyState(){
+        emptyStateView.isHidden = false
+        emptyStateView.emptyStateImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin,.flexibleLeftMargin, .flexibleTopMargin]
+        emptyStateView.emptyStateImage.contentMode = .scaleAspectFit
+        emptyStateView.emptyStateImage.clipsToBounds = true
+        emptyStateView.emptyStateTitle.isHidden = true
+        emptyStateView.emptyStateImage.image = UIImage.imgExpEmptyState
+        emptyStateView.emptyStateDescription.text = "You haven't filled your professional experience. Click the 'Add' button to add your professional experience."
+        
     }
 }
