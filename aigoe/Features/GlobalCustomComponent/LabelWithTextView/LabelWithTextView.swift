@@ -49,5 +49,6 @@ class LabelWithTextView: UIView {
         textView.layer.cornerRadius = 5
         textView.layer.borderWidth = 1.0
         textView.layer.borderColor = UIColor.textviewBorder.cgColor
+        textView.tintColor = UIColor.primaryBlue
     }
 }
