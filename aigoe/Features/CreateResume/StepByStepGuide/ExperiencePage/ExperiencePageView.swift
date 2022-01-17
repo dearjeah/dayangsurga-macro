@@ -97,11 +97,11 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: TABLE VIEW
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if experience.count != 0{
-            emptyStateView.isHidden = true
-        }else{
+        if experience.count == 0 {
             showEmptyState()
             self.expTableView.backgroundView = emptyStateView
+        } else {
+            emptyStateView.isHidden = true
         }
         return experience.count
     }
@@ -196,6 +196,19 @@ extension ExperiencePageView: ExperiencePageDelegate, expCellDelegate {
     
     func addExperience() {
        getAndReload()
+    }
+    
+    func showEmptyState() {
+        emptyState = stepViewModel.getEmptyStateId(Id: 2)
+        let image = UIImage(data: emptyState?.image ?? Data())
+        emptyStateView.isHidden = false
+        emptyStateView.emptyStateDescription.text = emptyState?.title
+        emptyStateView.emptyStateImage.image = image
+        emptyStateView.emptyStateTitle.isHidden = true
+        emptyStateView.emptyStateImage.clipsToBounds = true
+        emptyStateView.emptyStateImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
+        emptyStateView.emptyStateImage.contentMode = .scaleAspectFit
+        self.expTableView.backgroundView = emptyStateView
     }
 }
 
