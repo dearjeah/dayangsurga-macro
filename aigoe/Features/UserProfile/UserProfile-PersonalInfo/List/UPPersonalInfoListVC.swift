@@ -21,13 +21,14 @@ class UPPersonalInfoListVC: MVVMViewController<UPPersonalInfoListViewModel> {
         
         self.viewModel = UPPersonalInfoListViewModel()
         setup()
-        aaa()
+        setupPersonalInfoList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         getInitialData()
-        showAddBtn()
         personalInfoList.getAndReload()
+        showAddBtn()
+        
     }
     
     @IBAction func addAction(_ sender: Any) {
@@ -58,7 +59,7 @@ extension UPPersonalInfoListVC {
         self.tabBarController?.tabBar.isHidden = true
     }
     
-    func aaa(){
+    func setupPersonalInfoList(){
         personalInfoList.delegate = self
         personalInfoList.titleAndButton.isHidden = true
         personalInfoList.withResumeContent = false
