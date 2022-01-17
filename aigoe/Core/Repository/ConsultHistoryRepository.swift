@@ -17,13 +17,13 @@ class ConsultHistoryRepository{
     
     // create data
     func createConsultHistory(expert_id: Int,
-                              user_id: Int,
+                              user_id: String,
                               date: Date){
         do {
             if let getUser = UserRepository.shared.getUserById(id: user_id) {
                 let consult = Consult_History(context: context)
                 consult.expert_id = Int32(expert_id)
-                consult.user_id = Int32(user_id)
+                consult.user_id = user_id
                 consult.date = date
                 
                 getUser.addToConsultHistory(consult)

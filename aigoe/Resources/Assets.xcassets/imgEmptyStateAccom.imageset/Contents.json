@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "imgEmptyStateAccom.png",
+      "filename" : "Accomplishment.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "imgEmptyStateAccom@2x.png",
+      "filename" : "Accomplishment@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "imgEmptyStateAccom@3x.png",
+      "filename" : "Accomplishment@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -8,4 +8,10 @@
 import Foundation
 
 class UPExperienceListViewModel: NSObject {
+    
+    func getAllExperience() -> [Experience] {
+        guard let data =  ExperienceRepository.shared.getAllExperience() else {
+            return [Experience]()}
+    return data
+    }
 }

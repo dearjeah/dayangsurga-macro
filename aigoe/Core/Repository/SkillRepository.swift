@@ -18,12 +18,12 @@ class SkillRepository{
     
     // create data
     func createSkill(skillId: String,
-                     userId: Int32,
+                     userId: String,
                      skillName: String,
                      isSelected : Bool)-> Bool{
         do {
             // relation accomplishment-user
-            if let SkillToUser = UserRepository.shared.getUserById(id: Int(userId)) {
+            if let SkillToUser = UserRepository.shared.getUserById(id: userId) {
                 let skill = Skills(context: context)
                 skill.skill_id = skillId
                 skill.user_id = userId
@@ -67,7 +67,6 @@ class SkillRepository{
     
     // func updates
     func updateSkill(skillId: String,
-                     userId: Int,
                      skillName: String,
                      isSelected : Bool)-> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
@@ -76,7 +75,6 @@ class SkillRepository{
             let item = try context.fetch(fetchRequest) as? [Skills]
             let skill = item?.first
             skill?.skill_id = skillId
-            skill?.user_id = Int32(userId)
             skill?.skill_name = skillName
             skill?.is_selected = isSelected
             

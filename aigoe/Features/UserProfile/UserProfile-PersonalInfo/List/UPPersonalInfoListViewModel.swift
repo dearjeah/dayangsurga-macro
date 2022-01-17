@@ -8,5 +8,10 @@
 import Foundation
 
 class UPPersonalInfoListViewModel: NSObject {
+    
+    func getAllPersonalInfo() -> [Personal_Info] {
+        guard let data = PersonalInfoRepository.shared.getAllPersonalInfo() else {
+            return [Personal_Info]()}
+        return data
+    }
 }
-

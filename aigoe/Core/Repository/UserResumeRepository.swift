@@ -18,7 +18,7 @@ class UserResumeRepository {
     // func create, ini ga tau func nya begimana
     func createUserResume(resume_id: String,
                           template_id: Int,
-                          user_id: Int,
+                          user_id: String,
                           image: UIImage,
                           name: String,
                           lastUpdate: Date,
@@ -36,7 +36,7 @@ class UserResumeRepository {
                 // relation ke user
                 if let getUser = UserRepository.shared.getUserById(id: user_id){
 //                    getTemplate.user = getUser
-                    getUser.user_id = Int32(user_id)
+                    getUser.user_id = user_id
                     getUser.addToUserResume(dataUserResume)
                 }
                 

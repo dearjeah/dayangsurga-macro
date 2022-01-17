@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -14,11 +15,11 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccomplishmentTableCell" id="KGk-i7-Jjw" customClass="AccomplishmentTableCell" customModule="aigoe" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="353" height="83"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="353" height="83"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qEw-Qx-gxg" customClass="DesignableView" customModule="aigoe" customModuleProvider="target">
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qEw-Qx-gxg" customClass="DesignableView" customModule="aigoe" customModuleProvider="target">
                         <rect key="frame" x="2.5" y="2.5" width="348" height="78"/>
                         <color key="backgroundColor" name="primaryWhite"/>
                         <userDefinedRuntimeAttributes>
@@ -56,16 +57,16 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbt-jv-PRw">
-                        <rect key="frame" x="22" y="56" width="270" height="15"/>
+                        <rect key="frame" x="22" y="56" width="260" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="0Hg-No-d5c"/>
-                            <constraint firstAttribute="width" constant="270" id="vIm-5X-ebm"/>
+                            <constraint firstAttribute="width" constant="260" id="vIm-5X-ebm"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X9X-H4-j4e">
+                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X9X-H4-j4e">
                         <rect key="frame" x="319" y="10" width="24" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="TRL-DY-VKP"/>
@@ -77,15 +78,28 @@
                             <action selector="selectAccomplishment:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="feP-qn-FJy"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dqp-UO-TXY">
-                        <rect key="frame" x="303" y="56" width="39" height="15"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dqp-UO-TXY" customClass="DesignableButton" customModule="aigoe" customModuleProvider="target">
+                        <rect key="frame" x="290" y="51" width="50" height="20"/>
+                        <color key="backgroundColor" red="1" green="0.71764705882352942" blue="0.0" alpha="0.33000000000000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="15" id="V4M-FK-oEE"/>
-                            <constraint firstAttribute="width" constant="39" id="qbP-sI-VnZ"/>
+                            <constraint firstAttribute="height" constant="20" id="V4M-FK-oEE"/>
+                            <constraint firstAttribute="width" constant="50" id="qbP-sI-VnZ"/>
                         </constraints>
                         <color key="tintColor" red="0.098039215690000001" green="0.1647058824" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system" imagePlacement="trailing" title="Edit"/>
+                        <buttonConfiguration key="configuration" style="plain" imagePlacement="trailing" title="Edit" cornerStyle="dynamic" titleAlignment="center">
+                            <imageReference key="image" image="pencil" catalog="system" symbolScale="medium"/>
+                            <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                            <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                        </buttonConfiguration>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" systemColor="tertiaryLabelColor"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <action selector="editAccomplishment:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="FzA-so-epR"/>
                         </connections>
@@ -117,6 +131,7 @@
                     <constraint firstItem="VHR-5E-ycJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="ekx-a2-z06"/>
                     <constraint firstItem="X9X-H4-j4e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="gcy-md-3Bk"/>
                     <constraint firstAttribute="trailing" secondItem="X9X-H4-j4e" secondAttribute="trailing" constant="10" id="xlQ-n3-d91"/>
+                    <constraint firstItem="Dqp-UO-TXY" firstAttribute="leading" secondItem="Qbt-jv-PRw" secondAttribute="trailing" constant="8" id="zCS-J0-yU7"/>
                 </constraints>
                 <userDefinedRuntimeAttributes>
                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -137,6 +152,11 @@
             <point key="canvasLocation" x="-12.318840579710146" y="84.709821428571431"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="Dqp-UO-TXY">
+            <size key="intrinsicContentSize" width="39.5" height="17"/>
+        </designable>
+    </designables>
     <resources>
         <image name="icRoundSelectionNoFill" width="24" height="24"/>
         <image name="pencil" catalog="system" width="128" height="113"/>

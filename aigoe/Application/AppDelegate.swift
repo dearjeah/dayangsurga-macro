@@ -16,6 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         CoreDataManager.sharedManager.preloadData()
+        let isFirstLanuch = UIApplication.isFirstLaunch()
+        
+        if isFirstLanuch {
+            CoreDataManager.sharedManager.createUser()
+        }
+        
         return true
     }
 

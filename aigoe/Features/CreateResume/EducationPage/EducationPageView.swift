@@ -11,10 +11,12 @@ protocol ListEduDelegate: AnyObject{
     func addEduForm(from: String)
     func editEduForm(from: String, edu: Education)
     func selectButtonEdu(eduId: String, isSelected: Bool)
+    func editUPEduForm(from: String, edu: Education)
 }
 
 class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var emptyStateView: EmptyState!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -23,6 +25,7 @@ class EducationPageView: UIView, UITableViewDataSource, UITableViewDelegate {
     var resumeContentData = Resume_Content()
     weak var delegate: ListEduDelegate?
     var eduViewModel = EducationListViewModel()
+    var withResumeContent = true
     
     func setup(dlgt: ListEduDelegate) {
         self.delegate = dlgt
@@ -83,8 +86,6 @@ extension EducationPageView {
             return UITableViewCell()
         }
         let edu = eduData[indexPath.row]
-        let selectedEduId = resumeContentData.edu_id
-        let counter = resumeContentData.edu_id?.count ?? 0
         let eduPeriod = "\(edu.start_date?.string(format: Date.ISO8601Format.MonthYear) ?? "") - \(edu.end_date?.string(format: Date.ISO8601Format.MonthYear) ?? "")"
         
         cell.institutionName.text = edu.institution
@@ -93,20 +94,34 @@ extension EducationPageView {
         cell.educationGPA.text = "\(edu.gpa)"
         cell.educationActivities.text = edu.activity
         
-        if counter != 0 {
-            for i in 0..<counter {
-                if edu.edu_id == selectedEduId?[i] {
-                    cell.checklistButtonIfSelected()
-                    cell.selectionStatus = true
+        if withResumeContent {
+            let selectedEduId = resumeContentData.edu_id
+            let counter = resumeContentData.edu_id?.count ?? 0
+            if counter != 0 {
+                for i in 0..<counter {
+                    if edu.edu_id == selectedEduId?[i] {
+                        cell.checklistButtonIfSelected()
+                        cell.selectionStatus = true
+                    }
                 }
+            } else {
+                cell.checklistButtonUnSelected()
+                cell.selectionStatus = false
             }
         } else {
-            cell.checklistButtonUnSelected()
-            cell.selectionStatus = false
+            cell.selectionButton.isHidden = true
+            cell.selectionButton.isEnabled = false
         }
         
-        cell.editButtonAction = {
-            self.delegate?.editEduForm(from: "edit", edu: edu)
+        if withResumeContent {
+            cell.editButtonAction = {
+                self.delegate?.editEduForm(from: "edit", edu: edu)
+            }
+        } else {
+            cell.shadowView.layer.borderColor = UIColor.clear.cgColor
+            cell.editButtonAction = {
+                self.delegate?.editUPEduForm(from: "Edit", edu: edu)
+            }
         }
         
         cell.checklistButtonAction = {
@@ -124,6 +139,7 @@ extension EducationPageView {
                 self.delegate?.selectButtonEdu(eduId: edu.edu_id ?? "", isSelected: false)
             }
         }
+        
         return cell
     }
     
