@@ -48,7 +48,6 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         super.init(coder: aDecoder)
         initWithNib()
         notificationCenterSetup()
-        
         initialSetup()
     }
     
@@ -98,15 +97,11 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: TABLE VIEW
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if experience.count == 0 {
-            emptyState = stepViewModel.getEmptyStateId(Id: 2)
-            let image = UIImage(data: emptyState?.image ?? Data())
-            emptyStateView.emptyStateImage.image = image
-            emptyStateView.emptyStateTitle.isHidden = true
-            emptyStateView.emptyStateDescription.text = emptyState?.title
-            self.expTableView.backgroundView = emptyStateView
-        } else {
+        if experience.count != 0{
             emptyStateView.isHidden = true
+        }else{
+            showEmptyState()
+            self.expTableView.backgroundView = emptyStateView
         }
         return experience.count
     }
@@ -192,6 +187,7 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
    
 }
 
+//MARK: Reload Data
 extension ExperiencePageView: ExperiencePageDelegate, expCellDelegate {
     func passData() -> Experience? {
         let expData = experience[selectedExp]
@@ -200,5 +196,19 @@ extension ExperiencePageView: ExperiencePageDelegate, expCellDelegate {
     
     func addExperience() {
        getAndReload()
+    }
+}
+
+//MARK: Empty State
+extension ExperiencePageView{
+    func showEmptyState(){
+        emptyStateView.isHidden = false
+        emptyStateView.emptyStateImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin,.flexibleLeftMargin, .flexibleTopMargin]
+        emptyStateView.emptyStateImage.contentMode = .scaleAspectFit
+        emptyStateView.emptyStateImage.clipsToBounds = true
+        emptyStateView.emptyStateTitle.isHidden = true
+        emptyStateView.emptyStateImage.image = UIImage.imgExpEmptyState
+        emptyStateView.emptyStateDescription.text = "You haven't filled your professional experience. Click the 'Add' button to add your professional experience."
+        
     }
 }
