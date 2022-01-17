@@ -92,6 +92,10 @@ class StepByStepGuideViewModel: NSObject {
         )
     }
     
+    func updateSelectedPersonalInfoToResume(resumeId: String, personalId: String) {
+        resumeContentRepo.updateResumeContentPersonalInfo(resume_id: resumeId, newPersonal_id: personalId)
+    }
+    
     func updateSelectedEduToResume(resumeId: String, eduId: String) {
         resumeContentRepo.updateResumeContentEdu(resume_id: resumeId, newEdu_id: eduId)
     }
@@ -149,6 +153,14 @@ extension StepByStepGuideViewModel {
            updateSelectedAccompToResume(resumeId: resumeContentId, accompId: id)
         } else {
             resumeContentRepo.deleteResumeContentAccomp(resume_id: resumeContentId, accompId: id)
+        }
+    }
+    
+    func updatePersonalInfoSelection(resumeContentId: String, id: String, isSelected: Bool) {
+        if isSelected {
+           updateSelectedPersonalInfoToResume(resumeId: resumeContentId, personalId: id)
+        } else {
+            resumeContentRepo.deleteResumeContentPersonalInfo(resume_id: resumeContentId, personalInfoId: id)
         }
     }
 }

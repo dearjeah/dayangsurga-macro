@@ -10,6 +10,7 @@ import UIKit
 protocol PersonalInfoListDelegate: AnyObject {
     func goToPersonalInfoForm(from: String, data: Personal_Info)
     func editUPPersonalInfoForm(from: String, data: Personal_Info)
+    func selectButtonPersonal(personalId: String, isSelected: Bool)
 }
 
 class PersonalInfoList: UIView {
@@ -132,9 +133,11 @@ extension PersonalInfoList: UITableViewDataSource, UITableViewDelegate {
                 currentSelected = self.personalIndex[indexPath.row].personalId
                 self.viewModel.addSelectedPersonalInfo(resumeId: self.resumeContentData.resume_id ?? "", personalInfoId: currentSelected)
                 cell.checklistButtonIfSelected()
+                self.delegate?.selectButtonPersonal(personalId: currentSelected, isSelected: true)
                 tableView.reloadData()
             } else {
-                self.viewModel.deleteSelectedPersonalInfo(resumeId: self.resumeContentData.resume_id ?? "", personalInfoId: currentSelected)
+                self.delegate?.selectButtonPersonal(personalId: currentSelected, isSelected: false)
+                //self.viewModel.deleteSelectedPersonalInfo(resumeId: self.resumeContentData.resume_id ?? "", personalInfoId: currentSelected)
                 self.personalIndex[indexPath.row].isSelected = false
                 currentSelected = ""
                 cell.checklistButtonUnSelected()

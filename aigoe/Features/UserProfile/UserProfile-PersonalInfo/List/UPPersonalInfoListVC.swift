@@ -102,6 +102,10 @@ extension UPPersonalInfoListVC {
 
 // MARK: Delegate
 extension UPPersonalInfoListVC: PersonalInfoListDelegate{
+    func selectButtonPersonal(personalId: String, isSelected: Bool) {
+        //
+    }
+    
     func editUPPersonalInfoForm(from: String, data: Personal_Info) {
         let storyboard = UIStoryboard(name: "UP-PersonalInfo", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToPIForm") as! UPPersonalInfoFormVC
