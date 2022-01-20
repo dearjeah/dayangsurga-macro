@@ -229,7 +229,7 @@ extension SkillAddEditController {
         for i in 0..<skillData{
             let skillId = localSkill[i].id
             let skillName = localSkill[i].name
-            let skill = self.viewModel?.createSkill(skillId: skillId, skillName: skillName , isSelected: true)
+            let skill = self.viewModel?.createSkill(userId: currentUserId, skillId: skillId, skillName: skillName , isSelected: true)
             if skill == false{
                 failSave()
                 return

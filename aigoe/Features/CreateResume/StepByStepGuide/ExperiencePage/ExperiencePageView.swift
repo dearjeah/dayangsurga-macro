@@ -101,18 +101,6 @@ extension ExperiencePageView{
     }
 }
 
-//MARK: LOAD AND PASSING DATA
-extension ExperiencePageView: ExperiencePageDelegate, expCellDelegate {
-    func passData() -> Experience? {
-        let expData = experience[selectedExp]
-        return expData
-    }
-    
-    func addExperience() {
-       getAndReload()
-    }
-}
-
 //MARK: TABLE VIEW
 extension ExperiencePageView{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -215,18 +203,6 @@ extension ExperiencePageView: ExperiencePageDelegate, expCellDelegate {
        getAndReload()
     }
     
-    func showEmptyState() {
-        emptyState = stepViewModel.getEmptyStateId(Id: 2)
-        let image = UIImage(data: emptyState?.image ?? Data())
-        emptyStateView.isHidden = false
-        emptyStateView.emptyStateDescription.text = emptyState?.title
-        emptyStateView.emptyStateImage.image = image
-        emptyStateView.emptyStateTitle.isHidden = true
-        emptyStateView.emptyStateImage.clipsToBounds = true
-        emptyStateView.emptyStateImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
-        emptyStateView.emptyStateImage.contentMode = .scaleAspectFit
-        self.expTableView.backgroundView = emptyStateView
-    }
 }
 
 //MARK: Empty State
