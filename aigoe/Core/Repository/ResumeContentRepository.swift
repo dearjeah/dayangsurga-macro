@@ -157,8 +157,13 @@ class ResumeContentRepository{
         do {
             let item = try context.fetch(fetchRequest) as? [Resume_Content]
             let newResumeContent = item?.first
-            newResumeContent?.skill_id = [newSkill_id]
-            
+            if newResumeContent?.skill_id == nil{
+                newResumeContent?.skill_id = [newSkill_id]
+            }else{
+                if !(newResumeContent?.skill_id?.contains(newSkill_id) ?? false){
+                    newResumeContent?.skill_id?.append(newSkill_id)
+                }
+            }
             try context.save()
         } catch let error as NSError {
             print(error)
