@@ -178,6 +178,8 @@ extension StepByStepGuideViewController: StepByStepGuideDelegate {
             self.viewModel?.updateSkillSelection(resumeContentId: selectedResumeContentId, id: id, isSelected: isSelected)
         } else if from == "accomp" {
             self.viewModel?.updateAccomSelection(resumeContentId: selectedResumeContentId, id: id, isSelected: isSelected)
+        } else if from == "personal" {
+            self.viewModel?.updatePersonalInfoSelection(resumeContentId: selectedResumeContentId, id: id, isSelected: isSelected)
         } else {
             print("Step View Controller =======checklist is from unknown directory========")
         }

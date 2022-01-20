@@ -178,6 +178,11 @@ extension StepByStepGuidePageController: PersonalInfoListDelegate {
     func goToPersonalInfoForm(from: String, data: Personal_Info) {
         stepDelegate?.goToPersonalInfoForm(from: from, personalInfo: data)
     }
+    
+    func selectButtonPersonal(personalId: String, isSelected: Bool) {
+        stepDelegate?.updateTableChecklist(from: "personal", id: personalId, isSelected: isSelected)
+        dataUpdate()
+    }
 }
 
 //MARK: Education List Delegate
@@ -374,7 +379,7 @@ extension StepByStepGuidePageController {
             prevNextDelegate?.changeTitleToGenerate(was: true)
         } else {
             if currentPage == 0 {
-                if personalData.count != 0 {
+                if personalData.count != 0 && currentResumeContent.personalInfo_id != "" {
                     prevNextDelegate?.isButtonEnable(left: false , right: true)
                 } else {
                     prevNextDelegate?.isButtonEnable(left: false , right: false)
@@ -382,34 +387,30 @@ extension StepByStepGuidePageController {
             } else {
                 if pageType[currentPage] != 6 {
                     if pageType[currentPage] == 1 {
-                        if currentResumeContent.personalInfo_id == nil || currentResumeContent.personalInfo_id?.count == 0{
+                        if currentResumeContent.personalInfo_id == nil || currentResumeContent.personalInfo_id == "" {
                             prevNextDelegate?.isButtonEnable(left: false , right: false)
                         } else {
                             prevNextDelegate?.isButtonEnable(left: false , right: true)
                         }
                     } else if pageType[currentPage] == 2 {
-                        //if eduData.isEmpty {
                        if currentResumeContent.edu_id == nil || currentResumeContent.edu_id?.count == 0 {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
                             prevNextDelegate?.isButtonEnable(left: true , right: true)
                         }
                     } else if pageType[currentPage] == 3 {
-                        //if expData.isEmpty {
                         if currentResumeContent.exp_id == nil || currentResumeContent.exp_id?.count  == 0 {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
                             prevNextDelegate?.isButtonEnable(left: true , right: true)
                         }
                     } else if pageType[currentPage] == 4 {
-                        //if skillData.isEmpty {
                         if currentResumeContent.skill_id == nil || currentResumeContent.skill_id?.count == 0 {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
                             prevNextDelegate?.isButtonEnable(left: true , right: true)
                         }
                     } else if pageType[currentPage] == 5 {
-                        //if accomData.isEmpty {
                         if currentResumeContent.accom_id == nil || currentResumeContent.accom_id?.count == 0 {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
@@ -423,42 +424,6 @@ extension StepByStepGuidePageController {
                 }
             }
         }
-    }
-    
-    func dataExpChecker(data: [Experience]) -> Bool {
-        for i in 0...data.count - 1 {
-            if data[i].isSelected == true {
-                return true
-            }
-        }
-        return false
-    }
-    
-    func dataEduChecker(data: [Education]) -> Bool {
-        for i in 0...data.count - 1 {
-            if data[i].is_selected == true {
-                return true
-            }
-        }
-        return false
-    }
-    
-    func dataSkillsChecker(data: [Skills]) -> Bool {
-        for i in 0...data.count - 1 {
-            if data[i].is_selected == true {
-                return true
-            }
-        }
-        return false
-    }
-    
-    func dataAccomChecker(data: [Accomplishment]) -> Bool {
-        for i in 0...data.count - 1 {
-            if data[i].is_selected == true {
-                return true
-            }
-        }
-        return false
     }
     
     func reloadData() {

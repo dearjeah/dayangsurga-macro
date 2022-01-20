@@ -56,7 +56,7 @@ extension UPExperienceListVC{
         self.tabBarController?.tabBar.isHidden = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(self.goToExpForm(sender:)))
         showAddBtn()
-        addButton.dsLongFilledPrimaryButton(withImage: false, text: "Add Experience")
+        addButton.dsLongFilledPrimaryButton(withImage: false, text: "Add")
         experienceListView.experienceDelegate = self
         experienceListView.experience = exp
         experienceListView.addEditButton.isHidden = true

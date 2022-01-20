@@ -48,6 +48,7 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         super.init(coder: aDecoder)
         initWithNib()
         notificationCenterSetup()
+        
         initialSetup()
     }
     
@@ -73,11 +74,6 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
     
-  
-}
-
-//MARK: INITIAL SETUP
-extension ExperiencePageView{
     func initialSetup(){
         self.expTableView.register(UINib(nibName: "ExperienceTableCell", bundle: nil), forCellReuseIdentifier: "ExperienceTableCell")
         
@@ -99,13 +95,15 @@ extension ExperiencePageView{
     func notificationCenterSetup() {
         NotificationCenter.default.addObserver(self, selector: #selector(expReload), name: Notification.Name("expReload"), object: nil)
     }
-}
-
-//MARK: TABLE VIEW
-extension ExperiencePageView{
+    
+    //MARK: TABLE VIEW
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if experience.count == 0 {
-            showEmptyState()
+            emptyState = stepViewModel.getEmptyStateId(Id: 2)
+            let image = UIImage(data: emptyState?.image ?? Data())
+            emptyStateView.emptyStateImage.image = image
+            emptyStateView.emptyStateTitle.isHidden = true
+            emptyStateView.emptyStateDescription.text = emptyState?.title
             self.expTableView.backgroundView = emptyStateView
         } else {
             emptyStateView.isHidden = true
@@ -190,9 +188,10 @@ extension ExperiencePageView{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedExp = indexPath.row
     }
+    
+   
 }
 
-//MARK: Reload Data
 extension ExperiencePageView: ExperiencePageDelegate, expCellDelegate {
     func passData() -> Experience? {
         let expData = experience[selectedExp]
@@ -201,20 +200,5 @@ extension ExperiencePageView: ExperiencePageDelegate, expCellDelegate {
     
     func addExperience() {
        getAndReload()
-    }
-    
-}
-
-//MARK: Empty State
-extension ExperiencePageView{
-    func showEmptyState(){
-        emptyStateView.isHidden = false
-        emptyStateView.emptyStateImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin,.flexibleLeftMargin, .flexibleTopMargin]
-        emptyStateView.emptyStateImage.contentMode = .scaleAspectFit
-        emptyStateView.emptyStateImage.clipsToBounds = true
-        emptyStateView.emptyStateTitle.isHidden = true
-        emptyStateView.emptyStateImage.image = UIImage.imgExpEmptyState
-        emptyStateView.emptyStateDescription.text = "You haven't filled your professional experience. Click the 'Add' button to add your professional experience."
-        
     }
 }

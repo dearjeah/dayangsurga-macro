@@ -27,7 +27,10 @@
                                                 <rect key="frame" x="14.5" y="715.5" width="385" height="122.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbL-Hd-cpu">
-                                                        <rect key="frame" x="0.0" y="33.5" width="385" height="55.5"/>
+                                                        <rect key="frame" x="0.0" y="37" width="385" height="48"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="hya-2B-iS5"/>
+                                                        </constraints>
                                                         <color key="tintColor" name="primaryBlue"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
@@ -41,7 +44,6 @@
                                                     <constraint firstItem="jbL-Hd-cpu" firstAttribute="centerY" secondItem="px4-J6-fLi" secondAttribute="centerY" id="4Jy-5y-LPP"/>
                                                     <constraint firstItem="jbL-Hd-cpu" firstAttribute="centerX" secondItem="px4-J6-fLi" secondAttribute="centerX" id="BCb-BT-pO7"/>
                                                     <constraint firstItem="jbL-Hd-cpu" firstAttribute="width" secondItem="px4-J6-fLi" secondAttribute="width" id="Ceg-YF-40l"/>
-                                                    <constraint firstItem="jbL-Hd-cpu" firstAttribute="height" secondItem="px4-J6-fLi" secondAttribute="height" multiplier="0.45" id="GeB-1n-dph"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9kF-o6-ZSz" customClass="DesignableView" customModule="aigoe" customModuleProvider="target">
