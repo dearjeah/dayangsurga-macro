@@ -25,11 +25,9 @@ class PDFCreator: NSObject {
     }
     
     func createPDF() -> Data {
-        //user data
         getResumeContentData()
         personalInfo = PersonalInfoRepository.shared.getPersonalInfoById(id: resumeContent.personalInfo_id ?? "") ?? Personal_Info()
         let userName = personalInfo.fullName ?? ""
-        // 1
         let pdfMetaData = [
             kCGPDFContextCreator: "Resume Creator",
             kCGPDFContextAuthor: userResume?.personalInfo?.fullName,
@@ -38,14 +36,11 @@ class PDFCreator: NSObject {
         let format = UIGraphicsPDFRendererFormat()
         format.documentInfo = pdfMetaData as [String: Any]
         
-        // 2
         let pageRect = CGRect(x: 0, y: 0, width: 595, height: 842)
         
-        // 3
         let renderer = UIGraphicsPDFRenderer(bounds: pageRect, format: format)
-        // 4
+        
         let data = renderer.pdfData { (context) in
-            // 5
             context.beginPage()
             let drawContext = context.cgContext
             var sectionBottom = addTitleSection(pageRect: pageRect, title: userName, drawContext: drawContext, context: context)
@@ -78,7 +73,6 @@ class PDFCreator: NSObject {
     }
     
     func addSummarySection(pageRect: CGRect,currentPosition: CGFloat, drawContext: CGContext, context:UIGraphicsPDFRendererContext)->CGFloat{
-        //User Data
         let summary = personalInfo.summary ?? ""
         let headerBottom = addHeader(pageRect: pageRect, headerTop: currentPosition, text: "Summary", context: context, template: 1)
         let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
@@ -119,7 +113,6 @@ class PDFCreator: NSObject {
         }
     
         func addExperienceSection(pageRect: CGRect, drawContext: CGContext, startPosition: CGFloat, context:UIGraphicsPDFRendererContext)-> CGFloat{
-            //Check if empty
             var sectionBottom:CGFloat = startPosition
             if expData.count != 0 {
             let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Experience", context: context, template: 1)
@@ -170,10 +163,10 @@ class PDFCreator: NSObject {
                     sectionBottom = addBodyText(pageRect: pageRect, textTop: separatorBottom, text: "\(title) \(givenDate) - \(endDate)", context: context, template: selectedTemplate)
                     addPeriodText(pageRect: pageRect, textTop: separatorBottom, text: "\(givenDate) - \(endDate)", context: context, template: selectedTemplate)
                 }else{
-                    sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: "\(title) \(givenDate) - \(endDate)", context: context, template: selectedTemplate)
                     addPeriodText(pageRect: pageRect, textTop: sectionBottom, text: "\(givenDate) - \(endDate)", context: context, template: selectedTemplate)
+                    sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: "\(title) \(givenDate) - \(endDate)", context: context, template: selectedTemplate)
+                    
                 }
-              
             }
                 return sectionBottom + 4.0}
             else{
@@ -335,7 +328,6 @@ class PDFCreator: NSObject {
                 width: attributedPeriod.size().width,
                 height: attributedPeriod.size().height
             )
-            //check height add if-> check siapa yang dipanggil sebelum dia, adjust code
             attributedPeriod.draw(in: periodRect)
         }
         

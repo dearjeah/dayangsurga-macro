@@ -108,8 +108,17 @@ class ResumeContentRepository{
         do {
             let item = try context.fetch(fetchRequest) as? [Resume_Content]
             let newResumeContent = item?.first
-            newResumeContent?.edu_id = [newEdu_id]
+            if newResumeContent?.edu_id == nil{
+                newResumeContent?.edu_id = [newEdu_id]
+            }
             
+            if newResumeContent?.edu_id?.count != 0{
+                if !(newResumeContent?.edu_id?.contains(newEdu_id) ?? true){
+                    newResumeContent?.edu_id?.append(newEdu_id)
+                }
+            }else{
+                newResumeContent?.edu_id?.append(newEdu_id)
+            }
             try context.save()
         } catch let error as NSError {
             print(error)
@@ -123,7 +132,17 @@ class ResumeContentRepository{
         do {
             let item = try context.fetch(fetchRequest) as? [Resume_Content]
             let newResumeContent = item?.first
-            newResumeContent?.exp_id = [newExp_id]
+            if newResumeContent?.exp_id == nil{
+                newResumeContent?.exp_id = [newExp_id]
+            }
+            
+            if newResumeContent?.exp_id?.count != 0 {
+                if !(newResumeContent?.exp_id?.contains(newExp_id) ?? true){
+                    newResumeContent?.exp_id?.append(newExp_id)
+                }
+            }else{
+                newResumeContent?.exp_id?.append(newExp_id)
+            }
             
             try context.save()
         } catch let error as NSError {
@@ -153,7 +172,13 @@ class ResumeContentRepository{
         do {
             let item = try context.fetch(fetchRequest) as? [Resume_Content]
             let newResumeContent = item?.first
-            newResumeContent?.accom_id = [newAccomp_id]
+            if newResumeContent?.accom_id == nil{
+                newResumeContent?.accom_id = [newAccomp_id]
+            }else{
+                if !(newResumeContent?.accom_id?.contains(newAccomp_id) ?? false){
+                    newResumeContent?.accom_id?.append(newAccomp_id)
+                }
+            }
             
             try context.save()
         } catch let error as NSError {
