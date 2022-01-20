@@ -12,6 +12,7 @@ import CoreMedia
 class PDFCreator: NSObject {
     var userResume: User_Resume?
     var resumeContent = Resume_Content()
+    var personalInfo = Personal_Info()
     var eduData = [Education]()
     var expData = [Experience]()
     var skillData = [Skills]()
@@ -26,7 +27,8 @@ class PDFCreator: NSObject {
     func createPDF() -> Data {
         //user data
         getResumeContentData()
-        let userName = userResume?.personalInfo?.fullName ?? ""
+        personalInfo = PersonalInfoRepository.shared.getPersonalInfoById(id: resumeContent.personalInfo_id ?? "") ?? Personal_Info()
+        let userName = personalInfo.fullName ?? ""
         // 1
         let pdfMetaData = [
             kCGPDFContextCreator: "Resume Creator",
@@ -64,9 +66,9 @@ class PDFCreator: NSObject {
     
     func addTitleSection(pageRect: CGRect, title: String, drawContext: CGContext, context: UIGraphicsPDFRendererContext)->CGFloat{
         //User Data
-        let phone = userResume?.personalInfo?.phoneNumber ?? ""
-        let email = userResume?.personalInfo?.email ?? ""
-        let location = userResume?.personalInfo?.location ?? ""
+        let phone = personalInfo.phoneNumber ?? ""
+        let email = personalInfo.summary ?? ""
+        let location = personalInfo.location ?? ""
         
         let titleBottom = addTitle(pageRect: pageRect, text: title, context: context, template: 1)
         let sectionBottom = addPersonalInformation(pageRect: pageRect, startPosition: titleBottom, text: "\(phone) | \(email) | \(location)", context: context, template: selectedTemplate)
@@ -77,7 +79,7 @@ class PDFCreator: NSObject {
     
     func addSummarySection(pageRect: CGRect,currentPosition: CGFloat, drawContext: CGContext, context:UIGraphicsPDFRendererContext)->CGFloat{
         //User Data
-        let summary = userResume?.personalInfo?.summary ?? ""
+        let summary = personalInfo.summary ?? ""
         let headerBottom = addHeader(pageRect: pageRect, headerTop: currentPosition, text: "Summary", context: context, template: 1)
         let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
         let contentBottom = addParagraphText(pageRect: pageRect, textTop: separatorBottom, text: "\(summary)", context: context, template: selectedTemplate)
@@ -166,9 +168,12 @@ class PDFCreator: NSObject {
                 
                 if index == 0{
                     sectionBottom = addBodyText(pageRect: pageRect, textTop: separatorBottom, text: "\(title) \(givenDate) - \(endDate)", context: context, template: selectedTemplate)
+                    addPeriodText(pageRect: pageRect, textTop: separatorBottom, text: "\(givenDate) - \(endDate)", context: context, template: selectedTemplate)
                 }else{
                     sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: "\(title) \(givenDate) - \(endDate)", context: context, template: selectedTemplate)
+                    addPeriodText(pageRect: pageRect, textTop: sectionBottom, text: "\(givenDate) - \(endDate)", context: context, template: selectedTemplate)
                 }
+              
             }
                 return sectionBottom + 4.0}
             else{

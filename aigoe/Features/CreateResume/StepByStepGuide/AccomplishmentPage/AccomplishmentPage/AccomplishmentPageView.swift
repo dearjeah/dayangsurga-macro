@@ -28,7 +28,7 @@ class AccomplishmentPageView: UIView {
     var accomplishment = [Accomplishment]()
     var accomViewModel = AccomplishmentPageViewModel()
     var resumeContentData = Resume_Content()
-    var withResumeContent = false
+    var withResumeContent = true
     
     func setup(dlgt: AccomplishListDelegate) {
         self.delegate = dlgt
