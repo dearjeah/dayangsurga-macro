@@ -17,7 +17,7 @@ class AccomplishmentRepository{
     
     // create data
     func createAccomplishment(accomId: String,
-                              userId: Int,
+                              userId: String,
                               title: String,
                               givenDate: Date,
                               endDate: Date,
@@ -27,10 +27,9 @@ class AccomplishmentRepository{
                               isSelected : Bool) -> Bool {
         do {
             // relation accomplishment-user
-            if let AccomplishmentToUser = UserRepository.shared.getUserById(id: userId) {
                 let accomplishment = Accomplishment(context: context)
                 accomplishment.accomplishment_id = accomId
-                accomplishment.user_id = Int32(userId)
+                accomplishment.user_id = userId
                 accomplishment.given_date = givenDate
                 accomplishment.end_date = endDate
                 accomplishment.status = status
@@ -39,10 +38,9 @@ class AccomplishmentRepository{
                 accomplishment.desc = desc
                 accomplishment.is_selected = isSelected
                 
-                AccomplishmentToUser.addToAccomplishment(accomplishment)
                 try context.save()
                 return true
-            }
+            
         }
         catch let error as NSError {
             print(error)
@@ -76,7 +74,6 @@ class AccomplishmentRepository{
     
     // func updates
     func updateAccomplishment( accomId: String,
-                               userId: Int,
                                title: String,
                                givenDate: Date,
                                endDate: Date,
@@ -90,7 +87,6 @@ class AccomplishmentRepository{
             let item = try context.fetch(fetchRequest) as? [Accomplishment]
             let accomplishment = item?.first
             accomplishment?.accomplishment_id = accomId
-            accomplishment?.user_id = Int32(userId)
             accomplishment?.given_date = givenDate
             accomplishment?.end_date = endDate
             accomplishment?.status = status

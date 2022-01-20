@@ -11,7 +11,7 @@ import UIKit
 // MARK: - Images Asset
 
 extension UIImage {
-
+    
     static let comingSoon = UIImage.image(named: "comingSoon")
     static let icAccomplishmentActive = UIImage.image(named: "icAccomplishmentActive")
     static let icAccomplishmentInactive = UIImage.image(named: "icAccomplishmentInactive")
@@ -55,7 +55,22 @@ extension UIImage {
     static let imgResumeTemplateGeorgia = UIImage.image(named: "imgResumeTemplateGeorgia")
     static let imgResumeTemplateHeletvica = UIImage.image(named: "imgResumeTemplateHeletvica")
     static let imgSkillEmptyState = UIImage.image(named: "imgSkillEmptyState")
-
+    
+    //System Image
+    static let icDoc = UIImage(systemName: "doc.text")
+    static let icPencil = UIImage(systemName: "pencil")
+    static let icTextCheck = UIImage(systemName: "text.badge.checkmark")
+    static let icRepeat = UIImage(systemName: "repeat")
+    static let icTrash = UIImage(systemName: "trash")
+    static let icXmark = UIImage(systemName: "xmark")
+    
+    static let icPersonFill = UIImage(systemName: "person.fill")
+    static let icEduFill = UIImage(systemName: "graduationcap.fill")
+    static let icExpFill = UIImage(systemName: "bag.fill")
+    static let icSkillFill = UIImage(systemName: "gearshape.fill")
+    static let icAchvFill = UIImage(systemName: "rosette")
+    
+    
     private static func image(named: String) -> UIImage {
         return UIImage(named: named)!
     }

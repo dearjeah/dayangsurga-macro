@@ -30,6 +30,7 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
     var getIndexExp = Int()
     var isCreate = Bool()
     var dataFrom = String()
+    var currentUserId = ""
     
     func setup(dlgt: ExperiencePageDelegate) {
         self.expDelegate = dlgt
@@ -43,7 +44,6 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
         expPlaceholder = self.viewModel?.getExpPh()
         expSuggestion = self.viewModel?.getExpSuggestion()
         hideKeyboardWhenTappedAround()
-        self.jobSummary.textView.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,12 +51,16 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
             vc.formSource = "experience"
         }
     }
-    
+}
+
+//MARK: CRUD Code
+extension ExperienceFormController {
     @IBAction func addExperiencePressed(_ sender: UIButton) {
         if !alertForCheckTF() {
             if experience == nil{
                 //add
-                guard let addExp = self.viewModel?.addExpData(title: jobTitle.textField.text ?? "",
+                guard let addExp = self.viewModel?.addExpData(userId: currentUserId,
+                                                              title: jobTitle.textField.text ?? "",
                                                               jobDesc: jobSummary.textView.text ?? "",
                                                               company: companyName.textField.text ?? "",
                                                               startDate: jobPeriod.startDatePicker.date,
@@ -69,9 +73,7 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
                 } else {
                     errorSaveData()
                 }
-                
             } else {
-                //delete
                 showAlertForDelete()
             }
         }
@@ -98,7 +100,6 @@ class ExperienceFormController: MVVMViewController<ExperienceFormViewModel> {
         }
     }
     
-    // for delete and reload
     func deleteExpData(){
         guard let data = self.viewModel?.deleteExpData(dataExperience: experience) else { return errorSaveData() }
         if data {
@@ -155,6 +156,7 @@ extension ExperienceFormController: UITextViewDelegate {
 extension ExperienceFormController {
     func setup(){
         self.title = "Professional Experience"
+        self.jobSummary.textView.delegate = self
         expPlaceholder = self.viewModel?.getExpPh()
         expSuggestion = self.viewModel?.getExpSuggestion()
         companyName.titleLabel.text = "Company Name*"
@@ -165,7 +167,6 @@ extension ExperienceFormController {
         jobPeriod.titleLabel.text = "Job Period*"
         jobSummary.titleLabel.text = "Job Summary*"
         jobSummary.cueLabel.text = expSuggestion?.jobDescSuggest
-        jobSummary.textView.delegate = self
         jobPeriod.endDatePicker.maximumDate = Date()
         getValueSwitch()
         if dataFrom == "edit"{

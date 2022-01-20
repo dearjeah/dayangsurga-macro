@@ -22,18 +22,23 @@ class StepByStepGuideViewModel: NSObject {
     
     let emptyStateRepo = EmptyStateRepository.shared
     let userRepo = UserRepository.shared
+    let personalInfoRepo = PersonalInfoRepository.shared
     let experienceRepo = ExperienceRepository.shared
     let eduRepo = EducationRepository.shared
     let skillRepo = SkillRepository.shared
     let accomRepo = AccomplishmentRepository.shared
     let resumeContentRepo = ResumeContentRepository.shared
     let userResumeRepo = UserResumeRepository.shared
+    
+    //user id
+    func getCurrentUserId() -> String {
+        return userRepo.currentUserId ?? ""
+    }
 
     // for empty state
     func getEmptyStateId(Id: Int) -> Empty_State?{
         return emptyStateRepo.getEmptyStateById(id: Id)
     }
-    
     // for experience
     func getExpData() -> [Experience]?{
         return experienceRepo.getAllExperience()
@@ -69,15 +74,26 @@ class StepByStepGuideViewModel: NSObject {
         return SkillRepository.shared.getSkillsById(skillId: skillId)
     }
     
+    func getResumeContentId(resumeId: String) -> String {
+        let resumeContent = resumeContentRepo.getResumeContentById(resume_id: resumeId)
+        let resumeContentId = resumeContent?.resume_id ?? ""
+        
+        return resumeContentId
+    }
     
-    func updatePersonalInfo(data: PersonalInfo) {
-        userRepo.updateUser(id: 0,
-                            newName: data.name,
-                            newPhoneNumber: data.phoneNumber,
-                            newEmail: data.email,
-                            newLocation: data.location,
-                            newSummary: data.summary
+    
+    func updatePersonalInfo(data: PersonalInfo, userId: String) {
+        personalInfoRepo.updatePersonalInfo(id: data.id,
+                                            newName: data.name ,
+                                            newPhoneNumber: data.phoneNumber ,
+                                            newEmail: data.email ,
+                                            newLocation: data.location ,
+                                            newSummary: data.summary 
         )
+    }
+    
+    func updateSelectedPersonalInfoToResume(resumeId: String, personalId: String) {
+        resumeContentRepo.updateResumeContentPersonalInfo(resume_id: resumeId, newPersonal_id: personalId)
     }
     
     func updateSelectedEduToResume(resumeId: String, eduId: String) {
@@ -137,6 +153,14 @@ extension StepByStepGuideViewModel {
            updateSelectedAccompToResume(resumeId: resumeContentId, accompId: id)
         } else {
             resumeContentRepo.deleteResumeContentAccomp(resume_id: resumeContentId, accompId: id)
+        }
+    }
+    
+    func updatePersonalInfoSelection(resumeContentId: String, id: String, isSelected: Bool) {
+        if isSelected {
+           updateSelectedPersonalInfoToResume(resumeId: resumeContentId, personalId: id)
+        } else {
+            resumeContentRepo.deleteResumeContentPersonalInfo(resume_id: resumeContentId, personalInfoId: id)
         }
     }
 }

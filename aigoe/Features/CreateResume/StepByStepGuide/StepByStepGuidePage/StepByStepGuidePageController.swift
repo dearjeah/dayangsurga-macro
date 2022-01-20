@@ -15,13 +15,14 @@ protocol StepByStepGuideDelegate: AnyObject {
     func goToEditExp(was: Bool, from: String, exp: Experience)
     func goToAddEdu(was: Bool, from: String)
     func goToEditEdu(was: Bool, from: String, edu: Education)
-    func goToAddAccom(from: String)
-    func goToEditAccom(from: String, accomp: Accomplishment)
+    func goToAddAccom(was: Bool, from: String)
+    func goToEditAccom(was: Bool, from: String, accomp: Accomplishment)
     func personalInfoUpdate(data: PersonalInfo)
     func goToAddSkill(from: String)
     func goToEditSkill(from: String, skills: [Skills])
     func updateData(page: Int)
     func updateTableChecklist(from: String, id: String, isSelected: Bool)
+    func goToPersonalInfoForm(from: String, personalInfo: Personal_Info)
 }
 
 protocol prevNextButtonDelegate: AnyObject {
@@ -40,12 +41,13 @@ class StepByStepGuidePageController: UIPageViewController {
     var quizAnswer: [Bool] = []
     var pageType: [Int] = []
     var selectedResume = User_Resume()
-    var personalData = User()
+    var personalData = [Personal_Info]()
     var eduData = [Education]()
     var expData = [Experience]()
     var skillData = [Skills]()
     var accomData = [Accomplishment]()
-    var currentResumeContent = Resume_Content() 
+    var currentResumeContent = Resume_Content()
+    var currentUserId = ""
     
     weak var stepDelegate: StepByStepGuideDelegate?
     weak var prevNextDelegate: prevNextButtonDelegate?
@@ -168,6 +170,21 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
     }
 }
 
+//MARK: Personal Info List Delegate
+extension StepByStepGuidePageController: PersonalInfoListDelegate {
+    func editUPPersonalInfoForm(from: String, data: Personal_Info) {
+    }
+    
+    func goToPersonalInfoForm(from: String, data: Personal_Info) {
+        stepDelegate?.goToPersonalInfoForm(from: from, personalInfo: data)
+    }
+    
+    func selectButtonPersonal(personalId: String, isSelected: Bool) {
+        stepDelegate?.updateTableChecklist(from: "personal", id: personalId, isSelected: isSelected)
+        dataUpdate()
+    }
+}
+
 //MARK: Education List Delegate
 extension StepByStepGuidePageController: ListEduDelegate {
     func addEduForm(from: String) {
@@ -182,11 +199,18 @@ extension StepByStepGuidePageController: ListEduDelegate {
         stepDelegate?.updateTableChecklist(from: "edu", id: eduId, isSelected: isSelected)
         dataUpdate()
     }
+    
+    func editUPEduForm(from: String, edu: Education) {
+    }
 }
 
 
 //MARK: Experience List Delegate
 extension StepByStepGuidePageController: ExperienceListDelegate {
+    func editExpUpForm(from: String, exp: Experience) {
+        
+    }
+    
     func goToAddExp() {
         stepDelegate?.goToAddExp(was: true, from: "add")
     }
@@ -219,13 +243,21 @@ extension StepByStepGuidePageController: skillListDelegate {
 
 //MARK: Accomplishment List Delegate
 extension StepByStepGuidePageController: AccomplishListDelegate {
-    func goToAddAccom() {
-        stepDelegate?.goToAddAccom(from: "add")
+    func editAccompForm(from: String, accomp: Accomplishment) {
+        
     }
     
-    func passingAccomplishData(accomplish: Accomplishment?) {
-        stepDelegate?.goToEditAccom(from: "edit", accomp: accomplish ?? Accomplishment())
+    func editUPAccompForm(from: String, accomp: Accomplishment) {
+        
     }
+    
+    func goToAddAccom() {
+        stepDelegate?.goToAddAccom(was: true, from: "add")
+    }
+    
+//    func passingAccomplishData(accomplish: Accomplishment?) {
+//        stepDelegate?.goToEditAccom(was: true, from: "edit", accomp: accomplish ?? Accomplishment())
+//    }
     
     func selectButtonAccom(accomId: String, isSelected: Bool) {
         stepDelegate?.updateTableChecklist(from: "accomp", id: accomId, isSelected: isSelected)
@@ -347,7 +379,7 @@ extension StepByStepGuidePageController {
             prevNextDelegate?.changeTitleToGenerate(was: true)
         } else {
             if currentPage == 0 {
-                if personalData.username != "" {
+                if personalData.count != 0 && currentResumeContent.personalInfo_id != "" {
                     prevNextDelegate?.isButtonEnable(left: false , right: true)
                 } else {
                     prevNextDelegate?.isButtonEnable(left: false , right: false)
@@ -355,110 +387,47 @@ extension StepByStepGuidePageController {
             } else {
                 if pageType[currentPage] != 6 {
                     if pageType[currentPage] == 1 {
-                        if personalData.username == nil {
+                        if currentResumeContent.personalInfo_id == nil || currentResumeContent.personalInfo_id == "" {
                             prevNextDelegate?.isButtonEnable(left: false , right: false)
                         } else {
                             prevNextDelegate?.isButtonEnable(left: false , right: true)
                         }
-                    }
-                   else if pageType[currentPage] == 2 {
-                        //if eduData.isEmpty {
+                    } else if pageType[currentPage] == 2 {
                        if currentResumeContent.edu_id == nil || currentResumeContent.edu_id?.count == 0 {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
                             prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            /*let checker = dataEduChecker(data: eduData)
-                            if checker {
-                                prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            } else {
-                                prevNextDelegate?.isButtonEnable(left: true , right: false)
-                            }*/
                         }
                     } else if pageType[currentPage] == 3 {
-                        //if expData.isEmpty {
                         if currentResumeContent.exp_id == nil || currentResumeContent.exp_id?.count  == 0 {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
                             prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            /*let checker = dataExpChecker(data: expData)
-                            if checker {
-                                prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            } else {
-                                prevNextDelegate?.isButtonEnable(left: true , right: false)
-                            }*/
                         }
                     } else if pageType[currentPage] == 4 {
-                        //if skillData.isEmpty {
                         if currentResumeContent.skill_id == nil || currentResumeContent.skill_id?.count == 0 {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
                             prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            /*let checker = dataSkillsChecker(data: skillData)
-                            if checker {
-                                prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            } else {
-                                prevNextDelegate?.isButtonEnable(left: true , right: false)
-                            }*/
                         }
                     } else if pageType[currentPage] == 5 {
-                        //if accomData.isEmpty {
                         if currentResumeContent.accom_id == nil || currentResumeContent.accom_id?.count == 0 {
                             prevNextDelegate?.isButtonEnable(left: true , right: false)
                         } else {
                             prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            /*let checker = dataAccomChecker(data: accomData)
-                            if checker {
-                                prevNextDelegate?.isButtonEnable(left: true , right: true)
-                            } else {
-                                prevNextDelegate?.isButtonEnable(left: true , right: false)
-                            }*/
                         }
                     } else {
                         prevNextDelegate?.isButtonEnable(left: true, right: true)
                     }
+                } else if pageType[currentPage] == 6{
+                    prevNextDelegate?.isButtonEnable(left: true , right: true)
                 }
             }
         }
     }
     
-    func dataExpChecker(data: [Experience]) -> Bool {
-        for i in 0...data.count - 1 {
-            if data[i].isSelected == true {
-                return true
-            }
-        }
-        return false
-    }
-    
-    func dataEduChecker(data: [Education]) -> Bool {
-        for i in 0...data.count - 1 {
-            if data[i].is_selected == true {
-                return true
-            }
-        }
-        return false
-    }
-    
-    func dataSkillsChecker(data: [Skills]) -> Bool {
-        for i in 0...data.count - 1 {
-            if data[i].is_selected == true {
-                return true
-            }
-        }
-        return false
-    }
-    
-    func dataAccomChecker(data: [Accomplishment]) -> Bool {
-        for i in 0...data.count - 1 {
-            if data[i].is_selected == true {
-                return true
-            }
-        }
-        return false
-    }
-    
     func reloadData() {
-        personalData = UserRepository.shared.getUserById(id: 0) ?? User()
+        personalData = PersonalInfoRepository.shared.getAllPersonalInfo() ?? []
         eduData = EducationRepository.shared.getAllEducation() ?? []
         expData = ExperienceRepository.shared.getAllExperience() ?? []
         skillData = SkillRepository.shared.getAllSkill() ?? []
@@ -487,6 +456,7 @@ extension StepByStepGuidePageController {
         NotificationCenter.default.addObserver(self, selector: #selector(didSelectGenerate), name: Notification.Name("goToGenerate"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(progressBarTapped), name: Notification.Name("progressBarTapped"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("personalInfoReload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("eduReload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("expReload"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(dataUpdate), name: Notification.Name("skillReload"), object: nil)
@@ -527,14 +497,12 @@ extension StepByStepGuidePageController {
 extension StepByStepGuidePageController {
     func populateResumeData() {
         if !isCreate {
-            let data = ResumeContentRepository.shared.getResumeContentById(resume_id: UUID().uuidString)
+            let data = ResumeContentRepository.shared.getResumeContentById(resume_id: selectedResume.resume_id ?? "")
             
             if data != nil {
-                personalData = UserRepository.shared.getUserById(id: Int(selectedResume.user_id)) ?? User()
-                /*eduData = EducationRepository.shared.getEducationById(educationId: Int(data?.edu_id ?? Int32())) ?? Education()
-                expData = ExperienceRepository.shared.getExperienceById(experienceId: Int(data?.exp_id ?? Int32())) ?? Experience()
-                skillData = SkillRepository.shared.getSkillsById(skillId: data?.skill_id ?? Int32()) ?? Skills()
-                accomData = AccomplishmentRepository.shared.getAccomplishmentById(AccomplishmentId: Int(data?.accom_id ?? Int32())) ??  Accomplishment()*/
+                personalData = PersonalInfoRepository.shared.getAllPersonalInfo() ?? []
+                //personalData = UserRepository.shared.getUserById(id: Int(selectedResume.user_id)) ?? User()
+                currentResumeContent = data ?? Resume_Content()
             }
         }
     }
@@ -544,9 +512,9 @@ extension StepByStepGuidePageController {
     fileprivate func initPersonalData() -> UIViewController {
         let controller = MVVMViewController<PersonalInfoViewModel>()
         controller.viewModel =  PersonalInfoViewModel()
-        personalData = controller.viewModel?.getUserData() ?? User()
+        personalData = controller.viewModel?.getAllPersonalInfoData() ?? []
         
-        let tmp = PersonalInfoPage.init(data: personalData, isCreate: isCreate)
+        let tmp = PersonalInfoList.init(personalInfoData: personalData, resumeContent: currentResumeContent)
         tmp.setup(dlgt: self)
         controller.view = tmp
         return controller

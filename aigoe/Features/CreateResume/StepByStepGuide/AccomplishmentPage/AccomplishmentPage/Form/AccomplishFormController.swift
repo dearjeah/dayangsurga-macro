@@ -9,6 +9,7 @@ import UIKit
 
 class AccomplishFormController: MVVMViewController<AccomplishFormViewModel> {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var backgroundView: DesignableButton!
     @IBOutlet weak var certificateNameView: LabelWithTextField!
     @IBOutlet weak var dateView: LabelWithDate!
@@ -22,6 +23,7 @@ class AccomplishFormController: MVVMViewController<AccomplishFormViewModel> {
     var accomplishSuggest: Accomplishment_Suggest?
     var dataFrom = String()
     var accomId: String = ""
+    var currentUserId = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,7 @@ class AccomplishFormController: MVVMViewController<AccomplishFormViewModel> {
         accomplishPh = self.viewModel?.getAccomplishPh()
         accomplishSuggest = self.viewModel?.getAccomplishSuggestion()
         setup()
+        setupScrollView()
         hideKeyboardWhenTappedAround()
     }
     
@@ -48,7 +51,8 @@ class AccomplishFormController: MVVMViewController<AccomplishFormViewModel> {
                     endDate: endDateView.datePicker.date,
                     status: statusView.switchButton.isOn,
                     issuer: issuerView.textField.text ?? "",
-                    desc: ""
+                    desc: "",
+                    userId: currentUserId
                 ) else { return errorSaveData(from: "Save") }
                 if data {
                     performSegue(withIdentifier: "backToStepVC", sender: self)
@@ -157,6 +161,16 @@ extension AccomplishFormController {
             certificateNameView.textField.placeholder = accomplishPh?.title_ph
             issuerView.textField.placeholder = accomplishPh?.given_date_ph
             addOrDeleteButton.dsLongFilledPrimaryButton(withImage: false, text: "Add Accomplishment")
+        }
+    }
+    
+    func setupScrollView(){
+        if UIDevice.current.modelName == "iPhone10,4" {
+            scrollView.isScrollEnabled = true
+        } else if UIDevice.current.modelName == "iPhone12,1" {
+            scrollView.isScrollEnabled = false
+        } else if UIDevice.current.modelName == "iPhone13,2" {
+            scrollView.isScrollEnabled = false
         }
     }
 }

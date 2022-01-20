@@ -16,7 +16,7 @@ class EducationRepository{
     
     // create data
     func createEducation(eduId: String,
-                         userId: Int,
+                         userId: String,
                          institution: String,
                          title: String,
                          startDate: Date,
@@ -27,23 +27,25 @@ class EducationRepository{
                          isSelected : Bool) -> Bool {
         do {
             // relation education-user
+            let education = Education(context: context)
+            education.edu_id = eduId
+            education.user_id = userId
+            education.institution = institution
+            education.title = title
+            education.start_date = startDate
+            education.end_date = endDate
+            education.gpa =   gpa
+            education.activity = activity
+            education.currently_study = currentlyStudy
+            education.is_selected = isSelected
+            
             if let educationToUser = UserRepository.shared.getUserById(id: userId) {
-                let education = Education(context: context)
-                education.edu_id = eduId
-                education.user_id = Int32(userId)
-                education.institution = institution
-                education.title = title
-                education.start_date = startDate
-                education.end_date = endDate
-                education.gpa =   gpa
-                education.activity = activity
-                education.currently_study = currentlyStudy
-                education.is_selected = isSelected
-                
                 educationToUser.addToEducation(education)
-                try context.save()
-                return true
             }
+            
+            try context.save()
+            return true
+            
         }
         catch let error as NSError {
             print(error)
@@ -78,7 +80,6 @@ class EducationRepository{
     
     // func updates
     func updateEducation( eduId: String,
-                          userId: Int,
                           institution: String,
                           title: String,
                           startDate: Date,
@@ -93,7 +94,6 @@ class EducationRepository{
             let item = try context.fetch(fetchRequest) as? [Education]
             let education = item?.first
             education?.edu_id = eduId
-            education?.user_id = Int32(userId)
             education?.institution = institution
             education?.title = title
             education?.start_date = startDate

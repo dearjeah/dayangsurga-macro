@@ -23,6 +23,7 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
     var userResumeContent = Resume_Content()
     var resumeContentId = String()
     var selectedTemplate = Int()
+    var currentUserId = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()

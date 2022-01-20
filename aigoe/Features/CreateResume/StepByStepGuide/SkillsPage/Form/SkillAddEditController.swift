@@ -25,6 +25,7 @@ class SkillAddEditController: MVVMViewController<SkillsFormViewModel> {
     var skillData = 0
     var dataFrom: String = ""
     var stringChecker = ""
+    var currentUserId = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -199,7 +200,7 @@ extension SkillAddEditController {
                     let skillId = localSkill[i].id
                     let skillName = localSkill[i].name
                     if !checkSkillCoreData(skillId: skillId) {
-                        let skill = self.viewModel?.createSkill(skillId: skillId, skillName: skillName , isSelected: true)
+                        let skill = self.viewModel?.createSkill(userId: currentUserId, skillId: skillId, skillName: skillName , isSelected: true)
                         if skill == false {
                             failSave()
                             return
