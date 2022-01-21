@@ -110,6 +110,8 @@ extension LandingPageViewController {
         let storyboard = UIStoryboard(name: "StepByStepGuideViewController", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "goToStepByStep") as! StepByStepGuideViewController
         vc.selectedUserResume = userResume[selectedIndex]
+        vc.selectedResumeContent = self.viewModel?.getUserResumeContent(id: userResume[selectedIndex].resume_id ?? "") ?? Resume_Content()
+        vc.selectedTemplate = Int(userResume[selectedIndex].template_id)
         vc.isCreate = false
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.titleView?.tintColor = .white
@@ -140,8 +142,7 @@ extension LandingPageViewController {
         let vc = storyboard.instantiateViewController(identifier: "goToPreviewResume") as! PreviewResumeViewController
         vc.selectedData = userResume[selectedIndex]
         let resumeContent = getUserResumeContent(resumeId: userResume[selectedIndex].resume_id ?? "" )
-        
-        let pdfCreator = PDFCreator(resumeContent: resumeContent, userResume: userResume[selectedIndex], selectedTemplate: 0)
+        let pdfCreator = PDFCreator(resumeContent: resumeContent, userResume: userResume[selectedIndex], selectedTemplate: Int(userResume[selectedIndex].template_id))
         vc.documentData = pdfCreator.createPDF()
         
         self.navigationController?.navigationBar.prefersLargeTitles = false

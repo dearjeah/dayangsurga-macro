@@ -47,6 +47,9 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
         self.navigationItem.backButtonTitle = "Preview"
+        userResume?.template_id = Int32(selectedTemplate)
+        userResumeContent.resumeTemplate_id = Int32(selectedTemplate)
+        
         let pdfCreator = PDFCreator(resumeContent: userResumeContent, userResume: userResume, selectedTemplate: selectedTemplate)
         vc.documentData = pdfCreator.createPDF()
     }
