@@ -65,6 +65,25 @@ extension PersonalInfoFormVC {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: #selector(self.updateEdu(sender:)))
         }
     }
+
+}
+
+//MARK: Alert
+extension PersonalInfoFormVC {
+    func showAlertForDelete(){
+        showAlertDelete(title: "Delete Data?", msg: "You will not be able to recover it.", completionBlock: {action in self.deletePersonalInfoData()})
+    }
+    
+    func errorSaveData(from: String){
+        showAlert(title: "Unable to \(from) Data", msg: "Your data is not saved. Please try again later", style: .default, titleAction: "OK")
+    }
+    func filledCantBeEmpty(){
+        showAlert(title: "Field Can't Be Empty", msg: "You must fill in every mandatory fields in this form.", style: .default, titleAction: "OK")
+    }
+}
+
+//MARK: Core Data Operation
+extension PersonalInfoFormVC{
     func tapToAddDeleteButton(){
         if personalInfoForm.checkAllFieldValue() {
             if dataFrom == "add" {
@@ -76,7 +95,7 @@ extension PersonalInfoFormVC {
             filledCantBeEmpty()
         }
     }
-    
+ 
     func saveData(from: String) {
         var result = false
         if from == "Save"{
@@ -121,19 +140,5 @@ extension PersonalInfoFormVC {
         } else {
             filledCantBeEmpty()
         }
-    }
-}
-
-//MARK: Alert
-extension PersonalInfoFormVC {
-    func showAlertForDelete(){
-        showAlertDelete(title: "Delete Data?", msg: "You will not be able to recover it.", completionBlock: {action in self.deletePersonalInfoData()})
-    }
-    
-    func errorSaveData(from: String){
-        showAlert(title: "Unable to \(from) Data", msg: "Your data is not saved. Please try again later", style: .default, titleAction: "OK")
-    }
-    func filledCantBeEmpty(){
-        showAlert(title: "Field Can't Be Empty", msg: "You must fill in every mandatory fields in this form.", style: .default, titleAction: "OK")
     }
 }

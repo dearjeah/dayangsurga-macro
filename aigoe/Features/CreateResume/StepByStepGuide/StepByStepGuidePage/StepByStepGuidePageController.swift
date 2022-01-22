@@ -207,17 +207,22 @@ extension StepByStepGuidePageController: ListEduDelegate {
 
 //MARK: Experience List Delegate
 extension StepByStepGuidePageController: ExperienceListDelegate {
+    func addExpForm(from: String) {
+        stepDelegate?.goToAddExp(was: true, from: "add")
+    }
+        
+    func editEduForm(from: String, exp: Experience) {
+        stepDelegate?.goToEditExp(was: true, from: "edit", exp: exp)
+    }
+    
     func editExpUpForm(from: String, exp: Experience) {
         
     }
     
-    func goToAddExp() {
-        stepDelegate?.goToAddExp(was: true, from: "add")
-    }
     
-    func passingExpData(exp: Experience?) {
-        stepDelegate?.goToEditExp(was: true, from: "edit", exp: exp ?? Experience())
-    }
+//    func passingExpData(exp: Experience?) {
+//        stepDelegate?.goToEditExp(was: true, from: "edit", exp: exp ?? Experience())
+//    }
     
     func selectButtonExp(expId: String, isSelected: Bool) {
         stepDelegate?.updateTableChecklist(from: "exp", id: expId, isSelected: isSelected)
@@ -243,17 +248,18 @@ extension StepByStepGuidePageController: skillListDelegate {
 
 //MARK: Accomplishment List Delegate
 extension StepByStepGuidePageController: AccomplishListDelegate {
+    func goToAddAccom(from: String) {
+        stepDelegate?.goToAddExp(was: true, from: "add")
+    }
+    
     func editAccompForm(from: String, accomp: Accomplishment) {
-        
+        stepDelegate?.goToEditAccom(was: true, from: "edit", accomp: accomp)
     }
     
     func editUPAccompForm(from: String, accomp: Accomplishment) {
         
     }
     
-    func goToAddAccom() {
-        stepDelegate?.goToAddAccom(was: true, from: "add")
-    }
     
 //    func passingAccomplishData(accomplish: Accomplishment?) {
 //        stepDelegate?.goToEditAccom(was: true, from: "edit", accomp: accomplish ?? Accomplishment())

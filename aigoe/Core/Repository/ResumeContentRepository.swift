@@ -17,6 +17,7 @@ class ResumeContentRepository{
     
     // create data
     func createResumeContent(resume_id: String,
+                             template_id: Int,
                              personal_id: [String],
                              exp_id: [String],
                              edu_id: [String],

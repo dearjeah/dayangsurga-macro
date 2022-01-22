@@ -8,8 +8,8 @@
 import UIKit
 
 protocol ExperienceListDelegate: AnyObject {
-    func goToAddExp()
-    func passingExpData(exp: Experience?)
+    func addExpForm(from: String)
+    func editEduForm(from: String, exp: Experience)
     func selectButtonExp(expId: String, isSelected: Bool)
     func editExpUpForm(from: String, exp: Experience)
 }
@@ -22,7 +22,7 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var emptyStateView: EmptyState!
     
     @IBAction func addEditPressed(_ sender: UIButton) {
-        experienceDelegate?.goToAddExp()
+        experienceDelegate?.addExpForm(from: "add")
     }
     weak var experienceDelegate: ExperienceListDelegate?
     
@@ -114,7 +114,6 @@ extension ExperiencePageView{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //experience = stepViewModel.getExpData() ?? []
         let expData = experience[indexPath.row]
         selectedExp = indexPath.row
         let exp = experience[indexPath.row]
@@ -127,9 +126,7 @@ extension ExperiencePageView{
             cell.jobExperience.text = "\(experience[indexPath.row].jobStartDate?.string(format: Date.ISO8601Format.MonthYear) ?? String()) - \(experience[indexPath.row].jobEndDate?.string(format: Date.ISO8601Format.MonthYear) ?? String())"
         }
         cell.jobDesc.text = experience[indexPath.row].jobDesc
-        cell.editButtonAction = {
-            self.experienceDelegate?.passingExpData(exp: self.experience[indexPath.row])
-        }
+       
         
         if withResumeContent{
             let selectedExpId = resumeContentData.exp_id
@@ -152,7 +149,7 @@ extension ExperiencePageView{
        
         if withResumeContent {
             cell.editButtonAction = {
-                self.experienceDelegate?.editExpUpForm(from: "edit", exp: exp)
+                self.experienceDelegate?.editEduForm(from: "edit", exp: exp)
             }
         }else{
             cell.editButtonAction = {
