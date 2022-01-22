@@ -12,6 +12,8 @@
             <connections>
                 <outlet property="datePicker" destination="5MS-XW-YaV" id="QsE-Tt-GpM"/>
                 <outlet property="dateTitle" destination="6Zt-8C-ard" id="6wX-4b-4Yi"/>
+                <outlet property="disableDatePicker" destination="PuO-Nw-XsU" id="RYf-0v-1iI"/>
+                <outlet property="disableDatePickerLabel" destination="0Hj-A0-OqH" id="xlZ-yG-Dp1"/>
                 <outlet property="titleLabel" destination="UPb-Nz-Xq9" id="5GH-1t-oJE"/>
             </connections>
         </placeholder>
@@ -48,13 +50,40 @@
                                 <action selector="datePickerWasPressed:" destination="-1" eventType="valueChanged" id="y82-An-qtB"/>
                             </connections>
                         </datePicker>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PuO-Nw-XsU" customClass="DesignableView" customModule="aigoe" customModuleProvider="target">
+                            <rect key="frame" x="264.5" y="5" width="123.5" height="36"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Hj-A0-OqH">
+                                    <rect key="frame" x="6" y="0.0" width="111.5" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.93335646390000004" green="0.93327516320000004" blue="0.9372554421" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstItem="0Hj-A0-OqH" firstAttribute="centerX" secondItem="PuO-Nw-XsU" secondAttribute="centerX" id="9zk-O9-qbd"/>
+                                <constraint firstItem="0Hj-A0-OqH" firstAttribute="height" secondItem="PuO-Nw-XsU" secondAttribute="height" id="Bil-vy-XvK"/>
+                                <constraint firstItem="0Hj-A0-OqH" firstAttribute="width" secondItem="PuO-Nw-XsU" secondAttribute="width" multiplier="0.9" id="Xiu-b4-7Y6"/>
+                                <constraint firstItem="0Hj-A0-OqH" firstAttribute="centerY" secondItem="PuO-Nw-XsU" secondAttribute="centerY" id="mXa-HP-D56"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="PuO-Nw-XsU" firstAttribute="width" secondItem="5MS-XW-YaV" secondAttribute="width" multiplier="0.95" id="0KL-IF-htL"/>
                         <constraint firstItem="5MS-XW-YaV" firstAttribute="top" secondItem="7qU-ay-6qN" secondAttribute="top" constant="5" id="DIT-iM-EWS"/>
                         <constraint firstItem="6Zt-8C-ard" firstAttribute="leading" secondItem="7qU-ay-6qN" secondAttribute="leading" constant="10" id="L55-sM-nM2"/>
                         <constraint firstItem="6Zt-8C-ard" firstAttribute="height" secondItem="7qU-ay-6qN" secondAttribute="height" multiplier="0.456522" id="Sah-7J-2ua"/>
+                        <constraint firstItem="PuO-Nw-XsU" firstAttribute="bottom" secondItem="5MS-XW-YaV" secondAttribute="bottom" id="UvV-3m-CxP"/>
                         <constraint firstAttribute="bottom" secondItem="5MS-XW-YaV" secondAttribute="bottom" constant="5" id="YNx-QR-WYU"/>
+                        <constraint firstItem="PuO-Nw-XsU" firstAttribute="trailing" secondItem="5MS-XW-YaV" secondAttribute="trailing" id="csF-aI-TJ6"/>
+                        <constraint firstItem="PuO-Nw-XsU" firstAttribute="top" secondItem="5MS-XW-YaV" secondAttribute="top" id="dmQ-9L-O88"/>
                         <constraint firstAttribute="trailing" secondItem="5MS-XW-YaV" secondAttribute="trailing" constant="10" id="k9o-rN-ogU"/>
                         <constraint firstItem="6Zt-8C-ard" firstAttribute="centerY" secondItem="7qU-ay-6qN" secondAttribute="centerY" id="pz3-ME-3yb"/>
                         <constraint firstAttribute="height" constant="46" id="sHa-3d-Am0"/>

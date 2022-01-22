@@ -190,9 +190,9 @@ extension UPExperiecenFormVC: UITextViewDelegate, LabelSwitchDelegate{
     
     func getValueSwitch() {
         if(jobStatusView.switchButton.isOn){
-            jobPeriodView.endDatePicker.isUserInteractionEnabled = false
+            jobPeriodView.isEndDatePickerEnable(was: false)
         }else{
-            jobPeriodView.endDatePicker.isUserInteractionEnabled = true
+            jobPeriodView.isEndDatePickerEnable(was: true)
         }
     }
 }

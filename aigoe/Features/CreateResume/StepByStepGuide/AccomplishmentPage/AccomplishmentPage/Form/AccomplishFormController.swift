@@ -118,9 +118,9 @@ extension AccomplishFormController {
 extension AccomplishFormController: LabelSwitchDelegate {
     func getValueSwitch() {
         if (statusView.switchButton.isOn){
-            endDateView.datePicker.isUserInteractionEnabled = false
+            endDateView.isDatePickerEnable(was: false)
         } else {
-            endDateView.datePicker.isUserInteractionEnabled = true
+            endDateView.isDatePickerEnable(was: true)
         }
     }
 }

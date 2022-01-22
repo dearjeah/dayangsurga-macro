@@ -35,7 +35,9 @@ extension Date {
     enum ISO8601Format: String {
         case Hour             = "HH"                         // 19
         case DayMonth         = "EEEE, dd MMMM"                // Sun, 07 9
-        case DayMonthYear     = "EE, dd MMM yyyy"          // Mon, 11 Oct 2021
+        case DayDateMonthYear = "EE, dd MMM yyyy"            // Mon, 11 Oct 2021
+        case DateMonthYear     = "dd MMM yyyy"               // 11 Oct 2021
+        case MonthDateYear     = "MMM dd, yyyy"               // Oct 11, 2021
         case MonthYear         = "MMM yyyy"                  // Nov, 2021
         case HourMinutes      = "HH:mm"                      // 19:20
         case Year             = "yyyy"                       // 1997

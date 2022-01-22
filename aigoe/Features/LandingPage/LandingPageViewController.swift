@@ -177,7 +177,7 @@ extension LandingPageViewController: UICollectionViewDelegate, UICollectionViewD
         cell.pastResumeImage.image = image
         cell.pastResumeImage.contentMode = .scaleToFill
         cell.resumeName.text = userResume[indexPath.row].name
-        cell.resumeLatestDate.text = userResume[indexPath.row].lastUpdate?.string(format: Date.ISO8601Format.DayMonthYear)
+        cell.resumeLatestDate.text = userResume[indexPath.row].lastUpdate?.string(format: Date.ISO8601Format.DayDateMonthYear)
         return cell
     }
     

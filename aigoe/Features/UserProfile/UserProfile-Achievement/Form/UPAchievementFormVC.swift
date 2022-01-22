@@ -63,9 +63,9 @@ class UPAchievementFormVC: MVVMViewController<UPAchievementFormViewModel>{
 extension UPAchievementFormVC: LabelSwitchDelegate{
     func getValueSwitch() {
         if (achievementStatusView.switchButton.isOn){
-            endDateView.datePicker.isUserInteractionEnabled = false
+            endDateView.isDatePickerEnable(was: false)
         }else{
-            endDateView.datePicker.isUserInteractionEnabled = true
+            endDateView.isDatePickerEnable(was: true)
         }
     }
 }

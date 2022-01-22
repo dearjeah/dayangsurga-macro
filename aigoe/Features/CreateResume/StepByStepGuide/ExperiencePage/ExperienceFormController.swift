@@ -135,9 +135,9 @@ extension ExperienceFormController {
 extension ExperienceFormController: LabelSwitchDelegate {
     func getValueSwitch() {
         if (jobStatus.switchButton.isOn){
-            jobPeriod.endDatePicker.isUserInteractionEnabled = false
+            jobPeriod.isEndDatePickerEnable(was: false)
         } else {
-            jobPeriod.endDatePicker.isUserInteractionEnabled = true
+            jobPeriod.isEndDatePickerEnable(was: true)
         }
     }
 }

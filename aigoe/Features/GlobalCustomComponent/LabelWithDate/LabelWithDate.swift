@@ -14,6 +14,8 @@ class LabelWithDate: UIView {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBAction func datePickerWasPressed(_ sender: Any) {
     }
+    @IBOutlet weak var disableDatePicker: UIView!
+    @IBOutlet weak var disableDatePickerLabel: UILabel!
     
     //    @IBOutlet weak var dateButton: UIButton!
 //    @IBAction func datePressed(_ sender: UIButton) {
@@ -28,13 +30,16 @@ class LabelWithDate: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initWithNib()
+        disableDatePickerLabel.text = datePicker.date.string(format: Date.ISO8601Format.MonthDateYear)
+        isDatePickerEnable(was: true)
     }
     
     convenience init(title: String, dateText: String, dateData: String?) {
         self.init()
         titleLabel.text = title
         dateTitle.text = dateText
-//        dateButton.titleLabel?.text = dateData ?? "July 2020"
+        disableDatePickerLabel.text = datePicker.date.string(format: Date.ISO8601Format.MonthDateYear)
+        isDatePickerEnable(was: true)
     }
     
     fileprivate func initWithNib() {
@@ -48,5 +53,19 @@ class LabelWithDate: UIView {
         let nib = UINib(nibName: nibName, bundle: bundle)
         
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
+    }
+    
+    func isDatePickerEnable(was: Bool){
+        if was {
+            datePicker.isEnabled = was
+            datePicker.isUserInteractionEnabled = was
+            disableDatePicker.isHidden = was
+            disableDatePickerLabel.text = datePicker.date.string(format: Date.ISO8601Format.MonthDateYear)
+        } else {
+            datePicker.isEnabled = was
+            datePicker.isUserInteractionEnabled = was
+            disableDatePicker.isHidden = was
+            disableDatePickerLabel.text = datePicker.date.string(format: Date.ISO8601Format.MonthDateYear)
+        }
     }
 }

@@ -202,9 +202,9 @@ extension UPEducationFormVC: UITextViewDelegate, LabelSwitchDelegate {
     
     func getValueSwitch() {
         if (eduStatusView.switchButton.isOn){
-            eduPeriodView.endDatePicker.isUserInteractionEnabled = false
+            eduPeriodView.isEndDatePickerEnable(was: false)
         } else {
-            eduPeriodView.endDatePicker.isUserInteractionEnabled = true
+            eduPeriodView.isEndDatePickerEnable(was: true)
         }
     }
 }

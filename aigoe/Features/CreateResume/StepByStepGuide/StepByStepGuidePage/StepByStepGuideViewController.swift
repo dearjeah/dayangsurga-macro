@@ -88,8 +88,8 @@ extension StepByStepGuideViewController: prevNextButtonDelegate {
         }
     }
     
-    func changeTitleToGenerate(was: Bool) {
-        smallSetButtonView.rightButton.dsLongFilledPrimaryButton(withImage: false, text: "Preview")
+    func changeTitleToGenerate(was: Bool, isEnable: Bool) {
+        smallSetButtonView.rightButton.dsLongFilledPrimaryButton(withImage: false, text: "Preview", isEnable: isEnable)
         isGenerate = true
     }
     
