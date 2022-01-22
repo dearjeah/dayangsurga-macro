@@ -65,8 +65,8 @@ class PDFCreator: NSObject {
         let email = personalInfo.summary ?? ""
         let location = personalInfo.location ?? ""
         
-        let titleBottom = addTitle(pageRect: pageRect, text: title, context: context, template: selectedTemplate)
-        let sectionBottom = addPersonalInformation(pageRect: pageRect, startPosition: titleBottom, text: "\(phone) | \(email) | \(location)", context: context, template: selectedTemplate)
+        let titleBottom = addTitle(pageRect: pageRect, text: title, context: context, template: Int(resumeContent.resumeTemplate_id))
+        let sectionBottom = addPersonalInformation(pageRect: pageRect, startPosition: titleBottom, text: "\(phone) | \(email) | \(location)", context: context, template: Int(resumeContent.resumeTemplate_id))
     
         
         return sectionBottom + 12.0
@@ -74,9 +74,9 @@ class PDFCreator: NSObject {
     
     func addSummarySection(pageRect: CGRect,currentPosition: CGFloat, drawContext: CGContext, context:UIGraphicsPDFRendererContext)->CGFloat{
         let summary = personalInfo.summary ?? ""
-        let headerBottom = addHeader(pageRect: pageRect, headerTop: currentPosition, text: "Summary", context: context, template: selectedTemplate)
+        let headerBottom = addHeader(pageRect: pageRect, headerTop: currentPosition, text: "Summary", context: context, template: Int(resumeContent.resumeTemplate_id))
         let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
-        let contentBottom = addParagraphText(pageRect: pageRect, textTop: separatorBottom, text: "\(summary)", context: context, template: selectedTemplate)
+        let contentBottom = addParagraphText(pageRect: pageRect, textTop: separatorBottom, text: "\(summary)", context: context, template: Int(resumeContent.resumeTemplate_id))
         
         return contentBottom + 4.0
     }
@@ -85,7 +85,7 @@ class PDFCreator: NSObject {
         //User Data
         var sectionBottom: CGFloat = startPosition
         if eduData.count != 0 {
-        let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Education", context: context, template: selectedTemplate)
+        let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Education", context: context, template: Int(resumeContent.resumeTemplate_id))
         let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
         for index in 0..<eduData.count {
             let institutionName = eduData[index].institution ?? ""
@@ -97,14 +97,14 @@ class PDFCreator: NSObject {
             let desc = eduData[index].activity ?? ""
             
             if index == 0 {
-                sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: separatorBottom, text: institutionName, context: context, template: selectedTemplate)
+                sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: separatorBottom, text: institutionName, context: context, template: Int(resumeContent.resumeTemplate_id))
             }else {
-                sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: sectionBottom, text: institutionName, context: context, template: selectedTemplate)
+                sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: sectionBottom, text: institutionName, context: context, template: Int(resumeContent.resumeTemplate_id))
             }
-            addPeriodText(pageRect: pageRect, textTop: sectionBottom, text: duration, context: context, template: selectedTemplate)
-            sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: title, context: context, template: selectedTemplate)
-            sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: "GPA \(gpa)", context: context, template: selectedTemplate)
-            sectionBottom = addParagraphText(pageRect: pageRect, textTop: sectionBottom, text: desc, context: context, template: selectedTemplate)
+            addPeriodText(pageRect: pageRect, textTop: sectionBottom, text: duration, context: context, template: Int(resumeContent.resumeTemplate_id))
+            sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: title, context: context, template: Int(resumeContent.resumeTemplate_id))
+            sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: "GPA \(gpa)", context: context, template: Int(resumeContent.resumeTemplate_id))
+            sectionBottom = addParagraphText(pageRect: pageRect, textTop: sectionBottom, text: desc, context: context, template: Int(resumeContent.resumeTemplate_id))
         }
             return sectionBottom + 4.0}
         else{
@@ -115,7 +115,7 @@ class PDFCreator: NSObject {
         func addExperienceSection(pageRect: CGRect, drawContext: CGContext, startPosition: CGFloat, context:UIGraphicsPDFRendererContext)-> CGFloat{
             var sectionBottom:CGFloat = startPosition
             if expData.count != 0 {
-            let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Experience", context: context, template: selectedTemplate)
+            let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Experience", context: context, template: Int(resumeContent.resumeTemplate_id))
             let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
             for index in 0..<expData.count{
                 let company = expData[index].jobCompanyName ?? ""
@@ -132,13 +132,13 @@ class PDFCreator: NSObject {
                 let duration = "\(String(describing: startDate)) - \(endDate)"
                 
                 if index == 0{
-                    sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: separatorBottom, text: company, context: context, template: selectedTemplate)
+                    sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: separatorBottom, text: company, context: context, template: Int(resumeContent.resumeTemplate_id))
                 }else{
-                    sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: sectionBottom, text: company, context: context, template: selectedTemplate)
+                    sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: sectionBottom, text: company, context: context, template: Int(resumeContent.resumeTemplate_id))
                 }
-                addPeriodText(pageRect: pageRect, textTop: sectionBottom, text: duration, context: context, template: selectedTemplate)
-                sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: position, context: context, template: selectedTemplate)
-                sectionBottom = addParagraphText(pageRect: pageRect, textTop: sectionBottom, text: desc, context: context, template: selectedTemplate)
+                addPeriodText(pageRect: pageRect, textTop: sectionBottom, text: duration, context: context, template: Int(resumeContent.resumeTemplate_id))
+                sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: position, context: context, template: Int(resumeContent.resumeTemplate_id))
+                sectionBottom = addParagraphText(pageRect: pageRect, textTop: sectionBottom, text: desc, context: context, template: Int(resumeContent.resumeTemplate_id))
             }
             
                 return sectionBottom + 4.0}
@@ -149,7 +149,7 @@ class PDFCreator: NSObject {
     
         func addAccomplishmentSection(pageRect:CGRect, drawContext: CGContext, startPosition: CGFloat, context: UIGraphicsPDFRendererContext)-> CGFloat{
             if accomData.count != 0 {
-            let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Accomplishment", context: context, template: selectedTemplate)
+            let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Accomplishment", context: context, template: Int(resumeContent.resumeTemplate_id))
             let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
             var sectionBottom: CGFloat = startPosition
             for index in 0..<accomData.count {
@@ -166,13 +166,13 @@ class PDFCreator: NSObject {
                 let desc = accomData[index].desc
                 
                 if index == 0{
-                    sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: separatorBottom, text: "\(title)", context: context, template: selectedTemplate)
-                    addPeriodText(pageRect: pageRect, textTop: separatorBottom, text: "\(givenDate) - \(endDate)", context: context, template: selectedTemplate)
+                    sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: separatorBottom, text: "\(title)", context: context, template: Int(resumeContent.resumeTemplate_id))
+                    addPeriodText(pageRect: pageRect, textTop: separatorBottom, text: "\(givenDate) - \(endDate)", context: context, template: Int(resumeContent.resumeTemplate_id))
                 }else{
-                    addPeriodText(pageRect: pageRect, textTop: sectionBottom, text: "\(givenDate) - \(endDate)", context: context, template: selectedTemplate)
-                    sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: sectionBottom, text: "\(title)", context: context, template: selectedTemplate)
+                    addPeriodText(pageRect: pageRect, textTop: sectionBottom, text: "\(givenDate) - \(endDate)", context: context, template: Int(resumeContent.resumeTemplate_id))
+                    sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: sectionBottom, text: "\(title)", context: context, template: Int(resumeContent.resumeTemplate_id))
                 }
-                sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: "\(issuer)", context: context, template: selectedTemplate)
+                sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: "\(issuer)", context: context, template: Int(resumeContent.resumeTemplate_id))
             }
                 return sectionBottom + 4.0}
             else{
@@ -183,14 +183,14 @@ class PDFCreator: NSObject {
         func addSkillSection(pageRect: CGRect, drawContext: CGContext, startPosition: CGFloat, context: UIGraphicsPDFRendererContext)->CGFloat{
             var sectionBottom: CGFloat = startPosition
             if skillData.count != 0{
-            let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Technical Skills", context: context, template: selectedTemplate)
+            let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Technical Skills", context: context, template: Int(resumeContent.resumeTemplate_id))
             let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
             for index in 0..<skillData.count {
                 let skillName = skillData[index].skill_name ?? ""
                 if index == 0{
-                    sectionBottom = addBodyText(pageRect: pageRect, textTop: separatorBottom, text: skillName, context: context, template: selectedTemplate)
+                    sectionBottom = addBodyText(pageRect: pageRect, textTop: separatorBottom, text: skillName, context: context, template: Int(Int(resumeContent.resumeTemplate_id)))
                 }else{
-                    sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: skillName, context: context, template: selectedTemplate)
+                    sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: skillName, context: context, template: Int(resumeContent.resumeTemplate_id))
                 }
             }
             
@@ -267,7 +267,7 @@ class PDFCreator: NSObject {
             else if template == 1 {
                 headerFont = UIFont(name: "Georgia", size: 14.0)
             }else{
-                headerFont = UIFont(name: "Helvetica", size: 14.0)
+                headerFont = UIFont(name: "Helvetica-Bold", size: 14.0)
             }
         
           

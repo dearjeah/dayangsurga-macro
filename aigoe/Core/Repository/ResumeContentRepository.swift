@@ -28,6 +28,7 @@ class ResumeContentRepository{
             if let getResume = UserResumeRepository.shared.getUserResumeById(resume_id: resume_id){
                 let resumeContent = Resume_Content(context: context)
                 resumeContent.resume_id = resume_id
+                resumeContent.resumeTemplate_id = Int32(template_id)
                 
                 // relation dari template
                 getResume.addToResumeContent(resumeContent)
