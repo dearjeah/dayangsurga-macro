@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UIButton {
-    func dsLongFilledPrimaryButton(withImage: Bool, text: String) {
+    func dsLongFilledPrimaryButton(withImage: Bool, text: String, isEnable: Bool = true) {
         let corner_radius : CGFloat =  18.0
         
         self.clipsToBounds = true
@@ -24,6 +24,16 @@ extension UIButton {
         
         if (withImage) {
             self.setImage(UIImage(), for: .normal)
+        }
+        
+        if (!isEnable) {
+            layer.borderColor = UIColor.primaryDisable.cgColor
+            layer.backgroundColor = UIColor.primaryDisable.cgColor
+            self.isEnabled = false
+        } else {
+            layer.borderColor = UIColor.primaryBlue.cgColor
+            layer.backgroundColor = UIColor.primaryBlue.cgColor
+            self.isEnabled = true
         }
     }
     

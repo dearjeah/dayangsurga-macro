@@ -163,7 +163,6 @@ class PDFCreator: NSObject {
                     endDate = accomData[index].end_date?.string(format: Date.ISO8601Format.MonthYear) ?? ""
                 }
                 let issuer = accomData[index].issuer ?? ""
-                let desc = accomData[index].desc
                 
                 if index == 0{
                     sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: separatorBottom, text: "\(title)", context: context, template: Int(resumeContent.resumeTemplate_id))

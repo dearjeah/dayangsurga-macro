@@ -27,7 +27,7 @@ protocol StepByStepGuideDelegate: AnyObject {
 
 protocol prevNextButtonDelegate: AnyObject {
     func isHidePrevNextButton(was: Bool)
-    func changeTitleToGenerate(was: Bool)
+    func changeTitleToGenerate(was: Bool, isEnable: Bool)
     func isButtonEnable(left: Bool, right: Bool)
 }
 
@@ -382,7 +382,11 @@ extension StepByStepGuidePageController {
     
     func buttonFunctional(currentPage: Int) {
         if isLastPage(currentIndex: currentPage) {
-            prevNextDelegate?.changeTitleToGenerate(was: true)
+            if currentResumeContent.accom_id == nil || currentResumeContent.accom_id?.count == 0 {
+                prevNextDelegate?.changeTitleToGenerate(was: true, isEnable: false)
+            } else {
+                prevNextDelegate?.changeTitleToGenerate(was: true, isEnable: true)
+            }
         } else {
             if currentPage == 0 {
                 if personalData.count != 0 && currentResumeContent.personalInfo_id != "" {

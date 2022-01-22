@@ -19,7 +19,7 @@ class ExpertInfoViewController: MVVMViewController<ExpertInfoViewModel> ,UITable
         self.title = "Info"
         infoPageImage.image = UIImage.imgExpertInfo
         infoPageInstructionTable.register(UINib(nibName: "ExpertInfoCell", bundle: nil), forCellReuseIdentifier: "ExpertInfoCell")
-        infoPageDismissButton.dsLongFilledPrimaryButton(withImage: false, text: "OK, I Understand")
+        infoPageDismissButton.dsLongFilledPrimaryButton(withImage: false, text: "OK, I Understand", isEnable: true)
         // Do any additional setup after loading the view.
     }
     @IBAction func buttonPressed(_ sender: Any) {
