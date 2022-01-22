@@ -16,6 +16,8 @@ class LabelWithStartEndDate: UIView {
     }
     @IBAction func endDateWasPress(_ sender: Any) {
     }
+    @IBOutlet weak var endDateDisableView: DesignableView!
+    @IBOutlet weak var endDateDisableTitle: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,11 +27,15 @@ class LabelWithStartEndDate: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initWithNib()
+        endDateDisableTitle.text = endDatePicker.date.string(format: Date.ISO8601Format.MonthDateYear)
+        isEndDatePickerEnable(was: true)
     }
     
     convenience init(title: String, startDateData: String?, endDateData: String?) {
         self.init()
         titleLabel.text = title
+        endDateDisableTitle.text = endDatePicker.date.string(format: Date.ISO8601Format.MonthDateYear)
+        isEndDatePickerEnable(was: true)
     }
     
     fileprivate func initWithNib() {
@@ -43,6 +49,20 @@ class LabelWithStartEndDate: UIView {
         let nib = UINib(nibName: nibName, bundle: bundle)
         
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
+    }
+    
+    func isEndDatePickerEnable(was: Bool){
+        if was {
+            endDatePicker.isEnabled = was
+            endDatePicker.isUserInteractionEnabled = was
+            endDateDisableView.isHidden = was
+            endDateDisableTitle.text = endDatePicker.date.string(format: Date.ISO8601Format.MonthDateYear)
+        } else {
+            endDatePicker.isEnabled = was
+            endDatePicker.isUserInteractionEnabled = was
+            endDateDisableView.isHidden = was
+            endDateDisableTitle.text = endDatePicker.date.string(format: Date.ISO8601Format.MonthDateYear)
+        }
     }
     
 }

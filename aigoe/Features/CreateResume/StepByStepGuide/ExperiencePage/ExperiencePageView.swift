@@ -201,17 +201,3 @@ extension ExperiencePageView: ExperiencePageDelegate, expCellDelegate {
     }
     
 }
-
-//MARK: Empty State
-extension ExperiencePageView{
-    func showEmptyState(){
-        emptyStateView.isHidden = false
-        emptyStateView.emptyStateImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin,.flexibleLeftMargin, .flexibleTopMargin]
-        emptyStateView.emptyStateImage.contentMode = .scaleAspectFit
-        emptyStateView.emptyStateImage.clipsToBounds = true
-        emptyStateView.emptyStateTitle.isHidden = true
-        emptyStateView.emptyStateImage.image = UIImage.imgExpEmptyState
-        emptyStateView.emptyStateDescription.text = "You haven't filled your professional experience. Click the 'Add' button to add your professional experience."
-        
-    }
-}
