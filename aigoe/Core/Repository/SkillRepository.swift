@@ -22,18 +22,15 @@ class SkillRepository{
                      skillName: String,
                      isSelected : Bool)-> Bool{
         do {
-            // relation accomplishment-user
-            if let SkillToUser = UserRepository.shared.getUserById(id: userId) {
                 let skill = Skills(context: context)
                 skill.skill_id = skillId
                 skill.user_id = userId
                 skill.skill_name = skillName
                 skill.is_selected = isSelected
-                
-                SkillToUser.addToSkill(skill)
+            
                 try context.save()
                 return true
-            }
+
         }
         catch let error as NSError {
             print(error)

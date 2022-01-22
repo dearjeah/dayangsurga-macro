@@ -59,7 +59,7 @@ class PersonalInfoRepository{
     
     func getPersonalInfoById(id: String) -> Personal_Info? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "personalInfo_id == %d", id as CVarArg)
+        fetchRequest.predicate = NSPredicate(format: "personalInfo_id == '\(id)'")
         do {
             let item = try context.fetch(fetchRequest) as? [Personal_Info]
             return item?.first

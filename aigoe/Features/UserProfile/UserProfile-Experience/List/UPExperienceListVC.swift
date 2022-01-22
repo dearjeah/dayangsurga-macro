@@ -92,6 +92,14 @@ extension UPExperienceListVC{
 //MARK: Delegate
 
 extension UPExperienceListVC: ExperienceListDelegate{
+    func addExpForm(from: String) {
+        
+    }
+    
+    func editEduForm(from: String, exp: Experience) {
+        
+    }
+    
     
     func editExpUpForm(from: String, exp: Experience) {
         let storyboard = UIStoryboard(name: "UP-Experience", bundle: nil)
@@ -101,14 +109,6 @@ extension UPExperienceListVC: ExperienceListDelegate{
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    
-    func goToAddExp() {
-        
-    }
-    
-    func passingExpData(exp: Experience?) {
-        
-    }
     
     func selectButtonExp(expId: String, isSelected: Bool) {
         

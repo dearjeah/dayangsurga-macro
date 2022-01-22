@@ -146,7 +146,7 @@ extension ResumeTemplateViewController {
     func createUserResume(selectedTemplate: Int, userId: String) -> User_Resume {
         let resumeId = self.viewModel?.createUserResume(selectedTemplate: selectedTemplate, userId: userId) ?? ""
         if resumeId != "" {
-            resumeContentId = self.viewModel?.createResumeContent(resumeId: resumeId) ?? ""
+            resumeContentId = self.viewModel?.createResumeContent(resumeId: resumeId, templateId: selectedTemplate) ?? ""
         }
         
         guard let userResume = self.viewModel?.userResume.getUserResumeById(resume_id: resumeContentId) else { return User_Resume() }

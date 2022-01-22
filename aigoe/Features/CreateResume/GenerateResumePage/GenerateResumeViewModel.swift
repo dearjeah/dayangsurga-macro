@@ -20,4 +20,5 @@ class GenerateResumeViewModel {
 
         return data
     }
+    
 }

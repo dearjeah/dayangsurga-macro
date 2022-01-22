@@ -8,8 +8,7 @@
 import UIKit
 
 protocol AccomplishListDelegate: AnyObject {
-    func goToAddAccom()
-   // func passingAccomplishData(accomplish: Accomplishment?)
+    func goToAddAccom(from: String)
     func selectButtonAccom(accomId: String, isSelected: Bool)
     func editAccompForm(from: String, accomp: Accomplishment)
     func editUPAccompForm(from: String, accomp: Accomplishment)
@@ -28,7 +27,7 @@ class AccomplishmentPageView: UIView {
     var accomplishment = [Accomplishment]()
     var accomViewModel = AccomplishmentPageViewModel()
     var resumeContentData = Resume_Content()
-    var withResumeContent = false
+    var withResumeContent = true
     
     func setup(dlgt: AccomplishListDelegate) {
         self.delegate = dlgt
@@ -65,7 +64,7 @@ class AccomplishmentPageView: UIView {
 //MARK: Reload + CRUD
 extension AccomplishmentPageView {
     @IBAction func addAction(_ sender: Any) {
-        delegate?.goToAddAccom()
+        delegate?.goToAddAccom(from: "add")
     }
     
     func getAndReload(){
@@ -120,9 +119,7 @@ extension AccomplishmentPageView:  UITableViewDelegate, UITableViewDataSource {
             }
             
         }
-//        cell.editButtonAction = {
-//            self.delegate?.passingAccomplishData(accomplish: self.accomplishment[indexPath.row])
-//        }
+
         
         cell.checklistButtonAction = {
             let accomId = self.accomplishment[indexPath.row].accomplishment_id ?? ""

@@ -27,15 +27,12 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         displaySetup()
-        //getResumeContentData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? PreviewResumeViewController {
             let pdfCreator = PDFCreator(resumeContent: userResumeContent, userResume: userResume, selectedTemplate: selectedTemplate)
-            
             vc.documentData = pdfCreator.createPDF()
         }
     }
@@ -50,6 +47,9 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.pushViewController(vc, animated: true)
         self.navigationItem.backButtonTitle = "Preview"
+        userResume?.template_id = Int32(selectedTemplate)
+        userResumeContent.resumeTemplate_id = Int32(selectedTemplate)
+        
         let pdfCreator = PDFCreator(resumeContent: userResumeContent, userResume: userResume, selectedTemplate: selectedTemplate)
         vc.documentData = pdfCreator.createPDF()
     }
@@ -62,16 +62,6 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
         editResume.addTextField { (textField) in
             textField.placeholder = "Input your resume name"
         }
-
-        /*editResume.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak editResume] (_) in
-            self.changeName()
-            let textField = editResume?.textFields![0]
-            self.resumeName.text = textField?.text
-                
-            /*guard (self.viewModel?.updateResumeName(resume_id: resumeID, resumeName: self.resumeName.text ?? "")) != false else  {
-                return print("Failed to update resume name")
-            }*/
-        }))*/
         
         editResume.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak editResume] (_) in
             let textField = editResume?.textFields![0]
@@ -82,9 +72,6 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
             } else {
                 print("change name failed")
             }
-            /*guard (self.viewModel?.updateResumeName(resume_id: resumeID, resumeName: self.resumeName.text ?? "")) != false else  {
-                return print("Failed to update resume name")
-            }*/
         }))
         editResume.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
       
@@ -95,6 +82,7 @@ class GenerateResumeController: MVVMViewController<GenerateResumeViewModel> {
         let resumeID = self.userResume?.resume_id ?? ""
         let userResumeRepo = UserResumeRepository.shared
         let changeName = userResumeRepo.updateResumeName(resume_id: resumeID, newResumeName: resumeName)
+        
         if changeName {
             return true
         } else {
@@ -136,7 +124,6 @@ extension GenerateResumeController {
     func displaySetup(){
         let image = UIImage(data: userResume?.image ?? Data())
         resumeName.text = userResume?.name ?? "Resume Title"
-        
         exportResumeButton.backgroundColor = UIColor.primaryBlue
         exportResumeButton.titleLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
         exportResumeButton.layer.cornerRadius = 18

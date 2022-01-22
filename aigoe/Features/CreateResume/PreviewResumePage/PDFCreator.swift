@@ -12,11 +12,12 @@ import CoreMedia
 class PDFCreator: NSObject {
     var userResume: User_Resume?
     var resumeContent = Resume_Content()
+    var personalInfo = Personal_Info()
     var eduData = [Education]()
     var expData = [Experience]()
     var skillData = [Skills]()
     var accomData = [Accomplishment]()
-    var selectedTemplate = 0
+    var selectedTemplate = Int()
     init(resumeContent: Resume_Content, userResume: User_Resume?, selectedTemplate: Int) {
         self.resumeContent = resumeContent
         self.userResume = userResume
@@ -24,10 +25,9 @@ class PDFCreator: NSObject {
     }
     
     func createPDF() -> Data {
-        //user data
         getResumeContentData()
-        let userName = userResume?.personalInfo?.fullName ?? ""
-        // 1
+        personalInfo = PersonalInfoRepository.shared.getPersonalInfoById(id: resumeContent.personalInfo_id ?? "") ?? Personal_Info()
+        let userName = personalInfo.fullName ?? ""
         let pdfMetaData = [
             kCGPDFContextCreator: "Resume Creator",
             kCGPDFContextAuthor: userResume?.personalInfo?.fullName,
@@ -36,14 +36,11 @@ class PDFCreator: NSObject {
         let format = UIGraphicsPDFRendererFormat()
         format.documentInfo = pdfMetaData as [String: Any]
         
-        // 2
         let pageRect = CGRect(x: 0, y: 0, width: 595, height: 842)
         
-        // 3
         let renderer = UIGraphicsPDFRenderer(bounds: pageRect, format: format)
-        // 4
+        
         let data = renderer.pdfData { (context) in
-            // 5
             context.beginPage()
             let drawContext = context.cgContext
             var sectionBottom = addTitleSection(pageRect: pageRect, title: userName, drawContext: drawContext, context: context)
@@ -64,11 +61,11 @@ class PDFCreator: NSObject {
     
     func addTitleSection(pageRect: CGRect, title: String, drawContext: CGContext, context: UIGraphicsPDFRendererContext)->CGFloat{
         //User Data
-        let phone = userResume?.personalInfo?.phoneNumber ?? ""
-        let email = userResume?.personalInfo?.email ?? ""
-        let location = userResume?.personalInfo?.location ?? ""
+        let phone = personalInfo.phoneNumber ?? ""
+        let email = personalInfo.summary ?? ""
+        let location = personalInfo.location ?? ""
         
-        let titleBottom = addTitle(pageRect: pageRect, text: title, context: context, template: 1)
+        let titleBottom = addTitle(pageRect: pageRect, text: title, context: context, template: selectedTemplate)
         let sectionBottom = addPersonalInformation(pageRect: pageRect, startPosition: titleBottom, text: "\(phone) | \(email) | \(location)", context: context, template: selectedTemplate)
     
         
@@ -76,9 +73,8 @@ class PDFCreator: NSObject {
     }
     
     func addSummarySection(pageRect: CGRect,currentPosition: CGFloat, drawContext: CGContext, context:UIGraphicsPDFRendererContext)->CGFloat{
-        //User Data
-        let summary = userResume?.personalInfo?.summary ?? ""
-        let headerBottom = addHeader(pageRect: pageRect, headerTop: currentPosition, text: "Summary", context: context, template: 1)
+        let summary = personalInfo.summary ?? ""
+        let headerBottom = addHeader(pageRect: pageRect, headerTop: currentPosition, text: "Summary", context: context, template: selectedTemplate)
         let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
         let contentBottom = addParagraphText(pageRect: pageRect, textTop: separatorBottom, text: "\(summary)", context: context, template: selectedTemplate)
         
@@ -89,7 +85,7 @@ class PDFCreator: NSObject {
         //User Data
         var sectionBottom: CGFloat = startPosition
         if eduData.count != 0 {
-        let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Education", context: context, template: 1)
+        let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Education", context: context, template: selectedTemplate)
         let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
         for index in 0..<eduData.count {
             let institutionName = eduData[index].institution ?? ""
@@ -101,9 +97,9 @@ class PDFCreator: NSObject {
             let desc = eduData[index].activity ?? ""
             
             if index == 0 {
-                sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: separatorBottom, text: institutionName, context: context, template: 1)
+                sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: separatorBottom, text: institutionName, context: context, template: selectedTemplate)
             }else {
-                sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: sectionBottom, text: institutionName, context: context, template: 1)
+                sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: sectionBottom, text: institutionName, context: context, template: selectedTemplate)
             }
             addPeriodText(pageRect: pageRect, textTop: sectionBottom, text: duration, context: context, template: selectedTemplate)
             sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: title, context: context, template: selectedTemplate)
@@ -117,10 +113,9 @@ class PDFCreator: NSObject {
         }
     
         func addExperienceSection(pageRect: CGRect, drawContext: CGContext, startPosition: CGFloat, context:UIGraphicsPDFRendererContext)-> CGFloat{
-            //Check if empty
             var sectionBottom:CGFloat = startPosition
             if expData.count != 0 {
-            let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Experience", context: context, template: 1)
+            let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Experience", context: context, template: selectedTemplate)
             let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
             for index in 0..<expData.count{
                 let company = expData[index].jobCompanyName ?? ""
@@ -137,9 +132,9 @@ class PDFCreator: NSObject {
                 let duration = "\(String(describing: startDate)) - \(endDate)"
                 
                 if index == 0{
-                    sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: separatorBottom, text: company, context: context, template: 1)
+                    sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: separatorBottom, text: company, context: context, template: selectedTemplate)
                 }else{
-                    sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: sectionBottom, text: company, context: context, template: 1)
+                    sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: sectionBottom, text: company, context: context, template: selectedTemplate)
                 }
                 addPeriodText(pageRect: pageRect, textTop: sectionBottom, text: duration, context: context, template: selectedTemplate)
                 sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: position, context: context, template: selectedTemplate)
@@ -154,21 +149,30 @@ class PDFCreator: NSObject {
     
         func addAccomplishmentSection(pageRect:CGRect, drawContext: CGContext, startPosition: CGFloat, context: UIGraphicsPDFRendererContext)-> CGFloat{
             if accomData.count != 0 {
-            let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Accomplishment", context: context, template: 1)
+            let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Accomplishment", context: context, template: selectedTemplate)
             let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
             var sectionBottom: CGFloat = startPosition
             for index in 0..<accomData.count {
                 let title = accomData[index].title ?? ""
-                let givenDate = accomData[index].given_date?.string(format: Date.ISO8601Format.Year) ?? ""
-                let endDate = accomData[index].end_date?.string(format: Date.ISO8601Format.Year) ?? ""
+                let givenDate = accomData[index].given_date?.string(format: Date.ISO8601Format.MonthYear) ?? ""
+                let isCurrently = accomData[index].status
+                var endDate = ""
+                if isCurrently {
+                    endDate = "Present"
+                } else {
+                    endDate = accomData[index].end_date?.string(format: Date.ISO8601Format.MonthYear) ?? ""
+                }
                 let issuer = accomData[index].issuer ?? ""
                 let desc = accomData[index].desc
                 
                 if index == 0{
-                    sectionBottom = addBodyText(pageRect: pageRect, textTop: separatorBottom, text: "\(title) \(givenDate) - \(endDate)", context: context, template: selectedTemplate)
+                    sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: separatorBottom, text: "\(title)", context: context, template: selectedTemplate)
+                    addPeriodText(pageRect: pageRect, textTop: separatorBottom, text: "\(givenDate) - \(endDate)", context: context, template: selectedTemplate)
                 }else{
-                    sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: "\(title) \(givenDate) - \(endDate)", context: context, template: selectedTemplate)
+                    addPeriodText(pageRect: pageRect, textTop: sectionBottom, text: "\(givenDate) - \(endDate)", context: context, template: selectedTemplate)
+                    sectionBottom = addInstitutionText(pageRect: pageRect, institutionTop: sectionBottom, text: "\(title)", context: context, template: selectedTemplate)
                 }
+                sectionBottom = addBodyText(pageRect: pageRect, textTop: sectionBottom, text: "\(issuer)", context: context, template: selectedTemplate)
             }
                 return sectionBottom + 4.0}
             else{
@@ -179,7 +183,7 @@ class PDFCreator: NSObject {
         func addSkillSection(pageRect: CGRect, drawContext: CGContext, startPosition: CGFloat, context: UIGraphicsPDFRendererContext)->CGFloat{
             var sectionBottom: CGFloat = startPosition
             if skillData.count != 0{
-            let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Technical Skills", context: context, template: 1)
+            let headerBottom = addHeader(pageRect: pageRect, headerTop: startPosition, text: "Technical Skills", context: context, template: selectedTemplate)
             let separatorBottom = drawSeparator(drawContext, pageRect: pageRect, height: headerBottom)
             for index in 0..<skillData.count {
                 let skillName = skillData[index].skill_name ?? ""
@@ -330,7 +334,6 @@ class PDFCreator: NSObject {
                 width: attributedPeriod.size().width,
                 height: attributedPeriod.size().height
             )
-            //check height add if-> check siapa yang dipanggil sebelum dia, adjust code
             attributedPeriod.draw(in: periodRect)
         }
         
@@ -374,7 +377,6 @@ class PDFCreator: NSObject {
                     paragraphFont = UIFont(name: "Helvetica", size: 12.0)
                 }
             
-            
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .natural
             paragraphStyle.lineBreakMode = .byWordWrapping
@@ -384,17 +386,25 @@ class PDFCreator: NSObject {
             let attributedParagraph = NSAttributedString(
                 string: text, attributes: paragraphAttribute)
             var paragraphRect: CGRect
-            
+            var fixedTextHeight: CGFloat
+            let textHeight = attributedParagraph.size().width/pageRect.width
+    
+            if round(textHeight)<textHeight{
+                fixedTextHeight = round(textHeight) + 1
+            }else{
+                fixedTextHeight = round(textHeight)
+            }
+        
             if textTop + attributedParagraph.size().height <= 822{
-                paragraphRect = CGRect(x:20, y: textTop, width: pageRect.width - 25, height:  round(attributedParagraph.size().width / pageRect.width) * attributedParagraph.size().height + attributedParagraph.size().height)
+                paragraphRect = CGRect(x:20, y: textTop, width: pageRect.width - 25, height: fixedTextHeight * attributedParagraph.size().height + attributedParagraph.size().height)
             }else{
                 context.beginPage()
-                paragraphRect = CGRect(x:20, y: 20, width: pageRect.width - 25, height:  round(round(attributedParagraph.size().width / pageRect.width) ) * attributedParagraph.size().height + attributedParagraph.size().height)
+                paragraphRect = CGRect(x:20, y: 20, width: pageRect.width - 25, height:  fixedTextHeight * attributedParagraph.size().height + attributedParagraph.size().height)
             }
-          
+      
             attributedParagraph.draw(in: paragraphRect)
             
-        return paragraphRect.origin.y + attributedParagraph.size().height + 15
+        return paragraphRect.origin.y + (fixedTextHeight * attributedParagraph.size().height) + 15
         }
         
         func drawSeparator(_ drawSeparator: CGContext, pageRect: CGRect, height: CGFloat)->CGFloat{

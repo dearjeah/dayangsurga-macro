@@ -87,6 +87,10 @@ extension UPAchievementListVC{
 
 //MARK: Delegate
 extension UPAchievementListVC: AccomplishListDelegate{
+    func goToAddAccom(from: String) {
+        
+    }
+    
     func selectButtonAccom(accomId: String, isSelected: Bool) {
         
     }
@@ -95,9 +99,6 @@ extension UPAchievementListVC: AccomplishListDelegate{
         
     }
     
-    func goToAddAccom() {
-        
-    }
     
     func editUPAccompForm(from: String, accomp: Accomplishment){
         let storyboard = UIStoryboard(name: "UP-Achievement", bundle: nil)

@@ -8,8 +8,8 @@
 import UIKit
 
 protocol ExperienceListDelegate: AnyObject {
-    func addExpForm(from: String)
-    func editEduForm(from: String, exp: Experience)
+    func goToAddExp()
+    func passingExpData(exp: Experience?)
     func selectButtonExp(expId: String, isSelected: Bool)
     func editExpUpForm(from: String, exp: Experience)
 }
@@ -22,7 +22,7 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var emptyStateView: EmptyState!
     
     @IBAction func addEditPressed(_ sender: UIButton) {
-        experienceDelegate?.addExpForm(from: "add")
+        experienceDelegate?.goToAddExp()
     }
     weak var experienceDelegate: ExperienceListDelegate?
     
@@ -48,6 +48,7 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         super.init(coder: aDecoder)
         initWithNib()
         notificationCenterSetup()
+        
         initialSetup()
     }
     
@@ -73,11 +74,6 @@ class ExperiencePageView: UIView, UITableViewDelegate, UITableViewDataSource {
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
     
-  
-}
-
-//MARK: INITIAL SETUP
-extension ExperiencePageView{
     func initialSetup(){
         self.expTableView.register(UINib(nibName: "ExperienceTableCell", bundle: nil), forCellReuseIdentifier: "ExperienceTableCell")
         
@@ -99,13 +95,15 @@ extension ExperiencePageView{
     func notificationCenterSetup() {
         NotificationCenter.default.addObserver(self, selector: #selector(expReload), name: Notification.Name("expReload"), object: nil)
     }
-}
-
-//MARK: TABLE VIEW
-extension ExperiencePageView{
+    
+    //MARK: TABLE VIEW
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if experience.count == 0 {
-            showEmptyState()
+            emptyState = stepViewModel.getEmptyStateId(Id: 2)
+            let image = UIImage(data: emptyState?.image ?? Data())
+            emptyStateView.emptyStateImage.image = image
+            emptyStateView.emptyStateTitle.isHidden = true
+            emptyStateView.emptyStateDescription.text = emptyState?.title
             self.expTableView.backgroundView = emptyStateView
         } else {
             emptyStateView.isHidden = true
@@ -114,6 +112,7 @@ extension ExperiencePageView{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //experience = stepViewModel.getExpData() ?? []
         let expData = experience[indexPath.row]
         selectedExp = indexPath.row
         let exp = experience[indexPath.row]
@@ -126,7 +125,9 @@ extension ExperiencePageView{
             cell.jobExperience.text = "\(experience[indexPath.row].jobStartDate?.string(format: Date.ISO8601Format.MonthYear) ?? String()) - \(experience[indexPath.row].jobEndDate?.string(format: Date.ISO8601Format.MonthYear) ?? String())"
         }
         cell.jobDesc.text = experience[indexPath.row].jobDesc
-       
+        cell.editButtonAction = {
+            self.experienceDelegate?.passingExpData(exp: self.experience[indexPath.row])
+        }
         
         if withResumeContent{
             let selectedExpId = resumeContentData.exp_id
@@ -149,7 +150,7 @@ extension ExperiencePageView{
        
         if withResumeContent {
             cell.editButtonAction = {
-                self.experienceDelegate?.editEduForm(from: "edit", exp: exp)
+                self.experienceDelegate?.editExpUpForm(from: "edit", exp: exp)
             }
         }else{
             cell.editButtonAction = {
@@ -187,9 +188,10 @@ extension ExperiencePageView{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedExp = indexPath.row
     }
+    
+   
 }
 
-//MARK: Reload Data
 extension ExperiencePageView: ExperiencePageDelegate, expCellDelegate {
     func passData() -> Experience? {
         let expData = experience[selectedExp]
@@ -198,20 +200,5 @@ extension ExperiencePageView: ExperiencePageDelegate, expCellDelegate {
     
     func addExperience() {
        getAndReload()
-    }
-    
-}
-
-//MARK: Empty State
-extension ExperiencePageView{
-    func showEmptyState(){
-        emptyStateView.isHidden = false
-        emptyStateView.emptyStateImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin,.flexibleLeftMargin, .flexibleTopMargin]
-        emptyStateView.emptyStateImage.contentMode = .scaleAspectFit
-        emptyStateView.emptyStateImage.clipsToBounds = true
-        emptyStateView.emptyStateTitle.isHidden = true
-        emptyStateView.emptyStateImage.image = UIImage.imgExpEmptyState
-        emptyStateView.emptyStateDescription.text = "You haven't filled your professional experience. Click the 'Add' button to add your professional experience."
-        
     }
 }

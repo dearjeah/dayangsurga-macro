@@ -22,6 +22,7 @@ class SkillAddEditController: MVVMViewController<SkillsFormViewModel> {
     var localSkill: [LocalSkills] = []
     var skillSuggestion: Skills_Suggest?
     var skillPh: Skills_Placeholder?
+    var test: [Int] = []
     var skillData = 0
     var dataFrom: String = ""
     var stringChecker = ""
@@ -29,6 +30,7 @@ class SkillAddEditController: MVVMViewController<SkillsFormViewModel> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         registerTableView()
         setup()
         self.viewModel = SkillsFormViewModel()
@@ -50,6 +52,10 @@ class SkillAddEditController: MVVMViewController<SkillsFormViewModel> {
     @IBAction func addButtonPressed(_ sender: UIButton) {
         let a = LocalSkills(id: UUID().uuidString, name: "")
         localSkill.append(a)
+//        skillTableView.beginUpdates()
+//        skillTableView.insertRows(at: [(NSIndexPath(row: localSkill.count-1, section: 0) as IndexPath)], with: .)
+//        skillTableView.endUpdates()
+        // option 2
         DispatchQueue.main.async {()->Void in
             self.skillTableView.reloadData()
         }
@@ -229,6 +235,7 @@ extension SkillAddEditController {
         for i in 0..<skillData{
             let skillId = localSkill[i].id
             let skillName = localSkill[i].name
+//            print(skillName)
             let skill = self.viewModel?.createSkill(userId: currentUserId, skillId: skillId, skillName: skillName , isSelected: true)
             if skill == false{
                 failSave()
