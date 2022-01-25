@@ -249,7 +249,7 @@ extension StepByStepGuidePageController: skillListDelegate {
 //MARK: Accomplishment List Delegate
 extension StepByStepGuidePageController: AccomplishListDelegate {
     func goToAddAccom(from: String) {
-        stepDelegate?.goToAddExp(was: true, from: "add")
+        stepDelegate?.goToAddAccom(was: true, from: "add")
     }
     
     func editAccompForm(from: String, accomp: Accomplishment) {

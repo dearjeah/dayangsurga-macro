@@ -62,7 +62,7 @@ class PDFCreator: NSObject {
     func addTitleSection(pageRect: CGRect, title: String, drawContext: CGContext, context: UIGraphicsPDFRendererContext)->CGFloat{
         //User Data
         let phone = personalInfo.phoneNumber ?? ""
-        let email = personalInfo.summary ?? ""
+        let email = personalInfo.email ?? ""
         let location = personalInfo.location ?? ""
         
         let titleBottom = addTitle(pageRect: pageRect, text: title, context: context, template: Int(resumeContent.resumeTemplate_id))
