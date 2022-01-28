@@ -12,7 +12,6 @@
         <!--Expert Detail View Controller-->
         <scene sceneID="jq4-fs-FQZ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="p3k-SF-1pu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="goToExpertDetail" id="DTt-Ob-YFM" customClass="ExpertDetailViewController" customModule="aigoe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ojO-lN-eo0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -30,16 +29,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aCO-8K-Dad">
-                                                    <rect key="frame" x="23" y="11" width="274" height="18"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="274" id="qEI-av-W48"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="30" y="11" width="37.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" name="primaryBlue"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fif-hK-TxU">
-                                                    <rect key="frame" x="23" y="37" width="372.5" height="18"/>
+                                                    <rect key="frame" x="27" y="37" width="372.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" name="primaryDisable"/>
                                                     <nil key="highlightedColor"/>
@@ -47,9 +43,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Fif-hK-TxU" firstAttribute="width" secondItem="IWp-Ke-KyH" secondAttribute="width" multiplier="0.9" id="BuK-0J-dTG"/>
-                                                <constraint firstItem="aCO-8K-Dad" firstAttribute="leading" secondItem="IWp-Ke-KyH" secondAttribute="leadingMargin" constant="3" id="GVc-sa-k0a"/>
+                                                <constraint firstItem="aCO-8K-Dad" firstAttribute="leading" secondItem="IWp-Ke-KyH" secondAttribute="leadingMargin" constant="10" id="GVc-sa-k0a"/>
                                                 <constraint firstItem="aCO-8K-Dad" firstAttribute="top" secondItem="IWp-Ke-KyH" secondAttribute="topMargin" id="enF-vM-hVU"/>
-                                                <constraint firstItem="Fif-hK-TxU" firstAttribute="leading" secondItem="IWp-Ke-KyH" secondAttribute="leading" constant="23" id="fM5-BV-ceb"/>
+                                                <constraint firstItem="Fif-hK-TxU" firstAttribute="leading" secondItem="IWp-Ke-KyH" secondAttribute="leading" constant="27" id="fM5-BV-ceb"/>
                                                 <constraint firstItem="Fif-hK-TxU" firstAttribute="top" secondItem="aCO-8K-Dad" secondAttribute="bottom" constant="8" id="rIa-7K-bDr"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -144,6 +140,7 @@
                         <outlet property="expertDetailTable" destination="Dt4-Xe-lro" id="KuH-oY-2SO"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p3k-SF-1pu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="742" y="84"/>
         </scene>
@@ -154,7 +151,7 @@
             <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primaryBlue">
-            <color red="0.097999997437000275" green="0.16500000655651093" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.098039215686274508" green="0.16470588235294117" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primaryDisable">
             <color red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
