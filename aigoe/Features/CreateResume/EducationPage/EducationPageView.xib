@@ -27,7 +27,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZW0-L7-SDA">
-                    <rect key="frame" x="20" y="8" width="267" height="35"/>
+                    <rect key="frame" x="25" y="8" width="267" height="35"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="267" id="LJi-Mc-CRl"/>
                         <constraint firstAttribute="height" constant="35" id="sQn-rB-5Uw"/>
@@ -44,21 +44,15 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0H-WL-Qzs">
-                    <rect key="frame" x="336.5" y="8" width="57.5" height="35"/>
+                    <rect key="frame" x="331.5" y="8" width="57.5" height="35"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="57.5" id="X15-ql-py2"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain">
-                        <attributedString key="attributedTitle">
-                            <fragment content="Add">
-                                <attributes>
-                                    <font key="NSFont" size="18" name="SFProDisplay-Medium"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
-                        <color key="baseForegroundColor" name="primaryBlue"/>
-                    </buttonConfiguration>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Add">
+                        <color key="titleColor" name="primaryBlue"/>
+                    </state>
                     <connections>
                         <action selector="addAction:" destination="-1" eventType="touchUpInside" id="77K-pe-5Vg"/>
                     </connections>
@@ -72,8 +66,8 @@
             <color key="backgroundColor" name="primaryBG"/>
             <constraints>
                 <constraint firstItem="ZW0-L7-SDA" firstAttribute="height" secondItem="t0H-WL-Qzs" secondAttribute="height" id="17I-Ay-F3G"/>
-                <constraint firstAttribute="trailing" secondItem="t0H-WL-Qzs" secondAttribute="trailing" constant="20" id="4aO-V8-y0I"/>
-                <constraint firstItem="ZW0-L7-SDA" firstAttribute="leading" secondItem="oEI-oh-fPO" secondAttribute="leading" constant="20" id="8Vu-qh-mot"/>
+                <constraint firstAttribute="trailing" secondItem="t0H-WL-Qzs" secondAttribute="trailing" constant="25" id="4aO-V8-y0I"/>
+                <constraint firstItem="ZW0-L7-SDA" firstAttribute="leading" secondItem="oEI-oh-fPO" secondAttribute="leading" constant="25" id="8Vu-qh-mot"/>
                 <constraint firstItem="ZW0-L7-SDA" firstAttribute="top" secondItem="oEI-oh-fPO" secondAttribute="top" constant="8" id="Dk6-J1-PZm"/>
                 <constraint firstItem="d8x-EX-O43" firstAttribute="height" secondItem="9wP-0F-FPS" secondAttribute="height" multiplier="0.6" id="JD4-8p-AK0"/>
                 <constraint firstItem="d8x-EX-O43" firstAttribute="width" secondItem="9wP-0F-FPS" secondAttribute="width" id="KoN-72-JC9"/>
@@ -94,7 +88,7 @@
             <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primaryBlue">
-            <color red="0.097999997437000275" green="0.16500000655651093" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.098039215686274508" green="0.16470588235294117" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="primarySubtitle">
             <color red="0.27099999785423279" green="0.25099998712539673" blue="0.25099998712539673" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

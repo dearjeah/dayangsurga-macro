@@ -23,7 +23,7 @@
                     <rect key="frame" x="4" y="22.5" width="406" height="851"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ksv-nZ-Fe1" customClass="HorizontalLabelAndButton" customModule="aigoe" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="406" height="59.5"/>
+                            <rect key="frame" x="6" y="0.0" width="394" height="59.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7UF-4X-BAL">
@@ -37,7 +37,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="ksv-nZ-Fe1" firstAttribute="leading" secondItem="aaY-hB-Pey" secondAttribute="leading" id="Iya-8y-xEr"/>
+                        <constraint firstItem="ksv-nZ-Fe1" firstAttribute="centerX" secondItem="aaY-hB-Pey" secondAttribute="centerX" id="KNr-hQ-ZwD"/>
                         <constraint firstItem="tW5-8t-WNZ" firstAttribute="height" secondItem="aaY-hB-Pey" secondAttribute="height" multiplier="0.3" id="KbZ-Hs-C8G"/>
                         <constraint firstItem="ksv-nZ-Fe1" firstAttribute="top" secondItem="aaY-hB-Pey" secondAttribute="top" id="OzQ-LY-h54"/>
                         <constraint firstItem="tW5-8t-WNZ" firstAttribute="centerY" secondItem="aaY-hB-Pey" secondAttribute="centerY" constant="-100" id="XPX-SA-1gE"/>
@@ -47,8 +47,8 @@
                         <constraint firstItem="tW5-8t-WNZ" firstAttribute="centerX" secondItem="aaY-hB-Pey" secondAttribute="centerX" id="gT3-1J-KUC"/>
                         <constraint firstItem="7UF-4X-BAL" firstAttribute="leading" secondItem="aaY-hB-Pey" secondAttribute="leading" id="iUX-S2-7T1"/>
                         <constraint firstItem="ksv-nZ-Fe1" firstAttribute="height" secondItem="aaY-hB-Pey" secondAttribute="height" multiplier="0.07" id="lT0-gC-rQ9"/>
-                        <constraint firstAttribute="trailing" secondItem="ksv-nZ-Fe1" secondAttribute="trailing" id="rJe-S8-UYg"/>
                         <constraint firstItem="7UF-4X-BAL" firstAttribute="top" secondItem="ksv-nZ-Fe1" secondAttribute="bottom" id="xTm-VN-OmM"/>
+                        <constraint firstItem="ksv-nZ-Fe1" firstAttribute="width" secondItem="aaY-hB-Pey" secondAttribute="width" multiplier="0.97" id="xhy-k2-dsl"/>
                     </constraints>
                 </view>
             </subviews>
