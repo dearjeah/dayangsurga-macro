@@ -64,6 +64,7 @@ extension UserProfileViewController: UITableViewDataSource, UITableViewDelegate 
         let data = userProfileData[indexPath.row]
         cell.img.image = data.img
         cell.titleLabel.text = data.title
+        cell.selectionStyle = .none
         
         return cell
     }
@@ -112,7 +113,7 @@ extension UserProfileViewController {
             performSegue(withIdentifier: "goToExperience", sender: self)
         case .skill:
             performSegue(withIdentifier: "goToSkill", sender: self)
-        case .achievement:
+        case .accomplishment:
             performSegue(withIdentifier: "goToAchievement", sender: self)
         }
     }

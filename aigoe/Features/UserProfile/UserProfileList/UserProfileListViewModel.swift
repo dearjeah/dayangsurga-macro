@@ -20,7 +20,7 @@ class UserProfileListViewModel: NSObject {
             UserProfileList(img: UserProfileType.education.getImage(), title: UserProfileType.education.getTitle(), type: .education),
             UserProfileList(img: UserProfileType.experience.getImage(), title: UserProfileType.experience.getTitle(), type: .experience),
             UserProfileList(img: UserProfileType.skill.getImage(), title: UserProfileType.skill.getTitle(), type: .skill),
-            UserProfileList(img: UserProfileType.achievement.getImage(), title: UserProfileType.achievement.getTitle(), type: .achievement)
+            UserProfileList(img: UserProfileType.accomplishment.getImage(), title: UserProfileType.accomplishment.getTitle(), type: .accomplishment)
         ]
         
         return data
