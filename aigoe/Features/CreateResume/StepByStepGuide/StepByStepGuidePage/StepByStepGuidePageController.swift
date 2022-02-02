@@ -38,7 +38,7 @@ class StepByStepGuidePageController: UIPageViewController {
     var currentPageIndex: Int = 0
     var nextPageIndex: Int = 1
     var previousPageIndex: Int = -1
-    var quizAnswer: [Bool] = []
+    var quizAnswer: [Bool] = [false, false, false]
     var pageType: [Int] = []
     var selectedResume = User_Resume()
     var personalData = [Personal_Info]()
@@ -76,6 +76,76 @@ class StepByStepGuidePageController: UIPageViewController {
         style()
         setup()
         notificationCenterSetup()
+    }
+    
+    func checkQuizAnswer(wasPage: Int, from: String) -> Int {
+        if from == "next" {
+            if wasPage == 1 {
+                if !quizAnswer.isEmpty {
+                    //from edu -> exp
+                    if quizAnswer[0] {
+                        setPageIndex(value: 2)
+                        return 1
+                    } else {
+                        setPageIndex(value: 1)
+                        return 0
+                    }
+                }
+            } else if wasPage == 3 {
+                //from exp -> skills
+                if quizAnswer[1] {
+                    setPageIndex(value: 2)
+                    return 1
+                } else {
+                    setPageIndex(value: 1)
+                    return 0
+                }
+            } else if wasPage == 5 {
+                //from skills -> accomp
+                if quizAnswer[2] {
+                    setPageIndex(value: 2)
+                    return 1
+                } else {
+                    setPageIndex(value: 1)
+                    return 0
+                }
+            }
+        } else if from == "prev"{
+            if wasPage == 3 {
+                if !quizAnswer.isEmpty {
+                    //from exp -> edu
+                    if quizAnswer[0] {
+                        setPageIndex(value: -1 + (-1))
+                        return -1
+                    } else {
+                        setPageIndex(value: -1)
+                        return 0
+                    }
+                }
+            } else if wasPage == 5 {
+                //from skills -> exp
+                if quizAnswer[1] {
+                    setPageIndex(value: -1 + (-1))
+                    return -1
+                } else {
+                    setPageIndex(value: -1)
+                    return 0
+                }
+            } else if wasPage == 7 {
+                //from accomp -> skills
+                if quizAnswer[2] {
+                    setPageIndex(value: -1 + (-1))
+                    return -1
+                } else {
+                    setPageIndex(value: -1)
+                    return 0
+                }
+            } else {
+                setPageIndex(value: -1)
+                return -1
+            }
+        }
+        return 0
     }
 }
 
@@ -142,6 +212,20 @@ extension StepByStepGuidePageController: PersonalInfoPageDelegate, QuizPageDeleg
     //quizPagedelegate
     func quizAnswer(was: Bool) {
         let wasPage = currentPageIndex
+        if quizAnswer.isEmpty {
+            quizAnswer.append(was)
+        } else {
+            if wasPage == 2 {
+                //exp
+                quizAnswer[0] = was
+            } else if wasPage == 4 {
+                //skills
+                quizAnswer[1] = was
+            } else if wasPage == 6 {
+                //accomp
+                quizAnswer[2] = was
+            }
+        }
         if was {
             goToNext(wasPage: wasPage)
         } else {
@@ -317,28 +401,38 @@ extension StepByStepGuidePageController: UIPageViewControllerDataSource, UIPageV
 //MARK: Page Controller Navigation
 extension StepByStepGuidePageController {
     func goToNext(wasPage: Int, addedValue: Int? = 0){
-        let addedValue = addedValue ?? 0
+        var addedValue = addedValue ?? 0
+        if wasPage == 1 || wasPage == 3 || wasPage == 5 {
+            addedValue = checkQuizAnswer(wasPage: wasPage, from: "next")
+        } else {
+            setPageIndex(value: 1 + addedValue)
+        }
+        hideUnHideButton(currentPage: currentPageIndex)
+        stepDelegate?.progressBarUpdate(index: currentPageIndex, totalData: stepControllerArr?.count ?? 0)
+        stepDelegate?.updateData(page: currentPageIndex)
+        reloadData()
+        buttonFunctional(currentPage: currentPageIndex)
         guard let currentViewController = stepControllerArr?[wasPage + addedValue] else { return }
         guard let nextViewController = dataSource?.pageViewController( self, viewControllerAfter: currentViewController ) else { return }
         setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
-        setPageIndex(value: 1 + addedValue)
-        hideUnHideButton(currentPage: currentPageIndex)
-        stepDelegate?.progressBarUpdate(index: currentPageIndex, totalData: stepControllerArr?.count ?? 0)
-        stepDelegate?.updateData(page: currentPageIndex)
-        reloadData()
-        buttonFunctional(currentPage: currentPageIndex)
     }
     
     func goToPrev(wasPage: Int){
-        guard let currentViewController = stepControllerArr?[wasPage] else { return }
-        guard let prevViewController = dataSource?.pageViewController( self, viewControllerBefore: currentViewController) else { return }
-        setViewControllers([prevViewController], direction: .reverse, animated: true, completion: nil)
-        setPageIndex(value: -1)
+        var addedValue = 0
+        if wasPage == 3 || wasPage == 5 || wasPage == 7 {
+            //if quiz select yes
+            addedValue = checkQuizAnswer(wasPage: wasPage, from: "prev")
+        } else {
+            setPageIndex(value: -1)
+        }
         hideUnHideButton(currentPage: currentPageIndex)
         stepDelegate?.progressBarUpdate(index: currentPageIndex, totalData: stepControllerArr?.count ?? 0)
         stepDelegate?.updateData(page: currentPageIndex)
         reloadData()
         buttonFunctional(currentPage: currentPageIndex)
+        guard let currentViewController = stepControllerArr?[wasPage + addedValue] else { return }
+        guard let prevViewController = dataSource?.pageViewController( self, viewControllerBefore: currentViewController) else { return }
+        setViewControllers([prevViewController], direction: .reverse, animated: true, completion: nil)
     }
     
     func goToDirectPage(selectedPageIndex: Int){
@@ -389,7 +483,7 @@ extension StepByStepGuidePageController {
             }
         } else {
             if currentPage == 0 {
-                if personalData.count != 0 && currentResumeContent.personalInfo_id != "" {
+                if personalData.count != 0 && currentResumeContent.personalInfo_id != nil && currentResumeContent.personalInfo_id != "" {
                     prevNextDelegate?.isButtonEnable(left: false , right: true)
                 } else {
                     prevNextDelegate?.isButtonEnable(left: false , right: false)
@@ -492,12 +586,17 @@ extension StepByStepGuidePageController {
                 currentPageIndex = currentPageIndex + value
                 nextPageIndex = nextPageIndex + value
                 previousPageIndex = previousPageIndex + value
+            } else if value == -2 {
+                //quiz say yes previously
+                currentPageIndex = currentPageIndex + value
+                nextPageIndex = nextPageIndex + value
+                previousPageIndex = previousPageIndex + value
             } else if value == 0 {
                //NEED UPDATE
                currentPageIndex = value
                nextPageIndex = value + 1
                previousPageIndex = stepControllerArr?.count ?? 1 - 1
-               }
+            }
         }
     }
 }
