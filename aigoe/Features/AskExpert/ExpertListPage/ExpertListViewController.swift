@@ -10,6 +10,8 @@ import UIKit
 class ExpertListViewController: MVVMViewController<ExpertListViewModel> {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var comingSoon: EmptyState!
+    
     var expert = [Expert_Profile]()
     var selectedIndexExpert: Int?
     
@@ -17,7 +19,7 @@ class ExpertListViewController: MVVMViewController<ExpertListViewModel> {
         super.viewDidLoad()
         
         setupView()
-        registerTableView()
+        //registerTableView()
         setupViewModel()
         navigationStyle()
     }
@@ -32,9 +34,17 @@ class ExpertListViewController: MVVMViewController<ExpertListViewModel> {
     
     func setupView(){
         self.title = "Ask Expert"
+        tableView.isHidden = true
+        setupComingSoon()
         tableView.tableFooterView = UIView()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Info", style: .plain, target: self, action: #selector(self.infoWasPressed(sender:)))
         navigationItem.rightBarButtonItem?.tintColor = UIColor.primaryWhite
+    }
+    
+    func setupComingSoon() {
+        comingSoon.emptyStateImage.image = UIImage.comingSoon
+        comingSoon.emptyStateTitle.text = "Coming Soon"
+        comingSoon.emptyStateDescription.text = "Features are currently in progress"
     }
     
     func setupViewModel(){

@@ -95,6 +95,7 @@
         <!--Ask Expert-->
         <scene sceneID="MUR-eV-SXX">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HPg-eh-pHE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="R4K-ac-ojM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Ask Expert" image="bubble.left.and.bubble.right.fill" catalog="system" landscapeImage="bubble.left.and.bubble.right.fill" id="eT9-a7-dOa">
                         <imageReference key="selectedImage" image="bubble.left.and.bubble.right.fill" catalog="system" symbolScale="large"/>
@@ -114,7 +115,6 @@
                         <segue destination="5Qr-wi-EmZ" kind="relationship" relationship="rootViewController" id="CiK-px-ljM"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HPg-eh-pHE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="180" y="-3"/>
         </scene>
