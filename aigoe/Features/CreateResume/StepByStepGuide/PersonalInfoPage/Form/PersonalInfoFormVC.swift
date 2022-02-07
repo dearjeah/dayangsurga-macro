@@ -24,6 +24,7 @@ class PersonalInfoFormVC: MVVMViewController<PersonalInfoFormViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        hideKeyboardWhenTappedAround()
     }
     
     @IBAction func addDeletePressed(_ sender: UIButton) {

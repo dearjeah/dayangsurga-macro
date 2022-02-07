@@ -1,37 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Expert List View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="ExpertListViewController" customModule="dayangsurga_macro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="ExpertListViewController" customModule="aigoe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jKn-UP-9dq">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jKn-UP-9dq">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" name="primaryBG"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNz-bn-ZjO" customClass="EmptyState" customModule="aigoe" customModuleProvider="target">
+                                <rect key="frame" x="20.5" y="209" width="373" height="448"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="primaryBG"/>
                         <constraints>
+                            <constraint firstItem="pNz-bn-ZjO" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.5" id="C6w-Tw-eX5"/>
                             <constraint firstItem="jKn-UP-9dq" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="aJ5-EC-UQV"/>
+                            <constraint firstItem="pNz-bn-ZjO" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.9" id="eXQ-cG-Sj6"/>
+                            <constraint firstItem="pNz-bn-ZjO" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" constant="-20" id="ehk-rv-BH5"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="jKn-UP-9dq" secondAttribute="bottom" id="frb-qv-Lk1"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="jKn-UP-9dq" secondAttribute="trailing" id="kCA-kZ-ECM"/>
                             <constraint firstItem="jKn-UP-9dq" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="lCx-oN-bfn"/>
+                            <constraint firstItem="pNz-bn-ZjO" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="rdp-49-Ryc"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="comingSoon" destination="pNz-bn-ZjO" id="F7N-GF-fsR"/>
                         <outlet property="tableView" destination="jKn-UP-9dq" id="P38-Ky-hjc"/>
                     </connections>
                 </viewController>
@@ -44,8 +52,5 @@
         <namedColor name="primaryBG">
             <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

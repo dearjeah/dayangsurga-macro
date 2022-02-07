@@ -120,7 +120,7 @@ extension CoreDataManager {
         }
         
         if ExpertProfileRepository.shared.getAllExpertProfile()?.count == 0{
-            preloadExpertProfile()
+            //preloadExpertProfile()
         }
         if AccomplishmentSuggestionRepository.shared.getAllAccomplishmentSuggestion()?.count == 0{
             preloadAccomplishSuggestion()

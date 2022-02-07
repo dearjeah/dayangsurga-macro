@@ -162,7 +162,7 @@ extension SkillsPageView {
     }
     
     func setup() {
-        addEditButton.titleLabel?.textColor = UIColor.primaryBlue
+        addEditButton.mediumTextButton(color: UIColor.primaryBlue)
         skillsTableView.delegate = self
         skillsTableView.dataSource = self
         self.skillsTableView.register(UINib(nibName: "TechnicalSkillsListCell", bundle: nil), forCellReuseIdentifier: "TechnicalSkillsListCell")

@@ -13,7 +13,7 @@ enum UserProfileType: String, CaseIterable {
     case education = "Education"
     case experience = "Profesional Experience"
     case skill = "Technical Skill"
-    case achievement = "Achievement"
+    case accomplishment = "Accomplishment"
     
     func getImage() -> UIImage {
         var img: UIImage = UIImage.icAchvFill ?? UIImage()
@@ -30,7 +30,7 @@ enum UserProfileType: String, CaseIterable {
         case .skill:
             img = UIImage.icSkillFill ?? UIImage()
             return img
-        case .achievement:
+        case .accomplishment:
             img = UIImage.icAchvFill ?? UIImage()
             return img
         }
@@ -46,8 +46,8 @@ enum UserProfileType: String, CaseIterable {
             return "Profesional Experience"
         case .skill:
             return "Technical Skill"
-        case .achievement:
-            return "Achievement"
+        case .accomplishment:
+            return "Accomplishment"
         }
     }
 }
