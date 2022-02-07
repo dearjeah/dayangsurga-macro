@@ -75,6 +75,7 @@ class ExpertListViewController: MVVMViewController<ExpertListViewModel> {
 extension ExpertListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return expert.count
+       
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

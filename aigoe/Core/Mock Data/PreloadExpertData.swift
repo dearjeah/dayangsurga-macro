@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-func preloadExpertProfile(){
+/*func preloadExpertProfile(){
     // experience in year
     // background profile = expertise
     ExpertProfileRepository.shared.createExpertProfile(expertId: 0,
@@ -88,4 +88,4 @@ func preloadExpertProfile(){
                                                        image: UIImage(named: "imgExpertDyah") ?? UIImage(),
                                                        titleOnList: "HR at Startup",
                                                        summary: "HR Practitioner with a demonstrated history of working in the technology industry with significant exposure to startup culture. Skilled in recruitment, administration, and communication.")
-}
+}*/
